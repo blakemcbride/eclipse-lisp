@@ -280,7 +280,7 @@ typedef enum {
 #define clBitMask(n_bits) 	(~(~0 << ((int) n_bits)))
 #define cl_TAG_MASK		clBitMask(cl_POINTER_TAG_BITS)
 
-typedef int clWord;		/* Integer big enough to hold a pointer */
+typedef long clWord;		/* Integer big enough to hold a pointer */
 typedef const char *clCharp;	/* (char *) in an easy to Lisp form */
 
 /*********************************************************************

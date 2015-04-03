@@ -2,6 +2,7 @@
    Wednesday the sixth of May, 1998, 1:47:18 pm CDT. */
 #include <eclipse.h>
 #include "chars.h"
+#include <wchar.h>
 
 clObject clLESS_FUNC(clProto), clAssoc(clProto), clCar(clProto),
   clCdr(clProto), clCharDowncase(clProto), clCharInt(clProto),

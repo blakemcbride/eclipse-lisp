@@ -1,7 +1,8 @@
 CC=gcc
-gcc-wflags=-Wall -Wno-unused -Wshadow -Wwrite-strings \
- -Wnested-externs -Winline -Wpointer-arith -Wcast-qual \
-  -pedantic -Waggregate-return -Wstrict-prototypes -Wconversion 
+# gcc-wflags=-Wall -Wno-unused -Wshadow -Wwrite-strings \
+#  -Wnested-externs -Winline -Wpointer-arith -Wcast-qual \
+#   -pedantic -Waggregate-return -Wstrict-prototypes -Wconversion 
+
 #-Wredundant-decls -Wcast-align -Wbad-function-cast -W 
 pflags=$(gcc-wflags)
 # We expect pflags to be defined in ENV if necessary.  It provides a
@@ -9,7 +10,8 @@ pflags=$(gcc-wflags)
 #    export pflags="-malign-double -DALIGN_DOUBLE"
 # On some platforms, there may not be enough space in /tmp, so it may
 # also be necessary to also export TMPDIR=`pwd` 
-CFLAGS=-I. -O2 $(pflags)
+#CFLAGS=-I. -O2 $(pflags)
+CFLAGS=-I. -g $(pflags)
 ADDITIONAL_LINTFLAGS=-i
 LINTFLAGS=-DLINT $(LINT_FLAGS)
 
@@ -101,13 +103,13 @@ l = libeclipse
 
 # The default target must be first
 test: eclipse
-	eclipse -n
+#	./eclipse -n
 
 $(objects) $(dobjects) $(static-objects) $(lints) eclipse.o initd.o: eclipse.h 
 
 interface.o $(static-objects) $(static_lints): statics.h
 
-interface.o interface.ln: gc.h
+#interface.o interface.ln: gc.h
 
 character.o character.ln: chars.h
 
@@ -117,10 +119,10 @@ character.o character.ln: chars.h
 # The LIBDL hair is to handle broken dl library name on HP.
 eclipse: $(l).a $(l)d.a  eclipse.o 
 	if [ `uname -s` = "HP-UX" ]; then LIBDL=dld; else LIBDL=dl; fi; \
-	$(CC) $(CFLAGS) $(LDFLAGS) -L. eclipse.o -o eclipse -leclipse -leclipsed -lm -l$$LIBDL
+	$(CC) $(CFLAGS) $(LDFLAGS) -L. eclipse.o -o eclipse -leclipse -leclipsed -lm -l$$LIBDL -lgc
 
 # See bottom of file for alternatives that don't keep .o files lying around.
-$(l).a: libgc.a $(objects) $(static-objects) 
+$(l).a: $(objects) $(static-objects) 
 	$(AR) $(ARFLAGS)l $@ $?
 	ranlib $@
 
@@ -144,7 +146,7 @@ $(sources) $(dsources) $(static-sources) eclipse.h statics.h chars.h eclipse.c c
 	ln -s ../../c/$@ .	
 
 gc.h:	
-	ln -s ../../c/gc/gc.h $@
+	ln -fs ../../c/gc/gc.h $@
 
 # Recompilation
 recompile: clean clean-auxiliary clean-source

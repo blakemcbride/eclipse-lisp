@@ -20,6 +20,7 @@
 #  include <sys/time.h>		/* select gettimeofday timezone */
 #  include <sys/utsname.h>	/* uname */
 #  include <sys/resource.h>	/* getrlimit getrusage */
+#  include <sys/syscall.h>	/* getdents  */
 #endif
 
 #include <stdio.h>		/* rename remove cuserid */
@@ -60,7 +61,22 @@
 /* No systems currently define USE_POSIX_OPENDIR */
 #if !(defined USE_POSIX_OPENDIR)
 #  if (defined linux)
-#    include <linux/dirent.h>	/* getdents */
+/* #    include <linux/dirent.h>	/* getdents */
+#define dirent linux_dirent
+          struct linux_dirent {
+               unsigned long  d_ino;     /* Inode number */
+               unsigned long  d_off;     /* Offset to next linux_dirent */
+               unsigned short d_reclen;  /* Length of this linux_dirent */
+               char           d_name[];  /* Filename (null-terminated) */
+                                 /* length is actually (d_reclen - 2 -
+                                    offsetof(struct linux_dirent, d_name)) */
+               /*
+               char           pad;       // Zero padding byte
+               char           d_type;    // File type (only since Linux
+                                         // 2.6.4); offset is (d_reclen - 1)
+               */
+
+	  };
 #    include <linux/unistd.h>	/* getdents */
      extern int getdents __P((unsigned int, struct dirent *, unsigned int));
 #  endif
@@ -661,7 +677,10 @@ void clUnwind(n) unsigned n; {
 }
 
 void clUnwindExit(exitp) clExitCell *exitp; {
-  clControlOpCell *target = clDEnvPointer(exitp->dynamic_environment);
+	clControlOpCell *target;
+//	fprintf(stderr, "\n1 %ld\n", (long) exitp);
+  target = clDEnvPointer(exitp->dynamic_environment);
+//	fprintf(stderr, "\n2\n");
   while (CL_dynamic_environment > target) {
     /* This SHOULD only happen as a result of someone writing bad C code. */
     if (CL_dynamic_environment <= CL_dynamic_environment_base)
@@ -959,7 +978,7 @@ clObject clGcData() {
   data_segment_size = getrlimit(RLIMIT_DATA, &rl);
   if (-1 == data_segment_size) _clSystemError("getrlimit");
   data_segment_size = rl.rlim_cur;
-  if (-1 == (int) (data_end = sbrk(0))) _clSystemError("sbrk");
+  if (-1 == (clWord) (data_end = sbrk(0))) _clSystemError("sbrk");
 #else
   int data_end = 0, data_segment_size = 0;		/* need windows code!!!*/
 #endif
@@ -1041,7 +1060,7 @@ void clCatchInterrupts(sig) int sig; {
   sigemptyset(&act.sa_mask);
   if (-1 == (int) sigaction(sig, &act, NULL))
 #else  /* Stick with ANSI signal */
-  if (-1 == (int) signal(sig, IHandler))
+  if (-1 == (clWord) signal(sig, IHandler))
 #endif
     _clSystemError("signal");
 }
@@ -1213,7 +1232,8 @@ static long sys_time(start) long start; {
   return(Millisec(tp) - start); 
 }
 #elif (defined USE_POSIX_TIMES)	/* POSIX uses times with CLK_TCK values. */
-#  define clHZ		CLK_TCK		/* or HZ */
+/*#  define clHZ		CLK_TCK		/* or HZ */
+#define clHZ   sysconf(_SC_CLK_TCK)
 
 static long sys_time(start) long start; {
   struct tms p;
@@ -1293,6 +1313,7 @@ clObject clGetenv(clVaAlist) clVaDcl {
 clObject clUname(c) int c; {
 	char *p; 
 #ifdef unix
+  extern char *cuserid();
   struct utsname name;
   switch (c) {
   case 'u':
@@ -1713,9 +1734,15 @@ static struct dirent *cl_readdir(dd) cl_DIR *dd; {
 #  define HACK_BUF &(dd->buf)
 #endif
   if ((char *)entry >= (char *) dd->end) {
+/*
     int nb = getdents(dd->fd,
 		      (struct dirent *) HACK_BUF,
 		      cl_DIR_BUF_SIZE);
+*/
+    int nb = syscall(SYS_getdents, dd->fd,
+		      (struct dirent *) HACK_BUF,
+		      cl_DIR_BUF_SIZE);
+
     /* Should we repeat if nb==-1 and errno=EIO or EINTR ? */
     if (nb <= 0) return(NULL);
 
@@ -2805,6 +2832,7 @@ double atanh(x) double x;
    our own round(), but other code might muck with the "current IEEE
    rounding direction" in a non-ANSI-CL compatible way.  Also, many
    systems don't even have rint(). */
+#define round eround  /* avoid system defined round  */
 static double round __P((double));
 static double round(x) double x; { return(x - remainder(x, 1.0)); }
 
