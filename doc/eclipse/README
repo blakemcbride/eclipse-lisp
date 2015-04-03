@@ -1,0 +1,47 @@
+			    ECLIPSE README
+			  February 11, 1998
+
+
+Eclipse Common Lisp is a commercial ANSI Common Lisp, a Lisp-to-C
+translator, and a Lisp library for C programmers.  It is copyright
+1997, 1998 by Elwood Corporation.  Information may be obtained at 
+  http://www.elwood.com/eclipse-info
+
+These notes go along with the current product distribution.
+
+
+UNPACKING THE DISTRIBUTION:
+---------------------------
+
+The file doc/eclipse/UNPACKING (mirrored at
+http://www.elwood.com/eclipse/UNPACKING) describes how to copy the
+software and documentation from the distribution media.
+
+
+DOCUMENTATION:
+--------------
+
+The Eclipse documentation is provided as HTML files which may be
+viewed using any WWW browser.  The files are in doc/eclipse/
+and the initial page is doc/eclipse/index.htm
+
+Also included is a mirror of the Association of Lisp Users web-site,
+including the ANSI specification (HyperSpec) and MetaObject Protocol.
+These are in doc/alu/index.htm
+
+To read the documentation, instruct your WWW browser to "open file" or
+"read file" and select the file
+    doc/eclipse/eclipse.htm.
+Alternatively, you can use the "open location" or "goto location"
+command and specify a URL of 
+    file:[path]/doc/eclipse/eclipse.htm
+where [path] is the versioned subdirectory in which the distribution
+was placed.   
+
+For example, when viewing documentation on a CDROM, the URL might be
+something like:
+    file:/cdrom/cdrom0/eclipse-1.0.1/doc/eclipse/eclipse.htm
+
+When the versioned distribution is copied to a general directory named
+/usr/eclipse, the URL might be something like:
+    file:/usr/eclipse/eclipse-1.0.1/doc/eclipse/eclipse.htm

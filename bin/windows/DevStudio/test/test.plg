@@ -1,0 +1,160 @@
+--------------------Configuration: test - Win32 Debug--------------------
+Begining build with project "C:\howard\eclipse-1.1\bin\windows\DevStudio\test\test.dsp", at root.
+Active configuration is Win32 (x86) Static Library (based on Win32 (x86) Static Library)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /GX /Z7 /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/test.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Browser Database Maker" with flags "/nologo /o"Debug/test.bsc" "
+			"Library Manager" with flags "/nologo /out:"Debug\test.lib" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP53.tmp" with contents </nologo /MLd /W3 /GX /Z7 /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/test.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\howard\eclipse-1.1\test\typespec.c"
+"C:\howard\eclipse-1.1\test\character.c"
+"C:\howard\eclipse-1.1\test\clos.c"
+"C:\howard\eclipse-1.1\test\condition.c"
+"C:\howard\eclipse-1.1\test\control.c"
+"C:\howard\eclipse-1.1\test\control2.c"
+"C:\howard\eclipse-1.1\test\error.c"
+"C:\howard\eclipse-1.1\test\file.c"
+"C:\howard\eclipse-1.1\test\hash.c"
+"C:\howard\eclipse-1.1\test\list.c"
+"C:\howard\eclipse-1.1\test\loop.c"
+"C:\howard\eclipse-1.1\test\macro.c"
+"C:\howard\eclipse-1.1\test\misc.c"
+"C:\howard\eclipse-1.1\test\numbers.c"
+"C:\howard\eclipse-1.1\test\numbers2.c"
+"C:\howard\eclipse-1.1\test\numbers3.c"
+"C:\howard\eclipse-1.1\test\numbers4.c"
+"C:\howard\eclipse-1.1\test\numbers5.c"
+"C:\howard\eclipse-1.1\test\numbers6.c"
+"C:\howard\eclipse-1.1\test\package.c"
+"C:\howard\eclipse-1.1\test\parsepath.c"
+"C:\howard\eclipse-1.1\test\pathname.c"
+"C:\howard\eclipse-1.1\test\pkg.c"
+"C:\howard\eclipse-1.1\test\predicates.c"
+"C:\howard\eclipse-1.1\test\printer.c"
+"C:\howard\eclipse-1.1\test\program.c"
+"C:\howard\eclipse-1.1\test\reader.c"
+"C:\howard\eclipse-1.1\test\rt.c"
+"C:\howard\eclipse-1.1\test\sequence.c"
+"C:\howard\eclipse-1.1\test\stream.c"
+"C:\howard\eclipse-1.1\test\string.c"
+"C:\howard\eclipse-1.1\test\structure.c"
+"C:\howard\eclipse-1.1\test\subtypes.c"
+"C:\howard\eclipse-1.1\test\symbol.c"
+"C:\howard\eclipse-1.1\test\transpath.c"
+"C:\howard\eclipse-1.1\test\types.c"
+"C:\howard\eclipse-1.1\test\array.c"
+>
+Creating command line "cl.exe @C:\TEMP\RSP53.tmp" 
+Creating temp file "C:\TEMP\RSP54.tmp" with contents </nologo /out:"Debug\test.lib" 
+".\Debug\typespec.obj"
+".\Debug\character.obj"
+".\Debug\clos.obj"
+".\Debug\condition.obj"
+".\Debug\control.obj"
+".\Debug\control2.obj"
+".\Debug\error.obj"
+".\Debug\file.obj"
+".\Debug\hash.obj"
+".\Debug\list.obj"
+".\Debug\loop.obj"
+".\Debug\macro.obj"
+".\Debug\misc.obj"
+".\Debug\numbers.obj"
+".\Debug\numbers2.obj"
+".\Debug\numbers3.obj"
+".\Debug\numbers4.obj"
+".\Debug\numbers5.obj"
+".\Debug\numbers6.obj"
+".\Debug\package.obj"
+".\Debug\parsepath.obj"
+".\Debug\pathname.obj"
+".\Debug\pkg.obj"
+".\Debug\predicates.obj"
+".\Debug\printer.obj"
+".\Debug\program.obj"
+".\Debug\reader.obj"
+".\Debug\rt.obj"
+".\Debug\sequence.obj"
+".\Debug\stream.obj"
+".\Debug\string.obj"
+".\Debug\structure.obj"
+".\Debug\subtypes.obj"
+".\Debug\symbol.obj"
+".\Debug\transpath.obj"
+".\Debug\types.obj"
+".\Debug\array.obj">
+Creating command line "link.exe -lib @C:\TEMP\RSP54.tmp" 
+Compiling...
+typespec.c
+character.c
+clos.c
+condition.c
+control.c
+control2.c
+C:\howard\eclipse-1.1\test\control2.c(1200) : warning C4102: 'L1' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1200) : warning C4102: 'FOO' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1220) : warning C4102: '____symbol__r2' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1220) : warning C4102: '____symbol__r1' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1220) : warning C4102: '____symbol' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1353) : warning C4102: 'FOO' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1370) : warning C4102: 'L1' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1406) : warning C4102: 'FOO' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1443) : warning C4102: 'L1' : unreferenced label
+C:\howard\eclipse-1.1\test\control2.c(1493) : warning C4102: 'FOO' : unreferenced label
+error.c
+file.c
+hash.c
+list.c
+loop.c
+C:\howard\eclipse-1.1\test\loop.c(3852) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3852) : warning C4102: 'cl_NEXT_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3876) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3876) : warning C4102: 'cl_NEXT_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3911) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3911) : warning C4102: 'cl_NEXT_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3939) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3939) : warning C4102: 'cl_NEXT_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3963) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\loop.c(3963) : warning C4102: 'cl_NEXT_LOOP' : unreferenced label
+macro.c
+misc.c
+numbers.c
+numbers2.c
+numbers3.c
+numbers4.c
+numbers5.c
+numbers6.c
+package.c
+C:\howard\eclipse-1.1\test\package.c(1615) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\package.c(1754) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\package.c(1893) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\package.c(2032) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\package.c(2171) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\package.c(2310) : warning C4102: 'cl_END_LOOP' : unreferenced label
+C:\howard\eclipse-1.1\test\package.c(2449) : warning C4102: 'cl_END_LOOP' : unreferenced label
+parsepath.c
+pathname.c
+pkg.c
+predicates.c
+printer.c
+program.c
+reader.c
+rt.c
+sequence.c
+stream.c
+string.c
+structure.c
+subtypes.c
+symbol.c
+transpath.c
+types.c
+array.c
+Creating library...
+
+
+
+test.lib - 0 error(s), 27 warning(s)

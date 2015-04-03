@@ -1,0 +1,8 @@
+#!/bin/ksh
+
+if [ $1.lisp -nt c/$1.c ]
+then
+  lisp -core hpcmucl.core -eval "(ccq \"$1\" :eclipse)"
+else
+  echo $1 is up to date.
+fi

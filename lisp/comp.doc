@@ -1,0 +1,310 @@
+#+to-compile
+(progn (cl:compile-file "walker") (cl:load "walker")
+       (cl:compile-file "interp") (cl:load "interp")
+       (cl:compile-file "comp") (cl:load "comp")
+       (cl:compile-file "fcomp") (cl:load "fcomp")
+       (cl:compile-file "byte") (cl:load "byte")
+)
+
+
+#+to-test
+(cl:with-open-file (f "test/control.lisp")
+  (cl:loop for form = (cl:read f nil 'eof)
+	   until (eq form 'eof)
+	   do (cl:print form)
+	   do (eclipse::process form eclipse::*interpreter* nil nil)))
+
+#+to-test
+(cl:with-open-file (f "test/control.lisp")
+  (xxwith-compilation-unit (:processor (make-byte-compiler) ;!!!
+					:environment nil)
+    (cl:loop for form = (cl:read f nil 'eof)
+	     until (eq form 'eof)
+	     do (cl:print form)
+	     do (process (process form *processor* *environment* nil)
+			 *byte-engine* nil nil))))
+
+#+to-test
+(cl:with-open-file (f "test/control.lisp")
+  (cl:with-open-file (out "test/control.bin" :direction :output
+			  :if-exists :supersede)
+    (cl:loop for form = (cl:read f nil 'eof)
+	     until (eq form 'eof)
+	     do (cl:print form)
+	     do (cl:pprint (eclipse::process form eclipse::*expander* nil nil)
+			   out))))
+
+
+INLINABLE BINDINGS
+
+* Binding references may be "inlined", which means that a for-value
+  reference to a binding is replaced by some other value (another
+  binding reference, a literal, etc.).  
+
+  One prerequisite for inlining a for-value binding reference is that
+  the binding have a known (meta-)value at the time of its reference.
+  See "Conditions For Known Binding-Values", below.
+
+  The other requirement to inlining is that the reference site must
+  permit it through declarations:
+  - binding declared inlinable, ignore, or ignorable
+  - not declared uninlinable and either:
+    - binding name uninterned and debug < 3, or
+    - debug = 0	
+
+  If it is decided to inline the reference, the binding-value is
+  processed (resumed) instead of the binding.  This means that the
+  value must be a literal or something that can be treated as Lisp
+  source code!
+
+* A binding can be marked used, referenced, written, ignore, or
+  ignorable.  
+
+  Any assignment to a binding marks it written.  However, LET and
+  other forms that initialize bindings clear the written flag of each
+  binding immediately AFTER its OWN initization form has been
+  processed.  (A "one shot allowable write" won't work, because an
+  initial form might process to several statements that each introduce
+  an assignment.  Clearing at the end of initialization isn't right
+  because serial bindings might write to earlier bindings in later
+  initializations.)  (We might also mark bindings written BEFORE
+  initialization, and then signal style-warning (when debug=3) if the
+  variable is not marked used when it is first written (i.e. after
+  initialization)). 
+
+  Any for-value reference to a binding marks it used.  Also, any
+  non-inlined reference to a binding, marks it referenced.
+
+  When the extent of a binding is closed, its flags are examined.  It
+  must be marked either used, ignore, or ignorable, otherwise an
+  unused-binding style-warning is given.  (For-value references to
+  ignored bindings must signal style-warning at reference time.  This
+  is because someone might debug by introducing an IGNORE free
+  declaration over a certain limited scope, just to get the compiler
+  to tell him if the variable is used during that scope.)
+
+  A binding not marked referenced is not collected up by the form that
+  defines its extent.  Its initialization code remains, however.
+  During output file generation, an assignment expression to an
+  unreferenced binding is replaced with just the assignment value.
+  This ensures that any side-effects during initialization are
+  preserved.
+
+* 
+  
+* Common cases for variable elimination:
+	       VALID		CURRENT		
+ CODE	       SUBSTITUTIONS	(META-)VALUES	eliminable?
+ a = 1				a:1		a:t
+   b = a	b = 1		b:1		b:t
+     ..b.. 	1
+     a = non-literal x		a:<x>		a:nil, b:t
+     ..b.. 	1		
+     b = non-literal y		b:<y>		b:nil
+     ..b.. 		
+     b = a			b:a
+     ..b..	a
+     c = a			c:a		c:t
+       d = c	d = a		d:c		d:t
+       ..d..	a
+       a = non-literal z	a:<z>,c:*	c:nil
+       ..d..    c		
+
+*: At this point, c's meta-value is still a, but a is dirty.  c is not
+dirty, but is also no longer eliminable.
+
+Conclusions:
+
++ When processing a meta-value for assignment, bindings are followed
+  only if its (recursive) meta-value is a literal.  Otherwise
+  meta-evaluation stops at the first meta value found (eg. a
+  binding). For example, if a binding chain ends in a literal, the
+  literal is used, otherwise, it ends with the first binding in the
+  chain.  
+
+  Checking for literals this way allows binding chains to be "snapped"
+  directly to a known value in case the chain is later broken by a
+  write to some binding in the chain. 
+
++ When processing a value for assignment, the meta-value chain is
+  followed until a literal, non-literal, or unknown binding-meta-value
+  is found.  The literal or the binding holding the unknown meta-value
+  is used as the value to be assigned.
+
++ Meta-values other than bindings can appear as binding-values.  The
+  only other metavalue we will define is a meta-list, which is a list
+  of data that contains at least one meta-value (and hence is not a
+  literal).  
+
+  Meta-processing a binding chain stops when it hits a meta-list, and
+  the meta-list is used as the meta-value.
+
+  Processing a value for assignment treats meta-lists as a call to the
+  list function.  
+
+* Conditions for Known Binding Values:
+  
+  + A binding that is marked written does not have a known value.
+  (Actually, it only has to be written within the scope of the
+  referencing binding -- i.e. a write BEFORE the chain is set up is
+  ok. How do we do this?)
+
+  + IF processing:
+   During consequent: For any (setf binding-value) to a binding enclosing
+      the IF, we must remember original (pre/if) binding-value.  Also,
+      remember final binding-value for each.
+   During alternate:
+     1. Restore any enclosing binding-values that were set while
+        processing conseq. 
+     2. Remember final binding-value for any (setf binding-values) to
+        enclosing bindings.
+   Final processing:
+     Any final binding-values which are different between the two
+     clauses (including missing values), must be marked UNBOUND.
+
+  + EXIT processing:
+    All enclosing binding-values set after some point must be marked
+      unbound:
+    TAGBODY: after first label or GO. (GO could be in lex. function)
+    BLOCK: after first matching RETURN-FROM (could be in lex. function)
+    CATCH: after first potentially matching throw or any
+      non-functional function call. 
+
+  + Closure processing:
+    1. The binding holding the closure must keep track of all
+       enclosing bindings that are assigned, and final values
+       remembered (incl. UNBOUND values). 
+    2. Whenever the function is called, any referenced binding-values
+       must be set.
+
+
+;;; ISSUES:
+;;; + make sure interp/comp don't define any PROCESS-COMBINATION
+;;;   methods that should really be RESUME.
+;;; + make sure variable elimination is turned OFF for argument to c:macros.
+;;; + define semantics for binding-value during compilation
+;;; + define semantics for pure functions so that compiler can
+;;;   process them at compile time based on binding-value.
+;;; + define semantics for used/unused:
+;;;    + appropriate messages
+;;;    + delete from extend-runtime-environment when unused and
+;;;      initialization is pure functional.
+;;; + specialized compiler method for key-arg, OR, define an inline
+;;;   option that tries to inline and leaves inlined only if result is
+;;    functional and a literal, variable reference, ... ? 
+;;; + using free declarations (as returned by xxx-information)
+;;;   Do we have (declare (special x)) working???
+;;; + rationalize process-lambda, process-function-definition,
+;;;   invoke, inlining of function calls.  Make sure (funcall
+;;;   <something known at compile-time> ...) can be inlined.  Maybe
+;;;   apply, too.
+;;; + type declarations
+;;; + generalized optimization info mechanism
+;;; + generalized load-time evaluation mechanism, used by
+;;;   process-function-definiton?  
+;;; + enclose to create something that uses evaluation, not walk
+;;; + make sure apply/mv-call uses don't run afould of call-argument-limit
+;;;   Use reduction/subproblem classification to decide which values
+;;;   are sets (i.e. lists?)
+;;; + untwist mv/evfun and collection/collelction* hair.
+;;; + Change some (if (consp x) y z) => (if x y z)
+;;; + Use of progv in let* is wrong: specials must be bound as we go.
+;;;   Test case for this???
+;;; + consider reusing continuations (eg. pop forms off of a single
+;;;   sequence-cont rather than creating a sequence-cont for each
+;;;   form).
+;;; + consider storing compiled expressions in the continuation and
+;;;   RETURNING the continuation as an instruction-set.
+;;; + catch, block, and go tags must be indexed in C, relevent to
+;;;   local function.
+;;; + depracated features should signal style-warning.
+;;; + Whould making some kinds of continuations shuffle order?  For
+;;;   example, consing a stricly local lexical assignment (i.e. not
+;;;   closed reference) onto a function return could should leave
+;;;   function return first.
+
+;;; OVERVIEW
+
+;;; Processing code, whether for interpretation or compilation,
+;;; typically involves recursive communication between two
+;;; operations:
+;;;   PROCESS form processor environment continuation
+;;;      Process form in a given context in which the values produced
+;;;      are given to the continuation. 
+;;;   RESUME continuation processor values
+;;;      Continue the processing embodied by a continuation with a
+;;;      given set of values. 
+;;;
+;;; In general, PROCESS handles semantic variations, while RESUME
+;;; implements the mechanisms whereby values are stored in bindings,
+;;; returned from functions, etc.  Accordingly, methods specialized
+;;; for different processors are defined more often for RESUME than
+;;; for PROCESS.
+;;; 
+;;; The value returned by PROCESS is some embodiment of the result of
+;;; the processing:
+;;;   interpreter: a list of multiple values
+;;;   compiler: a representation of "instructions" (perhaps a list,
+;;;     perhaps a compound form)
+;;; PROCESS methods usually do not create their result directly, but
+;;; return whatever some chain of RESUMES returns.
+;;;
+;;; A continuation represents a complete state of compuation: what is
+;;; to be done with a value and what is computed afterwords.  The
+;;; "stack" of continuations in this implementation is embodied by a
+;;; having each continuation point to the next.  NIL, considered as a
+;;; continuation, indicates that the values are to be returned to the
+;;; entry point to the code walker (eg. to the top-level call to
+;;; PROCESS).  (Within the code walker, the style adopted (see
+;;; exceptional references to null-continuation!!!) is to process each
+;;; form relative to some complete continuation, as opposed to
+;;; processing to a null continuation and then doing something with
+;;; the result.  This allows for the maximum intercessionary
+;;; introspection.) There are three general classes of continuations:
+;;;
+;;; EFFECT continuations are responsible for keeping track of results
+;;;   within the processing environment (eg. storing values in
+;;;   variable bindings).  They typically side-effect the
+;;;   environment. They may modify the result given to them
+;;;   (eg. keeping just the primary value) before returing it.
+;;;
+;;; SEQUENCE continuations are responsible for iterating over a set of
+;;;   forms and combining the results in the appropriate way.  For
+;;;   example, resuming a PROGN-CONT in an interpreter might ignore
+;;;   the values given to it and return only the results of processing
+;;;   the last form.  Resuming the same sequence continuation in a
+;;;   compiler might append the value given to it with a list of the
+;;;   results of processing its own forms.  Each processor must define
+;;;   its own mechanism to determine in what way pending chains of
+;;;   continuations are to be used during the processing of forms
+;;;   within a sequence.  A value resumed to such a continuation is
+;;;   typically the results of previous sequence processing.
+;;;
+;;; CONTEXT continuations are responsible for creating some new
+;;;   run-time environment in which to do processing.  They may extend
+;;;   the environment for their recursive processing, or do such
+;;;   processing inside a CATCH or UNWIND-PROTECT.  Compilers
+;;;   typically wrap the results of internal processing in some set of
+;;;   instructions.  A value resumed to such a continuation is
+;;;   typically some sort of control data, such as a catch tag.
+;;;
+;;; There are specific kinds of processing for common situations:
+;;;   PROCESS-BINDING
+;;;   PROCESS-ASSIGNMENT
+;;;   PROCESS-SEQUENCE
+;;;   PROCESS-COMBINATION
+
+;;; Motivation for not returning multiple values: Resuming a value to
+;;; a continuation typically involves just passing on the value to
+;;; some other continuation.  To do this with incessant &rest values /
+;;; apply could be inefficient, could run afoul of implementation
+;;; limits (imagine resuming a set of arguments to a function-call
+;;; continuation), and could obscure a memory leak returning a values
+;;; set that was declared dynamic-extent.  Thus, PROCESS/RESUME return
+;;; a single value, which must represent all the "return values for a
+;;; particular processor.  For example, in an interpeter the value
+;;; returned by PROCESS/RESUME is a list of multiple values. The raw
+;;; process/resume mechanism thus does not itself depend on multiple
+;;; values, and can be implemented directly in languages which do not
+;;; support multiple values.
+

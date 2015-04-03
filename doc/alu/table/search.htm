@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>ECLIPSE: Beta Site Application</TITLE>
+<meta name="description" content="Search the www, begining with the ALU site">
+<meta name="keywords" content="lisp, search, www">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body bgcolor="#FFFFFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Search the ALU Website</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="about.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="map.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="lisp.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm"><b>ABOUT</b></a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+</td><td>
+</table>
+</td><td>
+
+<blockquote>
+<IMG alt="Under Construction" SRC="../img/construction2.gif">
+This is only a mock up of the kind of the search that might be
+provided. These searches are not available at this time.
+
+<p>Providing a working search facility is a <a
+href="../admin/work.htm">planned enhancement</a> to this site.  If you
+would like to volunteer, please <a
+href="mailto:howard@elwoodcorp.com">contact us</a>.
+</blockquote>
+
+<FORM METHOD="POST" ACTION="not-implemented">
+<INPUT NAME="success" TYPE="hidden" VALUE="not-implemented">
+
+Search for the following phrase(s):</br>
+<INPUT NAME="required-Phrase"  TYPE="text" SIZE="40">
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Clear"> 
+
+<p>
+Prefer entries in which area(s)?
+<table>
+<tr>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="about.htm">About this Website</td>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="lisp.htm">What is Lisp?</td>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="learn.htm">Learning Lisp</td>
+</tr><tr>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="applications.htm">Applications</td>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="tools.htm">Tools</td>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="systems.htm">Systems</td>
+</tr><tr>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="community.htm">Community</td>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="references.htm">References</td>
+<td><INPUT NAME="root" TYPE="checkbox" VALUE="related-languages.htm">Related Languages</td>
+</tr>
+</table>
+
+<INPUT NAME="root" TYPE="checkbox" VALUE="discussion">Include discussion threads?
+<p>
+Limit search to:
+<INPUT NAME="prune" TYPE="radio" VALUE="area">Chosen area(s).
+<INPUT NAME="prune" TYPE="radio" VALUE="site">This site.
+<INPUT NAME="prune" TYPE="radio" VALUE="none">Do not limit search.<br>
+Note: Unlimited searches use the <a href="references.htm#cl-http">cl-http</a>
+web-crawler to search the web in real-time, begining from the
+specified areas.  This will pick up the latest available information.
+
+<p>
+Search only from pages that use the following keywords:
+<INPUT NAME="needed-keys"  TYPE="text" SIZE="50">
+
+<p>
+Do not search pages that use the following phrases:
+<INPUT NAME="prune-phrase"  TYPE="text" SIZE="50">
+
+<p>
+Do not report results that use the following phrases:
+<INPUT NAME="filter-phrase"  TYPE="text" SIZE="50">
+
+
+
+</FORM>
+
+
+</td></tr></table>
+
+</BODY>
+</HTML>

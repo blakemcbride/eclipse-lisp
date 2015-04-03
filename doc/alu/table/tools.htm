@@ -1,0 +1,706 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp Tools</TITLE>
+<meta name="description" content="Lisp programming style">
+<meta name="keywords" content="common lisp, source, tools, collection,
+gui, www, math, algorithms, database, logic, agents, music, clos,
+edit, debug, profile, test, case, repository">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body bgcolor="#FFCCFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Lisp Tools</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="contents.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="applications.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="community.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm"><b>TOOLS</b></a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+</td><td>
+</table>
+</td><td>
+
+<BLOCKQUOTE>
+"If I had a hammer..."
+</BLOCKQUOTE>
+
+Good quality, portable, free source code is available to help you...
+
+<UL>
+<LI> <A HREF="tools.htm#prog"><STRONG>Develop Programs:</STRONG></A>
+ <UL>
+ <LI><A HREF="tools.htm#editors"> Editors</A>, for writing code, 
+ <LI>    <A HREF="tools.htm#debug"> Debuggers</A>, for examing program state,
+ <LI>    <A HREF="tools.htm#profile"> Profiling</A>, for collecting
+performance data and benchmarking.
+ <LI>    <A HREF="tools.htm#test"> Testing</A>, 
+ <LI>    <A HREF="tools.htm#case"> CASE</A> Computer Aided Software
+    Engineering, source code display, help facilities, and other
+programming environment tools.
+ </UL>
+
+<LI> <A HREF="tools.htm#windows"><STRONG>Work with Graphics, Windows and
+the World-Wide-Web:</STRONG></A>
+ <UL><LI><A HREF="tools.htm#www"> WWW Toolkits</A>,
+<LI><A HREF="tools.htm#guitool"> GUI Toolkits</A>,
+ <LI>    <A HREF="tools.htm#guibuild"> GUI Builders</A>,
+ <LI>    <A HREF="tools.htm#graphics"> Graphics/Image Processing Packages</A>
+ <LI>    <A HREF="tools.htm#multimedia"> Multimedia</A>
+ </UL>
+
+<LI> <A HREF="tools.htm#lib"><STRONG>Use existing utilities for</STRONG></A>
+ <UL>
+ <LI>    <A HREF="tools.htm#math"> Mathematics</A>,
+ <LI>    <A HREF="tools.htm#algorithms"> Algorithms</A>, such as
+completion, pattern matching and searching, node tracing, and data
+type manipulations.
+ <LI>    <A HREF="tools.htm#resource"> Resource Management</A>, such
+as autoloading, memoization, etc.
+ <LI>    <A HREF="tools.htm#clos"> Object Oriented Programming (CLOS)</A>,
+ <LI>    <A HREF="tools.htm#logic"> Logic Programming, Inference
+ Engines and Agents</A>, 
+ <LI>    <A HREF="tools.htm#data"> Databases</A>,
+ <LI>    <A HREF="tools.htm#syntax"> Syntax</A>,
+ <LI>    <A HREF="tools.htm#music"> Music</A>
+ <LI>    <A HREF="tools.htm#standards"> Standards</A>: things which are in
+Common Lisp but not in all Lisp implementations.
+ <LI>    <A HREF="tools.htm#moretool"> Others</A>.
+ </UL>
+<LI> and there are <A HREF="tools.htm#collect"><STRONG>Collections,
+Archives and Repositories</STRONG></A> 
+</UL>
+
+The tools listed here are supposed to be stable and complete, though
+the authors may still be actively developing them.  Research in
+progress is described <A HREF="research.htm">elsewhere</A>, as are <A
+HREF="commercial-use.htm">commercial systems</A>.  
+
+<p> The <A
+HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/faqs/lang/lisp/top.html">Lisp
+FAQ</A> provides another listing (which <a
+href="../admin/work.htm">should be merged</a> into this one).
+
+<P> There is also a <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/notes/0.html">collection
+of notes</A> about various kinds of computations in Lisp at the <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/0.html"> CMU Common Lisp
+Repository</A> 
+
+
+
+<HR> <H3> <A NAME="prog">Programming Tools</A></H3>
+ <STRONG> <A NAME="editors">Editors:</A></STRONG> for writing programs.
+<UL>
+ <LI> Emacs (or one of its many look-alikes) is the editor favored by
+most Lisp programmers.  Emacs is written in <A
+HREF="related-languages.htm#emacs">elisp</A>.  It is available by <A
+href="ftp://prep.ai.mit.edu/pub/gnu">ftp</A> and from many site
+mirrors.  Emacs is produced by the <A HREF="systems.htm#gnu">Free
+Software Foundation</A>.
+
+<LI> Hemlock is a kind of Emacs written in Common Lisp.  It is
+available in the <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/cmucl/0.html">extra
+file</A> of the <a href="systems.htm#cmucl"CMU CL</a> distribution.
+
+ <LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/emacs/ilisp/0.html">ILisp</A>
+provides very tight integration between Emacs and almost any other
+Common Lisp, including the ability to run a Common Lisp from within an
+editor buffer.
+
+ <LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/emacs/cl-shell/0.html">cl-shell</A>
+provides the ability to run a Common Lisp from within an editor
+buffer.
+
+<li> Erik Naggum's Emacs interface
+between <a href="systems.htm#franz">Franz's Allegro</a> and the <a
+href="refererences.htm#ansi">Common Lisp HyperSpec</a>.  <a
+href="http://www.naggum.no/emacs/hyperspec.el"><IMG
+ALIGN=top SRC="../img/ftp.xbm"></a>
+
+<li> Emacs <i>info</i> (hypertext documentation system) files for <a
+href="systems.htm#gnu">GCL</a>. <A href="ftp://ftp.cli.com/pub/gcl/gcl.info.tgz"><IMG
+ALIGN=top SRC="../img/ftp.xbm"></a>
+
+
+<LI>   <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/tags/0.html">Tags</A>
+creates a tagfile from Lisp source for use with <code>vi</code>. 
+
+</UL>
+
+ <STRONG> <A NAME="debug">Debuggers:</A></STRONG> for examining program state.
+<UL>
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/alerts/0.html">Alerts</A>
+are a convenient debugging status indicator.
+
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/tools/step/0.html">Step</A>
+is a portable code single-stepper and debugger from U. Waikato, New Zealand.
+
+</UL>
+
+ <STRONG> <A NAME="profile">Profiling Tools:</A></STRONG> for
+collecting performance data. 
+<UL>
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/bench/0.html">Benchmarking
+Suites</A> including those by Gabriel, Fateman and Acuff, can be used
+to compare different implementations.
+
+<LI>The <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/tools/meter/0.html">metering
+facilites</A> from CMU provides profiling tools.
+</UL>
+
+ <STRONG> <A NAME="test">Testing Utilities:</A></STRONG>
+<UL>
+
+<LI> Dick Water's <A HREF="ftp://FTP.AI.MIT.EDU/pub/lptrs/">coverage
+analysis</A> code can be used to determine which conditional paths of
+a  program are exercised by a given test suite.
+
+<LI>The <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/testing/rt/0.html">regression
+tester</A> provides a set of tools for defining and running a test suite.
+</UL>
+
+ <STRONG> <A NAME="case">CASE Facilities:</A></STRONG> Computer Aided Software Engineering, source code display, help facilities, and other
+programming environment tools.
+<UL>
+
+<li> The <a href="references.htm#ansi">Common Lisp HyperSpec</a>
+contains the material of the ANSI standard for Common Lisp as
+web-browsable hypertext.  See the <a href="references.htm">Lisp
+references page</a> for more documentation links.
+
+<li> The <a href="#editors">Editors</a> tools section, above, contains
+listings of documentation interfaces to the Emacs text editor.
+
+<LI>CMU has <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/tools/system/0.html">two
+portable system definition utilties</A>, loosely modeled on the
+<a href="systems.htm#symbolics">Symbolics</a> System Construction Tools.  Another is included with <A
+HREF="#clos>PCL</A>.
+
+<li>The <a
+href="http://setosa.uwaterloo.ca/~ftp/Quail/features.html">Quail</a>
+quantitative programming environment has a special help facility.
+
+<li> <a
+href="http://ki-server.informatik.uni-wuerzburg.de/HTMLs/ls6-info/software/lispdocu/index-eng.html">LISPDocu</a>
+for generating printable or browseable documentation from Lisp source
+code.
+
+<li> <a
+href="http://lki-www.informatik.uni-hamburg.de/~kirschke/invlit.html#lisp-doc">lisp-doc</a>
+package for creating documentation from source code using inverse
+literate programming.
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/tex/0.html">TeX</A>
+style macros for formatting Lisp code. 
+<LI>    <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/vgrind/0.html">VGrind/TGrind</A>
+entries for Common Lisp.  
+
+<li> The Lisp-Team <a
+href="http://claretech.com/~tobinbs/lispteam.html">home page</a>
+describes a number of business framework tools being developed in
+Common Lisp.
+
+</UL>
+
+
+<HR> <H3> <A NAME="windows">Graphics/Windows/Web</A></H3>
+
+ <STRONG> <A NAME="www">WWW Toolkits</A></STRONG>
+<UL>
+<li><a href="http://www.ai.mit.edu/projects/iiip/doc/cl-http/home-page.html">CL-HTTP</a>
+is a WWW server from the MIT AI lab. 
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/sgml/0.html">SGML2Lisp</A>
+is a SGML output formatting tool.
+</UL>
+
+ <STRONG> <A NAME="guitool">GUI Toolkits</A></STRONG>
+<UL>
+<LI> The  <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/clim/0.html">CLIM library</A> at CMU, and <a href="http://www.cons.org/free-clim/">Free-CLIM home</a>
+both give <A HREF="references.htm#clim">Common Lisp Interface Manager</A> code and documentation. 
+<LI>   <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/clm/0.html">CLM,
+GINA, and IB</A>: Common Lisp Motif, Generic INteractive Application,
+and Interface Builder.
+
+<LI>   <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/clue/0.html">CLUE
+and CLIO</A>: Common Lisp User-Interface Environment and Common Lisp
+Interactive Objects.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/clx/0.html">CLX</A>:
+Common Lisp X bindings.  The CLX Programmers Reference is available in postscript 
+<A href="http://www.inetarena.com/~karlheg/Public/site-lisp/CLX-prog-ref.tar.gz"><IMG
+ALIGN=top SRC="../img/ftp.xbm"></A> and <a href="http://www.uni-karlsruhe.de/~unk6/clxman/">online</a>.
+
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/cw/0.html">Common
+Windows</A>: Information about Allegro Common Windows
+
+<LI> <A href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/ew/0.html">EW</A>: Express Windows
+
+ <LI> <A
+HREF="http://www.cs.cmu.edu/Web/Groups/garnet/garnet-home.html">GARNET</A>:
+One of the biggest and best GUIs for Lisp. is a UI toolkit.  It is not
+under active development anymore.  A <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/garnet/0.html">repository</A>
+is also at CMU.
+
+<LI>   <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/lispview/0.html">LispView</A>:
+A GUI that doesn't use CLX. 
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/lispwork/0.html">Lispworks</A>
+Information about Lispworks Toolkit
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/lsp2wish/0.html">Lisp2wish</A>:
+Simple demo of synchronous communication between Lisp and Tcl/Tk
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/winterp/0.html">Winterp</A>:
+Widget INTERPreter
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/xit/0.html">XIT</A>:
+X User Interface Toolkit  
+
+<LI> <A href="ftp://swi.psy.uva.nl/pub/xpce">XPCE</A> is an
+object-oriented X window interface for symbolic languages such as
+Lisp, from the University of Amsterdam.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/xwin/0.html">XWIN</A>:
+Simple X windows for text output from Lisp
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/yy/0.html">YY</A>:
+Network oriented window toolkit for Common Lisp.
+
+</UL> 
+
+ <STRONG> <A NAME="guibuild">GUI Builders</A></STRONG> 
+
+<UL> <li><a
+href="http://www-l3d.cs.colorado.edu/~l3d/remote-exploratorium/config/agenthome.html">Agentsheets</a>
+is an authoring environment featuring a versatile construction
+paradigm to build dynamic, visual environments for a wide range of
+problem domains.  Developed by Dr. Alex Repenning at the University of
+Colorado at Boulder.  
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/picasso/0.html">Picasso</A>:
+Graphical User Interface Development System
+
+<LI> Some of the GUI Toolkits listed <A HREF="#guitool">above</A>
+include interactive GUI builders as well.
+
+</UL>
+
+ <STRONG> <A NAME="graph">Graphics/Image Processing Packages</A></STRONG>
+
+<UL>
+<li><a
+href="http://setosa.uwaterloo.ca/~ftp/Quail/features.html">Quail</a>
+is a quantitative programming environment with an extensive graphics
+package.
+<LI> <A HREF="http://white.stanford.edu/~heeger/obvius.html">OBVIUS</A> is a
+environment for digital image processing.
+<LI><A href="ftp://nervous.cis.ohio-state.edu/pub/lispusers/clos/3DGeometry">
+3D Geometry.lisp</A>, from the Ohio State CLOS Repository.
+<LI> The CMU repsository has <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/graphers/0.html">simple
+graphers</A> that run in most of the GUIs.
+</UL>
+
+ <STRONG> <A NAME="multimedia">Multimedia</A></STRONG>
+<ul>
+<li> <a href="http://sk8.research.apple.com/sk8/sk8.html">SK8</a>
+ is a mature authoring environment from Apple, that runs in <a
+href="systems.htm#digitool">MCL</a>.
+</ul>
+
+
+<HR> <H3> <A NAME="lib">Libraries</A></H3>
+
+ <STRONG> <A NAME="math">Mathematics</A></STRONG>
+<UL>
+<LI><A href="ftp://peoplesparc.cs.Berkeley.edu/pub/mma.README">Mockmma</A> is a
+mock-up of Mathematica -- an algebraic processing system.
+<LI> <A HREF="http://euler.bd.psu.edu/lispstat/">Lispstat</A> provides
+statistical tools.
+<li><a href="http://setosa.uwaterloo.ca/~ftp/Quail/features.html">Quail</a> is a quantitative programming environment from the University of Waterloo.
+<LI><A
+HREF="http://eksl-www.cs.umass.edu/research/clip-clasp-overview.html">CLIP
+and CLASP</A> are instrumentation and statistical analysis packages,
+respectively, from <A HREF="http://eksl-www.cs.umas.edu/eksl.html">U.
+Mass.</A> 
+<LI> CMU's <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/math/0.html">math
+library</A> has code for various mathematical functions.
+
+</UL>
+
+ <STRONG> <A NAME="algorithms">Algorithms</A></STRONG> <UL> 
+
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/complete/0.html">Completion</A>
+of partial strings against a dictionary.
+
+<LI>DAG, from the Ohio State CLOS Repository, traces directed acyclic
+graphs. <A href="ftp://nervous.cis.ohio-state.edu/pub/lispusers/clos/dag.lisp.Z"><IMG
+ALIGN=bottom SRC="../img/ftp.xbm"></A>
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/match/0.html">Pattern
+matching</A> code, unifiers, regular expression matchers.
+
+<li> Regular expression code <a
+href="ftp://ftp.digitool.com/pub/mcl/contrib/nregex.lisp"><IMG
+ALIGN=bottom SRC="../img/ftp.xbm"></a> (or try <a
+href="ftp://ftp.digitool.com/mcl/contrib/regexp.tar.gz">old link</a>)
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/search/0.html">Searching</A>
+code. 
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/tables/0.html">Tables</A>
+unifies the interface to various table-like data structures.
+
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/tress/0.html">Trees</A>,
+including Binary Search Trees, Priority Queues, and Red-Black Trees.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/types/0.html">Type
+simplifier</A>.
+
+</UL>
+
+ <STRONG> <A NAME="resource">Resource management</A></STRONG> 
+<UL>
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/resource/0.html">Resources</A>
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/init/0.html">Initialization
+feature</A> of Lisp machines.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/memoize/0.html">Memoization</A>
+
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/autoload/0.html">Autoload</A>
+function definitions from a file upon function call.
+
+</UL>
+
+ <STRONG> <A NAME="clos">Object Oriented Programming</A> (<a
+href="glossary.htm#clos">CLOS</a>)</STRONG>
+<UL>
+
+<LI><A href="ftp://nervous.cis.ohio-state.edu/pub/lispusers/clos/">
+CLOS Repository</A> at Ohio State.
+
+<LI><A href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/oop/0.html">
+CLOS Repository</A> at CMU.
+
+<li> <A href="ftp://nervous.cis.ohio-state.edu/pub/lispusers/pcl/">PCL</A> at
+Ohio State.  Portable Common Loops is an implementation of <a
+href="history.htm#loops">LOOPS</a> that is designed to operate within
+earlier, <a href="references.htm#ansi">pre-ansi</a> (<a
+href="references.htm#cltl2">CLtL1</a>) Common Lisps which did not provide
+their own Object System.
+
+<LI><A HREF="http://ariadne.tnt.uni-hannover.de/frames/overview.html">CLOS
+Frames</A> at U. Hannover.
+
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/alerts/0.html">Copy</A>:
+Copying CLOS/PCL objects.
+
+<li> <A href="http://www.digitool.com/idl-lisp-mapping.html">
+OMB IDL Lisp Language Mapping</a>: A collection of information about
+efforts to provide SOM/CORBA IDL mappings for Common Lisp.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ilu/0.html">ILU</A>:
+Xerox PARC's CORBA-like Inter-Language Unification.
+
+<li> <a href="http://www.bbn.com/offerings/corbus.html">Corbus</a>: a
+CORBA compliant, distributed, object-oriented system from BBN, with
+Lisp bindings.
+
+<li> <a
+href="ftp://ftp.xemacs.org/pub/infodock/BR-README">OO-Browser</a>: a
+class browser for Xemacs.
+
+</UL>
+
+ <STRONG> <A NAME="logic">Logic Programming, Inference Engines and Agents</STRONG>
+<UL>
+<li><a
+href="http://www.cis.upenn.edu/~screamer-tools/home.html">Screamer</a>
+adds nondeterministic programming to Common Lisp. An entire tool
+repository for Screamer is available maintained by Jonathan Kaye.
+Screamer was written by <A
+HREF="http://www.cdf.toronto.edu/DCS/Personal/Siskind.html">Jeffrey
+Mark Siskind</A>.
+
+<li><a
+href="http://www-ksl.stanford.edu/knowledge-sharing/ontolingua/ontolingua.html">Ontolingua</a>
+is an ontology processor from Stanford. 
+<li>The <a href="http://logic.stanford.edu/sharing/programs/dtp">Don
+Theorem Prover</a> is first-order predicate calculus inference engine
+from Stanford.
+<li><a
+href="http://logic.stanford.edu/sharing/programs/epilog">Epilog</a> is
+a model elimination inference engine for Stanford.
+<li><a
+href="http://logic.stanford.edu/sharing/programs/prologic/">Prologic
+inference system</a> from Stanford.
+<LI><A HREF="http://ariadne.tnt.uni-hannover.de/frames/overview.html">CLOS
+Frames</A>.
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/csp/0.html">CSP</A>:
+Prosser's hybrid algorithms for the Constraint Satisfaction Problem
+<li><a
+href="http://logic.stanford.edu/sharing/programs/magenta/">Magenta</a>
+is an agent-oriented programming system from Stanford.
+<LI><A HREF="http://www.isi.edu/">LOOM</A>
+is a knowledge representation language implemented on top of Common Lisp. It
+belongs to the family of KL-ONE-like languages and can be seen as an example of
+a next generation OOP language which  mixes logical and object-oriented
+paradigms. 
+
+<li> <a href="ftp://ftp.gmd.de/GMD/ai-research/Software/Babylon/"
+>Babylon</a> a modular, configurable, hybrid environment for developing expert systems. The
+shell is implemented and embedded in Common Lisp.
+
+
+<LI> The <a
+href="http://www.cs.bham.ac.uk/~axs/cog_affect/sim_agent.html">Birmingham
+Sim_agent toolkit</a> for exploring architectures for interacting
+simulated agents.  See also, Riccardo Poli's <a
+href="http://www.cs.bham.ac.uk/~rmp/eebic/example2.html"> co-evolution
+experiment</a>.
+
+<li><A HREF="http://www.ai.sri.com/~cypress">Cypress</A> is a system
+developed by SRI under ARPI for defining taskable, reactive agents.
+At its core are mature, powerful planning and execution technologies,
+namely SIPE-2 and PRS-CL.
+
+</UL>
+
+ <STRONG> <A NAME="data">Databases: </A></STRONG>
+ Code for creating or using databases.
+<UL>
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/db/0.html">Database
+programs</A>.
+
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/wood/0.html">WOOD</A>:
+Williams Object Oriented Database
+
+<li> <a href="http://www.lisp.de/software/plob" name="plob">Persistent
+Lisp Objects</a> (PLOB!)  PLOB is a general purpose, object-oriented
+database for Allegro and LispWorks Common LISP, available for
+Windows/NT, Solaris, Linux and Irix. It is distributed in terms of the
+GPL. <a
+href="http://lki-www.informatik.uni-hamburg.de/~kirschke/diplom/#PLOB">older
+link</a> <a
+href="ftp://ftp.informatik.uni-hamburg.de/pub/unihh/informatik/movis/plob/plob.tar.gz"><IMG
+ALIGN=TOP SRC="../img/ftp.xbm"></A>
+
+<LI><A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/save_obj/0.html">SAVE-OBJ</A>:
+Saves ASCII representations of objects to a file.
+
+<li><a
+href="http://www.ti.com/research/docs/sisl/darpa-open-oodb/README-OODB.html">OODB</a>:
+A semi-productized, "low cost" source code licensing system
+for distributed Lisp and C++ OODB and RDBMS, developed by TI.
+</UL>
+
+<STRONG> <A NAME="syntax"></A>Syntax</STRONG>
+<UL>
+
+<LI><A href="ftp://peoplesparc.cs.Berkeley.edu/pub/cgol.README
+">CGOL</A> is a C-like or ALGOL-like language that is translated into Lisp
+before execution.
+
+<LI> The CMU repository has <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/parsing/0.html">parsing</A>
+code. 
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/util/sgml/0.html">SGML2Lisp</A>
+is a SGML output formatting tool.
+
+<LI> The CMU repository has code related to changing or translating to/from Lisp <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/syntax/0.html">syntax</A>.
+
+</UL>
+
+ <STRONG> <A NAME="music">Music</A></STRONG>
+<UL>
+<LI><A href="ftp://ccrma-ftp.stanford.edu/pub/Lisp">Computer
+Music</A> includes:
+ <ul>
+ <li> Common Lisp Music: a sound synthesis and processing system in
+ the Music V family.
+ <li> Common Music Notation: a western music notation package based on Common Lisp,
+CLOS, and either the Adobe Sonata font or the Finale Petrucci
+font.
+<LI>The documentation is available <A HREF="http://www.music.yale.edu/music-docs/">online</a>. 
+ </ul>
+<li> <A
+HREF="http://www-ks.rus.uni-stuttgart.de/people/schulz/fmusic/">Fractal
+Music</a>
+<li><a href="http://hamp.hampshire.edu/~jacF93/Phorx.html">Phorx</a>,
+by James A. Carlson, is a visual environment for creating and playing interactive musical compositions in real-time. 
+</UL>
+
+
+ <STRONG> <A NAME="standards">Standards:</A></STRONG>
+ Code to bring non-ANSI Lisps into (nearer) conformance, and
+information about standards.
+<UL>
+
+<LI> The CMU repository has various <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/iter/0.html">
+macro packages for iteration</A>.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/lp/0.html">Logical
+Pathnames</A>.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/packages/0.html">Packages</A>.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/errors/0.html">Without-Errors</A>
+catches all error signals.
+
+</UL>
+
+
+ <STRONG> <A NAME="moretool">Others</A></STRONG> <UL> 
+
+<li> <a href="http://www.eleves.ens.fr:8080/home/monier/SH.html">
+SURF-HIPPO</a> Neuron simulation program.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/enum/0.html">Enumeration</A>
+constants, like C enum.
+
+<LI><A href="ftp://ftphost.cs.waikato.ac.nz/pub/lisp/f2cl/">f2cl</A> is a
+Fortran to Lisp Translator.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/codewalk/0.html">Codewalking</A>:
+Lisp code that grovels over arbitrary Lisp code. 
+
+<LI>The CMU repository has some <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/io/0.html">I/O</A> utilities.
+
+
+<LI><A href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/ext/library/0.html">Library</A>
+of small extensions.
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/fun/0.html">Fun</A>:
+Some random fun programs written in Lisp, including Life and
+sunrise/sunset calculations.  
+
+
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/impdep/0.html">Collections</A>
+of Implementation-Dependent Lisp Code. 
+
+</UL>
+
+<HR><H3> <A NAME="collect">Collections</A></H3> <UL> 
+
+<LI> The <A
+href="ftp://ftp.cs.cmu.edu/user/ai/0.html">Carnegie-Mellon
+AI Repository</A> has a huge volume of code for Lisp and other
+languages used in Aritificial Intelligence.  Many of the citations on
+this page come from there.
+
+<li><a href="ftp://ftp.cc.utexas.edu/pub/AI_ATTIC">AI Attic (classic AI programs)</a>
+
+<LI><A HREF="http://134.96.187.10/cl/registry/index.html">The Natural
+Language Software Registry, Online Research Server</A>.
+
+<LI> <a href="systems.htm#digitool">Digitool</a> maintains a <A
+href="ftp://ftp.digitool.com/pub/mcl/contrib/">library of code</A>
+contributed by MCL users.
+
+<li> The Lisp-Team <a
+href="http://claretech.com/~tobinbs/lispteam.html">home page</a>
+describes a number of business framework tools being developed in
+Common Lisp.
+
+<li> <a href="http://www.eecs.harvard.edu/~ruml/">Wheeler Ruml's</a>
+<a href="http://www.eecs.harvard.edu/~ruml/papers-and-code.html">tools</a>.
+
+  </UL>
+</td></tr></table>
+
+</BODY>
+</HTML>
+

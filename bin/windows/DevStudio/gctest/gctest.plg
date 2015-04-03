@@ -1,0 +1,211 @@
+--------------------Configuration: libeclipsed - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipsed\libeclipsed.dsp", at root.
+Active configuration is Win32 (x86) Static Library (based on Win32 (x86) Static Library)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /I "../../../.." /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/libeclipsed.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Browser Database Maker" with flags "/nologo /o"Release/libeclipsed.bsc" "
+			"Library Manager" with flags "/nologo /out:"Release\libeclipsed.lib" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSP9252.TMP" with contents </nologo /ML /W3 /GX /O2 /I "../../../.." /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/libeclipsed.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\HOWARD\eclipse-1.1\c\clos-comp.c"
+"C:\HOWARD\eclipse-1.1\c\common-comp.c"
+"C:\HOWARD\eclipse-1.1\c\cond-comp.c"
+"C:\HOWARD\eclipse-1.1\c\cont-comp.c"
+"C:\HOWARD\eclipse-1.1\c\cont-comp2.c"
+"C:\HOWARD\eclipse-1.1\c\debug.c"
+"C:\HOWARD\eclipse-1.1\c\default-pp.c"
+"C:\HOWARD\eclipse-1.1\c\describe.c"
+"C:\HOWARD\eclipse-1.1\c\dev-meth.c"
+"C:\HOWARD\eclipse-1.1\c\directives.c"
+"C:\HOWARD\eclipse-1.1\c\env-comp.c"
+"C:\HOWARD\eclipse-1.1\c\evaluation.c"
+"C:\HOWARD\eclipse-1.1\c\file-walk.c"
+"C:\HOWARD\eclipse-1.1\c\initd.c"
+"C:\HOWARD\eclipse-1.1\c\list-comp.c"
+"C:\HOWARD\eclipse-1.1\c\literal.c"
+"C:\HOWARD\eclipse-1.1\c\loop.c"
+"C:\HOWARD\eclipse-1.1\c\macro-comp.c"
+"C:\HOWARD\eclipse-1.1\c\macro.c"
+"C:\HOWARD\eclipse-1.1\c\more-compile.c"
+"C:\HOWARD\eclipse-1.1\c\number-comp.c"
+"C:\HOWARD\eclipse-1.1\c\opts.c"
+"C:\HOWARD\eclipse-1.1\c\pretty-comp.c"
+"C:\HOWARD\eclipse-1.1\c\prim-decs.c"
+"C:\HOWARD\eclipse-1.1\c\prog-comp.c"
+"C:\HOWARD\eclipse-1.1\c\struct-comp.c"
+"C:\HOWARD\eclipse-1.1\c\walk-special.c"
+"C:\HOWARD\eclipse-1.1\c\walk-top.c"
+"C:\HOWARD\eclipse-1.1\c\walk-util.c"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP9252.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSP9253.TMP" with contents </nologo /out:"Release\libeclipsed.lib" 
+".\Release\c-walk.obj"
+".\Release\c.obj"
+".\Release\clos-comp.obj"
+".\Release\common-comp.obj"
+".\Release\cond-comp.obj"
+".\Release\cont-comp.obj"
+".\Release\cont-comp2.obj"
+".\Release\debug.obj"
+".\Release\default-pp.obj"
+".\Release\describe.obj"
+".\Release\dev-meth.obj"
+".\Release\directives.obj"
+".\Release\env-comp.obj"
+".\Release\evaluation.obj"
+".\Release\file-walk.obj"
+".\Release\initd.obj"
+".\Release\list-comp.obj"
+".\Release\literal.obj"
+".\Release\loop.obj"
+".\Release\macro-comp.obj"
+".\Release\macro.obj"
+".\Release\more-compile.obj"
+".\Release\number-comp.obj"
+".\Release\opts.obj"
+".\Release\pretty-comp.obj"
+".\Release\prim-decs.obj"
+".\Release\prog-comp.obj"
+".\Release\struct-comp.obj"
+".\Release\walk-special.obj"
+".\Release\walk-top.obj"
+".\Release\walk-util.obj">
+Creating command line "link.exe -lib @C:\WINDOWS\TEMP\RSP9253.TMP" 
+Compiling...
+clos-comp.c
+common-comp.c
+cond-comp.c
+cont-comp.c
+cont-comp2.c
+debug.c
+default-pp.c
+describe.c
+C:\HOWARD\eclipse-1.1\c\describe.c(685) : warning C4102: 'END_LOOP' : unreferenced label
+dev-meth.c
+directives.c
+env-comp.c
+evaluation.c
+file-walk.c
+initd.c
+list-comp.c
+literal.c
+loop.c
+macro-comp.c
+macro.c
+more-compile.c
+number-comp.c
+opts.c
+pretty-comp.c
+prim-decs.c
+prog-comp.c
+struct-comp.c
+walk-special.c
+walk-top.c
+walk-util.c
+Creating library...
+--------------------Configuration: eclipse - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\eclipse\eclipse.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/eclipse.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/eclipse.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/eclipse.pdb" /machine:I386 /out:"Release/eclipse.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPE3B0.TMP" with contents </nologo /ML /W3 /GX /O2 /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/eclipse.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\HOWARD\eclipse-1.1\c\eclipse.c"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE3B0.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPE3B1.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/eclipse.pdb" /machine:I386 /out:"Release/eclipse.exe" 
+".\Release\eclipse.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Release\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipsed\Release\libeclipsed.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPE3B1.TMP" 
+Compiling...
+eclipse.c
+Linking...
+
+
+
+eclipse.exe - 0 error(s), 1 warning(s)
+--------------------Configuration: eclipse - Win32 Debug--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\eclipse\eclipse.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/eclipse.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/eclipse.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/eclipse.pdb" /debug /machine:I386 /out:"Debug/eclipse.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+
+
+
+eclipse.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: ertest - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\ertest\ertest.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /U "RUNTIME" /Fp"Release/ertest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/ertest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ertest.pdb" /machine:I386 /out:"Release/ertest.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPF100.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ertest.pdb" /machine:I386 /out:"Release/ertest.exe" 
+".\Release\driver.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Release\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\test\Release\test.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPF100.TMP" 
+Linking...
+driver.obj : error LNK2001: unresolved external symbol _clLispTopLevel
+driver.obj : error LNK2001: unresolved external symbol _clDate
+driver.obj : error LNK2001: unresolved external symbol _etInitMop
+driver.obj : error LNK2001: unresolved external symbol _etInitMopDefs
+driver.obj : error LNK2001: unresolved external symbol _etInitEnv
+driver.obj : error LNK2001: unresolved external symbol _etInitPretty5
+driver.obj : error LNK2001: unresolved external symbol _etInitPretty4
+driver.obj : error LNK2001: unresolved external symbol _etInitPretty3
+driver.obj : error LNK2001: unresolved external symbol _etInitPretty2
+driver.obj : error LNK2001: unresolved external symbol _etInitPretty
+driver.obj : error LNK2001: unresolved external symbol _etInitFormat
+driver.obj : error LNK2001: unresolved external symbol _clInitD
+test.lib(macro.obj) : error LNK2001: unresolved external symbol _clMacroFunction
+test.lib(macro.obj) : error LNK2001: unresolved external symbol _clMacroexpand
+test.lib(macro.obj) : error LNK2001: unresolved external symbol _clMacroexpand1
+test.lib(macro.obj) : error LNK2001: unresolved external symbol _clCompilerMacroFunction
+Release/ertest.exe : fatal error LNK1120: 16 unresolved externals
+Error executing link.exe.
+
+
+
+ertest.exe - 17 error(s), 0 warning(s)
+--------------------Configuration: ertest - Win32 Debug--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\ertest\ertest.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "RUNTIME" /Fp"Debug/ertest.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/ertest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ertest.pdb" /debug /machine:I386 /out:"Debug/ertest.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPF1A5.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ertest.pdb" /debug /machine:I386 /out:"Debug/ertest.exe" /pdbtype:sept 
+".\Debug\driver.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Debug\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\test\Debug\test.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPF1A5.TMP" 
+Linking...
+

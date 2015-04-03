@@ -1,0 +1,123 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Top-level main()</TITLE>
+</HEAD>
+
+<H2>Eclipse Applications: Top-Level <code>main()</code> Example</H2>
+<hr>
+
+<pre>
+/*********************************************************************
+  main() for <a href="index.htm">Eclipse</a> Common Lisp <a href="top.htm">top-level</a> Lisp listener.
+
+    Handles <a href="#parse">command line argument parsing</a> and <a href="#init">initialization</a> of Lisp 
+    system.  Then calls <a href="topf.htm">clLispTopLevel()</a> as the <a href="#toplevel">principle operation</a>.  
+    Non-zero status is returned if clLispTopLevel() returns an error 
+    status.
+
+    To rebuild a new Eclipse top-level Lisp listener using this file,
+    compile this file and link the result with the <a href="lib.htm">Eclipse libraries</a>,
+    the usual C and math libraries, and any <a href="platform-specific.htm">platform specific</a>
+    libraries noted in the <a href="release.htm">Release Notes</a>.
+    For example, on most Unix systems, if this file is named eclipse.c:
+       cc eclipse.o -o eclipse -leclipse -leclipsed -lm -ldl
+
+
+  (c) Copyright 1997, 1998 by Elwood Corp.  All rights reserved.
+ *********************************************************************/
+#include &lt;stdio.h&gt;
+#include &lt;eclipse.h&gt;
+
+extern void clInit __P((unsigned)), clInitD __P((void));
+extern clObject clLispTopLevel(clProto),
+  clCharpSimpleBaseString __P((const char *));
+
+extern char *optarg;
+extern int optind;
+
+int main __P((int, char **));
+
+int 
+main(argc, argv)
+     int argc;
+     char **argv;
+{
+  int silentp = 0, initp = 1;
+  char *init_file = NULL;
+
+  /* <a name="parse">ARGUMENT PARSING</a>.						*
+   * This part is application-specific, and none of it has any	*
+   * interaction with the internal workings of Eclipse.   	*/
+  {
+    int flag, error_flag = 0, versionp = 0;
+
+    while ((flag = getopt(argc, argv, "vsni:")) != -1)
+      switch (flag) {
+      case 's':
+	silentp = 1;
+	break;
+      case 'n':
+	initp = 0;
+	break;
+      case 'i':
+	init_file = optarg;
+	break;
+      case 'v':
+	versionp = 1;
+	break;
+      default:
+	error_flag++;
+      }
+    if (error_flag || (optind < argc)) {
+      (void) fprintf(stderr, "usage: %s [-vsn [-i initfile]\n", argv[0]);
+      (void) fprintf(stderr, "  -v print version and exit.\n");
+      (void) fprintf(stderr, "  -s silent mode.\n");
+      (void) fprintf(stderr, "  -n do not load init file.\n");
+      (void) fprintf(stderr, "  -i use specified init file instead of searching.\n");
+      return(error_flag);
+    }
+    if (versionp) {
+      (void) puts("Eclipse Common Lisp " clEclipseVersion());
+      (void) puts("Copyright (c) 1997 Elwood Corporation, Inc.");
+      return(0);
+    }
+  }
+
+  /* <a name="init">INITIALIZATION</a>.						*
+   * For the Eclipse top-level, we need only call clInit(0).	*
+   * Other applications might call other initializations, too. 	*/
+
+  <a href="initf.htm">clInit</a>(0);
+  <a href="initdf.htm">clInitD</a>();
+  /* <a href="gloss.htm#init">Init-functions</a> for <a href="compile.htm">Eclipse-generated</a> C files go here. 	*/
+
+
+  /* <a name="toplevel">PRINCIPLE OPERATIONS</a>					*
+   * For the Eclipse top-level, we need only call the 		*
+   * lisp-top-level function. 					*
+   * A non-nil return value indicates that the EXIT restart was	*
+   * used with a non-nil status (i.e. someone decided there was	*
+   * an error). 						*/
+
+  /* N.B.: In some operating systems, a true (i.e. non-zero) 	*
+   * return value from main() indicates an error status.	*/
+  return(clTrue(<a href="topf.htm">clLispTopLevel</a>(clTest(!silentp),
+			       (!initp ? clNIL :
+				(!init_file ? clT :
+				 clCharpSimpleBaseString(init_file))),
+			       clEOA))); 
+}
+
+</pre>
+
+<HR>
+<A HREF="applic-over.htm">[Previous]</A> <A HREF="calls.htm">[Next]</A> 
+<a href="applic.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

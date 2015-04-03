@@ -1,0 +1,75 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<!-- 
+(let ((i 0))
+  (declare (special i))
+  (labels ((display (data)
+	     (typecase data
+	       (symbol
+		(format t "~vt~:(~a~)  ~a~%" i data (symbol-value data)))
+	       (string (format t "~vt~a~%" i data) (incf i 2))
+	       (cons (let ((i (+ i 3)))
+		       (declare (special i))
+		       (dolist (d data)
+			 (display data)))))))
+    (display '(("CONTROL" multiple-values-limit call-arguments-limit
+		lambda-parameters-limit lambda-list-keywords) 
+	     ("MISCELLANEOUS" internal-time-units-per-second)
+	     ("arrays" array-dimension-limit array-rank-limit
+	      array-total-size-limit)
+	     ("NUMERIC PARAMETERS"
+	      ("INTEGERS" most-positive-fixnum most-negative-fixnum)
+	      ("SHORT-FLOAT"
+	       most-positive-short-float
+	       least-positive-normalized-short-float
+	       least-positive-short-float
+	       least-negative-short-float 
+	       least-negative-normalized-short-float
+	       most-negative-short-float
+	       short-float-epsilon short-float-negative-epsilon)
+	      ("SINGLE-FLOAT"
+	       most-positive-single-float
+	       least-positive-normalized-single-float
+	       least-positive-single-float
+	       least-negative-single-float 
+	       least-negative-normalized-single-float
+	       most-negative-single-float
+	       single-float-epsilon single-float-negative-epsilon)
+	      ("DOUBLE-FLOAT"
+	       most-positive-double-float
+	       least-positive-normalized-double-float
+	       least-positive-double-float
+	       least-negative-double-float 
+	       least-negative-normalized-double-float
+	       most-negative-double-float
+	       double-float-epsilon double-float-negative-epsilon)
+	      ("LONG-FLOAT"
+	       most-positive-long-float
+	       least-positive-normalized-long-float
+	       least-positive-long-float
+	       least-negative-long-float 
+	       least-negative-normalized-long-float
+	       most-negative-long-float
+	       long-float-epsilon long-float-negative-epsilon))))))
+-->
+
+	   
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Implementation-Defined Parameters</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Implementation-Defined Parameters</H2>
+<hr>
+
+
+<HR>
+<A HREF="defined.htm">[Previous]</A> <A HREF="extensions.htm">[Next]</A>
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

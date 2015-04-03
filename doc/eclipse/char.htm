@@ -1,0 +1,285 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Characters</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Characters</H2>
+<hr>
+
+This section includes the following information:
+<UL>
+<LI> <a href="#name">Character Names</a>
+<LI> <a href="#repertoire">Character Repertoires</a>
+ <UL>
+ <LI> <A href="#rep-readtable">Effect on Readtables</a>
+ <LI> <A href="#repertoire-literal">Similarity As Constants</a>
+ <LI> <A href="#rep-limit">Effect on Char-Code-Limit</a>
+ </UL>
+<LI> <a href="#attributes">Character Attributes</a>
+ <UL>
+ <LI> <A href="#literal">Effect on Character Literals</a>
+ <LI> <A href="#readtable">Effect on Readtables</a>
+ <LI> <A href="#symbol">Effect on Symbol Parsing</a>
+ <LI> <A href="#character">Effect on Character Parsing</a>
+ </UL>
+<LI> <a href="#case">Character Predicates and Case</a>
+<LI> <a href="#streams">Interaction with Streams</a>
+</UL>
+
+<HR>
+<H3> <a name="name">Character Names</a></H3>
+
+The following character names are defined, in addition to the ones
+specified as <EM>semi-standard</EM> by ANSI Common Lisp:
+
+<UL>
+<LI> Null - ASCII NUL (000)
+<LI> Escape - ASCII ESC (033)
+<LI> Bell - ASCII BEL (007)
+<LI> Delete - Same as Rubout
+</UL>
+
+<HR>
+<H3><a name="repertoire">Character Repertoires</a></H3>
+The following character repertoires are supported:
+
+<ul>
+<li><b>Standard-char</b> is defined by the ANSI Common Lisp
+standard. 
+
+<li><b>ASCII-char</b> is a superset of <b>standard-char</b>,
+and corresponds to the &quot;US-ASCII 7-bit character set&quot;.
+
+<li><b>Latin-char</b> is a superset of <b>ASCII-char</b>
+and includes all the characters defined by ISO8859-1.
+
+<li><b>Base-char</b> is equivalent to <b>Latin-char</b>.
+
+<li><b>UCS-2-char</b> is a superset of <b>Latin-char</b>
+and includes all the Unicode <EM>two-octet</EM> (i.e. 16-bit)
+characters defined by ISO10646-1.
+
+<li><b>Unicode-char</b> is a superset of <b>UCS-2-char</b>
+and includes all the characters defined by ISO10646-1.
+
+<li><b>Character</b> is a superset of <b>Unicode-char</b>.
+</ul>
+
+Note that character repertoires are type specifiers usable for
+discrimination -- they do not necessarily have a distinct
+representation type.  In fact, <b>upgraded-array-element-type</b>
+of any of these will always return either <b>base-char</b> or
+<b>character</b>.
+
+<H4> <a name="rep-readtable">Readtables</a></H4>
+
+Any character (not just <b>base-char</b>) may have syntax in a
+readtable.
+
+<H4> <a name="repertoire-literal">Similarity As Constants</a></H4>
+
+ANSI does not permit the <em>file-compiler</em> to change the actual
+<em>element-type</em> of a string literal from that which was read by
+the reader.  Thus, in general, the type of string literals produced by
+<a href="load.htm"><b>load</b></a> and <a
+href="compile.htm"><b>compile-file</b></a> is governed by
+<i>external-format</i> and by user code that may effect how strings
+are read by the reader.  Both <a href="load.htm"><b>load</b></a> and
+<a href="compile.htm"><b>compile-file</b></a> recognize that only
+<b>base-char</b> elements can be present in the <code>:ASCII</code>
+<i>external-format</i>, so in this case, only <b>base-string</b>
+literals are produced by quoted strings read in the standard
+readtable.  In other cases, string literals may be of other
+<b>string</b> types.
+
+<p>Note that implementations are allowed to copy and perform other
+optimizations at any time on the names used to intern symbols.  Thus
+the <b>symbol-name</b> of a symbol which is originally created with a
+name that is a general <b>string</b> may, in fact be treated as a
+<b>base-string</b> by the system if all the characters of the name
+are, in fact, of type <b>base-char</b>.
+
+<H4> <a name="rep-limit">Char-Code-Limit</a></H4>
+
+Because Unicode characters are supported, <b>char-code-limit</b>
+is so large as to be meaningless as a means of iterating over
+characters.  Eclipse defines an additional constant, <A
+HREF="base-char.htm"><b>base-char-code-limit</b></A>, which is
+the upper exclusive bound on <b>char-code</b> for
+<b>base-char</b>.
+
+<HR>
+<H3><a name="attributes">Character Attributes</a></H3>
+
+Characters in the <b>base-char</b> repertoire define 
+<EM>control and meta bit attributes</EM>. These bits can be examined
+and set with <a href="char-bit.htm"><b>char-bit</b></a> and <a
+href="char-bit.htm"><b>set-char-bit</b></a>. 
+
+<P>
+A control character is one which has its <EM>control</EM> bit set.
+ASCII control characters are non-graphic, and have <b>char-code</b>s
+below 32.
+
+<P>
+An <b>ASCII-char</b> does not have its <EM>meta</EM> bit set.  A
+<b>Latin-char</b> which is not also an <b>ASCII-char</b> does have its
+<EM>meta</EM> bit set.  Meta characters have <b>char-code</b>s above
+127.  N.B.: A meta character that is also a control character may or
+may not be graphic. (See <a href="#case"><i>Character Predicates and
+Case</i></a>, below.)
+
+<P>
+Both the <EM>control</EM> bit and <EM>meta </EM>bit attributes are
+stripped off by <b>char-code</b>.  For example, 
+<pre>
+ (char-code x) <=> (char-int (set-char-bit x :control nil :meta nil))
+</pre>
+  
+<p>
+Both the <EM>control</EM> bit and <EM>meta </EM>bit attributes are
+preserved and respected by all other character and string functions,
+including <b>code-char</b>.  They are
+<STRONG>not</STRONG> ignored by <b>char-equal</b>.  Setting these bits
+are useful for creating characters not easily entered from the
+keyboard.
+
+<H4> <a name="literal">Similarity As Constants</a></H4>
+
+The <EM>control</EM> bit and <EM>meta </EM>bit attributes are
+preserved in <em>compiled-file literals</EM>.  That is, two
+characters are not similar as constants if they have different
+attributes.
+
+<H4> <a name="readtable">Readtables</a></H4>
+
+Any character (not just <EM>simple</EM> characters) may have syntax in
+a readtable.
+
+<H4> <a name="symbol">Parsing of Symbols By Read</a></H4> 
+
+The <EM>control</EM> bit and <EM>meta </EM>bit attributes are
+preserved when parsing a string into a symbol.
+
+<H4> <a name="character">Parsing of Characters By Read</a></H4> 
+
+The following prefixes are recognized in the <CODE>#\</CODE> syntax
+for characters:
+
+<UL>
+<LI> <EM>control-</EM> and <EM>^</EM> - The character returned by the
+reader is the following unprefixed character with the <EM>control</EM>
+bit set.
+
+<LI> <EM>meta-</EM> and <EM>%</EM> - The character returned by the
+reader is the following unprefixed character with the <EM>meta</EM>
+bit set.
+
+<LI> <EM>control-meta-</EM> and <EM>%^</EM> - The character returned by
+the reader is the following unprefixed character with the
+<EM>control</EM> and <EM>meta</EM> bits set.  Note that the order of
+components within the prefix is important, and is different between
+mnemonic and single-character styles.
+</UL>
+
+The case of prefixes is not important.  
+
+<P> The behavior is undefined if the character following the prefix is
+not a <b>base-char</b>, or it already has the specified bit set.
+
+<P>
+Examples:
+<PRE>
+ (char= #\bell #\control-g #\CONTROL-G #\^g #\^G)
+  => <EM>true</EM>
+ (char= #\%g #\meta-g #\Meta-g)
+  => <EM>true</EM>
+ (char= #\%g #\%G)
+  => nil
+ (char= #\control-meta-g #\%^g)
+  => <EM>true</EM>
+ (char= #\line-feed #\control-j)
+  => <EM>true</EM>
+ (char= #\meta-null #\%^@ (code-char (1+ (char-code #\delete))))
+  => <EM>true</EM>
+
+</PRE>
+
+<HR>
+<H3><a name="case">Character Predicates and Case</a></H3>
+
+The behavior of predicates such as <b>graphic-char-p</b> and
+<b>upper-case-p</b>, and case conversion operators such as
+<b>char-downcase</b>, depend on the operating system <a
+href="gloss.htm#locale"><i>locale</i></a>.  Most operating systems
+will try to do the right thing for Latin characters if and only if the
+program uses the right <a href="gloss.htm#locale"><i>locale</i></a>.
+Eclipse effectively executes <CODE>setlocale(LC_CTYPE, "")</CODE> at
+start-up.  Some operating systems do not do the right thing for
+Unicode characters which are not Latin.
+
+<P>
+Note that the Common Lisp string comparison functions (such as
+<b>string-lessp</b>) are defined to work character by character.  This
+means that local <em>collating conventions</em> for text
+<em>strings</em> are not followed.  However, the sense of case for
+each <em>character</em> is as for the character predicates.
+
+
+<HR>
+<H3><a name="streams">Interaction With Streams</a></H3>
+
+The following <i>external-format designators</i> are supported by <a
+href="open.htm"><b>open</b></a>:
+
+<UL>
+<P><LI><code>:ASCII</CODE> - This format will only work with streams of
+<i>element-type</i> <b>base-char</b>.  Characters are
+represented outside Eclipse in the usual 8 bit ASCII format.
+
+<P><LI><code>:UCS</CODE> - This format will work with streams of
+<i>element-type</i> <b>Unicode-char</b>.  Characters are
+represented outside Eclipse as two or four octet Unicode characters -
+i.e. as UCS-2 or UCS-4 format.  UCS-2 format is used when
+<i>element-type</i> is subtype of <b>UCS-2-char</b>, otherwise
+UCS-4 is used.
+
+<P><LI><code>:MULTI-BYTE</CODE> - In principle, this format will work
+with streams of <i>element-type</i> <b>Unicode-char</b>.  Characters
+are represented outside Eclipse as operating system specific
+<em>multi-byte</em> character strings.  Character codes within Eclipse
+are treated as operating system specific <em>wide</em> character
+strings.  The conversion between <em>multi-byte</em> and <em>wide</em>
+character strings is performed as though by the operating system's
+<CODE>wcstombs()</CODE> and <CODE>mbstowcs()</CODE> utilities.
+These utilities are intended to implement the Unicode UTF-8 format (a
+descendent of the FSS-UTF), which is supposed to work on all 4-octet
+Unicode characters (i.e. UCS-4).  However, on many platforms, only
+2-octet Unicode characters (i.e. UCS-2) are handled properly.
+Therefore, <code>:MULTI-BYTE</code> format can only reliably be used
+with streams of <i>element-type</i> <b>UCS-2-char</b>.
+</UL>
+
+Whether a Unicode character, or indeed, even a Latin or ASCII
+character is displayed "correctly" on a given stream, depends
+entirely on whether the <i>external-format</i> of the stream is
+correctly handled by the operating system.  For example, if a
+<b>Latin-char</b> is written to an interactive <code>:ASCII</code>
+<i>external-format</i> stream, the correct ISO8859-1 glyph will be
+displayed only if the operating system supports ISO8859-1 for that
+stream.
+
+
+<HR>
+<A HREF="extensions.htm">[Previous]</A> <A HREF="path.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>
+
+

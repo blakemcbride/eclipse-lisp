@@ -1,0 +1,6 @@
+
+*.dsw text eol=crlf
+*.dsp text eol=crlf
+*.mak text eol=crlf
+*.plg text eol=crlf
+

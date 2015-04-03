@@ -1,0 +1,69 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>CLIM: Generic Function STREAM-ELEMENT-TYPE</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-ELEMENT-TYPE</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-element-type</B> <I>stream</I> =&gt; <I>element-type</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <b>stream</b>. <P>
+<I>element-type</I>---a <em>type-specifier</em><p>
+
+<B>Description:</B>
+
+<P>
+<b>Stream-element-type</b> is a generic-function that implements the
+ANSI specification of <b>stream-element-type</b>.<p>
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-element-type</b></a> (<i>stream</i> fundamental-stream)
+<br>Returns the value given as the <i>element-type</i>
+<em>initarg</em> when <i>stream</i> was instantiated.
+
+<p><i>Primary Method</i> <b>stream-element-type</b></a> (<i>stream</i> encapsulating-stream)
+<br>Returns the <b>stream-element-type</b> of the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<p><i>Primary Method</i> <b>stream-element-type</b></a> (<i>stream</i> t)
+<br>Signals <i>type-error</i>.
+
+<p><B>Side Effects:</B> None.<p>
+
+<B>Affected By:</B> The initargs given to the stream when it was created.<p>
+
+<B>Exceptional Situations:</B> <p>
+
+Signals <i>type-error</i> if <i>stream</i> is not a <b>stream</b>. <P>
+
+<B>See Also:</B><P> 
+
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm">"CLIM: Stream Classes"</a>,
+<a href="eclipse-stream-classes.htm">"Eclipse: Stream Classes"</a>.
+
+<P>
+<B>Notes:</B> <p>
+
+CLIM defines a method only on <a
+href="clim-stream-classes.htm"><b>fundamental-character-stream</b></a>,
+and specifies that it always returns <b>character</b>.  In Eclipse, it
+may return a subtype of <b>character</b>.
+
+<HR>
+<A HREF="stream-clear.htm">[Previous]</A> 
+<A HREF="listen.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

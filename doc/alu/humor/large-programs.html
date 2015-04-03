@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>The Association of Lisp Users -- Ballad on Program Growth Humor Page</TITLE>
+</HEAD>
+
+<BODY>
+<A HREF="../table/contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif"> </A>
+<STRONG>A Short Ballad Dedicated to the Growth of Programs</STRONG>
+ <hr>
+
+<PRE>
+<CODE>
+Date: 28 Jan 86 06:22:59 EST (Tue)
+From: ram@yale-ring
+Subject: Of growing code and diminishing hacks...
+Sender: ram%yale-ring%arpa.yale@edu.mit.lcs.mc
+To: t-discussion@arpa.yale, scheme@arpa.mit-mc
+</CODE>
+
+    A SHORT BALLAD DEDICATED TO THE GROWTH OF PROGRAMS
+    ==================================================
+                      by
+                  Ashwin Ram
+    
+    This is a tale of a sorry quest
+    To master pure code at the T guru's behest
+    I enrolled in a class that appealing did seem
+    For it promised to teach fine things like T3 and Scheme
+    
+    The first day went fine; we learned of cells
+    And symbols and lists and functions as well
+    Lisp I had mastered and excited was I
+    For to master T3 my hackstincts did cry
+    
+    I sailed through the first week with no problems at all
+    And I even said "closure" instead of "function call"
+    Then said the master that ready were we
+    To start real hacking instead of simple theory
+    
+    Will you, said he, write me a function please
+    That in lists would associate values with keys
+    I went home and turned on my trusty Apollo
+    And wrote a function whose definition follows:
+    
+        (cdr (assq key a-list))
+    
+    A one-liner I thought, fool that I was
+    Just two simple calls without a COND clause
+    But when I tried this function to run
+    CDR didn't think that NIL was much fun
+    
+    So I tried again like the good King of yore
+    And of code I easily generated some more:
+    
+        (cond ((assq key a-list) => cdr))
+    
+    It got longer but purer, and it wasn't too bad
+    But then COND ran out and that was quite sad
+        
+    Well, that isn't hard to fix, I was told
+    Just write some more code, my son, be bold
+    Being young, not even a moment did I pause
+    I stifled my instincts and added a clause
+    
+        (cond ((assq key a-list) => cdr)
+              (else nil))
+    
+    Sometimes this worked and sometimes it broke
+    I debugged and prayed and even had a stroke
+    Many a guru tried valiantly to help
+    But undefined datums their efforts did squelch.
+    
+    I returneth once more to the great sage of T
+    For no way out of the dilemma I could see
+    He said it was easy -- more lines must I fill
+    with code, for FALSE was no longer NIL.
+    
+        (let ((val (assq key a-list)))
+           (cond (val (cdr val))
+                 (else nil)))
+    
+    You'd think by now I might be nearing the end
+    Of my ballad which seems bad things to portend
+    You'd think that we could all go home scot-free
+    But COND eschewed VAL; it wanted #T
+    
+    So I went back to the master and appealed once again
+    I said, pardon me, but now I'm really insane
+    He said, no you're not really going out of your head
+    Instead of just VAL, you must use NOT NULL instead
+    
+        (let ((val (assq key a-list)))
+           (cond ((not (null? val)) (cdr val))
+                 (else nil)))
+    
+    My song is over and I'm going home to bed
+    With this ineffable feeling that I've been misled
+    And just in case my point you have missed
+    Somehow I preferred (CDR (ASSQ KEY A-LIST))
+    
+                        :-)    
+    ==================================================
+</PRE>
+
+<hr>
+<ADDRESS>Last Update: 13 March 1995 / Brad Miller / miller@cs.rochester.edu</ADDRESS>
+</BODY>
+</HTML>

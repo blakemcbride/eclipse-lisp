@@ -1,0 +1,122 @@
+<!-- The contents of this page are &copy; Copyright 1998 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: New in Release 1.1</TITLE>
+</HEAD>
+
+<h2>What's New for Eclipse Common Lisp Release 1.1</h2>
+
+<h4>June 4, 1998</h4>
+
+See Also:
+
+<ul>
+<li> <a href="new-1.0.3.htm">1.0.3</a> (Linux, PC)
+<li> <a href="new-1.0.2.htm">1.0.2</a> (HP-UX)
+<li> <a href="new-1.0.1.htm">1.0.1</a> (Solaris 2,  Unix System V)
+<li> <a href="new-1.0.htm">1.0</a> (SunOS 4.1, Berkeley Unix)
+</ul>
+
+
+<h3>Features</h3>
+
+<ul>
+
+<p><li> Ported to Microsoft <b>Windows</b>.  (Platform SDK, win32)
+
+<p><li>Source and library features:
+<ul>
+<p><li>The Eclipse C-callable library is now split into <a
+href="gloss.htm#runtime"><i>runtime</i> (<i>static</i>)</a> and <a
+href="gloss.htm#development"><i>development</i> (<i>dynamic</i>)</a>
+parts.  The memory managment library (formerly <code>libgc</code>) is now
+incorporated within the runtime library. See <a
+href="lib.htm">"Eclipse Libraries"</a>.
+
+<p><li>Calls to the C function <code>clListSTAR()</code> (and calls to
+the Lisp function <b>list*</b> that are compiled to C), can now exceed
+<b>call-arguments-limit</b> (provided your C compiler allows it).
+
+<p><li>Calls to the C function <code>clFuncall()</code> (and calls to
+the Lisp function <b>funcall</b> that are compiled to C) no longer
+cons.
+
+</ul>
+
+<p><li>Pretty-printing has been reimplemented to be more efficient,
+maintainable, robust, and so that it participates properly as a CLOS
+stream.
+
+<p><li>Pathname features:
+<ul>
+<p><li>Pathname internals have been reimplemented to be more
+maintainable, robust, and to support Windows pathnames.
+
+<p><li>Namestrings for physical pathnames can now be parsed into name,
+type, and version even if the name part contains dots.
+
+<p><li>Shell quoting is no longer supported in pathname namestrings.
+</ul>
+
+<p><li>New macros are available for defining hygienic macros: <a
+href="rebinding.htm"><b>rebinding</b></a> and <a
+href="unique.htm"><b>with-unique-names</b></a>.
+
+</ul>
+
+<h3>Bug fixes</h3>
+
+<ul>
+<p>
+<li>Objects of class <b>structure-class</b> can now be cleanly used as
+literal in a file being processed by <b>compile-file</b> (and indeed,
+any class, not just those of metaclass <b>standard-class</b>).
+Previously, the system uniformly tried to create a
+<b>standard-class</b> at initialization time.  Note that when a known
+class is referenced as a type in a <b>typep</b>, <b>typecase</b>, or
+<b>etypecase</b> operation which has been compiled to C, the generated
+C code may reference the class as a compile-file literal.  The
+work-around in previous releases is to evaluate the following in the
+ECLIPSE package before calling <b>compile-file</b>:
+<pre>
+  (defmethod make-load-form ((object class) &optional environment)
+    `(ensure-class ',(proper-name object t environment)
+                   :metaclass ',(class-name (class-of object)))) 
+</pre> 
+
+
+<P>
+<li> All known <b>*Print-circle*</b> and <b>pretty-printing</b> bugs
+have been fixed.
+
+<p><li><b>Listen</b> now returns <code>NIL</code> rather than getting
+an error when no input is available.
+
+<p><li>Equal and equalp hashing of pathnames does not depend on the
+ability to create a readable namestring.
+
+<p><li><b>Delete-file</b>, <b>directory</b>,
+<b>ensure-directories-exist</b>, <b>file-owner</b>,
+<b>file-write-date</b>, <b>open</b>, <b>probe-file</b>,
+<b>rename-file</b>, <b>truename</b> now signal an error of type
+<b>file-error</b> when an internal operating system request fails.
+
+<p><li><b>User-homedir-pathname</b> returns null name, type and
+version rather than :unspecific, and defaults to the current working
+directory when the operating system fails to designate a home
+directory.
+
+</ul>
+
+
+<HR>
+<A HREF="release.htm">[Previous]</A> 
+<A HREF="new-1.0.3.htm">[Next]</A> 
+<A HREF="release.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

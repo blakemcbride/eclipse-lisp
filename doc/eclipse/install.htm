@@ -1,0 +1,218 @@
+<!-- The contents of this page are &copy; Copyright 1997 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Installation</TITLE>
+</HEAD>
+
+<H2>Eclipse Introduction: Installation</H2>
+<hr>
+
+<OL>
+<LI> The distribution can be used directly from the CD on which it is
+distributed, or copied to a hard disk.  
+
+<p>
+The CD distribution contains a single directory which has a name
+reflecting the Eclipse version number (eg. <code>eclipse-1.0.1</code>).
+All the other subdirectories (<code>doc</code>, <code>bin</code>,
+<code>c</code>) are under this directory.  If desired you can copy
+only selected protions of this subdirectory to your hard disk.
+
+<p>
+Within this single, versioned, directory are the following subdirectories and
+files:
+
+<ul>
+
+<p><li>
+  <b>bin</b> - contains executables and libraries for various
+  platforms.  These directories also contain a copy of <code>eclipse.h</code>. 
+
+<p><li>
+  <b>c</b> - contains C source code including:
+   <ul>
+     <li><b>eclipse.h</b> - the header file that must be included in any C
+     code that uses the Eclipse library.
+     <li><b>eclipse.c</b> - the <a href="main.htm"><code>main()</code></a> for
+     the top-level Lisp listener program.
+     <li><b>interface.c</b> - platform specific utilities used to
+     implement Eclipse, and the initialization code for the Eclipse
+     run time library.
+     <li><b>initd.c</b> - initialization code for the Eclipse dynamic
+     library. 
+     <li><b>gc</b> - a directory containg the source code for automatic
+     memory management.
+   </ul>
+
+<p><li>
+  <b>doc</b>
+   <ul>
+      <li><b>alu</b>
+      <ul>
+          <li><b>index.htm</b> - a mirror of the Association of Lisp Users' website.
+      </ul>
+      <li><b>eclipse</b>
+      <ul>
+          <li><b>index.htm</b> - the start of the Eclipse documentation.
+      </ul>
+   </ul>
+</ul>
+
+<p>
+Thus the minimal installation would include only the subdirectory of
+<b>bin</b> appropriate to your platform, and perhaps
+<b>doc/eclipse</b>.
+
+<P>
+In any case, we will refer to this versioned directory where files are
+ultimately placed as <CODE><em>eclipse-directory</em></CODE>.
+
+<p>
+We suggest making a single directory on your hard disk which will keep
+all versions of Eclipse.  For example, if you make a directory
+<code>/usr/elwood</code>, then for each new version,
+<code><em>eclipse-directory</em></code> will be
+<code>/usr/elwood/eclipse-1.0</code>,
+<code>/usr/elwood/eclipse-1.1</code>, etc.
+
+<ul>
+<p>
+<li>When using a GUI-style "File Manger", "Finder", "File Explorer",
+etc., you can use the usual windowing gestures to copy files.  Make
+sure that you copy subdirectories as well as the top level
+directories.
+
+<p>
+<li>
+The following
+<code>unix</code> commands will copy the entire contents of the CD to
+a selected location on a hard disk:
+<pre>
+   mkdir <i>directory-on-hard-disk</i>
+   cd <i>directory-on-which-cd-is-mounted</i>
+   find . -depth -print | cpio -pd <i>directory-on-hard-disk</i>
+</pre>
+For example, if you have a <code>/usr/elwood</code> directory for all
+versions of Eclipse <code><em>directory-on-hard-disk</em></code>,
+above, is <code>/usr/elwood</code>.  The commands above will create
+the versioned <CODE><em>eclipse-directory</em></CODE> for you.
+
+</ul>
+
+<P>For additional instructions on
+creating and initializing this directory, see the <a
+HREF="UNPACKING">&quot;doc/eclipse/UNPACKING&quot;</a> file which was included
+in the distribution.
+
+<P>
+<LI> Read <A HREF="org.htm">&quot;Organization of Eclipse&quot;</A>.
+
+<p>
+<li> Any "quality of life" links from standard, non-eclipse
+directories to <b>previous</b> eclipse releases should be removed.
+Each Eclipse release contains a <code>make clean-auxiliary</code>
+command that does this.  For example, as root, change to the binary
+directory of the previous release (eg. <code>bin/sparc</code>,
+<code>bin/hppa</code>, etc.) and type <code>make
+clean-auxiliary</code>.  If you do not have a standard
+<code>make</code> command for your operating system, you will have to
+clean up after any previous Eclipse releases by hand.
+
+<P>
+<LI> The <a href="gloss.htm#eclipse"><CODE>eclipse</CODE></a> program
+is a stand-alone, ready to run program, and is located in
+<CODE><em>eclipse-directory</em>/bin/<em>platform</em></CODE>.  Here
+<code><em>platform</em></code> is one of <code>windows</code>,
+<code>sparc</code>,
+<code>hppa</code>, etc.  You can run the executable as you would any other program.
+However there are some &quot;quality of life&quot; things you might
+want to do:
+<P>
+
+<OL>
+
+<LI> Make sure the <CODE>eclipse</CODE> executable is in your
+<CODE>$PATH</CODE>.  There are two ways to do this:
+ <UL> 
+ <LI> Edit your <CODE>.cshrc</CODE>, <CODE>.login</CODE>, or
+ <CODE>.profile</CODE>, as appropriate, to include the directory
+ <CODE><em>eclipse-directory</em>/bin/<em>platform</em></CODE> in your <CODE>$PATH</CODE>
+ environment variable.
+
+ <LI> Link
+ <CODE><em>eclipse-directory</em>/bin/<em>platform</em>/eclipse</CODE>
+ to some place which is already on your path.  For example, on Unix
+ systems, if <CODE>/usr/local/bin</CODE> is on your path and you have
+ write permission there, use:
+ <PRE>
+ ln -s <em>eclipse-directory</em>/bin/<em>platform</em>/eclipse /usr/local/bin
+ </PRE>
+ </UL> <p> The file
+ <code><em>eclipse-directory</em>/bin/<em>platform</em>/makefile</code>
+ contains a <code>setup</code> command that will create the above
+ link, as well as those described below.
+ Thus, as root, one can do:
+ <pre>
+ cd <em>eclipse-directory</em>/bin/<em>platform</em>; make setup
+ </pre>
+
+<LI> Set up an <CODE>init.lisp</CODE> file.  See the <A
+HREF="init.htm">&quot;<code>init.lisp</code>&quot;</A> chapter.
+
+<LI> Set up an <CODE>ECLIPSEHOME</CODE> environment variable (for
+example, by editing your <CODE>.cshrc</CODE> or <CODE>.profile</CODE>
+file.)  <CODE>ECLIPSEHOME</CODE> is only used to provide a default
+root for the <CODE>&quot;SYS&quot;</CODE> logical pathname host.  See
+<A HREF="site.htm">&quot;Site and Other Initial
+Definitions&quot;</A>.
+
+</OL>
+
+<P>
+<LI> If you will use the library from C, you will need to have access
+to the <a href="lib.htm">library</a> and the <a
+href="impl.htm">header</a> (i.e. include) files.  These are located in
+<CODE><em>eclipse-directory</em>/bin/<em>platform</em></CODE>.  
+
+<P>
+You can either:
+<P>
+ <UL>
+ <LI> Instruct your linker to find these files by passing additional
+ arguments each time you use them.  For example:
+ <PRE>
+  cc -I<em>eclipse-directory</em>/bin/<em>platform</em>
+     -L<em>eclipse-directory</em>/bin/<em>platform</em>
+     <em>&lt;other options and filenames&gt;</em>
+     -leclipse
+  </PRE>
+  The exact options accepted by your compiler may vary.
+
+ <LI> Link the files to some place which is already on the library
+ path and include-file path used by your compiler.
+ </UL> 
+
+ <p> The file <code><em>eclipse-directory</em>/bin/<em>plaform</em>/makefile</code>
+ contains a <code>setup</code> command that will create <em>all</em> the above
+ links.  Thus one can do:
+ <pre>
+ cd <em>eclipse-directory</em>/bin/<em>platform</em>; make setup
+ </pre>
+
+<strong>N.B.</strong>: See <a href="lib.htm">&quot;The Eclipse
+Library&quot;</a> to see how the library is set up in your
+implementation.
+
+
+</OL>
+
+<HR>
+<A HREF="legal.htm">[Previous]</A> <A HREF="release.htm">[Next]</A> 
+<A HREF="intro.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

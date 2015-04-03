@@ -1,0 +1,110 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Product Organization</TITLE>
+</HEAD>
+
+<H2><A NAME="eclipse">Eclipse Introduction: Organization of Eclipse</a></H2>
+<hr>
+
+The Eclipse product is described at <A
+HREF="http://www.elwood.com/eclipse-info"><code>http://www.elwood.com/eclipse-info</code></A>.
+
+<P> Eclipse is an implementation of <A
+HREF=legal.htm#conformance>ANSI</A> <A HREF="cl.htm">Common Lisp</A>.
+Common Lisp defines a large library of programming <a
+href="gloss.htm#construct"><i>constructs</i></a>, such as functions,
+macros and global variables.
+
+The Eclipse product can be thought of as making these constructs
+available to programmers in three ways:
+
+<OL>
+<LI> <b>Top-level</b>: An executable program called <a
+href="gloss.htm#eclipse"><CODE>eclipse</CODE> (1)</a>, which,
+on start-up, runs a <A HREF="gloss.htm#top-level"><i>Lisp top-level</i></A> 
+(real-eval-print loop).  The Lisp top-level evaluates Lisp
+expressions, whether they refer to ANSI or user-defined constructs.
+Users may define additional constructs using, for example, the ANSI
+macro <b>defun</b>.
+
+<P> The ANSI function <a href="load.htm"><b>load</b></a> may be used
+to load additional user-defined constructs from a file.
+
+<P>In addition to using the top-level read-eval-print loop, the ANSI
+function <b>eval</b> may be used directly to evaluate arbitrary Lisp
+programs which have been created as data.
+
+<P>
+<LI> <b>C library</b>: All of the constructs and utilities used in the <a
+href="gloss.htm#eclipse"><CODE>eclipse</CODE> (1)</a> program are defined
+in a <a href="gloss.htm#library"><i>library</i></a> which may be
+linked by the user with user programs written in other languages (such
+as C).  These utilities have the same semantics as they do when used
+within the <CODE>eclipse</CODE> program.  Thus, a C application can
+call any ANSI Lisp function, including <b>load</b> and <b>eval</b>.
+
+<P>
+An application which uses the library must call certain <a
+href="gloss.htm#sys-init"><i>system initialization functions</i></a> before any
+of the utilities are used.  These initialization functions are defined
+in the library.
+
+<P>
+<LI> <b>C translator</b>: One of the constructs included in the <a
+href="gloss.htm#library"><i>library (2)</i></a> and available in the
+<a href="gloss.htm#eclipse"><CODE>eclipse</CODE> (1)</a> program is
+called <a href="compile.htm"><b>compile-file</b></a>.  This function
+reads a user's Common Lisp source file and creates either:
+  <UL>
+  <LI> A proprietary format, binary file which can be loaded into an
+  application using <a href="load.htm"><b>load</b></a>.
+  <LI> A C file, which can be compiled using a user's C compiler (not
+  provided with Eclipse) and linked to the Eclipse library.  
+  </UL>
+
+<P>
+Of course, <b>compile-file</b> and <b>load</b> can be
+called from the <CODE>eclipse</CODE> program or from a user's C program
+which has been linked with the library.
+
+<P>
+One might use <b>compile-file</b>'s C generation to:
+<UL>
+<LI> extend the set of &quot;built-in&quot;,
+compiled-to-c primitive utilities available to be linked to a C
+program.
+
+<LI> convert all or part of a Lisp application into readable
+C which can then be maintained as C source code rather than as Lisp
+source code.
+</UL>
+
+Either way, the resulting C code must be compiled and linked to the library to
+run.  
+
+<P> <a name="init">A Common Lisp source file</a> always defines some <a
+href="gloss.htm#init"><i>initialization</i></a> behavior which takes
+place at the time the file is loaded using <a
+href="load.htm"><b>load</b></a>.  When a Lisp source file is converted
+to C using <a href="compile.htm"><b>compile-file</b></a> and the
+resulting C code is compiled and linked into an executable, no call to
+<b>load</b> is needed.  However, the application must call an
+initialization function for the file before any of the utilities in it
+are used.  This initialization function provides the
+&quot;load-time&quot; behavior that normally occurs during
+<b>load</b>.  The function is created by <b>compile-file</b> and
+appears at the bottom of the generated C file.
+
+</OL>
+
+<HR>
+<A HREF="intro.htm">[Previous]</A> <A HREF="doc.htm">[Next]</A> 
+<A HREF="intro.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

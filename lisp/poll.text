@@ -1,0 +1,506 @@
+I want to test whether a low level file descriptor has data available
+for reading.  I will NOT know whether the file descriptor represents
+the console, a file, a pipe, a winsock2 stream, etc.  Furthermore,
+using the Windows POSIX subsystem is not acceptable because other
+parts of the application must be able to utilize all the native
+Windows utilities, which I understand are incompatible with
+applications that use the POSIX subsystem.  The application is for
+Windows-NT-4/Windows-95.
+
+(The guts of this message are only a page or two long.  The bulk comes
+from the background information and specs which I have included
+below.  See BACKGROUND INFORMATION, below.)
+
+Contents:
+- EXAMPLE of what is needed
+- POSSIBLE WINDOWS STRATEGIES
+- RELATED ISSUES and questions
+- BACKGROUND INFORMATION on application, specs, etc.
+
+--------------------------------------------------------------------
+EXAMPLE:
+
+Unix systems support either select(), poll(), or both, to let you test
+whether input is available on a file descriptor.  It does not matter
+whether the file descriptor represents a tty, file, stream, pipe,
+etc.  Here is a Unix-portable function that does what I want:
+
+/* tcpoll(int fd) is analogous to POSIX tcdrain(), tcflush(), etc.
+   It returns -1 on error, 0 for no data, n>0 if data is available
+   for immediate reading.  This has been tested on Solaris, HP-UX and
+   Linux. 
+
+   Another way to do this might be:
+      ioctl(fd, I_NREAD, &arg) ? -1 : arg
+   where I_NREAD is for streamio, and FIONREAD would be for FILIO.  
+   */
+
+int tcpoll(fd) int fd; {
+#if (defined linux)
+  struct timeval tm;
+  fd_set fds; int result;
+  tm.tv_sec = 0;
+  tm.tv_usec = 0;
+  FD_ZERO(&fds);
+  FD_SET(fd, &fds);
+  return(select(1, &fds, NULL, &fds, &tm));
+#else
+  struct pollfd fds[1]; 
+  fds[0].fd = fd;
+  fds[0].events = POLLIN | POLLPRI | POLLRDNORM | POLLRDBAND;
+  return(poll(fds, 1, 0)); 
+#endif
+}
+
+--------------------------------------------------------------------
+POSSIBLE WINDOWS STRATEGIES:
+
+I have found that the select() code, above, can be used on Windows
+when WSAStartup() has been used to initialize the socket system, but
+that not all file descriptors represent sockets.  For example, for
+file descriptor 0 in a console application, the select() code, above,
+returns SOCKET_ERROR, and WSAGetLastError then returns WSAENOTSOCK.
+
+I have considered using WaitForMultipleEvents() instead.  This is, in
+part, because Windows sockets apparently use the general Windows
+events mechanism, so it seems that WaitForMultipleEvents() should
+accept handles to terminals, sockets and who-know what else. However,
+the documentation for this function states:
+
+   In some circumstances, you can specify a handle of a file, named
+   pipe, or communications device as a synchronization object in
+   lpHandles. However, their use for this purpose is discouraged.
+
+The documentation does not suggest an alternative.
+
+Furthermore, I do not know how to obtain a lpHandle given a file
+descriptor -- i.e. the reverse of _open_osfhandle().  (Alternatively,
+perhaps there is some way to convert an ANSI C FILE *stream (i.e. the
+result of fdopen()) to an lpHandle?)
+
+If there was some way to reliably test for all the different
+possibilities as to what the file descriptor may refer to, then there
+might be situation-specific means of testing.  For example, if it is
+known that the file descriptor refers to the console, then _kbhit()
+may be used.  However, I don't know how to reliably determine whether
+a given file descriptor refers to the console, a pipe, etc., I do not
+know what all the different possibilities are, and I do not know what
+the means for testing for the availability of input is for each of
+these possibilities.
+
+-------------------------------------------------------------------- I
+RELATED ISSUES:
+
+I also need equivalents to POSIX tcdrain() and tcflush().  
+
+I am under the impression that _commit() will wait for output to go to
+disk, and so may be used like tcdrain().  I am further under the
+impression that there is no way to wait for terminal output to
+complete, or to flush pending input or output from system buffers. Is
+this correct?
+
+On the other hand, perhaps the same mechanism used for checking input
+can be used to determine if output has drained?
+
+--------------------------------------------------------------------
+BACKGROUND INFORMATION:
+- Application
+- Specs for LISTEN function which tcpoll() is intended to help implement
+- Specs for CLEAR-INPUT, CLEAR-OUTPUT and FORCE-OUTPUT, which tcdrain() 
+  and tcflush() are intended to help implement
+- Unix specs for tcdrain(), tcflush(), select(), poll()
+
+--------------------------------------------------------------------
+APPLICATION:
+
+Eclipse is an implementation of the ANSI Common Lisp programming
+language.  It uses C to implement all of the utilities defined by the
+ANSI Common Lisp standard.  (See http://www.elwood.com/eclipse-info)
+
+Common Lisp defines a "stream" as "an object that can be used with an
+input or output function to identify an appropriate source or sink of
+characters or bytes for that operation."  Such a stream may represent
+an operating system file, terminal device, pipe, "Unix stream", etc.
+In particular, Lisp streams may be associated with "interactive"
+entities:
+
+  "An interactive stream is one on which it makes sense to perform
+   interactive querying.
+
+   The precise meaning of an interactive stream is
+   implementation-defined, and may depend on the underlying operating
+   system. Some examples of the things that an implementation might
+   choose to use as identifying characteristics of an interactive
+   stream include:
+
+   * The stream is connected to a person (or equivalent) in such a way
+     that the program can prompt for information and expect to receive
+     different input depending on the prompt.
+
+   * The program is expected to prompt for input and support "normal
+     input editing".
+
+   * read-char might wait for the user to type something before
+     returning instead of immediately returning a character or
+     end-of-file.
+
+   The general intent of having some streams be classified as
+   interactive streams is to allow them to be distinguished from
+   streams containing batch (or background or command-file)
+   input. Output to batch streams is typically discarded or saved for
+   later viewing, so interactive queries to such streams might not
+   have the expected effect.
+
+   Terminal I/O might or might not be an interactive stream."
+
+
+Stream objects in Eclipse have a slot that holds the operating system
+file descriptor.  Lisp read and write operations are implemented using
+read() and write().  Users may define their own stream objects, and
+may create instances of system-defined or user-defined streams.  The
+stream operations such as LISTEN, CLEAR-INPUT, etc., are expected to
+work regardless of how the stream is created.  Users can specify
+whether user-defined streams are to be considered interactive, with
+the default being true when isatty() of the underlying file descriptor
+is true.
+
+The Eclipse stream objects buffer their data internally.  For our
+purposes here, I am concerned only with how the operating system
+handles I/O and not with the management of buffers on the Lisp side.
+
+--------------------------------------------------------------------
+ANSI Common Lisp LISTEN:
+
+Returns true if there is a character immediately available from
+input-stream; otherwise, returns false. On a non-interactive
+input-stream, listen returns true except when at end of file. If an
+end of file is encountered, listen returns false. listen is intended
+to be used when input-stream obtains characters from an interactive
+device such as a keyboard.
+
+--------------------------------------------------------------------
+ANSI Common Lisp CLEAR-INPUT, CLEAR-OUTPUT, FINISH-OUTPUT, FORCE-OUTPUT:
+
+Clear-input clears any available input from input-stream.
+
+Clear-output attempts to abort any outstanding output operation in
+progress in order to allow as little output as possible to continue to
+the destination.
+
+Finish-output attempts to ensure that any buffered output sent to
+output-stream has reached its destination, and then returns.
+
+Force-output initiates the emptying of any internal buffers but does
+not wait for completion or acknowledgment to return.
+
+If any of these operations does not make sense for stream, then it
+does nothing. The precise actions of these functions are
+implementation-dependent.
+
+--------------------------------------------------------------------
+NAME
+     tcdrain - wait for transmission of output
+
+SYNOPSIS
+     #include <termios.h>
+
+     int tcdrain(int fildes);
+
+DESCRIPTION
+     The tcdrain() function waits until all output written to the
+     object  referred  to  by  fildes is transmitted.  The fildes
+     argument is an open file descriptor associated with a termi-
+     nal.
+
+     Any attempts to use tcdrain() from  a  process  which  is  a
+     member  of a background process group on a fildes associated
+     with its controlling terminal, will cause the process  group
+     to  be  sent  a  SIGTTOU  signal.  If the calling process is
+     blocking or ignoring SIGTTOU signals, the process is allowed
+     to perform the operation, and no signal is sent.
+
+RETURN VALUES
+     Upon successful completion, 0 is returned. Otherwise, -1  is
+     returned and errno is set to indicate the error.
+
+--------------------------------------------------------------------
+NAME
+     tcflush - flush non-transmitted output data, non-read  input
+     data or both
+
+SYNOPSIS
+     #include <termios.h>
+
+     int tcflush(int fildes, int queue_selector);
+
+DESCRIPTION
+     Upon successful completion, tcflush() discards data  written
+     to the object referred to by fildes (an open file descriptor
+     associated with a terminal) but  not  transmitted,  or  data
+     received   but   not   read,   depending  on  the  value  of
+     queue_selector:
+
+     o If queue_selector is TCIFLUSH it flushes data received but
+       not read.
+
+     o If queue_selector is TCOFLUSH it flushes data written  but
+       not transmitted.
+
+     o If  queue_selector  is  TCIOFLUSH  it  flushes  both  data
+       received  but  not read and data written but not transmit-
+       ted.
+
+     Attempts to use tcflush() from a process which is  a  member
+     of  a  background  process group on a fildes associated with
+     its controlling terminal, will cause the process group to be
+     sent  a  SIGTTOU signal.  If the calling process is blocking
+     or ignoring SIGTTOU signals, the process is allowed to  per-
+     form the operation, and no signal is sent.
+
+RETURN VALUES
+     Upon successful completion, 0 is returned. Otherwise, -1  is
+     returned and errno is set to indicate the error.
+
+--------------------------------------------------------------------
+NAME
+       select, FD_CLR, FD_ISSET, FD_SET, FD_ZERO - synchronous I/O multiplexing
+
+SYNOPSIS
+       #include <sys/time.h>
+       #include <sys/types.h>
+       #include <unistd.h>
+
+       int  select(int  n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds,
+       struct timeval *timeout);
+
+       FD_CLR(int fd, fd_set *set);
+       FD_ISSET(int fd, fd_set *set);
+       FD_SET(int fd, fd_set *set);
+       FD_ZERO(fd_set *set);
+
+DESCRIPTION
+       select waits for a number of file descriptors to change status.
+
+       Three independent sets of  descriptors  are  watched.   Those  listed  in
+       readfds  will  be watched to see if characters become available for read-
+       ing, those in writefds will be watched to see if it is ok to  immediately
+       write on them, and those in exceptfds will be watched for exceptions.  On
+       exit, the sets are modified in place to indicate which descriptors  actu-
+       ally changed status.
+
+       Four  macros  are  provided to manipulate the sets.  FD_ZERO will clear a
+       set.  FD_SET and FD_CLR add or remove a  given  descriptor  from  a  set.
+       FD_ISSET  tests to see if a descriptor is part of the set; this is useful
+       after select returns.
+
+       n is the highest-numbered descriptor in any of the three sets, plus 1.
+
+       timeout is an upper bound on the amount of  time  elapsed  before  select
+       returns.  It may be zero, causing select to return immediately.  If time-
+       out is NULL (no timeout), select can block indefinitely.
+
+RETURN VALUE
+       On success, select returns the number of  descriptors  contained  in  the
+       descriptor sets, which may be zero if the timeout expires before anything
+       interesting happens.  On error, -1 is returned, and errno is  set  appro-
+       priately;  the sets and timeout become undefined, so do not rely on their
+       contents after an error.
+
+
+--------------------------------------------------------------------
+NAME
+     poll - input/output multiplexing
+
+SYNOPSIS
+     #include <poll.h>
+
+     int poll(struct pollfd fds[], nfds_t nfds,
+          int timeout);
+
+DESCRIPTION
+     The poll() function provides applications with  a  mechanism
+     for  multiplexing  input/output  over a set of file descrip-
+     tors.  For each member of  the  array  pointed  to  by  fds,
+     poll()  examines  the given file descriptor for the event(s)
+     specified in events.  The number of pollfd structures in the
+     fds array is specified by nfds.  The poll() function identi-
+     fies those file descriptors on which an application can read
+     or write data, or on which certain events have occurred.
+
+     The fds argument specifies the file descriptors to be  exam-
+     ined  and  the  events of interest for each file descriptor.
+     It is a pointer to an array with one member  for  each  open
+     file descriptor of interest.  The array's members are pollfd
+     structures, which contain the following members:
+
+          int fd;          /* file descriptor */
+          short events;    /* requested events */
+          short revents;   /* returned events */
+
+     The fd member specifies an  open  file  descriptor  and  the
+     events  and  revents  members  are bitmasks constructed by a
+     logical OR operation of any  combination  of  the  following
+     event flags:
+
+     POLLIN              Data other than high priority  data  may
+                         be  read without blocking.  For STREAMS,
+                         this flag is set in revents even if  the
+                         message is of zero length.
+
+     POLLRDNORM          Normal data (priority band equals 0) may
+                         be  read without blocking.  For STREAMS,
+                         this flag is set in revents even if  the
+                         message is of zero length.
+
+     POLLRDBAND          Data from a non-zero priority  band  may
+                         be  read without blocking.  For STREAMS,
+                         this flag is set in revents even if  the
+                         message is of zero length.
+
+     POLLPRI             High  priority  data  may  be   received
+                         without  blocking.   For  STREAMS,  this
+                         flag is  set  in  revents  even  if  the
+                         message is of zero length.
+
+     POLLOUT             Normal data (priority band equals 0) may
+                         be written without blocking.
+
+     POLLWRNORM          The same as POLLOUT.
+
+     POLLWRBAND          Priority data (priority band > 0) may be
+                         written.  This event only examines bands
+                         that have been written to at least once.
+
+     POLLERR             An error has occurred on the  device  or
+                         stream.  This  flag is only valid in the
+                         revents bitmask; it is not used  in  the
+                         events member.
+
+     POLLHUP             A hangup has  occurred  on  the  stream.
+                         This  event  and  POLLOUT  are  mutually
+                         exclusive; a stream can never  be  writ-
+                         able if a hangup has occurred.  However,
+                         this  event  and   POLLIN,   POLLRDNORM,
+                         POLLRDBAND,  or POLLPRI are not mutually
+                         exclusive.  This flag is only  valid  in
+                         the  revents  bitmask; it is not used in
+                         the events member.
+
+     POLLNVAL            The specified fd value does  not  belong
+                         to  an  open  file.   This  flag is only
+                         valid in the revents member; it  is  not
+                         used in the events member.
+
+     If the value fd is less than zero,  events  is  ignored  and
+     revents is set to 0 in that entry on return from poll().
+
+     The results of the poll() query are stored  in  the  revents
+     member in the pollfd structure.  Bits are set in the revents
+     bitmask to indicate which of the requested events are  true.
+     If  none  are  true,  none  of the specified bits are set in
+     revents when the  poll()  call  returns.   The  event  flags
+     POLLHUP,  POLLERR, and POLLNVAL are always set in revents if
+     the conditions they indicate  are  true;  this  occurs  even
+     though these flags were not present in events.
+
+     If none of the defined events have occurred on any  selected
+     file  descriptor, poll() waits at least timeout milliseconds
+     for an event to occur on any of the selected  file  descrip-
+     tors.   On  a  computer where millisecond timing accuracy is
+     not available, timeout is rounded up to  the  nearest  legal
+     value  available on that system.  If the value timeout is 0,
+     poll() returns immediately.  If  the  value  of  timeout  is
+     INFTIM (or -1), poll() blocks until a requested event occurs
+     or until the call is interrupted.  poll() is not affected by
+     the O_NDELAY and O_NONBLOCK flags.
+
+     The poll() function supports  regular  files,  terminal  and
+     pseudo-terminal  devices,  STREAMS-based  files,  FIFOs  and
+     pipes.  The behaviour of poll()  on  elements  of  fds  that
+     refer to other types of file is unspecified.
+
+     The poll() function supports sockets.
+
+     A file descriptor for a socket that is listening for connec-
+     tions  will indicate that it is ready for reading, once con-
+     nections are available.  A file descriptor for a socket that
+     is  connecting asynchronously will indicate that it is ready
+     for writing, once a connection has been established.
+
+     Regular files always poll TRUE for reading and writing.
+
+RETURN VALUES
+     Upon  successful  completion,  a   non-negative   value   is
+     returned.   A  positive  value indicates the total number of
+     file descriptors that  has  been  selected  (that  is,  file
+     descriptors  for  which  the revents member is non-zero).  A
+     value of 0 indicates that the call timed  out  and  no  file
+     descriptors have been selected.  Upon failure, a value of -1
+     is returned and errno is set to indicate the error.
+
+----------------
+other notes
+BOOL computername;
+TCHAR cname[MAX_COMPUTERNAME_LENGTH +1];
+DWORD buffercname = MAX_COMPUTERNAME_LENGTH +1;
+WCHAR compname[MAX_COMPUTERNAME_LENGTH +1];
+
+computername = GetComputerName(cname, &buffercname);
+
+wcscpy(compname, (LPWSTR)"\\\\");
+wcscat(compname, (LPWSTR)cname);
+
+wcscpy(LocalComputer, (LPWSTR)compname);
+
+Conor Rafferty wrote:
+
+> Re: Currently Logged–On User’s domain
+> ===============================
+>
+> ::OpenProcessToken(::GetCurrentProcess(), .....)
+>
+> ::GetTokenInformation(hToken, TokenUser, pUserInfo,
+>
+> call the above fn twice, once with null param to get the number of bytes you
+> need to alloc , then alloc the bytes ,
+> then make the REAL call
+>
+> // get strings from user structure
+> ::LookupAccountSid(....
+> pUserInfo->User.Sid, // IN address of security identifier
+> caUser,
+> caDomain ........)
+>
+> And then look in caDomain to see if it put anything there !!
+>
+> if there isn’t it means user is logged locally (to the workstation)
+> You can then get the workstation name from GetComputerName() !!
+
+----------------
+See also:
+ WaitForSingleObject.
+ CancelIo
+----------------
+Responses:
+
+-------------------------
+felixk@mvps.org (Felix Kasza [MVP])
+Newsgroups: microsoft.public.win32.programmer.kernel
+
+ >    In some circumstances, you can specify a handle of a file, named
+ >    pipe, or communications device as a synchronization object in
+ >    lpHandles. However, their use for this purpose is discouraged.
+
+This is because for a named pipe, for example, you wouldn't know which
+I/O and from which client has completed. If that doesn't bother you,
+go ahead.
+
+ > Furthermore, I do not know how to obtain a lpHandle given a file
+ > descriptor -- i.e. the reverse of _open_osfhandle().  (Alternatively,
+ > perhaps there is some way to convert an ANSI C FILE *stream (i.e. the
+ > result of fdopen()) to an lpHandle?)
+
+FILE *fp to NT handle:
+
+        handle = _get_osfhandle( fileno( fp ) );
+

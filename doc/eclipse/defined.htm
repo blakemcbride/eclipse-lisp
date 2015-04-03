@@ -1,0 +1,358 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<!-- The following potential extension, if realized, must be defined
+     here, or perhaps, in extens.htm
+     - Additional items in LOGICAL-PATHNAME-TRANSLATION entries.
+     - Additional supported DECLARATION IDENTIFIERS.
+     - Additional conversions supported by STRING.
+     - Additional arguments to TRANSLATE-PATHNAME.
+     - Additional operators (macros) which create types.
+     - Additional :external-format designators.
+     - Noting anything else that calls the file compiler.
+     - Additional compile-time side-effects of defparameter/defvar. 
+     - Additional variables bound by WITH-STANDARD-IO-SYNTAX.
+     - Any support for variable width fonts.
+     -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Implementation-Defined ANSI Features</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Implementation-Defined ANSI Features</H2>
+<hr>
+
+The ANSI standard specifies that certain features are allowed to vary
+between implementations, but that a vendor  must document
+how these features behave in their particular implementation.
+
+This information includes:
+<UL>
+<LI> <a href="#general">General</a>
+ <UL>
+ <LI> <a href="#param">Implementation parameters</a>
+ <LI> <a href="#float">Floating point types</a>
+ <LI> <a href="#boa">Structure BOA constructor &AUX variable initialization</a>
+ </UL> 
+<LI> <a href="#package">Packages</a>
+<LI> <a href="#stream">Streams</a>
+<LI> <a href="#print">Printing</a>
+ <UL>
+ <LI> <a href="#parray">Readable Arrays</a>
+ <LI> <a href="#ppath">Readable Pathnames</a>
+ <LI> <a href="#char">Characters</a>
+ </UL>
+<LI> <a href="#misc">Miscellaneous Functions</a>
+ <UL>
+ <LI> <a href="#make-load-form">Make-load-form</a>
+ <LI> <a href="#ed">Ed</a>
+ <LI> <a href="#dribble">Dribble</a>
+ <LI> <a href="#step">Step</a>
+ <LI> <a href="#run">Get-internal-run-time</a>
+ <LI> <a href="#time">Time</a>
+ <LI> <a href="#apropos">Apropos, apropos-list</a>
+ <LI> <a href="#documentation">Documentation</a>
+ <LI> <a href="#require">Require</a>
+ </UL>
+</UL>
+
+<HR>
+<h3><a name="general">GENERAL</a></h3>
+
+The behavior of the debugger and the Top-Level are documented in <A
+HREF="top.htm">"The Lisp Top-Level"</a> and <A HREF="rep.htm">"The
+Read-Eval-Print Loop and Debugger"</A>.
+
+<P>
+The supported <em>character scripts</em> are defined in <a
+href="char.htm">&quot;Characters in Eclipse&quot;</a>, which also defines
+additional <i>external-format</i> designators.
+
+<P>
+Pathnames have a number of implementation defined features, as
+described in <A HREF="path.htm">&quot;Pathnames in Eclipse&quot;</A>.
+
+<H4> <a name="param">Parameters</a></H4>
+
+Fixnums are 29 bits long, not including the sign bit, so
+<code>MOST-POSITIVE-FIXNUM</code> and
+<code>MOST-NEGATIVE-FIXNUM</code> are 536870911 and -536870912,
+respectively.
+
+<P>
+The values of other implementation-defined constants and variables can be
+determined interactively from the Lisp Top-Level.  
+
+<H4><a name="float">Floating Point Types</a></H4> 
+
+<b>Short-float</b> and <b>single-float</b> are the same
+<em>type</em>, and <b>double-float</b> and <b>long-float</b> are
+the same <em>type</em>. 
+
+<H4> <a name="boa">Structure BOA constructor &AUX variable initialization</a></H4>
+
+If a slot appears as an <CODE>&AUX</CODE> variable in a <EM>BOA
+lambda-list structure constructor</EM></a>, the value specified by the
+<CODE>&AUX</CODE> syntax in the lambda-list is used.  For an
+<CODE>&AUX</CODE> variable which appears as simply the variable name
+(eg. <CODE>X</CODE>) instead of as a list (eg. <CODE>(X
+INITIAL-VALUE-FORM)</CODE>), the initial-value is <code>NIL</code>.  This is true
+regardless of whether the slot has been specified to have an initform.
+
+<HR>
+<h3><a name="package">PACKAGES</a></h3>
+
+The default package-use-list contains only the <CODE>ECLIPSE</CODE>
+package.  This package exports the same symbols that the
+<CODE>COMMON-LISP</CODE> package does, plus all the symbols defined in
+the Eclipse documentation.  <CODE>SYS</CODE> and <CODE>SYSTEM</CODE> are
+nicknames for the <CODE>ECLIPSE</CODE> package.
+
+<p>
+The <CODE>COMMON-LISP-USER</CODE> package uses the <CODE>ECLIPSE</CODE>
+package.
+
+<p>
+The <code>C</code> package uses no other package and provides a home
+for <a href="names.htm#explicit">symbols that relate to
+translation</a> of Lisp code to C.
+
+<p>
+Currently, the <CODE>ECLIPSE</CODE> and <code>C</code> packages are
+the only packages defined by Eclipse other than the ones specified by
+the standard.
+
+<P><STRONG>N.B.</STRONG>: Where the ANSI standard specifically allows
+an implementation to define additional keyword arguments for an
+operator, (as in the case of <a
+href="path.htm#directory"><b>directory</b></a>,) the Eclipse-defined
+named arguments (i.e. <EM>&key</EM> arguments) are named by symbols in the
+<CODE>KEYWORD</CODE> package.
+
+<P><STRONG>N.B.</STRONG>: Where the ANSI standard does
+<STRONG>not</STRONG> specifically allow an implementation to define
+additional keyword arguments for an operator, (as in the case of <a
+href="compile.htm"><b>compile-file</b></a>,) the Eclipse-defined named
+arguments are named by symbols in the <CODE>ECLIPSE</CODE> package.
+
+
+<HR>
+<h3><a name="stream">STREAMS</a></h3>
+
+<P>
+The initial values of the standard stream variables such as <a
+href="svars.htm"><b>*standard-input*</b></a> are described in the <a
+href="dict.htm">&quot;Eclipse dictionary&quot;</a>.
+
+<p>
+<a href="svars.htm"><B>*Terminal-io*</b></a> may be rebound or
+assigned, though programmers should be aware that one or more of the
+other standard stream variables may be bound to <b>synonym-stream</b>s
+for <b>*terminal-io*</b>.
+
+<P> The Eclipse library utilities do not alter the <EM>input
+processing mode</EM> for <CODE>stdin</CODE>, so if the operating
+system or some other control process is providing <EM>canonical mode
+input processing</EM> for the stream which Eclipse sees as
+<CODE>stdin</CODE>, then Eclipse streams will see only the result of
+this input processing, not raw input.
+
+<p>Eclipse allows user-defined stream behavior through CLOS streams,
+compatible with ANSI specified stream behavior, <a
+href="extensions.htm#clim">CLIM</a>, and the Gray
+<a href="extensions.htm#streams">"STREAM-DEFINITION-BY-USER"</a> proposal.
+
+<P>The streams initially bound to stream variables such as
+<b>*terminal-io*</b> are considered interactive streams if their
+corresponding operating system file descriptors indicate through the
+operating system <code>isatty()</code> function that they are
+connected to terminals.  The only Lisp mechanism for creating
+additional interactive streams is to create user-defined streams
+created through the CLOS streams interface.
+
+<P>
+Interactive streams can produce end-of-file conditions. However,
+<b>listen</b> and <b>read-char-no-hang</b> return
+<code>NIL</code> on interactive streams that are at end-of-file.
+
+<p>
+<b>Input-stream-p</b> returns <code>NIL</code> for <b>broadcast-stream</b>s. 
+<b>Interactive-stream-p</b> returns <code>NIL</code> for <b>broadcast-stream</b>s. 
+
+<hr>
+<h3><a name="print">PRINTING</a></h3>
+
+<H4><a name="parray">Readable Arrays</a></H4>
+When <b>*print-readably*</b> is <em>true</em>, arrays print using the
+usual notation if the result, when read, would produce the same array
+(i.e. is similar as a constant). Otherwise, the array is printed 
+as:
+
+<PRE>
+   #.(make-array '<EM>dimensions</EM>
+                 :element-type '<EM>element-type</EM>
+	         :initial-contents '<EM>contents</EM>)
+</PRE>
+
+<H4><a name="ppath">Readable Pathnames</a></H4>
+
+When <b>*print-readably*</b> is <em>true</em>, pathnames print using
+<CODE>#S</CODE> syntax.  This allows them to be read back in as a
+pathname with similar components, independently of the value
+<b>*default-pathname-defaults*</b>.  
+
+<P> In keeping with <CODE>#S</CODE> structure style, only the
+&quot;slots&quot; of the pathname are output, not additional arguments
+to <b>make-pathname</b> such as <CODE>:CASE</CODE> or
+<CODE>:DEFAULT</CODE>.  (This means that the values of components must
+be displayed in <CODE>:LOCAL :CASE</CODE>.)
+
+<H4><a name="char">Characters</a></H4>
+
+The <CODE>~c</CODE> format directive prints characters by simply
+writing the value of <CODE>(CHAR-INT <EM>character</EM>)</CODE> to the
+stream.  How this is displayed on interactive streams depends on the
+operating system or controlling process.  For example, if <a
+href="svars.htm"><b>*terminal-io*</b></a> has its initial value, and
+Eclipse is running on a Unix system with <CODE>stdout</CODE> going to
+a terminal display, <CODE>(format t "~c" #\Bell)</CODE> might display
+as <CODE>^G</CODE>, <CODE>\007</CODE>, or the terminal might beep and
+display nothing. See also, <a href="char.htm">&quot;Characters in
+Eclipse&quot;</a>.
+
+<p>
+The <CODE>~:c</CODE> format directive prints the <b>char-name</b>
+as a string if there is one.  Otherwise, for non-graphic characters
+(which includes all control characters) the character is
+printed with the appropriate <CODE>Control-</CODE>, <CODE>Meta-</CODE>
+or <CODE>Control-Meta-</CODE> prefix.
+
+<h4><a name="pretty">*Print-Pretty*</a></h4>
+
+The initial value of <b>*print-pretty*</b> is <em>false</em> in a <a
+href="gloss.htm#runtime">runtime-only application</a> (i.e. after
+execution of <a href="initf.htm"><b>clInit</b></a>), and <em>true</em>
+in a <a href="gloss.htm#development">development application</a>
+(i.e. after execution of <a href="initdf.htm"><b>clInitD</b></a>).
+Since the <a href="gloss.htm#top-level"><i>Lisp Top-Level (2)</i></a>
+is a <a href="gloss.htm#development">development
+application</a>, <b>*print-pretty*</b> is <em>true</em> in the <a
+href="gloss.htm#top-level"><i>Lisp Top-Level (2)</i></a>.
+
+<hr>
+<h3><a name="misc">MISCELLANEOUS FUNCTIONS</a></h3>
+
+<h4><a name="make-load-form">Make-load-form</a></h4>
+
+The form returned by <b>make-load-form</b> of a <b>class</b> will
+create a <b>forward-referenced-class</b> if the <b>class</b> is not
+defined at the time the load form is evaluated.
+
+<h4><a name="ed">Ed</a></h4>
+
+There is no resident editor, so <b>ed</b> does nothing.
+ <!-- If it did do something, we would have to document how the text
+  of the definition is obtained. -->
+
+<h4><a name="dribble">Dribble</a></h4>
+
+If <b>dribble</b> is called while a stream to a &quot;dribble
+file&quot; is still open from a previous call to <b>dribble</b>,
+dribbling occurs to both the old and new stream.
+
+<P>
+<b>Dribble</b> binds all seven of the <a href="svars.htm">standard
+stream variables</a>.
+
+<h4><a name="step">Step</a></h4>
+
+<b>Step</b> recursively interprets the argument form, using the
+lexical environment.  Before each form is evaluated, <b>step</b>
+prints the level and the current form, and then calls
+<b>break</b>.  One or more <em>restart</em> options are
+available to proceed with the evaluation, which are displayed and
+invoked in the usual manner for the <a href="top.htm">debugger</a>.
+
+<P>
+When each evaluation is complete, the level and the <em>primary
+value</em> produced by the form is printed.
+
+<P>
+The behavior of <b>step</b> is undefined if a step form is
+<em>compiled</em> in a lexical-environment which provides
+definitions for lexical variables or functions.
+
+<P>
+<b>Step</b> uses <a href="svars.htm"><b>*debug-io*</b></a>.
+
+<h4><a name="run">Get-internal-run-time</a></h4>
+
+The time reported is the total CPU time used while executing
+instructions in either the user space of the calling process, or by
+the system on behalf of the calling process.
+
+<h4><a name="time">Time</a></h4>
+
+<b>Time</b> currently prints out information in the following
+format:
+<PRE>
+xxxxxx.xx seconds of real time.
+xxxxxx.xxx seconds of run time.
+</PRE>
+
+Real time and run time correspond to the values measured by
+<b>get-internal-real-time</b> and
+<b>get-internal-run-time</b>, though it is not specified
+whether these functions are a actually called.
+
+
+<h4><a name="apropos">Apropos, apropos-list</a></h4>
+
+The search is case sensitive.
+
+<h4><a name="documentation">Documentation</a></h4>
+
+Documentation appearing in defining forms (such as <b>defun</b>)
+and explicitly assigned with <CODE>(SETF DOCUMENTATION)</CODE> is
+retained.
+
+<P>
+Documentation on some kinds of function objects is not currently
+retained.
+
+<h4><a name="require">Require</a></h4>
+
+The value returned by <b>require</b> indicates which files, if any
+were loaded.
+
+<p>
+If the <i>module</i> specified as an argument to <b>require</b> is
+already <b>provide</b>d, <b>require</b> returns nil.
+
+<p>
+Otherwise, if the <i>pathname-list</i> argument is specified, the
+files of <i>pathname-list</i> are loaded, and <i>pathname-list</i> is
+returned.
+
+<p>
+Otherwise, <b>require</b> attempts to load, in order:
+<ol>
+<li><code>P"<i>module-name</i>"</code> (i.e. <code>(MAKE-PATHNAME :NAME
+(STRING <i>module-name</i>) :CASE :COMMON)</CODE>), 
+<li><code>P"sys:site;<i>module-name</i>"</code>,
+<li><code>P"sys:source;<i>module-name</i>"</code>.
+
+</ol> The truename of the first such file found is returned.  Only the
+first file found is loaded.  See <a href="site.htm">Site and Other
+Initial Definitions</a>.
+
+
+<HR>
+<A HREF="rep.htm">[Previous]</A> <A HREF="extensions.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

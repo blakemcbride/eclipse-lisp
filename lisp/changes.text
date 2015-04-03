@@ -1,0 +1,75 @@
+			     IN PROGRESS
+
+
+			      BUG FIXES
+
+
+PATHNAME AND TRUENAME work on synonym streams associated with a
+file.
+
+*PRINT-LEVEL*, *PRINT-LENGTH*, *PRINT-LINES*  are initially
+nil.
+
+WITH-STANDARD-IO-SYNTAX sets *print-pprint-dispatch* to *ipd* (not
+nil) and *readtable* to *standard-readtable* (not a copy).  
+
+If the last argument to a function call is a conditional with the
+final branch being a call to error (eg. (foo (etypecase x ...))), the
+call is now correctly compiled to C.  Previously, the error call was
+inserted inline and the conditional test was skipped.  This was done
+by chaning how (and when) binding-value was stored during target-value
+to a lexical-target.
+
+Pretty-printing is now works, including the printing of circular
+structures.
+
+SET-PPRINT-DISPATCH now uses EQUAL to compare type specifiers.
+
+Default timezone is now correct during daylight savings.
+
+USER-HOMEDIR-PATHNAME: returns null name, type and version rather than
+:unspecific, and defaults to getcwd when (getenv "HOME") returns nil.
+
+
+			       FEATURES
+
+LIBRARY split into run-time and development components.  (Must note in
+doc that *print-pretty* is false in runtime, and true in development.)
+
+When FILE-ERROR is signalled due to an operating sytsem error, the
+operating system error message is included in the description.
+(Functions signalling stream-error still don't do this!)
+
+C compiled calls to  LIST* are now independent of call-arguments-limit.  
+
+FUNCALL does not cons.
+
+Simplified condition reporting by debugger.  *print-readably* is also
+nil, to avoid recursive errors.
+
+Pretty-printing has been reimplemented to be more efficient,
+maintainable, robust, and so that it participates properly as a CLOS
+stream.
+
+READ-EVAL-PRINT-LOOP now resets internal current column machinery of
+the output stream to be 0, even though *prompt-hook* may have advanced
+the current column past zero.  This is because by the time data has
+been entered on the input stream and ended with a #\return, it will
+look to the user as though the output stream is at column 0.  This
+results in better pretty printing of result or user calls to the
+pretty printer.
+
+*standard-input*, *standard-output*, *error-output* now respond true
+to interactive-stream-p iff the operating system isatty() function
+returns true for their file descriptor.
+
+LISTEN now returns nil rather than getting an error when no input is
+available. 
+
+
+  PATHNAME STUFF:
+
+equal(p) hash code does not depend on the ability to create a namestring
+shell quoting is no longer supported in pathname namestrings
+the parsing of the name, file and version component of namestrings has changed.
+

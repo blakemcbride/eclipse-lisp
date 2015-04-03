@@ -1,0 +1,84 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: LOAD</TITLE>
+</HEAD>
+
+Eclipse behavior for<BR>
+<I>Function</I> <B>LOAD</B><P>
+
+<B>Description:</B><P>
+
+<I>Filespec</I> is merged with
+<b>*default-pathname-defaults*</b>, and the matching files are
+located in the file system as though with <b>directory</b>.  If the
+merged result specifies a mnemonic version such as
+<code>:NEWEST</code>, the appropriate version is identified.  If the
+merged file <em>type</em> is <CODE>NIL</CODE>, then <b>directory</b>
+will consider all file <em>types</em>.  Links are not resolved when
+gathering matching files.
+
+<P>
+If more than one file matches (as, for example, if the <em>type</em>
+is <CODE>NIL</CODE>), then only files of canonicalized
+<em>type</em> <CODE>&quot;BIN&quot;</CODE>  are considered.  If there
+are no <CODE>&quot;BIN&quot;</CODE> files, then only files of
+canonicalized <CODE>&quot;LISP&quot;</CODE> <em>type</em> are
+considered.  If this process yields more than one applicable file, an
+error of type <b>file-error</b> is signaled (due to unresolved
+wild-pathname components).  If this process yields no files, the
+specified <i>if-does-not-exist</i> action is performed.
+
+<P>
+<B>See Also:</B><P>
+
+The <a href="char.htm#repertoire"><i>Character Repertoires</i></a> and
+<a href="char.htm#streams"><i>Interaction with Streams</i></a>
+sections of <a href="char.htm">&quot;Characters in Eclipse&quot;</a>,
+<a href="path.htm">&quot;Pathnames in Eclipse&quot;</a>, <a
+href="compile.htm"><b>compile-file</b></a>, <a
+href="open.htm"><b>open</b></a>.</a><P>
+
+<B>Notes:</B> 
+
+<P>
+Note that if a specific <em>version</em> number is specified, but no
+<em>type</em>, <b>load</b> will load the binary of that version if it
+exists, otherwise the Lisp source.  If neither a <em>version</em> nor
+a <em>type</em> is specified and
+<b>*default-pathname-defaults*</b> has its usual
+<em>version</em> component of <CODE>:NEWEST</code>, <b>load</b> will
+load the latest version of the file, with the binary for that version
+taking precedence, if it exists.
+
+<P>
+Note that the <CODE>:NEWEST</code> <em>version</em> of a file which
+has several numbered <em>versions</em> in the file system is the one
+with the highest number, regardless of <b>file-write-date</b>.
+
+<p>
+ANSI defines <b>load</b> to accept an <i>external-format</i> <a
+href="defined.htm#package"><EM>&KEY</EM></a> argument, but not an
+<i>element-type</i> argument.  This is because <b>loading</b> a source
+file (i.e. <code>.lisp</code>) must handle any
+implementation-supported character.  The Eclipse implementation of
+<b>load</b> recognizes that only
+<b>base-char</b>s can be read using the <code>:ASCII</code>
+<i>external-format</i>.  The consequence is that when a source file is
+<b>load</b>ed and the <code>:ASCII</code> <i>external-format</i> is
+specified, <em>string</em> literals and the <b>symbol-name</b>s of
+newly created <em>symbols</em> will be of <em>type</em>
+<b>base-string</b>.  Otherwise, it is only specified that these will
+be of <em>type</em> <b>string</b>.
+
+<HR>
+<A HREF="directory.htm">[Previous]</A> 
+<A HREF="open.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

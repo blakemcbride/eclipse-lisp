@@ -1,0 +1,248 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Object Orientation</TITLE>
+<meta name="description" content="Object-oriented, functional, and procedural Lisp">
+<meta name="keywords" content="lisp, object, functional, procedural, language, style, 
+inheritance, polymorphism, encapsulate, methodology">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Object Oriented and Procedural Lisp</H2>
+
+<blockquote></b>
+Summary: </b> Common Lisp combines object-oriented, functional, and
+procedural programming within a single, unified system.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="environment.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="dynamic.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm"><b>objects</b></a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+<BLOCKQUOTE>
+"No single language can support every style, but a variety of styles
+can be supported within the framework of a single language. Where this
+can be done, significant benefits arise from sharing a common type
+system, a common toolset, and so forth. These technical advantages
+translate into important practical benefits such as enabling groups
+with moderately differing needs to share a language rather than having
+to apply a number of specialized languages."  - Bjarne Stroustrup 
+</BLOCKQUOTE>
+
+<p>
+There is no one-true programming methodology:
+
+<ul>
+<p><li> Object Oriented programming groups data into classes and
+operations on those classes.  Conceptually, the &quot;same&quot;
+operation might do different things, depending on the classes of the
+data it is being applied to.  Typically, classes can be defined in
+terms of other classes (inheritance), so that the data within a
+particular instance of a class, and the operations applicable to those
+instances, can be shared between the new class and the class(es) from
+which it inherits.
+
+<p><li> Functional programming describes all computer operations as
+mathematical functions on inputs.  Typically, a function can be <a
+href="dynamic.htm">created and returned from other functions</a> as <a
+href="glossary.htm#first-class">first-class</a> data.  This function
+object may then be passed as input to other functions, perhaps be
+composed with other functions, and eventually, applied to inputs to
+produced a value.  Objects can be defined in terms of functions that
+encapsulate certain data, and operations on objects can be defined by
+functions encapsulating the objects.  Purely functional languages do
+not have assignment, as all side-effecting can be defined in terms of
+functions that encapsulate the changed data.
+
+<p><li> Procedural languages essentually perform everything as
+side-effects to data structures.  A purely procedural language would
+have no functions, but might have &quot;subroutines&quot; of no
+arguments that returned no values, and peformed certain assignments
+and other operations based on the data it found stored in the system.
+
+</ul>
+
+Common Lisp provides integrated support for all these methodologies:
+ <ul>
+<P> <li> There are procedural operations such as assignment and many
+ different kinds of iteration and other control flow constructs (even
+ <code>go</code>).  Some functions come in two versions: one which
+ side-effects its inputs and one which does not.
+
+<p> <li> There is good support for functional programming, as much
+functional programming was developed in earlier Lisps.  Anononymous
+functions can be <a href="dynamic.htm"> produced within other
+&quot;function factories&quot;</a> and returned as <a
+href="memory.htm">indefinite extent</a>, <a
+href="glossary.htm#first-class">first-class</a> objects.  In particular,
+a function created in this way has access to the local variables of
+the function in which it was defined - even if the new function is
+used after the defining function has already returned.  This is what
+allows the encapsulation of data described earlier.
+
+<p> <li> Common Lisp, with the Common Lisp Object System (CLOS), was
+the fist object-oriented programming language to receive an <a
+href="references.htm#ansi">ANSI standard</a>.  It is, arguably, the most
+complete and advanced object system of any programming language.  It
+supports:
+ <ul>
+ <li> multiple-inheritence, where classes can inherit from multiple
+ superclasses. 
+
+ <li> multi-method dispatch, where operations can be specialized not
+ just on a single object, but on any of the arguments for the
+ operation, or any combination of those arguments.
+
+ <li> method combination, in which the means by which several
+ applicable operations to a particular set of arguments can be
+ combined, is itself an object-oriented specification, definable by the
+ programmer.
+
+ <li> operations that can specialize on particular instances of
+ classes, rather than on just the broad class of the arguments.
+
+ <li> shared class variables (slots, attributes) that are shared by
+ all instances of a class, in addition to instance variables which are
+ unique to each instance.
+
+ <li> specification of the creation operation for instances of a class
+ as an object-oriented program, definable by the programmer.
+
+ <li> The behavior of operations on objects (methods) are themselves
+ defined as <a href="glossary.htm#first-class">first-class</a> 
+ objects, which can be specialized by the programmer.
+
+ <li> Access to classes themselves as <a href="glossary.htm#first-class">first-class</a> 
+ objects.  The objects which define the behavior of classes are
+ themselves classes, useable directly by the programmer.
+
+ </ul> 
+
+These features, combined with the <a href="glossary.htm#mop">Metaobject
+Protocol</a>, make CLOS itself an object-oriented program which can be
+customized extensively by the programmer.
+
+</ul> 
+
+<p>
+The Common Lisp support for each of these programming methodologies is
+generally more complete than languages specialized for just one of the
+methodologies.  What makes Common Lisp truly useful, however, is that
+these different methodologies have been well integrated with each
+other, and with other features of Common Lisp.  For example:
+
+<ul>
+
+<p><li> All operations in Lisp are invoked the same way, whether they
+are side-effecting &quot;procedures&quot;, normal functions, or
+operations specialized on classes.  No special syntax is used, and the
+caller need not be aware of how the operation was defined.  In fact,
+the operation can even be <a href="dynamic.htm">redefined</a> to work
+differently, and the call will correctly use the new
+definition. (Unless that is not desirable.)  
+
+<p> <li> Instance (or shared class) variables of an object can be
+accessed by class-specialized functions, and called the same way as
+any other function.
+
+<p> <li> The same assignment operator can be used to assign values to
+local or global variables, to instance (or shared class) variables of
+an object, or to conceptual &quot;places&quot; that are represented by
+functions that encapsulate the notion of &quot;place&quot;.
+
+<p><li> All operations in Lisp are <a
+href="glossary.htm#first-class">first class</a> objects and instances of
+some sort of function class, regardless of whether they are
+side-effecting &quot;procedures&quot;, normal functions, or operations
+specialized on classes.  Each of these function objects can be passed
+as arguments to other operations, and applied to arguments in the same
+way.
+
+<p> <li> All data in Common Lisp is an instance of some
+class and can participate in operation specialization (method
+discrimination) - even functions, characters, and the components of
+the object system itself.
+
+<p><li> <a href="types.htm">Run-time typing</a> can be used for class
+discrimination.
+
+<p><li> Every operation in Lisp, whether a normal function, an
+operation specialized on classes, or even constructions for procedural
+control flow, always returns a value.  Thus operations can be combined
+in a functional way.  
+
+<p><li> All operations in Lisp can return multiple values.  This
+encourages functional programming, even within object-oriented
+programming, by making it unecessary to side-effect arguments merely
+because an operation conceptually produces more than one value.  The
+multiple values are just returned.  (There's no need for &quot;output
+arguments&quot;.)
+
+<P><li> The <a href="dynamic.htm">dynamic nature</a> of Lisp allows
+functions, classes, and operations on classes to be redefined or added
+to.  If this results in new instance variables for instances of a class,
+the new variables are added to old instances with appropriate (and
+programmer controllable) initial values.  If new class definitions or
+operations on them make a different set of operations applicable to a
+particular set of arguments in a call, the program which makes the
+call will be updated automatically to use the new operations.
+
+</ul>
+</td></tr></table>
+
+</BODY>
+</HTML>

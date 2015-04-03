@@ -1,0 +1,54 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Variable *DEFAULT-ELEMENT-TYPE*</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Variable</I> <B>*DEFAULT-ELEMENT-TYPE*</B><P>
+
+<B>Value Type:</B> a <b>character</b> <em>type-specifier</em>.<P>
+
+<B>Initial Value:</B> <code>CHARACTER</code>.<p>
+
+<B>Description:</B><P>
+
+The default value for the <i>element-type</i> argument to stream
+creation operations such as <b>make-string-output-stream</b> and
+<a href="open.htm"><b>open</b></a>.<p>
+
+<B>Affected By:</B> None.<p>
+
+<B>See Also:</B> 
+
+<P>
+<a href="char.htm">&quot;Characters&quot;</a> and <a
+href="init.htm"><code>init.lisp</code></a>.<p>
+
+<B>Notes:</B> 
+
+<P>The <a href="cl.htm#ansi">ANSI standard</a> does not define this
+variable, and the default value for <i>element-type</i> is
+specified as being <code>CHARACTER</code>, which Eclipse uses as the
+initial value for this variable.  Thus the default behavior is as per
+the ANSI standard.
+
+<P>The vast majority of Common Lisp applications only use
+<code>BASE-STRING</code>, particularly those that were developed on
+other implementations in which <code>BASE-STRING</code> is equivalent
+to <code>STRING</code>.  In such applications, using arrays of
+<code>EXTENDED-CHAR</code> rather than <code>BASE-CHAR</code> is
+wasteful of both time and space.  
+
+
+<HR>
+<A HREF="svars.htm">[Previous]</A> 
+<A HREF="original-stream.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

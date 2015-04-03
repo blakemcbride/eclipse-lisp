@@ -1,0 +1,30 @@
+The following have been modified, but not reflected in admin/alu.tgz:
+
+table/
+ history: New Maclisp def. 	
+ dynamic: "static vs. weak" => "static vs. dynamic"
+ combine: fixed formatting error	
+ consultants: added entry
+ systems: updated clisp, eclipse listing
+ mail: updated clisp listing. added plob (with link to tools.htm)
+ references: fixed typo. Added clim online.
+ lisp: changed "Pride and Prejudice" link
+ bibliography: fixed typo	
+ environment: mentioned use of lists to represent trees, queues.
+ bibliography: web page for author Watson	 
+ objects.htm: typos		
+ tools: new home for Plob. clx online manual. free-clim link. New regexp link.
+ contents: clim on-line manual	
+ compare: Link to Schmidt/Omohundro paper.
+
+admin/
+ work: listed Raja as "Learning Lisp" editor	
+ change.log: this file
+
+On 1/5/98, a new alu.tgz was uploaded, that reflected the following changes:
+admin/
+ change: updated
+ work: revised reference to-do-list.
+table/
+ environment, types: fixed typos
+ community, periodicals: changed PCAI link 

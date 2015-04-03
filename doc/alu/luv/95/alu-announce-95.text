@@ -1,0 +1,165 @@
+Announcing the Annual Association of Lisp Users Meeting and Workshop,
+the Fifth Lisp Users And Vendors Conference (LUV'95)
+
+		Royal Sonesta Hotel
+		Cambridge, MA
+		August 14-17, 1995
+
+The board members of the Association of Lisp Users (ALU) invite you to
+increase your Lisp knowledge by attending the 1995 Lisp Users
+Conference.  
+
+Highlights include:
+
+Keynote speeches by Howard E. Shrobe (ARPA), Guy L. Steele Jr. (Sun
+Microsystems), and Gerald J. Sussman (MIT).
+
+GNU Emacs Lisp tutorial by Richard Stallman (Free Software Foundation).
+
+Advanced CLIM tutorials by CLIM developers Colin Meldrum (Franz, Inc),
+Scott McKay (Harlequin, Inc.), and John Aspinall (Harlequin, Inc.).
+
+----------------------------------------------------------------
+Preliminary Program
+----------------------------------------------------------------
+
+ MONDAY
+
+ 8:00am-12noon  TUTORIAL: Efficiency/Optimization
+		Instructors:  David Tan (Point and Click Solutions, Inc.)
+
+ 1:30pm-5:30pm  TUTORIAL: GNU Emacs Lisp 
+		Instructor: Richard Stallman (Free Software Foundation)
+
+ 7:00pm-8:30pm  PUBLIC SEMINAR: Introduction to Common Lisp 
+		  and the Common Lisp Object System (CLOS)
+		Instructor: to be determined
+
+ TUESDAY
+
+ 8:00am-12noon  TUTORIAL: Introduction to Dylan
+		Instructor: to be determined
+
+ 1:30pm-2:30pm  KEYNOTE ADDRESS: Guy L. Steele Jr. (Sun Microsystems)
+
+ 2:45pm-3:45pm  VENDOR PRESENTATION: Harlequin Incorporated
+
+ 4:00pm-5:00pm  Paper Presentations
+
+ 7:00pm-8:30pm  PUBLIC SEMINAR: Intro to Common Lisp Interface Manager (CLIM)
+		Instructor: Colin Meldrum (Franz, Inc.)
+
+ WEDNESDAY
+
+ 8:00am-12noon  TUTORIAL: Programming World Wide Web Applications
+	        Instructor: John Mallery
+
+ 1:30pm-2:30pm  INVITED TALK: ``Evolutionary Design''
+		              Howard E. Shrobe (ARPA)
+
+ 2:45pm-3:45pm  ALU meeting
+
+ 4:00pm-4:30pm  VENDOR PRESENTATION: Chestnut Software
+
+ 4:30pm-5:00pm  VENDOR PRESENTATION: Gold Hill
+
+ 5:00pm-5:30pm	VENDOR PRESENTATION: Conscious Computing
+
+ 8:00pm-10:00pm Birds of a Feather sessions
+
+ THURSDAY 
+
+ 8:00am-10:00am	 TUTORIAL: Macros & Compiler Macros for Abstraction & Optimization
+		 Instructor: Chris Stacy
+
+10:00am-12noon   TUTORIAL: Object Oriented & Relational Databases
+		 Instructor: Judy Anderson & Wesley Dunnington (Harlequin, Inc.)
+
+ 1:30pm-2:30pm   KEYNOTE ADDRESS: Gerald J. Sussman (MIT)
+
+ 2:45pm-3:45pm   VENDOR PRESENTATION: Franz, Inc.
+
+ 4:00pm-5:00pm   Paper Presentations
+
+ Evening         No scheduled activities, except meeting of newly elected board
+
+ FRIDAY
+
+ 8:00am-10:00am  TUTORIAL: Intermediate/Advanced CLIM topics (part A)
+		 Instructor: Colin Meldrum (Franz, Inc.)
+
+10:00am-12noon   TUTORIAL: Intermediate/Advanced CLIM topics (part B)
+		 Instructor: Scott McKay (Harlequin, Inc.)
+
+ 1:30pm-3:30pm   TUTORIAL: Intermediate/Advanced CLIM topics (part C)
+		 Instructor: John Aspinall (Harlequin, Inc.)
+
+ 3:45pm-5:00pm   INVITED TALK: ``ANSI and ISO Lisp Standardization Activities''
+		 Instructor: Kent Pitman (Harlequin, Inc.)
+
+----------------------------------------------------------------
+Registration Fees
+----------------------------------------------------------------
+
+			before	after	students*
+			15-Jul	15-Jul	by 15-Jul
+
+Single days		200	300	50
+(all day, any day)
+
+General Session only	200	300	50
+(3 afternoons, Tu-Th)
+
+Complete week		800	1000	200
+(all day, M-F - general session plus 9 tutorial sessions)
+
+CHECKS OR MONEY ORDER IN U.S. FUNDS SHOULD BE MADE PAYABLE TO:
+
+	The Association of Lisp Users
+	P.O. Box 294
+	Malvern, PA  19355
+
+Purchase orders will only be accepted with PRIOR approval by 
+Meetings Unlimited, Federal ID #192780-ALU
+
+----------------------------------------------------------------
+Hotel Accommodations:
+----------------------------------------------------------------
+
+This year, the conference will be held at:
+
+	Royal Sonesta Hotel Boston
+	5 Cambridge Parkway
+	Cambridge, MA  02142
+	617-491-3600	617-661-5956 FAX
+
+A limited number of rooms have been reserved at a special conference
+rate of $129.00 SINGLE OR DOUBLE occupancy.  Please call the hotel
+BEFORE JULY 28, 1995 to reserve your room.  When making your
+reservation, please indicate that you are with the Association of Lisp
+Users (ALU) to receive our group rate.  Any reservations made after July
+28 cannot be guaranteed at this conference rate.
+
+----------------------------------------------------------------
+For further information:
+----------------------------------------------------------------
+
+If you would like to receive a brochure to register for the conference
+please provide complete information including your full name, address,
+phone and fax number and e-mail address.  Brochures will be mailed the
+week of June 12th.
+
+	Conference Organizers
+	Meetings Unlimited <luv-organizer@ai.sri.com>
+	P.O. Box 294
+	Malvern, PA  19355
+	610-651-0797	610-651-0936 FAX
+
+For information on paper submissions (deadline is 19-Jun), contact
+
+	Olivier Clarisse <clarisse@iexist.att.com>
+
+For program participation, please contact 
+
+	Jim Aragones <alu-president@ai.sri.com>
+	518-387-6967

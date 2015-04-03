@@ -1,0 +1,89 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Real-Eval-Print Loop and Debugger
+</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: The Real-Eval-Print Loop and Debugger</H2>
+<HR>
+
+The <a href="top.htm">top-level read-eval-print loop</a>, the debugger
+(<b>invoke-debugger</b>, <b>break</b>, and <b>error</b>), the
+inspector (<b>inspect</b>) and the single-stepper (<a
+href="defined.htm#step"><b>step</b></a>) all use the same
+real-eval-print loop.
+
+<P>
+In all cases except for the top-level, forms are read from <a
+href="svars.htm"><b>*debug-io*</b></a>, evaluated, and the results
+printed on <a href="svars.htm"><b>*debug-io*</b></a>. For the
+top-level, forms are read from <a
+href="svars.htm"><b>*standard-input*</b></a> and the results printed
+on <a href="svars.htm"><b>*standard-output*</b></a>.  The form to be
+evaluated is prompted for using the <em>function</em> which is the
+value of <a href="prompt.htm"><b>*prompt-hook*</b></a>.
+
+<P>
+When a new read-eval-print loop is entered, the condition which caused
+entry to the loop is printed on <a
+href="svars.htm"><b>*error-output*</b></a>, with <b>*print-escape*</b>
+bound to <code>NIL</code>.  If the condition is a subtype of
+<b>error</b>, <b>warn</b> or <b>break</b>, the corresponding condition
+class name is also printed in a stylized, readable way
+(eg. simple-type-error => <code>Type Error:</code>).
+
+<P>
+The read-eval-print loop notes any available restarts that correspond
+(as though by <code>(compute-restarts <em>condition</em>)</code>) to
+the condition which caused entry to the loop.  If any such restarts
+are available, they are printed to the output stream
+(i.e. <b>*standard-output*</b> or <b>*debug-io*</b>,) after the
+condition notice.
+
+<P>
+When a restart is used to abort one read-eval-print loop to return to
+an earlier one, the error notice and restarts for the earlier
+read-eval-print loop are reprinted.
+
+<P>
+Most forms entered at the read-eval-print loop prompt are evaluated in
+a null lexical environment, as though by <b>eval</b>.  There are
+two exceptions:
+<OL>
+ 
+<LI> Normally, an <em>integer</em> evaluates to itself, which is not
+very interesting.  However, an integer that corresponds to the number
+printed in the listing of available restarts is used to invoke that
+restart interactively.
+
+<LI> Normally, a <em>keyword</em> evaluates to itself, which is not
+very interesting.  However, a keyword that is the same as the name of
+one of the available restarts is used to interactively invoke the
+first such such restart listed.  
+
+</OL>
+Note that these exceptions are for the interactive read-eval-print
+loop only, not for the <em>function</em> <b>eval</b>.
+
+<P>
+If a command is given to invoke a restart interactively through the
+debugger, and the restart returns zero or more values rather than
+transferring control, the values are printed and treated like those
+returned by any form evaluated in the loop.
+
+<P>
+The form and value variables such as <b>+</b>, <b>*</b>,
+and <b>/</b> are special variables and are not rebound by
+different read-eval-print levels.  
+
+<HR>
+<A HREF="init.htm">[Previous]</A> <A HREF="defined.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

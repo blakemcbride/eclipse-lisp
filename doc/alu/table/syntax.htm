@@ -1,0 +1,229 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp Syntax</TITLE>
+<meta name="description" content="Lisp syntax">
+<meta name="keywords" content="lisp, syntax, read, eval">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Decoupling Lisp Syntax From Semantics</H2>
+
+<blockquote>
+<b>Summary:</b> Common Lisp defines a simple regular syntax that is used
+<strong>by default</strong> for reading programs.  It also provides a
+means to change that syntax, and an internal data representation for
+programs that is not text based.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="top-level.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="evaluation.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm"><b>syntax</b></a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+<P>
+One may learn and use Lisp in the same manner as other traditional
+programming languages - by creating text based programs with an
+editor. 
+
+<P>
+Lisp also allows programs to be represented as data.  There are
+functions to evaluate (eg. <A HREF="evaluation.htm">interpret</A>) programs
+and to compile programs.  Unlike other languages, the representation
+of programs which is given to these functions is not text, but a
+<EM>list</EM> of program expressions.  
+
+<P>
+The Lisp reader is a separate function which converts text to these
+expression data.  This distinction is invisible most of the time.
+However, <STRONG> by changing the reader, one can change the syntax of
+the program text, without changing its semantics</STRONG> -
+i.e. without changing how it is evaluated or compiled.
+
+<p>The default printer automatically prints lisp data using the
+standard syntax.
+
+<P> The default configuration of the reader and printer is actually
+the only part of Lisp that uses the syntax.  Everything else uses the
+expression representation of programs.
+
+<P>
+Some people like Lisp syntax.  Others don't, and redefine the LISP
+acronym to stand for "Lots of Irritating, Silly Parentheses."  If you
+tend to agree, it is useful to recognize that you can also change the
+reader to a syntax that you like better.
+
+Here's how the inventor of Lisp explained it in <A
+href="papers.htm#mccarthy">"History of Lisp"</a>, 1978:
+
+<BLOCKQUOTE>
+This internal representation of symbolic information gives up the
+familiar infix notations in favor of a notation that simplifies the
+task of programming the substantive computations, e.g., logical
+deduction or algebraic simplification, differentiation or
+integration. If customary notations are to be used externally,
+translation programs must be written. Thus LISP programs use a prefix
+notation for algebraic expressions, because they usually must
+determine the main connective before deciding what to do next. In
+this, LISP differs from almost every other symbolic computation
+system. ... This feature probably accounts for LISP's success in
+competition with these languages, especially when large programs have
+to be written. The advantage is like that of binary computers over
+decimal--but larger. 
+
+<p>
+
+... Another reason for the initial acceptance of awkwardnesses in the
+internal form of LISP is that we still expected to switch to writing
+programs as M-expressions [infix format]. The project of defining
+M-expressions precisely and compiling them or at least translating
+them into S-expressions was neither finalized nor explicitly
+abandoned. It just receded into the indefinite future, and a new
+generation of programmers appeared who preferred internal notation to
+any FORTRAN-like or ALGOL-like notation that could be devised.
+
+<p>
+... One can even conjecture that LISP owes its survival specifically
+to the fact that its programs are lists, which everyone, including me,
+has regarded as a disadvantage. Proposed replacements for LISP
+... abandoned this feature in favor of an Algol-like syntax, leaving
+no target language for higher level systems. 
+</BLOCKQUOTE>
+
+<P>The language <a href="related-languages.htm#dylan">Dylan</a>, developed by
+Apple, Carnegie-Mellon University, and Harlequin, can be viewed as a
+C-like syntax for Lisp.
+
+<P>The actual Common Lisp syntax is defined as follows:
+
+<ol>
+<li> Whitespace is ignored.
+
+<li> In general, case is ignored by automatically translating
+everything to upper case, except within strings or when specifying
+individual characters as data.  This behavior can be changed by the user.
+
+<li> The first one or two characters of each expression define how the
+expression is to be read:
+
+<ol> 
+<li> The character <code>"</code> reads the text up to the next <code>"</code>
+as a string object.
+<li> The character <code>(</code> reads the text up to the next <code>)</code>
+as a list object.
+<li> The character <code>#</code> is used to introduce a two-character
+dispatch:
+ <ol>
+ <li> <code>#\</code> reads the remaining expression as a character object.
+ Characters can have names.  Examples: <Code> #\a #\A 
+ #\Return #\Control-G</code>.
+
+ <li> <code>#*</code> reads the remaining expression</code> as a bit
+ vector. Example: <Code> #*1001 </code>
+
+ <li> <code>#(</code> reads the remaining expression (terminated by a
+ closing <code>)</code>) as a vector. Example: <Code> #(1 2 3)</code>
+
+ <li> <code>#<i>n</i>A(</code> reads the remaining expression (terminated by a
+ closing <code>)</code>) as an <i>n</i>-dimensional array. Examples:
+ <Code> #1A(1 2 3 4)<br>  #2A((1 2) (3 4))</code>.
+
+ <li> <code>#S(<i>name</i></code> reads the remaining expression (terminated by a
+ closing <code>)</code>) as a structure object of type <i>name</i>. <br> Example:
+ <Code> #S(point :x 1 :y 2)</code>.
+ <li> There are a few others as well, and more can be defined by the user.
+ </ol> 
+
+<li> There are a few other single character dispatching characters,
+and more can be defined by the user.
+
+<li> Everything else is either a number of a symbol. The reader is
+smart enough to recognize all the usual representations for integer,
+rational or floating point numbers.  The base for rational numbers can
+be specified by the user.
+</ol>
+</ol>
+
+The internal expression representation for programs is simply this:
+
+<ol>
+
+<li> Symbols are names of variables.
+
+<li> Everything else that is not a list is simply treated as literal
+data.
+
+<li> A list is either a special operation or a function call:
+<ol>
+<li> If the first item in the list is a symbol recognized as either a
+system-defined or user-defined special operator, the rules for that
+operator are followed to evaluate the list.  There are special
+operators defined for defining functions, classes, variables, etc., as
+well as to control evaluation within a function (<code>if</code>,
+assignment, etc.).
+
+<li> Otherwise the first item names a function, and the rest of the
+items in the list are arguments to the function.
+</ol>
+
+</ol>
+
+That's it.  No predence ordering.  No statements.
+</td></tr></table>
+
+</BODY>
+</HTML>

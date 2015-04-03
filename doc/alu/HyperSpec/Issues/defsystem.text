@@ -1,0 +1,809 @@
+From - Thu Jun  4 15:11:44 1998
+Newsgroups: comp.lang.lisp
+Path: ix.netcom.com!netnews.com!news.idt.net!nntp.giganews.com!uunet!in3.uu.net!world!pitman
+From: Kent M Pitman <pitman@world.std.com>
+Subject: Re: DEFSYSTEM proposal available?
+Message-ID: <sfwra15vvqn.fsf@world.std.com>
+Sender: pitman@world.std.com (Kent M Pitman)
+Organization: The World Public Access UNIX, Brookline, MA
+X-Newsreader: Gnus v5.3/Emacs 19.34
+References: <joswig-0406980123540001@194.163.195.66>
+Date: Thu, 4 Jun 1998 18:59:28 GMT
+Lines: 795
+Xref: ix.netcom.com comp.lang.lisp:33279
+
+joswig@lavielle.com (Rainer Joswig) writes:
+
+> somebody mentioned the DEFSYSTEM proposal for ANSI CL (from
+> Kent Pitman?). Is the proposal available anywhere? Even already coded?
+
+I made a proposal.  To my knowledge it's not coded up by anyone.
+There are a lot of other versions that are.  Whether anyone wants to
+waste energy on mine or spend the same energy writing up one that is
+coded up is a question.
+
+FWIW, my proposal is attached below, and beyond that the excerpt from
+my personal notes on why this proposal failed.  (It's possible the
+proposal part is also available at the ftp site (parcftp.xerox.com)
+but I haven't been there in a while and am not sure what state all
+that stuff is in.  My private notes are not publish in whole anywhere
+but I use them as a historical reference from time to time since often
+the writeups leave things unclear and it helps to have a blow-by-blow
+record of what really happened at the meetings, even if an unofficial
+one.)
+
+One important note: this is a historical document and some
+then-endorsements don't apply now.  In some cases, I think people who
+endorsed this went off and wrote their own because they were tired of
+waiting, and they may now prefer their own.  Doug Rand may be one such;
+I can't recall--I know it was someone who was among my original core
+supporters, and maybe there were later others as well.
+So take it all in its proper historical context.
+
+==============================================================================
+Issue:        DEFSYSTEM
+Forum:	      Cleanup
+References:   none
+Category:     ADDITION
+Edit history: 20-Feb-91, Version 1 by Pitman,
+	      22-Feb-91, Version 2 by Pitman (Moon, Barmar, Sandra comments)
+	      02-Mar-91, Version 3 by Pitman (Barmar comments)
+	      19-Mar-91, Version 4 by Pitman (Scott McKay comments,
+		and miscellaneous discussion and endorsements)
+Status:	      For X3J13 consideration
+
+Problem Description:
+
+  A lingering area which -many- Common Lisp users have cited as a major hole
+  in the language is the absence of DEFSYSTEM.
+
+  The removal of PROVIDE and REQUIRE by Cleanups only aggravates this
+  problem.
+
+Proposal (DEFSYSTEM:NEW-FACILITY):
+
+  Introduce a new type, SYSTEM, which represents an aggregation of code
+  (possibly distributed over more than one file) which can be manipulated
+  as a unit.
+
+  Introduce a new macro, DEFINE-SYSTEM, which defines a system.
+  The syntax is
+
+     (DEFINE-SYSTEM name options &body data)
+      options ::= (&key (pretty-name (string-capitalize name))
+			(nicknames '())
+			(required-systems '())
+		        (default-package *package*)
+		        (default-readtable *readtable*)
+			(default-pathname 
+			 <implementation&module-type-dependent>)
+			(default-destination-pathname 
+			 <implementation&module-type-dependent>)
+		        (default-module-type :lisp)
+		        (type 'SIMPLE-SYSTEM)
+		        &allow-other-keys)
+
+  The NAME is a symbol which identifies the system for the purpose of
+  naming, and for the purpose of detecting redefinition.  (Only the name of
+  the symbol is used.)  If a system which has neither been compiled nor
+  loaded is redefined, the new definition takes precedence over the old one.
+  The consequences of redefining a system which has been compiled or loaded
+  are not defined.  NAME is not evaluated.
+
+  The OPTIONS are alternating keywords and values.  The values are
+  evaluated. This is a description of how each defined OPTION is treated:
+
+    :PRETTY-NAME string
+
+      A string used for naming the system in situations where
+      human-readability is more important than mechanical re-readability.
+      The pretty-name is not a valid name to use for lookup with
+      FIND-SYSTEM, although implementations might have
+      implementation-defined situations where it was used interactively as
+      the preferred name of a system.  Even though it is not valid for
+      lookup with FIND-SYSTEM, no PRETTY-NAME of one system can be the same
+      as the pretty-name or the real name of any other system; if it is, an
+      error will be signalled.
+
+    :NICKNAMES list-of-strings
+
+      Other strings which can be used as names for the system on lookup.  If
+      one of these is in conflict with the name, pretty name, or nickname of
+      another system, this is not treated as a redefinition but rather a
+      name conflict.  In that case, a continuable error is signaled; if
+      continued, the nickname is ignored.
+
+    :REQUIRED-SYSTEMS list-of-system-names
+
+      A list of system names acceptable to FIND-SYSTEM.  An error is
+      signalled if an attempt is made to load or compile this system when
+      any of the indicated systems has not been loaded.
+
+    :DEFAULT-PACKAGE package-or-package-name
+
+      A package (or name of a package) to which *PACKAGE* should be bound
+      around any call to LOAD or COMPILE-FILE.  This value can, of course,
+      be overridden from within the file by using IN-PACKAGE or assigning
+      *PACKAGE*.
+
+    :DEFAULT-READTABLE readtable
+
+      A readtable to which *READTABLE* should be bound around any call to
+      LOAD or COMPILE-FILE.  This value can, of course, be overridden from
+      within the file by assigning *READTABLE*.
+
+    :DEFAULT-PATHNAME string-or-pathname
+
+      A pathname or namestring with which other pathnames in this form
+      should be merged, except as otherwise noted.
+			
+    :DEFAULT-DESTINATION-PATHNAME string-or-pathname
+
+      A pathname or namestring which overrides the :DEFAULT-PATHNAME
+      for :DESTINATION-PATHNAMEs.
+
+    :DEFAULT-MODULE-TYPE symbol
+
+      The module-type which should be inferred if there is no explicit
+      mention of a module type.
+
+    :TYPE system-type
+
+      The type of system that this is, which among other things defines 
+      the way in which the DATA which follows the OPTIONS is parsed.
+
+  Parsing of the DATA is dependent on the system TYPE, which defaults to
+  SIMPLE-SYSTEM (which inherits from SYSTEM).  Both SYSTEM and SIMPLE-SYSTEM
+  are standard classes.  SIMPLE-SYSTEM is the only system type defined by
+  this specification, but implementations might define other
+  implementation-defined types (also subtypes of SYSTEM).  Neither DATA nor
+  any of its subexpressions is evaluated.
+
+  For a SIMPLE-SYSTEM, the DATA is a list of module specifications, which
+  are strings or pathnames (representing source file names), or else are
+  lists of the form
+    (filename &key destination-filename
+		   (default-package <default-from-system>)
+		   (module-type <default-from-system>)
+	      &allow-other-keys)
+  A particular module type might require other keywords.  In a
+  SIMPLE-SYSTEM, each module is assumed to have both compilation and load
+  dependencies, transitively, on the modules which precede it.  This implies
+  that if any module needs recompilation, all the modules which follow it
+  will be recompiled.  It also implies that in order to compile or load any
+  module, all of the modules which precede it must be loaded.
+
+  The following module types are permitted (by SIMPLE-SYSTEM):
+    :LISP           - Lisp code to be compiled and loaded.
+		      A :DESTINATION-PATHNAME keyword specifies a filename 
+		      to be used as an output file when the file is compiled.
+    :LISP-SOURCE    - Lisp code to be loaded but never compiled.
+    :LISP-EXAMPLE   - Lisp code to be neither compiled nor loaded.
+    :TEXT           - Text (e.g., documentation) not part of any program.
+		      Neither compiled nor loaded.
+    :TEXT-DATA      - Text which is used as data by programs.
+    :BINARY-DATA    - Binary data used by programs.
+  Implementations may define other implementation-dependent module types.
+
+  The reasons why a module might need to be recompiled is dependent on 
+  the module-type and the implementation.  The minimum requirement is 
+  that :LISP modules must be recompiled if their source is newer than 
+  their binary.
+
+  To find a system from its name, the user can call
+
+    FIND-SYSTEM name &key (error-p t) (loaded-only nil)
+
+     NAME may be a symbol or string that names a system,
+     or else a system object.
+
+     If NAME is a system object, it is returned directly.
+
+     If NAME is a symbol, it is coerced to a string and then looked up.
+
+     Case is ignored when looking up a system (e.g., the symbol FOO and 
+     the string "Foo" represent the same system).  
+
+     If a system definition for the system named (or nicknamed) NAME exists,
+     the system object which represents that definition is returned.
+
+     The implementation is permitted to provide an implementation-defined
+     mechanism for registering systems to be loaded upon demand, but no
+     implementation is required to do this.  If the implementation does
+     provide such a mechanism, and if there is no system definition for the
+     system definition named NAME, and if LOADED-ONLY is false, then the
+     system definition is loaded, and then this operation is restarted, but
+     this time it is as if LOADED-ONLY had instead been true.
+
+     If no system definition for the system named NAME is found, then an
+     error is signalled if ERROR-P is true, and NIL is returned otherwise.
+
+    SYSTEM-LOADED-P name
+
+     NAME may be a symbol or string that names a system,
+     or else a system object.
+
+     The first return value is true if the system has been fully loaded,
+     and false otherwise.  The second return value is true if a definition
+     of the system is present, but the system is not loaded (or not
+     completely loaded), and false otherwise.  A conforming implementation
+     might extend this function to return more than two values; the nature
+     of any other values is implementation-defined.
+
+  The operations on a system are:
+
+    COMPILE-SYSTEM system &key (verbose   t)
+			       (simulate  nil)
+			       (selective nil)
+			       (compile   :if-needed)
+			       (load      t)
+			       (log-file  nil)
+
+     System may be a symbol or string that names a system,
+     or else a system object.
+
+     Compiles the indicated system.  
+
+     :VERBOSE  - Whether to print out information about what's going on at
+		 each point.
+     :SIMULATE - Whether to actually do the action at each point.
+		 (A combination of :verbose t :simulate t will serve to 
+		  explain the action of compilation without actually 
+		  performing it.)
+     :SELECTIVE - Whether to interactively query about actions to be 
+		  performed at each point before performing them.
+     :COMPILE   - There are three possible values, which control which
+		  modules in the system are compiled.
+
+		  T           Compile all modules.
+
+		  :IF-NEEDED  Compile modules only if needed.  For example,
+			      compile if a module's source is newer than its
+			      binary, or if the module on a module which has 
+			      needed recompilation, or if the module's 
+			      binary exists but was compiled for an
+			      incompatible version of Lisp.
+
+	          Other implementation-defined options are permissible.
+
+     :LOAD      - There are three possible values, which control which
+      		  modules in the system are loaded.
+
+		  :ALWAYS     All modules are loaded at some point 
+			      consistent with any dependencies even if they
+			      are already known to have been loaded (e.g.,
+			      in a previous attempt to load all or part of
+			      this or some other system)
+
+		  T	      All modules are loaded at some point 
+			      consistent with any dependencies unless they
+			      are already known to have been loaded (e.g.,
+			      in a previous attempt to load all or part of
+			      this or some other system), so that the effect
+			      of compiling the system implies the effect of
+			      loading it (except that the two operations
+			      might be interleaved).
+
+		  :IF-NEEDED  Only modules upon which are needed because of
+			      compilation depencies are loaded.  When the
+			      compilation is complete, it is not guaranteed
+			      that all files will have been loaded.
+			      
+		  NIL	      No files are loaded, even if the compile 
+			      dependencies say they should be.		
+
+	          Other implementation-defined options are permissible.
+
+     :LOG-FILE  - If this is NIL, no log file is created.  Otherwise, it
+		  should be a pathmame, a string, or a stream which
+		  specifies a file to which a copy of the session should be
+		  written.  At a minimum, *error-output* and
+		  *standard-output* become broadcast streams that include an
+		  output stream to this file; other I/O streams (such as
+		  *query-io*, *debug-io*, etc.)  may also be bound at the
+		  discretion of the implementation.
+
+     Other implementation-defined keywords are permissible.
+
+    LOAD-SYSTEM system &key (verbose   t)
+			    (simulate  nil)
+			    (selective nil)
+			    (load      t)
+			    (log-file  nil)
+
+     :VERBOSE  - Whether to print out information about what's going on at 
+		 each point.
+     :SIMULATE - Whether to actually do the action at each point.
+		 (A combination of :verbose t :simulate t will serve to 
+		  explain the action of loading without actually 
+		  performing it.)
+     :SELECTIVE - Whether to interactively query about actions to be 
+		  performed at each point before performing them.
+     :LOAD      - There are two possible values, which control which
+      		  modules in the system are loaded.
+
+		  :ALWAYS     All modules are loaded at some point 
+			      consistent with any dependencies even if they
+			      are already known to have been loaded (e.g.,
+			      in a previous attempt to load all or part of
+			      this or some other system).
+
+		  T	      All modules are loaded at some point 
+			      consistent with any dependencies unless they
+			      are already known to have been loaded (e.g.,
+			      in a previous attempt to load all or part of
+			      this or some other system).
+
+     :LOAD-PATCHES - If T, a call to LOAD-PATCHES is made when the system 
+		     is loaded.
+     :LOG-FILE  - If this is NIL, no log file is created.  Otherwise, it 
+		  should Be a pathmame, a string, or a stream which
+		  specifies a file to which a copy of the session should be
+		  written.  At a minimum, *error-output* and
+		  *standard-output* become broadcast streams that include
+		  an output stream to this file; other I/O streams (such as
+		  *query-io*, *debug-io*, etc.)  may also be bound at the
+		  discretion of the implementation.
+
+     Other implementation-defined keywords are permissible.
+
+  Implementations are permitted (but not required) to provide a mechanism
+  for issuing patches to a system, which can be loaded after the system is
+  loaded.  The mechanisms for such are entirely at the discretion of the
+  implementation.
+
+    LOAD-PATCHES system &key (verbose   t)
+			     (simulate  nil)
+			     (selective nil)
+			     (load      t)
+			     (log-file  nil)
+
+     System may be a symbol or string that names a system,
+     or else a system object.
+
+     Causes all patches for the indicated system which have not been loaded
+     to be loaded.
+
+     An implementation which does not support patching (either in general or
+     for the indicated system) should behave as if there are no patches for
+     that system.
+
+     An error is signalled if this operation is attempted prior to loading
+     the system.
+
+     :VERBOSE  - Whether to print out information about what's going on at 
+		 each point.
+     :SIMULATE - Whether to actually do the action at each point.
+		 (A combination of :verbose t :simulate t will serve to 
+		  explain the action of loading patches without actually 
+		  performing it.)
+     :SELECTIVE - Whether to interactively query about actions to be 
+		  performed at each point before performing them.
+     :LOAD      - There are two possible values, which control which
+      		  patches to the system are loaded.
+
+		  :ALWAYS     All patches are loaded, even if they have 
+			      been loaded previously.
+
+		  T	      All patches are loaded unless they have 
+			      been loaded previously.
+
+     :LOG-FILE  - If this is NIL, no log file is created.  Otherwise, it 
+		  should Be a pathmame, a string, or a stream which
+		  specifies a file to which a copy of the session should be
+		  written.  At a minimum, *error-output* and
+		  *standard-output* become broadcast streams that include
+		  an output stream to this file; other I/O streams (such as
+		  *query-io*, *debug-io*, etc.)  may also be bound at the
+		  discretion of the implementation.
+
+     Other implementation-defined keywords are permissible.
+     
+  To get a list of the system's associated files, the user can use
+
+    SYSTEM-FILES system kind
+
+     System may be a symbol or string that names a system,
+     or else a system object.
+
+     Returns a list of the files associated with a given system of the 
+     indicated KIND. The following values for KIND are defined:
+
+	:ALL		all files associated with the system.
+	:SOURCE         all source files for the system, except patches.
+        :BINARY		all binary files for the system, except patches.
+        :PATCH-SOURCE   all source files for patches to the system.
+	:PATCH-BINARY	all binary files for patches to the system.
+	:TEXT-DATA	all text data files for the system.
+	:BINARY-DATA	all binary data files for the system.
+	:JOURNALS	all journal files for the system (records of which
+		         files the system contains, etc.)
+	:OTHER		any file which, at the discretion of the 
+			 implementation, cannot reasonably be considered
+			 either a source or a binary but which is,
+			 nevertheless, part of the system.  Files in a
+			 module of type :TEXT or :LISP-EXAMPLE are the only
+			 ones defined by this specification which will
+			 reliably occur in this list.  The set of :SOURCE,
+			 :BINARY, :PATCH-SOURCE, :PATCH-BINARY, :TEXT-DATA,
+			 :BINARY-DATA, :JOURNALS and :OTHER form an
+			 exhaustive partition of :ALL.
+
+	Other implementation-defined values are permitted in order to
+	provide further refinement of access.  Such keywords may subdivide 
+	any of these keyword categories, but may not create categories 
+	which would not be returned by one of these.  Such
+	implementation-defined values might be of any type.  If
+	such an implementation-defined value could only ever match
+	a single file, it is still returned as the only element of
+	a list.
+
+     All filenames returned will have been fully defaulted in a manner
+     consistent with the defaults specified by DEFINE-SYSTEM, and file types
+     appropriate to the module and the host operating system.  Whether the
+     version (if any) will be :newest or a specific version is
+     implementation-defined.
+
+Example:
+
+  (DEFINE-SYSTEM TELEPHONE-INDEX (:PRETTY-NAME "Telephone Index"
+				  :DEFAULT-PATHNAME "SYS:PHONES;")
+    ("DOC" :MODULE-TYPE :TEXT) 
+    "MACROS"
+    "PEOPLE"
+    "NUMBERS"
+    "INTERFACE"
+    ("INIT" :MODULE-TYPE :LISP-SOURCE))
+
+  (FIND-SYSTEM 'TELEPHONE-INDEX)
+  => #<SIMPLE-SYSTEM "Telephone Index" 234793>
+
+  (FIND-SYSTEM 'NO-SUCH-SYSTEM :ERROR-P NIL)
+  => NIL
+
+  (SYSTEM-LOADED-P 'TELEPHONE-INDEX)
+  => NIL
+
+  (SYSTEM-LOADED-P 'TELEPHONE-INDEX)
+  => NIL
+
+  (SYSTEM-FILES 'TELEPHONE-INDEX :SOURCE)
+  => (#P"SYS:PHONES;MACROS.LISP.3" 
+      #P"SYS:PHONES;PEOPLE.LISP.7"
+      #P"SYS:PHONES;NUMBERS.LISP.2"
+      #P"SYS:PHONES;INTERFACE.LISP.6"
+      #P"SYS:PHONES;INIT.LISP.9")
+
+  (SYSTEM-FILES 'TELEPHONE-INDEX :BINARY)
+  => (#P"SYS:PHONES;MACROS.BIN.2"
+      #P"SYS:PHONES;PEOPLE.BIN.5"
+      #P"SYS:PHONES;NUMBERS.BIN.5"
+      #P"SYS:PHONES;INTERFACE.BIN.1")
+
+  (SYSTEM-FILES 'TELEPHONE-INDEX :OTHER)
+  => (#P"SYS:PHONES;DOC.TEXT.19")
+
+  (COMPILE-SYSTEM 'TELEPHONE-INDEX :SIMULATE T)
+  The file SYS:PHONES;MACROS.LISP does not need to be compiled.
+  The file SYS:PHONES;MACROS.BIN will be loaded.
+  The file SYS:PHONES;PEOPLE.LISP has changed, so it will be compiled.
+  The file SYS:PHONES;PEOPLE.BIN will be loaded.
+  The file SYS:PHONES;NUMBERS.LISP will be compiled.
+  The file SYS:PHONES;NUMBERS.BIN will be loaded.
+  The file SYS:PHONES;INTERFACE.LISP will be recompiled.
+  The file SYS:PHONES;INTERFACE.LISP will be loaded.
+  The file SYS:PHONES;INIT.LISP will be loaded.
+  The major version number for system TELEPHONE-INDEX will be incremented.
+
+  (COMPILE-SYSTEM 'TELEPHONE-INDEX)
+  The file SYS:PHONES;MACROS.LISP does not need to be compiled.
+  Loading SYS:PHONES;MACROS.BIN ... done.
+  Compiling SYS:PHONES;PEOPLE.LISP ... done.
+  Loading SYS:PHONES;PEOPLE.BIN ... done.
+  Compiling SYS:PHONES;NUMBERS.LISP ... done.
+  Loading SYS:PHONES;NUMBERS.BIN ... done.
+  Compiling SYS:PHONES;INTERFACE.LISP ... done.
+  Loading SYS:PHONES;INTERFACE.LISP ... done.
+  Loading SYS:PHONES;INIT.LISP ... done.
+  New major version of system TELEPHONE-INDEX is now 259.
+
+  (SYSTEM-LOADED-P 'TELEPHONE-INDEX)
+  => T			   ;Implementation A
+  => 259, 0, :RELEASED	   ;Implementation B
+  => :COMPILED	           ;Implementation C
+
+Rationale (DEFSYSTEM:NEW-FACILITY):
+
+  Many users have clamored very loudly for some facility of this sort.
+  While there is some divergence in what people want, it's important to try
+  to provide -something- even if potentially slightly flawed.  Users will be
+  no worse off if they decide not to use this, but hopefully this will raise
+  the general level of awareness about system construction in the interim,
+  and in a subsequent standardization effort, everyone will have the
+  experience needed to make lots of good suggestions about how to improve on
+  this.
+
+  The mechanisms described here...
+    - provide the ability to define systems portably.
+    - leave room for implementations to experiment with extensions.
+    - provide standard interfaces for typical actions programmers
+      need to do with systems of code.
+
+Proposal (DEFSYSTEM:+SUPPORT-DEPENDENCIES):
+
+  Extend the description of the list form of a module specification 
+  as follows:
+
+   - Instead of just (filename ...), also permit (({filename}*) ...)
+     as a way of grouping multiple filenames together.  (Each filename
+     may be either a string or a pathname.)  Within such
+     a module, multiple filenames are acted upon as a group: 
+      - when loading the files, they are loaded sequentially 
+	from left to right.
+      - when determining the need to compile the module, if any of
+	the files needs recompilation, then the entire module will be
+	recompiled.
+      - when compiling the files, they are always compiled from
+	left to right.
+
+   - Add the following keywords to a module specification:
+
+      :NAME symbol
+
+	Declares a symbolic name for the module which can be used 
+	by other modules in order to refer to that module by name.
+	If omitted, the module has no name and cannot be referred to
+	by other modules.  No two modules in the same system may have
+	the same name.
+
+      :DEPENDENCIES ((operation1 module1a module1b ...)
+		     (operation2 module2a module2b ...) ...)
+
+	Declares that for any operationI, the module Ia, Ib, ...
+        must be processed prior to this module.  The only defined
+	operations are COMPILE-SYSTEM and LOAD-SYSTEM, although
+	implementations might define additional operations.
+        (By default, each module depends on all of the modules 
+	 which textually precede it.  This allows that ordering
+	 to be overridden.)
+	Dependency relationships are transitive.
+
+      :DEFINITIONS boolean
+
+        Declares that this module contains definitions that might be
+	used by modules that depend on it.  As such, if this module
+	is in need of recompilation, then so are modules which follow
+        it. The default is T.  (Specifying NIL does not change the fact
+	that this operation must be compiled or loaded prior to its
+	dependents, it only says that those dependents are not 
+	implicitly in need of recompilation.)
+
+Rationale (DEFSYSTEM:+SUPPORT-DEPENDENCIES):
+
+  The basic proposal, NEW-FACILITY, provides only for systems with linear
+  dependencies among modules.  In practice, although all systems have a 
+  linearizable dependencies, this may force needless extra recompilations
+  in some cases where no real dependencies existed.  By permiting explicit
+  dependencies to be established, the user has tighter control over ordering
+  and recompilation is given.
+
+Current Practice:
+
+  LOTS of users write this facility for themselves even though many
+  implementations provide such a facility, only because the interfaces vary
+  between systems and there is no common foothold.
+
+  Symbolics Genera and Cloe provides a system definition tool as part of the
+  language substrate.  Version 2 of this proposal is largely similar to a
+  subset of the Genera functionality, although some of the interfaces have
+  been changed slightly.
+
+  The following large user programs are known to have their own portable
+  versions of DEFSYSTEM -- MACSYMA, PCL, CLIM.
+
+  In 1987, Doug Rand at MITRE (dsrand@mitre.org) published a public domain
+  DEFSYSTEM. He recently posted an update.  His system, based on the
+  Zetalisp DEFSYSTEM, has similar capabilities, but has the following
+  additional features not offered here: Additional module options to manage
+  more complex compile dependencies (:recompile-on, :load-before-compile,
+  :load-after, :compile-satisfies-load), UNDEFSYSTEM, and SHOW-SYSTEM.
+
+Cost to Implementors:
+
+  Implementing the bare-bones requirements of this proposal should be
+  relatively straightforward.  My guess is that many implementations
+  already go beyond what is required here, and the real question is only how
+  much work does it take to integrate what's described here with things they
+  already provide.  I guess we need to hear some discussion on this.
+
+Cost to Users:
+
+  No forced cost.  Users who have their own private DEFSYSTEMs can continue
+  to use them.  Some people may want to elect to change over to this.
+
+Cost of Non-Adoption:
+
+  Users would continue to feel a substantial void in this critical area of
+  how to package up and deliver a system as a coherent unit.  Lots of users
+  would end up `growing their own' versions of DEFSYTEM, often with fewer
+  features than they might get if they could hook into ones already
+  provided.
+
+  A next generation standard will have to start from ground zero instead of
+  building on the experiences that use of this standard could provide.
+
+Benefits:
+
+  This will help make up for the recent absence of REQUIRE and PROVIDE.
+  Although those operations had some problems, the need which they sought to
+  fill was real.
+
+Aesthetics:
+
+  This allows a programmer to say in a more perspicuous way what his
+  high-level intent in system definition and manipulation is, so should be
+  considered an aesthetic improvement.
+
+Discussion:
+
+  Pitman thinks something like this is very important for us to have.  He
+  isn't terribly fussy about the details.
+
+  Scott McKay, author of Genera's current DEFSYSTEM, endorses the 
+  NEW-FACILITY proposal, and proposed the +SUPPORT-DEPENDENCIES proposal
+  as a possible extension.  (Pitman thinks the proposed extension is a 
+  good idea, but kept it separated for administrative simplicity in case
+  others disagreed.)
+
+  Pitman wrote about DEFSYSTEM in his paper ``The Description of Large
+  Systems'', MIT A.I. Memo No. 801, September, 1984.  Already when he did,
+  DEFSYSTEM had existed for several years.  That it has been around for so
+  long should be proof of the maturity of the concept.
+
+  Another useful reference on DEFSYSTEM is ``BUILD--A System Construction
+  Tool'' by Richard Robbins, MIT A.I. Working Paper 261, August, 1984.
+
+  Version 1 of this proposal used a mechanism based on Pitman's paper.
+  However, that paradigm exposed the `planning' mechanism in a way that
+  others were uncomfortable with, so it was removed for version 2.  Version
+  2 is based much more closely on Genera's SCT system, leaving out numerous
+  aspects of journaling, system versioning, etc. which seemed to go beyond
+  the scope of what my be appropriate to Common Lisp.  (These could be added
+  if there were interest, but I wanted to keep the proposal modest.)
+
+  Loosemore says ``I think it's probably not realistic to expect any
+  DEFSYSTEM proposal to be approved at the next meeting.  On the other hand,
+  I think it would be appropriate to have some discussion and a vote on
+  whether (1) adding DEFSYSTEM at all is a good idea and (2) trying to spec
+  out something entirely new is better than adapting one of the existing
+  things.''  Moon says ``I agree.''
+
+  About version 3, Doug Rand says:
+   ``I haven't had much to say on this mailing list for awhile,  at 
+     last a subject near and dear to my heart.
+   ``I strongly support the proposal to include DEFSYSTEM as part of
+     ANSI-CL.  PROVIDE and REQUIRE were never adequate replacements
+     for a reasonable make facility and DEFSYSTEM is quite reasonable.
+     As with most lispy things one can both envision a core of 
+     functionality and extensions to the core to provide a decent basis 
+     for work.
+   ``Since ANSI-CL defines a programming environment and not just a 
+     language,  it is important to at least achieve equity with such
+     advanced ( ;^)>> ) environments as UNIX where Make has been 
+     available for years.
+   ``As Kent has stated,  supplying such a tool wouldn't prevent users
+     from staying with their own homegrown solutions or creating better
+     and brighter solutions.''
+
+  Stephen Nicoud, Brian Anderson, and others at Boeing have expressed
+  a strong interest in seeing a DEFSYSTEM-like facility in the language.
+  Anderson writes ``I don't think the issue is whether we need a defsystem,
+  its just how far can/should we go?'' His general feeling (expressed at
+  length in private mail and only summarized here) is that there is a 
+  strong need for something much more elaborate than what is proposed in
+  version 3 of this proposal.  He cites a need for:
+    ``A.  Product definition of components, component relationships
+	  and operations that can be performed on the product.
+      B.  Product versioning.  That is, associating version
+	  information with the product, the ability to modify the
+	  version information according to some policy, and the ability
+	  to patch a version of the product.
+      C.  Product configuration/version control facilities.  That
+	  is, keeping tight configuration control of the products
+	  individual components and supporting advanced development and
+	  maintenance activities.''
+  Support for some of this was added based on comments from Scott McKay 
+  in version 4 of this proposal. The other two wishes are, for now, still
+  beyond the scope of this proposal.
+  He also says:
+   ``I do think that some form of version control & patch facility is
+     extremely important to have in Common Lisp.  Whether this should be
+     incorporated into defsystem is another matter but it seems as if its
+     the logical place to have it.  This facility is very important for uses
+     of Common Lisp in "production" environments such as the one I'm
+     currently working in.  The ability to maintain configuration control of
+     a Lisp product is a requirement in this environment - the only question
+     is how to do it!  We're having to resort to basic Unix tools to
+     (inadequately) do the job.
+   ``The [v3] defsystem proposal captures the relationships between the
+     various modules in a Lisp product and the set of modules that
+     constitute a "system" but does not capture version/patch information
+     that would allow orderly distribution and maintenance of a Lisp
+     product.
+   ``A production system normally consists of more that just Lisp code.
+     It also consists of documentation, data files, etc.  There should be
+     facilities to capture these additional types of modules in a system and
+     "how" to construct them if necessary.  Compiling a system may result in
+     running the Lisp compiler to generate binary code as well as running
+     TeX (for example) to compile a document. ...  This of course brings up
+     the specification mechanism for defining how files are "transformed"
+     from one state to another (enter Make - ugh - which gives "rules" for
+     these transformations).
+   ``... one should be able to add new operations to a "system."  In true
+     Lisp culture it should be extensible by the user/vendor community.  For
+     example, I might want to perform additional operations on a system such
+     as edit, hardcopy, count source lines, distribute, etc.''
+
+==============================================================================
+			   END OF PROPOSAL
+==============================================================================
+
+My (Pitman's) personal notes (NOT PART OF ANY OFFICIAL RECORD) follow; the
+bracketed text is contemporaneous (made at the time), not something I added 
+just now:
+
+DEFSYSTEM (Version 4, 19-Mar-91)
+ Author:   Pitman
+ Forum:    Cleanup
+ Status:   Rejected 1-13, Mar-91
+ Comments: ----- Pitman 15-Mar-91 -----
+	   Doug Rand (MITRE) is the only person to respond to this so far.
+	   He strongly endorsed the idea.
+           ----- Pitman 19-Mar-91 (version 3) -----
+           Brian Anderson and Stephen Nicoud (Boeing) support the idea of
+	   a DEFSYSTEM but wish it went further.  Versioning, distribution, ...
+	   the whole product packaging concept.
+           ----- Pitman 19-Mar-91 (version 4) -----
+	   This version, including SWM's new amendment, looks ok to me and SWM
+	   (both options NEW-FACILITY and +SUPPORT-DEPENDENCIES).
+           ----- Pitman 05-Apr-91 (Mar-91 meeting) -----
+	   In the discussion, there were several common themes:
+	      - Common Lisp is already too big.  My take on this was that some people
+		felt that voting no here would send a clear message that we meant
+		business about not adding any more features.
+		[Personally, I don't think CL will ever win a smallness award, so 
+		 this seems silly to me.  If CL is going to win any battle for
+		 supremacy, it will be on the basis of a large library of powerful
+		 tools the presence of which saves people from writing and debugging
+		 the same code over and over on a per-application basis.]
+	      - Doing this is risky.  No one actually implements the proposal,
+		so if something is wrong in it, we'll be stuck with it.
+		[For the short term, we still have at least six months in which
+		 bugs can be noticed and trivially fixed.  And for the long term,
+		 I categorize the level of risk associated with add-ons like this
+		 as virtually zero since its presence doesn't preclude either 
+		 implementors or users from providing something better if it
+		 doesn't work.  But at least it has a strongly normative effect if
+		 it does work--for example, in a next generation standard we would
+		 surely all be experts and would be sure to get it fixed.  As it is,
+		 we'll now go into a next generation standard still disputing whether
+		 a lisp-based DEFSYSTEM or a shell-based Make is the right answer.]
+	       - Doing this might delay the standard.
+		 [This is unfounded paranoia.  This is a couple of pages or so of 
+		  description.  The standard is many hundreds of pages.  This is a 
+		  drop in the bucket compared to the overall editing task, and its
+		  presence or absence is not likely to make a noticeable difference
+		  in the ability to get the standard out to public review `on time'.]
+	   I heard no specific technical objections.  The objections seemed to be
+	   largely issues of form and process.  I did note the following comments
+	   (none direct quotes):
+	    Gregor -- Worry that we can't resolve issues in time...
+	    Sandra Loosemore (Sandra at Chestnut) -- Concern about lateness of the proposal...
+	    Moon -- Excellent proposal technically, but...
+	    RWK - Contributes nothing but a standard way to do things...
+	    Weyrauch (note: no voting status) -- Issue of foreign functions is
+	      more important...
+	    SMH -- OK, but needs more work...
+	   After a few minutes of discussion, RPG called the question.  
+	   The proposal was rejected on a vote of 1-13.  We [Symbolics]
+	   offered the only Yes vote. 

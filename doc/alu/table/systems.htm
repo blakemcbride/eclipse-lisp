@@ -1,0 +1,919 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Common Lisp Implementations</TITLE>
+<meta name="description" content="Implementations of Common Lisp">
+<meta name="keywords" content="common lisp, implementation, unix, pc, windows, macintosh, free, commercial, vendor, shareware">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body bgcolor="#CCFFCC">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Common Lisp Implementations</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="contents.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="references.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="related-languages.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm"><b>SYSTEMS</b></a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+</td><td>
+</table>
+</td><td>
+
+This is a central listing of suppliers of Lisp and Lisp products.  It
+includes commercial and free Common Lisp implementations and suppliers
+of language applications intended to work in conjunction with one or
+more of these implementations.
+
+<UL>
+<LI><A HREF="#vendor"> Commercial vendors</A>
+<UL>
+<LI>        <A HREF="#pcvend"> PC</A>
+<LI>        <A HREF="#macvend"> Macintosh</A>
+<LI>        <A HREF="#unixvend"> Unix</A>
+<LI>        <A HREF="#ovend"> other</A></UL>
+<LI><A HREF="#free"> Free Implementations</A>
+<UL>
+<LI>        <A HREF="#pcfree"> PC</A>
+<LI>        <A HREF="#macfree"> Macintosh</A>
+<LI>        <A HREF="#unixfree"> Unix</A>
+<LI>        <A HREF="#ofree"> other</A></UL>
+
+<LI> <A HREF="#descriptions">Brief Descriptions</A> and references, by
+vendor, organization or author. 
+</UL> 
+
+The implementations listed here purport to be at least
+&quot;close&quot; to early Common Lisp as defined in <A
+HREF="references.htm#cltl2">CLtL1</A>.  Some implementations for other
+dialects of Lisp are listed on the <A HREF="related-languages.htm">related
+languages</A> page.
+
+
+<HR><H3><A NAME="vendor"> Commercial vendors</A></H3>
+<H4><A NAME="pcvend">Commercial PC (non-UNIX) Lisp Implementations</A></H4>
+<UL>
+<LI>   <A HREF="#franz">Allegro CL for Windows</A> aka ACLW, Procyon (Franz)
+<LI>   <A HREF="#symbolics">CLOE</A> (Symbolics)
+<LI>   <A HREF="#elwood">Eclipse</A> (Elwood)
+<LI>   <A HREF="#harlequin">FreeLisp</A> (Harlequin)
+<LI>   <A HREF="#gh">Golden CL</A> (Gold Hill)
+<LI>   <A HREF="#consious">LinkLisp</A> (Conscious Computing)
+<LI>   <A HREF="#mulisp">muLISP-90</A> (Soft Warehouse)
+<LI>   <A HREF="#nanolisp">NanoLISP</A> (Microcomputer Systems Consultants)
+<LI>   <A HREF="#raindrop">Software Enginneer</A> (Raindrop Software)
+<LI>   <A HREF="#sapiens">Star Sapphire CL</A> (Sapiens Software)
+</UL>
+ 
+<H4><A NAME="macvend">Commercial Macintosh Lisp Implementations</A></H4>
+<UL>
+<LI>   <A HREF="#digitool">MCL</A> (Digitool)
+<LI>   <A HREF="#coral">Pearl Lisp (Coral)</A>
+<LI>   <A HREF="#power">PowerLisp</A> (Roger Corman)
+<li> Apple's <a
+href="http://www.cambridge.apple.com/other-langs/contents.html">Lisp for
+the Mac</a> page may give more.
+
+</UL>
+
+<H4><A NAME="unixvend">Commercial UNIX Lisp Implementations</A></H4>
+<UL>
+<LI>   <A HREF="#kcl">AKCL</A> (Austin Code Works)
+<LI>   <A HREF="#franz">Allegro CL</A> aka ACL (Franz)
+<LI>   <A HREF="#elwood">Eclipse</A> (Elwood)
+<LI>   <A HREF="#kcl">Ibuki CL</A> aka IBCL (Ibuki)
+<LI>   <A HREF="#harlequin">LispWorks</A> (Harlequin)
+<LI>   <A HREF="#harlequin">Lucid</A> (Harlequin)
+<LI>   <A HREF="#venue">Medley</A> formerly Xerox Interlisp (Venue)
+<LI>   <A HREF="#poplog">Poplog</A> (Poplog)
+<LI>   <A HREF="#toplevel">Top Level</A> (Top Level)
+</UL>
+ 
+<H4><A NAME="ovend">Other Commercial Lisp Implementations</A></H4>
+<UL>
+<LI>   <A HREF="#bbn">Butterfly</A> (BBN)
+<LI>   <A HREF="#symbolics">Genera</A> Lisp machines (Symbolics)
+<LI>   <A HREF="#ti">Explorer</A> Lisp machines (Texas Instruments)
+<LI> <A HREF="#isr">L</A> embedded systems (IS Robotics)
+<LI>   <A HREF="#think">*Lisp</A> (Thinking Machines)
+</UL>
+
+<HR><H3><A NAME="free"> Free Implementations</A></H3>
+
+<H4><A NAME="pcfree">Free PC (non-UNIX) Lisp Implementations</A></H4>
+<UL>
+<LI>   <A HREF="#franz">Allegro CL for Windows</A> aka ACLW (Franz)
+<LI>   <A HREF="#clisp">CLISP</A> (Bruno Haible and Michael Stoll)
+<LI>   <A HREF="#eco">ECoLisp</A> (Giuseppe Attardi)
+<LI>   <A HREF="#harlequin">FreeLisp</A> (Harlequin)
+<LI>   <A HREF="#gnu">GCL</A> (GNU)
+<LI>   <A HREF="#lily">LILY</A> (Roger Sheldon)
+<LI>   <A HREF="#refl">RefLisp</A> (Bill Birch)
+<LI>   <A HREF="#wcl">WCL</A> (Wade Hennessey)
+</ul>
+ 
+<H4><A NAME="macfree">Free Macintosh Lisp Implementations</A></H4>
+<UL>
+<li> Apple's <a href="http://www.cambridge.apple.com/other-langs/contents.html">Lisp for
+the Mac</a> page may list some.
+</UL>
+
+
+<H4><A NAME="unixfree">Free Unix Lisp Implementations</A></H4></UL>
+<UL>
+<LI>   <A HREF="#franz">Allegro CL</A> aka ACL (Franz)
+<LI>   <A HREF="#clicc">CLiCC</A> (U. Kiel)
+<LI>   <A HREF="#clisp">CLISP</A> (Bruno Haible and Michael Stoll)
+<LI>   <A HREF="#cmucl">CMU CL</A> (Carnegie-Mellon U.)
+<LI>   <A HREF="#eco">ECoLisp</A> (Giuseppe Attardi)
+<LI>   <A HREF="#gnu">GCL</A> (GNU)
+<LI>   <A HREF="#jlisp">jlisp</A> (Jeff Weisberg)
+<LI>   <A HREF="#kcl">KCL</A> (Kyoto University)
+<LI>   <A HREF="#lily">LILY</A>
+<LI>   <A HREF="#refl">RefLisp</A> (Bill Birch)
+<LI>   <A HREF="#wcl">WCL</A> (Wade Hennessey)
+</UL>
+
+<H4><A NAME="ofree">Other Free Lisp Implementations</A></H4>
+<UL>
+<LI>   <A HREF="#gnu">cl.el</A> Embedded in Elisp (GNU)
+<LI>   <A HREF="#alsp">ALSP</A> Embedded in ADA (Software Architecture and Engineering)
+<LI>   <A HREF="#awk">AWK Lisp</A> Embedded in AWK (Roger Corman)
+<LI>   <A HREF="#starsim">StarSim</A> Embedded in CL (Thinking Machines)
+</UL>
+
+<HR><H3><A NAME="descriptions">Brief Descriptions</A></H3>
+
+<H3> <A NAME="eco">Giuseppe Attardi (ECoLisp)</A></H3> 
+ECoLisp (ECL, Eco Common Lisp) is a Common Lisp implementation which
+compiles Lisp functions into C functions that use the C stack and
+standard procedure call conventions. This lets Lisp and C code be
+easily mixed. It is designed to be used as a C library from any C
+application. ECL also includes MTCL, a multithread facility, and CLOS.
+<P>
+This is an alpha release.
+
+<UL>
+
+<li> <a href="ftp://ftp.di.unipi.it/pub/lang/lisp/">ftp directory</a> 
+
+<LI>  (Old) <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/ecolisp/0.html">Information</A>
+from CMU.
+</UL>
+
+<H3> <A NAME="bbn">BBN, Inc.</A></H3> 
+
+BBN has a special purpose machine called the Butterfly, which runs both
+Common Lisp and Scheme.  The source code for both has been made
+publicly by BBN.
+
+<UL>
+<LI> <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/bbn/0.html">Information</A>
+at CMU.
+</UL>
+
+<H3> <A NAME="refl">Bill Birch (RefLisp)</A></H3> 
+RefLisp is a small Lisp interpreter. Versions exist for MS-DOS and
+UNIX (AIX). The MS-DOS version supports CGA/EGA/VGA graphics and the
+Microsoft Mouse. The interpreter is a shallow-binding (i.e.,
+everything has dynamic scope), reference counting design making it
+suitable for experimenting with real-time and graphic user interface
+programming. Common Lisp compatibility macros are provided, and most
+of the examples in "Lisp" by Winston & Horn have been run on RefLisp.
+RefLisp makes no distinction between symbol-values and
+function-values, so a symbol can be either but not both.  RefLisp
+comes with an ASCII manual and many demonstration programs, including
+an analog clock which never stops for garbage collection.  There is
+also a program profiler.
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/reflisp/0.html">Information</A>
+from CMU.
+</UL>
+
+<H3> <A NAME="cmucl">Carnegie-Mellon U. (CMUCL)</A></H3> CMU Common
+Lisp (CMU CL) is a high quality public domain Lisp system.  It
+includes an incremental compiler, Hemlock Emacs-style editor,
+source-code level debugger, code profiler and is mostly X3J13 (ANSI)
+compatible, including the new loop macro.
+
+<P>
+The new CMU CL compiler (Python) is more sophisticated than other
+Common Lisp compilers. It both produces better code and is easier to
+use. Python does many optimizations that are absent or less general in
+other Common Lisp compilers, and is particularly good at number
+crunching.
+
+<P>
+See the links below for important information regarding the support
+status of CMU CL. (In short, the CMU CL project is no longer funded by
+Arpa, so future support will be minimal. They'll fix bugs, especially
+those that affect the use of CMU CL as a cross-development vehicle for
+their Dylan work, but they won't be adding any major new features.
+Continuing the same level of support is not an option without ARPA or
+industrial financial support.)
+
+<P>
+The CMU team was lead by Scott E. Fahlman, the Python compiler has
+been written by Robert MacLachlan.  A group of individuals now
+maintains a code base, ports CMUCL to new platforms and activly
+improves the system.  
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/cmucl/0.html">Information</A>
+from CMU.
+
+<LI> <A HREF="http://www.mv.com/users/pw/lisp">Status page</A> by Paul Werkowski.
+
+<li> <a href="http://www.cons.org/cmucl/">CMUCL page</a> by 
+Martin Cracauer.
+</UL>
+
+<H3> <A NAME="consious">Conscious Computing (LinkLisp) </A></H3> 
+
+   LinkLisp is a Lisp implementation for Windows that supports a large
+   subset of Common Lisp. It is DLL and VBX callable from C/C++ and
+   Visual Basic. It costs $249.
+<P>For more information, write to Conscious
+   Computing, 3100 Connecticut Avenue NW, Suite 202, Washington, DC
+   20008, call 202-483-6350, or fax 202-462-9110.
+
+<H3> <A NAME="coral">Coral Software (Pearl) </A></H3> 
+
+When Apple Computer acquired Coral Software in January 1989, they
+re-released Coral's Allegro Common Lisp and its optional modules as
+Macintosh Allegro Common Lisp (now just Macintosh Common Lisp).
+Coral's other product, Pearl Lisp, was discontinued at that time.
+Pearl Lisp provides a subset of the functionality of MACL 1.3 and is
+not even fully CLtL1-compatible (e.g., the implementation of defstruct is
+different).
+
+<P>
+Despite rumors to the contrary, Pearl Lisp is not and never was public
+domain. Nevertheless, Pearl Lisp and its documentation were placed in
+the "Moof:Goodies:Pearl Lisp" folder on the first pressing of "Phil
+and Dave's Excellent CD", the precursor to the current Apple
+Developer's CD-ROM series.  Apple removed Pearl from later versions of
+the developer CD-ROM distribution because of complaints from other
+Lisp vendors. If you own a copy of Pearl Lisp or a copy of this
+CD-ROM, you can make it runnable under System 7 with some slight
+modifications using ResEdit.  To repeat, Pearl Lisp is NOT public
+domain, so you must own a copy to use it.
+
+<P>
+To make it runnable, one needs to use ResEdit to make changes to the
+BNDL and FREF resources so that it will connect to its icons properly.
+This will make it respond to double-clicks in the normal manner and
+make it be properly linked to its files.
+<P>
+Detailed instructions for modifying Pearl Lisp using ResEdit 
+are included in this directory.
+<P>          
+After you've made the changes, it will run under System 7 on 68000s
+and 68030s if you turn off 32-bit addressing. It seems to bomb on a
+Quadra.      
+<P>          
+If you need a more powerful Lisp or one that is compatible with the
+standard for Common Lisp, consider purchasing Macintosh Common Lisp.
+
+
+<H3> <A NAME="power" HREF="http://www.crl.com/~rgcorman/">Roger Corman (PowerLisp) </A></H3> 
+PowerLisp is a Common Lisp development environment for the Macintosh.
+It consists of a Common Lisp interpreter, native-code 680x0 compiler,
+680x0 macro assembler, disassembler, incremental linker and
+multi-window text editor. 
+<P>
+PowerLisp has the ability to run in the background. While executing a
+Common Lisp program, the user may switch to another application as it
+continues to run. You can also edit programs while a Common Lisp
+program is running.
+<P>
+PowerLisp is targeted to be compatible with CTLTL2 without CLOS
+(for now) but some Common Lisp functions are not yet implemented.
+Upcoming versions should include the remaining language features.
+<P>
+Documentation in Word and MacWrite format and sample programs/source
+included. 
+<P>
+Powerlisp is Shareware ($50).
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/powerlsp/0.html">Information</A>
+form CMU.
+</UL>
+
+<H3> <A NAME="digitool" HREF="http://www.digitool.com">Digitool, Inc. (MCL) </A></H3> 
+Macintosh Common Lisp is a commercial Common Lisp implementation for
+the Apple Macintosh.  It includes a native CLOS, Macintosh
+Toolbox/interface toolkit, ephemeral garbage collection, incremental
+compiler, window-based debugger, source-code stepper, object
+inspector, emacs-style editor, and a foreign function interface.
+
+<P>
+With MCL version 2.0, Apple has started distributing a CD-ROM which
+contains, among other things, a large collection of Lisp code,
+complete MCL manuals in an online-browser format, the CLIM 1.0 manual
+in TeX and postscript, and copies of Gambit 1.8 Scheme, SIOD 2.8
+Scheme, Pixie Scheme, and a demo version of MacScheme.
+
+<P>
+Requires: Mac+ or higher with 4mb RAM and system software 6.0.4 or
+later or AUX 3.0 
+
+<UL>
+<LI><A HREF="http://www.digitool.com/">Digitool's MCL page</A>
+<LI><A href="ftp://ftp.digitool.com/pub/mcl/contrib/">MCL Repository</A> 
+<LI><A href="news:comp.lang.lisp.mcl"> The comp.lang.lisp.mcl newsgroup</A>
+<LI><A href="ftp://ftp.digitool.com/pub/mcl/faq/"> MCL FAQ</A>
+<LI><A href="ftp://ftp.digitool.com/pub/mcl/patches/"> MCL patches</A>
+<li>Free utilities from <A href="http://www.igortech.com/lisp/">Igor Technologies</a>.
+
+<LI> <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/code/impdep/mcl20.html">Implementation
+dependendent code</A> at CMU.
+
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/mcl/0.html">Information</A>
+about Macintosh Common Lisp
+  
+<li>David B. Lamkins compares MCL and Allegro Common Lisp in <a
+href="http://www.teleport.com/~dlamkins/mcl-aclnt-comparison.html">Common
+Lisp on Mac and PC</a>.  
+</UL>
+
+<H3> <A NAME="elwood"HREF="http://www.elwoodcorp.com/eclipse-info/index.htm">Elwood Corp. (Eclipse)</A></H3> 
+
+Eclipse is a complete ANSI Common Lisp, made available to programmers
+in two ways: 
+
+<UL>
+ <LI> A traditional top-level Lisp listener.
+ <LI> A C library containing all ANSI functions and data types.  The
+    functions use normal C naming and argument passing conventions.
+</UL>
+
+In addition, the Eclipse compiler can be used to generate
+human-readable C code which uses the library.  The generated
+functions and variables use normal C naming and argument passing
+conventions.
+<P>
+
+Complete applications can be written in C or translated from Lisp to
+C using the Eclipse compiler.  Object files are then produced using
+any C compiler and linked to the Eclipse library to produce
+stand-alone executables which can be run without the top-level Lisp
+listener.
+
+
+<H3> <A NAME="franz" HREF="http://www.franz.com"> Franz, Inc. (Allegro)</A></H3> 
+
+   The Allegro CL 3.0 Web Version for Windows is a full functional free
+   version of Franz's Dynamic Object Oriented Programming Development System
+   for ANSI standard CLOS, with some limitations:
+<DL><DD>
+     limited heap size, no foreign function support,
+   missing compile-file, missing disassembler and missing save-image.
+   The documentation fully explains these capabilities.
+</DL>
+
+ This version includes
+   an in-core native 32-bit compiler, a drag & drop Interface Builder,
+   full debugging and development tools and an editor.  Franz sells a supported
+   version of this software, Allegro CL for Windows, without these
+   limitations.
+
+<P>
+   Allegro Common Lisp 4.2 runs on a variety of platforms, including
+   Sparcs, RS6000, HP700, Silicon Graphics, DecStation (prices start at
+   $4,500) and NeXT ($2,000). It requires 12mb RAM for the 680x0 and 16mb
+   for RISC. It includes native CLOS, X-windows support, Unix interface,
+   incremental compilation, generational garbage collection, and a
+   foreign function interface.  Options include Allegro Composer
+   (development environment, including debugger, inspector, object
+   browser, time/space code profiler, and a graphical user interface,
+   $1,500), Common LISP Interface Manager (CLIM 2.0 is a portable
+   high-level user interface management system.  CLIM 2.0 for Allegro CL
+   supports both Motif and Openlook and Windows, ($1,000).  Franz also
+   markets Allegro CL 3.0 for Windows 3.1, Windows NT and Windows95 for
+   $595 (discount prices of $449 are sometimes advertised in various AI
+   magazines).  A Professional version with royalty free runtime
+   distribution and source code is available for $2495.
+   Allegro CL for Windows provides 32-bit compilation, complete CLOS, an
+   integrated development environment, visual drag & drop Interface Builder,
+   interface to the Windows API, DLL support, and free runtime delivery.
+<P>
+
+Note that <b>Franz Lisp</b> is an earlier (not Common) Lisp dialect
+that is closer to <a href="history.htm#maclisp">Maclisp</a> than to
+the Allegor Common Lisp that Franz, Inc. now produces.
+
+<UL>
+
+<LI><A href="ftp://ftp.franz.com/pub/patches/"> Allegro patch directory</A> 
+<LI><A href="ftp://ftp.franz.com/pub/faq"> Allegro FAQ </A>
+<LI> <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/allegro/0.html">Information</A>
+about Allegro Common Lisp.  
+<li>David B. Lamkins compares MCL and Allegro Common Lisp in <a
+href="http://www.teleport.com/~dlamkins/mcl-aclnt-comparison.html">Common
+Lisp on Mac and PC</a>.  
+<li> Jef Dalton's <a href="http://www.aiai.ed.ac.uk/~jeff/franz-for-386.html">x86 port of the (non Common) Franz Lisp dialect</a> for FreeBSD and related Unix boxes.
+</UL>
+
+<H3> <A NAME="gnu">Free Software Foundation (GNU, Elisp, GCL)</A></H3> 
+
+The Free Software Foundation (FSF) was founded by Richard Stallman to
+produce good quality, free software.  They produce:
+<UL>
+<LI> A text editor widely used by programmers: <A HREF="tools.htm#editors">EMACS</A>.
+<LI> One of the most popular C/C++ compilers: GCC.
+<LI> Three kinds of Lisp:
+ <UL> 
+  <LI> <A HREF="related-languages.htm#emacs">Elisp</A> is what the Emacs
+   text-editor is programmed in.
+  <LI> GCL is a Common Lisp.
+  <LI> <A href="ftp://ftp.cygnus.com:/pub/lord/">GUILE</A> is a
+  Scheme-based scripting language. 
+  </UL>
+<LI> Lots of other stuff.  The goal of the GNU project (Gnu's Not
+Unix) is to replace all of Unix with free software, one piece at a
+time.
+</UL>
+
+<P>
+GNU Common Lisp (GCL) is a highly portable implementation of Common
+Lisp originally based on Austin Kyoto Common Lisp (<A
+HREF="#kcl">AKCL</A>), a Common Lisp (<A
+HREF="references.htm#cltl2">CLtL1</A>) implementation developed at Kyoto
+University in Japan and extended by Bill Schelter of UT/Austin. GCL is
+intended to eventually support the ANSI Standard for Common Lisp. GCL
+generates C code which it compiles with the local optimizing C
+compiler (e.g., GCC).
+<P>
+GCL has a source level debugger for interpreted code, profiling
+tools based on the C profiling tools, and supports CLX, and PCL.
+
+<UL>
+
+<!-- <LI> <A HREF="http://www.gnu.ai.mit.edu">The GNU Project</A> home page -->
+<LI> <A HREF="http://www.delorie.com/gnu/">The GNU Project</A> home
+page by Delorie.
+
+<LI> Another <A HREF="http://www.cs.pdx.edu/~trent/gnu">GNU</A> home
+page, by Trent Fisher
+
+<LI> The <A href="ftp://prep.ai.mit.edu/pub/gnu">FSF ftp site</A>.
+
+<li> <a href="ftp://rene.ma.utexas.edu/pub/gcl/">GCL ftp directory</a>
+
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/el_cl/0.html">cl.el</A>:
+Common Lisp compatibility package for GNU-Emacs Lisp  
+
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/elisp/0.html">ELISP</A>:
+GNU Emacs Lisp manual 
+
+<LI>  (Old) <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/gcl/0.html">Information</A>
+on GCL from CMU.
+</UL>
+
+<H3><A NAME="gh" HREF="http://www.goldhill-inc.com">Gold Hill (Golden
+CL)</A></H3>
+Golden Common Lisp (GCLisp 4.4) runs on IBM PCs under DOS, Windows,
+   OS/2, and Windows NT, costing $2,000 ($250 extra for Gold Hill
+   Windows), and includes an incremental compiler, foreign function
+   interface, interactive debugger, SQL interface, and emacs-like editor.
+   It supports DDE and other Windows stuff, and is CLtL1 compatible.
+   Supports PCL/CLOS. It requires 4mb RAM, and 12mb disk. See a review in
+   PC-WEEK 4/1/91 comparing GCLisp with an older version of MCL.
+
+<H3><A NAME="harlequin" HREF="http://www.harlequin.com">Harlequin (Lispworks, Lucid, FreeLisp)</A></H3>
+
+   LispWorks (R) from Harlequin runs on a variety of Unix platforms, 
+   including Sun Sparc and clones (SunOS and Solaris), IBM RS/6000 (AIX), 
+   DEC MIPS (Ultrix), DEC Alpha (OSF/1), HP PA (HP-UX), and SGI (IRIX).  
+   LispWorks uses menus and graphics to provide convenient, user friendly
+   access to its wide array of powerful tools.  A C/C++ interface, an SQL
+   interface, and a fully integrated Prolog compiler are a standard part 
+   of LispWorks.  CLIM 2.0 is also available.
+
+<UL>
+     <LI>  COMMON LISP: CLtL2 compatible, native CLOS/MOP, generational GC, 
+        C/C++ interface.
+
+     <LI>  ENVIRONMENT: Prolog, Emacs-like editor/listener/shell, defadvice,
+        defsystem, cross-referencing, lightweight processes,
+        debugger, mail reader, extensible hypertext online doc, LALR
+        parser generator.
+
+     <LI>  BROWSERS/GRAPHERS: files, objects, classes, generic functions,
+        source code systems, specials, compilation warnings.
+
+     <LI>  GRAPHICS: CLX, CLUE, Toolkit, CAPI, Open Look, Motif,
+        interface builder.
+
+     <LI>  INTEGRATED PRODUCTS: CLIM 2.0, KnowledgeWorks (RETE engine).
+</UL>
+<P>
+   Harlequin Inc. is shipping FreeLisp (TM), which has been developed 
+   specifically to meet the Lisp teaching requirements of the academic
+   community in terms of both functionality and price.  FreeLisp
+   is a reduced implementation of Harlequin's premier Common Lisp
+   development environment, LispWorks (R).  FreeLisp runs under on PC's
+   under Windows, and has many of the environmental features as 
+   LispWorks but does not include a compiler. 
+
+
+<H3><A NAME="wcl">Wade Hennessey (WCL)</A></H3>
+
+WCL is an implementation of Common Lisp for Sparc based workstations. WCL
+provides a large subset of Common Lisp as a Unix shared library that
+can be linked with Lisp and C code to produce efficient and small
+applications. For example, the executable for a Lisp version of the
+canonical ``Hello World!'' program requires only 40k bytes under
+SunOS 4.1 for SPARC. WCL provides CLX R5 as a shared library, and
+comes with PCL and a few other utilities.  
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/wcl/0.html">Information</A>
+from CMU.
+</UL>
+
+
+<H3><A NAME="isr" HREF="http://haifa.isx.com:80/~isr/L.html">IS Robotics (L)</A> </H3>
+&quot;L&quot; is a Common Lisp subset for real-time embedded systems.
+This is the stuff that makes those &quot;bug&quot; robots work. 
+
+<H3><A NAME="clisp">U. Karlsruhe & Munich U. (CLISP)</A> </H3>
+
+CLISP is a Common Lisp implementation by Bruno Haible of Karlsruhe
+University and Michael Stoll of Munich University, both in Germany.
+It mostly supports the Lisp described in "Common LISP: The Language
+(2nd edition)" and the ANSI Common Lisp standard.  It runs on
+microcomputers (DOS, OS/2, Windows NT, Windows 95, Amiga 500-4000,
+Acorn RISC PC) as well as on Unix workstations (Linux, SVR4, Sun4,
+DEC Alpha OSF, HP-UX, NeXTstep, SGI, AIX, Sun3 and others) and needs
+only 2 MB of RAM.  It is free software and may be distributed under the
+terms of GNU GPL.  The user interface comes in German, English, French and
+Spanish. CLISP includes an interpreter, a compiler, a large subset of
+CLOS, a foreign language interface and a socket interface.  Packages
+running in CLISP include PCL and, on Unix machines, CLX and Garnet.
+
+
+<UL> 
+<li> <a href="http://clisp.cons.org/~haible/clisp.html">Home page</a>.
+
+<li> Available by anonymous ftp from <a
+href="ftp://ftp2.cons.org/pub/lisp/clisp/">ftp://ftp2.cons.org/pub/lisp/clisp/</a>.
+
+<LI> (Old) <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/clisp/0.html">Information</A>from
+CMU.
+</UL>
+
+<H3><A NAME="clicc">U. Kiel (CLiCC)</A> </H3>
+
+CLiCC (Common Lisp to C Compiler) generates C-executables from Common
+Lisp application programs. CLiCC is not a Common Lisp system, and
+hence does not include any program development or debugging support.
+CLiCC is intended to be used as an add-on to existing Common Lisp
+systems for generating portable applications. CLiCC (version 0.6.2)
+can now compile itself to get a standalone compiler that may be used
+without a Lisp system. CLiCC supports CL_0, a subset of Common Lisp +
+CLOS, which excludes EVAL and related functions. At present CL_0 is
+based on CLtL1, but is headed towards CLtL2 and ANSI-CL. The generated
+C code (ANSI-C or K&R-C compatible) may be compiled using a
+conventional C compiler on the target machine, and must be linked with
+the CLiCC runtime library in order to generate executables. CLiCC
+has a foreign function interface.
+<P>
+The generated C code is not readable in the sense of hand written C
+code. It results from a direct translation of abstract machine code
+to corresponding C constructs.
+<P> Written by <A HREF="mailto:wg@informatik.uni-kiel.de">Wolfgang Goerigk</A>,
+              <A HREF="uho@informatik.uni-kiel.de">Ulrich Hoffman
+</A>, and
+	      <A HREF="hk@informatik.uni-kiel.de"> Heinz Knutzen </A>
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/clicc/0.html">Information</A>from
+CMU.   
+</UL>
+
+<H3><A NAME="kcl">Kyoto U., Austin Code Works, Ibuki Inc</A></H3>
+Kyoto Common Lisp (KCL) is a highly portable and implementation of
+Common Lisp originally developed at Kyoto University in Japan. KCL
+conforms to CLtL1.  Austin Kyoto Common Lisp (AKCL) is a collection of
+ports, bug fixes and improvements to KCL written by Bill Schelter.
+{A}KCL generates C code which it compiles with the local C compiler.
+<P>
+It is recommended that you use AKCL and not try to compile KCL, since
+KCL is unlikely to work with current operating systems.
+<P>
+Commercial versions of {A}KCL are available from Austin Code Works,
+11100 Leafwood Lane, Austin, TX 78750-3409, Tel. 512-258-0785, Fax
+512-258-1342, E-mail guthery@acw.com, including a CLOS for AKCL. 
+<P>
+Ibuki Common Lisp is a commercialized and improved version of Kyoto
+Common Lisp. It runs on over 30 platforms, including Sun3, Sparc, Dec
+(Ultrix), Apollo, HP 9000, IBM RS/6000, Silicon Graphics and IBM PCs.
+It includes an incremental compiler, interpreter, foreign function
+interface. It generates C code from the Lisp and compiles it using the
+local C compiler.  Image size is about 3mb. Cost is $2800
+(workstations), $3500 (servers), $700 (IBM PCs). Supports CLOS and CLX
+($200 extra).  Source code is available at twice the cost. Ibuki now
+also has a product called CONS which compiles Lisp functions into
+linkable Unix libraries.  Write to: Ibuki Inc., PO Box 1627, Los
+Altos, CA 94022, or call 415-961-4996, fax 415-961-8016, or send email
+to Richard Weyhrauch, rww@ibuki.com or support@ibuki.com.
+<P>
+A port of AKCL to DOS is in beta test. 
+<A href="ftp://math.utexas.edu/pub/beta2.tar"><IMG ALIGN=top SRC="../img/ftp.xbm"></A>
+
+<p><a href="#gnu">GCL</a> is based on AKCL.
+
+<UL>
+<LI>  <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/kcl/0.html">Information</A>
+from CMU
+</UL>
+
+<H3><A NAME="nanolisp">Microcomputer Systems Consultants
+(NanoLISP)</A></H3>
+
+   NanoLISP 2.0 is a Lisp interpreter for DOS systems that supports a
+   large subset of the Common Lisp (CLtL2) standard, including lexical and
+   dynamic scoping, four lambda-list keywords, closures, local functions,
+   macros, output formatting, generic sequence functions, transcendental
+   functions, 2-d arrays, bit-arrays, sequences, streams, characters
+   double-floats, hash-tables and structures. Runs in DOS 2.1 or higher,
+   requiring only 384k of RAM. Cost is $100. Write to: Microcomputer Systems
+   Consultants, PO Box 6646, Santa Barbara, CA 93160 or call 805-967-2270.
+
+
+<H3><A NAME="poplog" HREF="http://www.isl.co.uk/poplog.html">Poplog</A></H3>
+
+Poplog is a programming environment implementing several languages,
+including Common Lisp, ML and Prolog.  The environment includes a
+customizable multi-font editor (VED) support for X, and hypertext help
+and tutorials.
+
+<ul>
+<li> <a href="http://www.cogs.susx.ac.uk/users/adrianh/poplog.html">An alternative home page.</a> 
+<li> Poplog came out of work at the <A HREF="http://www.cogs.susx.ac.uk">U. Sussex</A>.
+</ul>
+
+<H3><A NAME="raindrop">Raindrop Software (Software Enginneer) </A> </H3>
+   Software Engineer 2.1 is a Lisp for Windows that creates small
+   stand-alone executables (no royalties or run-time libraries required).
+   It is a subset of Common Lisp, but includes CLOS. Supports DDE and
+   Windows API calls. It requires 2mb RAM, but can use up to 16mb of
+   memory, generating 286/386 specific code. It costs $350.  Write to:
+   Raindrop Software, 833 Arapaho Road, Suite 104, Richardson, TX 75081,
+   call 214-234-2611, fax 214-234-2674, or send email to
+   70632.3126@compuserve.com.
+
+
+<H3><A NAME="awk">Roger Rohrbach (AWK Lisp)</A> </H3>
+AWK Lisp is a Lisp interpreter implemented in Awk.
+<P>
+It provides intrinsic versions of the basic functions on
+s-expressions, and many others written in LISP.
+<P>
+The interpreter has thirteen built-in functions: car, cdr, cons, eq,
+atom, set, eval, error, quote, cond, and, or, list.  These include the
+five elementary functions on s-expressions defined by McCarthy; some
+conditional expression operators; an assignment operator, and some
+functions to control the evaluation process.
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/awk/0.html">Information</A>
+at CMU.
+</UL>
+
+<H3><A NAME="sapiens">Sapiens Software (Star Sapphire)</A> </H3>
+   Star Sapphire Common LISP 3.4 provides a subset of Common Lisp and
+   includes an emacs-like editor, compiler, debugger, DOS graphics and
+   CLOS. It runs on IBM PCs (MSDOS or Windows), requires 640k RAM, a hard
+   disk, and costs $100.  Write to: Sapiens Software Corporation, 
+   PO Box 3365, Santa Cruz, CA 95063-3365, call 408-458-1990, 
+   fax 408-425-0905/9220.  Copies may also be ordered from the Programmers'
+   Shop at 800-421-8006.  Sapiens Software also has a Lisp-to-C
+   translator in beta-test.
+
+<H3><A NAME="lily">Roger Sheldon (LILY)</A> </H3>
+Lily (LIsp LibrarY) is a C++ class library that lets C++ programmers
+write LISP-style code. Includes some example programs from Winston's
+Lisp book recoded in Lily. Most or all of chapters 17 (Symbolic
+Pattern Matching), 18 (Expert Problem Solving), and 23 (Lisp in Lisp)
+are implemented in the examples.
+<P>
+This package is mainly useful in academia for instructors who wish
+to teach AI techniques in C++. The garbage collection mechanism is
+rather slow, making it unattractive for industrial use.
+<P>
+Requires: GNU G++ (2.4.5 or later) or Turbo C++ for Windows.
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/lily/0.html">Information</A>
+from CMU.
+</UL>
+
+<H3><A NAME="mulisp" href="http://www.derive.com">Soft Warehouse, Inc (muLISP-90)</A> </H3>
+
+   muLISP-90 v7.1 is a small Lisp which runs on IBM PCs (or the HP 95LX
+   palmtop), MS-DOS version 2.1 or later. It isn't Common Lisp, although
+   there is a Common Lisp compatibility package which augments muLISP-90
+   with over 450 Common Lisp special forms, macros, functions and control
+   variables. Includes a screen-oriented editor and debugger, a window
+   manager, an interpreter and a compiler. Among the example programs is
+   DOCTOR, an Eliza-like program. The runtime system allows one to create
+   small EXE or COM executables. Uses a compact internal representation
+   of code to minimize space requirements and speed up execution. The
+   kernel takes up only 50k of space. Costs $150. muLISP-XM is a version
+   of muLISP-90 that can take advantage of up to 4 gigabytes of extended
+   memory and costs $300.  Write to Soft Warehouse, Inc., 3660 Waialae
+   Avenue, Suite 304, Honolulu, HI 96816-3236, call 808-734-5801, or fax
+   808-735-1105.
+
+<H3><A NAME="alsp">Software Architecture and Engineering, Inc</A> </H3>
+
+ALSP is a package of types, objects, and functions that emulate the
+important capabilities of Lisp which are not directly available in
+Ada. These capabilities are represented in Ada in a relatively
+straightforward manner without changing the Ada language definition.
+
+<P>
+Requires an ADA implementation.
+
+<P>
+Written by Andrew Ferrentino and Michael Jaskowiak.
+<UL>
+<LI> FTP sites:
+<UL>
+<LI><A href="ftp://wuarchive.wustl.edu/languages/ada/asr/ai/">wuarchive.wustl.edu:/languages/ada/asr/ai/</A>
+<LI>   <A href="ftp://ftp.uu.net/languages/ada/ai/">ftp.uu.net:/languages/ada/ai/</A>
+<LI>   <A
+href="ftp://oak.oakland.edu/pub/ada/ai/">oak.oakland.edu:/pub/ada/ai/</A>
+</UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/alsp/0.html">Information</A>
+from CMU.
+
+</UL>
+
+<H3><A NAME="symbolics" href="http://stony-brook.scrc.symbolics.com/www/index.html">Symbolics (Genera, Zetalisp)</A> </H3>
+
+Symbolics was formed to commercialize the MIT Lisp Machine (also
+called the CADR), a machine with special hardware for running Lisp
+that was one of the first workstations, and among the first computers
+to use a mouse, have a windowing system and have built in networking.
+(LMI was another company formed to commercialize the MIT Lisp
+Machine.)
+
+<P>
+The machine was very successful, and so many were sold to government
+and other high value installations that the company did not produce a
+low price machine until the workstation market had changed dramaticaly.
+
+<P>
+Most installations had the complete source to the operating system,
+which was in Zetalisp (a close precursor to Common Lisp).
+<P>
+Although no new machines are being made, existing hardware is being
+serviced (and sold?).  
+
+<P> Just before going bankrupt, the company ported
+the operating system, Genera, to 64 bit DEC workstations.
+      Symbolics Open Genera runs on DEC 3000 Workstations (models 600
+      and 800 APX with the OSF/1 operating system), at a price of $18,500.
+<P>
+   CLOE (Common Lisp Operating Environment) is a cross-development
+   environment for IBM PCs (MSDOS) and Symbolics Genera. It includes
+   CLOS, condition error system, generational garbage collection,
+   incremental compilation, code time/space profiling, and a stack-frame
+   debugger. It costs from $625 to $4000 and requires 4-8mn RAM and a 386
+   processor.
+
+<UL>
+<li> <a href="http://stony-brook.scrc.symbolics.com/www/index.html">Symbolics Technology, Inc.</a>
+<LI><A HREF="http://www.brightware.com/~rwk/symbolics/"> Symbolics Museum</A>
+<LI> <A HREF="http://www.lavielle.com/~joswig/symbolic-computing.html">Symbolics Technical Summary</A>
+<li> <a href="http://www.deftech.demon.co.uk">Definitive Technologies, Ltd.</a>, supporting Symbolics users in Europe.
+</UL>
+
+<H3><A NAME="ti">Texas Intruments (Explorer)</A> </H3>
+
+The TI Explorer was a competitor to the <A HREF="#symbolics">Symbolics
+Lisp Machine</A>
+
+<UL>
+<LI><A href="ftp://sumex-aim.stanford.edu/pub/exp/">Stanford Explorer Archive</A>
+</UL>
+
+<H3><A NAME="think" HREF="http://www.think.com">Thinking Machines (*Lisp, StarSim)</A> </H3>
+The Connection Machine is a massively parallel supercomputer
+programmed in *Lisp.  A copy of <I>Getting STartined in *Lisp</I>, the
+<I>*Lisp Reference Manual</I> and the <I>*Lisp Dictionary</I> are
+available from Thinking Machines for $100.
+<P>
+A simulator for *Lisp, StarSim, runs inside a number of different
+commercial Common Lisp implementations and is available by
+<A href="ftp://think.com/cm/starlisp/starsim-f19-sharfile/">FTP</A>.
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/starlisp/0.html">Information</A>
+from CMU.
+</UL>
+
+<H3><A NAME="toplevel">Top Level</A> </H3>
+
+   Top Level Common Lisp includes futures, a debugger, tracer, stepper,
+   foreign function interface and object inspector.  It runs on Unix
+   platforms, requiring 8mb RAM, and costs $687.  Write to: Top Level,
+   100 University Drive, Amherst, MA 01002, call (413) 549-4455, or fax
+   (413) 549-4910.
+
+
+<H3><A NAME="venue">Venue (Medley, Xerox Interlisp)</A> </H3>
+
+Xerox has produced a series of special hardware machines called D
+machines because their names began with the letter D, as in Dandelion.
+The Lisp that ran on these machines was Interlisp -- a precursor to
+Common Lisp.  Later Lisp hardware was called Envos(?).  The Lisp
+system used by these machines has been ported to other machines.
+
+
+<P>
+   Medley 2.0 is a Common Lisp development environment that includes a
+   native CLOS w/MOP, window toolkit, window-based debugger, incremental
+   compiler, structure editor, inspectors, stepper, cross-referencer
+   (Masterscope), code analysis tools, and browsers. It is the successor
+   to InterLisp-D.  It runs on a variety of platforms, including Suns,
+   DecStations, 386/486s, IBM RS/6000, MIPS, HP, DEC Alpha, and Xerox
+   1186. The price for Unix machines is $3,195 for the developer version
+   and $1,250 for the runtime version.  Medley also runs under DOS 4.0 or
+   higher ($795 developer version, $300 runtime version, and $250 student
+   version). Instructional licenses are also available at $250/copy for DOS
+   (to a max of $1,250) and $1,000/copy for Unix (to a max of $5,000). 
+   For more information, write to Venue, 1624 Franklin Street, Suite 1212,
+   Oakland, CA 94612, call 800-228-5325 or 510-835-8856, fax
+   510-835-8251, or send email to aisupport.mv@envos.xerox.com.
+
+<H3><A NAME="jlisp">Jeff Weisberg (jlisp)</A> </H3>
+
+jlisp is a lisp interpreter designed to be used as an embedded
+interpreter and is easily interfaced with C/C++.  jlisp is easily
+extended.  Written at U. Rochester.
+
+<UL>
+<LI>   <A
+HREF="http://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/impl/jlisp/0.html">information</A>
+from CMU
+</UL>
+</td></tr></table>
+</BODY>
+</HTML>

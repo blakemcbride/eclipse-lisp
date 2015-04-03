@@ -1,0 +1,4441 @@
+%!PS-Adobe-3.0
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%PageOrder: (atend)
+%%DocumentFonts: (atend)
+%%Creator: Frame 5.0
+%%DocumentData: Clean7Bit
+%%EndComments
+%%BeginProlog
+%
+% Frame ps_prolog 5.0, for use with Frame 5.0 products
+% This ps_prolog file is Copyright (c) 1986-1995 Frame Technology
+% Corporation.  All rights reserved.  This ps_prolog file may be
+% freely copied and distributed in conjunction with documents created
+% using FrameMaker, FrameMaker/SGML and FrameViewer as long as this 
+% copyright notice is preserved.
+%
+% FrameMaker users specify the proper paper size for each print job in the
+% "Print" dialog's "Printer Paper Size" "Width" and "Height~ fields.  If the
+% printer that the PS file is sent to does not support the requested paper
+% size, or if there is no paper tray of the proper size currently installed, 
+% then the job will not be printed.  The following flag, if set to true, will
+% cause the job to print on the default paper in such cases.
+/FMAllowPaperSizeMismatch            false def
+%
+% Frame products normally print colors as their true color on a color printer
+% or as shades of gray, based on luminance, on a black-and white printer. The
+% following flag, if set to true, forces all non-white colors to print as pure
+% black. This has no effect on bitmap images.
+/FMPrintAllColorsAsBlack             false def
+%
+% Frame products can either set their own line screens or use a printer's 
+% default settings. Three flags below control this separately for no 
+% separations, spot separations and process separations. If a flag
+% is true, then the default printer settings will not be changed. If it is
+% false, Frame products will use their own settings from a table based on
+% the printer's resolution.
+/FMUseDefaultNoSeparationScreen      true  def
+/FMUseDefaultSpotSeparationScreen    true  def
+/FMUseDefaultProcessSeparationScreen false def
+%
+% For any given PostScript printer resolution, Frame products have two sets of 
+% screen angles and frequencies for printing process separations, which are 
+% recomended by Adobe. The following variable chooses the higher frequencies
+% when set to true or the lower frequencies when set to false. This is only
+% effective if the appropriate FMUseDefault...SeparationScreen flag is false.
+/FMUseHighFrequencyScreens true def
+%
+% The following is a set of predefined optimal frequencies and angles for various
+% common dpi settings. This is taken from "Advances in Color Separation Using
+% PostScript Software Technology," from Adobe Systems (3/13/89 P.N. LPS 0043)
+% and corrolated with information which is in various PPD (4.0) files.
+%
+% The "dpiranges" figure is the minimum dots per inch device resolution which
+% can support this setting. The "low" and "high" values are controlled by the
+% setting of the FMUseHighFrequencyScreens flag above. The "TDot" flags control
+% the use of the "Yellow Triple Dot" feature whereby the frequency id divided by
+% three, but the dot function is "trippled" giving a block of 3x3 dots per cell.
+%
+% PatFreq is a compromise pattern frequency for ps Level 2 printers which is close
+% to the ideal WYSIWYG pattern frequency of 9 repetitions/inch but does not beat
+% (too badly) against the screen frequencies of any separations for that DPI.
+/dpiranges   [  2540    2400    1693     1270    1200     635      600      0      ] def
+/CMLowFreqs  [ 100.402  94.8683 89.2289 100.402  94.8683  66.9349  63.2456 47.4342 ] def
+/YLowFreqs   [  95.25   90.0    84.65    95.25   90.0     70.5556  66.6667 50.0    ] def
+/KLowFreqs   [  89.8026 84.8528 79.8088  89.8026 84.8528  74.8355  70.7107 53.033  ] def
+/CLowAngles  [  71.5651 71.5651 71.5651 71.5651  71.5651  71.5651  71.5651 71.5651 ] def
+/MLowAngles  [  18.4349 18.4349 18.4349 18.4349  18.4349  18.4349  18.4349 18.4349 ] def
+/YLowTDot    [  true    true    false    true    true     false    false   false   ] def
+/CMHighFreqs [ 133.87  126.491 133.843  108.503 102.523  100.402   94.8683 63.2456 ] def
+/YHighFreqs  [ 127.0   120.0   126.975  115.455 109.091   95.25    90.0    60.0    ] def
+/KHighFreqs  [ 119.737 113.137 119.713  128.289 121.218   89.8026  84.8528 63.6395 ] def
+/CHighAngles [  71.5651 71.5651 71.5651  70.0169 70.0169  71.5651  71.5651 71.5651 ] def
+/MHighAngles [  18.4349 18.4349 18.4349  19.9831 19.9831  18.4349  18.4349 18.4349 ] def
+/YHighTDot   [  false   false   true     false   false    true     true    false   ] def
+/PatFreq     [	10.5833 10.0     9.4055  10.5833 10.0	  10.5833  10.0	   9.375   ] def
+%
+% PostScript Level 2 printers contain an "Accurate Screens" feature which can
+% improve process separation rendering at the expense of compute time. This 
+% flag is ignored by PostScript Level 1 printers.
+/FMUseAcccurateScreens true def
+%
+% The following PostScript procedure defines the spot function that Frame
+% products will use for process separations. You may un-comment-out one of
+% the alternative functions below, or use your own.
+%
+% Dot function
+/FMSpotFunction {abs exch abs 2 copy add 1 gt 
+		{1 sub dup mul exch 1 sub dup mul add 1 sub }
+		{dup mul exch dup mul add 1 exch sub }ifelse } def
+%
+% Line function
+% /FMSpotFunction { pop } def
+%
+% Elipse function
+% /FMSpotFunction { dup 5 mul 8 div mul exch dup mul exch add 
+%		sqrt 1 exch sub } def
+%
+%
+/FMversion (5.0) def 
+/fMLevel1 /languagelevel where {pop languagelevel} {1} ifelse 2 lt def
+/FMPColor
+	fMLevel1 {
+		false
+		/colorimage where {pop pop true} if
+	} {
+		true
+	} ifelse
+def
+/FrameDict 400 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in PS 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} bind def
+	} if
+/FMshowpage /showpage load def
+/FMquit /quit load def
+/FMFAILURE { 
+	dup = flush 
+	FMshowpage 
+	/Helvetica findfont 12 scalefont setfont
+	72 200 moveto show
+	72 220 moveto show
+	FMshowpage 
+	FMquit 
+	} def 
+/FMVERSION {
+	FMversion ne {
+		(Frame product version does not match ps_prolog!  Check installation;)
+		(also check ~/fminit and ./fminit for old versions) FMFAILURE
+		} if
+	} def 
+/FMBADEPSF { 
+	(Adobe's PostScript Language Reference Manual, 2nd Edition, section H.2.4)
+	(says your EPS file is not valid, as it calls X              )
+	dup dup (X) search pop exch pop exch pop length 
+	5 -1 roll 
+	putinterval 
+	FMFAILURE
+	} def
+/fmConcatProcs
+	{
+	/proc2 exch cvlit def/proc1 exch cvlit def/newproc proc1 length proc2 length add array def
+	newproc 0 proc1 putinterval newproc proc1 length proc2 putinterval newproc cvx
+}def
+FrameDict begin [
+	/ALDsave
+	/FMdicttop
+	/FMoptop
+	/FMpointsize
+	/FMsaveobject
+	/b
+	/bitmapsave
+	/blut
+	/bpside
+	/bs
+	/bstring
+	/bwidth
+	/c
+	/cf
+	/cs
+	/cynu
+	/depth
+	/edown
+	/fh
+	/fillvals
+	/fw
+	/fx
+	/fy
+	/g
+	/gfile
+	/gindex
+	/grnt
+	/gryt
+	/gstring
+	/height
+	/hh
+	/i
+	/im
+	/indx
+	/is
+	/k
+	/kk
+	/landscape
+	/lb
+	/len
+	/llx
+	/lly
+	/m
+	/magu
+	/manualfeed
+	/n
+	/offbits
+	/onbits
+	/organgle
+	/orgbangle
+	/orgbfreq
+	/orgbproc
+	/orgbxfer
+	/orgfreq
+	/orggangle
+	/orggfreq
+	/orggproc
+	/orggxfer
+	/orgmatrix
+	/orgproc
+	/orgrangle
+	/orgrfreq
+	/orgrproc
+	/orgrxfer
+	/orgxfer
+	/pagesave
+	/paperheight
+	/papersizedict
+	/paperwidth
+	/pos
+	/pwid
+	/r
+	/rad
+	/redt
+	/sl
+	/str
+	/tran
+	/u
+	/urx
+	/ury
+	/val
+	/width
+	/width
+	/ws
+	/ww
+	/x
+	/x1
+	/x2
+	/xindex
+	/xpoint
+	/xscale
+	/xx
+	/y
+	/y1
+	/y2
+	/yelu
+	/yindex
+	/ypoint
+	/yscale
+	/yy
+] { 0 def } forall
+/FmBD {bind def} bind def
+systemdict /pdfmark known {
+	/fMAcrobat true def
+	
+	/FmPD /pdfmark load def
+	
+	
+	/FmPT /show load def
+	
+	
+	currentdistillerparams /CoreDistVersion get 2000 ge {
+	
+		
+		/FmPD2 /pdfmark load def
+		
+		
+		
+		
+		
+		/FmPA { mark exch /Dest exch 5 3 roll 
+				/View [ /XYZ null 6 -2 roll FmDC exch pop null] /DEST FmPD 
+		}FmBD
+	} {
+		
+		/FmPD2 /cleartomark load def
+		/FmPA {pop pop pop}FmBD
+	} ifelse
+} {
+	
+	/fMAcrobat false def
+	/FmPD /cleartomark load def
+	/FmPD2 /cleartomark load def
+	/FmPT /pop load def
+	/FmPA {pop pop pop}FmBD
+} ifelse
+/FmDC {
+	transform fMDefaultMatrix itransform cvi exch cvi exch
+}FmBD
+/FmBx {
+	dup 3 index lt {3 1 roll exch} if 
+	1 index 4 index lt {4 -1 roll 3 1 roll exch 4 1 roll} if
+}FmBD
+/FMnone 0 def
+/FMcyan 1 def
+/FMmagenta 2 def
+/FMyellow 3 def
+/FMblack 4 def
+/FMcustom 5 def
+/fMNegative false def 
+/FrameSepIs FMnone def 
+/FrameSepBlack 0 def
+/FrameSepYellow 0 def
+/FrameSepMagenta 0 def
+/FrameSepCyan 0 def
+/FrameSepRed 1 def
+/FrameSepGreen 1 def
+/FrameSepBlue 1 def
+/FrameCurGray 1 def
+/FrameCurPat null def
+/FrameCurColors [ 0 0 0 1 0 0 0 ] def 
+/FrameColorEpsilon .001 def	
+/eqepsilon {		
+	sub dup 0 lt {neg} if
+	FrameColorEpsilon le
+} bind def
+/FrameCmpColorsCMYK { 
+	2 copy 0 get exch 0 get eqepsilon {
+		2 copy 1 get exch 1 get eqepsilon {
+			2 copy 2 get exch 2 get eqepsilon {
+				3 get exch 3 get eqepsilon
+			} {pop pop false} ifelse
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/FrameCmpColorsRGB { 
+	2 copy 4 get exch 0 get eqepsilon {
+		2 copy 5 get exch 1 get eqepsilon {
+			6 get exch 2 get eqepsilon
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/RGBtoCMYK { 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	3 copy 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	dup dup dup 
+	6 1 roll 
+	4 1 roll 
+	7 1 roll 
+	sub 
+	6 1 roll 
+	sub 
+	5 1 roll 
+	sub 
+	4 1 roll 
+} bind def
+/CMYKtoRGB { 
+	dup dup 4 -1 roll add 						  
+	5 1 roll 3 -1 roll add 						  
+	4 1 roll add 								  
+	1 exch sub dup 0 lt {pop 0} if 3 1 roll 	  
+	1 exch sub dup 0 lt {pop 0} if exch 	      
+	1 exch sub dup 0 lt {pop 0} if exch	  		  
+} bind def
+/FrameSepInit {
+	1.0 RealSetgray
+} bind def
+/FrameSetSepColor { 
+	/FrameSepBlue exch def
+	/FrameSepGreen exch def
+	/FrameSepRed exch def
+	/FrameSepBlack exch def
+	/FrameSepYellow exch def
+	/FrameSepMagenta exch def
+	/FrameSepCyan exch def
+	/FrameSepIs FMcustom def
+	setCurrentScreen	
+} bind def
+/FrameSetCyan {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 1.0 def
+	/FrameSepIs FMcyan def
+	setCurrentScreen	
+} bind def
+ 
+/FrameSetMagenta {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 1.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMmagenta def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetYellow {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 1.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMyellow def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetBlack {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 1.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMblack def
+	setCurrentScreen
+} bind def
+ 
+/FrameNoSep { 
+	/FrameSepIs FMnone def
+	setCurrentScreen
+} bind def
+/FrameSetSepColors { 
+	FrameDict begin
+	[ exch 1 add 1 roll ]
+	/FrameSepColors  
+	exch def end
+	} bind def
+/FrameColorInSepListCMYK { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsCMYK 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/FrameColorInSepListRGB { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsRGB 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/RealSetgray /setgray load def
+/RealSetrgbcolor /setrgbcolor load def
+/RealSethsbcolor /sethsbcolor load def
+end 
+/setgray { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+		{ RealSetgray } 
+		{ 
+		FrameSepIs FMblack eq 
+			{ RealSetgray } 
+			{ FrameSepIs FMcustom eq 
+			  FrameSepRed 0 eq and
+			  FrameSepGreen 0 eq and
+			  FrameSepBlue 0 eq and {
+			  	RealSetgray
+			  } {
+				1 RealSetgray pop 
+			  } ifelse
+			} ifelse
+		} ifelse
+	end
+} bind def
+/setrgbcolor { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+	{  RealSetrgbcolor }
+	{
+		3 copy [ 4 1 roll ] 
+		FrameColorInSepListRGB
+		{
+				FrameSepBlue eq exch 
+			 	FrameSepGreen eq and exch 
+			 	FrameSepRed eq and
+			 	{ 0 } { 1 } ifelse
+		}
+		{
+			FMPColor {
+				RealSetrgbcolor
+				currentcmykcolor
+			} {
+				RGBtoCMYK
+			} ifelse
+			FrameSepIs FMblack eq
+			{1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		RealSetgray
+	} 
+	ifelse
+	end
+} bind def
+/sethsbcolor {
+	FrameDict begin
+	FrameSepIs FMnone eq 
+	{ RealSethsbcolor } 
+	{
+		RealSethsbcolor 
+		currentrgbcolor  
+		setrgbcolor 
+	} 
+	ifelse
+	end
+} bind def
+FrameDict begin
+/setcmykcolor where {
+	pop /RealSetcmykcolor /setcmykcolor load def
+} {
+	/RealSetcmykcolor {
+		4 1 roll
+		3 { 3 index add 0 max 1 min 1 exch sub 3 1 roll} repeat 
+		RealSetrgbcolor pop
+	} bind def
+} ifelse
+userdict /setcmykcolor { 
+		FrameDict begin
+		FrameSepIs FMnone eq
+		{ RealSetcmykcolor } 
+		{
+			4 copy [ 5 1 roll ]
+			FrameColorInSepListCMYK
+			{
+				FrameSepBlack eq exch 
+				FrameSepYellow eq and exch 
+				FrameSepMagenta eq and exch 
+				FrameSepCyan eq and 
+				{ 0 } { 1 } ifelse
+			}
+			{
+				FrameSepIs FMblack eq
+				{1.0 exch sub 4 1 roll pop pop pop} {
+				FrameSepIs FMyellow eq
+				{pop 1.0 exch sub 3 1 roll pop pop} {
+				FrameSepIs FMmagenta eq
+				{pop pop 1.0 exch sub exch pop } {
+				FrameSepIs FMcyan eq
+				{pop pop pop 1.0 exch sub } 
+				{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+			} ifelse
+			RealSetgray
+		}
+		ifelse
+		end
+	} bind put
+fMLevel1 { 
+	
+	
+	
+	/patScreenDict 7 dict dup begin
+		<0f1e3c78f0e1c387> [ 45  { pop } {exch pop} 		.5   2 sqrt] FmBD
+		<0f87c3e1f0783c1e> [ 135 { pop } {exch pop}			.5   2 sqrt] FmBD
+		<cccccccccccccccc> [ 0   { pop } dup				.5   2	   ] FmBD
+		<ffff0000ffff0000> [ 90  { pop } dup				.5   2	   ] FmBD
+		<8142241818244281> [ 45  { 2 copy lt {exch} if pop}	dup .75  2 sqrt] FmBD
+		<03060c183060c081> [ 45  { pop } {exch pop}			.875 2 sqrt] FmBD
+		<8040201008040201> [ 135 { pop } {exch pop}			.875 2 sqrt] FmBD
+	end def
+} { 
+	
+	/patProcDict 5 dict dup begin
+		<0f1e3c78f0e1c387> { 3 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<0f87c3e1f0783c1e> { 3 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+		<8142241818244281> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke
+											-1 -1 moveto 9 9 lineto stroke } bind def
+		<03060c183060c081> { 1 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<8040201008040201> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+	end def
+	/patDict 15 dict dup begin
+		/PatternType 1 def		
+		/PaintType 2 def		
+		/TilingType 3 def		
+		/BBox [ 0 0 8 8 ] def 	
+		/XStep 8 def			
+		/YStep 8 def			
+		/PaintProc {
+			begin
+			patProcDict bstring known {
+				patProcDict bstring get exec
+			} {
+				8 8 true [1 0 0 -1 0 8] bstring imagemask
+			} ifelse
+			end
+		} bind def
+	end def
+} ifelse
+/combineColor {
+    FrameSepIs FMnone eq
+	{
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceCMYK]] setcolorspace
+			FrameCurColors 0 4 getinterval aload pop FrameCurPat setcolor
+		} {
+			FrameCurColors 3 get 1.0 ge {
+				FrameCurGray RealSetgray
+			} {
+				fMAcrobat not FMPColor graymode and and {
+					0 1 3 { 
+						FrameCurColors exch get
+						1 FrameCurGray sub mul
+					} for
+					RealSetcmykcolor
+				} {
+					4 1 6 {
+						FrameCurColors exch get
+						graymode {
+							1 exch sub 1 FrameCurGray sub mul 1 exch sub
+						} {
+							1.0 lt {FrameCurGray} {1} ifelse
+						} ifelse
+					} for
+					RealSetrgbcolor
+				} ifelse
+			} ifelse
+		} ifelse
+	} { 
+		FrameCurColors 0 4 getinterval aload
+		FrameColorInSepListCMYK {
+			FrameSepBlack eq exch 
+			FrameSepYellow eq and exch 
+			FrameSepMagenta eq and exch 
+			FrameSepCyan eq and
+			FrameSepIs FMcustom eq and
+			{ FrameCurGray } { 1 } ifelse
+		} {
+			FrameSepIs FMblack eq
+			{FrameCurGray 1.0 exch sub mul 1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop FrameCurGray 1.0 exch sub mul 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceGray]] setcolorspace
+			FrameCurPat setcolor
+		} { 
+			graymode not fMLevel1 and {
+				
+				dup 1 lt {pop FrameCurGray} if
+			} if
+			RealSetgray
+		} ifelse
+	} ifelse
+} bind def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/fMDefaultMatrix matrix defaultmatrix def
+/fMatrix2 matrix def
+/dpi    72 0 fMDefaultMatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+	
+/freq dpi dup 72 div round dup 0 eq {pop 1} if 8 mul div def
+/sangle 1 0 fMDefaultMatrix dtransform exch atan def
+	sangle fMatrix2 rotate 
+	fMDefaultMatrix fMatrix2 concatmatrix 
+	dup 0 get /sflipx exch def
+	    3 get /sflipy exch def
+/screenIndex {
+	0 1 dpiranges length 1 sub { dup dpiranges exch get 1 sub dpi le {exit} {pop} ifelse } for
+} bind def
+/getCyanScreen {
+	FMUseHighFrequencyScreens { CHighAngles CMHighFreqs} {CLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getMagentaScreen {
+	FMUseHighFrequencyScreens { MHighAngles CMHighFreqs } {MLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getYellowScreen {
+	FMUseHighFrequencyScreens { YHighTDot YHighFreqs} { YLowTDot YLowFreqs } ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get { 3 div
+			{2 { 1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch} repeat
+			FMSpotFunction } } {/FMSpotFunction load } ifelse
+			0.0 exch
+} bind def
+/getBlackScreen  {
+	FMUseHighFrequencyScreens { KHighFreqs } { KLowFreqs } ifelse
+		screenIndex get 45.0 /FMSpotFunction load 
+} bind def
+/getSpotScreen {
+	getBlackScreen
+} bind def
+/getCompositeScreen {
+	getBlackScreen
+} bind def
+/FMSetScreen 
+	fMLevel1 { /setscreen load 
+	}{ {
+		8 dict begin
+		/HalftoneType 1 def
+		/SpotFunction exch def
+		/Angle exch def
+		/Frequency exch def
+		/AccurateScreens FMUseAcccurateScreens def
+		currentdict end sethalftone
+	} bind } ifelse
+def
+/setDefaultScreen {
+	FMPColor {
+		orgrxfer cvx orggxfer cvx orgbxfer cvx orgxfer cvx setcolortransfer
+	}
+	{
+		orgxfer cvx settransfer
+	} ifelse
+	orgfreq organgle orgproc cvx setscreen
+} bind def
+/setCurrentScreen {
+	FrameSepIs FMnone eq {
+		FMUseDefaultNoSeparationScreen {
+			setDefaultScreen
+		} {
+			getCompositeScreen FMSetScreen
+		} ifelse
+	} {
+		FrameSepIs FMcustom eq {
+			FMUseDefaultSpotSeparationScreen {
+				setDefaultScreen
+			} {
+				getSpotScreen FMSetScreen
+			} ifelse
+		} {
+			FMUseDefaultProcessSeparationScreen {
+				setDefaultScreen
+			} {
+				FrameSepIs FMcyan eq {
+					getCyanScreen FMSetScreen
+				} {
+					FrameSepIs FMmagenta eq {
+						getMagentaScreen FMSetScreen
+					} {
+						FrameSepIs FMyellow eq {
+							getYellowScreen FMSetScreen
+						} {
+							getBlackScreen FMSetScreen
+						} ifelse
+					} ifelse
+				} ifelse
+			} ifelse
+		} ifelse
+	} ifelse 
+} bind def
+end
+	
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne /manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	0 ne /fMNegative exch def 
+	0 ne /edown exch def 
+	/yscale exch def
+	/xscale exch def
+	fMLevel1 {
+		manualfeed {setmanualfeed} if
+		/FMdicttop countdictstack 1 add def 
+		/FMoptop count def 
+		setpapername 
+		manualfeed {true} {papersize} ifelse 
+		{manualpapersize} {false} ifelse 
+		{desperatepapersize} {false} ifelse 
+		{papersizefailure} if
+		count -1 FMoptop {pop pop} for
+		countdictstack -1 FMdicttop {pop end} for 
+		}
+		{2 dict
+		 dup /PageSize [paperwidth paperheight] put
+		 manualfeed {dup /ManualFeed manualfeed put} if
+		 {setpagedevice} stopped {papersizefailure} if
+		}
+	ifelse 
+	
+	FMPColor {
+		currentcolorscreen
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+			cvlit /orgbproc exch def
+				  /orgbangle exch def 
+				  /orgbfreq exch def
+			cvlit /orggproc exch def
+				  /orggangle exch def 
+				  /orggfreq exch def
+			cvlit /orgrproc exch def
+				  /orgrangle exch def 
+				  /orgrfreq exch def
+			currentcolortransfer 
+			fMNegative {
+				1 1 4 { 
+					pop { 1 exch sub } fmConcatProcs 4 1 roll
+				} for
+				4 copy
+				setcolortransfer
+			} if
+			cvlit /orgxfer exch def
+			cvlit /orgbxfer exch def
+			cvlit /orggxfer exch def
+			cvlit /orgrxfer exch def
+	} {
+		currentscreen 
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+				  
+		currenttransfer 
+		fMNegative {
+			{ 1 exch sub } fmConcatProcs
+			dup settransfer
+		} if 
+		cvlit /orgxfer exch def
+	} ifelse
+	end 
+} def 
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch dup /pwid exch def neg translate pop 
+	}{
+		pop /pwid exch def
+	} ifelse
+	edown { [-1 0 0 1 pwid 0] concat } if
+	0 0 moveto paperwidth 0 lineto paperwidth paperheight lineto 
+	0 paperheight lineto 0 0 lineto 1 setgray fill
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin dup
+	array /fillvals exch def
+	dict /patCache exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+% See Adobe's "PostScript Language Reference Manual, 2nd Edition", page 714.
+% "...the following operators MUST NOT be used in an EPS file:" (emphasis ours)
+	/banddevice {(banddevice) FMBADEPSF} def
+	/clear {(clear) FMBADEPSF} def
+	/cleardictstack {(cleardictstack) FMBADEPSF} def 
+	/copypage {(copypage) FMBADEPSF} def
+	/erasepage {(erasepage) FMBADEPSF} def
+	/exitserver {(exitserver) FMBADEPSF} def
+	/framedevice {(framedevice) FMBADEPSF} def
+	/grestoreall {(grestoreall) FMBADEPSF} def
+	/initclip {(initclip) FMBADEPSF} def
+	/initgraphics {(initgraphics) FMBADEPSF} def
+	/quit {(quit) FMBADEPSF} def
+	/renderbands {(renderbands) FMBADEPSF} def
+	/setglobal {(setglobal) FMBADEPSF} def
+	/setpagedevice {(setpagedevice) FMBADEPSF} def
+	/setshared {(setshared) FMBADEPSF} def
+	/startjob {(startjob) FMBADEPSF} def
+	/lettertray {(lettertray) FMBADEPSF} def
+	/letter {(letter) FMBADEPSF} def
+	/lettersmall {(lettersmall) FMBADEPSF} def
+	/11x17tray {(11x17tray) FMBADEPSF} def
+	/11x17 {(11x17) FMBADEPSF} def
+	/ledgertray {(ledgertray) FMBADEPSF} def
+	/ledger {(ledger) FMBADEPSF} def
+	/legaltray {(legaltray) FMBADEPSF} def
+	/legal {(legal) FMBADEPSF} def
+	/statementtray {(statementtray) FMBADEPSF} def
+	/statement {(statement) FMBADEPSF} def
+	/executivetray {(executivetray) FMBADEPSF} def
+	/executive {(executive) FMBADEPSF} def
+	/a3tray {(a3tray) FMBADEPSF} def
+	/a3 {(a3) FMBADEPSF} def
+	/a4tray {(a4tray) FMBADEPSF} def
+	/a4 {(a4) FMBADEPSF} def
+	/a4small {(a4small) FMBADEPSF} def
+	/b4tray {(b4tray) FMBADEPSF} def
+	/b4 {(b4) FMBADEPSF} def
+	/b5tray {(b5tray) FMBADEPSF} def
+	/b5 {(b5) FMBADEPSF} def
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fw 2 div add fy fh 2 div add  translate
+	rotate
+	fw 2 div neg fh 2 div neg translate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count def 
+	} bind def
+/FMENDEPSF {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} bind def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} bind def
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} bind def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	statusdict begin stopped end 
+	} bind def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} bind def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped 
+		end
+		} {true} ifelse 
+	} bind def
+/papersizefailure {
+	FMAllowPaperSizeMismatch not
+		{
+(The requested paper size is not available in any currently-installed tray)
+(Edit the PS file to "FMAllowPaperSizeMismatch true" to use default tray)
+		 FMFAILURE } if
+	} def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+FMPColor 
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYK } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKc } def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYKGRAY } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKGRAYc } def
+	}
+ifelse
+/K { 
+	FMPrintAllColorsAsBlack {
+		dup 1 eq 2 index 1 eq and 3 index 1 eq and not
+			{7 {pop} repeat 0 0 0 1 0 0 0} if
+	} if 
+	FrameCurColors astore 
+	pop combineColor
+} bind def
+/graymode true def
+fMLevel1 {
+	/fmGetFlip {
+		fMatrix2 exch get mul 0 lt { -1 } { 1 } ifelse
+	} FmBD
+} if
+/setPatternMode {
+	fMLevel1 {
+		2 index patScreenDict exch known {
+			pop pop
+			patScreenDict exch get aload pop 
+			freq 								
+			mul									
+			5 2 roll							
+			fMatrix2 currentmatrix 1 get 0 ne {
+				3 -1 roll 90 add 3 1 roll 		
+				sflipx 1 fmGetFlip sflipy 2 fmGetFlip neg mul
+			} {  								
+				sflipx 0 fmGetFlip sflipy 3 fmGetFlip mul 
+			} ifelse
+			0 lt {exch pop} {pop} ifelse 		
+			fMNegative { 
+				{neg} fmConcatProcs 			
+			} if
+			bind
+			
+			
+			
+			systemdict /setscreen get exec		
+			/FrameCurGray exch def
+		} {
+			/bwidth  exch def
+			/bpside  exch def
+			/bstring exch def
+			/onbits 0 def  /offbits 0 def
+			freq sangle landscape {90 add} if 
+				{/ypoint exch def
+				 /xpoint exch def
+				 /xindex xpoint 1 add 2 div bpside mul cvi def
+				 /yindex ypoint 1 add 2 div bpside mul cvi def
+				 bstring yindex bwidth mul xindex 8 idiv add get
+				 1 7 xindex 8 mod sub bitshift and 0 ne fMNegative {not} if
+				 {/onbits  onbits  1 add def 1}
+				 {/offbits offbits 1 add def 0}
+				 ifelse
+				}
+				setscreen
+			offbits offbits onbits add div fMNegative {1.0 exch sub} if
+			/FrameCurGray exch def
+		} ifelse
+	} { 
+		pop pop
+		dup patCache exch known {
+			patCache exch get
+		} { 
+			dup
+			patDict /bstring 3 -1 roll put
+			patDict 
+			9 PatFreq screenIndex get div dup matrix scale
+			makepattern
+			dup 
+			patCache 4 -1 roll 3 -1 roll put
+		} ifelse
+		/FrameCurGray 0 def
+		/FrameCurPat exch def
+	} ifelse
+	/graymode false def
+	combineColor
+} bind def
+/setGrayScaleMode {
+	graymode not {
+		/graymode true def
+		fMLevel1 {
+			setCurrentScreen
+		} if
+	} if
+	/FrameCurGray exch def
+	combineColor
+} bind def
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	
+/PFill {
+	graymode fMLevel1 or not {
+		gsave 1 setgray eofill grestore
+	} if
+} bind def
+/PStroke {
+	graymode fMLevel1 or not {
+		gsave 1 setgray stroke grestore
+	} if
+	stroke
+} bind def
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setPatternMode} 
+	{setGrayScaleMode}
+	ifelse
+	} bind def
+/V { 
+	PFill gsave eofill grestore
+	} bind def
+/Vclip {
+	clip
+	} bind def
+/Vstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/N { 
+	PStroke
+	} bind def
+/Nclip {
+	strokepath clip newpath
+	} bind def
+/Nstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/rarc 
+	{rad 
+	 arcto
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	mark
+	newpath
+	{
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rarc
+	x2 y2 x2 y1 rarc
+	x2 y1 x1 y1 rarc
+	x1 y1 x1 y2 rarc
+	closepath
+	} stopped {x1 y1 x2 y2 R} if 
+	cleartomark
+	} bind def
+/RRR { 
+	/rad exch def
+	normalize /y4 exch def /x4 exch def
+	normalize /y3 exch def /x3 exch def
+	normalize /y2 exch def /x2 exch def
+	normalize /y1 exch def /x1 exch def
+	newpath
+	normalize moveto 
+	mark
+	{
+	x2 y2 x3 y3 rarc
+	x3 y3 x4 y4 rarc
+	x4 y4 x1 y1 rarc
+	x1 y1 x2 y2 rarc
+	closepath
+	} stopped
+	 {x1 y1 x2 y2 x3 y3 x4 y4 newpath moveto lineto lineto lineto closepath} if
+	cleartomark
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	setCurrentScreen
+} bind def
+/CP { 
+	grestore
+	gsave
+	Y 
+	clip
+	setCurrentScreen
+} bind def
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	PFill fill
+	grestore
+	} bind def
+/Gstrk {
+	savematrix
+    newpath
+    2 index 2 div add exch 3 index 2 div sub exch 
+    normalize 2 index 2 div sub exch 3 index 2 div add exch 
+    translate
+    scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+    } bind def
+/Gclip { 
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	clip newpath
+	restorematrix
+	} bind def
+/GG { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	rotate 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath
+	PFill
+	fill
+	grestore
+	} bind def
+/GGclip { 
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	clip newpath
+	restorematrix
+	} bind def
+/GGstrk { 
+	savematrix
+    newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath 
+	restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/Aclip {
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	strokepath clip newpath
+	restorematrix
+} bind def
+/Astrk {
+	Gstrk
+} bind def
+/AA { 
+	gsave
+	savematrix
+	newpath
+	
+	3 index 2 div add exch 4 index 2 div sub exch 
+	
+	normalize 3 index 2 div sub exch 4 index 2 div add exch
+	translate 
+	rotate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/AAclip {
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	strokepath clip newpath
+	restorematrix
+} bind def
+/AAstrk {
+	GGstrk
+} bind def
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 7 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/rip { 
+	   
+	  
+	  bis ris copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  ris gis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  gis bis copy pop 
+	  dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/rip4 { 
+	   
+	  
+	  kis cis copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  cis mis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  mis yis copy pop 
+	  dup dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  yis kis copy pop 
+	  3 mul is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+/wbytes { 
+      dup dup
+      8 gt { pop 8 idiv mul }
+      { 8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse } ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+		 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	cvtProc                
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def 
+	cvtProc              
+	/is width depth wbytes string def
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+fMLevel1 {
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/kk cynu magu min yelu min def
+		/u kk currentundercolorremoval exec def
+%		/u 0 def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 kk currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+}
+{
+/colorSetup2 {
+	[ /Indexed /DeviceRGB 255 
+		{dup red exch get 255 div 
+		 exch dup green exch get 255 div 
+		 exch blue exch get 255 div}
+	] setcolorspace
+} bind def
+} ifelse
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch fmConcatProcs settransfer
+} bind def
+/BITMAPCOLOR { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def
+	fMLevel1 {	
+		colorsetup
+		/is width depth wbytes string def
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	} {
+		colorSetup2
+		/is width depth wbytes string def
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {cf is readhexstring pop} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	fMLevel1 {	
+		colorsetup
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{ip} {is} {is} true 3 colorimage
+	} {
+		colorSetup2
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {ip} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+	/depth 24 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip pop ris} {gis} {bis} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCMYKc { 
+	/depth 32 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip4 pop cis} {mis} {yis} {kis} true 4 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLOR { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYK { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /mis width string def
+        /yis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf mis readhexstring pop } 
+        { cf yis readhexstring pop } 
+        { cf kis readhexstring pop } 
+        true 4 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+	/depth 24 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop ris gis bis width gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAYc { 
+	/depth 32 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop cis mis yis kis width cgray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/cgray { 
+        /ww exch def
+        /k exch def
+        /y exch def
+        /m exch def
+        /c exch def
+        0 1 ww 1 sub { /i exch def c i get m i get y i get k i get CMYKtoRGB
+				.144 mul 3 1 roll .587 mul 3 1 roll .299 mul add add
+				c i 3 -1 roll floor cvi put } for
+        c
+ 		} bind def
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop width gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /yis width string def
+        /mis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf mis readhexstring pop 
+          cf yis readhexstring pop 
+          cf kis readhexstring pop width cgray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+/I { setdash } bind def
+/J { [] 0 setdash } bind def
+%%EndProlog
+%%BeginSetup
+(5.0) FMVERSION
+1 1 0 0 612 792 0 1 16 FMDOCUMENT
+0 0 /Helvetica-Bold FMFONTDEFINE
+1 0 /Times-Roman FMFONTDEFINE
+2 0 /Times-Italic FMFONTDEFINE
+3 0 /Helvetica FMFONTDEFINE
+4 0 /Times-Bold FMFONTDEFINE
+5 0 /Courier-Bold FMFONTDEFINE
+6 0 /Times-BoldItalic FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 0.1 FMFILL
+2 0.3 FMFILL
+3 0.5 FMFILL
+4 0.7 FMFILL
+5 0.9 FMFILL
+6 0.97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 0.9 FMFILL
+18 0.7 FMFILL
+19 0.5 FMFILL
+20 0.3 FMFILL
+21 0.1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "1" 1
+%%BeginPaperSize: Letter
+%%EndPaperSize
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+J
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(1) 302.5 34.17 T
+(ABSTRA) 54 459 T
+(CT) 91.13 459 T
+1 F
+0.66 ( This paper describes design and programming techniques em-) 61.78 443 P
+2.12 (plo) 54 432 P
+2.12 (yed in the de) 65.41 432 P
+2.12 (v) 117.79 432 P
+2.12 (elopment of a language en) 122.16 432 P
+2.12 (vironment for the) 225.26 432 P
+1.29 (EXPRESS information modeling language. A fundamental con-) 54 421 P
+2.47 (cern in the de) 54 410 P
+2.47 (v) 109.92 410 P
+2.47 (elopment of language en) 114.29 410 P
+2.47 (vironments for object) 210.07 410 P
+0.44 (\337a) 54 399 P
+0.44 (v) 62.82 399 P
+0.44 (ored languages is the de) 67.14 399 P
+0.44 (gree to which the object model of the) 155.23 399 P
+-0.18 (implementation language matches that of the language being mod-) 54 388 P
+0.25 (eled. If there is signi\336cant mismatch, the programmer is forced to) 54 377 P
+1.03 (reconcile the dif) 54 366 P
+1.03 (ferences with little aid from the implementation) 114.32 366 P
+0.81 (language's object model,) 54 355 P
+2 F
+0.81 (i.e) 147.53 355 P
+0.81 (.) 156.14 355 P
+1 F
+0.81 ( esche) 158.39 355 P
+0.81 (wing the implementation's na-) 181.21 355 P
+2.05 (ti) 54 344 P
+2.05 (v) 58.78 344 P
+2.05 (e object model and programming with elementary tools the) 63.14 344 P
+-0.06 (object oriented beha) 54 333 P
+-0.06 (viors of the tar) 126.68 333 P
+-0.06 (get language en) 179.06 333 P
+-0.06 (vironment. This) 235.06 333 P
+0.12 (paper describes ho) 54 322 P
+0.12 (w object model mismatch w) 121 322 P
+0.12 (as eliminated and a) 222.89 322 P
+-0 (responsi) 54 311 P
+-0 (v) 83.77 311 P
+-0 (e, incremental EXPRESS language en) 88.14 311 P
+-0 (vironment is being) 225 311 P
+3.8 (de) 54 300 P
+3.8 (v) 62.27 300 P
+3.8 (eloped using the Common Lisp Object System \050CLOS\051) 66.64 300 P
+(metaobject protocol \050MOP\051 and dynamic object techniques.) 54 289 T
+0 F
+(1.0  INTR) 54 253 T
+(ODUCTION) 92.33 253 T
+1 F
+-0.14 (The paper be) 61.78 237 P
+-0.14 (gins with a presentation of background information) 108.35 237 P
+0.74 (re) 54 226 P
+0.74 (g) 60.86 226 P
+0.74 (arding EXPRESS and its role in ISO 10303, more commonly) 65.31 226 P
+1.06 (referred to as STEP \050The Standard for the Exchange of Product) 54 215 P
+0.77 (Model Data\051. Section 2.1 pro) 54 204 P
+0.77 (vides an o) 161.93 204 P
+0.77 (v) 199.82 204 P
+0.77 (ervie) 204.19 204 P
+0.77 (w of design princi-) 221.96 204 P
+1.51 (ples commonly emplo) 54 193 P
+1.51 (yed in the design of EXPRESS language) 136.93 193 P
+0.53 (tools. Sections 2.2 and 2.3 concern the problems of object model) 54 182 P
+0.44 (mismatch that confront designers of EXPRESS tools. Section 3.0) 54 171 P
+0.5 (presents aspects of the author\325) 54 160 P
+0.5 (s Common Lisp implementation of) 164.48 160 P
+0.51 (an EXPRESS language en) 54 149 P
+0.51 (vironment. It describes solutions to the) 149.93 149 P
+0.26 (problems introduced in section 2 emplo) 54 138 P
+0.26 (ying dynamic object tech-) 197.97 138 P
+0.85 (niques, CLOS and its metaobject protocol. Section 4.0 describes) 54 127 P
+1.66 (additional aspects of the EXPRESS language en) 54 116 P
+1.66 (vironment cur-) 237.1 116 P
+0.89 (rently under de) 54 105 P
+0.89 (v) 110.05 105 P
+0.89 (elopment. The paper concludes with a summary) 114.42 105 P
+1.27 (of ho) 54 94 P
+1.27 (w dynamic object techniques and meta-le) 73.79 94 P
+1.27 (v) 229.12 94 P
+1.27 (el programming) 233.49 94 P
+-0.21 (ha) 319.5 459 P
+-0.21 (v) 327.82 459 P
+-0.21 (e contrib) 332.18 459 P
+-0.21 (uted to the de) 363.54 459 P
+-0.21 (v) 411.43 459 P
+-0.21 (elopment of an EXPRESS language en-) 415.8 459 P
+1.02 (vironment and ho) 319.5 448 P
+1.02 (w these same techniques might \336nd use in the) 384.82 448 P
+(lar) 319.5 437 T
+(ger conte) 328.83 437 T
+(xt of STEP de) 361.93 437 T
+(v) 412.46 437 T
+(elopment.) 416.83 437 T
+0 F
+(2.0  B) 319.5 401 T
+(A) 343.24 401 T
+(CKGR) 349.38 401 T
+(OUND) 375.7 401 T
+1 F
+-0.08 (EXPRESS [ISO-11], [Schenck] is a formal language used to de-) 327.28 385 P
+0.28 (scribe information models of  STEP) 319.5 374 P
+0.28 (. The STEP standards support) 449.64 374 P
+2.36 (the unambiguous communication of industrial information e) 319.5 363 P
+2.36 (x-) 550.5 363 P
+1.02 (changed in forms deri) 319.5 352 P
+1.02 (v) 401.07 352 P
+1.02 (ed from EXPRESS language information) 405.43 352 P
+0.83 (models.) 319.5 341 P
+1 7.2 Q
+0.66 (1) 347.75 344.6 P
+1 9 Q
+0.83 ( W) 351.35 341 P
+0.83 (ithin the STEP architecture, a) 362.56 341 P
+2 F
+0.83 (pr) 475.18 341 P
+0.83 (oduct model) 482.77 341 P
+1 F
+0.83 (, that is,) 527.84 341 P
+0.51 (an information model from which a range of similar artif) 319.5 330 P
+0.51 (acts can) 528.75 330 P
+0.36 (be described,  is de\336ned by an) 319.5 319 P
+2 F
+0.36 (application pr) 432.98 319 P
+0.36 (otocol) 484.19 319 P
+1 F
+0.36 ( \050for e) 506.69 319 P
+0.36 (xample,) 529.25 319 P
+0.35 (the application protocol,) 319.5 308 P
+2 F
+0.35 (Ship Structur) 410.54 308 P
+0.35 (es) 458.32 308 P
+1 F
+0.35 (, [ISO-218]\051. Application) 465.81 308 P
+0.03 (protocols rely on libraries of commonly used concepts called) 319.5 297 P
+2 F
+0.03 (inte-) 541.5 297 P
+-0.16 (gr) 319.5 286 P
+-0.16 (ated r) 327.37 286 P
+-0.16 (esour) 348.12 286 P
+-0.16 (ces) 367.78 286 P
+1 F
+-0.16 (. The inte) 379.28 286 P
+-0.16 (grated resources collecti) 413.06 286 P
+-0.16 (v) 499.98 286 P
+-0.16 (ely describe an) 504.34 286 P
+0.28 (abstract model of products. Components of the abstract model in-) 319.5 275 P
+1.4 (clude, for e) 319.5 264 P
+1.4 (xample,) 362.9 264 P
+2 F
+1.4 (Geometric and T) 395.3 264 P
+1.4 (opolo) 458.27 264 P
+1.4 (gical Repr) 478.68 264 P
+1.4 (esentations) 517.5 264 P
+1 F
+0.13 ([ISO-42], which can be used in the description of application pro-) 319.5 253 P
+0.41 (tocol for ship structures, automoti) 319.5 242 P
+0.41 (v) 442.64 242 P
+0.41 (e components,) 447 242 P
+2 F
+0.41 (etc..) 502.06 242 P
+1 F
+0.41 (  The reuse) 517.05 242 P
+-0.04 (of common components impro) 319.5 231 P
+-0.04 (v) 429.98 231 P
+-0.04 (es the quality and de) 434.35 231 P
+-0.04 (v) 507.94 231 P
+-0.04 (elopment ef-) 512.3 231 P
+2.59 (\336cienc) 319.5 220 P
+2.59 (y of application protocols   and f) 343.36 220 P
+2.59 (acilitates information) 478.66 220 P
+1.07 (sharing among related disciplines \050) 319.5 209 P
+2 F
+1.07 (e) 449.76 209 P
+1.07 (.g) 453.62 209 P
+1.07 (.,) 460.23 209 P
+1 F
+1.07 ( design systems and pro-) 464.73 209 P
+1.32 (duction scheduling systems may share an entity authorizing the) 319.5 198 P
+(release of a part for production\051.) 319.5 187 T
+0.05 (Inte) 327.28 171 P
+0.05 (grated resources and application protocols are de\336ned in the) 341.14 171 P
+0.5 (EXPRESS language. Further discussion of the STEP architecture) 319.5 160 P
+([ISO-1] is outside the scope of this paper) 319.5 149 T
+(.) 466.73 149 T
+319.5 101 558 122.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+319.5 106.02 355.5 106.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+(1) 319.5 98.87 T
+1 8 Q
+(EXPRESS itself is an ISO standard de) 322.7 95.67 T
+(v) 445.16 95.67 T
+(eloped by the STEP community) 449.04 95.67 T
+(.) 551.27 95.67 T
+53 489 558 714 R
+7 X
+V
+0 11 Q
+0 X
+(Dynamic Objects and Meta-le) 79.85 661.67 T
+(vel Pr) 232.51 661.67 T
+(ogramming of an EXPRESS Langua) 262.25 661.67 T
+(g) 448.57 661.67 T
+(e En) 455.4 661.67 T
+(vir) 478.19 661.67 T
+(onment) 491.43 661.67 T
+0 10 Q
+(P) 276.2 617.33 T
+(eter Denno) 282.57 617.33 T
+3 F
+(Man) 209.58 600.33 T
+(uf) 228.93 600.33 T
+(actur) 236.97 600.33 T
+(ing Systems Integ) 259.35 600.33 T
+(r) 338.73 600.33 T
+(ation Division) 341.96 600.33 T
+(National Institute of Standards and T) 202.15 588.33 T
+(echnology) 363.27 588.33 T
+(Gaithersb) 240.15 576.33 T
+(urg, Mar) 283.3 576.33 T
+(yland, USA) 320.83 576.33 T
+(pdenno@cme) 255.83 559.33 T
+(.nist.go) 318.08 559.33 T
+(v) 350.17 559.33 T
+(\050301\051 975-3595) 271.32 542.33 T
+279 720 558 747 R
+7 X
+V
+0 8 Q
+0 X
+0.4 (Dynamic Objects W) 442.63 741.67 S
+0.4 (orkshop) 523.64 741.67 S
+0.4 (Object W) 479.26 728.67 S
+0.4 (orld, 1996) 516.65 728.67 S
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "1" 1
+%%Page: "2" 2
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(2) 302.5 34.17 T
+1 F
+1.28 (In order to con) 61.78 714 P
+1.28 (v) 118.49 714 P
+1.28 (e) 122.86 714 P
+1.28 (y the information intended, systems that e) 126.72 714 P
+1.28 (x-) 285 714 P
+2.93 (change data must agree upon the semantics of that data. A) 54 703 P
+1.65 (fundamental design goal of an information modeling language,) 54 692 P
+0.84 (such as EXPRESS, is to pro) 54 681 P
+0.84 (vide the means to describe informa-) 159.07 681 P
+4.54 (tion models \050and subsequently data\051 re\337ecting a mutually) 54 670 P
+0.25 (understood semantics. That is, the language is used to de\336ne con-) 54 659 P
+2.12 (straints which data sets e) 54 648 P
+2.12 (xchanged must satisfy) 151.84 648 P
+2.12 (. In EXPRESS) 235.5 648 P
+(these constraints tak) 54 637 T
+(e se) 126.9 637 T
+(v) 140.42 637 T
+(eral forms:) 144.78 637 T
+(\245) 67.46 621 T
+4 F
+(Constraints on an attrib) 85.5 621 T
+(ute\325) 178.07 621 T
+(s type) 192.74 621 T
+1 7.2 Q
+(2) 214.98 624.6 T
+(3) 223.08 624.6 T
+4 9 Q
+(:) 226.68 621 T
+1 F
+( the v) 229.68 621 T
+(alue of an) 249.45 621 T
+(attrib) 85.46 610 T
+(ute must be type-compatible with the type declared) 104.28 610 T
+(in the attrib) 85.46 599 T
+(utes\325) 126.78 599 T
+(s declaration.) 143.78 599 T
+(\245) 67.46 582 T
+4 F
+(Constraints on semantic consistency of entity) 85.5 582 T
+(instances:) 85.46 571 T
+1 F
+(Rules called) 125.71 571 T
+2 F
+(wher) 172.21 571 T
+(e rules) 189.87 571 T
+1 F
+( can be associated) 214.12 571 T
+(with an entity type. F) 85.46 560 T
+(or e) 162.08 560 T
+(xample, an entity type named) 175.69 560 T
+5 F
+(unit-vector) 85.46 549 T
+1 F
+( possessing) 144.86 549 T
+5 F
+(REAL) 187.87 549 T
+1 F
+( v) 209.47 549 T
+(alued attrib) 215.99 549 T
+(utes) 256.55 549 T
+5 F
+(x) 273.3 549 T
+1 F
+-0.32 (and) 85.46 538 P
+5 F
+-0.76 (y) 100.39 538 P
+1 F
+-0.32 ( might ha) 105.79 538 P
+-0.32 (v) 138.98 538 P
+-0.32 (e a where rule requiring) 143.35 538 P
+5 F
+-0.76 (x**2 + y**2) 229.98 538 P
+(= 1) 85.46 527 T
+1 F
+(. These rules are procedurally de\336ned in EXPRESS) 101.66 527 T
+(and may rely on b) 85.46 516 T
+(uilt-in and user) 150.27 516 T
+(-de\336ned functions and) 204.59 516 T
+(procedures.) 85.46 505 T
+(\245) 67.46 488 T
+4 F
+(Constraints on an entity instance\325) 85.5 488 T
+(s type:) 214.67 488 T
+1 F
+(EXPRESS) 242.16 488 T
+(pro) 85.46 477 T
+(vides a \337e) 97.33 477 T
+(xible mechanism for de\336ning and compos-) 133.69 477 T
+(ing hierarchical entity types \050called) 85.46 466 T
+2 F
+(comple) 214.69 466 T
+(x entity) 240.5 466 T
+(types) 85.46 455 T
+1 F
+(\051 and constraints on the le) 103.96 455 T
+(g) 196.56 455 T
+(al composition of types) 201.01 455 T
+(within the hierarch) 85.46 444 T
+(y) 153.4 444 T
+(. F) 157.32 444 T
+(or e) 166.69 444 T
+(xample, an abstract type) 180.3 444 T
+5 F
+(per-) 270.03 444 T
+(son) 85.46 433 T
+1 F
+( might ha) 101.66 433 T
+(v) 135.49 433 T
+(e subtypes) 139.85 433 T
+5 F
+(male) 179.85 433 T
+1 F
+( and) 201.45 433 T
+5 F
+(female) 218.94 433 T
+1 F
+(. An) 251.34 433 T
+(instance of) 85.46 422 T
+5 F
+(person) 126.95 422 T
+1 F
+( must be one of) 159.35 422 T
+5 F
+(male) 217.1 422 T
+1 F
+( or) 238.7 422 T
+5 F
+(female) 250.7 422 T
+1 F
+(b) 85.46 411 T
+(ut not both.) 89.78 411 T
+(\245) 67.46 394 T
+4 F
+(Constraints on populations of entity instances:) 85.5 394 T
+1 F
+( Popu-) 263.76 394 T
+(lations of entities \050data sets\051 must satisfy constraints) 85.46 383 T
+(described in) 85.46 372 T
+2 F
+(global rules) 131.45 372 T
+1 F
+(. Such rules can, for e) 174.71 372 T
+(xample,) 252.8 372 T
+(constrain the cardinality of the instances of a type \050) 85.46 361 T
+2 F
+(e) 269.68 361 T
+(.g) 273.54 361 T
+(.,) 280.15 361 T
+1 F
+(there is only one CEO\051 or require speci\336c relationships) 85.46 350 T
+(between entities \050) 85.46 339 T
+2 F
+(e) 148.95 339 T
+(.g) 152.81 339 T
+(.) 159.43 339 T
+1 F
+(, e) 161.68 339 T
+(v) 169.95 339 T
+(ery emplo) 174.31 339 T
+(yee has a supervisor\051.) 210.46 339 T
+(\245) 67.46 322 T
+4 F
+-0.19 (Constraints on the existence of an entity instance:) 85.5 322 P
+1 F
+-0.19 (The) 276.45 322 P
+(e) 85.46 311 T
+(xistence on an entity may depend on the e) 89.32 311 T
+(xistence of) 240.16 311 T
+(another entity) 85.46 300 T
+(.) 134.62 300 T
+0 F
+-0.43 (2.1  Classi\336cation of EXPRESS Langua) 54 264 P
+-0.43 (g) 218.3 264 P
+-0.43 (e En) 223.89 264 P
+-0.43 (vir) 242.1 264 P
+-0.43 (onments) 252.93 264 P
+1 F
+0.25 (A language en) 61.78 248 P
+0.25 (vironment for EXPRESS, that is, an en) 113.89 248 P
+0.25 (vironment) 255.5 248 P
+-0.11 (that allo) 54 237 P
+-0.11 (ws the de) 82.91 237 P
+-0.11 (v) 116.45 237 P
+-0.11 (elopment of EXPRESS information models and) 120.82 237 P
+0.01 (sample data sets, can be of great v) 54 226 P
+0.01 (alue to de) 176.82 226 P
+0.01 (v) 211.61 226 P
+0.01 (elopers of EXPRESS) 215.98 226 P
+0.03 (information models. The EXPRESS for some STEP standards can) 54 215 P
+0.44 (run into the thousands of lines of code. Since the de) 54 204 P
+0.44 (v) 244.45 204 P
+0.44 (elopment of) 248.81 204 P
+-0.21 (STEP standards has pro) 54 193 P
+-0.21 (v) 138.99 193 P
+-0.21 (ed to be a length) 143.35 193 P
+-0.21 (y process and a lar) 201.97 193 P
+-0.21 (ge part) 267.96 193 P
+-0.15 (of that ef) 54 182 P
+-0.15 (fort in) 85.97 182 P
+-0.15 (v) 107.71 182 P
+-0.15 (olv) 112.03 182 P
+-0.15 (es the articulation of an EXPRESS information) 123.4 182 P
+54 142 292.5 163.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+54 147.02 90 147.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+-0.02 (2) 54 139.87 P
+2 8 Q
+-0.03 (Attrib) 57.2 136.67 P
+-0.03 (utes) 75.71 136.67 P
+1 F
+-0.03 (correspond to C++ data members or CLOS slots. Attrib) 90.57 136.67 P
+-0.03 (utes are) 267.87 136.67 P
+(associated with) 54 126.67 T
+2 F
+(entities) 105.1 126.67 T
+1 F
+(, analogous to C++ or CLOS classes.) 128.22 126.67 T
+1 6.4 Q
+0.36 (3) 54 109.87 P
+1 8 Q
+0.45 (EXPRESS de\336nes the usual primiti) 57.2 106.67 P
+0.45 (v) 172.15 106.67 P
+0.45 (e types and enumeration and allo) 176.02 106.67 P
+0.45 (ws) 283.61 106.67 P
+0.32 (user) 54 96.67 P
+0.32 (-de\336ned types that generalize or specialize on primiti) 67.17 96.67 P
+0.32 (v) 239.17 96.67 P
+0.32 (e or other user) 243.05 96.67 P
+0.32 (-) 289.84 96.67 P
+(de\336ned types) 54 86.67 T
+1 9 Q
+0.87 (model, the STEP community is quite interested in tools that im-) 319.5 714 P
+(pro) 319.5 703 T
+(v) 331.36 703 T
+(e the ef) 335.73 703 T
+(\336cienc) 361.99 703 T
+(y of EXPRESS de) 385.85 703 T
+(v) 451.38 703 T
+(elopment.) 455.74 703 T
+1.95 (Se) 327.28 687 P
+1.95 (v) 336.05 687 P
+1.95 (eral tools supporting EXPRESS de) 340.42 687 P
+1.95 (v) 473.49 687 P
+1.95 (elopment e) 477.86 687 P
+1.95 (xist, [W) 519.41 687 P
+1.95 (il-) 550 687 P
+1.18 (son], [Libes], [Morris], [STI], [Kiek) 319.5 676 P
+1.18 (enbeck]. The focus of these) 454.08 676 P
+-0.09 (tools is more the v) 319.5 665 P
+-0.09 (alidation of data sets, the e) 385.42 665 P
+-0.09 (xploration of e) 480.82 665 P
+-0.09 (xisting) 533.49 665 P
+0.59 (models, and the generation of application interf) 319.5 654 P
+0.59 (aces than it is the) 493.66 654 P
+-0.13 (incremental de) 319.5 643 P
+-0.13 (v) 372.38 643 P
+-0.13 (elopment of ne) 376.74 643 P
+-0.13 (w EXPRESS models. The w) 430.25 643 P
+-0.13 (ork de-) 532.39 643 P
+2.2 (scribed here has as its goal the de) 319.5 632 P
+2.2 (v) 454.91 632 P
+2.2 (elopment of a responsi) 459.27 632 P
+2.2 (v) 547.39 632 P
+2.2 (e,) 551.75 632 P
+0.02 (incremental de) 319.5 621 P
+0.02 (v) 372.53 621 P
+0.02 (elopment en) 376.9 621 P
+0.02 (vironment for the concurrent de) 420.8 621 P
+0.02 (v) 535.14 621 P
+0.02 (elop-) 539.51 621 P
+0.71 (ment of EXPRESS models and representati) 319.5 610 P
+0.71 (v) 479.07 610 P
+0.71 (e data sets, \050such an) 483.43 610 P
+(en) 319.5 599 T
+(vironment as is a) 327.64 599 T
+(v) 388.7 599 T
+(ailable to Lisp programmers\051.) 392.98 599 T
+0.55 (The design of language en) 327.28 583 P
+0.55 (vironments include strictly interpret-) 424.1 583 P
+2.4 (ed approaches, strictly compiled approaches, and designs that) 319.5 572 P
+0.47 (utilize both interpretation and compilation. T) 319.5 561 P
+0.47 (o date, compiled ap-) 483.11 561 P
+0.52 (proaches to EXPRESS tools \050[Morris], [STI], [Kiek) 319.5 550 P
+0.52 (enbeck]\051  use) 508.99 550 P
+0.09 (the subject EXPRESS to automatically generate code in an imple-) 319.5 539 P
+0.63 (mentation language \050) 319.5 528 P
+2 F
+0.63 (e) 396.74 528 P
+0.63 (.g) 400.6 528 P
+0.63 (.,) 407.22 528 P
+1 F
+0.63 ( C++\051 which is then compiled and link-) 411.72 528 P
+0.7 (edited with auxiliary libraries that are independent from the sub-) 319.5 517 P
+0.53 (ject code. Compiled approaches to EXPRESS en) 319.5 506 P
+0.53 (vironments ha) 498.04 506 P
+0.53 (v) 549.64 506 P
+0.53 (e) 554 506 P
+1.2 (adv) 319.5 495 P
+1.2 (antages o) 332.27 495 P
+1.2 (v) 367.07 495 P
+1.2 (er interpreted approaches in that libraries of com-) 371.44 495 P
+1.29 (piled EXPRESS can be sa) 319.5 484 P
+1.29 (v) 418.46 484 P
+1.29 (ed for later inclusion in information) 422.83 484 P
+-0.08 (models without incurring the cost of interpretation. Also, the auto-) 319.5 473 P
+3.97 (matically generated source code is often useful in v) 319.5 462 P
+3.97 (arious) 536 462 P
+1.12 (applications that w) 319.5 451 P
+1.12 (ant access to data in the form de\336ned by the) 389.65 451 P
+1.05 (subject EXPRESS model. Compiled approaches where compila-) 319.5 440 P
+3.76 (tion and link-edit are length) 319.5 429 P
+3.76 (y) 434.49 429 P
+3.76 (, ho) 438.41 429 P
+3.76 (we) 455.45 429 P
+3.76 (v) 465.71 429 P
+3.76 (er) 470.08 429 P
+3.76 (, can not support a) 476.71 429 P
+0.52 (responsi) 319.5 418 P
+0.52 (v) 349.27 418 P
+0.52 (e, incremental de) 353.64 418 P
+0.52 (v) 416.19 418 P
+0.52 (elopment en) 420.56 418 P
+0.52 (vironment: complete pro-) 464.96 418 P
+-0.22 (cessing of lar) 319.5 407 P
+-0.22 (ge EXPRESS models using this approach can tak) 366.88 407 P
+-0.22 (e 30) 542.98 407 P
+(minutes or more.) 319.5 396 T
+-0.09 (A strictly interpreted approach can be more responsi) 327.28 380 P
+-0.09 (v) 515.15 380 P
+-0.09 (e to the in-) 519.51 380 P
+0.2 (cremental de) 319.5 369 P
+0.2 (v) 365.71 369 P
+0.2 (elopment of the EXPRESS subject code b) 370.08 369 P
+0.2 (ut can not) 522.1 369 P
+0.54 (tak) 319.5 358 P
+0.54 (e adv) 330.41 358 P
+0.54 (antage of compiled libraries of supporting EXPRESS in-) 349.97 358 P
+0.72 (formation models. Nor can interpreters implemented in statically) 319.5 347 P
+-0.02 (compiled languages use the constructs of the language \050) 319.5 336 P
+2 F
+-0.02 (e) 520.3 336 P
+-0.02 (.g) 524.16 336 P
+-0.02 (.,) 530.78 336 P
+1 F
+-0.02 ( class-) 535.28 336 P
+1.05 (es, iteration, arithmetic operations\051 in direct w) 319.5 325 P
+1.05 (ays. F) 492.18 325 P
+1.05 (or e) 514.6 325 P
+1.05 (xample,) 529.25 325 P
+-0.01 (an interpreter can not generate and use a C++ class to represent an) 319.5 314 P
+0.92 (EXPRESS entity type. F) 319.5 303 P
+0.92 (or these reasons, the de) 410.63 303 P
+0.92 (v) 497.81 303 P
+0.92 (elopment of an) 502.17 303 P
+1.73 (interpreter requires the de) 319.5 292 P
+1.73 (v) 417.2 292 P
+1.73 (elopment of fundamental supporting) 421.56 292 P
+0.76 (mechanisms unnecessary in compiled approaches. Therefore, the) 319.5 281 P
+-0.19 (de) 319.5 270 P
+-0.19 (v) 327.77 270 P
+-0.19 (elopment of an interpreter for a language as lar) 332.14 270 P
+-0.19 (ge as EXPRESS) 499.38 270 P
+0.06 (is a daunting task. Recent de) 319.5 259 P
+0.06 (v) 422.58 259 P
+0.06 (elopments in the design of interpret-) 426.95 259 P
+1.3 (ers, ho) 319.5 248 P
+1.3 (we) 344.57 248 P
+1.3 (v) 354.84 248 P
+1.3 (er) 359.2 248 P
+1.3 (, might mak) 365.84 248 P
+1.3 (e interpreted approaches more feasible,) 411.6 248 P
+(\050) 319.5 237 T
+2 F
+(e) 322.5 237 T
+(.g) 326.36 237 T
+(.,) 332.97 237 T
+1 F
+( [Liang]\051.) 337.47 237 T
+2.14 (Approaches that use both compilation and interpretation are) 327.28 221 P
+6.35 (commonly implemented in languages possessing resident) 319.5 210 P
+(programming en) 319.5 199 T
+(vironments, such as Smalltalk or Lisp.) 378.88 199 T
+0 F
+(2.2 Mismatc) 319.5 163 T
+(h of Object Models) 370.43 163 T
+1 F
+-0.06 (EXPRESS is an information modeling language, not a program-) 327.28 147 P
+2.57 (ming language. EXPRESS is 'object \337a) 319.5 136 P
+2.57 (v) 473.79 136 P
+2.57 (ored' b) 478.11 136 P
+2.57 (ut not strictly) 504.86 136 P
+0.31 (object oriented. \050It does not encapsulate state with methods\051. EX-) 319.5 125 P
+0.32 (PRESS mak) 319.5 114 P
+0.32 (es a distinction between classes and instances, allo) 363.99 114 P
+0.32 (ws) 548 114 P
+(class hierarchies and inheritance of data attrib) 319.5 103 T
+(utes.) 484.27 103 T
+-0.05 (An) 327.28 87 P
+2 F
+-0.05 (object model) 340.47 87 P
+1 F
+-0.05 ( is a model with a class/instance distinction, en-) 386.67 87 P
+0.28 (capsulation of state via methods and inheritance of beha) 319.5 76 P
+0.28 (vior from) 523.48 76 P
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "2" 2
+%%Page: "3" 3
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(3) 302.5 34.17 T
+1 F
+-0.12 (parent classes.) 54 723 P
+2 F
+-0.12 (Concr) 107.99 723 P
+-0.12 (ete object models,) 130.15 723 P
+1 F
+-0.12 (those underlying program-) 196.76 723 P
+1.11 (ming languages, v) 54 712 P
+1.11 (ary with respect to inheritance, encapsulation,) 121.74 712 P
+1.61 (information hiding, dynamic capabilities and v) 54 701 P
+1.61 (arious other fea-) 230.31 701 P
+1.05 (tures [Manola]. A fundamental concern in the de) 54 690 P
+1.05 (v) 236.55 690 P
+1.05 (elopment of a) 240.92 690 P
+1.06 (language en) 54 679 P
+1.06 (vironment for an object \337a) 97.93 679 P
+1.06 (v) 197.97 679 P
+1.06 (ored language is the de-) 202.29 679 P
+1.2 (gree to which the object model of the implementation language) 54 668 P
+0.13 (matches that of the language being modeled. If there is signi\336cant) 54 657 P
+1.38 (mismatch between the object model of the implementation lan-) 54 646 P
+0.06 (guage and that of the tar) 54 635 P
+0.06 (get language, the programmer is forced to) 141.39 635 P
+1.03 (reconcile the dif) 54 624 P
+1.03 (ferences with little aid from the implementation) 114.32 624 P
+-0.14 (language's object model. That is, softw) 54 613 P
+-0.14 (are is not reused, b) 193.54 613 P
+-0.14 (ut rather) 260.52 613 P
+-0.14 (,) 290.25 613 P
+1.82 (be) 54 602 P
+1.82 (ginning ag) 62.36 602 P
+1.82 (ain with elementary tools, the programmer imple-) 102.38 602 P
+3.8 (ments the object oriented beha) 54 591 P
+3.8 (viors of the tar) 178.99 591 P
+3.8 (get language) 242.96 591 P
+0.55 (en) 54 580 P
+0.55 (vironment. This, of course, is a great amount of w) 62.14 580 P
+0.55 (ork for what) 246.92 580 P
+0.34 (might be a small \050b) 54 569 P
+0.34 (ut crucial!\051 de) 124.69 569 P
+0.34 (viation to) 175.64 569 P
+0.34 (w) 210.01 569 P
+0.34 (ards the beha) 216.42 569 P
+0.34 (viors of) 264.41 569 P
+0.22 (the tar) 54 558 P
+0.22 (get object model. This paper hopes to illustrate the v) 76.8 558 P
+0.22 (alue of) 267.54 558 P
+-0.17 (a metaobject protocol \050speci\336cally the CLOS metaobject protocol\051) 54 547 P
+-0.22 (in reconciling the dif) 54 536 P
+-0.22 (ferences between the object models of the tar-) 128.35 536 P
+(get and implementation languages.) 54 525 T
+0 F
+(2.3  Three Challeng) 54 489 T
+(es in Object Model Mismatc) 136.62 489 T
+(h) 254.57 489 T
+0 7.2 Q
+(4) 260.06 492.6 T
+1 9 Q
+1.18 (The EXPRESS object model) 61.78 473 P
+1 7.2 Q
+0.94 (5) 169.07 476.6 P
+1 9 Q
+1.18 ( dif) 172.67 473 P
+1.18 (fers in some important w) 185.88 473 P
+1.18 (ays) 280.5 473 P
+1.68 (from the concrete object models underlying common program-) 54 462 P
+2.41 (ming languages \050C++, Smalltalk, CLOS\051. Signi\336cant areas of) 54 451 P
+1.32 (mismatch between these languages and EXPRESS are found in) 54 440 P
+0.78 (the inheritance of attrib) 54 429 P
+0.78 (utes \050C++ data members, or CLOS slots\051) 140.4 429 P
+0.51 (and the approach to subclassing. Three characteristics of the EX-) 54 418 P
+0.18 (PRESS language that present challenges in the de) 54 407 P
+0.18 (v) 233.78 407 P
+0.18 (elopment of an) 238.15 407 P
+(EXPRESS language en) 54 396 T
+(vironment are described belo) 137.64 396 T
+(w:) 242.14 396 T
+(\245) 67.46 380 T
+6 F
+(CHALLENGE\050same-named-attr\051:) 85.5 380 T
+1 F
+(When same-named) 214.75 380 T
+-0.09 (attrib) 85.46 369 P
+-0.09 (utes of tw) 104.28 369 P
+-0.09 (o EXPRESS entities are inherited through) 139.52 369 P
+(tw) 85.46 358 T
+(o distinct paths \050EXPRESS allo) 94.37 358 T
+(ws multiple inherit-) 208.16 358 T
+-0.13 (ance\051 tw) 85.46 347 P
+-0.13 (o distinct attrib) 115.98 347 P
+-0.13 (utes are inherited by the subclass,) 170.05 347 P
+(one from each parent de\336ning the attrib) 85.46 336 T
+(ute.) 227.75 336 T
+(\245) 67.46 319 T
+6 F
+-0.61 (CHALLENGE\050rede\336ned-attr\051:) 85.5 319 P
+1 F
+-0.61 ( In EXPRESS an attrib) 200 319 P
+-0.61 (ute) 279.87 319 P
+(de\336ned in a supertype may be rede\336ned in the subtype) 85.46 308 T
+-0.23 (only if the domain of v) 85.46 297 P
+-0.23 (alues of the subtype is a restriction) 166.85 297 P
+(of the domain of the supertype. Thus an attrib) 85.46 286 T
+(ute of type) 250.01 286 T
+5 F
+(number) 85.46 275 T
+1 F
+( in the supertype can be rede\336ned as type) 117.86 275 T
+5 F
+-0.12 (integer) 85.46 264 P
+1 F
+-0.05 ( in the subtype, b) 123.26 264 P
+-0.05 (ut an) 184.63 264 P
+5 F
+-0.12 (integer) 204.53 264 P
+1 F
+-0.05 (in the super-) 247.61 264 P
+(type can not be rede\336ned as a) 85.46 253 T
+5 F
+(number) 194.18 253 T
+1 F
+( in the subtype.) 226.58 253 T
+(\245) 67.46 236 T
+6 F
+(CHALLENGE\050ANDOR-subtyping\051:) 85.5 236 T
+1 F
+( Unless e) 220.01 236 T
+(xplicitly) 252.86 236 T
+(prohibited by a clause in the entity de\336nition, the direct) 85.46 225 T
+-0.09 (subtypes of an EXPRESS entity type can be combined to) 85.46 214 P
+(de\336ne additional subtypes.) 85.46 203 T
+54 161 292.5 182.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+54 166.02 90 166.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+0.06 (4) 54 158.87 P
+1 8 Q
+0.08 (These are, of course, challenges for compiled approaches. Interpreted ap-) 57.2 155.67 P
+0.79 (proaches using static implementation languages can not make use of the) 54 145.67 P
+(objects in these ways.) 54 135.67 T
+1 6.4 Q
+0.17 (5) 54 118.87 P
+1 8 Q
+0.22 (Although not strictly object oriented, EXPRESS possesses enough of the) 57.2 115.67 P
+0.32 (characteristics of an object oriented language to make use of the term) 54 105.67 P
+2 F
+0.32 (ob-) 281.84 105.67 P
+(ject model) 54 95.67 T
+1 F
+(meaningful in this context.) 89.1 95.67 T
+1 9 Q
+0.37 (An e) 327.28 723 P
+0.37 (xample of this beha) 344.76 723 P
+0.37 (vior \050called) 416.42 723 P
+2 F
+0.37 (ANDOR subtyping) 460.65 723 P
+1 F
+0.37 ( here\051 is) 528.27 723 P
+(illustrated in the follo) 319.5 712 T
+(wing e) 397.03 712 T
+(xample EXPRESS.) 421.14 712 T
+5 F
+-0.18 (ENTITY a SUPERCLASS OF \050b ANDOR c ANDOR d\051;) 327.28 696 P
+1 F
+0.94 (This clause declares that the entity  combinations a, a+b, a+c,) 327.28 680 P
+-0.16 (a+d, a+b+c, a+b+d, a+c+d and a+b+c+d are all instantiable, where) 319.5 669 P
+0.61 (a+b+c, for e) 319.5 658 P
+0.61 (xample, denotes an anon) 364.46 658 P
+0.61 (ymous class \050) 455.13 658 P
+2 F
+0.61 (comple) 505.34 658 P
+0.61 (x entity) 531.15 658 P
+0.14 (type) 319.5 647 P
+1 F
+0.14 (\051 possessing the attrib) 334.49 647 P
+0.14 (utes \050data members, slots\051 of the classes) 412.96 647 P
+(a, b and c.) 319.5 636 T
+1.14 (V) 327.28 620 P
+1.14 (ery dif) 332.77 620 P
+1.14 (ferent solutions to these challenges may be found de-) 357.43 620 P
+12.4 (pending on the implementation language chosen.) 319.5 609 P
+2 F
+2.17 (CHALLENGE\050same-named-attr\051) 319.5 598 P
+1 F
+2.17 ( is met quite easily when EX-) 438.49 598 P
+0.67 (PRESS entities are represented as C++ classes, pro) 319.5 587 P
+0.67 (vided that the) 507.67 587 P
+0.17 (inheritance is declared virtual. On the same challenge CLOS does) 319.5 576 P
+0.07 (not map well; it combines the tw) 319.5 565 P
+0.07 (o attrib) 437.81 565 P
+0.07 (utes into one slot. Ho) 463.44 565 P
+0.07 (we) 540.23 565 P
+0.07 (v-) 550.5 565 P
+1.17 (er) 319.5 554 P
+1.17 (, by using the CLOS meta-object protocol, a relati) 326.13 554 P
+1.17 (v) 515.22 554 P
+1.17 (ely simple) 519.58 554 P
+(solution to this problem can be found.) 319.5 543 T
+-0.09 (Solutions to) 327.28 527 P
+2 F
+-0.09 (CHALLENGE\050r) 372.61 527 P
+-0.09 (ede\336ned-attr\051) 430.28 527 P
+1 F
+-0.09 ( require kno) 479.27 527 P
+-0.09 (wledge of) 522.35 527 P
+0.77 (the attrib) 319.5 516 P
+0.77 (ute\325) 352.34 516 P
+0.77 (s type in order to determine whether the type of the) 365.84 516 P
+-0.04 (attrib) 319.5 505 P
+-0.04 (ute of the child is indeed a restriction of the type found in the) 338.32 505 P
+2.82 (same-named attrib) 319.5 494 P
+2.82 (ute of the parent. The implementation lan-) 388.87 494 P
+0.5 (guage\325) 319.5 483 P
+0.5 (s ability to pro) 343.49 483 P
+0.5 (vide access to descripti) 397.12 483 P
+0.5 (v) 481.64 483 P
+0.5 (e information about) 486 483 P
+0.74 (the class \050) 319.5 472 P
+2 F
+0.74 (e) 356.96 472 P
+0.74 (.g) 360.82 472 P
+0.74 (,) 367.48 472 P
+1 F
+0.74 ( names of attrib) 369.73 472 P
+0.74 (utes, attrib) 428 472 P
+0.74 (ute objects, superclasses,) 466.55 472 P
+-0.18 (precedence ordering,) 319.5 461 P
+2 F
+-0.18 (etc) 396.86 461 P
+1 F
+-0.18 (.\051 can f) 407.36 461 P
+-0.18 (acilitate this ef) 432.15 461 P
+-0.18 (fort. F) 484.56 461 P
+-0.18 (or e) 506.75 461 P
+-0.18 (xample, in) 520.18 461 P
+0.56 (CLOS, user) 319.5 450 P
+0.56 (-de\336ned classes are instances of) 362.38 450 P
+5 F
+1.35 (standard-class) 482.4 450 P
+1 F
+1.06 (or some programmer) 319.5 439 P
+1.06 (-de\336ned subtype of it.) 396.92 439 P
+5 F
+2.54 (standard-class) 482.4 439 P
+1 F
+-0.12 (is a subclass of) 319.5 428 P
+5 F
+-0.29 (standard-object) 375.52 428 P
+1 F
+-0.12 (, on which def) 456.52 428 P
+-0.12 (ault beha) 507.56 428 P
+-0.12 (viors) 540 428 P
+-0.1 (for objects are de\336ned. Since classes \050) 319.5 417 P
+2 F
+-0.1 (e) 456.1 417 P
+-0.1 (.g) 459.96 417 P
+-0.1 (.,) 466.58 417 P
+1 F
+-0.1 ( the classes representing) 471.08 417 P
+1.24 (EXPRESS entity types\051 are instances themselv) 319.5 406 P
+1.24 (es, the same ma-) 494.3 406 P
+1.27 (chinery used by other instances \050) 319.5 395 P
+2 F
+1.27 (e) 444.1 395 P
+1.27 (.g) 447.96 395 P
+1.27 (.,) 454.58 395 P
+1 F
+1.27 ( access to attrib) 459.08 395 P
+1.27 (ute v) 518.46 395 P
+1.27 (alues,) 537.26 395 P
+0.01 (object construction,) 319.5 384 P
+2 F
+0.01 (etc.) 392.76 384 P
+1 F
+0.01 (\051 can be reused by instances that are class-) 405.5 384 P
+1.02 (es. An EXPRESS language en) 319.5 373 P
+1.02 (vironment can use this machinery) 432.45 373 P
+1.05 (directly) 319.5 362 P
+1.05 (, with one e) 346.41 362 P
+1.05 (xception: since the type system and sense of) 391.42 362 P
+0.3 (type restriction de\336ned in EXPRESS does not map directly to the) 319.5 351 P
+0 (Common Lisp type system, the programmer must de\336ne a method) 319.5 340 P
+(to order types by speci\336city) 319.5 329 T
+(.) 418.9 329 T
+1.46 (In part because C++ classes are not objects themselv) 327.28 313 P
+1.46 (es, C++) 528.39 313 P
+0.5 (pro) 319.5 302 P
+0.5 (vides little support for solutions to this challenge. In C++, the) 331.36 302 P
+5 F
+2.7 (typeid) 319.5 291 P
+1 F
+1.13 ( operation applied to an object can be used to obtain a) 351.9 291 P
+5 F
+2.3 (type_info) 319.5 280 P
+1 F
+0.96 ( object for the original object, on which operations) 368.1 280 P
+0.32 (for type collating, type equality and access to the type\325) 319.5 269 P
+0.32 (s name are) 518.87 269 P
+0.19 (de\336ned [X3J16]. Ho) 319.5 258 P
+0.19 (we) 393.39 258 P
+0.19 (v) 403.66 258 P
+0.19 (er) 408.02 258 P
+0.19 (, no mechanism e) 414.66 258 P
+0.19 (xists in C++ to identi-) 478.08 258 P
+0.68 (fy the data members \050) 319.5 247 P
+2 F
+0.68 (i.e) 400.72 247 P
+0.68 (.,) 409.33 247 P
+1 F
+0.68 ( EXPRESS entity attrib) 413.83 247 P
+0.68 (utes\051 of a class.) 500.46 247 P
+2.01 (Therefore, some means other than querying the class must be) 319.5 236 P
+-0.16 (found to obtain attrib) 319.5 225 P
+-0.16 (utes. One method is to de\336ne \324dictionary\325 ob-) 395.1 225 P
+0.13 (jects for both entities and attrib) 319.5 214 P
+0.13 (utes. These objects supplement the) 432.23 214 P
+0.19 (information found in the class with references to attrib) 319.5 203 P
+0.19 (ute objects.) 516.81 203 P
+1.65 (Dictionary objects are, in essence, a partial forfeiture from the) 319.5 192 P
+(mapping of EXPRESS entity types to classes.) 319.5 181 T
+1 7.2 Q
+(6) 484.25 184.6 T
+2 9 Q
+0.8 (CHALLENGE\050ANDOR-subtyping\051) 327.28 165 P
+1 F
+0.8 ( is the problem of managing) 452.77 165 P
+-0.14 (the proliferation of classes possible in ANDOR subtyping. That is,) 319.5 154 P
+2.03 (because of ANDOR subtyping, a lar) 319.5 143 P
+2.03 (ge EXPRESS information) 459.94 143 P
+0.92 (model can result in the de\336nition of hundreds of comple) 319.5 132 P
+0.92 (x entity) 529.83 132 P
+-0.09 (types. ANDOR subtyping, although an adv) 319.5 121 P
+-0.09 (antage from the model-) 474.05 121 P
+3.45 (er\325) 319.5 110 P
+3.45 (s standpoint, is a challenge to the language en) 328.99 110 P
+3.45 (vironment) 521 110 P
+0.29 (programmer) 319.5 99 P
+0.29 (. F) 363.49 99 P
+0.29 (or the C++ programmer) 373.15 99 P
+0.29 (, the question is whether to) 459.55 99 P
+0.63 (implement each comple) 319.5 88 P
+0.63 (x entity as a class, thereby increasing the) 406.61 88 P
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "3" 3
+%%Page: "4" 4
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(4) 302.5 34.17 T
+1 F
+0.91 (size of the image and compile time, or opting for some solution) 54 696 P
+1.05 (where comple) 54 685 P
+1.05 (x entity types are not represented as a single C++) 105.65 685 P
+0.75 (class, and thereby forfeiting some of the simplicity and ele) 54 674 P
+0.75 (g) 271.56 674 P
+0.75 (ance) 276.01 674 P
+-0.01 (in the object model mapping. An ef) 54 663 P
+-0.01 (fecti) 181.43 663 P
+-0.01 (v) 197.19 663 P
+-0.01 (e and simple CLOS solu-) 201.56 663 P
+0.5 (tion to the proliferation of classes w) 54 652 P
+0.5 (as implemented in this w) 186.36 652 P
+0.5 (ork.) 278.25 652 P
+0.63 (It utilizes dynamic objects called \324programmatic classes\325 that are) 54 641 P
+0.33 (composed as needed from e) 54 630 P
+0.33 (xisting classes. [Kiczales]. This is de-) 155.14 630 P
+(scribed further in the ne) 54 619 T
+(xt section.) 139.84 619 T
+0 F
+(3.0  ELEMENTS OF THE SOLUTION) 54 583 T
+1 F
+1.1 (The author is de) 61.78 567 P
+1.1 (v) 123.1 567 P
+1.1 (eloping an EXPRESS language en) 127.46 567 P
+1.1 (vironment) 255.5 567 P
+3.28 (using Common Lisp and the CLOS metaobject protocol. A) 54 556 P
+1.4 (metaobject protocol is an interf) 54 545 P
+1.4 (ace to a language that gi) 171.99 545 P
+1.4 (v) 265.99 545 P
+1.4 (es the) 270.36 545 P
+-0.18 (programmer the ability to incrementally modify the language\325) 54 534 P
+-0.18 (s be-) 275.44 534 P
+0.25 (ha) 54 523 P
+0.25 (vior and implementation [Kiczales]. The metaobject protocol is) 62.32 523 P
+0.75 (used to eliminate the mismatch between the implementation lan-) 54 512 P
+0.52 (guage \050CLOS\051 object model and the tar) 54 501 P
+0.52 (get language \050EXPRESS\051) 198.96 501 P
+0.86 (object model so that the mechanisms of the implementation lan-) 54 490 P
+1.54 (guage\325) 54 479 P
+1.54 (s object system \050) 77.99 479 P
+2 F
+1.54 (e) 142.87 479 P
+1.54 (.g) 146.73 479 P
+1.54 (.,) 153.35 479 P
+1 F
+1.54 ( object de\336nition, instance creation,) 157.85 479 P
+1.28 (method dispatching,) 54 468 P
+2 F
+1.28 (etc.) 131.81 468 P
+1 F
+1.28 (\051 can be reused. The moti) 144.55 468 P
+1.28 (v) 242.2 468 P
+1.28 (ation behind) 246.47 468 P
+0.21 (this approach is the belief that the reuse of these mechanisms will) 54 457 P
+(enhance the quality and speed of implementation.) 54 446 T
+0.05 (The solution also emplo) 61.78 430 P
+0.05 (ys dynamic object techniques \050) 148.57 430 P
+2 F
+0.05 (e) 260.23 430 P
+0.05 (.g) 264.1 430 P
+0.05 (.) 270.71 430 P
+1 F
+0.05 (, run-) 272.96 430 P
+2.18 (time class de\336nition, class rede\336nition\051. Dynamic object tech-) 54 419 P
+5.16 (niques support the requirements that the en) 54 408 P
+5.16 (vironment be) 239.59 408 P
+1.07 (responsi) 54 397 P
+1.07 (v) 83.77 397 P
+1.07 (e and that information models under de) 88.14 397 P
+1.07 (v) 235.82 397 P
+1.07 (elopment may) 240.18 397 P
+0.31 (be incrementally re\336ned. Dynamic object techniques also pro) 54 386 P
+0.31 (vide) 277 386 P
+0.3 (a solution to the proliferation of classes that can occur because of) 54 375 P
+(EXPRESS ANDOR subtyping.) 54 364 T
+0.07 (A principle bene\336t of implementing in Common Lisp is that the) 61.78 348 P
+-0.22 (design may possess the adv) 54 337 P
+-0.22 (antages of both compiled and interpret-) 151.88 337 P
+3.24 (ed approaches with fe) 54 326 P
+3.24 (w of the disadv) 142.21 326 P
+3.24 (antages of either) 206.94 326 P
+3.24 (. F) 272.4 326 P
+3.24 (or) 285 326 P
+0.37 (e) 54 315 P
+0.37 (xample, adv) 57.86 315 P
+0.37 (antages of a compiled approach can be had: the sys-) 102 315 P
+1.68 (tem can translate EXPRESS information models into Common) 54 304 P
+0.56 (Lisp source code that can be compiled of) 54 293 P
+0.56 (f-line and loaded at an) 205.41 293 P
+0.56 (y) 288 293 P
+0.61 (time during a session with the system. Lar) 54 282 P
+0.61 (ge libraries of e) 210.08 282 P
+0.61 (xisting) 267.99 282 P
+0.31 (EXPRESS information models can be accessed by the EXPRESS) 54 271 P
+-0.13 (de) 54 260 P
+-0.13 (v) 62.27 260 P
+-0.13 (eloper by these means. On the other hand, the bene\336ts of an in-) 66.64 260 P
+2.07 (terpreter remain: EXPRESS written in the current session can) 54 249 P
+2.17 (immediately and incrementally be made a) 54 238 P
+2.17 (v) 215.39 238 P
+2.17 (ailable by run-time) 219.67 238 P
+0.16 (translation to Common Lisp and e) 54 227 P
+0.16 (v) 177.34 227 P
+0.16 (aluation by the lisp interpreter) 181.61 227 P
+0.16 (.) 290.25 227 P
+0.11 (Because Common Lisp pro) 54 216 P
+0.11 (vides a resident programming en) 152.44 216 P
+0.11 (viron-) 270.5 216 P
+1.64 (ment and interpreter) 54 205 P
+1.64 (, the de) 129.91 205 P
+1.64 (v) 159.22 205 P
+1.64 (elopment of a comple) 163.58 205 P
+1.64 (x interpreter) 246.62 205 P
+(\324e) 54 194 T
+(x) 60.86 194 T
+(ecution engine\325 is ob) 65.22 194 T
+(viated.) 140.33 194 T
+54 161 292.5 182.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+54 166.02 90 166.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+0.29 (6) 54 158.87 P
+1 8 Q
+0.36 (The careful reader might recognize that, for even more fundamental rea-) 57.2 155.67 P
+0.2 (sons \050because C++ does not allow run-time creation of classes\051 dictionary) 54 145.67 P
+0.54 (objects are necessary in every incremental development environment im-) 54 135.67 P
+0.25 (plemented in C++ \050to describe entity types\051. The point here is to illustrate) 54 125.67 P
+0.05 (one advantage of having information about the class available in the class:) 54 115.67 P
+0.12 (the programmer has one less requirement on his implementation of dictio-) 54 105.67 P
+(nary objects.) 54 95.67 T
+1 9 Q
+0.62 (In the system being de) 327.28 696 P
+0.62 (v) 410.53 696 P
+0.62 (eloped,) 414.89 696 P
+2 F
+0.62 (CHALLENGE\050ANDOR-subtyp-) 444.01 696 P
+1.62 (ing\051) 319.5 685 P
+1 F
+1.62 (, that is, the proliferation of classes that might result if all) 334 685 P
+-0.18 (classes, including those that might ne) 319.5 674 P
+-0.18 (v) 452.89 674 P
+-0.18 (er be populated, are created,) 457.25 674 P
+0.74 (is solv) 319.5 663 P
+0.74 (ed through the use of the programmatic class approach. A) 343.36 663 P
+0.31 (programmatic class, as described in [Kiczales], is a class generat-) 319.5 652 P
+0.2 (ed at run-time by composing a from e) 319.5 641 P
+0.2 (xisting classes. The e) 456.52 641 P
+0.2 (xisting) 533.49 641 P
+2.03 (classes, in our case, are the classes representing simple entity) 319.5 630 P
+(types produced through translation of the EXPRESS source.) 319.5 619 T
+3.23 (In an EXPRESS en) 327.28 603 P
+3.23 (vironment, generation of programmatic) 406.35 603 P
+1.18 (classes for the entity types requires kno) 319.5 592 P
+1.18 (wledge of the) 468.35 592 P
+2 F
+1.18 (e) 523.14 592 P
+1.18 (valuated) 527 592 P
+0.51 (set) 319.5 581 P
+1 F
+0.51 (, the set of all le) 329.5 581 P
+0.51 (g) 389.42 581 P
+0.51 (al entity types [ISO-11]. The e) 393.88 581 P
+0.51 (v) 506.2 581 P
+0.51 (aluated set is) 510.48 581 P
+0.53 (calculated by a computation on the declaration of subtyping con-) 319.5 570 P
+0.27 (straints \050the) 319.5 559 P
+2 F
+0.27 (supertype-constr) 364.54 559 P
+0.27 (aint) 424.9 559 P
+0.27 (clause) 441.42 559 P
+1 F
+0.27 (\051 of all entity declarations) 464.42 559 P
+-0.01 (in the subject EXPRESS) 319.5 548 P
+1 7.2 Q
+-0.01 (7) 408.23 551.6 P
+1 9 Q
+-0.01 (. This computation generates a structure,) 411.83 548 P
+5 F
+4.86 (complex-entity-type) 319.5 537 P
+1 F
+2.02 (, for each element of the e) 422.1 537 P
+2.02 (v) 527.73 537 P
+2.02 (aluated) 532.01 537 P
+0.78 (set. This structure identi\336es the simple entity types \050those which) 319.5 526 P
+1.96 (are e) 319.5 515 P
+1.96 (xplicitly de\336ned in the EXPRESS source\051 composing the) 338.56 515 P
+1.46 (comple) 319.5 504 P
+1.46 (x entity type. When an EXPRESS entity instance is en-) 345.86 504 P
+3.96 (countered through reading data in the e) 319.5 493 P
+3.96 (xchange format of) 484.1 493 P
+2.76 (EXPRESS information models, [ISO-21], its type is check) 319.5 482 P
+2.76 (ed) 549.5 482 P
+0.23 (ag) 319.5 471 P
+0.23 (ainst the e) 327.95 471 P
+0.23 (v) 364.67 471 P
+0.23 (aluated set and, if le) 368.95 471 P
+0.23 (g) 441.95 471 P
+0.23 (al and already generated, is in-) 446.4 471 P
+2.3 (stantiated. If the type is le) 319.5 460 P
+2.3 (g) 423.87 460 P
+2.3 (al b) 428.32 460 P
+2.3 (ut the class has not yet been) 443.7 460 P
+1.91 (generated, the class is generated using the programmatic class) 319.5 449 P
+0.1 (mechanism. Through this means classes representing comple) 319.5 438 P
+0.1 (x en-) 539.66 438 P
+1.46 (tity types are not de\336ned until there is a need to instantiate an) 319.5 427 P
+-0.11 (entity of that class. The programmatic class generated contains the) 319.5 416 P
+-0.11 (information and attrib) 319.5 405 P
+-0.11 (utes of each of the superclasses \050simple enti-) 398.08 405 P
+(ty types\051 from which it inherits.) 319.5 394 T
+2 F
+2.4 (CHALLENGE\050same-named-attr\051) 327.28 378 P
+1 F
+2.4 ( is a challenge for Common) 446.27 378 P
+1.63 (Lisp because CLOS classes inheriting a same-named slot from) 319.5 367 P
+0.68 (tw) 319.5 356 P
+0.68 (o superclasses produce a single slot. CLOS classes inherit this) 328.41 356 P
+0.78 (beha) 319.5 345 P
+0.78 (vior from the standard class metaobject \050sometimes called a) 336.31 345 P
+2 F
+2.08 (metaclass) 319.5 334 P
+1 F
+2.08 (\051) 355 334 P
+5 F
+5 (STANDARD-CLASS.) 362.33 334 P
+1 F
+2.08 ( The solution to this problem) 443.33 334 P
+2.16 (uses the metaobject protocol to pro) 319.5 323 P
+2.16 (vide a subclass of) 456.38 323 P
+5 F
+5.18 (STAN-) 531 323 P
+0.04 (DARD-CLASS) 319.5 312 P
+1 F
+0.02 ( \050called) 373.5 312 P
+5 F
+0.04 (EXPRESS-CLASS) 402.52 312 P
+1 F
+0.02 ( here\051 that o) 472.73 312 P
+0.02 (v) 515.88 312 P
+0.02 (errides the) 520.24 312 P
+0.9 (slot computation methods on) 319.5 301 P
+5 F
+2.16 (STANDARD-CLASS) 429.6 301 P
+1 F
+0.9 ( with methods) 505.2 301 P
+0.94 (that produce multiple slots in accordance with EXPRESS object) 319.5 290 P
+1.81 (model beha) 319.5 279 P
+1.81 (vior) 362.87 279 P
+1.81 (. Although the class of the classes representing) 376.87 279 P
+1.49 (EXPRESS entity types is no longer) 319.5 268 P
+5 F
+3.56 (STANDARD-CLASS) 457.92 268 P
+1 F
+1.49 (, other) 533.52 268 P
+(classes in the system are undisturbed by this modi\336cation.) 319.5 257 T
+0.15 (The metaobject protocol is also used to ensure that all of the in-) 327.28 241 P
+1.81 (formation found in an EXPRESS entity type de\336nition can be) 319.5 230 P
+-0.22 (encoded in the corresponding CLOS class object. F) 319.5 219 P
+-0.22 (or e) 502.83 219 P
+-0.22 (xample, the) 516.22 219 P
+1.7 (standard CLOS metaobject de\336ning slot features,) 319.5 208 P
+5 F
+4.07 (STANDARD-) 509.4 208 P
+2.56 (SLOT) 319.5 197 P
+1 F
+1.07 (, w) 340.43 197 P
+1.07 (as subclassed by a class) 352.41 197 P
+5 F
+2.56 (EXPRESS-SLOT) 445.48 197 P
+1 F
+1.07 ( to allo) 510.28 197 P
+1.07 (w the) 537.19 197 P
+0.78 (recording of EXPRESS-speci\336c features of attrib) 319.5 186 P
+0.78 (utes. F) 500.46 186 P
+0.78 (or e) 525.11 186 P
+0.78 (xam-) 539.51 186 P
+0.94 (ple, EXPRESS entity attrib) 319.5 175 P
+0.94 (utes may be declared as) 420.14 175 P
+5 F
+2.25 (OPTIONAL) 512.55 175 P
+1 F
+0.94 (,) 555.75 175 P
+-0.1 (so that instances are free to lea) 319.5 164 P
+-0.1 (v) 429.2 164 P
+-0.1 (e that attrib) 433.56 164 P
+-0.1 (ute\325) 474.18 164 P
+-0.1 (s v) 487.68 164 P
+-0.1 (alue unspeci\336ed.) 497.61 164 P
+2.33 (T) 319.5 153 P
+2.33 (o implement this feature) 324.28 153 P
+5 F
+5.6 (EXPRESS-SLOT) 423.6 153 P
+1 F
+2.33 ( e) 488.4 153 P
+2.33 (xtends the class) 496.84 153 P
+5 F
+2.72 (STANDARD-SLOT) 319.5 142 P
+1 F
+1.13 ( with an additional slot,) 389.7 142 P
+5 F
+2.72 (OPTIONAL-P) 482.36 142 P
+1 F
+1.13 (, indi-) 535.37 142 P
+319.5 111 558 132.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+319.5 116.02 355.5 116.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+0.1 (7) 319.5 108.87 P
+1 8 Q
+0.13 (The supertype-constraint clause includes the) 322.7 105.67 P
+5 F
+0.31 (ANDOR) 467.54 105.67 P
+1 F
+0.13 ( constraint described) 491.54 105.67 P
+(earlier as well as) 319.5 95.67 T
+5 F
+(AND) 375.04 95.67 T
+1 F
+(,) 389.44 95.67 T
+5 F
+(ONEOF) 393.44 95.67 T
+1 F
+( and) 417.44 95.67 T
+5 F
+(ABSTRACT) 432.99 95.67 T
+1 F
+( constraints.) 471.39 95.67 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "4" 4
+%%Page: "5" 5
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(5) 302.5 34.17 T
+1 F
+1.52 (cating whether the EXPRESS attrib) 54 696 P
+1.52 (ute is optional. In a similar) 188.4 696 P
+2.16 (f) 54 685 P
+2.16 (ashion the EXPRESS attrib) 56.91 685 P
+2.16 (ute features) 161.95 685 P
+5 F
+5.17 (DERIVED) 210.24 685 P
+1 F
+2.16 (,) 248.04 685 P
+5 F
+5.17 (INVERSE) 254.7 685 P
+1 F
+0.21 (and) 54 674 P
+5 F
+0.5 (UNIQUE) 69.45 674 P
+1 F
+0.21 (, and the recording of the attrib) 101.85 674 P
+0.21 (ute\325) 214.64 674 P
+0.21 (s source \050the sim-) 228.14 674 P
+0.75 (ple entity type from which it is inherited\051 and EXPRESS type is) 54 663 P
+(accommodated in the e) 54 652 T
+(xtended slot de\336nition metaobject.) 137.1 652 T
+1.08 (A solution to) 61.78 636 P
+2 F
+1.08 (CHALLENGE\050r) 114.28 636 P
+1.08 (ede\336ned-attr\051) 171.95 636 P
+1 F
+1.08 (, where it is neces-) 220.94 636 P
+0.36 (sary to determine whether the domain of an attrib) 54 625 P
+0.36 (ute in a subtype) 234.67 625 P
+0.62 (is indeed a restriction of the domain of the same-named attrib) 54 614 P
+0.62 (ute) 281.5 614 P
+0.1 (in the supertype, has yet to be implemented. The solution requires) 54 603 P
+1.09 (analysis of the types of both attrib) 54 592 P
+1.09 (utes and will probably be ac-) 182.83 592 P
+0.74 (complished by uni\336cation) 54 581 P
+1 7.2 Q
+0.59 (8) 148.98 584.6 P
+1 9 Q
+0.74 ( on the typed feature structures stored) 152.58 581 P
+(as type information of the attrib) 54 570 T
+(utes in) 168.06 570 T
+(v) 191.45 570 T
+(olv) 195.77 570 T
+(ed.) 207.13 570 T
+0 F
+(4.0  SYSTEM ARCHITECTURE) 54 534 T
+1 F
+0.18 ( EXPRESS is a moderately lar) 61.78 518 P
+0.18 (ge language.) 172.27 518 P
+1 7.2 Q
+0.14 (9) 217.94 521.6 P
+1 9 Q
+0.18 ( Because of this, an) 221.54 518 P
+0.84 (ef) 54 507 P
+0.84 (\336cient solution to the problem of translating EXPRESS source) 60.77 507 P
+-0.12 (to Common Lisp forms is essential. The system, therefore, is com-) 54 496 P
+(prised of three components:) 54 485 T
+(\245) 67.46 469 T
+(a core component that pro) 85.5 469 T
+(vides the beha) 179.34 469 T
+(viors of the) 230.65 469 T
+(EXPRESS object model, as described earlier) 85.46 458 T
+(, and entity) 246.58 458 T
+(instance reading and writing routines using STEP \336le-) 85.46 447 T
+(based e) 85.46 436 T
+(xchange form, [ISO-21];) 112.07 436 T
+(\245) 67.46 419 T
+( an EXPRESS parser that b) 85.5 419 T
+(uilds typed feature structures) 183.56 419 T
+(from the input EXPRESS.  \050Feature structures are ele-) 85.46 408 T
+(ments of a logic on which uni\336cation, generalization and) 85.46 397 T
+(specialization are de\336ned\051. T) 85.46 386 T
+(yped feature structures are) 189.22 386 T
+(modeled as Common Lisp structures;) 85.46 375 T
+(\245) 67.46 358 T
+(a rule-based syntax transformation component that trans-) 85.5 358 T
+(forms the syntax tree of feature structures produced by) 85.46 347 T
+(the parser to a syntax tree of feature structures in the tar-) 85.46 336 T
+(get language, Common Lisp.) 85.46 325 T
+(The last tw) 61.78 308 T
+(o of these components are discussed in this section.) 101.68 308 T
+0.28 (An EXPRESS parser is produced from the Zeb) 61.78 292 P
+0.28 (u re) 232.81 292 P
+0.28 (v) 246.61 292 P
+0.28 (ersible LA-) 250.98 292 P
+0.19 (LR\0501\051 parser generator [Laubsch]. Zeb) 54 281 P
+0.19 (u generates parsers that are) 194.28 281 P
+0.57 (re) 54 270 P
+0.57 (v) 60.77 270 P
+0.57 (ersible in the sense that it produces code for both a \322forw) 65.13 270 P
+0.57 (ard\323) 277.01 270 P
+-0.12 (parse to Common Lisp structures and a \322re) 54 259 P
+-0.12 (v) 207.15 259 P
+-0.12 (erse\323 parse back to the) 211.52 259 P
+1.84 (source language \050) 54 248 P
+2 F
+1.84 (e) 121.15 248 P
+1.84 (.g) 125.01 248 P
+1.84 (.,) 131.62 248 P
+1 F
+1.84 ( EXPRESS\051. The re) 136.12 248 P
+1.84 (v) 212.9 248 P
+1.84 (erse parse is imple-) 217.26 248 P
+3.94 (mented as print functions on the Common Lisp structures) 54 237 P
+2.18 (generated in the forw) 54 226 P
+2.18 (ard parse. Hence when a Common Lisp) 137.18 226 P
+0.21 (structure resulting from the forw) 54 215 P
+0.21 (ard parse of EXPRESS is printed) 172.22 215 P
+(by Lisp, it appears as the original EXPRESS.) 54 204 T
+1 7.2 Q
+(10) 216.75 207.6 T
+1 9 Q
+-0.01 (T) 61.78 188 P
+-0.01 (ranslation with the Zeb) 66.96 188 P
+-0.01 (u re) 149.99 188 P
+-0.01 (v) 163.49 188 P
+-0.01 (ersible parser can be performed by) 167.86 188 P
+0.15 (pro) 54 177 P
+0.15 (viding re) 65.86 177 P
+0.15 (v) 98.03 177 P
+0.15 (ersible parsers for both the input language \050) 102.39 177 P
+2 F
+0.15 (e) 260.13 177 P
+0.15 (.g) 263.99 177 P
+0.15 (.,) 270.61 177 P
+1 F
+0.15 ( EX-) 275.11 177 P
+2.03 (PRESS\051 and the output language \050) 54 166 P
+2 F
+2.03 (e) 187.39 166 P
+2.03 (.g) 191.25 166 P
+2.03 (.,) 197.87 166 P
+1 F
+2.03 ( certain lisp forms\051. T) 202.37 166 P
+2.03 (o) 288 166 P
+54 131 292.5 152.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+54 136.02 90 136.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+0.59 (8) 54 128.87 P
+1 8 Q
+0.74 ([Carpenter] provides an introduction to the logic of typed feature struc-) 57.2 125.67 P
+(tures.) 54 115.67 T
+1 6.4 Q
+(9) 54 98.87 T
+1 8 Q
+(The EXPRESS grammar consists of more than 450 productions.) 57.2 95.67 T
+1 9 Q
+-0.09 (perform the translation, the source language is forw) 319.5 696 P
+-0.09 (ard parsed into) 504.7 696 P
+-0.1 (structures, then re) 319.5 685 P
+-0.1 (write rules are e) 383.3 685 P
+-0.1 (x) 440.58 685 P
+-0.1 (ecuted to transform the abstract) 444.94 685 P
+1.57 (syntax tree structures to a tree corresponding to the tar) 319.5 674 P
+1.57 (get lan-) 529.18 674 P
+1.49 (guage. Finally) 319.5 663 P
+1.49 (, the re) 371.9 663 P
+1.49 (v) 399.4 663 P
+1.49 (erse parser \050print functions\051 of the tar) 403.76 663 P
+1.49 (get) 547 663 P
+0.98 (language is used to produce the corresponding statements in the) 319.5 652 P
+0.46 (tar) 319.5 641 P
+0.46 (get language. Using this approach, translation is lar) 328.83 641 P
+0.46 (gely a mat-) 516.59 641 P
+0.82 (ter of specifying the BNF for both languages and sets of re) 319.5 630 P
+0.82 (write) 539.51 630 P
+0.17 (rules to transform the syntax tree from the form of the source lan-) 319.5 619 P
+(guage to form of the tar) 319.5 608 T
+(get language.) 404.57 608 T
+0.13 (The transformation of the abstract syntax tree is performed by a) 327.28 592 P
+0.52 (sister application of Zeb) 319.5 581 P
+0.52 (u called Zebra, [K) 408.13 581 P
+0.52 (onrad]. Zebra pro) 474.86 581 P
+0.52 (vides) 539 581 P
+-0.05 (a rule-based language for the pre-order and post-order transforma-) 319.5 570 P
+(tion of abstract syntax trees produced by Zeb) 319.5 559 T
+(u.) 481.54 559 T
+1.17 (Zeb) 327.28 543 P
+1.17 (u and Zebra ha) 341.09 543 P
+1.17 (v) 398.15 543 P
+1.17 (e been v) 402.51 543 P
+1.17 (ery ef) 434.7 543 P
+1.17 (fecti) 456.38 543 P
+1.17 (v) 472.15 543 P
+1.17 (e tools in o) 476.52 543 P
+1.17 (v) 519.64 543 P
+1.17 (ercoming) 524.01 543 P
+(the comple) 319.5 532 T
+(xity of EXPRESS translation.) 359.11 532 T
+0 F
+(5.0  CONCLUSION) 319.5 496 T
+1 F
+0.69 (The immediate goal of this w) 327.28 480 P
+0.69 (ork has been the design of a tool) 436.4 480 P
+1.23 (for the ef) 319.5 469 P
+1.23 (\336cient de) 354.73 469 P
+1.23 (v) 388.98 469 P
+1.23 (elopment of EXPRESS models. Such a tool) 393.35 469 P
+-0.21 (will serv) 319.5 458 P
+-0.21 (e the needs of EXPRESS de) 350.4 458 P
+-0.21 (v) 450.38 458 P
+-0.21 (elopers. The softw) 454.74 458 P
+-0.21 (are should) 520.97 458 P
+0.57 (also \336nd reuse in the de) 319.5 447 P
+0.57 (v) 407.37 447 P
+0.57 (elopment of EXPRESS translators \050) 411.74 447 P
+2 F
+0.57 (e) 543.02 447 P
+0.57 (.g) 546.89 447 P
+0.57 (.,) 553.5 447 P
+1 F
+1.52 (to CORB) 319.5 436 P
+1.52 (A IDL [CORB) 354.46 436 P
+1.52 (A], Uni\336ed method [Booch],) 410.68 436 P
+2 F
+1.52 (etc.) 523.24 436 P
+1 F
+1.52 (\051. Be-) 535.99 436 P
+0.97 (yond EXPRESS lay the lar) 319.5 425 P
+0.97 (ger aspects of the STEP architecture,) 420.2 425 P
+0.37 (\050) 319.5 414 P
+2 F
+0.37 (e) 322.5 414 P
+0.37 (.g) 326.36 414 P
+0.37 (.,) 332.97 414 P
+1 F
+0.37 ( application protocols, inte) 337.47 414 P
+0.37 (grated resources\051. The application) 434.43 414 P
+-0.07 (of these same techniques of meta-le) 319.5 403 P
+-0.07 (v) 447.62 403 P
+-0.07 (el and dynamic programming) 451.99 403 P
+0.02 (to these aspects  STEP) 319.5 392 P
+0.02 (, for e) 400.09 392 P
+0.02 (xample, for the f) 421.24 392 P
+0.02 (acilitation of reuse of) 481.2 392 P
+2.07 (inte) 319.5 381 P
+2.07 (grated resources in application protocols,  may pro) 332.86 381 P
+2.07 (vide an) 529.69 381 P
+(e) 319.5 370 T
+(v) 323.27 370 T
+(en greater bene\336t.) 327.64 370 T
+0.83 (Finally) 327.28 354 P
+0.83 (, this w) 352.2 354 P
+0.83 (ork has sho) 380.02 354 P
+0.83 (wn that a good design of a language) 422.45 354 P
+1.45 (en) 319.5 343 P
+1.45 (vironment for a object \337a) 327.64 343 P
+1.45 (v) 424.73 343 P
+1.45 (ored language may use the imple-) 429.05 343 P
+1.49 (mentation language\325) 319.5 332 P
+1.49 (s metaobject protocol \050where one e) 394.23 332 P
+1.49 (xists\051 to) 527.76 332 P
+0.28 (align the implementation\325) 319.5 321 P
+0.28 (s object model beha) 412.55 321 P
+0.28 (viors with the needs) 484.93 321 P
+2.15 (of the tar) 319.5 310 P
+2.15 (get language objects. This approach may result in a) 356.12 310 P
+-0.05 (smaller) 319.5 299 P
+-0.05 (, more comprehensible program. Because the machinery of) 345.64 299 P
+0.99 (nati) 319.5 288 P
+0.99 (v) 332.77 288 P
+0.99 (e object system is reused, the programmer may continue to) 337.14 288 P
+0.75 (use the f) 319.5 277 P
+0.75 (amiliar) 351.41 277 P
+0.75 (, nati) 376.55 277 P
+0.75 (v) 395.08 277 P
+0.75 (e means of attrib) 399.44 277 P
+0.75 (ute access, object creation) 461.77 277 P
+(and  method de\336nition.) 319.5 266 T
+0.54 (Dynamic object techniques are lik) 327.28 250 P
+0.54 (e) 452.32 250 P
+0.54 (wise critical to the solution.) 456.09 250 P
+0.86 (Dynamic object creation allo) 319.5 239 P
+0.86 (ws a straightforw) 426.07 239 P
+0.86 (ard solution to the) 490.18 239 P
+0.13 (proliferation of implicitly de\336ned, potentially unpopulated classes) 319.5 228 P
+1.07 (that might otherwise result from EXPRESS ANDOR subtyping.) 319.5 217 P
+-0.01 (Because classes  may be created at run-time, the system can be f) 319.5 206 P
+-0.01 (ar) 551.01 206 P
+0.03 (more responsi) 319.5 195 P
+0.03 (v) 370.05 195 P
+0.03 (e to the incremental de) 374.41 195 P
+0.03 (v) 456.29 195 P
+0.03 (elopment of the EXPRESS) 460.65 195 P
+(information model.) 319.5 184 T
+0.65 (In addition to the techniques of dynamic object and meta-le) 327.28 168 P
+0.65 (v) 547.14 168 P
+0.65 (el) 551.5 168 P
+0.09 (programming, an ef) 319.5 157 P
+0.09 (\336cient means to translate from the subject lan-) 390.68 157 P
+319.5 131 558 152.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+319.5 136.02 355.5 136.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+0.25 (10) 319.5 128.87 P
+1 8 Q
+0.31 (Recall that lisp programmers have the freedom to define how some lisp) 325.9 125.67 P
+0.05 (objects are printed by the lisp printer. Structures are printed according to a) 319.5 115.67 P
+0.17 (function defined in the) 319.5 105.67 P
+5 F
+0.41 (defstruct) 394.85 105.67 P
+1 F
+0.17 (. CLOS objects are printed according) 438.05 105.67 P
+(to the method) 319.5 95.67 T
+5 F
+(print-object) 365.5 95.67 T
+1 F
+(.) 423.1 95.67 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "5" 5
+%%Page: "6" 6
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 9 Q
+0 X
+0 0 0 1 0 0 0 K
+(6) 302.5 34.17 T
+1 F
+1.74 (guage is necessary) 54 696 P
+1.74 (. Although, to date, only a small amount of) 123.86 696 P
+2.82 (necessary  syntax transformation has been performed in this) 54 685 P
+0.27 (project, the combination of re) 54 674 P
+0.27 (v) 161.59 674 P
+0.27 (ersible parsers with rule-based tree) 165.96 674 P
+(transformation looks v) 54 663 T
+(ery promising.) 135.36 663 T
+0 F
+(A) 54 627 T
+(CKNO) 60.14 627 T
+(WLEDGEMENTS) 86.18 627 T
+1 F
+0.86 (The author w) 61.78 611 P
+0.86 (ould lik) 111.38 611 P
+0.86 (e to ackno) 139.9 611 P
+0.86 (wledge the important contrib) 178.38 611 P
+0.86 (u-) 285 611 P
+0.3 (tion to the softw) 54 600 P
+0.3 (are de) 113.56 600 P
+0.3 (v) 135.36 600 P
+0.3 (elopment of this project made by Joachim) 139.73 600 P
+1.45 (Laubsch of He) 54 589 P
+1.45 (wlett-P) 109.66 589 P
+1.45 (ackard Laboratories, who de) 135.53 589 P
+1.45 (v) 242.12 589 P
+1.45 (eloped Zeb) 246.49 589 P
+1.45 (u) 288 589 P
+0.89 (and pro) 54 578 P
+0.89 (vided b) 82 578 P
+0.89 (ug \336x) 109.45 578 P
+0.89 (es and suggestions. Lik) 130.96 578 P
+0.89 (e) 217.53 578 P
+0.89 (wise, Karsten K) 221.3 578 P
+0.89 (on-) 280.5 578 P
+0.8 (rad\325) 54 567 P
+0.8 (s program, Zebra, and his suggestions on its usage helped to) 68 567 P
+0.54 (mak) 54 556 P
+0.54 (e this w) 69.41 556 P
+0.54 (ork much easier) 98.39 556 P
+0.54 (. The author w) 156.45 556 P
+0.54 (ould also lik) 210.45 556 P
+0.54 (e to thank) 255.93 556 P
+0.79 (the w) 54 545 P
+0.79 (orkshop re) 74.44 545 P
+0.79 (vie) 113.25 545 P
+0.79 (wers, Da) 124.02 545 P
+0.79 (vid T) 156.62 545 P
+0.79 (erebessy and La) 176.03 545 P
+0.79 (wrence  Mayka) 235.45 545 P
+0.73 (and NIST re) 54 534 P
+0.73 (vie) 99.73 534 P
+0.73 (wers, Bill Danner) 110.5 534 P
+0.73 (, KC Morris and Mary Mitchell) 175.35 534 P
+1.08 (for insightful comments. Bill Danner\325) 54 523 P
+1.08 (s ideas for future de) 194.07 523 P
+1.08 (v) 269.64 523 P
+1.08 (elop-) 274.01 523 P
+(ment are especially appreciated.) 54 512 T
+0 F
+(REFERENCES) 61.78 496 T
+1 F
+1.25 ([Booch] Grady Booch and James Rumbaugh,) 61.78 480 P
+2 F
+1.25 (Uni\336ed Method) 235.01 480 P
+-0.1 (for Object-Oriented De) 54 469 P
+-0.1 (velopment) 138.15 469 P
+1 F
+-0.1 (, Rational Softw) 175.14 469 P
+-0.1 (are Corporation,) 233.61 469 P
+(1995.) 54 458 T
+0.89 ([Carpenter] Bob Carpenter) 61.78 442 P
+0.89 (,) 159.67 442 P
+2 F
+0.89 (The Lo) 165.06 442 P
+0.89 (gic of T) 191.12 442 P
+0.89 (yped F) 219.74 442 P
+0.89 (eatur) 244.7 442 P
+0.89 (e Struc-) 263.37 442 P
+4.78 (tur) 54 431 P
+4.78 (es) 64.17 431 P
+1 F
+4.78 (, T) 71.67 431 P
+4.78 (racts in Theoretical Computer Science, Cambridge) 86.13 431 P
+(Uni) 54 420 T
+(v) 67.28 420 T
+(ersity Press, Cambridge, 1993) 71.64 420 T
+0.87 ([CORB) 61.78 404 P
+0.87 (A] The Object Management Group, Inc.,) 88.96 404 P
+2 F
+0.87 (The Common) 243.38 404 P
+0.64 (Object Request Br) 54 393 P
+0.64 (ok) 120.86 393 P
+0.64 (er: Ar) 129.26 393 P
+0.64 (c) 151.31 393 P
+0.64 (hitectur) 155.17 393 P
+0.64 (e and Speci\336cation \050CORB) 182.84 393 P
+0.64 (A\051,) 281.75 393 P
+1 F
+2.01 (The Object Management Group Inc., http://ruby) 54 382 P
+2.01 (.omg.or) 236.66 382 P
+2.01 (g/pubo-) 264.5 382 P
+(dr) 54 371 T
+(.htm#Publications, 1995) 61 371 T
+3.1 ([ISO-1] International Or) 61.78 355 P
+3.1 (g) 155.78 355 P
+3.1 (anization for Standardization,) 160.24 355 P
+2 F
+3.1 (ISO) 278.51 355 P
+0.62 (10303 Industrial A) 54 344 P
+0.62 (utomation Systems and Inte) 123.06 344 P
+0.62 (gr) 223.8 344 P
+0.62 (ation \321 Pr) 231.66 344 P
+0.62 (oduct) 272.5 344 P
+0.64 (Data Repr) 54 333 P
+0.64 (esentation and Exc) 92.05 333 P
+0.64 (hang) 161.69 333 P
+0.64 (e \321 Overvie) 179.6 333 P
+0.64 (w and Fundamen-) 225.73 333 P
+3.12 (tal Principles) 54 322 P
+1 F
+3.12 (, International Standard, ISO TC184/SC4, ftp://) 105.88 322 P
+(ftp.cme.nist.go) 54 311 T
+(v/pub/step) 107.61 311 T
+1 7.2 Q
+(11) 145.12 314.6 T
+1 9 Q
+(, 1994.) 152.32 311 T
+2.2 ([ISO-11] International Or) 61.78 295 P
+2.2 (g) 158.48 295 P
+2.2 (anization for Standardization,) 162.94 295 P
+2 F
+2.2 (ISO) 278.51 295 P
+0.62 (10303 Industrial A) 54 284 P
+0.62 (utomation Systems and Inte) 123.06 284 P
+0.62 (gr) 223.8 284 P
+0.62 (ation \321 Pr) 231.66 284 P
+0.62 (oduct) 272.5 284 P
+0.55 (Data Repr) 54 273 P
+0.55 (esentation and Exc) 91.96 273 P
+0.55 (hang) 161.41 273 P
+0.55 (e \321 Description Methods: The) 179.32 273 P
+1.76 (EXPRESS Langua) 54 262 P
+1.76 (g) 121.92 262 P
+1.76 (e Refer) 126.33 262 P
+1.76 (ence Manual) 153.5 262 P
+1 F
+1.76 (, International Standard,) 201.99 262 P
+(ISO TC184/SC4, ftp://ftp.cme.nist.go) 54 251 T
+(v/pub/step, 1994.) 189.38 251 T
+2.2 ([ISO-21] International Or) 61.78 235 P
+2.2 (g) 158.48 235 P
+2.2 (anization for Standardization,) 162.94 235 P
+2 F
+2.2 (ISO) 278.51 235 P
+0.62 (10303 Industrial A) 54 224 P
+0.62 (utomation Systems and Inte) 123.06 224 P
+0.62 (gr) 223.8 224 P
+0.62 (ation \321 Pr) 231.66 224 P
+0.62 (oduct) 272.5 224 P
+0.93 (Data Repr) 54 213 P
+0.93 (esentation and Exc) 92.34 213 P
+0.93 (hang) 162.56 213 P
+0.93 (e \321 Implementation Methods:) 180.47 213 P
+2.67 (Clear T) 54 202 P
+2.67 (e) 83.6 202 P
+2.67 (xt Encoding of the Exc) 87.41 202 P
+2.67 (hang) 179.44 202 P
+2.67 (e Structur) 197.35 202 P
+2.67 (e) 235.43 202 P
+2.67 (,) 239.34 202 P
+1 F
+2.67 ( International) 241.59 202 P
+(Standard, ISO TC184/SC4, ftp://ftp.cme.nist.go) 54 191 T
+(v/pub/step, 1994.) 225.87 191 T
+2.2 ([ISO-42] International Or) 61.78 175 P
+2.2 (g) 158.48 175 P
+2.2 (anization for Standardization,) 162.94 175 P
+2 F
+2.2 (ISO) 278.51 175 P
+0.62 (10303 Industrial A) 54 164 P
+0.62 (utomation Systems and Inte) 123.06 164 P
+0.62 (gr) 223.8 164 P
+0.62 (ation \321 Pr) 231.66 164 P
+0.62 (oduct) 272.5 164 P
+2.19 (Data Repr) 54 153 P
+2.19 (esentation and Exc) 93.61 153 P
+2.19 (hang) 166.34 153 P
+2.19 (e \321 Inte) 184.25 153 P
+2.19 (gr) 218.77 153 P
+2.19 (ated Generic Re-) 226.64 153 P
+54 111 292.5 132.02 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+54 116.02 90 116.02 2 L
+0.5 H
+2 Z
+0 X
+0 0 0 1 0 0 0 K
+N
+0 0 612 792 C
+1 6.4 Q
+0 X
+0 0 0 1 0 0 0 K
+-0.15 (11) 54 108.87 P
+1 8 Q
+-0.19 (ISO IS level references are copyrighted and may be purchased from ISO.) 60.4 105.67 P
+(Draft copies can be obtained for free at this FTP address.) 54 95.67 T
+2 9 Q
+0.12 (sour) 319.5 696 P
+0.12 (ces: Geometric and T) 335.17 696 P
+0.12 (opolo) 412.44 696 P
+0.12 (gical Repr) 432.85 696 P
+0.12 (esentation,) 470.39 696 P
+1 F
+0.12 ( International) 509.64 696 P
+(Standard, ISO TC184/SC4, ftp://ftp.cme.nist.go) 319.5 685 T
+(v/pub/step, 1994.) 491.37 685 T
+1.3 ([ISO-218] International Or) 327.28 669 P
+1.3 (g) 426.68 669 P
+1.3 (anization for Standardization,) 431.14 669 P
+2 F
+1.3 (ISO) 544.01 669 P
+0.62 (10303 Industrial A) 319.5 658 P
+0.62 (utomation Systems and Inte) 388.56 658 P
+0.62 (gr) 489.3 658 P
+0.62 (ation \321 Pr) 497.17 658 P
+0.62 (oduct) 538 658 P
+0.25 (Data Repr) 319.5 647 P
+0.25 (esentation and Exc) 357.16 647 P
+0.25 (hang) 426.01 647 P
+0.25 (e \321 Application Pr) 443.92 647 P
+0.25 (otocol: Ship) 514 647 P
+6.17 (Structur) 319.5 636 P
+6.17 (es,) 348.67 636 P
+1 F
+6.17 (International Standard, ISO TC184/SC4, ftp://) 366.83 636 P
+(ftp.cme.nist.go) 319.5 625 T
+(v/pub/step, 1994.) 373.11 625 T
+2.49 ([Liang] Sheng Liang, P) 327.28 609 P
+2.49 (aul Hudak and Mark Jones,) 419.09 609 P
+2 F
+2.49 (Monad) 532.5 609 P
+1.57 (T) 319.5 598 P
+1.57 (r) 324.01 598 P
+1.57 (ansformer) 327.38 598 P
+1.57 (s and Modular Interpr) 364.28 598 P
+1.57 (eter) 449.4 598 P
+1.57 (s) 463.31 598 P
+1 F
+1.57 (, Principles of Program-) 466.81 598 P
+(ming Languages\32595, San Francisco, CA, January) 319.5 587 T
+(, 1995.) 495.39 587 T
+0.1 ([Libes] Don Libes and Ste) 327.28 571 P
+0.1 (v) 422.45 571 P
+0.1 (e Clark,) 426.81 571 P
+2 F
+0.1 (The NIST EXPRESS T) 457.76 571 P
+0.1 (oolkit) 537.5 571 P
+0.5 (- Lessons Learned) 319.5 560 P
+1 F
+0.5 (, EXPRESS Users Group Conference Proceed-) 386.51 560 P
+(ings \050EUG\32592\051 Dallas, T) 319.5 549 T
+(e) 407.85 549 T
+(xas, October 17-18, 1992.) 411.71 549 T
+0.1 ([Kiczales] Gre) 327.28 533 P
+0.1 (gor Kiczales, Jim des Ri) 379.96 533 P
+0.1 (vieres and Daniel G. Bo-) 467.87 533 P
+3.3 (bro) 319.5 522 P
+3.3 (w) 331.27 522 P
+3.3 (,) 337.18 522 P
+2 F
+3.3 (The Art of the Metaobject Pr) 344.99 522 P
+3.3 (otocol,) 464.85 522 P
+1 F
+3.3 (The MIT Press,) 495.15 522 P
+(Cambridge, Massachusetts, 1991.) 319.5 511 T
+1.88 ([Kiek) 327.28 495 P
+1.88 (enbeck] Juer) 347.68 495 P
+1.88 (gen Kiek) 395.12 495 P
+1.88 (enbeck, Annette Sie) 429.65 495 P
+1.88 (genthaler) 505.5 495 P
+1.88 (, and) 538.63 495 P
+0.19 (Gunter Schlageter) 319.5 484 P
+0.19 (,) 384.57 484 P
+2 F
+0.19 (EXPRESS to C++: A mapping of the type-sys-) 389.26 484 P
+0.97 (tem) 319.5 473 P
+1 F
+0.97 (, EXPRESS Users Group Conference Proceedings \050EUG\32595\051) 332.5 473 P
+(Grenoble, France, October 21-22, 1995.) 319.5 462 T
+1.23 ([K) 327.28 446 P
+1.23 (onrad] Karsten K) 336.46 446 P
+1.23 (onrad,) 401.08 446 P
+2 F
+1.23 (Abstr) 427.31 446 P
+1.23 (akte Syntaxtr) 446.67 446 P
+1.23 (ansformation mit) 495.01 446 P
+3.65 (g) 319.5 435 P
+3.65 (etypen Merkmalstermen) 323.91 435 P
+1 F
+3.65 (, Diplom Thesis, ftp://cl-ftp.dfki.uni-) 414.29 435 P
+(sb) 319.5 424 T
+(.de, September 23, 1994.) 327.14 424 T
+1.38 ([Laubsch] Joachim Laubsch,) 327.28 408 P
+2 F
+1.38 (Zeb) 437.38 408 P
+1.38 (u: A T) 450.7 408 P
+1.38 (ool for Specifying Re-) 475.13 408 P
+8.1 (ver) 319.5 397 P
+8.1 (sible LALR\0501\051 P) 330.9 397 P
+8.1 (ar) 404.88 397 P
+8.1 (ser) 412.79 397 P
+8.1 (s) 423.7 397 P
+1 F
+8.1 (. He) 427.2 397 P
+8.1 (wlett-P) 450.07 397 P
+8.1 (ackard Laboratories,) 475.93 397 P
+0.73 (Softw) 319.5 386 P
+0.73 (are T) 340.91 386 P
+0.73 (echnology Laboratory) 359.75 386 P
+0.73 (, Internal Report, July 26, 1995.) 439.62 386 P
+(http://www) 319.5 375 T
+(.cs.cmu.edu/W) 359.92 375 T
+(eb/Groups/AI/html/repository) 412.94 375 T
+(.html.) 519.85 375 T
+1.96 ([Manola] Frank Manola, Editor) 327.28 359 P
+1.96 (, X3H7 T) 446.27 359 P
+1.96 (echnical Committee) 483.8 359 P
+2.72 (\050Object Information Management\051,) 319.5 348 P
+2 F
+2.72 (F) 456.62 348 P
+2.72 (eatur) 461.44 348 P
+2.72 (es Matrix of Object) 480.11 348 P
+1.16 (Models,) 319.5 337 P
+1 F
+1.16 ( Final T) 348.25 337 P
+1.16 (echnical Report, ftp://ftp.gte.com/pub/dom/x3h7/) 378.44 337 P
+(ad\336nal.ps, March, 1996.) 319.5 326 T
+0.13 ([Morris] Katherine C. Morris, Da) 327.28 310 P
+0.13 (vid Sauder and Sandy Ressler) 448.1 310 P
+0.13 (,) 555.75 310 P
+2 F
+0.07 (V) 319.5 299 P
+0.07 (alidation T) 324 299 P
+0.07 (esting System: Reusable Softwar) 363 299 P
+0.07 (e Component Design) 480.12 299 P
+1 F
+0.07 (.) 555.75 299 P
+1.34 (National Institute of Standards and T) 319.5 288 P
+1.34 (echnology) 458.82 288 P
+1.34 (, NISTIR  4937,) 495.73 288 P
+(October) 319.5 277 T
+(, 1992) 348.13 277 T
+2.98 ([Schenck] Douglas Schenck and Peter W) 327.28 261 P
+2.98 (ilson,) 490.02 261 P
+2 F
+2.98 (Information) 515 261 P
+(Modeling: The EXPRESS W) 319.5 250 T
+(ay) 420.41 250 T
+1 F
+(, Oxford Uni) 428.32 250 T
+(v) 474.34 250 T
+(ersity Press, 1994.) 478.7 250 T
+0.78 ([STI] STEP T) 327.28 234 P
+0.78 (ools Inc.,) 378.62 234 P
+2 F
+0.78 (Home P) 415.68 234 P
+0.78 (a) 444.98 234 P
+0.78 (g) 449.39 234 P
+0.78 (e) 453.8 234 P
+1 F
+0.78 (, http://www) 457.8 234 P
+0.78 (.steptools.com/) 503.5 234 P
+(inde) 319.5 223 T
+(x.html) 334.86 223 T
+1.65 ([W) 327.28 207 P
+1.65 (ilson] Peter W) 338.41 207 P
+1.65 (ilson,) 393.34 207 P
+2 F
+1.65 (EXPRESS T) 417 207 P
+1.65 (ools and Services, \0501990-) 461.57 207 P
+(1995\051) 319.5 196 T
+1 F
+(, ftp://pub/step/e) 340.5 196 T
+(xpress/tools/etools.ps, September) 399.37 196 T
+(, 1995.) 519.26 196 T
+0.72 ([X3J16] ANSI Accredited Standards Committee X3J16,) 327.28 180 P
+2 F
+0.72 (W) 536.34 180 P
+0.72 (ork-) 543.01 180 P
+5.05 (ing P) 319.5 169 P
+5.05 (aper for Dr) 343.08 169 P
+5.05 (aft Pr) 394.54 169 P
+5.05 (oposed International Standar) 419.93 169 P
+5.05 (d for) 535.7 169 P
+5.63 (Information Systems Pr) 319.5 158 P
+5.63 (o) 415.35 158 P
+5.63 (gr) 419.76 158 P
+5.63 (amming Langua) 427.63 158 P
+5.63 (g) 491.92 158 P
+5.63 (e C++) 496.33 158 P
+1 F
+5.63 (, http://) 526.36 158 P
+(www) 319.5 147 T
+(.c) 338.41 147 T
+(ygnus.com/misc/wp/draft/, April 28, 1995.) 344.52 147 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "6" 6
+%%Trailer
+%%BoundingBox: 0 0 612 792
+%%PageOrder: Ascend
+%%Pages: 6
+%%DocumentFonts: Helvetica-Bold
+%%+ Times-Roman
+%%+ Times-Italic
+%%+ Helvetica
+%%+ Times-Bold
+%%+ Courier-Bold
+%%+ Times-BoldItalic
+%%EOF
+

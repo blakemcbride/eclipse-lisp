@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: 3GL/4GL/5GL</TITLE>
+<meta name="description" content="Lisp as a 2GL, 3GL, 4GL, etc.">
+<meta name="keywords" content="lisp, 2GL, 3GL, 4GL, 5GL, extended, embedded">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>3GL/4GL/5GL</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="macros.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="history.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm"><b>3GL</b></a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+Lisp is generally considered a 3rd Generation Language (3GL), as it is
+a general purpose, text based language comparable to Smalltalk, Ada, C/C++,
+Fortran, etc.  
+
+<P>
+
+Such distinctions are often confusing, however.  For example, assembly
+languages are considered to be 2GL, in that they allow mnemonic
+programming at the machine level.  By this description, C can be
+thought of as a 2GL for register architectures, and Lisp, Forth and
+Postscript can be considered a 2GL for stack architectures.
+
+<P>
+<A HREF="syntax.htm">Recall</A> that Lisp decouples the representation
+of program structure from the reading of textual programs.  Thus,
+although the <A HREF="references.htm#ansi">ANSI Common Lisp language
+specification</A> includes a specification of the standard syntax for
+reading text based programs, it also includes mechanisms for
+manipulating programs as data, and compiling such <EM>in-memory</EM>
+definitions without the use of text source files.  While other 3GL are
+limited to the traditional text-editor-separate-compiler environment,
+Lisp, Smalltalk, and other 4GLs use these capabilities to provide
+sophisticated Computer Aided Software (CASE) environments.  The <a
+href="macros.htm">macro</a> and <a
+href="references.htm#mop">metaobject protocol</a> facilities support
+the creation of new, application-specific languages embedded in Lisp.
+In addition, the <a href="dynamic.htm">dynamic capabilities</a> of
+Lisp allow the environment to be customized, modified or reprogrammed
+in Lisp as it is running.
+
+<P>
+A 5GL is sometimes considered to be a 4GL with a knowledge-based
+system built in.  The ANSI Common Lisp standard does not define any
+knowledge-based system extensions, but many are <A
+HREF="tools.htm#logic">freely available</A> for Lisp.  Because these
+work by extending the language, rather than replacing it, it is
+difficult to classify such extended Lisps as 3GL, 4GL or 5GL.
+
+</td></tr></table>
+</BODY>
+</HTML>

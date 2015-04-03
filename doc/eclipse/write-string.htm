@@ -1,0 +1,76 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Write-String</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-WRITE-STRING</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-write-string</B> <I>stream string <TT>&amp;key</TT> start end </i>=&gt; <I>string</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---an <EM>character output stream</EM>.<P>
+<I>string</I>---a <EM>a sequence</EM>.<P>
+<I>start, end</I>---a <EM>bounding index designators</em>
+of <i>sequence</i>. The defaults for <i>start</i> and <i>end</i>
+are 0 and <code>NIL</code>, respectively.<P>
+
+<P>
+
+<B>Description:</B>
+
+<p>
+<b>Stream-write-string</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>write-string</b>.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-write-string</b></a> (<i>stream</i> fundamental-character-output-stream)
+ (<i>string</i> string) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br>Calls <a href="read-sequence.htm"><b>stream-write-sequence</b></a>
+
+<p><i>Primary Method</i> <b>stream-read-string</b></a> (<i>stream</i> encapsulating-stream)
+ (<i>string</i> string) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>,
+<a href="read-sequence.htm"><b>stream-write-sequence</b></a>,
+<a href="read-char.htm"><b>stream-write-char</b></a>.
+<P>
+
+<B>Notes:</B> <P>
+
+CLIM requires implementations only to define a default method for
+<b>write-sequence</b> that iterates over <i>string</i>, repeatedly
+calling <a href="read-char.htm"><b>stream-write-char</b></a>.
+Instead, the default method in Eclipse calls <a
+href="read-sequence.htm"><b>write-sequence</b></a> (which is not
+defined at all by CLIM) which does the iteration.
+
+<HR>
+<A HREF="unread.htm">[Previous]</A> 
+<A HREF="gloss.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

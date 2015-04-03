@@ -1,0 +1,58 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Variable *DEBUG-IO*, *ERROR-OUTPUT*, *QUERY-IO*,
+*STANDARD-INPUT*, *STANDARD-OUTPUT*, *TRACE-OUTPUT*</TITLE> 
+</HEAD>
+
+Eclipse behavior for<BR>
+<I>Variable</I> <b>*DEBUG-IO*</b>,
+<b>*ERROR-OUTPUT*</b>, <b>*QUERY-IO*</b>, <b>*STANDARD-INPUT*</b>,
+<b>*STANDARD-OUTPUT*</b>, <b>*TRACE-OUTPUT*</b><p>
+
+<B>Initial Values:</B>
+
+<P>
+<b>*Standard-input*</b> is initially bound to a <b>file-stream</b> equivalent to
+the C stream <CODE>stdin</CODE>. 
+
+<p> <b>*Standard-output*</b> and <b>*trace-output*</b> are initially
+bound to a <b>file-stream</b> equivalent to the C stream <CODE>stdout</CODE>.
+
+<p> <b>*Error-output*</b> is initially bound to a <b>file-stream</b> equivalent to
+the C stream <CODE>stderr</CODE>. 
+
+<p> <b>*Terminal-io*</b> is initially bound to a <b>two-way-stream</b>
+made from the initial value of <b>*standard-input*</b> and the initial
+value of <b>*standard-output*</b>.
+
+<p> <b>*Query-io*</b> and <b>*debug-io*</b> are both initially bound
+to <b>synonym-stream</b>s to <b>*terminal-io*</b>.
+
+<P>
+
+
+<B>Description:</B> None.<P>
+
+<B>Affected By:</B> <A href="defined.htm#dribble"><b>Dribble</b></a>.<P>
+
+<B>See Also:</B><P>
+
+The <a href="defined.htm#stream"><i>Streams</i></a> and the <i><a
+href="defined.htm#misc">Miscellaneous</a>: <a
+href="defined.htm#dribble">Dribble</a></i> sections of <a
+href="defined.htm">&quot;Eclipse-Defined ANSI Features&quot;</a>.<P> 
+
+<B>Notes:</B> None.<P>
+
+
+<HR>
+<A HREF="using-resource.htm">[Previous]</A> <A HREF="element-type.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

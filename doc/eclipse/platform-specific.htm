@@ -1,0 +1,101 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Platform Specific</TITLE>
+</HEAD>
+
+<H2>Eclipse Introduction: Platform Specific Issues</H2>
+<hr>
+
+<h3><a name="unix">UNIX</a></h3>
+
+<ul>
+<li><p> Except as noted, C applications linked with Eclipse on Unix
+systems should also link with the operating system's <code>ld</code> library.
+</ul>
+
+<h4> <a name="sun">Solaris</a></h4>
+Eclipse has been compiled and tested using Solaris 2.6.
+
+<ul>
+<li> See <a href="chars.c"><code>chars.c</code></a> for information
+about using the Eclipse libraries or the Eclipse executable on earlier
+Solaris releases.
+</ul>
+
+<h4> <a name="hp">HP-UX</a></h4>
+Eclipse has been compiled and tested using HP-UX 9.05.
+
+<ul>
+<li>C applications linked with Eclipse should also link with the
+operating system's <code>dld</code> library.  (This is the HP-UX name
+for <ocde>ld</code>.)
+
+<li>See the <a HREF="UNPACKING">&quot;doc/eclipse/UNPACKING&quot;</a>
+file for information about reading the distribution CD on systems
+which cannot read long file names on compact disks.
+</ul>
+
+
+<h4> <a name="linux">Linux</a></h4>
+Eclipse has been compiled and tested using Redhat Linux 4.0.
+
+<hr>
+<h3><a name="windows">WINDOWS</a></h3>
+
+<ul>
+
+<p>
+<li> The Microsoft Windows operating system utility for obtaining
+elapsed CPU run time overflows after just under 50 days of continuous
+computer operation.  A computer running Windows for this long without
+rebooting will report eroneous CPU run times.  Thus,
+<b>get-internal-run-time</b> will not return monotonically increasing
+values when the values being compared straddle such an overflow.
+Comparisons between two such <b>get-internal-run-time</b> results are
+not valid.
+
+<p><li> The Eclipse-specfic function <a
+href="machine-id.htm"><b>machine-id</b></a> returns <code>NIL</code>.
+
+</ul>
+
+<h4> <a name="nt">NT</a></h4>
+Eclipse has been compiled and tested using Windows-NT 4.0.
+
+<h4> <a name="nt">Windows</a></h4>
+Eclipse has been tested using Windows-95.
+
+<ul>
+<li>Eclipse uses the Microsoft Windows Platform SDK function
+<code>WaitForSingleObject()</code> to implement <b>listen</b> and
+<b>read-char-no-hang</b>.  <code>WaitForSingleObject()</code> may not
+be reliable on Windows-95 -- occasionally indicating that input is
+available when, in fact, it is not.
+
+<p>Eclipse itself uses these Lisp functions only when using <a
+href="defined.htm#dribble"><b>dribble</b></a>, or when the operating
+system supplied standard <em>output</em> has been redirected to a
+non-interactive stream before calling <a
+href="topf.htm"><b>clLispTopLevel</b></a>.  Under these circumstances,
+the system may sometimes appear to hang when entering expressions to
+the <a href="rep.htm">read-eval-print loop</a>.  A second #\return
+character entered at the keyboard will clear the problem and allow the
+system to accept the user input.
+
+<p>Windows-NT does not appear to suffer from this problem.
+
+</ul>
+
+
+<HR>
+<A HREF="release.htm">[Previous]</A> 
+<A HREF="gloss.htm">[Next]</A> 
+<A HREF="intro.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A> 
+<A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

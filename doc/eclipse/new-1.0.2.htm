@@ -1,0 +1,117 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: New in Release 1.0.2</TITLE>
+</HEAD>
+
+<h2>What's New for Eclipse Common Lisp  Release 1.0.2</h2>
+
+<h4>December 5, 1997</h4>
+
+See Also:
+
+<ul>
+<li> <a href="new-1.0.1.htm">1.0.1</a> (Solaris 2,  Unix System V)
+<li> <a href="new-1.0.htm">1.0</a> (SunOS 4.1, Berkeley Unix)
+</ul>
+
+
+<h3>Features</h3>
+<ul>
+<li> Ported to <b>HP PA-RISC/HP-UX</b>. (First non-Sun Eclipse platform.)
+<li> Separate binary directories for each platform, with links to
+master C source directory. 
+<li> A single macro in <code>eclipse.h</code> defines the Eclipse
+version as a C string.
+
+<li> Version 1.0.1 licence holders can upgrade to 1.0.2 by downloading
+<a
+href="ftp://www.elwood.com/eclipse/patch-1.0.1.tgz">ftp://www.elwood.com/eclipse/patch-1.0.1.tgz</a>
+to the general (i.e. non-versioned) directory in which eclipse is
+installed, and following the directions in <a
+HREF="UNPACKING">&quot;UNPACKING&quot;</a>
+for downloaded file distributions.  The libraries and executable can
+then be regenerated following the directions for <a
+href="release.htm#recompilation"><b>recompilation</b></a> in the <a
+href="release.htm">release notes</a>.
+</ul>
+
+<h3>Bug fixes</h3>
+<ul>
+<li> Reading (or loading) files with <b>:external-format
+:multi-byte</b> (which is the default) now works with files
+containg more than 512 bytes.
+<li><b>Read</b> can now properly handle a list containing a
+<b>float</b> which begins with a decimal (eg. .5 as opposed to 0.5).
+<li> 29 bit <b>fixnums</b> now function properly.
+<li> <b>Truncate</b> and <b>ftruncate</b> rounds in the correct direction.
+<li> <b>Compiled-function-p</b> works correctly. 
+<li><b>Load-time-value</b> in interpreted code now returns a
+single value, just as in compiled code.
+<li> Local variables named with uninterned symbols are prefixed with
+"L" when compiled to C, not "CL".
+<li> Formatting error in <b>time</b> macro is fixed.
+
+<li> <a name="patch">A patch is available that provides the following additional
+bug fixes:</a>
+<ul>
+
+<li> <b>Apply</b> checks that <b>call-arguments-limit</b> is not
+exceeded. (Note the <a href="new-1.0.3.htm#big-pretty">special pretty
+printer</a> bug, in the new features for <a
+href="new-1.0.3.htm">release 1.0.3</a>.)
+
+<li> The scanning of directories no longer involves the Posix
+<code>opendir()</code> utility, which can interfere with the garbage
+collector.
+
+<li> <b>Dribble</b> is now correct.
+
+<li> <b>Trace</b> now correctly prints the traced function name.
+
+<li> The variable <b>eclipse::not-found</b> is now proclaimed
+special.  This variable appears within macro
+generated code for <b>with-package-iterator</b>, <b>do-symbols</b>,
+etc, where it is assumed to be special.
+
+<li> The first use of <b>time</b> no longer reports a negative real
+time, and the value reported on the HP is no longer off by a constant
+factor.
+
+<li> Uninterned symbols appearing as literals in a file being compiled
+now generate references to properly initialized, <code>static
+clObject</code>s, instead of references to undefined <code>extern
+clObject</code>s.  Uninterned symbols appear as literals in some
+macroexpansions, such as the expansion of a <b>defstruct</b> which
+uses the <b>:print-function</b> option.
+
+<li>Echo streams don't try to echo <code>NIL</code> to the output
+stream when <b>read-char-no-hang</b> is called and no character is
+available.
+
+</ul>
+
+Eclipse 1.0.2 users can upgrade to 1.0.2A by downloading <a
+href="ftp://www.elwood.com/eclipse/patch-1.0.2.tgz">ftp://www.elwood.com/eclipse/patch-1.0.2.tgz</a>
+to the general (i.e. non-versioned) directory in which eclipse is
+installed, and following the directions in <a
+HREF="UNPACKING">&quot;UNPACKING&quot;</a> for downloaded file
+distributions.  The libraries and executable can then be regenerated
+following the directions for <a
+href="recompilation#recompilation"><b>recompilation</b></a>, in the <a
+href="release.htm">release notes</a>.
+</ul>
+
+
+
+<HR>
+<A HREF="new-1.0.3.htm">[Previous]</A> 
+<A HREF="new-1.0.1.htm">[Next]</A> 
+<A HREF="release.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

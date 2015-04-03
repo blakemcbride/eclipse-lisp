@@ -1,0 +1,75 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Close</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>CLOSE</B><P>
+<B>Syntax:</B><P>
+
+<B>close</B> <I>stream <TT>&amp;key</TT> abort</I> =&gt; <I>result</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>stream</EM>. <P>
+<I>abort</I>---a <EM>generalized boolean</EM>. The default is <em>false</em>.<P> 
+<I>result</I>---<code>t</code> if the <i>stream</i> was 
+<em>open</em> at the time it was received as an
+<em>argument</em>, or <em>implementation-dependent</em> otherwise.
+<P>
+
+<B>Description:</B><P>
+
+The existing <a href="cl.htm#ansi">ANSI</a> function <b>close</b> is
+redefined to be a generic function, but otherwise behaves the same.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>close</b></a> 
+ (<i>stream</i> <a href="eclipse-stream-classes.htm">stream</a>)
+<br>
+Sets a flag used by <a href="open-stream-p.htm"><b>open-stream-p</b></a>.
+
+<P>
+<B>Side Effects:</B> Closes the <i>stream</i>.<P> 
+
+<B>Affected By:</B> Previous calls to <b>close</b>.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>,
+<a href="open-stream-p.htm"><b>open-stream-p</b>.
+<P>
+
+<B>Notes:</B> <P>
+
+<a href="extensions.htm">CLIM</a> defines the default method on <a
+href="clim-stream-classes.htm"><b>fundamental-input-stream</b></a>
+rather than on <a href="eclipse-stream-classes.htm"><b>stream</b></a>.
+
+<p>Note that <a href="cl.htm#ansi">ANSI</a> specifies that: 
+<blockquote>
+The effect of <b>close</b> on a <em>constructed stream</em> is to
+close the argument <i>stream</i> only. There is no effect on the
+<em>constituents</em> of <em>composite streams</em>. 
+</blockquote>
+This means, for example, that closing an <a
+href="encapsulating-stream.htm"><b>encapsulating-stream</b></a> does
+not close its encapsulated stream.
+
+
+<HR>
+<A HREF="element-type.htm">[Previous]</A> <A HREF="encapsulating-stream.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,177 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Memory Management</TITLE>
+<meta name="description" content="Memory management in Lisp">
+<meta name="keywords" content="lisp, memory, garbage collection, heap, storage, pointer">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Lisp Memory Management</H2>
+
+<blockquote><b>
+Summary: </b>Automated Memory Management in Lisp eliminates a major source
+of programming errors and a major drain on programmer productivity.
+For very large applications, it can also improve performance.
+</blockquote>
+
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="types.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="macros.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm"><b>memory</b></a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+<p>People are good at creative thinking and bad at bookkeeping.
+Computers are bad at creative thinking and good at bookkepping.
+Automatic memory management frees programmers from having to do the
+bookkeeping for &quot;what bits are where&quot; during program
+execution and lets them concentrate instead on more creative tasks.
+
+<P>Very early computers forced programmers to code their own
+arithmetic operations, assigning specific bits to specific register
+and other locations.  Assembly langage programmers have to code their
+own function call mechanisms and variable storage, carefully keeping
+track of where things are in memory.  PC programmers sometimes had to
+manage paging between different memory areas or to disk, due to a lack
+of automated virtual memory management by the operating system.
+
+<P>Automatic memory management for computer languages takes the next
+logical step.  As far as the programmer is concerned, each piece of
+data created during execution of the program is always available.
+(This is called having <i>indefinite extent</i>.)  If the program
+needs to use that data again later, it is still available.  In
+reality, resources are limited, and the computer keeps the data
+available only as long as it can be proved that the data might still
+be used.  When the data can be shown to no longer be needed, it is
+considered <i>garbage</i>.  The process of reclaiming the space used
+by uneeded data is called <i>garbage collection</i>.
+
+<P>
+The computer keeps track of where the data is, so that the programmer
+does not have to.  In fact, in some systems, the garbage collector
+actually moves the data around within different memory systems of the
+computer so that the most often used data is available most quickly.
+
+<P>
+Without automated memory management, a programmer must keep track of
+whether or not data is stored in a kind of memory which may be
+overwritten (eg. the stack or registers).  If so, the programmer must
+take care that the data is not used after it has been overwritten. If
+the data is in a more permanent memory area, the programmer must make
+certain to &quot;delete&quot; the object after the program is finished
+with it, or memory will quickly become exhausted.  There is no way to
+explicitly delete data on the stack when they are no longer needed.
+Failure to clean up memory that is no longer being used is called a
+<i>memory leak</i>.  Accessing memory which has been mistakenly
+deleted or otherwise overwritten results in errors that are exteremely
+difficult to track down.  It is even more difficult to avoid these
+errors in large projects involving multiple programmers unless
+automatic memory management is used.
+
+<P>
+Although not strictly a garbage collection issue, most garbage
+collected languages, including Lisp, do not use pointers within
+programs, but provide arrays and other &quot;holder&quot; utilities as
+first class objects.  This eliminates another major source of bugs.
+
+<P>
+Early garbage collectors operated only when usage of physical memory
+had reached certain limits, at which point the program stopped while
+the system examined all allocated memory.  This caused annoying
+delays.  Modern garbage collectors operate a little bit at a time -
+examining a little bit of memory each time memory is allocated or even
+during pauses while the system waits for user input, slow disk
+drives, etc.  Most of the time, the activity of the garbage collector
+is not noticed.  There are also real-time garbage collectors which
+guarantee that any potential delay will not be longer than a specified
+small amount.
+
+<p>
+For all programs, then, automated memory management makes programs
+safer and gets them developed more quickly.  For very large programs,
+it can be so difficult to keep track of memory, that even if the
+program can be made to work without automated memory management, it is
+not likely that the result will be faster than with a modern garbage
+collector.
+
+<p> For more information on automated memory management, see:
+
+<ul>
+<LI> <A
+href="ftp://ftp.cs.cmu.edu/user/ai/lang/lisp/text/garbage/0.html">CMU's</A>, <a href="http://www.cs.utexas.edu/users/oops/papers.html">U. Texas'</a> or 
+<A href="ftp://ftp.netcom.com/pub/hb/hbaker/home.html"> Henry
+Baker's</A> archives of research <a href="papers.htm">papers</a>
+
+<li> The <a href="mailto:gclist-request@ieee.com">gclist@ieee.com</a> garbage
+collection <a href="mail.htm">mailing list</a>.
+
+<li> Harlequin's <a
+href="http://www.harlequin.com/mm/reference/">Memory Management
+Reference</a> page.
+
+<li> The <A HREF="news:comp.lang.lisp">comp.lang.lisp</A>, <A
+HREF="news:comp.lang.java">comp.lang.java</A> and <A
+HREF="news:comp.lang.dylan">comp.lang.dylan</A> <a
+href="newsgroups.htm">newsgroups</a>.
+
+<li> The <a href="http://java.sun.com">Java</a> home page.
+
+</ul>
+
+</td></tr></table>
+
+</BODY>
+</HTML>

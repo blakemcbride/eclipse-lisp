@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp Environment</TITLE>
+<meta name="description" content="Lisp programming environment and library">
+<meta name="keywords" content="lisp, programming, environment, library">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>The Lisp Programming Environment</H2>
+
+<blockquote><b>
+Summary:</b> Common Lisp defines a large, platform independent library of
+utilities, various debugging facilities, and a means for being
+extended.  All of these facilities are available during development,
+and if desired, in "completed" applications as well.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="evaluation.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="objects.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm"><b>environment</b></a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+
+<P>The <A HREF="references.htm#ansi">Common Lisp standard</A> is huge.
+Proponents of other Lisp dialects such as <A
+HREF="related-languages.htm#scheme">Scheme</A> point out that their standards are
+shorter than the <EM>index</EM> to the Common Lisp standard.  The
+reason it is so large is that it defines a very complete, well
+integrated, library of utilities.  This includes:
+
+<UL>
+<LI> data objects which contain run-time type information
+<LI> about 100 well defined mathematical functions operating on many
+    number types including: 
+<UL>
+  <LI> unlimited precision integers (which do not overflow)
+  <LI> rational numbers (which do not suffer from round-off errors)
+  <LI> complex numbers
+</UL>
+<LI> powerful arrays which can be:
+<UL>
+  <LI> <a href="glossary.htm#heterogeneous">heterogeneous</a>
+(i.e. can store different types of data at once)
+  <LI> dynamic (i.e. can grow or shrink as necessary)
+  <LI> displaced (i.e. can reference other arrays of possibly different
+      rank) 
+  <LI> Do proper bounds checking.
+</UL>
+<LI> list data types which can be grown or shrunk more efficiently than
+    arrays, and are particularly useful for representing trees, queues, etc.
+<LI> hash tables for efficiently storing large data sets referenced using
+    any object as a key rather than only integer indices.
+<LI> polymorphic functions which operate, for example, on any kind of
+    sequence, including strings, lists, and various kinds of one
+    dimensional arrays (including <a
+href="glossary.htm#heterogeneous">heterogeneous</a> lists and vectors)
+<LI> a powerful, customizable, and ANSI standardized reader, printer
+    and stream I/O system.  The printer can print any program data in
+    a formatted program- or human-readable form, without requiring the
+    programmer to identify the format of the data to printed.  This is
+    especially usefull for debugging and creating scripts.
+<LI> a powerful, customizable,
+    and ANSI standardized error signaling
+    system
+<LI> a well founded, consistent, ANSI standardized, platform
+    independent set of system tools including logical pathnames,
+    timing and date utilities, etc.
+<LI> powerful function definition facilities, including:
+<UL>
+  <LI> Compiled functions which can be redefined at run time.
+  <LI> Closures. These are nested function definitions which can refer to local
+      variables and labels of the function in which they were defined.
+      Unlike the lexical functions provided by some C extensions,
+      Lisp closures can be <EMPHASIS>returned</EMPHASIS> from
+      functions and still be called. (I.e. they have indefinite extent.)
+  <LI> Named arguments (i.e. keyword arguments)
+  <LI> Generic Functions (dynamic polymorphism)
+  <LI> Functions which return multiple values.
+</UL>
+<LI> sophisticated control structure, including:
+<UL>  
+  <LI> lexical exits (i.e. returns) which are properly integrated with
+      closures. 
+  <LI> go labels which are are properly integrated with closures.
+  <LI> dynamic exits (i.e. catch/throw).
+  <LI> dynamic binding (and unwinding) of global variables.
+  <LI> unwind-protection, in which clean up code from a pending caller
+      is guaranteed to be executed -- even if control is transferred
+      due to an error, a lexical or dynamic exit, or a "go"
+</UL>
+</UL>
+
+<P>
+While less powerful and ad-hoc versions of some of these utilities
+have been added or are being added to C, C++, and Java, only Common
+Lisp defines them all in an integrated, well reasoned, ANSI
+standardized manner.  
+
+<p>The standard requires that all these utilities be present in an <a
+href="top-level.htm">interactive environment</a> which allows code to be
+developed and debugged.  Applications may be run from within this
+environment, sometimes <a href="combine.htm">using utilities from
+other languages</a> as well.  
+
+<P> Many <a href="systems.htm">implementations</a> also provide the
+ability to create stand-alone applications which do not use the
+entire library, but only those parts that are accessed by the
+application.  This task is sometimes made more complicated by the <a
+href="dynamic.htm">dynamic nature</a> of Lisp, which can make it
+difficult to determine what utilities will actually be used at
+run-time.
+
+</td></tr></table>
+
+</BODY>
+</HTML>

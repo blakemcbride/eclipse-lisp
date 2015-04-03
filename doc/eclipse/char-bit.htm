@@ -1,0 +1,94 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Function CHAR-BIT, SET-CHAR-BIT</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Function</I> <B>CHAR-BIT, SET-CHAR-BIT</B><P>
+<B>Syntax:</B><P>
+
+<B>char-bit</B> <I>char <TT>&amp;key</TT> control meta</I> =&gt; <I>result</I><P>
+<B>set-char-bit</B> <I>char <TT>&amp;key</TT> control meta</I> =&gt; <I>new-char</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>char</I>---a <EM>character</EM>. <P>
+<I>control</I>---a <EM>generalized boolean</EM>. The default is false
+ for <B>char-bit</B>, <CODE>:DEFAULT</CODE> for <B>set-char-bit</B>.<P> 
+<I>meta</I>---a <EM>generalized boolean</EM>. The default is false
+ for <B>char-bit</B>, <CODE>:DEFAULT</CODE> for <B>set-char-bit</B>.<P> 
+<I>result</I>---a <EM>boolean</EM>. <P>
+<I>new-char</I>---a <EM>character</EM>. <P>
+
+<B>Description:</B><P>
+
+<B>Char-bit</B> returns <em>true</em> if <I>char</I> is a <b>base-char</b>
+which has the control bit set and the <I>control</I> argument is true,
+or if <I>char</I> is a <b>base-char</b> which has the meta bit set
+and the <I>meta</I> argument is <em>true</em>.  Otherwise <B>char-bit</B>
+returns <em>false</em>. <P>
+
+<B>Set-char-bit</B> returns a new character which is the same as as
+<I>char</I>, modified as follows:
+
+<UL>
+<LI> If <I>char</I> is a <b>base-char</b> and <I>control</I> is
+<CODE>NIL</CODE>, then the control bit is turned off.  If <I>char</I>
+is a <b>base-char</b> and <I>control</I> is true but not
+<CODE>:DEFAULT</CODE>, then the control bit is turned on.
+
+<LI> If <I>char</I> is a <b>base-char</b> and <I>meta</I> is
+<CODE>NIL</CODE>, then the meta bit is turned off.  If <I>char</I>
+is a <b>base-char</b> and <I>meta</I> is true but not
+<CODE>:DEFAULT</CODE>, then the meta bit is turned on.
+</UL>
+
+
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> <P>
+Signals an error of type <EM>type-error</EM>
+if <I>char</I> is not a <EM>character</EM>.<P>
+
+<B>See Also:</B><P>
+<a href="char.htm">&quot;Characters in Eclipse&quot;</a>.<P>
+
+<B>Notes:</B> <P>
+Setting the <I>meta</I> bit is reversible, that is:
+<PRE>
+  (let ((set? (char-bit <i>char</i> :meta t)))
+    (eql <i>char</i> (set-char-bit (set-char-bit <i>char</i> :meta (not set?)) :meta set?)))
+  => <i>true</i>  ;for all values of <i>char</I>
+</PRE>
+
+However, the <I>control</I> bit is not reversible.  Turning the
+control bit on always forces an ASCII character to have a code below
+32. Turning it back on produces a character which (exclusive of the
+meta bit) has a code in the range 64-95 ([@ A B ...  _], not [` a b ...]).
+
+<PRE>
+  (let ((set? (char-bit <i>char</i> :meta t)))
+    (eql <i>char</i> (set-char-bit (set-char-bit <i>char</i> :meta (not set?)) :meta set?)))
+   => <i>true</i> ;except when
+    ; (char<= #\Space (set-char-bit <i>char</i> :meta nil) #\?) or 
+    ; (char<= #\` (set-char-bit <i>char</i> :meta nil) #\Delete)
+  (set-char-bit (set-char-bit #\A :control t) :control nil)
+   => #\A
+  (set-char-bit (set-char-bit #\a :control t) :control nil)
+    => #\A
+</PRE>
+
+<HR>
+<A HREF="c-macro.htm">[Previous]</A>
+<A HREF="compile.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp in Combination</TITLE>
+<meta name="description" content="Lisp compared to other languages">
+<meta name="keywords" content="lisp, application, delivery, stand-alone, foreign, load,
+CORBA, ILU">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Using Lisp with Other Languages</H2>
+
+<blockquote><b>
+Summary: </b> Lisp programs can be combined with
+programs written in other languages, to form an application that runs
+within a Lisp <a href="top-level.htm">top-level</a> or from some other
+controlling program.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="compare.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="learn.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm"><b>combine</b></a></br>
+</td><td>
+</table>
+</td><td>
+
+<BLOCKQUOTE>
+"We must all hang together, or most assuredly, we will all hang separately." -Ben Franklin
+</BLOCKQUOTE>
+
+
+<P>
+In general, a Lisp implementation provides a Lisp <a
+href="top-level.htm">top-level</a> that allows code to be loaded into
+it using the function <a href="dynamic.htm"><code>LOAD</code></a>.
+Any programs loaded in this way and called from top-level are under
+the control of the Lisp top-level.
+
+<p>
+Exactly what kind of files can be loaded with <code>LOAD</code> is
+implementation dependent.  In some implementations, <code>LOAD</code>
+can handle <code>.o</code>, <code>.so</code>, or <code>.dll</code>
+files produced by external operating system-specific compilers. In
+other implementations, a new top-level must be constructed which
+includes the external program.
+
+<p>
+However, there is nothing in the definition of <a
+href="references.htm#ansi">Common Lisp</a> that specifies that all programs
+must be run from the Lisp top-level.  For example, Lisp could be
+provided as a library of utilities that are linked to some other
+controlling program.  There are some implementations that provide such
+a library, while others have the ability to effectively create one for
+the programmer, based on the Lisp source files for a specific
+application.
+
+<p>
+In any case, <code>LOAD</code> and/or the Lisp <a
+href="evaluation.htm">compiler</a> must be informed about functions or other
+operations to be defined in a different language.  Exactly how this is
+done is implementation and operating-system specific.  The various
+mechanisms are collectively known as <i>foreign-function
+interfaces</i>.  Usually, these involve some specification of:
+<ul>
+<li> what other language is being used for each foreign utility to be
+used (so that the compiler can use the correct calling convention).
+<li> the arguments and return values types for the function.
+</ul>
+
+Some possible complications occur if:
+ 
+<ul>
+<li> The Lisp implementation uses utilities that are inherently
+incompatible with utilities used in a program to be linked with Lisp.
+This is rare.
+
+<li> Lisp data is to be passed directly to external utilities and kept in
+variables within the external program.  In some cases this, can
+interfere with <a href="memory.htm">Lisp memory management</a> because:
+ <ul>
+<li> The memory manager of some Lisp implementations have the ability to
+ move data within memory (to obtain better performance), so Lisp data
+ pointed to by foreign programs could move, resulting in pointers
+ that are no longer valid.
+
+<li> The Lisp memory manager can keep track of which data is being
+used within the Lisp system, but may not be able to keep track of data
+that is being used by external programs.
+</ul>
+Most Lisp implementations provide special facilities for dealing with
+these issues.
+ </ul>
+
+<p>An alternative mechanism for using applications involving multiple
+languages is to use an object-based inter-object protocol.  This is
+done in such systems as <a href="http://www.omg.org">CORBA Object
+Request Brokers</a> (ORBs), <a
+href="ftp://ftp.parc.xerox.com/pub/ilu/ilu.html">ILU</a>, and OLE, and
+these will work with many Lisp implementations.  
+
+<p>In an inter-object protocol, a programmer specifies information
+about the interface between program modules, and indicates where the
+modules are to be found.  The various modules might be:
+ <ul> 
+
+<li> within the same process (i.e. executable application) as Lisp -- in
+which case the foreign function interface discussion, above, is
+relevant.
+
+<li> in different processes on the same machine.
+
+<li> on different machines connected over a network.
+
+</ul>
+
+The issues involved with such inter-object protocols are largely the
+same for applications written in any combination of languages,
+including those that are partly written in Lisp.
+
+</td></tr></table>
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse : Initializing the C Library</TITLE>
+</HEAD>
+
+<H2>Eclipse C: Initializing the Eclipse Library</H2>
+<hr>
+
+The following functions are among those defined in the Eclipse libraries:
+
+<UL>
+<LI> <a href="initf.htm"><b>clInit</b></a> -- Initializes all data
+used by the Eclipse run time library.
+
+<LI> <a href="initdf.htm"><b>clInitD</b></a> -- Initializes all data
+used by the Eclipse development library.  <b>clInit</b> must be called
+before clInitD is called.
+
+</UL>
+
+The functions above initialize the data used by various utilities in the
+Eclipse library.  This includes:
+
+<UL>
+<LI> The interning of symbols.
+
+<LI> The creation of compile-file literal data (i.e. any Lisp data
+used by the library).
+
+<LI> Assignment of symbol properties, such as
+<b>symbol-function</b> for symbols naming functions, or
+<b>symbol-value</b> for symbols naming special variables.
+</UL>
+
+The sources for these functions are provided.  
+
+<p>Later releases may break these down into finer grained pieces, but
+the two functions above will always be available.
+
+<p>See also, <a href="lib.htm">"The Eclipse Libraries"</a>.
+
+<!--
+<blockquote><i>
+
+In later versions, finer grain control over system initialization will
+be provided.  Specifically, it will be possible to avoid initializing
+the <b>symbol-value</b> of all the Common Lisp symbols, as this would
+make a <a href="gloss.htm#stand"><i>stand-alone</i></a> executable
+reference all the functions in the library.  
+
+<P>
+It will also be possible to avoid referencing <b>format</b> (and the
+implied potential call to <b>eval</b>) by using a library
+initialization function that initializes <b>format</b> with a
+definition that essentially prints only the format-control string as
+literal string, with no format-directive substitution.
+
+<P>
+It will also be possible to avoid referencing <b>read</b>,
+<b>eval</b>, and <b>print</b> by using a library initialization
+function that uses a special version of <b>invoke-debugger</b> which only
+prints an error message (using the limited <b>format</b>) and exits.
+
+<p>
+Some system defined load-forms for compile-file literals
+involves function calls that could instead be defined to use C macros
+that did more of the work at C compile/link time. 
+
+</i></blockquote> 
+-->
+
+<HR>
+<A HREF="lib.htm">[Previous]</A> <A HREF="cdict.htm">[Next]</A> 
+<A HREF="c.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

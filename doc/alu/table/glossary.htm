@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp Glossary</TITLE>
+</HEAD>
+
+<body bgcolor="#CCCCFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Lisp Glossary</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="references.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="auth.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="systems.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm"><b>REFERENCES</b></a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+</td><td>
+</table>
+<P>
+<a href="older.htm">older</a></br>
+<a href="bibliography.htm">bibliography</a></br>
+<a href="glossary.htm"><b>glossary</b></a></br>
+</td><td>
+
+This is not a general Lisp glossary.  It only has terms used in the
+text of this site. The <a href="references.htm#ansi">ANSI Standard</a> for <a
+href="history.htm#common">Common Lisp</a> has an extensive <a
+href="http://www.harlequin.com/books/HyperSpec/FrontMatter/Body/sec_26-1.html">glossary</a>.
+
+<DL>
+
+<p><DT> <A NAME="clos">Common Lisp Object System (CLOS)</A> 
+ <DD> The object-oriented features of Common Lisp.  These are
+ introduced on <a href="objects.htm">this site</a> and defined in the <a
+ href="references.htm#ansi">Common Lisp</a> and <a href="references.htm#mop">Meta
+ Object Protocol</a> references. 
+
+<p><DT> <A NAME="cond">Conditions</A>
+<DD> An object-oriented exception handling mechanism.
+
+<p><DT> <A NAME="first-class">First Class</A>
+<DD> A language supports some data type as <EM>first-class</EM> when
+the objects of the type can be created and used as data at run time.
+First-class data can be kept in variables, and passed to and returned from
+functions.  In <a href="types.htm">dynamically typed</a> languages,
+first-class data can also have its type examined at run-time.
+
+
+<p><DT> <A NAME="heterogeneous">Heterogeneous</A>
+<DD> A set of objects which are of different types.  For example, any
+element of a heterogenous array might contain integers <EM>or</EM> floating point
+numbers, <EM>or</EM> another array, <EM>or</EM> any kind of data.
+
+<p><DT> <A Name="homogeneous">Homogeneous</a> <DD> A set of objects
+that are required to all be of the same type.  For example a
+homegenous array of integers can contain only integers.
+
+<p><DT> <A NAME="iter">Iteration</A> <DD> The mechanism for repeatedly
+performing a series of actions.  Common Lisp provides a number of
+constructions for performing iteration, as well as support for recursion.
+
+<p><DT> <A NAME="mop">Meta Object Protocol (MOP)</A> 
+ <DD> In general, an object oriented program, accessible to
+ programers, which defines the internals of a supported system in such
+ a way as to allow programmers to tailor the system to better meet
+ their particular needs.  Such needs might include efficiency or
+ expressive power. 
+
+ <P>In particular, a MOP has been defined for the <a
+ href="#clos">Common Lisp Object System</a>, which is implemented
+ using this particular MOP.  Often, when people refer to
+ &quot<EM>the</EM> MOP&quot as opposed to &quot<EM>a</EM> MOP&quot,
+ they are refering to the CLOS MOP.  However, <em>AMOP</em> is short for
+ <A HREF="bibliography.htm#kickzales"><I>The Art of the Metaobject
+ Protocol</I></A>, which defines &quot<EM>the</EM> MOP&quot.
+ See the <a href="references.htm#mop">MOP</a> references.
+
+<p><DT> <A NAME="pretty">Pretty Printing</A>
+<DD> An object-oriented, programmer-definable, formatted printing system.
+
+
+<p><DT> <A NAME="symbolic">Symbolic Processing</A>
+<DD> The processing of <EM>information</EM>, as opposed to the mere
+crunching of numbers.  Information may indeed be numeric, but may also
+include arbitrary, <A HREF="#heterogeneous">heterogeneous</A> objects.
+
+<P> Usually, it is convenient in such processing to assign names to
+things which can themselves be accessed as <A
+HREF="#first-class">first class</A> data, and to be able to determine
+the type and internal representation of objects at run time.
+
+<p><DT> <A NAME="signature">Signature</A>
+<DD> A specification for the number and types of arguments to a
+function, and the number and types of return values.  A function with
+optional or named (keyword) arguments can still have a signature.
+
+</DL>
+</td></tr></table>
+</BODY>
+</HTML>

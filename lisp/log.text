@@ -1,0 +1,381 @@
+Starting /usr/acl4.3/bin/cl ...
+Allegro CL 4.3 [Linux/X86; R1] (1/27/98 12:56)
+Copyright (C) 1985-1996, Franz Inc., Berkeley, CA, USA.  All Rights Reserved.
+;; Optimization settings: safety 1, space 1, speed 1, debug 2.
+;; For a complete description of all compiler switches given the
+;; current optimization settings evaluate (EXPLAIN-COMPILER-SETTINGS).
+USER(1): 
+USER(2): (progn (load "build") (do-all :no-tests t :c-files t))
+; Loading ./build.lisp
+
+Default pathname is #p"/home/howard/cad0/lisp/eclipse/dev/1.0.3/".
+
+*** In package "COMMON-LISP-USER", type "fasl" ***
+#p"./host-pkg.fasl" is already up to date.
+;   Fast loading ./host-pkg.fasl
+#p"./c-pkg.fasl" is already up to date.
+;   Fast loading ./c-pkg.fasl
+*** #<Interpreted Function LOADER> took 0.00 hours.
+
+*** In package "HOST", type "fasl" ***
+#p"./host-primitive-types.fasl" is already up to date.
+;   Fast loading ./host-primitive-types.fasl
+#p"./prim-decs.fasl" is already up to date.
+;   Fast loading ./prim-decs.fasl
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BIT-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BIT-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BIT-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BIT-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BIT-VECTOR
+Warning: Ignoring declaration of unrecognized type: ECLIPSE::EMF-TABLE
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BASE-STRING
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::EXTENDED-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE:SIMPLE-BIT-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::BASE-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::EXTENDED-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::COMPLEX-ARRAY
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::BASE-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::EXTENDED-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::COMPLEX-ARRAY
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::BASE-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::EXTENDED-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::COMPLEX-ARRAY
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::BASE-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::EXTENDED-CHAR-VECTOR
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::COMPLEX-ARRAY
+Warning: Ignoring declaration of unrecognized type: ECLIPSE:ARRAY
+Warning: Ignoring declaration of unrecognized type: ECLIPSE:SIMPLE-ARRAY
+Warning: Ignoring declaration of unrecognized type: ECLIPSE:ARRAY
+Warning: Ignoring declaration of unrecognized type:
+         ECLIPSE::COMPLEX-ARRAY
+Warning: Ignoring declaration of unrecognized type: HASH-STRUCTURE
+Warning: Ignoring declaration of unrecognized type: HASH-STRUCTURE
+Warning: Ignoring declaration of unrecognized type: (VALUES &REST T)
+Warning: Ignoring declaration of unrecognized type: (VALUES &REST T)
+Warning: Ignoring declaration of unrecognized type:
+         (VALUES SINGLE-FLOAT INTEGER SINGLE-FLOAT)
+Warning: Ignoring declaration of unrecognized type:
+         (VALUES DOUBLE-FLOAT INTEGER DOUBLE-FLOAT)
+Warning: Ignoring declaration of unrecognized type:
+         (VALUES INTEGER INTEGER)
+Warning: Ignoring declaration of unrecognized type:
+         (VALUES INTEGER BOOLEAN)
+#p"./common.fasl" is already up to date.
+;   Fast loading ./common.fasl
+#p"./parameters.fasl" is already up to date.
+;   Fast loading ./parameters.fasl
+#p"./common-comp.fasl" is already up to date.
+;   Fast loading ./common-comp.fasl
+#p"./host-class.fasl" is already up to date.
+;   Fast loading ./host-class.fasl
+#p"./host-lisp.fasl" is already up to date.
+;   Fast loading ./host-lisp.fasl
+#p"./host-function.fasl" is already up to date.
+;   Fast loading ./host-function.fasl
+#p"./eclipse-compile.fasl" is already up to date.
+;   Fast loading ./eclipse-compile.fasl
+#p"./host-math.fasl" is already up to date.
+;   Fast loading ./host-math.fasl
+Warning: Ignoring declaration of unrecognized type:
+         (VALUES SINGLE-FLOAT INTEGER SINGLE-FLOAT)
+Warning: Ignoring declaration of unrecognized type:
+         (VALUES DOUBLE-FLOAT INTEGER DOUBLE-FLOAT)
+#p"./host-hash.fasl" is already up to date.
+;   Fast loading ./host-hash.fasl
+#p"./host-tables.fasl" is already up to date.
+;   Fast loading ./host-tables.fasl
+#p"./host-array.fasl" is already up to date.
+;   Fast loading ./host-array.fasl
+#p"./host-stream.fasl" is already up to date.
+;   Fast loading ./host-stream.fasl
+#p"./host-pathname.fasl" is already up to date.
+;   Fast loading ./host-pathname.fasl
+#p"./host-misc.fasl" is already up to date.
+;   Fast loading ./host-misc.fasl
+#p"./prog-comp.fasl" is already up to date.
+;   Fast loading ./prog-comp.fasl
+#p"./cont-comp.fasl" is already up to date.
+;   Fast loading ./cont-comp.fasl
+#p"./cont-comp2.fasl" is already up to date.
+;   Fast loading ./cont-comp2.fasl
+#p"./macro.fasl" is already up to date.
+;   Fast loading ./macro.fasl
+#p"./macro-comp.fasl" is already up to date.
+;   Fast loading ./macro-comp.fasl
+#p"./opts.fasl" is already up to date.
+;   Fast loading ./opts.fasl
+#p"./number-comp.fasl" is already up to date.
+;   Fast loading ./number-comp.fasl
+#p"./list-comp.fasl" is already up to date.
+;   Fast loading ./list-comp.fasl
+#p"./clos-comp.fasl" is already up to date.
+;   Fast loading ./clos-comp.fasl
+#p"./pretty-comp.fasl" is already up to date.
+;   Fast loading ./pretty-comp.fasl
+*** #<Interpreted Function LOADER> took 0.00 hours.
+
+*** In package "ECLIPSE", type "fasl" ***
+#p"./kernel.fasl" is already up to date.
+;   Fast loading ./kernel.fasl
+#p"./types-run.fasl" is already up to date.
+;   Fast loading ./types-run.fasl
+#p"./control-run.fasl" is already up to date.
+;   Fast loading ./control-run.fasl
+#p"./symbol.fasl" is already up to date.
+;   Fast loading ./symbol.fasl
+#p"./classes.fasl" is already up to date.
+;   Fast loading ./classes.fasl
+#p"./clos-run.fasl" is already up to date.
+;   Fast loading ./clos-run.fasl
+#p"./clos-define.fasl" is already up to date.
+;   Fast loading ./clos-define.fasl
+#p"./list.fasl" is already up to date.
+;   Fast loading ./list.fasl
+#p"./clos-seq.fasl" is already up to date.
+;   Fast loading ./clos-seq.fasl
+#p"./methods.fasl" is already up to date.
+;   Fast loading ./methods.fasl
+#p"./predicates.fasl" is already up to date.
+;   Fast loading ./predicates.fasl
+#p"./arithmetic.fasl" is already up to date.
+;   Fast loading ./arithmetic.fasl
+#p"./hash.fasl" is already up to date.
+;   Fast loading ./hash.fasl
+#p"./type-ops.fasl" is already up to date.
+;   Fast loading ./type-ops.fasl
+#p"./type-seq.fasl" is already up to date.
+;   Fast loading ./type-seq.fasl
+#p"./method-comb.fasl" is already up to date.
+;   Fast loading ./method-comb.fasl
+#p"./type-mops.fasl" is already up to date.
+;   Fast loading ./type-mops.fasl
+#p"./sequence.fasl" is already up to date.
+;   Fast loading ./sequence.fasl
+#p"./control.fasl" is already up to date.
+;   Fast loading ./control.fasl
+#p"./numbers.fasl" is already up to date.
+;   Fast loading ./numbers.fasl
+#p"./array.fasl" is already up to date.
+;   Fast loading ./array.fasl
+#p"./string.fasl" is already up to date.
+;   Fast loading ./string.fasl
+#p"./struct-run.fasl" is already up to date.
+;   Fast loading ./struct-run.fasl
+#p"./character.fasl" is already up to date.
+;   Fast loading ./character.fasl
+#p"./struct-comp.fasl" is already up to date.
+;   Fast loading ./struct-comp.fasl
+#p"./resource.fasl" is already up to date.
+;   Fast loading ./resource.fasl
+#p"./tree.fasl" is already up to date.
+;   Fast loading ./tree.fasl
+#p"./cond-comp.fasl" is already up to date.
+;   Fast loading ./cond-comp.fasl
+#p"./env.fasl" is already up to date.
+;   Fast loading ./env.fasl
+#p"./condition.fasl" is already up to date.
+;   Fast loading ./condition.fasl
+#p"./set.fasl" is already up to date.
+;   Fast loading ./set.fasl
+#p"./alist.fasl" is already up to date.
+;   Fast loading ./alist.fasl
+#p"./bit-array.fasl" is already up to date.
+;   Fast loading ./bit-array.fasl
+#p"./bignum.fasl" is already up to date.
+;   Fast loading ./bignum.fasl
+#p"./bits.fasl" is already up to date.
+;   Fast loading ./bits.fasl
+#p"./more-compile.fasl" is already up to date.
+;   Fast loading ./more-compile.fasl
+#p"./equalp.fasl" is already up to date.
+;   Fast loading ./equalp.fasl
+#p"./package.fasl" is already up to date.
+;   Fast loading ./package.fasl
+#p"./stream.fasl" is already up to date.
+;   Fast loading ./stream.fasl
+#p"./temp.fasl" is already up to date.
+;   Fast loading ./temp.fasl
+#p"./circle.fasl" is already up to date.
+;   Fast loading ./circle.fasl
+#p"./loop.fasl" is already up to date.
+;   Fast loading ./loop.fasl
+#p"./init.fasl" is already up to date.
+;   Fast loading ./init.fasl
+#p"./reader.fasl" is already up to date.
+;   Fast loading ./reader.fasl
+#p"./printer.fasl" is already up to date.
+;   Fast loading ./printer.fasl
+;;; Compiling file ./format.lisp
+;;; Writing fasl file ./format.fasl
+Warning: No IN-PACKAGE form seen in ./format.lisp.  (Allegro Presto
+         will be ineffective when loading a file having no IN-PACKAGE
+         form.)
+;;; Fasl write complete
+;   Fast loading ./format.fasl
+#p"./pretty.fasl" is already up to date.
+;   Fast loading ./pretty.fasl
+#p"./print-object.fasl" is already up to date.
+;   Fast loading ./print-object.fasl
+#p"./describe.fasl" is already up to date.
+;   Fast loading ./describe.fasl
+#p"./doc.fasl" is already up to date.
+;   Fast loading ./doc.fasl
+#p"./debug.fasl" is already up to date.
+;   Fast loading ./debug.fasl
+#p"./misc.fasl" is already up to date.
+;   Fast loading ./misc.fasl
+#p"./random.fasl" is already up to date.
+;   Fast loading ./random.fasl
+#p"./pathname.fasl" is already up to date.
+;   Fast loading ./pathname.fasl
+#p"./file.fasl" is already up to date.
+;   Fast loading ./file.fasl
+#p"./dispatch.fasl" is already up to date.
+;   Fast loading ./dispatch.fasl
+#p"./default-pp.fasl" is already up to date.
+;   Fast loading ./default-pp.fasl
+#p"./walk.fasl" is already up to date.
+;   Fast loading ./walk.fasl
+#p"./literal.fasl" is already up to date.
+;   Fast loading ./literal.fasl
+#p"./evaluation.fasl" is already up to date.
+;   Fast loading ./evaluation.fasl
+#p"./c.fasl" is already up to date.
+;   Fast loading ./c.fasl
+#p"./file-walk.fasl" is already up to date.
+;   Fast loading ./file-walk.fasl
+#p"./c-walk.fasl" is already up to date.
+;   Fast loading ./c-walk.fasl
+#p"./byte.fasl" is already up to date.
+;   Fast loading ./byte.fasl
+*** #<Interpreted Function LOADER> took 0.02 hours.
+
+*** In package "HOST", type "fasl" ***
+#p"./statics.fasl" is already up to date.
+;   Fast loading ./statics.fasl
+*** #<Interpreted Function LOADER> took 0.00 hours.
+
+*** In package "ECLIPSE", type "fasl" ***
+#p"./copied-declarations.fasl" is already up to date.
+;   Fast loading ./copied-declarations.fasl
+Warning: Ignoring declaration of unrecognized type: SLOT-DEFINITION
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES &REST T)
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES &REST T)
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES SINGLE-FLOAT INTEGER SINGLE-FLOAT)
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES DOUBLE-FLOAT INTEGER DOUBLE-FLOAT)
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES INTEGER INTEGER)
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES INTEGER BOOLEAN)
+Warning: Ignoring declaration of unrecognized type:
+         (COMMON-LISP:VALUES &REST T)
+*** #<Interpreted Function LOADER> took 0.00 hours.
+
+*** In package "COMMON-LISP-USER", type "fasl" ***
+#p"test/pkg.fasl" is already up to date.
+; Fast loading test/pkg.fasl
+*** #<Interpreted Function LOADER> took 0.00 hours.
+
+*** In package "ECLIPSE-TEST", type "fasl" ***
+#p"test/rt.fasl" is already up to date.
+; Fast loading test/rt.fasl
+*** #<Interpreted Function LOADER> took 0.00 hours.
+
+*** In package "ECLIPSE", type "c" ***
+; Compiling #P"/home/howard/cad0/lisp/eclipse/dev/1.0.3/c.lisp"
+;  (DEFPARAMETER CHARACTER-MAP (QUOTE #))
+*** cl:eval "Space" => (FUNCTION (LAMBDA
+                                  (XP &REST ARGS)
+                                  (BLOCK
+                                   TOP
+                                   (STREAM-WRITE-STRING XP "Space"))
+                                  (WHEN ARGS (COPY-LIST ARGS)))).
+*** cl:eval "Newline" => (FUNCTION (LAMBDA
+                                    (XP &REST ARGS)
+                                    (BLOCK
+                                     TOP
+                                     (STREAM-WRITE-STRING
+                                      XP
+                                      "Newline"))
+                                    (WHEN ARGS (COPY-LIST ARGS)))).
+*** cl:eval "Return" => (FUNCTION (LAMBDA
+                                   (XP &REST ARGS)
+                                   (BLOCK
+                                    TOP
+                                    (STREAM-WRITE-STRING XP "Return"))
+                                   (WHEN ARGS (COPY-LIST ARGS)))).
+*** cl:eval "Backspace" => (FUNCTION (LAMBDA
+                                      (XP &REST ARGS)
+                                      (BLOCK
+                                       TOP
+                                       (STREAM-WRITE-STRING
+                                        XP
+                                        "Backspace"))
+                                      (WHEN ARGS (COPY-LIST ARGS)))).
+*** cl:eval "Page" => (FUNCTION (LAMBDA
+                                 (XP &REST ARGS)
+                                 (BLOCK
+                                  TOP
+                                  (STREAM-WRITE-STRING XP "Page"))
+                                 (WHEN ARGS (COPY-LIST ARGS)))).
+*** cl:eval "Tab" => (FUNCTION (LAMBDA
+                                (XP &REST ARGS)
+                                (BLOCK
+                                 TOP
+                                 (STREAM-WRITE-STRING XP "Tab"))
+                                (WHEN ARGS (COPY-LIST ARGS)))).
+;  (DEFPARAMETER FUNCTION-CHARACTER-MAP (APPEND # CHARACTER-MAP))
+;  (DEFPARAMETER C-CHARACTER-MAP NIL)
+;  (DEFPARAMETER CONSTANT-ID-NUMERIC-CHARACTER-MAP ..)
+;  (DEFPARAMETER CONSTANT-ID-CHARACTER-MAP (APPEND # CHARACTER-MAP))
+;  (DEFUN PRINT-IDENTIFIER (STREAM STRING &KEY ...) ...)
+;  (DEFUN C-QUALIFY-P (SYMBOL &OPTIONAL STRIP-P ...) ...)
+;  (DEFPARAMETER *PACKAGE-PREFIXES* (MAKE-HASH-TABLE :TEST #))
+;  (DEFUN PACKAGE-PREFIX (PKG) ...)
+;  (DEFUN (SETF PACKAGE-PREFIX) (NAME PKG) ...)
+;  (SETF (PACKAGE-PREFIX #) "CL")
+;  (SETF (PACKAGE-PREFIX #) "CL")
+;  (SETF (PACKAGE-PREFIX #) "")
+;  (SETF (PACKAGE-PREFIX #) "USR")
+;  (SETF (PACKAGE-PREFIX #) "KEY")
+;  (SETF (PACKAGE-PREFIX NIL) "L")
+;  (DEFUN C-QUALIFY (S SYMBOL &OPTIONAL ...) ...)
+;  (DEFUN COMMON-C-TOKEN (S SYMBOL &AUX ...) ...)
+;  (DEFUN COMMON-FUNCTION (S SYMBOL) ...)
+;  (DEFUN COMMON-SYMBOL (S SYMBOL) ...)
+;  (DEFUN COMMON-VARIABLE (S SYMBOL) ...)
+;  (DEFUN C-INDEX (S INDEX &OPTIONAL ...) ...)
+Error: Received signal number 2 (Keyboard interrupt)
+  [condition type: INTERRUPT-SIGNAL]
+
+Restart actions (select using :continue):
+ 0: continue computation
+
+[changing package from "COMMON-LISP-USER" to "ECLIPSE"]
+[1c] ECLIPSE(9): :cont 0

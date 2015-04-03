@@ -1,0 +1,92 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Listen, Stream-Read-Char-No-Hang</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-LISTEN</B>, <B>STREAM-READ-CHAR-NO-HANG</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-listen</B> <I>stream </i>=&gt; <I>result</I><P>
+<B>stream-read-char-no-hang</B> <I>stream </i>=&gt; <I>char</I><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>character input stream</EM>. <P>
+<I>result</I>---a <EM>a generalized boolean</EM><P>
+<I>char</I>---a <EM>a character</EM> or the symbol <code>:EOF</code>. <P>
+
+<P>
+
+<B>Description:</B><P>
+
+<b>Stream-listen</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>listen</b> and
+returns <em>true</em> if there is any input pending on <i>stream</i>,
+otherwise it returns <em>false</em>.
+
+<p>
+<b>Stream-read-char-no-hang</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>read-char-no-hang</b> and
+returns either a <em>character</em>, or the symbol <code>:EOF</code> if
+<i>stream</i> is at <em>end of file</em>.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-listen</b></a> (<i>stream</i>
+fundamental-character-input-stream)
+<br>Calls <b>stream-read-char-no-hang</b> and <a
+href="unread.htm"><b>stream-unread-char</b></a>. 
+
+<P><i>Primary Method</i> <b>stream-read-char-no-hang</b>
+(<i>stream</i> fundamental-character-input-stream)
+<br>Calls <a href="read-char.htm"><b>stream-read-char</b></a>
+
+<p><i>Primary Method</i> <b>stream-listen</b></a> (<i>stream</i> encapsulating-stream)
+<br><i>Primary Method</i> <b>stream-read-char-no-hang</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="read-char.htm"><b>stream-read-char</b></a>, 
+<a href="unread.htm"><b>stream-unread-char</b></a>.
+<a href="peek.htm"><b>stream-peek-char</b></a>.
+<P>
+
+<B>Notes:</B> 
+
+<P>
+The default method for <b>stream-read-char-no-hang</b> (on <a
+href="clim-stream-classes.htm"><b>fundamental-character-input-stream</b></a>)
+is sufficient for <em>file streams</em>, but <em>interactive
+streams</em> should define their own method.
+
+<p>
+Most user-defined streams should define their own methods for
+<b>steam-listen</b> since it will usually be trivial and will
+generally be more efficient than the default method (on <a
+href="clim-stream-classes.htm"><b>fundamental-character-input-stream</b></a>).
+
+<HR>
+<A HREF="stream-element-type.htm">[Previous]</A> 
+<A HREF="streamp.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

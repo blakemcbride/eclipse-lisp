@@ -1,0 +1,100 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Site and Other Initial Definitions</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Site and Other Initial Definitions</H2>
+<HR>
+
+The function <b>short-site-name</b> returns the value of the variable
+<a href="site-name.htm"><b>*short-site-name*</b></a>.
+
+<P>
+The function <b>long-site-name</b> returns the value of <a
+href="site-name.htm"><b>*long-site-name*</b></a> if it is non-null,
+otherwise it returns <a
+href="site-name.htm"><b>*short-site-name*</b></a>.
+
+<P>
+The function <b>machine-version</b> returns the value of the variable
+<a href="site-name.htm"><b>*machine-version*</b></a> if it is
+non-null.
+
+<P>
+The initial value of <b>*default-pathname-defaults*</b> is a <a
+href="path.htm"><em>pathname</em></a> with the following components:
+
+<UL>
+<LI><EM>host</EM> - <CODE>:unspecific</CODE>
+<LI><EM>device</EM> - The operating-system-specific "current working
+device".  On Unix, this is <CODE>:unspecific</CODE>. On Windows, it is
+the "current default drive" in which Eclipse was started.
+<LI><EM>directory</EM> - The operating-system-specific "current working
+directory" in which Eclipse was started.
+<LI><EM>name</EM> - <CODE>NIL</CODE>
+<LI><EM>type</EM> - <CODE>NIL</CODE>
+<LI><EM>version</EM> - <CODE>:NEWEST</CODE>
+</UL>
+
+<p> Eclipse uses the "SYS" logical pathname host during <a
+href="init.htm">init file loading</a> and to provide default paths for <a
+href="path.htm#load-logical"><b>load-logical-pathname-translations</b></a>
+and <a href="defined.htm#require"><b>require</b></a>.
+
+<P>
+The initial <b>logical-pathname-translations</b> for the
+<CODE>"SYS"</CODE> logical-pathname host are such that:
+
+<UL>
+<LI> <CODE>&quot;SITE;**;&quot;</CODE> translates to 
+<CODE>'(<em>eclipsehome</em> "SITE" :WILD-INFERIORS)</CODE> (in
+<CODE>:COMMON :CASE</CODE>) on the local machine.
+
+<LI> <CODE>&quot;SOURCE;**;&quot;</CODE> translates to
+<CODE>'(<em>eclipsehome</em> "SRC" :WILD-INFERIORS)</CODE> (in
+<CODE>:COMMON :CASE</CODE>) on the local machine.
+</UL>
+
+If the <CODE>ECLIPSEHOME</CODE> operating system environment variable
+is set, then <code><em>eclipsehome</em></code>, above, is the
+directory specified by this variable.  If it is not set, then
+<code><em>eclipsehome</em></code> is the current working directory in
+which <CODE>eclipse</CODE> was started.
+
+<P>
+For example, suppose Eclipse is started on a Unix system with the
+current working directory <CODE>/usr/eclipse</CODE> and
+<CODE>ECLIPSEHOME</CODE> unset:
+<PRE>
+  (translate-logical-pathname &quot;SYS:SITE;FILE.LISP.2&quot;)
+   => #P&quot;/usr/eclipse/site/file.lisp.2&quot;
+  (translate-logical-pathname &quot;SYS:SOURCE;MY-PROJECT;DEV;FILE.LISP.2&quot;)
+   => #P&quot;/usr/eclipse/src/my-project/dev/file.lisp.2&quot;
+</PRE>
+
+<p><b>N.B.:</b> The "SYS" logical pathname translations can be
+modified by the user, for example, through an <a
+href="init.htm"><code>init</code></a> file.  
+
+<BLOCKQUOTE>
+We would like to avoid the use of the <CODE>ECLIPSEHOME</CODE>
+in order to simplify the distribution of applications built using
+Eclipse.  Unfortunately, we have not discovered a portable alternative
+to find out which directory an executable is running from.  If anyone
+has any ideas on this subject, please contact <a
+href="mailto:howard@elwoodcorp.com">howard@elwoodcorp.com</a>
+(telephone 414-764-7500).
+</BLOCKQUOTE>
+
+
+<HR>
+<A HREF="top.htm">[Previous]</A> <A HREF="init.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

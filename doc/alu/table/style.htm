@@ -1,0 +1,783 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp Programming Style</TITLE>
+<meta name="description" content="Lisp programming style">
+<meta name="keywords" content="common lisp, style, efficiency,
+readability, operators, syntax, documentation, macros, modularization">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#CCFFFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Lisp Programming Style</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="learn.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="books.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="applications.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm"><b>LEARNING</b></a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+<P>
+<a href="books.htm">books</a></br>
+<a href="style.htm"><b>style</b></a></br>
+</td><td>
+</table>
+</td><td>
+
+Here are some general suggestions/notes about improving Lisp
+programming style, readability, correctness and efficiency.  These are written by 
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">Mark Kantrowitz and Barry
+Margolin</A> and come from the <A
+HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/faqs/lang/lisp/top.html">Lisp FAQ</A>.
+
+<P>
+In addition, Hallvard Tretteberg's <A
+href="ftp://ftp.think.com/public/think/lisp/style-guide.text"><I>Lisp
+Style Guide</I></A> covers some of the same material.  
+
+There are also several <A HREF="books.htm">books</A> that cover <A
+HREF="books.htm#style">Lisp programming style</A>.
+
+<P>
+
+<DD><A HREF="#general">General Programming Style Rules</A>
+<DD><A HREF="#operators">Often Misused Operators</A>
+<DD> <A HREF="#readability">Readability</A>
+<DD><A HREF="#idioms">Lisp Idioms</A>
+<DD> <A HREF="#doc">    Documentation</A>
+<DD> <A HREF="#macros"> Macros</A>
+<DD> <A HREF="#mod">File Modularization</A>
+<DD><A HREF="#prefs"> Stylistic Preferences</A>
+<DD><A HREF="#efficiency"> Correctness and Efficiency Issues</A>
+
+<HR>
+
+<H3> <A NAME="general">General Programming Style Rules</A></H3>
+
+<UL>
+<P><LI> Write short functions, where each function provides a single,
+        well-defined operation. Small functions are easier to
+        read, write, test, debug, and understand.
+
+      <P><LI> Use descriptive variable and function names. If it isn't clear
+        from the name of a function or variable what its purpose is,
+        document it with a documentation string and a comment. In fact,
+        even if the purpose is evident from the name, it is still worth
+        documenting your code.
+
+      <P><LI> Don't write Pascal (or C) code in Lisp. Use the appropriate
+        predefined functions -- look in the index to CLtL2, or use the
+        APROPOS and DESCRIBE functions. Don't put a close parenthesis
+        on a line by itself -- this can really irritate programmers
+        who grew up on Lisp. Lisp-oriented text editors include tools
+        for ensuring balanced parentheses and for moving across 
+        pairs of balanced parentheses. You don't need to stick
+        comments on close parentheses to mark which expression they close.
+
+      <P><LI> Use proper indentation -- you should be able to understand
+        the structure of your definitions without noticing the parentheses. 
+        In general, the way one indents a form is controlled by the
+        first symbol of the form. In DEFUNs, for example, one puts the
+        symbol DEFUN, the function name, and the argument list all on
+        the same line. If the argument list is too long, one can break
+        it at one of the lambda keywords. Following the argument list,
+        one inserts a carriage return and lists the expressions in the
+        body of the definition, with each form starting on its own
+        line indented three spaces relative to the open parenthesis of
+        the parent (in this case the DEFUN). This general style -- of
+        putting all the significant elements of a form on a single
+        line, followed by a carriage return and the indented body --
+        holds for many Lisp constructs. There are, of course, variations,
+        such as keeping the first clause on the same line as the COND
+        or CASE symbol, and the rules are relaxed in different ways to
+        keep line lengths to a manageable size. If you find yourself having
+        trouble fitting everything in even with line breaking and
+        relaxing the rules, either your function names are too long or your
+        code isn't very modular. You should perceive this as a signal that
+        you need to break up your big definitions into smaller chunks, each
+        with a clearly defined purpose, and possibly replace long function
+        names with concise but apt shorter ones.
+
+      <P><LI> Use whitespace appropriately. Use whitespace to separate
+        semantically distinct code segments, but don't use too much
+        whitespace. For example,
+<PRE>
+    GOOD: 
+       (defun foo (x y)
+         (let ((z (+ x y 10)))
+           (* z z)))
+
+    BAD: 
+       (defun foo(x y)(let((z(+ x y 10)))(* z z)))
+
+       (defun foo ( x  y )
+         (let ( ( z (+ x y 10) ) )
+            ( * z z )
+            )
+         )    
+</PRE>
+         Although the Lisp reader and compiler don't care which you
+         use, most experienced Lisp programmers find the first example 
+         much easier to read than the last two.
+
+       <P><LI> Don't use line lengths greater than 80 characters. People who
+         write code using Zmacs on Symbolics Lisp Machines are notoriously
+         guilty of violating this rule, because the CPT6 font allows
+         one to squeeze a tremendous amount of code on the display,
+         especially if one spreads the code out horizontally. This
+         makes it more difficult to read when printed out or read on
+         an 80x24 xterm window. In fact, use a line length of 72 characters
+         because it leaves a strip of white space at the edge of the
+window.
+</UL>
+
+<HR> <H3> <A NAME="operators">Often Misused Operators</A></H3>
+
+   The following operators often abused or misunderstood by novices. 
+   Think twice before using any of these functions.
+
+<UL>
+      <P><LI> EVAL. Novices almost always misuse EVAL. When experts use
+        EVAL, they often would be better off using APPLY, FUNCALL, or
+        SYMBOL-VALUE. Use of EVAL when defining a macro should set off
+        a warning bell -- macro definitions are already evaluated
+        during expansion. See also the answer to question 3-12.
+        The general rule of thumb about EVAL is: if you think you need
+        to use EVAL, you're probably wrong.
+
+      <P><LI> PROGV. PROGV binds dynamic variables and is often misused in
+        conjunction with EVAL, which uses the dynamic environment. 
+        In general, avoid unnecessary use of special variables.
+        PROGV is mainly for writing interpreters for languages embedded
+        in Lisp. If you want to bind a list of values to a list of
+        lexical variables, use
+<PRE>
+      (MULTIPLE-VALUE-BIND (..) (VALUES-LIST ..) ..)
+</PRE>
+        or
+<PRE>
+      (MULTIPLE-VALUE-SETQ (..) (VALUES-LIST ..))
+</PRE>
+        instead. Most decent compilers can optimize this expression. 
+        However, use of this idiom is not to be encouraged unless absolutely
+        necessary.
+
+      <P><LI> CATCH and THROW. Often a named BLOCK and RETURN-FROM are
+        more appropriate. Use UNWIND-PROTECT when necessary.
+
+      <P><LI> Destructive operations, such as NCONC, SORT, DELETE,
+        RPLACA, and RPLACD, should be used carefully and sparingly.
+        In general, trust the garbage collector: allocate new
+        data structures when you need them.
+</UL>
+
+<HR> <H3> <A NAME="readability">Readability</A></H3>
+
+<UL>
+      <P><LI> Don't use any C{A,D}R functions with more than two
+        letters between the C and the R. When nested, they become
+        hard to read. If you have complex data structures, you
+        are often better off describing them with a DEFSTRUCT,
+        even if the type is LIST. The data abstraction afforded by
+        DEFSTRUCT makes the code much more readable and its purpose
+        clearer. If you must use C{A,D}R, try to use
+        DESTRUCTURING-BIND instead, or at least SECOND, THIRD, 
+        NTH, NTHCDR, etc.
+
+      <P><LI> Use COND instead of IF and PROGN. In general, don't use PROGN if
+        there is a way to write the code within an implicit
+        PROGN. For example, 
+<PRE>
+     (IF (FOO X)
+         (PROGN (PRINT "hi there") 23)
+         34)
+</PRE>
+        should be written using COND instead.
+
+      <P><LI> Never use a 2-argument IF or a 3-argument IF with a second
+        argument of NIL unless you want to emphasize the return value;
+        use WHEN and UNLESS instead. You will want to emphasize the
+        return value when the IF clause is embedded within a SETQ,
+        such as (SETQ X (IF (EQ Y Z) 2 NIL)). If the second argument 
+        to IF is the same as the first, use OR instead: (OR P Q) rather
+        than (IF P P Q). Use UNLESS instead of (WHEN (NOT ..) ..)
+        but not instead of (WHEN (NULL ..) ..).
+
+      <P><LI> Use COND instead of nested IF statements. Be sure to check for
+        unreachable cases, and eliminate those cond-clauses.
+
+      <P><LI> Use backquote, rather than explicit calls to LIST, CONS, and
+        APPEND, whenever writing a form which produces a Lisp form, but
+        not as a general substitute for LIST, CONS and APPEND. LIST, 
+        CONS and APPEND usually allocate new storage, but lists produced
+        by backquote may involve destructive modification (e.g., ,.).
+
+     <P><LI>Make the names of special (global) variables begin and end
+        with an asterisk (*): (DEFVAR *GLOBAL-VARIABLE*)   
+        Some programmers will mark the beginning and end of an internal
+        global variable with a percent (%) or a period (.).
+        Make the names of constants begin and end with a plus (+):
+        (DEFCONSTANT +E+ 2.7182818)
+        This helps distinguish them from lexical variables. Some people
+        prefer to use macros to define constants, since this avoids
+        the problem of accidentally trying to bind a symbol declared
+        with defconstant.
+
+      <P><LI> If your program is built upon an underlying substrate which is
+        implementation-dependent, consider naming those functions and
+        macros in a way that visually identifies them, either by placing
+        them in their own package, or prepending a character like a %, ., 
+        or ! to the function name. Note that many programmers use the
+        $ as a macro character for slot access, so it should be avoided
+        unless you're using it for that purpose.
+
+      <P><LI> Don't use property lists. Instead, use an explicit hash table.
+        This helps avoid problems caused by the symbol being in the wrong
+        package, accidental reuse of property keys from other
+        programs, and allows you to customize the structure of the table. 
+
+      <P><LI> Use the most specific construct that does the job. This lets
+        readers of the code see what you intended when writing the code.
+        For example, don't use SETF if SETQ will do (e.g., for lexical
+        variables). Using SETQ will tell readers of your code that you
+        aren't doing anything fancy. Likewise, don't use EQUAL where EQ
+        will do. Use the most specific predicate to test your conditions. 
+        
+      <P><LI> If you intend for a function to be a predicate, have it return T
+        for true, not just non-NIL. If there is nothing worth returning
+        from a function, returning T is conventional. But if a function
+        is intended to be more than just a predicate, it is better to 
+        return a useful value. (For example, this is one of the differences
+        between MEMBER and FIND.)
+
+      <P><LI> When NIL is used as an empty list, use () in your code. When NIL
+        is used as a boolean, use NIL. Similarly, use NULL to test for an
+        empty list, NOT to test a logical value. Use ENDP to test for the
+        end of a list, not NULL.
+
+     <P><LI>Don't use the &AUX lambda-list keyword. It is always clearer to
+        define local variables using LET or LET*.
+
+     <P><LI>When using RETURN and RETURN-FROM to exit from a block, don't
+        use (VALUES ..) when returning only one value, except if you
+        are using it to suppress extra multiple values from the first
+        argument. 
+
+     <P><LI>If you want a function to return no values (i.e., equivalent to
+        VOID in C), use (VALUES) to return zero values. This signals
+        to the reader that the function is used mainly for side-effects.
+
+     <P><LI>(VALUES (VALUES 1 2 3)) returns only the first value, 1.
+        You can use (VALUES (some-multiple-value-function ..)) to suppress
+        the extra multiple values from the function. Use MULTIPLE-VALUE-PROG1
+        instead of PROG1 when the multiple values are significant.
+
+     <P><LI>When using MULTIPLE-VALUE-BIND and DESTRUCTURING-BIND, don't rely
+        on the fact that NIL is used when values are missing. This is
+        an error in some implementations of DESTRUCTURING-BIND. Instead,
+        make sure that your function always returns the proper number of
+        values.
+
+     <P><LI>Type the name of external symbols, functions, and variables
+        from the COMMON-LISP package in uppercase. This will allow your
+        code to work properly in a case-sensitive version of Common Lisp,
+        since the print-names of symbols in the COMMON-LISP package
+        are uppercase internally. (However, not everybody feels that
+        being nice to case-sensitive Lisps is a requirement, so this
+        isn't an absolute style rule, just a suggestion.)
+
+</UL>
+
+<HR> <H3> <A NAME="idioms">Lisp Idioms</A></H3>
+
+<UL>
+     <P><LI>MAPCAN is used with a function to return a variable number of
+        items to be included in an output list. When the function returns zero
+        or one items, the function serves as a filter. For example,
+           (mapcan #'(lambda (x) (when (and (numberp x) (evenp x)) (list x)))
+                   '(1 2 3 4 x 5 y 6 z 7))
+</UL>
+
+<HR> <H3> <A NAME="doc">    Documentation</A></H3>
+<UL>
+
+     <P><LI>Comment your code. Use three semicolons in the left margin before
+        the definition for major explanations. Use two semicolons that
+        float with the code to explain the routine that follows. Two
+        semicolons may also be used to explain the following line when the
+        comment is too long for the single semicolon treatment. Use
+        a single semicolon to the right of the code to explain a particular
+        line with a short comment. The number of semicolons used roughly
+        corresponds with the length of the comment. Put at least one blank
+        line before and after top-level expressions.
+
+     <P><LI>Include documentation strings in your code. This lets users
+        get help while running your program without having to resort to
+        the source code or printed documentation. 
+
+</UL>
+
+<HR> <H3> <A NAME="macros"> Macros</A></H3>
+
+<UL>
+     <P><LI>Never use a macro instead of a function for efficiency reasons.
+        Declaim the function as inline -- for example, 
+<PRE>
+     (DECLAIM (INLINE ..))
+</PRE>
+        This is <STRONG>not</STRONG> a magic bullet -- be forewarned that inline
+        expansions can often increase the code size dramatically. INLINE
+        should be used only for short functions where the tradeoff is
+        likely to be worthwhile: inner loops, types that the compiler
+        might do something smart with, and so on.
+
+     <P><LI>When defining a macro that provides an implicit PROGN, use the
+        &BODY lambda-list keyword instead of &REST.
+
+     <P><LI>Use gensyms for bindings within a macro, unless the macro lets
+        the user explicitly specify the variable. For example:
+<PRE>
+    (defmacro foo ((iter-var list) body-form
+                   &body body)
+       (let ((result (gensym "RESULT")))
+         `(let ((,result nil))
+            (dolist (,iter-var ,list ,result)
+              (setq ,result ,body-form)
+              (when ,result
+                ,@body)))))        
+</PRE>
+        This avoids errors caused by collisions during macro expansion
+        between variable names used in the macro definition and in the
+        supplied body.
+
+     <P><LI>Use a DO- prefix in the name of a macro that does some kind of
+        iteration, WITH- when the macro establishes bindings, and
+        DEFINE- or DEF- when the macro creates some definitions. Don't
+        use the prefix MAP- in macro names, only in function names.
+
+     <P><LI>Don't create a new iteration macro when an existing function
+        or macro will do.
+
+     <P><LI>Don't define a macro where a function definition will work just
+        as well -- remember, you can FUNCALL or MAPCAR a function but 
+        not a macro.
+
+     <P><LI>The LOOP and SERIES macros generate efficient code. If you're
+        writing a new iteration macro, consider learning to use one
+        of them instead.
+</UL>
+  
+<HR> <H3> <A NAME="mod">File Modularization</A></H3>
+
+<UL>
+     <P><LI>If your program involves macros that are used in more than one
+        file, it is generally a good idea to put such macros in a separate
+        file that gets loaded before the other files. The same things applies
+        to primitive functions. If a macro is complicated, the code that
+        defines the macro should be put into a file by itself. In general, if
+        a set of definitions form a cohesive and "independent" whole, they
+        should be put in a file by themselves, and maybe even in their own
+        package. It isn't unusual for a large Lisp program to have files named
+        "site-dependent-code", "primitives.lisp", and "macros.lisp". If a file
+        contains primarily macros, put "-macros" in the name of the
+file.
+</UL>
+
+<HR> <H3> <A NAME="prefs"> Stylistic Preferences</A></H3>
+
+<UL>
+     <P><LI>Use (SETF (CAR ..) ..) and (SETF (CDR ..) ..) in preference to
+        RPLACA and RPLACD. Likewise (SETF (GET ..) ..) instead of PUT.
+
+     <P><LI>Use INCF, DECF, PUSH and POP instead instead of the corresponding
+        SETF forms.
+
+     <P><LI>Many programmers religiously avoid using CATCH, THROW, BLOCK,
+        PROG, GO and TAGBODY.  Tags and go-forms should only be necessary
+        to create extremely unusual and complicated iteration constructs. In
+        almost every circumstance, a ready-made iteration construct or
+        recursive implementation is more appropriate.
+
+     <P><LI>Don't use LET* where LET will do. Don't use LABELS where FLET
+        will do. Don't use DO* where DO will do.
+
+     <P><LI>Don't use DO where DOTIMES or DOLIST will do.
+
+     <P><LI>If you like using MAPCAR instead of DO/DOLIST, use MAPC when
+        no result is needed -- it's more efficient, since it doesn't
+        cons up a list. If a single cumulative value is required, use
+        REDUCE. If you are seeking a particular element, use FIND,
+        POSITION, or MEMBER.
+
+     <P><LI>If using REMOVE and DELETE to filter a sequence, don't use the
+        :test-not keyword or the REMOVE-IF-NOT or DELETE-IF-NOT functions.
+        Use COMPLEMENT to complement the predicate and the REMOVE-IF
+        or DELETE-IF functions instead.
+
+     <P><LI>Use complex numbers to represent points in a plane.
+
+     <P><LI>Don't use lists where vectors are more appropriate. Accessing the
+        nth element of a vector is faster than finding the nth element
+        of a list, since the latter requires pointer chasing while the
+        former requires simple addition. Vectors also take up less space
+        than lists. Use adjustable vectors with fill-pointers to
+        implement a stack, instead of a list -- using a list continually
+        conses and then throws away the conses.
+
+     <P><LI>When adding an entry to an association list, use ACONS, not
+        two calls to CONS. This makes it clear that you're using an alist.
+
+     <P><LI>If your association list has more than about 10 entries in it,
+        consider using a hash table. Hash tables are often more efficient.
+        (See also [2-2].)
+
+     <P><LI>When you don't need the full power of CLOS, consider using
+        structures instead. They are often faster, take up less space, and
+        easier to use.
+
+     <P><LI>Use PRINT-UNREADABLE-OBJECT when writing a print-function.
+
+     <P><LI>Use WITH-OPEN-FILE instead of OPEN and CLOSE.
+
+     <P><LI>When a HANDLER-CASE clause is executed, the stack has already
+        unwound, so dynamic bindings that existed when the error
+        occured may no longer exist when the handler is run. Use
+        HANDLER-BIND if you need this. 
+
+     <P><LI>When using CASE and TYPECASE forms, if you intend for the form
+        to return NIL when all cases fail, include an explicit OTHERWISE
+        clause. If it would be an error to return NIL when all cases
+        fail, use ECASE, CCASE, ETYPECASE or CTYPECASE instead.
+
+     <P><LI>Use local variables in preference to global variables whenever
+        possible. Do not use global variables in lieu of parameter passing.
+        Global variables can be used in the following circumstances:
+<UL>
+         <P><LI> When one function needs to affect the operation of
+             another, but the second function isn't called by the first.
+             (For example, *load-pathname* and *break-on-warnings*.)
+         <P><LI> When a called function needs to affect the current or future
+             operation of the caller, but it doesn't make sense to accomplish
+             this by returning multiple values.
+         <P><LI> To provide hooks into the mechanisms of the program.
+             (For example, *evalhook*, *, /, and +.)
+         <P><LI> Parameters which, when their value is changed, represent a
+             major change to the program.
+             (For example, *print-level* and *print-readably*.)
+         <P><LI> For state that persists between invocations of the program.
+             Also, for state which is used by more than one major program.
+             (For example, *package*, *readtable*, *gensym-counter*.)
+         <P><LI> To provide convenient information to the user.
+             (For example, *version* and *features*.)
+         <P><LI> To provide customizable defaults. 
+             (For example, *default-pathname-defaults*.)
+         <P><LI> When a value affects major portions of a program, and passing
+             this value around would be extremely awkward. (The example
+             here is output and input streams for a program. Even when
+             the program passes the stream around as an argument, if you
+             want to redirect all output from the program to a different
+             stream, it is much easier to just rebind the global
+variable.)
+</UL>
+
+     <P><LI>Beginning students, especially ones accustomed to programming
+        in C, Pascal, or Fortran, tend to use global variables to hold or pass
+        information in their programs. This style is considered ugly by
+        experienced Lisp programmers. Although assignment statements can't
+        always be avoided in production code, good programmers take advantage
+        of Lisp's functional programming style before resorting to SETF and
+        SETQ. For example, they will nest function calls instead of using a
+        temporary variable and use the stack to pass multiple values. When
+        first learning to program in Lisp, try to avoid SETF/SETQ and their
+        cousins as much as possible. And if a temporary variable is necessary,
+        bind it to its first value in a LET statement, instead of letting it
+        become a global variable by default. (If you see lots of compiler
+        warnings about declaring variables to be special, you're probably
+        making this mistake. If you intend a variable to be global, it should
+        be defined with a DEFVAR or DEFPARAMETER statement, not left to the
+        compiler to fix.)
+</UL>
+
+<HR> <H3> <A NAME="efficiency"> Correctness and Efficiency Issues</A></H3>
+<UL>
+
+     <P><LI>In CLtL2, IN-PACKAGE does not evaluate its argument. Use defpackage
+        to define a package and declare the external (exported)
+        symbols from the package. 
+
+     <P><LI>The ARRAY-TOTAL-SIZE-LIMIT may be as small as 1024, and the
+        CALL-ARGUMENTS-LIMIT may be as small as 50. 
+
+     <P><LI>Novices often mistakenly quote the conditions of a CASE form.
+        For example, (case x ('a 3) ..) is incorrect. It would return
+        3 if x were the symbol QUOTE. Use (case x (a 3) ..) instead.
+
+     <P><LI>Avoid using APPLY to flatten lists. Although 
+<PRE>
+    (apply #'append list-of-lists)
+</PRE>
+        may look like a call with only two arguments, it becomes a 
+        function call to APPEND, with the LIST-OF-LISTS spread into actual
+        arguments. As a result it will have as many arguments as there are
+        elements in LIST-OF-LISTS, and hence may run into problems with the
+        CALL-ARGUMENTS-LIMIT. Use REDUCE or MAPCAN instead:  
+<PRE>
+     (reduce #'append list-of-lists :from-end t)
+     (mapcan #'copy-list list-of-lists)
+</PRE>
+        The second will often be more efficient (see note below about choosing
+        the right algorithm). Beware of calls like (apply f (mapcar ..)).
+
+     <P><LI>NTH must cdr down the list to reach the elements you are
+        interested in. If you don't need the structural flexibility of
+        lists, try using vectors and the ELT function instead.
+
+     <P><LI>CASE statements can be vectorized if the keys are consecutive
+        numbers. Such CASE statements can still have OTHERWISE clauses.
+        To take advantage of this without losing readability, use #. with 
+        symbolic constants:
+
+<PRE>
+     (eval-when (:compile-toplevel :load-toplevel
+                 :execute)
+        (defconstant RED 1)
+        (defconstant GREEN 2)
+        (defconstant BLUE 3))
+
+     (case color
+        (#.RED   ...)
+        (#.GREEN ...)
+        (#.BLUE  ...)
+        ...)
+</PRE>
+
+     <P><LI>Don't use quoted constants where you might later destructively
+        modify them. For example, instead of writing '(c d) in
+<PRE>
+    (defun foo ()
+      (let ((var '(c d)))
+	 ...))
+</PRE>
+        write (list 'c 'd) instead. Using a quote here can lead to
+        unexpected results later. If you later destructively modify the 
+        value of var, this is self-modifying code! Some Lisp compilers
+        will complain about this, since they like to make constants
+        read-only. Modifying constants has undefined results in ANSI CL.
+        See also the answer to question [3-13].
+<P>
+        Similarly, beware of shared list structure arising from the use
+        of backquote. Any sublist in a backquoted expression that doesn't
+        contain any commas can share with the original source structure.
+
+     <P><LI>Don't proclaim unsafe optimizations, such as
+<PRE>
+     (proclaim '(optimize (safety 0) (speed 3)
+                          (space 1))) 
+</PRE>
+        since this yields a global effect. Instead, add the
+        optimizations as local declarations to small pieces of
+        well-tested, performance-critical code:
+<PRE>
+    (defun well-tested-function ()
+       (declare (optimize (safety 0) (speed 3)
+                (space 1)))
+       ...)
+</PRE>
+        Such optimizations can remove run-time type-checking; type-checking
+        is necessary unless you've very carefully checked your code
+        and added all the appropriate type declarations.
+
+     <P><LI>Some programmers feel that you shouldn't add declarations to
+        code until it is fully debugged, because incorrect
+        declarations can be an annoying source of errors. They recommend
+        using CHECK-TYPE liberally instead while you are developing the code.
+        On the other hand, if you add declarations to tell the
+        compiler what you think your code is doing, the compiler can
+        then tell you when your assumptions are incorrect.
+        Declarations also make it easier for another programmer to read
+        your code. 
+
+     <P><LI>Declaring the type of variables to be FIXNUM does not
+        necessarily mean that the results of arithmetic involving the 
+        fixnums will be a fixnum; it could be a BIGNUM. For example,
+<PRE>
+    (declare (type fixnum x y))
+    (setq z (+ (* x x) (* y y)))
+</PRE>
+        could result in z being a BIGNUM. If you know the limits of your
+        numbers, use a declaration like
+<PRE>
+    (declare (type (integer 0 100) x y))
+</PRE>
+        instead, since most compilers can then do the appropriate type
+        inference, leading to much faster code.
+
+     <P><LI>Don't change the compiler optimization with an OPTIMIZE
+        proclamation or declaration until the code is fully debugged
+        and profiled.  When first writing code you should say 
+        (declare (optimize (safety 3))) regardless of the speed setting.
+
+     <P><LI>Depending on the optimization level of the compiler, type
+        declarations are interpreted either as (1) a guarantee from
+        you that the variable is always bound to values of that type,
+        or (2) a desire that the compiler check that the variable is
+        always bound to values of that type. Use CHECK-TYPE if (2) is
+        your intention.
+
+     <P><LI>If you get warnings about unused variables, add IGNORE
+        declarations if appropriate or fix the problem. Letting such
+        warnings stand is a sloppy coding practice.
+</UL>
+
+   To produce efficient code,
+
+<UL>
+     <P><LI>choose the right algorithm. For example, consider seven possible
+        implementations of COPY-LIST:
+
+<PRE>
+    (defun copy-list (list)
+      (let ((result nil))
+        (dolist (item list result)
+          (setf result (append result (list item))))))
+
+    (defun copy-list (list)
+      (let ((result nil))
+        (dolist (item list (nreverse result))
+          (push item result))))
+
+    (defun copy-list (list)
+      (mapcar #'identity list))
+
+    (defun copy-list (list)
+      (let ((result (make-list (length list))))
+        (do ((original list (cdr original))
+             (new result (cdr new)))
+            ((null original) result)
+          (setf (car new) (car original)))))
+
+    (defun copy-list (list)
+       (when list
+          (let* ((result (list (car list)))
+                 (tail-ptr result))
+            (dolist (item (cdr list) result)
+              (setf (cdr tail-ptr) (list item))
+              (setf tail-ptr (cdr tail-ptr))))))
+        
+    (defun copy-list (list)
+       (loop for item in list collect item))
+
+    (defun copy-list (list)
+       (if (consp list) 
+           (cons (car list)
+                 (copy-list (cdr list)))
+           list))
+</PRE>
+
+        The first uses APPEND to tack the elements onto the end of the list.
+        Since APPEND must traverse the entire partial list at each step, this
+        yields a quadratic running time for the algorithm.  The second
+        implementation improves on this by iterating down the list twice; once
+        to build up the list in reverse order, and the second time to reverse
+        it. The efficiency of the third depends on the Lisp implementation,
+        but it is usually similar to the second, as is the fourth.  The fifth
+        algorithm, however, iterates down the list only once. It avoids the
+        extra work by keeping a pointer (reference) to the last cons of the 
+        list and RPLACDing onto the end of that. Use of the fifth algorithm 
+        may yield a speedup. Note that this contradicts the earlier dictum to
+        avoid destructive functions. To make more efficient code one might
+        selectively introduce destructive operations in critical sections of
+        code. Nevertheless, the fifth implementation may be less efficient in
+        Lisps with cdr-coding, since it is more expensive to RPLACD cdr-coded
+        lists. Depending on the implementation of nreverse, however,
+        the fifth and second implementations may be doing the same
+        amount of work. The sixth example uses the Loop macro, which usually
+        expands into code similar to the third. The seventh example copies
+        dotted lists, and runs in linear time, but isn't tail-recursive. 
+
+<P>
+        There is a long-running discussion of whether pushing items
+	onto a list and then applying NREVERSE to the result is faster or
+	slower than the alternatives. According to Richard C. Waters (Lisp
+	Pointers VI(4):27-34, October-December 1993), the NREVERSE strategy is
+	slightly faster in most Lisp implementations. But the speed difference
+	either way isn't much, so he argues that one should pursue the option
+	that yields the clearest and simplest code, namely using NREVERSE.
+
+        Here's code for a possible implementation of NREVERSE. As is
+        evident, most of the alternatives to using NREVERSE involve
+        essentially the same code, just reorganized. 
+
+<PRE>
+  (defun nreverse (list)
+     ;; REVERSED is the partially reversed list, 
+     ;; CURRENT is the current cons cell, which will be
+     ;;   reused, and
+     ;; REMAINING are the cons cells which have not yet
+     ;;   been reversed.
+     (do* ((reversed nil)		
+	   (current list remaining)
+	   (remaining (cdr current) (cdr current)))
+	 ((null current)
+	  reversed)
+       ;; Reuse the cons cell at the head of the list:
+       ;;    reversed := ((car remaining) . reversed)
+       (setf (cdr current) reversed)
+       (setf reversed current)))
+</PRE>
+
+     <P><LI>use type declarations liberally in time-critical code, but
+        only if you are a seasoned Lisp programmer. Appropriate type
+        declarations help the compiler generate more specific and
+        optimized code. It also lets the reader know what assumptions
+        were made. For example, if you only use fixnum arithmetic,
+        adding declarations can lead to a significant speedup. If you
+        are a novice Lisp programmer, you should use type declarations
+        sparingly, as there may be no checking to see if the
+        declarations are correct, and optimized code can be harder to
+        debug. Wrong declarations can lead to errors in otherwise
+        correct code, and can limit the reuse of code in other
+        contexts. Depending on the Lisp compiler, it may also 
+        be necessary to declare the type of results using THE, since
+        some compilers don't deduce the result type from the inputs.
+
+     <P><LI>check the code produced by the compiler by using the
+        disassemble function
+</UL>
+
+</td></tr></table>
+
+</BODY>
+</HTML>

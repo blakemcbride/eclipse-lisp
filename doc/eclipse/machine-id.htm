@@ -1,0 +1,55 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>CLIM: Function MACHINE-ID</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Function</I> <B>MACHINE-ID</B><P>
+<B>Syntax:</B><P>
+
+<B>machine-id</B> <I></I> =&gt; <i>id</i><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>id</I>---an <EM>integer</EM>. <P>
+
+<B>Description:</B>
+
+<P>
+<b>Machine-id</b> returns the machine address on a network.
+<p>
+
+<B>Side Effects:</B> None.<p>
+
+<B>Affected By:</B> 
+
+<P>The operating system.<p>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P> 
+
+<b>Machine-instance</b> in the <a href="cl.htm#ansi">ANSI standard</a>,
+<a href="site-name.htm"><b>*machine-version*</b></a><P>
+
+<B>Notes:</B> 
+
+<P>
+The exact value returned by <b>machine-id</b> is
+implementation-dependent, but is intended to be unique across all
+machines.  It may use, for example, the operating system's
+<code>gethostid</code>, <code>getpitimer</code>, or
+<code>unmame</code>
+
+<HR>
+<A HREF="exit.htm">[Previous]</A>
+<A HREF="rebinding.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+<A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

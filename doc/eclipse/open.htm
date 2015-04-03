@@ -1,0 +1,160 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: OPEN</TITLE>
+</HEAD>
+
+Eclipse behavior for<BR>
+<I>Function</I> <B>OPEN</B><P>
+
+<B>Description:</B><P>
+
+The following <i>external-format designators</i> are supported:
+
+<P>
+Character Formats:
+
+<UL>
+
+<P><LI><CODE>:ASCII</CODE> <em>upgrades</em> the stream
+<i>element-type</i> to <b>base-char</b>.
+ <UL>
+ <LI> The <b>char-int</b> of each character output is written to the
+stream as an 8 bit binary integer.
+
+  <LI> When reading, 8 bit
+binary integers are read and returned as <b>base-char</b>s.
+ </UL>
+
+<P><LI><CODE>:UCS</CODE> <em>upgrades</em> the stream
+<i>element-type</i> to <b>ucs-2-char</b> if the specified
+<i>element-type</i> is a subtype of <b>ucs-2-char</b>.
+Otherwise, <i>element-type</i> is <em>upgraded</em> to
+<b>unicode-char</b>.
+ <UL>
+ <LI> The <b>char-int</b> of each character output
+is written to the stream as a either a 16 or 32 bit binary integer,
+depending on the actual <em>upgraded</em> <i>element-type</i>.
+
+  <LI> When reading, 16 or 32
+bit binary integers are read and returned as <b>character</b>s.
+ </UL>
+
+<P><LI><CODE>:MULTI-BYTE</CODE> <em>upgrades</em> the stream
+<i>element-type</i> to <b>ucs-2-char</b> or
+<b>unicode-char</b>, depending on the support provided by the
+operating system.
+ <UL>
+
+ <LI> The <b>char-int</b> of each character output is converted
+into <EM>multi-byte</EM> 8-bit bytes, which are then output in
+sequence. The notion of a <EM>multi-byte</EM> character is operating
+system and <a href="gloss.htm#locale"><i>locale</i></a> specific.  The
+Eclipse behavior is as though strings being output were passed to the
+operating system's <CODE>wcstombs()</CODE> utility.  Whether this
+accomplishes the right thing depends on the operating system's notion
+of <a href="gloss.htm#locale"><i>locale</i></a> and whether the result
+is viewed on a device that respects the operating system's notion of
+<a href="gloss.htm#locale"><i>locale</i></a>.  See <a
+href="char.htm#case"><i>Character Predicates and Case</i></a>, in <a
+href="char.htm">&quot;Character in Eclipse&quot;</a>.
+
+  <LI> When reading, <EM>multi-byte</EM> 8-bit bytes are drawn from the
+stream, and converted to <b>character</b>s as though by calling
+the operating system's <CODE>mbstowcs()</CODE> utility.
+
+ </UL>
+</UL>
+
+<P>
+Integer formats:
+
+<UL>
+
+<P><LI> <code>:BIG-ENDIAN</CODE>.  Integers are output with the most
+significant &quot;byte&quot; (8-bit octet) appearing first in the
+stream.  
+
+<P><LI> <code>:LITTLE-ENDIAN</CODE>.  Integers are output with the most
+significant &quot;byte&quot; (8-bit octet) appearing last in the
+stream.
+
+</UL>
+
+Integer <I>element-types</i> are <i>upgraded</i> to either
+<b>signed-byte</b> or <b>unsigned-byte</b> of size 1, 8,
+16 or 32.  <b>signed-byte</b> is equivalent to
+<b>(signed-byte 32)</b>, and <b>unsigned-byte</b> is
+equivalent to <b>(unsigned-byte 32)</b>.
+
+<P>
+When the <code>:DEFAULT</code> <i>external-format</i> is specified,
+the actual <i>external-format</i> used is based on the specified
+<i>element-type</i>, and can be examined with
+<b>stream-external-format</b>.  The value is <code>:ASCII</code>
+when <i>element-type</i> is a subtype of <b>base-char</b>,
+<code>:MULTI-BYTE</code> when <i>element-type</i> is a subtype of
+<b>unicode-char</b>, and <code>:BIG-ENDIAN</code> when
+<i>element-type</i> is a subtype of <b>integer</b>.
+
+
+<P>
+When the <code>:DEFAULT</code> <i>element-type</i> is specified, the
+actual <i>element-type</i> used is based on the actual
+<i>external-format</i>, and can be examined with
+<b>stream-element-type</b>.  The value will be the most restricted
+<i>element-type</i> listed above, for the given <i>external-format</i>.
+
+
+<P>
+<B>See Also:</B><P>
+
+<a href="char.htm">&quot;Characters in Eclipse&quot;</a> (particularly
+the <a href="char.htm#streams">&quot;Interaction With
+Streams&quot;</a> section), <a
+href="element-type.htm"><B>*default-element-type*</B></a>,
+<b>stream-element-type</b>, <b>stream-external-format</b>.<P>
+
+<B>Notes:</B> 
+
+<p> <b>unicode-char</b> is a strict subtype of
+<b>character</b> in Eclipse. However, no behavior is currently
+defined for any <b>character</b> that is not also a
+<b>unicode-char</b>.  Accordingly, <b>open</b> will treat
+<b>character</b> <i>element-type</i> arguments as though they were
+specified as <b>unicode-char</b>.  This may change in future
+releases, and programmers are encouraged to specify the precise value
+of <i>element-type</i> required.  The actual
+<b>stream-element-type</b> reflects the correctly <em>downgraded</em> value.
+
+<P> <code>:MULTI-BYTE</code> and <code>:ASCII</code> formats are the
+same externally when the default (i.e. the <code>&quot;C&quot;</code>) <a
+href="gloss.htm#locale"><i>locale</i></a> is used and only ASCII
+characters are involved.  
+
+<p> <code>:MULTI-BYTE</code> is also known as <code>:UTS-8</code>.  
+
+<p> On some platforms, the operating system implementation of
+<CODE>wcstombs()</CODE> and <CODE>mbstowcs()</CODE> does not correctly
+handle 4 octet unicode characters (UCS-4).  On these platforms, the
+actual <b>stream-element-type</b> for <code>:MULTI-BYTE</code> streams
+may be <em>downgraded</em> to <b>ucs-2-char</b>.
+
+<P> The units of position used in <b>file-position</b>,
+<b>file-length</b>, and <b>file-string-length</b> are 8-bit bytes for
+the <code>:MULTI-BYTE</code> <i>external-format</i>.  For all other
+<i>external-formats</i>, the units of position measure one
+<i>element-type</i>. 
+
+
+<HR>
+<A HREF="load.htm">[Previous]</A> 
+<A HREF="allocate-resource.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

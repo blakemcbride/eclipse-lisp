@@ -1,0 +1,90 @@
+<!-- The contents of this page are &copy; Copyright 1998 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: REBINDING</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Macro</I> <B>REBINDING</B><P>
+
+<B>Syntax:</B><P>
+
+<B>rebinding</B> <I>(var*) form*</I> =&gt; <I>result-form</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>vars</I>---the <EM>variables</EM> to be rebound. <P>
+<I>form</I>---an implicit progn.<P> 
+<I>result-form</I>---a Lisp form.<P> 
+
+<B>Description:</B><P>
+
+<B>Rebinding</b> returns a Lisp form which creates a temporary binding
+for each variable <i>var</i>.  Each <i>var</i> will be evaluated
+exactly once within <i>result-form</i>, in the order in which the
+variables are named in <i>vars</i>.
+
+<p>References within the <i>forms</i> to any variable named in <i>vars</i>
+will appear in <i>result-form</i> as a reference to the temporary
+binding for the variable.
+
+<p>
+<B>Example:</B><P> 
+
+<pre>
+ (defmacro lister (x y)
+    (rebinding (x y)
+       `(list ,x ,y)))
+ => LISTER
+ (macroexpand '(lister i j))
+ => (LET ((#1=#:X I)
+          (#2=#:Y J))
+      (LIST #1# #2#))
+ ;; The actual uninterned symbol names may vary with different
+ ;; implementations.  For example, symbols produced by <b>gensym</b>
+ ;; might be used.
+
+</pre>
+
+
+<B>Side Effects:</B> 
+<P>May increment <b>*GENSYM-COUNTER*</b>.
+
+<P>
+<B>Affected By:</B> 
+<P>Symbol names be be effected by <b>*GENSYM-COUNTER*</b>.
+
+<P>
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="unique.htm"><b>with-unique-names</b></a>, <b>gensym</b>.
+
+<P>
+<B>Notes:</B> 
+
+<P><b>Rebinding</b> is intended to facilitate the creation of
+<em>hygienic</em> macros, in which:
+ <ul>
+ <li> The argument forms to the macro are evaluated in the expanded
+ code once and once only, in the specified order.
+ <li> The names used as formal parameters in the macro definition do
+ not appear in the generated code, so there is no danger of unwanted
+ <em>variable capture</em>.
+ </ul> 
+
+<p><b>Rebinding</b> is compatible with similarly named facilities in
+other Lisp implementations.  It is related to the
+<b>once-only</b> facility defined in some Lisp implementations.
+
+<HR>
+<A HREF="machine-id.htm">[Previous]</A> 
+<A HREF="unique.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A> 
+<A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

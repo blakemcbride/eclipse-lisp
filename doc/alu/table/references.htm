@@ -1,0 +1,340 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Common Lisp References</TITLE>
+<meta name="description" content="Reference material for Common Lisp">
+<meta name="keywords" content="common lisp, standard, ansi, cltl2, clim, mop, cl-http, www, metaobject, server, online">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body bgcolor="#CCCCFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Reference Material for Common Lisp</H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="contents.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="community.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="older.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm"><b>REFERENCES</b></a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+<P>
+<a href="older.htm">older</a></br>
+<a href="bibliography.htm">bibliography</a></br>
+<a href="glossary.htm">glossary</a></br>
+</td><td>
+</table>
+</td><td>
+
+The following are reference works about various aspects of, or
+extensions to, Common Lisp.  They are <STRONG>not</STRONG> <A
+HREF="learn.htm#tutor"> tutorials</A>.  See also, the <a
+href="books.htm">Books by subject</a> and <a href="bibliography.htm">Books
+by author</a> pages.
+
+<DL>
+<DT><A HREF="#ansi">ANSI Specification</A>
+  <DD> Describes the core language definition and required <A HREF="environment.htm">utilities</A>.
+<DT><A HREF="#cltl2">Comon Lisp: the Language (CLtL2, CLtL1)</A>
+  <DD> A more readable description of a slightly early version of the
+   language, with motivations, comparisons, etc.  <DT><A
+HREF="#clim">Common Lisp Interface Manager (CLIM)</A>
+  <DD> A vendor standard for user interface development.
+<DT><A HREF="#mop">Meta Object Protocol (MOP)</A>
+  <DD> A <I>de facto</I> standard for an open implementation of CLOS.
+<DT><A HREF="#clhttp">Common Lisp Hypermedia Server (CL-HTTP)</A>
+  <DD> A widely used WWW server in Common Lisp.
+<DT><A HREF="older.htm">Related References</A>
+  <DD> I.E. not strictly Common Lisp or included within one of the above.
+</DL>
+
+
+<HR>
+<H2><A NAME="ansi"
+HREF="../HyperSpec/FrontMatter/index.html">
+The ANSI Standard for Common Lisp</A></H2>
+
+As of December 8, 1994, <A HREF="history.htm#common">Common Lisp</A> became an official <A HREF="http://www.ansi.org/"> ANSI</A> Standard: 
+
+<BLOCKQUOTE> ANSI <A HREF="http://www.x3.org/tc_home/tc_sd4/x3j13sd4.html">X3.226:1994</A>
+American National Standard for Programming Language Common LISP
+(<A HREF="http://www.x3.org/tc_home/x3j13.html">X3J13</A>).  </BLOCKQUOTE>
+
+It is the first <A HREF="objects.htm">Object Oriented language</A>
+specification approved by ANSI.
+
+<P> The specification describes what conforming implementations must
+provide, how the provided utilities must behave, and what programmers
+must do to make keep their programs portable between implementations.
+It has a glossary of terms, definitions for every Common Lisp utility
+(often with examples) and references to other documents.  It does not
+cover extensions to Common Lisp such as <A HREF="#clim"> CLIM</A>,
+the <A HREF="#mop"> MOP</A> or <A HREF="#clhttp"> CL-HTTP</A>.
+
+<ul>
+<P><li> The standard may be viewed in online as the <A
+HREF="http://www.harlequin.com/books/HyperSpec/FrontMatter/index.html"><i>HyperSpec</i></a>.
+Technically, only ANSI's representatives can distribute the actual
+specification.  The HyperSpec contains the same text as the
+specification, plus additional material and a useful search utility.
+
+<P><li> Hardcopy should be available from ANSI or from Global
+Engineering Documents, Inc., 2805 McGaw Avenue, Irvine, CA 92714,
+1-800-854-7179, 714-261-1455.  Its about 1500 pages, so you might
+consider using the HyperSpec instead.  It has been pointed out that a
+powerbook with the HyperSpec installed weighs less than the printed
+specification.
+
+<P><li>
+<A href="ftp://parcftp.xerox.com:/pub/cl/">
+<IMG ALIGN=bottom SRC="../img/ftp.xbm"></a> Copies of the TeX sources
+and Unix-compressed DVI files for the <b>draft</b> standard. The files
+corresponding to the second Public Review of Common Lisp are in the
+directory /pub/cl/dpANS2/*. These files correspond to draft 14.10,
+also known as document X3J13/93-102, which was forwarded by X3J13 to
+X3 in October, 1993. (The files from the first draft are in the
+directory /pub/cl/dpANS1/*.) The file Reviewer-Notes.text should be
+read before ftping the other files.
+
+</ul>
+
+<P>
+For more information, write to X3 Secretariat, Attn: Lynn Barra, 1250
+Eye Street NW, Suite 200, Washington, DC 20005-3922, call
+202-626-5738, fax 202-638-4922, or send email to x3sec@itic.nw.dc.us.
+
+<P>
+<A HREF="#top">[other references]</A>
+
+<HR>
+<H2><A NAME="cltl2"
+HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/cltl/cltl2.html">
+Common Lisp: the Language, 2nd Edition (CLtL2)</A></H2>
+
+<DL>
+<DT> <A HREF="bibliography.htm#steele"><I>Common Lisp: The Language</I></A> [CLtL1]
+<DD>   Guy L. Steele
+
+<DT> <A HREF="bibliography.htm#steele"><I>Common Lisp: The Language</I></A>, 2nd Edition [CLtL2]
+<DD>   Guy L. Steele
+
+<DT> <A HREF="bibliography.htm#franz"><I>Common Lisp: The Reference</I></A>
+<DD>   Franz Inc. 
+<DD>   Entries on Lisp (CLtL1) functions in alphabetical order.
+
+<DT> <A HREF="bibliography.htm#simpson"><I>Common Lisp, The Index</I></A>
+<DD>   Rosemary Simpson
+<DD>   A cross-referenced index to CLtL1.
+</DL>
+
+Before there was an <A HREF="#ansi"> ANSI standard</A> for Common
+Lisp, there was &quot;Common Lisp: the Language.&quot; This book, also
+known as CLtL1, described the state of the consensus on Common Lisp,
+circa 1984.
+
+<P> During the ANSI standardization process, Steele published a second
+edition (CLtL2).  This book contains the complete contents of the
+first edition, plus material on <A HREF="glossary.htm#clos">CLOS</A>, <A
+HREF="glossary.htm#cond">conditions</A>, <A HREF="glossary.htm#pretty">pretty
+printing</A> and <A HREF="glos.htm#iter"> iteration facilities</A>.
+
+<P>
+The book does <STRONG>not</STRONG> correspond exactly with the ANSI
+standard: some details are slightly different; some things from the
+standard are missing; and some things from CLtL2 are not in the final
+ANSI standard.  Nonetheless, the book has become a bible for anyone
+working in Common Lisp.  It is easier to read than the formal
+ANSI specification, and has additional commentatry and material.
+
+<ul>
+
+<P><li>CLtL2 may be viewed <A
+HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/cltl/cltl2.html">online</A>.
+
+<P><li> Butterworth-Heinemann, the owners of Digital Press, have made the
+LaTeX sources to this book available. 
+<A href="ftp://cambridge.apple.com:/pub/CLTL/">
+<IMG ALIGN=top SRC="../img/ftp.xbm"></a>
+<A href="ftp://ftp.cs.cmu.edu:/user/ai/lang/lisp/doc/cltl/">
+(mirrored)</A> 
+
+<P><li>
+A more recent book with similar scope is <A
+href="books.htm#graham2"><i>ANSI Common Lisp</a></i> by Paul Graham.
+</ul>
+
+<P>
+<A HREF="#top">[other references]</A>
+
+<HR>
+<H2><A NAME="clim" HREF="http://www.harlequin.com/education/books/CLIM-2.0/">
+Common Lisp Interface Manager (CLIM)</A></H2>
+
+The Common Lisp Interface Manager is a portable, graphical user
+interface toolkit.  It is a vendor standard, not part of <A
+HREF="#ansi"> ANSI Common Lisp</A>.
+
+<P>
+Originally developed by International Lisp Associates, Symbolics, and
+Xerox PARC, and now under joint development by several Lisp vendors,
+including <A HREF="http://www.franz.com">Franz</A>, <A
+HREF="http://www.harlequin.com">Harlequin</A> and <a
+href="http://www.digitool.com">Digitool</a>.  It is intended to be a
+portable successor of Symbolics UIMS (Dynamic Windows, Presentations
+Types). CLIM 2.0 also supports more traditional toolkit-style
+programming.
+
+<P>
+It is <STRONG>not</STRONG> free, and if it is available it can be
+purchased from the vendor of the Lisp system you are using.
+
+<ul>
+
+<P>
+<li> A users guide and white-papter are available from <A
+HREF="http://www.harlequin.com/education/books/CLIM-2.0/">Harlequin</A>
+and <A
+HREF="http://kogs-www.informatik.uni-hamburg.de/~moeller/uims-clim/clim-intro.html">U.
+Hamburg</A>, respectively.
+
+<P>
+<li>
+The CLIM 2.0 specification <a href="http://www.mikemac.com/mike/clim/cover.html">
+online</a> and as <A
+href="ftp://ftp.franz.com/pub/clim/clim-spec/">postscript. <IMG ALIGN=top
+SRC="../img/ftp.xbm"></A>
+
+<P>
+<LI> The  <A
+HREF="ftp://ftp.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/gui/clim/0.html">CLIM library</A>
+at CMU, gives Common Lisp Interface Manager code and documentation library. 
+
+<P><li>
+To be added to the mailing list send mail to <A
+HREF="mailto:clim-request@bbn.com">clim-request@bbn.com</A>
+with <CODE>subscribe</CODE> in the subject.
+
+<p><li>A grass-roots effort to develop a free version of CLIM called <a href="http://www.cons.org/free-clim/">Free-CLIM</a>.  A mailing list is available.  Send mail to <A
+HREF="mailto:free-clim-request@cons.org">free-clim-request@cons.org</a>
+with <CODE>subscribe</CODE> in the subject.
+
+<p><li>See other <a href="tools.htm#guitool">GUI toolkits</a> in the <a href="tools.htm">"Lisp Tools"</a> section.
+
+</ul>
+<P>
+<A HREF="#top">[other references]</A>
+
+<HR>
+<A NAME="mop" HREF="../mop/index.html">
+<H2> Meta Object Protocol (MOP)</H2><IMG ALIGN=BOTTOM SRC="../img/MOP-Inside.gif"></A>
+
+The <A HREF="clos.htm"><DFN>Common Lisp Object System<DFN></A> (CLOS)
+is part of the <A HREF="#ansi">ANSI standard</A>, and defines a complete <A
+HREF="objects.htm">object oriented</A> programming system.  There is also a
+<I>de facto</I> standard for how CLOS should be <EM>implemented</EM>, exposing
+some of the internals in a controlled way.
+
+<P>
+The benefit of this is that programmers can portably tailor CLOS to
+meet their specific programming needs, or even create their own Object
+Oriented language. 
+
+<P> The book <A HREF="bibliography.htm#kickzales"><I>The Art of the Metaobject Protocol</I></A>, sometimes called the AMOP, includes the CLOS Metaobject
+Protocol specification as chapters 5 and 6.  
+
+<ul>
+<P><li> Barry Margolin has published a <A
+HREF="http://www.aiai.ed.ac.uk:80/~jeff/lisp/amop-book-review">review</A>
+of the book.
+
+<p><li> The web site for the research associated with the book is <A
+HREF="http://www.parc.xerox.com/spl/projects/oi/">http://www.parc.xerox.com/spl/projects/oi/</A>.
+
+<p><li>The CLOS MOP from the AMOP may be viewed <a href="../mop/index.html">online</a> in hyper-spec
+format.  Note that:
+  <ol>
+  <li> This is not part of the <a href="#ansi">ANSI standard</a>.
+  <li> The book includes considerable explanatory material that is
+  not part of this HTML specification.  Specifically, it
+introduces the basic principles of metaobject protocols, and works
+through the key elements of the CLOS Metaobject Protocol. A simple
+working interpreter suitable for experimentation is contained in an
+appendix.
+  </ol>
+
+<P><li> <A href="ftp://parcftp.xerox.com:/pub/pcl/mop/"><IMG
+ALIGN=bottom SRC="../img/ftp.xbm"></a>The TEX sources for the MOP spec
+are available from Xerox as the file spec.tar.Z.
+
+<P>
+The Closette files related to the book are also available from parcftp
+as the file closette.lisp.
+
+<P><li>
+A related book, <A NAME="paepcke"
+HREF="bibliography.htm#paepcke"><I>Object-Oriented Programming: The CLOS
+Perspective</I></A>, contains articles on MOP motivations, style and
+implementations. 
+
+</ul>
+
+<P>
+<A HREF="#top">[other references]</A>
+
+<HR>
+<H2><A NAME="clhttp"
+HREF="http://www.ai.mit.edu/projects/iiip/doc/cl-http/home-page.html">
+Common Lisp Hypermedia Server (CL-HTTP)</A></H2>
+
+CL-HTTP is a full-featured server for the Internet Hypertext Transfer
+Protocol.  It was developed at MIT, is free, and comes with source
+code.  It has been used in a number of production servers.
+
+<P>
+The site directory is <A NAME="clhttp"
+HREF="http://www.ai.mit.edu/projects/iiip/doc/cl-http/home-page.html">
+http://www.ai.mit.edu/projects/iiip/doc/cl-http/home-page.html</A>.
+
+<P>
+The documentation is not directly available over the www.  However, if
+you download the distribution, you will get hypertext documentation on
+your own machine.
+
+
+<P>
+<A HREF="#top">[other references]</A>
+
+</td></tr></table>
+
+</BODY>
+</HTML>

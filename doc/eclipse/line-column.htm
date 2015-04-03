@@ -1,0 +1,89 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Line-Column, Stream-Start-Line-P</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-LINE-COLUMN</B>, <B>STREAM-START-LINE-P</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-line-column</B> <I>stream </i>=&gt; <code>NIL</code><P>
+<B>stream-start-line-p</B> <I>stream </i>=&gt; <I>result</I><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>character output stream</EM>. <P>
+<I>result</I>---a <EM>a generalized boolean</EM>. <P>
+
+<P>
+
+<B>Description:</B>
+
+<P>
+<b>Stream-line-column</b> returns the column number where the next
+character will be written on <i>stream</i>, or <code>NIL</code> if
+that is not meaningful.  The first column on a line is numbered 0.
+This function is used in the implementation of <b>pprint</b> and the
+<b>format ~T</b> directive. 
+
+<P>
+<b>Stream-start-line-p</b> returns <em>true</em> if <i>stream</i> is
+known to be positioned at the beginning of a line, otherwise it returns
+<em>false</em>.  It is permissible to always return <em>false</em>
+This is used in the implementation of <a
+href="terpri.htm"><b>stream-fresh-line</b></a>.  
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-start-line-p</b></a> (<i>stream</i>
+fundamental-character-output-stream) 
+<br>Returns <em>true</em> iff <a
+href="line-column.htm"><b>stream-line-column</b></a> returns 0.
+
+<p><i>Primary Method</i> <b>stream-line-column</b></a> (<i>stream</i> encapsulating-stream)
+<br><i>Primary Method</i> <b>stream-start-line-p</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="terpri.htm"><b>stream-fresh-line</b></a>.
+<P>
+
+<B>Notes:</B> 
+
+<p>While a value of 0 from <b>stream-line-column</b>
+indicates the beginning of a line, there are cases where
+<b>stream-start-line-p</b> can be meaningfully implemented when
+<b>stream-line-column</b> cannot.  For example, for a window using
+variable-width characters, the column number isn't very meaningful,
+but the beginning of the line does have a clear meaning.  
+
+<p>
+If a method <b>stream-line-column</b> is defined by a programmer
+to return <code>nil</code> for some <em>class</em> of <i>stream</i>,
+then an applicable method for either <b>stream-start-line-p</b> or
+<a href="terpri.htm"><b>stream-fresh-line</b></a> should be provided.
+
+<HR>
+<A HREF="peek.htm">[Previous]</A> 
+<A HREF="read-char.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

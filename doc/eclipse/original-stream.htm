@@ -1,0 +1,62 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Variable *ORIGINAL-STREAM*</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Variable</I> <B>*ORIGINAL-STREAM*</B><P>
+
+<B>Value Type:</B><P>
+
+a <EM>stream</EM>.<P>
+
+<B>Initial Value:</B> <i>Implementation dependent</i>.
+
+<B>Description:</B><P>
+
+The suggested implementation of <a
+href="encapsulating-stream.htm">encapsulating streams</a> has a
+potential problem that is sometimes called the "delegation" or
+"multiple self" problem.
+
+<p>
+In order to side-step this problem without attempting to solve a
+difficult general problem in object-oriented programming, CLIM
+implementations may introduce a special variable,
+<b>*original-stream*</b>. 
+
+<p>
+<b>*Original-stream</b> is bound by the trampoline methods on <a
+href="encapsulating-stream.htm"><b>encapsulating-stream</b></a> to the
+encapsulating stream, before the operation is delegated to the
+underlying, encapsulated stream.
+
+<P>This "solution" does not solve the more general problem of
+multiple levels of encapsulation, but the complete stream protocol
+provided by CLIM should allow implementors to avoid using nested
+encapsulating streams.
+
+<P>
+<B>Affected By:</B><P>
+
+Methods specialized on <a href="encapsulating-stream.htm"><b>encapsulating-stream</b></a>.<P>
+
+<B>See Also:</B>
+
+<P> 
+<P>
+
+<B>Notes:</B> None.<P>
+
+
+<HR>
+<A HREF="element-type.htm">[Previous]</A> <A HREF="close.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

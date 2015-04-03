@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Website</TITLE>
+</HEAD>
+
+<h3>Go to <a href="work.htm">Further Work</a></h3>
+
+<H2 name="top">Dynamic CL-HTTP Output Generation</H2>
+
+
+The current version of this site is implemented statically using tables:
+<ol>
+<li> Each page is a table of two rows: a heading line (one item) and
+a pair of items.
+
+<li> The second row is a navigation table and the real "contents" of
+the page.
+</ol>
+
+
+<p>It has been suggested that we provide output tailored to different
+needs or preferences: tables, no tables, frames, etc.  The author of the
+current site has also noticed that it is difficult in the current
+static implementation to maintain navigational cues as new pages are
+added, or as the design of the display of navigation cues is changed.
+
+<p>It is proposed that the dynamic serving capabilities of CL-HTTP be
+used to address both these issues.  The author of this plan (<a
+href="mailto:howard@elwoodcorp.com">howard@elwoodcorp.com</a>,) does
+not have access to CL-HTTP, so better ideas are solicited!  Perhaps
+someone has done all this already?
+
+<P>
+The idea is that the basic contents of the pages are stored in text
+files, and the server keeps a database of what files are known, what
+groups these files belong to, and some information about the groups.
+Pages and navigational displays are then dynamically created to meet
+the various preferences.
+
+<p>
+Throughout this proposal, pages are refered to as being created
+dynamically.  For performance reasons, these might actually be created
+once and cached, but this does not change the model.
+
+
+<P>
+Here's the proposal:
+<ol>
+
+<li> The "contents" of each current .htm file is copied to
+a .text file of the same name.  These consitute the "known pages".
+
+<li> The server has an ordered list of areas.  Each area has a name, a
+color, and an ordered list of known pages.  Each page has a title and
+the name of the .text file that holds its contents, and possibly
+another ordered list of known pages.
+
+<li> A welcome page gives the option of using forms, tables or simple
+(i.e. non-tables, non-forms) pages.  Selecting the tables or simple
+format brings up a specialized table/contents.htm or
+simple/contents.htm page.  Selecting the frames format brings up a
+frameset which defines a narrow navigation frame on the left and
+displays frame/contents.htm on the right.
+
+<li> There are three abstract URLs defined for each "known page":
+<ol>
+
+<li> table/<i>file</i>.htm displays in the same format as is
+currently used.
+
+<li> frame/<i>file</i>.htm keeps the current navigation table in a
+separate frame, allowing the contents to scroll independently. 
+
+<li> simple/<i>file</i>.htm displays the contents without tables, but
+adds a simple horizontal navigational bar at the top and bottom of the
+page.
+</ol>
+
+<li> There are three filters defined that convert general html to the
+appropriate specialized contents.  The only specialization currently
+required is for anchors:
+<ol>
+
+<li> The URLs of "known pages" must be translated to the appopriate
+simple/<i>file</i>, table/, or frame/ URL.
+
+<li> The frame filter must add the "display" target for "known pages"
+and the "_top" target for all other HREFs. It must also add an onClick
+event for links to "known pages" which invokes JavaScript to update
+the navigation frame with the correct information.
+
+</ol>
+
+<li> There is a navigation bar generator that generates the
+appropriate html based on the format and the "known page" being
+displayed.  The frame and tables format use the same table style
+currently used, while the simple format uses a three line format
+corresponding to the general links, area listings, and pages within
+the current area of the current format.  The generator uses the
+database of pages and the current page to determine:
+ <ol>
+ <li> The links used in the up, forward and back arrows.
+ <li> The current area, to be displayed in bold.
+ <li> The listing of other pages in the same area, with the current
+ page in bold.
+ </ol>
+The generated contents are passed through the formatting filter to fix
+up the "known page" HREFs.
+
+<li> It seems likely that the the W3P presentation system should be
+used.  A NAVIGATION-BAR presentation type would be defined, with
+specialized methods for SIMPLE, TABLE, and FORM views.
+
+</ol>
+
+Here are some related issues:
+
+<ol>
+
+<li> It is mentioned above that for performance reasons, it may be
+desirable to cache a static snapshot of all pages.  It may be
+desirable to do this for other reasons as well.  People without
+CL-HTTP serving capabilities might want to make a mirror of the site.
+A static snapshot would facilitate this.  One possibility is to
+provide an update snapshot function that uses W4 to create not only a new
+static version of the site, but .tgz files as well.
+
+<li> The welcome page gives us a place to display pointers to other
+non-English language versions.  The structure also makes it easy
+to create foreign language versions - provided they either also use CL-HTTP 
+or make a static mirror.
+
+<li> This scheme also makes it easy to generate a static content-only
+version suitable for printing.
+
+<li> In the non-simple versions, it would be nice if the navigation
+bar had a pull down menu for each area that showed the pages within
+that area.  Perhaps this could be done by making the navigation bar a
+form?
+
+</ol>
+
+
+</BODY>
+</HTML>
+

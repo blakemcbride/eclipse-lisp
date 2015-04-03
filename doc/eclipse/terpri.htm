@@ -1,0 +1,80 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Terpri, Stream-Fresh-Line</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-TERPRI</B>, <B>STREAM-FRESH-LINE</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-terpri</B> <I>stream </i>=&gt; <code>NIL</code><P>
+<B>stream-fresh-line</B> <I>stream </i>=&gt; <I>fresh-line-p</I><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>character output stream</EM>. <P>
+<I>fresh-line-p</I>---a <EM>a generalized boolean</EM>. <P>
+
+<P>
+
+<B>Description:</B>
+
+<P>
+<b>Stream-terpri</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>terpri</b>.  It
+writes <code>#\newline</code> to <i>stream</i> and return nil.
+
+<P>
+<b>Stream-fresh-line</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>fresh-line</b>.  It
+writes <code>#\newline</code> to <i>stream</i> and return <em>true</em> only if
+<i>stream</i> is not at the beginning of the line.  Otherwise it just
+returns <em>false</em>.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-terpri</b></a> (<i>stream</i>
+fundamental-character-output-stream) <br>Writes <code>#\newline</code>
+to <i>stream</i> using <a
+href="read-char.htm"><b>stream-write-char</b></a>.
+
+<p><i>Primary Method</i> <b>stream-fresh-line</b></a> (<i>stream</i>
+fundamental-character-output-stream) 
+<br>Calls <b>stream-terpri</b> and returns <em>true</em> iff <a
+href="line-column.htm"><b>stream-start-line-p</b></a> returns true.
+
+<p><i>Primary Method</i> <b>stream-terpri</b></a> (<i>stream</i> encapsulating-stream)
+<br><i>Primary Method</i> <b>stream-fresh-line</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="read-char.htm"><b>stream-write-char</b></a>, 
+<a href="line-column.htm"><b>stream-start-line-p</b></a>.
+<P>
+
+<B>Notes:</B> None.<P>
+
+<HR>
+<A HREF="read-sequence.htm">[Previous]</A> 
+<A HREF="unread.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

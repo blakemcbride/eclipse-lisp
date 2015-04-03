@@ -1,0 +1,103 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Lisp Syntax for C Programmers</TITLE>
+</HEAD>
+
+<H2>Eclipse C: Lisp Syntax for C Programmers</H2>
+<hr>
+
+<a href="cl.htm">ANSI Common Lisp</a> defines a syntax used to some
+extent by the function <b>read</b> and directly used by only four
+functions: <b>compile</b>, <b>compile-file</b>, <b>load</b>, and
+<b>eval</B>.  For the most part, if you don't use these functions, you
+do not need to know Lisp syntax.
+
+<P>
+However, there are examples in the Eclipse and ANSI documentation
+which do use Lisp syntax.  It may be helpful to understand the
+following:
+
+<OL>
+
+<P><LI> There are no program statements in Lisp  -- only expressions 
+which have a value.
+
+<P><LI> There are two kinds of expressions in Lisp:
+ <OL>
+ <LI> An <EM>atom</EM>, which represents a single piece of data or a
+ reference to a variable.  Examples are:
+  <UL>
+  <LI> <CODE>foo-bar</CODE> -- a variable.  The value of the 
+   expression is the value of the variable named foo-bar.
+  <LI> <CODE>123</CODE> -- an integer.  The value of the expression
+   is the integer 123.
+  <LI> <CODE>123.4</CODE> -- a floating point number. The value of
+   the  expression is the floating point number 123.4.
+  <LI> <CODE>&quot;a string&quot;</CODE> -- a string.  The value of the
+   expression is the string &quot;a string&quot.
+  </UL>
+ <LI> A <EM>list</em>, which represents some operation on
+  subexpressions.  The name of the operator always appears first
+  (consistent prefix notation, as opposed to C/C++, which uses infix
+  for operators, prefix for functions, and postfix for C++
+  members). Examples are:
+  <UL>
+  <LI> <CODE>(+ 1 2)</CODE> -- a function call.  The value of the
+   expression is the result of calling the function named <CODE>+</CODE>
+   with the following arguments:
+   <UL> 
+   <LI> the value of the expression <CODE>1</CODE>
+   <LI> the value of the expression <CODE>2</CODE>
+   </UL>
+  <LI> <CODE>(+ 1 foo-bar 2 (+ 1 2))</CODE> -- a function call.  The value of the
+   expression is the result of calling the function named <CODE>+</CODE>
+   with the following arguments:
+   <UL> 
+   <LI> the value of the expression <CODE>1</CODE>
+   <LI> the value of the expression <CODE>foo-bar</CODE> (a variable, see above)
+   <LI> the value of the expression <CODE>2</CODE>
+   <LI> the value of the expression <CODE>(+ 1 2)</CODE> (a list expression, see above)
+   </UL>
+  <LI> <CODE>(if a b (+ 1 2))</CODE> -- a special operator form.  The value
+   of the expression is the value of the expression <CODE>b</CODE> if
+   the value of the expression <CODE>a</CODE> is true.
+   Otherwise, the value is the value of the expression <CODE>(+ 1 2)</CODE>.
+  </UL>
+ </OL>
+
+<P><LI> There are a very small number of built-in special operators,
+including <b>if</b>, which do not necessarily evaluate all their
+subexpressions.  Other special operators may be defined by <a
+href="cl.htm#ansi"><i>the standard</i></a> or by users.
+
+<P><LI> Another important special operator is <b>quote</b>.  The value
+of <CODE>(quote <em>an-expression</em>)</CODE> is simply
+<code><em>an-expression</em></code>, without evaluating it.  Thus the
+value of <CODE>(quote foo-bar)</CODE> is the symbol
+<CODE>foo-bar</CODE>.  (<STRONG>Not</STRONG> the value of the variable
+<CODE>foo-bar</CODE>. Compare this with the expression
+<CODE>foo-bar</CODE> by itself, above.)
+
+<P>
+The expression <CODE>(quote <em>an-expression</em>)</CODE> occurs so
+often, that it has a special syntax:
+<CODE>'<em>an-expression</em></CODE> is the same thing.  Thus
+<CODE>foo-bar</CODE> produces the value stored in the variable named
+foo-bar, while <CODE>'foo-bar</CODE> produces a value which is the
+symbol named foo-bar.
+
+<P><LI> Case does not matter for operator, variable, or symbol names.
+
+</OL>
+
+<HR>
+<A HREF="concept.htm">[Previous]</A> <A HREF="terminology.htm">[Next]</A> 
+<A HREF="c.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

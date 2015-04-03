@@ -1,0 +1,48 @@
+Here is a list of papers that are likely to be presented and/or
+published at LUV'95 at this time:
+
+SUBMISSION	TITLE
+
+SUB1		Programming Object Oriented Design with Capabilities
+		Martin Brooks
+		National Research Council of Canada
+
+SUB2		Adapting CLIM Applications for Use on the World Wide Web
+		Suzanne M. Paley and Peter D. Karp
+		Artificial Intelligence Center
+		SRI International, Menlo Park
+				
+SUB3		A Workbench for Information Retrival Experimentation
+		Christian Plaunt
+		Library and Information Studies, UC Berkeley
+				
+SUB4		A Parallel Architecture Simulator for the Lambda-Matrix
+		Data Flow Language
+		Guilhem de Wailly, Fernand Boeri
+		Laboratoire I3S, URA 1376 CNRS, Universite de Nice
+		
+SUB5		Persistent Metadata: A Metaobject Protocol Based Approach
+		Eric L. Peterson, Artificial Intelligence Technical Center
+		MITRE Corporation, MacLean
+		
+SUB6		MIT SchMUSE: Class-Based Remote Delegation
+		in a Capricious Distributed Environment
+		Michael R. Blair, Natalya Cohen, David M. LaMacchia,
+		Brian K. Zuzga. MIT
+		
+SUB7		"L" - A Common Lisp For Embedded Systems
+		Rodney Brooks and Charles Rosenberg
+		IS Robotics, Sommerville
+		
+SUB8		A CLOS Approach in GeneIS Construction
+		Chuanbo Xu, Peter N. Saurugger, Aamir Razzak
+		Pioneer Hi-Bred International, Molecular Informatics
+
+SUB9		MIRAGE: A CLIM-based Editor for Building
+		Gadget-oriented Graphical User Interfaces
+		Nichael Lunn Cramer
+		BBN System and Technologies
+				
+SUB10		Literate Engines in Lisp
+		Raja Sooriamurthi
+		CS, Indiana University, Bloomington

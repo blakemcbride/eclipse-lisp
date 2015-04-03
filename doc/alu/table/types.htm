@@ -1,0 +1,180 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Type Checking</TITLE>
+<meta name="description" content="Type information in Lisp">
+<meta name="keywords" content="lisp, types, run-time, compile-time, dynamic, static, 
+strong, weak, safety, checking, efficiency, utility">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Type Checking in Lisp </H2>
+
+<blockquote><b>
+Summary:</b> Common Lisp supports both dynamic (run-time) and static (compile-time) typing.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="dynamic.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="memory.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm"><b>typing</b></a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+<P>
+Imagine if, in addition to requiring arrays to be <a
+href="glossary.htm#homogeneous">homogeneous</a>, some statically typed
+language required that characters had to be stored in variables of a
+particular type: uppercase, lowercase, alphanumeric, whitespace,
+non-printing, etc.  This would make working with characters very
+awkward, and working with strings (arrays of characters) nearly
+impossible.  The functions operating on strings would all go away
+entirely or be replaced with more specialized versions which only
+worked on characters of a particular type.  This is very awkward.
+Instead, every programming language allows for a single character data
+type.  When distinctions between whitespace and non-printing, or
+between upper and lower case are important, the <STRONG>data</STRONG>
+itself is examined.  This typing of variables and the attendant lack
+of facility for dealing with heterogeneous data is exactly what C does
+for everything BUT character variables.  Now imagine how much easier
+programming would be if all variables could hold any object as easily
+as char variables hold any character, and that variables representing
+non-atomic data could contain elements of any type of data, in the
+same way that strings can contain any character.  This is what Lisp
+does.
+
+<P>
+In statically typed languages, such as C, variables and functions are
+typed: the programmer must indicate the type of data which will be
+stored in each variable, and the types of the arguments and return
+value of functions.  In Lisp, the data itself is typed by a tag.  The
+variables which hold the data are not themselves required to be typed,
+and may hold any data (though they may be typed if desired by the
+programmer).  By examining the tag, each datum may have its type
+determined at run time, if necessary, by the program.
+
+<P>
+The lack of required variable declarations in Lisp does not provide
+any less safety than in statically typed languages.  Because of the
+tagged types, Lisp can, in the worst case, check the types at run time
+for those items that cannot be automatically recast.  In addition, the
+type system in Lisp can specify much finer grained types than are
+usually available in statically typed systems.  Thus it is possible to
+use the type system to ensure, for example, that a particular integer
+be odd, that a character be ASCII, or that an array not be a string. 
+
+<P>
+In addition, Common Lisp allows the <strong>option</strong> of
+declaring the type of variables.  These declarations may specify the
+type to be a "union", "intersection" or other combination of basic
+types.  It is not necessary to predeclare a new union type.
+
+<P>
+If the item is a union of two types of vastly different sizes, or a
+dynamic complex data type such as an array or hash table, Lisp will
+only use as much memory as is actually required at run time, whereas C
+will always allocate the memory associated with the larger of the two
+sizes.
+
+<P>
+A type declaration is code written by a programmer that tells the
+computer that a given variable should only hold variables of a given
+type, or that a given function should have a given <A
+HREF="glossary.htm#signature">signature</A>.  It does two things:
+<oL>
+<LI> It allows the compiler to check the programmer's code at compile
+time for code which is inconsistent with the declarations.  If the
+compiler can be certain at compile-time that the types are correct, it
+need not insert any run-time type tests in the compiled code.  Some
+implementations allow the programmer to specify that such run-time
+tests should be avoided in any case.  When this is provided for, it
+can be done on a global basis or in only selected regions of code.
+
+<LI> It allows the compiler to generate more efficient code.  When the
+compiler is able to be certain of the type of data held in
+certain variables, it can use more efficient machine instructions to
+manipulate that data.  This results in fewer function calls and less
+<a href="memory.htm">garbage</a>.  
+</oL>
+
+<P>
+In Common Lisp, such declarations are completely optional.  Correct
+code without any type declarations at all, or with only some type
+declarations, will still work correctly.  Incorrect code will still
+give reasonable error messages at run-time for incorrectly typed data
+or incorrect arguments to functions.
+
+<P>
+Some compilers use knowledge of the types of constants and known
+system functions, as well as those declarations that happend to be
+provided, to <EM>infer</EM> the types of variables and functions when
+a declaration is not provided by the programmer, or to
+<STRONG>check</strong> those declarations that have been provided.
+
+<P>
+Finally, Common Lisp types can be specified very precisely.  Rather
+than using coarse specifications such as <code>int</code> or
+<code>float</code>, specific ranges can be specified, as well as
+specific objects or members of a set, intersections, unions and
+complements of types, and even arbitrary predicates.  How more precise
+information is used by the compiler varies, but some implementations
+can use this for complex compile-time reasoning about the correctness
+of a program, and all implementations can use this for precise
+run-time type checking.
+
+
+</td></tr></table>
+
+</BODY> 
+</HTML>

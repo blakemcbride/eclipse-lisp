@@ -1,0 +1,79 @@
+<!-- The contents of this page are &copy; Copyright 1998 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: WITH-UNIQUE-NAMES</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Macro</I> <B>WITH-UNIQUE-NAMES</B><P>
+
+<B>Syntax:</B><P>
+
+<B>with-unique-names</B> <I>(name*) form*</I> =&gt; <I>result*</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>name</I>---a <EM>variable</EM> to be renamed. <P>
+<I>forms</I>---an implicit progn.<P> 
+<I>results</I>---the values of the forms.<P> 
+
+<B>Description:</B><P>
+
+<b>With-unique-names</b> executes <i>forms</i> in a context in which
+each <i>name</i> is bound to a similarly named uninterned symbol.
+
+<p>
+<B>Example:</B><P> 
+
+<pre>
+ (defmacro lister (p q)
+    (with-unique-names (x y)
+       `(let ((,x (x-function))
+              (,y (y-function)))
+           (list ,p ,q ,x ,y))))
+ => LISTER
+ (macroexpand '(lister i j))
+ => (LET ((#1=#:X (X-FUNCTION))
+          (#2=#:Y (Y-FUNCTION)))
+       (LIST I J #1# #2#))
+ ;; The actual uninterned symbol names may vary with different
+ ;; implementations.  For example, symbols produced by <b>gensym</b>
+ ;; might be used.
+</pre>
+
+
+<B>Side Effects:</B> 
+<P>May increment <b>*GENSYM-COUNTER*</b>.
+
+<p>
+<B>Affected By:</B> 
+<P>Symbol names be be effected by <b>*GENSYM-COUNTER*</b>.
+
+<p>
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="rebinding.htm"><b>rebinding</b></a>, <b>gensym</b>.
+
+<P>
+<B>Notes:</B> 
+
+<P><b>With-unique-names</b> is intended to facilitate the creation of
+<em>hygienic</em> macros, in which temporary variable bindings created
+within a macro use unique names so that there is no danger of unwanted
+<em>variable capture</em>.
+
+<p><b>With-unique-names</b> is compatible with similarly named facilities in
+other Lisp implementations.
+
+<HR>
+<A HREF="rebinding.htm">[Previous]</A> 
+<A HREF="directory.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A> 
+<A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

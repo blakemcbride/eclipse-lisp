@@ -1,0 +1,97 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: New in Release 1.0.1</TITLE>
+</HEAD>
+
+<h2>What's New for Eclipse Common Lisp Release 1.0.1</h2>
+
+<h4>November 24, 1997</h4>
+
+See Also:
+
+<ul>
+<li> <a href="new-1.0.htm">1.0</a> (SunOS 4.1, Berkeley Unix)
+</ul>
+
+<h3>Features</h3>
+
+<ul>
+<li> Ported to <b>Sun Sparc/Solaris 2.6</b> (First Unix System V Eclipse platform.)
+<li> The <a href="exit.htm"><b>exit restart</b></a> now prompts for
+confirmation before exiting, when invoked interactively.
+<li> The C function corresponding to the generated code for methods
+now has a C identifier that reflects the extended function name.
+<li> <b>Load/compile-file</b> have a <b>retry</b> restart.
+<li> <b>Load</b> returns truename when successful.
+<li> <b>Write</b> traps errors during printing (unless <b>*print-readable*</b> is
+true). 
+<li> Macroexpansion of <b>setf</b> does not generate <b>setq</b>
+subforms when variable refers to a symbol-macro which has a
+setf-expander that uses multiple 
+store values.  The previous behavior was correct, because the <b>setq</b>
+special form properly expands symbol-macros, but this version makes it
+easier for user-written code-walkers to handle expanded code.
+</ul>
+
+<h3>Performance improvements</h3>
+
+ <ul>
+ <li> <a name="ignore-flet"><b>Elimination of unused local
+functions</b></a>.  In code compiled to C, local functions such as
+those defined by <b>flet/labels</b> do not cause a closure to be
+created when the block of code corresponding to the <b>flet/labels</b>
+is evaluated and either the function is declared <b>ignored</b>, or is not
+actually used and declared <b>ignorable</b>.  The
+generated C code does not contains a C function corresponding to such unused
+lexical functions.  It is desirable to eliminate such definitions and
+closure creations, particularly in CLOS code, where
+<b>call-next-method</b> and <b>next-method-p</b> are defined for each
+method using an <b>ignorable flet</b>.
+<li>Compiler-macros defined for: <b>member</b> (oftent introduced in case,
+etc.), arithmetic, and various internal type and clos functions. 
+<li> Specialized string and vector methods for <b>find</b>,
+<b>position</b>, <b>count</b>, and <b>subseq</b>.
+<li> Slot name operations use <b>eq</b> rather than <b>eql</b>, and
+finding items in known proper lists within MOP avoids typecasing.
+<li> Functions created by <b>formatter</b> check at compile time to see if they
+can avoid having to check at run time for a pretty printing stream.
+ </ul>
+
+<h3>Bug fixes</h3>
+
+ <ul>
+ <li> <b>Restarts that simply return</b> to their caller, as opposed to
+transfering control through a non-local exit, are now available
+after they are used once.  In particular the Lisp top-level provides a
+<a href="help.htm"><b>help restart</b></a> in the read-eval-print loop
+that can now be used multiple times.
+
+<li> <b>*Features* not bound by Load and Compile-File</b>.  The functions
+<b>load</b> and <b>compile-file</b> no longer bind the special variable
+<b>*features*</b> to the values they had before being called.  The ANSI
+specification does not say that implementations are permitted to do
+this, so programmers might reasonably expect the implementation to not
+do this.
+
+<li>Loading the <a name="init"><b>init files</b></a>, as described in the <a
+href="top.htm">Lisp Top-Level</a> documentation, now works.  
+
+<li>If one of the "variables" in a <b>psetq</b> form is actually a
+symbol-macro form that has a setf expansion with multiple store forms
+(very unusual), all multiple values are retained (not just the first).
+
+ </ul>
+
+
+<HR>
+<A HREF="new-1.0.2.htm">[Previous]</A> 
+<A HREF="new-1.0.htm">[Next]</A> 
+<A HREF="release.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

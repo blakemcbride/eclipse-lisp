@@ -1,0 +1,106 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Documentation Organization</TITLE>
+</HEAD>
+
+<H2>Eclipse Introduction: Organization of the Documentation</H2>
+<HR>
+
+The <a href="intro.htm">&quot;Introductory Material&quot;</a> 
+includes:
+
+<UL>
+<LI> This and other information about the documentation itself, and
+about Eclipse in general.
+
+<li> References to <a href="cl.htm">information on Common Lisp</a>,
+including standard references.  The home page of the Association of
+Lisp Users (ALU) contains such references and other information.  A
+mirror of the ALU web-site is included with this distribution of
+Eclipse.
+
+<LI> <a href="legal.htm">License, copyright and conformance
+statements</a>.
+
+<LI> <a href="install.htm">Installation instructions</a>.
+
+<li> <a href="release.htm">Release notes</a> about the current version.
+
+</ul>
+
+<p> A glossary of terms used by the Eclipse documentation which do
+not appear in <a href="gloss.htm#ansi"><i>the standard</i></a> are
+included in the <a href="gloss.htm">&quot;Eclipse-Specific Glossary&quot;</a>.
+
+
+<P>
+The remaining Eclipse documentation is divided into three groups:
+
+<OL>
+<P>
+<LI> Documentation of Eclipse-specific aspects of Common Lisp.  This
+is of interest to all users of Eclipse, and includes:
+
+ <UL> <LI> <a href="lisp.htm">Aspects of Common Lisp</a> which <a
+href="gloss.htm#ansi"><i>the standard</i></a> specifies as
+ being defined by the <a href="defined.htm">implementation</a>.  
+
+ <LI> Documentation of permitted <a href="extensions.htm">extensions</a>
+ to Common Lisp.   
+
+ <LI> Behavior of the <a href="top.htm">Lisp top-level</a> provided by
+ the <a href="gloss.htm#eclipse"><CODE>eclipse</CODE> (1)</a> program,
+ such as the reading of <a href="init.htm">initialization files</a>.
+
+ <LI> A <a href="dict.htm">dictionary</a> of Eclipse-defined
+ functions, variables and other Lisp utilities.  </UL>
+
+<P>
+<LI> <a href="c.htm">C-specific information</a>, such as:
+ <UL>
+ <LI> The <a href="impl.htm">representation of Lisp data</a> as C
+ data.
+ <LI> The argument passing convention used by functions in the
+ library.
+ <LI> The <a href="names.htm">naming convention</a> by which Lisp
+  symbols are converted to C
+  identifiers. 
+ <LI> <a href="system.htm">Initializing Lisp data</a> in C
+  applications.
+ </UL>
+This section also includes some brief material for C programmers who
+are not familiar with Common Lisp.
+
+<P>
+<LI> The creation of separate, <a href="applic.htm">stand-alone
+applications</a> which do not need the <a
+href="gloss.htm#eclipse"><CODE>eclipse</CODE> (1)</a> program
+to run.  This combines elements from both the other sections.
+ <UL>
+ <LI> It might be used by Lisp programmers in creating a new,
+ customized Lisp top-level, perhaps incorporating some user defined C
+ functions.
+ 
+ <LI> It might be used by C programmers in incorporating their C or
+ Lisp code into some other, largely C, application.
+ </UL>
+
+This includes the additional options to <a
+href="compile.htm"><b>compile-file</b></a> that support the generation
+of C source files from Lisp source.
+
+</OL>
+
+This organization follows the product organization described in <A
+HREF="org.htm">&quot;Organization of Eclipse&quot;</a>. 
+
+<HR>
+<A HREF="org.htm">[Previous]</A> <A HREF="view.htm">[Next]</A> 
+<A HREF="intro.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+</BODY>
+</HTML>

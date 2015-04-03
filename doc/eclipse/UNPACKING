@@ -1,0 +1,129 @@
+UNPACKING THE DISTRIBUTION:
+---------------------------
+
+The distribution might be any of a CD, a downloaded compressed "tar"
+file (.tgz) or a unix "tar" tape,
+
+0. On a unix system, it may be necessary to be the root user to
+   execute the commands that follow below:
+       su root
+
+1. Select a location in which the Eclipse files, including the
+   documentation, are to be placed.  Each new Eclipse distribution is
+   organized under a new directory name reflecting the version number,
+   so if you have an existing general "eclipse" directory that
+   contains previous versions, you can reuse that top level
+   directory if it has enough space in it.  Otherwise, you should
+   create a new directory which will contain only Eclipse files:
+	mkdir [directory name]
+
+   You will need approximately 75 megabytes in the selected directory
+   for the full distribution (all platforms, all documentation).  You
+   can find out how much space is available in a directory with: 
+        df [directory name]  
+   (On some operating systems, use df -k [directory name].)
+
+2. Copy the files.  Choose the method below appropriate to how you
+   received the distribution.  In all cases, a new subdirectory under
+   [directory name] will be created, with a name like
+   eclipseXXX, where XXX reflects the current version number.
+
+   A. CD DISTRIBUTION:
+
+      N.B.: If you wish, you can run eclipse and/or examine the
+      documentation directly from the CD, without copying it first to
+      your hard disk.  In this case, references in the documentation
+      to [directory name] refer to the cd mount point
+      (eg. /cdrom/elwood). 
+
+        CD Format:
+
+        The CD simultaneously complies with several standards, and
+        should be readable by several different operating systems.
+        However, the most primitive standard, ISO 9660 without the
+        Unix filename extensions, keeps a table of contents which
+        mangles the filenames on the CD.  If you can only read this
+        format, the filenames will not match those in the
+        documentation, but instead have only capital letters, contain
+        a semicolon, and end in a number (except for directories,
+        which do not end in a number).
+
+        In addition to the versioned directory containing the Eclipse
+        distribution (eg. eclipse-1.0.1), the CD contains a tar file
+        at top level on the CD that contains a second copy of
+        everything else on the CD.  In "normal" long format, this file
+        ends with the extension .tgz.  
+
+        If your system is not able to read the long filenames on the
+        CD, then you can use this tar file instead.  Follow the
+        directions, below, for "DOWNLOADED FILE".
+      
+      To Copy the files to your hard disk:
+
+      Assuming the cd is mounted on a directory on the local machine: 
+
+        cd [directory on which cd is mounted]
+        cd [eclipse version]
+
+      (Note that this does not mean the directory must be physically
+      installed on the local machine, but that it must be visible as a
+      local file, using mount for example.)
+
+      [eclipse version] is the versioned directory name appearing at
+      top level on the CD (i.e. in [directory on which cd is
+      mounted]).  For example, eclipse-1.0.1.  
+
+      The files can be copied using one of the following two commands:
+
+        find . -depth -print | cpio -pd [directory name]
+      or	
+        tar cf - .  | (cd [directory name] ; tar xf -)
+  
+
+      If the CD reader cannot be mounted on the local machine, you may
+      be able to use the following commands from the machine on which
+      the CD reader is installed:
+
+        cd [directory on which cd is mounted]
+        tar cf - .  | rsh [file host] "cd [directory name] ; tar xfB -"
+
+      [file host] is the name of the machine on which the files should
+      be installed, and on which the directory [directory name] exists.
+      
+   B. DOWNLOADED FILE:
+
+      The downloaded file, which we will call [file name.tgz], should
+      be in the general (i.e. non-versioned) eclipse directory
+      [directory name]. 
+
+      Uncompress the file and unload the resulting tarfile:
+        cd [directory name]
+        zcat [file name.tgz] | tar xvf -
+
+   If you do not have the zcat program, you can obtain a free copy
+   from the Free Software Foundation at ftp://prep.ai.mit.edu/pub/gnu
+   or a mirror such as http://www.delorie.com/gnu/.  Note that Gnu
+   zcat must be used (sometimes called gzcat), not other
+   implementations of "uncompress".
+
+   C. TAPE DISTRIBUTION:
+
+      Unload the tape:
+	cd [directory name]
+	tar xvf [tape device name]
+
+   [tape device name] is the name of the tape device for your machine,
+   eg. /dev/rst0
+
+   If your tape reader is located on a different machine than the one
+   you are using, you will have to contact your system administrator
+   to find out how to untar the tape. 
+
+3. On a unix system, you may wish to change the owner or permissions
+   on the files:
+        cd [directory name]
+        chown -R [your user name] .
+
+4. The README file indicates how to read the documentation.
+
+5. Installation is described in the documentation.

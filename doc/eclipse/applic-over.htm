@@ -1,0 +1,57 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Overview of Delivering Applications</TITLE>
+</HEAD>
+
+<H2>Eclipse Applications: Overview of Delivering Applications</H2>
+<hr>
+
+<a href="c.htm">"Using Eclipse Utilities From C"</a> explains how
+every Common Lisp utility is available to C programmers through a
+<a href="lib.htm">C linkable library</a>.  It also explains:
+ <ul>
+ <li> the <a href="names.htm">naming convention</a> by which Lisp utilities may be referenced
+ in C.
+ <li> the <a href="system.htm">initializations</a> that must be performed at run-time before Lisp utilities may
+ be used.
+ </ul>
+
+<p>
+To deliver an Eclipse application that has some source written in
+Common Lisp, one may use the function <a
+href="compile.htm"><b>compile-file</b></a> to convert a Lisp source file to
+a C source file.  The resulting C source file uses the same
+conventions as the Eclipse library and may be treated as though it
+were hand written C code that uses the library.
+
+<p>
+In standard C, each <a href="gloss.htm#stand">stand-alone application
+(1)</a> must define a function named <b><code>main</code></b> which is
+automatically called by the operating system when the application
+starts up.  The <b><code>main</code></b> function of an Eclipse
+application must be supplied by the programmer.  Typically, it calls
+the Eclipse library <a href="gloss.htm#sys-init">system initialization
+functions</a>, the <a href="gloss.htm#init">initialization
+functions</a> for generated C code, and finally calls a C function
+defined in one of the generated C files that defines the top level
+operations of the application.
+
+<p>
+The C source code of the <b><code>main</code></b> function for the <a
+href="gloss.htm#eclipse"><i>eclipse (1)</i></a> <a
+href="gloss.htm#top-level">top-level (2)</a> executable program is
+<a href="main.htm">provided as an example</a>.
+
+
+
+<HR>
+<A HREF="applic.htm">[Previous]</A> <A HREF="main.htm">[Next]</A> 
+<a href="applic.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

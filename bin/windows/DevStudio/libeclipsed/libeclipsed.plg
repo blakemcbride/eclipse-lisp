@@ -1,0 +1,116 @@
+--------------------Configuration: libeclipsed - Win32 Debug--------------------
+Begining build with project "C:\howard\eclipse-1.1\bin\windows\DevStudio\libeclipsed\libeclipsed.dsp", at root.
+Active configuration is Win32 (x86) Static Library (based on Win32 (x86) Static Library)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /GX /Z7 /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/libeclipsed.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Browser Database Maker" with flags "/nologo /o"Debug/libeclipsed.bsc" "
+			"Library Manager" with flags "/nologo /out:"Debug\libeclipsed.lib" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\TEMP\RSP42.tmp" with contents </nologo /MLd /W3 /GX /Z7 /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/libeclipsed.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\howard\eclipse-1.1\c\walk-util.c"
+"C:\howard\eclipse-1.1\c\clos-comp.c"
+"C:\howard\eclipse-1.1\c\common-comp.c"
+"C:\howard\eclipse-1.1\c\cond-comp.c"
+"C:\howard\eclipse-1.1\c\cont-comp.c"
+"C:\howard\eclipse-1.1\c\cont-comp2.c"
+"C:\howard\eclipse-1.1\c\c-walk.c"
+"C:\howard\eclipse-1.1\c\debug.c"
+"C:\howard\eclipse-1.1\c\default-pp.c"
+"C:\howard\eclipse-1.1\c\describe.c"
+"C:\howard\eclipse-1.1\c\dev-meth.c"
+"C:\howard\eclipse-1.1\c\directives.c"
+"C:\howard\eclipse-1.1\c\env-comp.c"
+"C:\howard\eclipse-1.1\c\evaluation.c"
+"C:\howard\eclipse-1.1\c\file-walk.c"
+"C:\howard\eclipse-1.1\c\initd.c"
+"C:\howard\eclipse-1.1\c\list-comp.c"
+"C:\howard\eclipse-1.1\c\literal.c"
+"C:\howard\eclipse-1.1\c\loop.c"
+"C:\howard\eclipse-1.1\c\macro.c"
+"C:\howard\eclipse-1.1\c\macro-comp.c"
+"C:\howard\eclipse-1.1\c\more-compile.c"
+"C:\howard\eclipse-1.1\c\number-comp.c"
+"C:\howard\eclipse-1.1\c\opts.c"
+"C:\howard\eclipse-1.1\c\pretty-comp.c"
+"C:\howard\eclipse-1.1\c\prim-decs.c"
+"C:\howard\eclipse-1.1\c\prog-comp.c"
+"C:\howard\eclipse-1.1\c\struct-comp.c"
+"C:\howard\eclipse-1.1\c\walk-special.c"
+"C:\howard\eclipse-1.1\c\walk-top.c"
+"C:\howard\eclipse-1.1\c\c.c"
+>
+Creating command line "cl.exe @C:\TEMP\RSP42.tmp" 
+Creating temp file "C:\TEMP\RSP43.tmp" with contents </nologo /out:"Debug\libeclipsed.lib" 
+".\Debug\walk-util.obj"
+".\Debug\clos-comp.obj"
+".\Debug\common-comp.obj"
+".\Debug\cond-comp.obj"
+".\Debug\cont-comp.obj"
+".\Debug\cont-comp2.obj"
+".\Debug\c-walk.obj"
+".\Debug\debug.obj"
+".\Debug\default-pp.obj"
+".\Debug\describe.obj"
+".\Debug\dev-meth.obj"
+".\Debug\directives.obj"
+".\Debug\env-comp.obj"
+".\Debug\evaluation.obj"
+".\Debug\file-walk.obj"
+".\Debug\initd.obj"
+".\Debug\list-comp.obj"
+".\Debug\literal.obj"
+".\Debug\loop.obj"
+".\Debug\macro.obj"
+".\Debug\macro-comp.obj"
+".\Debug\more-compile.obj"
+".\Debug\number-comp.obj"
+".\Debug\opts.obj"
+".\Debug\pretty-comp.obj"
+".\Debug\prim-decs.obj"
+".\Debug\prog-comp.obj"
+".\Debug\struct-comp.obj"
+".\Debug\walk-special.obj"
+".\Debug\walk-top.obj"
+".\Debug\c.obj">
+Creating command line "link.exe -lib @C:\TEMP\RSP43.tmp" 
+Compiling...
+walk-util.c
+clos-comp.c
+common-comp.c
+cond-comp.c
+cont-comp.c
+cont-comp2.c
+c-walk.c
+debug.c
+default-pp.c
+describe.c
+C:\howard\eclipse-1.1\c\describe.c(685) : warning C4102: 'END_LOOP' : unreferenced label
+dev-meth.c
+directives.c
+env-comp.c
+evaluation.c
+file-walk.c
+initd.c
+list-comp.c
+literal.c
+loop.c
+macro.c
+macro-comp.c
+more-compile.c
+number-comp.c
+opts.c
+pretty-comp.c
+prim-decs.c
+prog-comp.c
+struct-comp.c
+walk-special.c
+walk-top.c
+c.c
+Creating library...
+
+
+
+libeclipsed.lib - 0 error(s), 1 warning(s)

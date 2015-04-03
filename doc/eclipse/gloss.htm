@@ -1,0 +1,240 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Glossary</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Glossary</H2>
+<hr>
+
+This information supplements the glossary defined in the <a
+href="#ansi">ANSI standard</a> <a href="cl.htm">Lisp
+Documentation</a>.  <em>Italic</em> words that are not links indicate
+entries in the <A
+HREF="../alu/HyperSpec/Body/sec_26-1.html">glossary</a> provided with
+the <a href="#ansi">ANSI standard</a>
+
+<P><B>A</B>
+
+<P>
+<B><a name="application">application</a></B> <i>n.</i> an executable
+program.  A <a href="#top-level"><i>Lisp top-level (1)</i></a> or a
+turn-key order-entry system are both examples of an <i>application</i>.
+See also, <a href="#loadable"><i>loadable application</i></a>, <a
+href="#dedicated"><i>dedicated application</i></a>, <a
+href="#stand"><i>stand-alone application</i></a>, <a
+href="#development"><i>dynamic application</i></a>, and <a
+href="#runtime"><i>run time application</i></a>.
+
+
+<P><B>C</B>
+
+<P>
+<B><a name="cfof">compile-file output format</a></B> <i>n.</i> an
+object of implementation-dependent nature which determines one of
+possibly several implementation-dependent ways in which 
+Lisp forms are encoded externally in a <em>compiled file</em>.
+
+<P>
+<B><a name="cfofd">compile-file output format designator</a></B>
+ <i>n.</i> a <EM>designator</EM> for a <a href="#cfof"><I>compile-file
+output format</I></a>; that is, an object that denotes a <a
+href="#cfof"><I>compile-file output format</I></a> and that is one of:
+the symbol <CODE>:DEFAULT</CODE> (denoting an implementation-dependent
+default <a href="#cfof"><I>compile-file output format</I></a>), some
+other object defined by the implementation to be a <a
+href="#cfofd"><I>compile-file output format designator</I></a> 
+(denoting an implementation-defined <a href="#cfof"><I>compile-file
+output format</I></a>), or some other object defined by the
+implementation to be a <a href="#cfof"><I>compile-file output
+format</I></a> (denoting itself).<P>
+
+<P>
+<B><a name="construct">construct</a></B>
+ <i>n.</i> an element of a computer language or an implementation of a
+ computer language, such as a function, macro, special operator,
+ special variable, etc.  Constructs are abstract elements, while <a
+ href="#utility"><i>utilities</i></a> are real data, callable
+functions, etc.
+
+<P><B>D</B>
+
+<P>
+<B><a name="dedicated">dedicated application</a></B> <i>n.</i> an
+executable program that only performs a single purpose, although it
+may have some &quot;escape mechanism&quot; or &quot;system-manager
+mode&quot; which allows general purpose Lisp interaction, as with a
+debugger.  An example might be a turn-key order-entry system.  A
+<a href="#dedicated"><i>dedicated application</i></a> might be <a
+href="#loadable"><i>loadable</i></a> or <a
+href="#stand"><i>stand-alone</i></a>
+
+<p>
+<b><a name="development">dynamic application</a></B> <i>n.</i> an <a
+href="#application"><i>application</i></a> (such as the <a
+href="#top-level"><i>Lisp top-level</i></a>,) which make use of <a
+href="#dynamic"><i>dynamic</i> (1)</a> program <a
+href="#utility"><i>utilities</i></a> such as <b>compile</b> and
+<b>eval</b>.  See <a href="#runtime"><i>run time application</i></a>,
+<a href="lib.htm">"The Eclipse Libraries"</a>.
+
+<p>
+<b><a name="dynamic">dynamic</a></B> <i>adj.</i> 1. of or having to do
+with change within a running <a
+href="#application"><i>application</i></a>.  Dynamic programming
+utilties may involve creating or changing function definitions
+(eg. <b>compile</b>), or evaluating programmatically created (or
+freshly read) program code (eg. <b>eval</b>).  2.  of or having to do
+with a link time change in the <a href="#static"><i>static</i></a>
+structure of an <a href="#application"><i>application</i></a>.  See
+also, <a href="#static"><i>static</i></a>, <a
+href="#library"><i>library</i> (1)</a>.
+
+
+<P><B>E</B>
+
+<p>
+<b><a name="eclipse">eclipse</a></b> <i>n.</i> 1. a <a
+href="#stand"><i>stand-alone application (1)</i></a> comprising the <a
+href="#top-level"><i>Lisp top-level (2)</i></a>.  2. a series of products
+including the <a href="#eclipse"><i>eclipse (1)</i></a> executable and the <a
+href="#library">Eclipse <i>library (2)</i></a>.
+
+<P><B>I</B>
+
+<P>
+<B><a name="init">initialization function</b></a> <i>n.</i> a function
+which provides the load-time behavior of a Common Lisp source file --
+i.e. the interning of symbols and other <em>file compiler</em>
+literals, the initialization of values from <b>defun</B> or other
+defining macros, and the evaluation of other <EM>top-level forms</em>.
+See <a href="org.htm#init">"Product Organization"</a> and <a
+href="compile.htm"><b>compile-file</b></a>
+
+<P><B>L</B>
+
+<p>
+<b><a name="library">library</a></b> <i>n.</i> 1. a file or files
+containing <a href="#utility"><i>utilities</i></a> that an operating
+system can link with compiled code from languages such as C to form an
+executable <a href="#application"><i>application</i></a>.  This may
+include "random access" libraries, "shared object" libraries, or "<a
+href="#dynamic"><i>dynamic</i> (2)</a> link" libraries, depending on
+the operating system.  2. the <a href="#library"><i>library
+(1)</i></a> of Lisp <a href="#utility"><i>utilities</i></a> provided
+by <a href="#eclipse"><i>eclipse (2)</i></a>. (See also, <a
+href="lib.htm">"The Eclipse Library"</a>.)
+
+<p>
+<a name="top-level"><b>Lisp top-level</b></a> <i>n.</i> 1. an endless
+loop that reads a Lisp expression, evaluates it, and prints the
+result.  Also known as a read-eval-print loop or Lisp listener.  (See
+also, the <a href="../alu/table/top-level.htm">"Lisp Top-Level"
+section</a> of the <a href="cl.htm#alu">ALU web-site</a>.)  2. the <a
+href="#top-level"><i>Lisp top-level (1)</i></a> provided by the <a
+href="#eclipse"><i>eclipse (1)</i></a> executable.  (See also, <a
+href="top.htm">"The Real-Eval-Print Loop and Debugger"</a>.)
+
+<P>
+<B><a name="loadable">loadable application</a></B> <i>n.</i> an
+executable program that runs within a <a href="#top-level"><i>Lisp
+top-level (1)</i></a>, perhaps by having the user or some automatic
+initialization load additional source or binary files.  An example
+might be a symbolic algebra system with a high degree of user-visible
+Lisp interaction.  A <i>loadable application</i> might also be a <a
+href="#dedicated"><i>dedicated application</i></a> if the means by
+which it is normally started does not normally allow general-purpose
+Lisp interaction (eg. an <a href="init.htm"><code>init.lisp</code></a>
+file loads and calls the top-level application function without
+allowing the possibility of user-intervention.)
+
+<P>
+<B><a name="locale">locale</a></B> <i>n.</i> The international or
+localized behavior provided for a program by the operating system.  In
+Eclipse, the locale is specified the same way that it is specified by
+the operating system for the <code>LC_CTYPE setlocale</code> system
+call. See <a href="char.htm#case"><i>Character Predicates and
+Case</i></a>, in <a href="char.htm">&quot;Character in
+Eclipse&quot;</a>.
+
+<P><B>M</B>
+
+<P>
+<B><a name="mop">Metaobject Protocol</a></B> <i>n.</i> 1. the
+documentation of certain objects and mechanisms (usually CLOS objects
+and Generic Functions) by which some <a
+href="#utility"><i>utility</i></a> of the implementation can be
+modified or extended by users.  Often abbreviated as
+&quot;MOP&quot;. 2. the MOP for CLOS itself, as defined in <a
+href="../alu/table/bibliography.htm#kickzales">&quot;The Art of the
+Metaobject Protocol&quot;</a>.  Sometimes abbreviated as
+&quot;AMOP&quot;.  (See <a href="cl.htm#mop">MetaObject Protocol
+links</a> in the <a href="cl.htm">Lisp documentation</a>.)
+
+<P><B>R</B>
+
+<p>
+<b><a name="runtime">run time application</a></B> <i>n.</i> a <a
+href="#stand"><i>stand-alone application</i> (1)</a> (usually a <a
+href="#dedicated"><i>dedicated application</i></a>,) which is <a
+href="#static"><i>statically</i></a> defined.  See <a
+href="#development"><i>dynamic application</i></a>, <a
+href="lib.htm">"The Eclipse Libraries"</a>.
+
+
+<P><B>S</B>
+
+<P>
+<B><a name="stand">stand-alone application</a></B> <i>n.</i> 1. an
+executable program that does not require any additional loadable files
+to run, such as source or binary files which contain the definitions
+of needed functions.  2. an executable program that consists of only a
+single executable file, and which does not require any shared object
+libraries, <a href="#dynamic"><i>dynamic-link (2)</i></a> libraries or
+pre-existing databases to run. (Both <a href="#dedicated"><i>dedicated
+applications</i></a> and general purpose applications such as a <a
+href="#top-level"><i>Lisp top-level (1)</i></a> may or may not be
+<i>stand-alone</i>.)
+
+<P>
+<B><a name="ansi">standard, the</a></B> <i>n.</i> <A
+HREF="http://www.ansi.org/"> ANSI</A> <A
+HREF="http://www.x3.org/tc_home/tc_sd4/x3j13sd4.html">X3.226:1994</A>
+<A HREF="../alu/table/references.htm#ansi">American National Standard
+for Programming Language Common LISP</A>. (See <a
+href="cl.htm#ansi">ANSI Standard links</a> in the <a
+href="cl.htm">Lisp documentation</a>.)
+
+<p>
+<b><a name="static">static</a></B> <i>adj.</i> Not involving
+processing (either interpretation or compilation) of program code
+other than what what was already present and pre-processed
+(eg. compiled to C) at the time the <a
+href="#application"><i>application</i></a> started.  See also, <a
+href="#dynamic"><i>dynamic</i></a>.
+
+<P>
+<B><a name="sys-init">system initialization functions</b></a>
+<i>n.</i> a group of <i>implementation defined</I> functions which are
+responsible for preparing the Lisp system for use.  These are
+equivalent to the <a href="#init"><I>init functions</I></a> for the
+Lisp implementation itself.  (See <a href="system.htm">Initializing
+the C Library</a>.) 
+
+
+<P><B>U</B>
+
+<P>
+<a name="utility"><b>utility</b></a> <i>n.</I> any <a
+href="#construct"><i>construct</a></I>, made accessible to programmers
+by an implementation of a language, including functions, macros,
+special variables, constants, and interned data such as symbols,
+packages, class and structure definitions, and <em>file compiler</em>
+literals.
+
+
+<HR>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>

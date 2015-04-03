@@ -1,0 +1,141 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Lisp Function Calls in C</TITLE>
+</HEAD>
+
+<H2>Eclipse Applications: Lisp Function Calls in C</H2>
+<hr>
+
+<h3> General Form</h3>
+A typical function call in Lisp appears as:
+<pre>
+  (setq value (<b>list</b> <i>arg0</i> <i>arg1</i> <i>arg2</i>))
+</pre>
+where <i>argn</i> may be any lisp <em>expression</em>, including variable
+references, other function calls, etc.
+
+In the most general case, this appears in code translated to C as:
+<pre>
+ { clObject L_0, L_1, L_2;
+   clSetq(L_0, <i>arg0</i>);
+   clSetq(L_1, <i>arg1</i>);
+   clSetq(L_2, <i>arg2</i>);
+   clSetq(value, <b>clList</b>(L_0, L_1, L_2, clEOA)); }
+</pre>
+
+The temporary variables may be necessary, in general, because:
+<ol>
+<li> The order of evaluation of arguments to functions is defined as
+being left-to-right in <a href="gloss.htm#ansi">ANSI Common
+Lisp</a>, but is not defined at all in C.  The use of temporary
+variables ensures the proper order of evaluation.
+
+<li> The arguments to functions in Lisp may be an arbitrarily complex
+<em>expression</em>, involving iteration, introduction of new lexical
+variables, and other control structure.  The translation of many of
+these into C involves the use of C <em>statements</em> (i.e. not
+simply <em>expressions</em>) which cannot appear as arguments in a C
+function call.  The use of temporary variables is then required.
+</ol>
+
+In many cases, such as when the arguments are simply variable
+references, the temporary variables are eliminated by <a
+href="compile.htm"><b>compile-file</b></a>, leaving the simpler
+<em>expression</em>:
+<pre>
+   clSetq(value, <b>clList</b>(<i>arg1</i>, <i>arg2</i>, <i>arg3</i>, clEOA));
+</pre>
+
+<h3> <a name="eoa">Argument Termination</a></h3>
+
+Note, that the last argument to <b>clList</b>, above is the meta symbol
+<code>clEOA</code>.  This marker is defined in <code>eclipse.h</code>
+and is used to denote the End Of Arguments to all Lisp function calls.
+This is used by Lisp functions to do argument parsing and checking.
+
+<P>
+Note that the symbol <code>EOA</code> does <em>not</em> appear in the
+Lisp source code.  It is added automatically by <a
+href="compile.htm"><b>compile-file</b></a>.
+
+<h3> <a name="reference">Function Reference</a></h3>
+
+In the example above, there is a C function <b>clList</b> that
+implements the behavior of the Lisp function <b>LIST</b>.  This
+function is called directly.
+
+<p>
+In general, the calling mechanism may go through other levels of
+indirection, such as through the <b>symbol-function</b> of a
+<b>symbol</b>.  See <a href="impl.htm">"Implementation of Lisp"</a>
+for more information.  The <a href="release.htm#generic">current
+version</a> of Eclipse does not provide <a
+href="http://www.elwood.com/eclipse-info/feedback.htm#control">user
+control</a> over when this additional indirection is performed for
+Lisp functions.
+
+<h3> Calling C Functions and Macros</h3>
+
+A user`s Lisp function can be translated to C using <a
+href="compile.htm"><b>compile-file</b></a>, and all of the functions
+defined by Eclipse are implemented in C in the <a
+href="lib.htm">library</a>.  However, we still refer to these as Lisp
+functions because they follow Lisp argument parsing semantics --
+ie. they might take optional or named (keyword) arguments.  The
+argument in C calls to such functions must be terminated with
+<code>clEOA</code>, as describe <a href="#eoa">above</a>.
+
+<p>
+When an ordinary C function is to be called from Lisp code that has
+been translated to C by <a href="compile.htm"><b>compile-file</b></a>,
+<b>compile-file</b> must not add the <a href="#eoa"><code>clEOA</code>
+marker</a> or use any <a href="#reference">function reference
+indirection</a>.
+
+<P>
+This can be avoided by providing a <a
+href="c-function.htm"><b>c:function</b></a> or <a
+href="c-macro.htm"><b>c:macro</b></a> <em>compound type specifier
+ftype declaration</em> in the Lisp source code.  Just as C functions
+must be declared before they are used in C source code, they must be
+declared before they are used in Lisp source code that is translated
+to C by <a href="compile.htm"><b>compile-file</b></a>.  Of course, it
+is not necessary to declare Lisp functions before use, regardless of
+whether those Lisp functions are implemented in C.
+
+<p>Note that a C macro referenced by Lisp source code must be a
+<em>function-like</em> macro in that it must expand into a C
+<em>expression</em>, not one or more <em>statements</em>.  At this
+time, <a href="compile.htm"><b>compile-file</b></a> makes no special
+provision to avoid multiple evaluation of arguments to a
+<b>c:macro</b>.
+
+<p>
+At this time, there is no special mechanism to call a C function from
+code that has not been processed by <a
+href="compile.htm"><b>compile-file</b></a> (eg. interpreted code in
+the <a href="gloss.htm#top-level">Lisp top level</a>).  For example, a programmer
+may define a function in C that is compiled and linked to the library
+to create a new application -- possibly even an application (such as
+the <a href="main.htm">Eclipse top-level</a>) that calls <a
+href="topf.htm"><B>clLispTopLevel</B></a>.  If it is desired that this
+hand-written C function should provide such Lisp features as being
+<b>fbound</b> and callable by interpreted Lisp code, then the
+programmer will also have to write code to create a <b>symbol</b>
+identifying the function, and <b>(setf symbol-value)</b> of the
+<b>symbol</b> to a <em>closure</em> referencing the C function.
+Details are discussed in <a href="impl.htm">"Implementation of
+Lisp"</a>.
+
+
+<HR>
+<A HREF="main.htm">[Previous]</A> <A HREF="impl.htm">[Next]</A> 
+<a href="applic.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

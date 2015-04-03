@@ -1,0 +1,60 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Variable *MACHINE-VERSION*, *SHORT-SITE-NAME*, *LONG-SITE-NAME*</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Variable</I> <B>*MACHINE-VERSION*, *SHORT-SITE-NAME*, *LONG-SITE-NAME*</B><P>
+
+<B>Value Type:</B><P>
+
+a <EM>string</EM> or <CODE>NIL</code>.<P>
+
+<B>Initial Values:</B><P>
+
+<CODE>NIL</CODE><P>
+
+<B>Description:</B>
+
+<P>
+The <i>function</i> <b>short-site-name</b> returns the value of the
+variable <B>*short-site-name*</B>.  
+
+<P>
+The <i>function</i> <b>long-site-name</b> returns the value of
+<b>*long-site-name*</B> if it is non-null, otherwise it returns
+<B>*short-site-name*</B>.
+
+<P>
+The <i>function</i> <b>machine-version</b> returns the value of the
+variable <B>*machine-version*</B>.  However, if
+<B>*machine-version*</B> is <code>NIL</code> and the system can obtain
+the machine version from the operating system, <b>machine-name</b>
+returns that value rather than <code>NIL</code>.
+
+<P>
+<B>Affected By:</B><P>
+
+Usually set in <a href="init.htm">init.lisp</a>.<P>
+
+<B>See Also:</B>
+
+<P> <a href="site.htm">&quot;Site and Other Initial
+Definitions&quot;</a> and <a
+href="init.htm">&quot;init.lisp&quot;</a>, <a
+href="machine-id.htm"><b>machine-id</b></a>.<P>
+
+<B>Notes:</B> None.<P>
+
+
+<HR>
+<A HREF="dict.htm">[Previous]</A> <A HREF="prompt.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

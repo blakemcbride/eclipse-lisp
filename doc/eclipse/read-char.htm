@@ -1,0 +1,91 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Read-Char, Stream-Read-Byte, Stream-Write-Char, Stream-Write-Byte</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-READ-CHAR</B>, <B>STREAM-READ-BYTE</B>, <B>STREAM-WRITE-CHAR</B>, <B>STREAM-WRITE-BYTE</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-read-char</B> <I>character-input-stream </i>=&gt; <I>char-result</I><P>
+<B>stream-read-byte</B> <I>binary-input-stream </i>=&gt; <I>integer-result</I><P>
+<B>stream-write-char</B> <I>character-output-stream char </i>=&gt; <I>char</I><P>
+<B>stream-write-byte</B> <I>binary-output-stream integer </i>=&gt; <I>integer</I><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>character-input-stream</I>---a <EM>character input stream</EM>. <P>
+<I>binary-input-stream</I>---a <EM>binary input stream</EM>. <P>
+<I>character-output-stream</I>---a <EM>character output stream</EM>. <P>
+<I>binary-output-stream</I>---a <EM>binary output stream</EM>. <P>
+<I>char</I>---a <EM>a character</EM>. <P>
+<I>char-result</I>---a <EM>a character</EM> or the symbol <code>:EOF</code>. <P>
+<I>integer</I>---a <EM>an integer</EM>. <P>
+<I>integer-result</I>---a <EM>an integer</EM> or the symbol <code>:EOF</code>. <P>
+
+<P>
+
+<B>Description:</B><P>
+
+<b>Stream-read-char</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>read-char</b> and
+returns either a <em>character</em>, or the symbol <code>:EOF</code> if
+<i>character-input-stream</i> is at <em>end of file</em>.
+
+<p>
+<b>Stream-read-byte</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>read-byte</b> and
+returns either an <em>integer</em>, or the symbol <code>:EOF</code> if
+<i>binary-input-stream</i> is at <em>end of file</em>.
+
+<P>
+<b>Stream-write-char</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>write-char</b>.  It
+writes <i>char</i> to the <i>character-output-stream</i> and returns
+<i>char</i> as the result.
+
+<P>
+<b>Stream-write-byte</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>write-byte</b>.  It
+writes <i>integer</i> to the <i>binary-output-stream</i> and returns
+<i>integer</i> as the result.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-read-char</b></a> (<i>stream</i> encapsulating-stream)
+<br><i>Primary Method</i> <b>stream-read-byte</b></a> (<i>stream</i> encapsulating-stream)
+<br><i>Primary Method</i> <b>stream-write-char</b></a> (<i>stream</i> encapsulating-stream) (<i>char</i> character)
+<br><i>Primary Method</i> <b>stream-write-byte</b></a> (<i>stream</i> encapsulating-stream) (<i>integer</i> integer)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="read-sequence.htm"><b>stream-read-sequence</b></a>, 
+<a href="read-sequence.htm"><b>stream-write-sequence</b></a>.
+<P>
+
+<B>Notes:</B> None.<P>
+
+<HR>
+<A HREF="stream-element-type.htm">[Previous]</A> 
+<A HREF="line.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

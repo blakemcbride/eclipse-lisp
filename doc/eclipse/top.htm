@@ -1,0 +1,95 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Lisp Top-Level
+</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: The Lisp Top-Level</H2>
+<HR>
+
+Eclipse has a <a href="gloss.htm#stand"><i>stand-alone application</i></a>
+called <code>eclipse</code> that provides the functionality
+of a traditional Lisp <a
+href="gloss.htm#top-level"><i>top-level</i></a>.
+
+<p>
+This program takes a number of command switches or options.  How a user indicates
+to the operating system that one or more switches should be provided
+depends on the platform.  For example, on Unix systems the letter
+corresponding to each switch is provided on the
+command line, preceded by a dash.  Eg. <code> eclipse -s -i
+my-init.lisp</code> 
+
+<p>
+<b>Operating system switches:</b>
+
+<dl>
+<dd> <b>s</b> Silent mode.
+
+<dd> <b>n</b> No init file.
+
+<dd> <b>i</b> <i>init-file</i>  Load the specified <i>init-file</i> rather than performing the
+usual file system search for one.  
+
+<dd> <b>v</b> Prints the version and immediately exits with a zero status.
+
+</dl>
+
+<p>
+<b>Description:</b>
+
+<p>
+After parsing command switches, the <b>eclipse</b> program first
+initializes the Lisp system, as though by calling <a
+href="initf.htm"><b>clInit</b></a> and <a href="initdf.htm"><b>clInitD</b></a>.
+
+<p>
+It then starts a Lisp <a href="gloss.htm#top-level"><i>top-level
+(2)</i></a> by calling <a
+href="topf.htm"><b>clLispTopLevel</b></a>.  
+
+<P>The <i>verbose</i> argument to <a
+href="topf.htm"><b>clLispTopLevel</b></a> is <em>false</em> if the
+<b>s</b> switch was given to the <code>eclipse</code> program.
+Otherwise it is <em>true</em>.
+
+<p>The <i>init</i> argument to <a
+href="topf.htm"><b>clLispTopLevel</b></a> is <em>false</em> if the
+<b>n</b> switch was given to the <code>eclipse</code> program.
+Otherwise, the <i>init</i> argument will be a <b>string</b>
+designating the <i>init-file</i> following any <b>i</b> switch, or the
+<b>symbol</b> <code>T</code> if no <b>i</b> switch is specified.
+
+<p>
+Invoking the <a href="exit.htm"><b>exit</b></a> <em>restart</em> exits <a
+href="topf.htm"><b>clLispTopLevel</b></a> with a <i>status</i> value supplied
+when invoking the <em>restart</em>.  The <code>eclipse</code> program
+then exits, returning a non-zero status to the operating system if
+<i>status</i> was <em>true</em>, and zero if <i>status</i> was false.
+
+<P>
+<b>See also:</b>
+
+<p>
+
+The <a href="../alu/table/top-level.htm">"Lisp Top-Level" section</a> of the
+<a href="cl.htm#alu">ALU web-site</a>,
+<a href="system.htm">"Initializing the C Library"</a>,
+<a href="site.htm">"Site and Other Initial Definitions"</a>,
+<A HREF="init.htm"><code>init.lisp</code></a>, 
+<a href="rep.htm">"The Read-Eval-Print Loop and the Debugger"</a>, 
+<a href="initf.htm"><b>clInit</b></a>, <a href="initdf.htm"><b>clInitD</b></a>
+<a href="topf.htm"><b>clLispTopLevel</b></a>, <a href="main.htm">source code</a>.
+
+
+<HR>
+<A HREF="lisp.htm">[Previous]</A> <A HREF="site.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

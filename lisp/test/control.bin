@@ -1,0 +1,759 @@
+
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'SOME-IDENTITY-FUNCTION
+         #<ECLIPSE::INTERPRETED-FUNCTION SOME-IDENTITY-FUNCTION DBA346>)
+       NIL 'SOME-IDENTITY-FUNCTION)
+'NIL
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-UNQUOTED
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-UNQUOTED DC867E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'UNQUOTED
+                               '(PROGN (SETQ A 43) (LIST A (CONS A 3)))
+                               'TST-UNQUOTED)
+                         '((43 (43 . 3)))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-QUOTE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-QUOTE DCF00E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'QUOTE '(LIST 'A '(CONS A 3))
+                               'TST-QUOTE)
+                         '((A (CONS A 3))))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'ADDER
+         #<ECLIPSE::INTERPRETED-FUNCTION ADDER DD8DAE>)
+       NIL 'ADDER)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-DEFUN-CLOSURE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-DEFUN-CLOSURE DE0596>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'DEFUN-CLOSURE '(FUNCALL (ADDER 3) 5)
+                               'TST-DEFUN-CLOSURE)
+                         '(8))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-CLOSURE-BINDINGS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-CLOSURE-BINDINGS DECE76>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'CLOSURE-BINDINGS
+                               '(LET
+                                 ((FUNS
+                                   ((LAMBDA
+                                     (X)
+                                     (LIST
+                                      (FUNCTION (LAMBDA NIL X))
+                                      (FUNCTION
+                                       (LAMBDA (Y) (SETQ X Y)))))
+                                    6)))
+                                 (LIST
+                                  (FUNCALL (CAR FUNS))
+                                  (FUNCALL (CADR FUNS) 43)
+                                  (FUNCALL (CAR FUNS))))
+                               'TST-CLOSURE-BINDINGS)
+                         '((6 43 43)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TWO-FUNS
+         #<ECLIPSE::INTERPRETED-FUNCTION TWO-FUNS DF711E>)
+       NIL 'TWO-FUNS)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-CLOSURE-BINDINGS2
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-CLOSURE-BINDINGS2 E00226>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'CLOSURE-BINDINGS2
+                               '(LET
+                                 ((FUNS (TWO-FUNS 6)))
+                                 (LIST
+                                  (FUNCALL (CAR FUNS))
+                                  (FUNCALL (CADR FUNS) 43)
+                                  (FUNCALL (CAR FUNS))))
+                               'TST-CLOSURE-BINDINGS2)
+                         '((6 43 43)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SYMBOL-VALUE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SYMBOL-VALUE FE1506>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SYMBOL-VALUE
+                               '(VALUES
+                                 (SETF (SYMBOL-VALUE 'A) 1)
+                                 (SYMBOL-VALUE 'A)
+                                 (LET
+                                  ((A 2))
+                                  (DECLARE (IGNORABLE A))
+                                  (SYMBOL-VALUE 'A))
+                                 (LET
+                                  ((A 2))
+                                  (DECLARE (IGNORABLE A))
+                                  (SETQ A 3)
+                                  (SYMBOL-VALUE 'A))
+                                 (LET
+                                  ((A 2))
+                                  (DECLARE (SPECIAL A))
+                                  (DECLARE (IGNORABLE A))
+                                  (SYMBOL-VALUE 'A))
+                                 (LET
+                                  ((A 2))
+                                  (DECLARE (SPECIAL A))
+                                  (SETQ A 3)
+                                  (SYMBOL-VALUE 'A))
+                                 (LET
+                                  ((A 2))
+                                  (SETF (SYMBOL-VALUE 'A) 3)
+                                  A)
+                                 (SYMBOL-VALUE 'A)
+                                 (LET
+                                  ((A 4))
+                                  (DECLARE (SPECIAL A))
+                                  (LET
+                                   ((B (SYMBOL-VALUE 'A)))
+                                   (SETF (SYMBOL-VALUE 'A) 5)
+                                   (LIST A B)))
+                                 (LOCALLY (DECLARE (SPECIAL A)) A)
+                                 (SYMBOL-VALUE :ANY-KEYWORD)
+                                 (SYMBOL-VALUE 'NIL))
+                               'TST-SYMBOL-VALUE)
+                         '(1 1 1 1 2 3 2 3 (5 4) 3 :ANY-KEYWORD NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SYMBOL-FUNCTION
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SYMBOL-FUNCTION FF4936>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SYMBOL-FUNCTION
+                               '(LET
+                                 ((F #'(LAMBDA NIL 3)))
+                                 (VALUES
+                                  (EQ
+                                   (SETF (SYMBOL-FUNCTION 'FOO) F)
+                                   F)
+                                  (FUNCALL (SYMBOL-FUNCTION 'FOO))))
+                               'TST-SYMBOL-FUNCTION)
+                         '(T 3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FDEFINITION-SIMPLE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FDEFINITION-SIMPLE 100036E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FDEFINITION-SIMPLE
+                               '(LET
+                                 ((F #'(LAMBDA NIL 3)))
+                                 (VALUES
+                                  (EQ (SETF (FDEFINITION 'FOO) F) F)
+                                  (FUNCALL (FDEFINITION 'FOO))))
+                               'TST-FDEFINITION-SIMPLE)
+                         '(T 3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FDEFINITION-SETF
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FDEFINITION-SETF 100CAF6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FDEFINITION-SETF
+                               '(LET*
+                                 ((X 0)
+                                  (F #'(LAMBDA (NEW) (SETQ X NEW))))
+                                 (VALUES
+                                  (EQ
+                                   (SETF (FDEFINITION '(SETF X)) F)
+                                   F)
+                                  (FUNCALL (FDEFINITION '(SETF X)) 3)
+                                  X))
+                               'TST-FDEFINITION-SETF)
+                         '(T 3 3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-BOUNDP
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-BOUNDP 101AC2E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'BOUNDP
+                               '(VALUES
+                                 (LOCALLY
+                                  (DECLARE (SPECIAL X))
+                                  (SETQ X 1))
+                                 (BOUNDP 'X)
+                                 (MAKUNBOUND 'X)
+                                 (BOUNDP 'X)
+                                 (LET
+                                  ((X 2))
+                                  (DECLARE (IGNORABLE X))
+                                  (BOUNDP 'X))
+                                 (LET
+                                  ((X 2))
+                                  (DECLARE (SPECIAL X))
+                                  (BOUNDP 'X)))
+                               'TST-BOUNDP)
+                         '(1 T X NIL NIL T))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FBOUNDP
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FBOUNDP 1029576>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FBOUNDP
+                               '(VALUES
+                                 (LET
+                                  ((F #'(LAMBDA NIL 3)))
+                                  (EQ (SETF (SYMBOL-FUNCTION 'X) F) F))
+                                 (NOT (NULL (FBOUNDP 'X)))
+                                 (FMAKUNBOUND 'X)
+                                 (FBOUNDP 'X)
+                                 (FLET ((X NIL 9)) (FBOUNDP 'X) (X)))
+                               'TST-FBOUNDP)
+                         '(T T X NIL 9))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-OPERATOR-P1
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-OPERATOR-P1 1034B7E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-OPERATOR-P1
+                               '(NOT (SPECIAL-OPERATOR-P 'IF))
+                               'TST-SPECIAL-OPERATOR-P1)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-OPERATOR-P2
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-OPERATOR-P2 103D6E6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-OPERATOR-P2
+                               '(SPECIAL-OPERATOR-P 'CAR)
+                               'TST-SPECIAL-OPERATOR-P2)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-OPERATOR-P3
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-OPERATOR-P3 104600E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-OPERATOR-P3
+                               '(SPECIAL-OPERATOR-P 'ONE)
+                               'TST-SPECIAL-OPERATOR-P3)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-EMPTY-SETQ
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-EMPTY-SETQ DDBC5E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'EMPTY-SETQ '(SETQ) 'TST-EMPTY-SETQ)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-SIMPLE-SETQ
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-SIMPLE-SETQ DECEFE>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-SIMPLE-SETQ
+                               '(LIST (SETQ A 1 B 2 C 3) A B C)
+                               'TST-SPECIAL-SIMPLE-SETQ)
+                         '((3 1 2 3))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-SEQUENTIAL-ASSIGNMENT
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-SEQUENTIAL-ASSIGNMENT DF32F6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-SEQUENTIAL-ASSIGNMENT
+                               '(LIST
+                                 (SETQ A (+ B 1) B (+ A 1) C (+ A B))
+                                 A
+                                 B
+                                 C)
+                               'TST-SPECIAL-SEQUENTIAL-ASSIGNMENT)
+                         '((7 3 4 7))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-SETQ-ORDER
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-SETQ-ORDER DF96E6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-SETQ-ORDER
+                               '(LIST
+                                 (SETQ X (+ 3 2 1) Y (CONS X NIL))
+                                 X
+                                 Y)
+                               'TST-SPECIAL-SETQ-ORDER)
+                         '(((6) 6 (6)))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-SPECIAL-SETQ-SYMBOL-MACRO
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SPECIAL-SETQ-SYMBOL-MACRO DFFAA6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SPECIAL-SETQ-SYMBOL-MACRO
+                               '(LET
+                                 ((X (LIST 10 20 30)))
+                                 (SYMBOL-MACROLET
+                                  ((Y (CAR X)) (Z (CADR X)))
+                                  (SETQ Y (+ 1 Z) Z (+ Y))
+                                  (LIST X Y Z)))
+                               'TST-SPECIAL-SETQ-SYMBOL-MACRO)
+                         '(((21 21 30) 21 21)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-LOCAL-SIMPLE-SETQ
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-LOCAL-SIMPLE-SETQ E1C906>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'LOCAL-SIMPLE-SETQ
+                               '(LIST (SETQ A 1 B 2 C 3) A B C)
+                               'TST-LOCAL-SIMPLE-SETQ)
+                         '((3 1 2 3))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-LOCAL-SEQUENTIAL-ASSIGNMENT
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-LOCAL-SEQUENTIAL-ASSIGNMENT E2320E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'LOCAL-SEQUENTIAL-ASSIGNMENT
+                               '(LIST
+                                 (SETQ A (+ B 1) B (+ A 1) C (+ A B))
+                                 A
+                                 B
+                                 C)
+                               'TST-LOCAL-SEQUENTIAL-ASSIGNMENT)
+                         '((7 3 4 7))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-LOCAL-SETQ-ORDER
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-LOCAL-SETQ-ORDER E295FE>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'LOCAL-SETQ-ORDER
+                               '(LIST
+                                 (SETQ X (+ 3 2 1) Y (CONS X NIL))
+                                 X
+                                 Y)
+                               'TST-LOCAL-SETQ-ORDER)
+                         '(((6) 6 (6)))))
+       (SET-SYMBOL-FUNCTION-VALUE 'TST-LOCAL-SETQ-SYMBOL-MACRO
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-LOCAL-SETQ-SYMBOL-MACRO E2FA8E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'LOCAL-SETQ-SYMBOL-MACRO
+                               '(LET
+                                 ((X (LIST 10 20 30)))
+                                 (SYMBOL-MACROLET
+                                  ((Y (CAR X)) (Z (CADR X)))
+                                  (SETQ Y (+ 1 Z) Z (+ 1 Y))
+                                  (LIST X Y Z)))
+                               'TST-LOCAL-SETQ-SYMBOL-MACRO)
+                         '(((21 22 30) 21 22)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-EMPTY-PSETQ
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-EMPTY-PSETQ FD70A6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'EMPTY-PSETQ '(PSETQ)
+                               'TST-EMPTY-PSETQ)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PSETQ
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PSETQ FEA62E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PSETQ
+                               '(LET
+                                 (A B C)
+                                 (VALUES
+                                  (PSETQ A 1 B 2 C 3)
+                                  (PSETQ A (1+ B) B (1+ A) C (+ A B))
+                                  A
+                                  B
+                                  C))
+                               'TST-PSETQ)
+                         '(NIL NIL 3 2 3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PSETQ-SYMBOL-MACRO
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PSETQ-SYMBOL-MACRO FF785E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PSETQ-SYMBOL-MACRO
+                               '(LET
+                                 ((X (LIST 10 20 30)))
+                                 (SYMBOL-MACROLET
+                                  ((Y (CAR X)) (Z (CADR X)))
+                                  (PSETQ Y (1+ Z) Z (1+ Y))
+                                  (LIST X Y Z)))
+                               'TST-PSETQ-SYMBOL-MACRO)
+                         '(((21 11 30) 21 11)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PSETQ-SWAP
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PSETQ-SWAP 1002D96>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PSETQ-SWAP
+                               '(LET
+                                 ((A 1) (B 2))
+                                 (PSETQ A B B A)
+                                 (VALUES A B))
+                               'TST-PSETQ-SWAP)
+                         '(2 1))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SET
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SET 100FA4E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SET
+                               '(VALUES
+                                 (SET 'A 1)
+                                 (SYMBOL-VALUE 'A)
+                                 (LET ((A 2)) (SET 'A 3) A)
+                                 (SYMBOL-VALUE 'A)
+                                 (LET
+                                  ((A 4))
+                                  (DECLARE (SPECIAL A))
+                                  (LET
+                                   ((B (SYMBOL-VALUE 'A)))
+                                   (SET 'A 5)
+                                   (LIST A B))))
+                               'TST-SET)
+                         '(1 1 2 3 (5 4)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SETF-EMPTY
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SETF-EMPTY 101B206>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SETF-EMPTY '(SETF) 'TST-SETF-EMPTY)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SETF-LOCALS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SETF-LOCALS 10252F6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SETF-LOCALS
+                               '(LET
+                                 ((A 1) (B 2) (C 3))
+                                 (VALUES (SETF A 2 B C C B) A B C))
+                               'TST-SETF-LOCALS)
+                         '(3 2 3 3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SETF-THE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SETF-THE 1030DF6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SETF-THE
+                               '(LET
+                                 ((X (LIST 1 2)) (Y 3))
+                                 (VALUES
+                                  (SETF (THE INTEGER (CADR X)) (+ Y 3))
+                                  X
+                                  Y))
+                               'TST-SETF-THE)
+                         '(6 (1 6) 3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PSETF
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PSETF 103DA2E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PSETF
+                               '(LET
+                                 ((X (CONS 'A 'B)) (Y (LIST 1 2 3)))
+                                 (VALUES
+                                  (PSETF
+                                   (CAR X)
+                                   'X
+                                   (CADR Y)
+                                   (CAR X)
+                                   (CDR X)
+                                   Y)
+                                  X
+                                  Y))
+                               'TST-PSETF)
+                         '(NIL (X 1 A 3) (1 A 3)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SHIFTF
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SHIFTF 104A646>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SHIFTF
+                               '(LET
+                                 ((X (LIST 1 2 3)) (Y 'TRASH))
+                                 (VALUES
+                                  (SHIFTF Y X (CDR X) '(HI THERE))
+                                  X
+                                  Y))
+                               'TST-SHIFTF)
+                         '(TRASH (2 3) (1 HI THERE)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-ROTATEF
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-ROTATEF DDC16E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'ROTATEF
+                               '(LET
+                                 ((N 0)
+                                  (X (LIST 'A 'B 'C 'D 'E 'F 'G)))
+                                 (ROTATEF
+                                  (NTH (INCF N) X)
+                                  (NTH (INCF N) X)
+                                  (NTH (INCF N) X))
+                                 X)
+                               'TST-ROTATEF)
+                         '((A C D B E F G)))))
+(PROGN (FUNCALL (FDEFINITION '(COMMON-LISP:SETF MACRO-FUNCTION))
+                #:G7305 'APPENDF)
+       (FUNCALL (FDEFINITION '(COMMON-LISP:SETF DOCUMENTATION)) #:G7306
+                'APPENDF 'FUNCTION)
+       'APPENDF)
+(PROGN (FUNCALL (FDEFINITION '(COMMON-LISP:SETF MACRO-FUNCTION))
+                #:G7307 'NEW-INCF)
+       NIL 'NEW-INCF)
+(PROGN (FUNCALL (FDEFINITION '(COMMON-LISP:SETF MACRO-FUNCTION))
+                #:G7308 'UNIONF)
+       NIL 'UNIONF)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-DEFINE-MODIFY-MACRO
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-DEFINE-MODIFY-MACRO E02B66>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'DEFINE-MODIFY-MACRO
+                               '(LET*
+                                 ((X '(A B C)) (Y X) (A 2))
+                                 (VALUES
+                                  (APPENDF X '(D E F) '(1 2 3))
+                                  X
+                                  Y
+                                  (NEW-INCF A)
+                                  (NEW-INCF A 10)
+                                  A
+                                  (PROGN
+                                   (UNIONF
+                                    Y
+                                    '("B" "D")
+                                    :TEST
+                                    #'STRING=)
+                                   (SET-EXCLUSIVE-OR
+
+                                    Y
+                                    '(A B C D)
+
+                                    :TEST
+                                    #'STRING=))))
+                               'TST-DEFINE-MODIFY-MACRO)
+                         '((A B C D E F 1 2 3) (A B C D E F 1 2 3)
+                           (A B C) 3 13 13 NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'MIDDLEGUY
+         #<ECLIPSE::INTERPRETED-FUNCTION MIDDLEGUY E0C6DE>)
+       NIL 'MIDDLEGUY)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'SET-MIDDLEGUY
+         #<ECLIPSE::INTERPRETED-FUNCTION SET-MIDDLEGUY E129C6>)
+       NIL 'SET-MIDDLEGUY)
+(PROGN (FUNCALL (FDEFINITION '(COMMON-LISP:SETF SETF-EXPANDER)) #:G7333
+                'MIDDLEGUY)
+       NIL 'MIDDLEGUY)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-DEFSETF-SHORT
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-DEFSETF-SHORT E24DF6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'DEFSETF-SHORT
+                               '(LET
+                                 ((A (LIST 'A 'B 'C 'D))
+                                  (B (LIST 'X))
+                                  (C (LIST 1 2 3 (LIST 4 5 6) 7 8 9)))
+                                 (VALUES
+                                  (SETF (MIDDLEGUY A) 3)
+                                  (SETF (MIDDLEGUY B) 7)
+                                  (SETF
+                                   (MIDDLEGUY (MIDDLEGUY C))
+                                   'MIDDLEGUY-SYMBOL)
+                                  A
+                                  B
+                                  C))
+                               'TST-DEFSETF-SHORT)
+                         '(3 7 MIDDLEGUY-SYMBOL (A 3 C D) (7)
+                           (1 2 3 (4 MIDDLEGUY-SYMBOL 6) 7 8 9)))))
+(PROGN (FUNCALL (FDEFINITION '(COMMON-LISP:SETF SETF-EXPANDER)) #:G7342
+                'EXAMPLE-SUBSEQ)
+       NIL 'EXAMPLE-SUBSEQ)
+(PROGN (COMPILER::COMPILER-PUTPROP '*XY* 'T 'EXCL::.GLOBALLY-SPECIAL.)
+       (FUNCALL (FDEFINITION '(COMMON-LISP:SETF GLOBAL-DECLARATION))
+                #:G7343 '*XY* 'ECLIPSE::GLOBAL-VARIABLE 'SPECIAL)
+       NIL
+       (IF (COMMON-LISP:NOT (BOUNDP '*XY*))
+           (SET '*XY* (MAKE-ARRAY '(10 10)))
+         NIL)
+       '*XY*)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'XY
+         #<ECLIPSE::INTERPRETED-FUNCTION XY E45CF6>)
+       NIL 'XY)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'SET-XY
+         #<ECLIPSE::INTERPRETED-FUNCTION SET-XY FD8B56>)
+       NIL 'SET-XY
+       (FUNCALL (FDEFINITION '(COMMON-LISP:SETF SETF-EXPANDER)) #:G7360
+                'XY)
+       NIL 'XY)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'LASTGUY
+         #<ECLIPSE::INTERPRETED-FUNCTION LASTGUY FE5D7E>)
+       NIL 'LASTGUY)
+(PROGN (FUNCALL (FDEFINITION '(COMMON-LISP:SETF SETF-EXPANDER)) #:G7369
+                'LASTGUY)
+       (FUNCALL (FDEFINITION '(COMMON-LISP:SETF DOCUMENTATION)) #:G7370
+                'LASTGUY 'SETF)
+       'LASTGUY)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-DEFINE-SETF-EXPANDER
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-DEFINE-SETF-EXPANDER FFEBB6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'DEFINE-SETF-EXPANDER
+                               '(LET
+                                 ((A (LIST 'A 'B 'C 'D))
+                                  (B (LIST 'X))
+                                  (C (LIST 1 2 3 (LIST 4 5 6))))
+                                 (VALUES
+                                  (SETF (LASTGUY A) 3)
+                                  (SETF (LASTGUY B) 7)
+                                  (SETF
+                                   (LASTGUY (LASTGUY C))
+                                   'LASTGUY-SYMBOL)
+                                  A
+                                  B
+                                  C))
+                               'TST-DEFINE-SETF-EXPANDER)
+                         '(3 7 LASTGUY-SYMBOL (A B C 3) (7)
+                           (1 2 3 (4 5 LASTGUY-SYMBOL))))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-LOCAL-ACROSS-FBOUNDARY
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-LOCAL-ACROSS-FBOUNDARY 100BC0E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'LOCAL-ACROSS-FBOUNDARY
+                               '(LET*
+                                 ((A 1) (F #'(LAMBDA NIL A)))
+                                 (FUNCALL F))
+                               'TST-LOCAL-ACROSS-FBOUNDARY)
+                         '(1))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE
+         'TST-LOCAL-ASSIGNMENT-ACROSS-FBOUNDARY
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-LOCAL-ASSIGNMENT-ACROSS-FBOUNDARY 1016A36>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'LOCAL-ASSIGNMENT-ACROSS-FBOUNDARY
+                               '(LET*
+                                 ((A 1)
+                                  (F #'(LAMBDA (X) (SETQ A X)))
+                                  (F2 #'(LAMBDA NIL A)))
+                                 (FUNCALL F 3)
+                                 (FUNCALL F2))
+                               'TST-LOCAL-ASSIGNMENT-ACROSS-FBOUNDARY)
+                         '(3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-APPLY-BOUND-SYMBOL
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-APPLY-BOUND-SYMBOL 1020E86>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'APPLY-BOUND-SYMBOL
+                               '(LET ((F '+)) (APPLY F '(1 2)))
+                               'TST-APPLY-BOUND-SYMBOL)
+                         '(3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-APPLY-SYMBOL
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-APPLY-SYMBOL 102A04E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'APPLY-SYMBOL '(APPLY '+ '(1 2))
+                               'TST-APPLY-SYMBOL)
+                         '(3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-APPLY-FUNCTION
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-APPLY-FUNCTION 1032E66>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'APPLY-FUNCTION
+                               '(APPLY #'+ 3 5 '(2 7 3))
+                               'TST-APPLY-FUNCTION)
+                         '(20))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-APPLY-SYMBOL2
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-APPLY-SYMBOL2 103C17E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'APPLY-SYMBOL2
+                               '(APPLY 'CONS '((+ 2 3) 4))
+                               'TST-APPLY-SYMBOL2)
+                         '(((+ 2 3) . 4)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-APPLY-NULL-ARGS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-APPLY-NULL-ARGS DD3CBE>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'APPLY-NULL-ARGS '(APPLY #'+ 'NIL)
+                               'TST-APPLY-NULL-ARGS)
+                         '(0))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-APPLY-KEYS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-APPLY-KEYS DDF1DE>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'APPLY-KEYS
+                               '(APPLY
+                                 #'(LAMBDA (&KEY A B) (LIST A B))
+                                 '(:B 3))
+                               'TST-APPLY-KEYS)
+                         '((NIL 3)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FUNCALL-BOUND-SYMBOL
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FUNCALL-BOUND-SYMBOL DE8A76>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FUNCALL-BOUND-SYMBOL
+                               '(LET ((F '+)) (FUNCALL F 1 2))
+                               'TST-FUNCALL-BOUND-SYMBOL)
+                         '(3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FUNCALL-SYMBOL
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FUNCALL-SYMBOL DF1B26>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FUNCALL-SYMBOL '(FUNCALL '+ 1 2)
+                               'TST-FUNCALL-SYMBOL)
+                         '(3))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FUNCALL-FUNCTION
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FUNCALL-FUNCTION DFA886>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FUNCALL-FUNCTION
+                               '(FUNCALL #'+ 3 5 2 7 3)
+                               'TST-FUNCALL-FUNCTION)
+                         '(20))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FUNCALL-SYMBOL2
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FUNCALL-SYMBOL2 E03B56>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FUNCALL-SYMBOL2
+                               '(FUNCALL 'CONS '(+ 2 3) 4)
+                               'TST-FUNCALL-SYMBOL2)
+                         '(((+ 2 3) . 4)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FUNCALL-NULL-ARGS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FUNCALL-NULL-ARGS E0CE5E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FUNCALL-NULL-ARGS '(FUNCALL #'+)
+                               'TST-FUNCALL-NULL-ARGS)
+                         '(0))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-FUNCALL-KEYS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-FUNCALL-KEYS E1665E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'FUNCALL-KEYS
+                               '(FUNCALL
+                                 #'(LAMBDA (&KEY A B) (LIST A B))
+                                 :B
+                                 3)
+                               'TST-FUNCALL-KEYS)
+                         '((NIL 3)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-CALL-ARGUMENTS-LIMIT
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-CALL-ARGUMENTS-LIMIT E200C6>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'CALL-ARGUMENTS-LIMIT
+                               '(TYPEP
+                                 CALL-ARGUMENTS-LIMIT
+                                 '(INTEGER 50))
+                               'TST-CALL-ARGUMENTS-LIMIT)
+                         '(T))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'MANY-PARAMETERS
+         #<ECLIPSE::INTERPRETED-FUNCTION MANY-PARAMETERS E2746E>)
+       NIL 'MANY-PARAMETERS)
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-CALL-ARGUMENTS-LIMIT-WORKS
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-CALL-ARGUMENTS-LIMIT-WORKS E3008E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'CALL-ARGUMENTS-LIMIT-WORKS
+                               '(LOCALLY
+                                 (DECLARE (NOTINLINE MANY-PARAMETERS))
+                                 (MANY-PARAMETERS
+                                  1
+                                  2
+                                  3
+                                  4
+                                  5
+                                  6
+                                  7
+                                  8
+                                  9
+                                  10
+                                  11
+                                  12
+                                  13
+                                  14
+                                  ...))
+                               'TST-CALL-ARGUMENTS-LIMIT-WORKS)
+                         '(1 49))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-EMPTY-SEQUENCE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-EMPTY-SEQUENCE FDC046>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'EMPTY-SEQUENCE '(PROGN)
+                               'TST-EMPTY-SEQUENCE)
+                         '(NIL))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SEQUENCE
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SEQUENCE FE4F96>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SEQUENCE '(PROGN 1 (+ 1 2) 9)
+                               'TST-SEQUENCE)
+                         '(9))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-SEQUENCE-ORDER
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-SEQUENCE-ORDER FEF016>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'SEQUENCE-ORDER
+                               '(LET
+                                 (X)
+                                 (LIST
+                                  (PROGN (SETQ X 1) (SETQ X 2) 3)
+                                  X))
+                               'TST-SEQUENCE-ORDER)
+                         '((3 2)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PROG1
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PROG1 FFA85E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PROG1
+                               '(LET
+                                 ((TEMP 1))
+                                 (VALUES
+                                  (PROG1 TEMP (INCF TEMP))
+                                  (PROG1 TEMP (SETQ TEMP NIL))
+                                  TEMP
+                                  (PROG1 (VALUES 1 2 3) 4)))
+                               'TST-PROG1)
+                         '(1 2 NIL 1))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PROG1A
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PROG1A 1006A1E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PROG1A
+                               '(LET
+                                 ((TEMP (LIST 'A 'B 'C)))
+                                 (VALUES
+                                  (PROG1
+                                   (CAR TEMP)
+                                   (SETF (CAR TEMP) 'ALPHA))
+                                  TEMP))
+                               'TST-PROG1A)
+                         '(A (ALPHA B C)))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PROG1B
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PROG1B 1013886>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PROG1B
+                               '(FLET
+                                 ((SWAP-SYMBOL-VALUES
+                                   (X Y)
+                                   (SETF
+                                    (SYMBOL-VALUE X)
+                                    (PROG1
+                                     (SYMBOL-VALUE Y)
+                                     (SETF
+                                      (SYMBOL-VALUE Y)
+                                      (SYMBOL-VALUE X))))))
+                                 (LET
+                                  ((*FOO* 1) (*BAR* 2))
+                                  (DECLARE (SPECIAL *FOO* *BAR*))
+                                  (SWAP-SYMBOL-VALUES '*FOO* '*BAR*)
+                                  (VALUES *FOO* *BAR*)))
+                               'TST-PROG1B)
+                         '(2 1))))
+(PROGN (SET-SYMBOL-FUNCTION-VALUE 'TST-PROG2
+         #<ECLIPSE::INTERPRETED-FUNCTION TST-PROG2 1020A8E>)
+       NIL
+       (ADD-ENTRY (NCONC (LIST T 'PROG2
+                               '(LET
+                                 ((TEMP 1))
+                                 (VALUES
+                                  (PROG2
+                                   (INCF TEMP)
+                                   (INCF TEMP)
+                                   (INCF TEMP))
+                                  TEMP
+                                  (PROG2 1 (VALUES 2 3 4) 5)))
+                               'TST-PROG2)
+                         '(3 4 2))))

@@ -1,0 +1,117 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: STREAM-CLEAR-INPUT, STREAM-CLEAR-OUTPUT, STREAM-FORCE-OUTPUT, STREAM-FINISH-OUTPUT</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-CLEAR-INPUT</B>,
+<B>STREAM-CLEAR-OUTPUT</B>, <B>STREAM-FORCE-OUTPUT</B>,
+<B>STREAM-FINISH-OUTPUT</B>
+
+<P>
+<B>Syntax:</B><P>
+
+<B>stream-clear-input</B> <I>input-stream </i>=&gt; <code>NIL</code></I><P>
+<B>stream-clear-output</B> <I>output-stream </i>=&gt; <code>NIL</code></I><P>
+<B>stream-force-output</B> <I>output-stream </i>=&gt; <code>NIL</code></I><P>
+<B>stream-finish-output</B> <I>output-stream </i>=&gt; <code>NIL</code></I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>input-stream</I>---an <EM>input stream</EM>. <P>
+<I>output-stream</I>---an <EM>output stream</EM>. <P>
+<P>
+
+<B>Description:</B><P>
+
+These <em>generic functions</em> provide the same behavior as the
+corresponding <a href="cl.htm#ansi">ANSI</a> functions
+<b>clear-input</b>, <b>clear-output</b>, <b>force-output</b>,
+<b>finish-output</b>.  They differ from <a href="cl.htm#ansi">ANSI</a>
+functions in that the <i>stream</i> argument is not optional and must be a
+stream of the appropriate type.  I.E it cannot be <code>T</code>, or
+<code>NIL</code>.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-clear-input</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">fundamental-input-stream</a>)<br>
+<i>Primary Method</i> <b>stream-clear-output</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">fundamental-output-stream</a>)<br>
+<i>Primary Method</i> <b>stream-force-output</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">fundamental-output-stream</a>)<br>
+<i>Primary Method</i> <b>stream-finish-output</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">fundamental-input-stream</a>)<br>
+Does nothing.
+
+<p><i>Primary Method</i> <b>stream-clear-input</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">encapsulating-stream</a>)<br>
+<i>Primary Method</i> <b>stream-clear-output</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">encapsulating-stream</a>)<br>
+<i>Primary Method</i> <b>stream-force-output</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">encapsulating-stream</a>)<br>
+<i>Primary Method</i> <b>stream-finish-output</b></a> 
+ (<i>stream</i> <a
+ href="clim-stream-classes.htm">encapsulating-stream</a>)<br>
+Calls the same <em>generic function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a>
+of <i>stream</i>.
+
+<p><i>Primary Method</i> <b>stream-clear-input</b></a> 
+ (<i>stream</i> t)<br>
+<i>Primary Method</i> <b>stream-clear-output</b></a> 
+ (<i>stream</i> t)<br>
+<i>Primary Method</i> <b>stream-force-output</b></a> 
+ (<i>stream</i> t)<br>
+<i>Primary Method</i> <b>stream-finish-output</b></a> 
+ (<i>stream</i> t)<br>
+Signals <b>type-error</b>.
+
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> <P>Signals <b>type-error</b> if
+<i>stream</i> is not a <a href =
+"eclipse-stream-classes.htm"><b>stream</b></a>.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>.
+<P>
+
+<B>Notes:</B> <P>
+
+<a href="extensions.htm">CLIM</a> specifies a default method only for
+<a
+href="clim-stream-classes.htm"><b>fundamental-character-input-stream</b></a>
+and <a
+href="clim-stream-classes.htm"><b>fundamental-character-output-stream</b></a>
+(as appropriate) rather than on <a
+href="eclipse-stream-classes.htm"><b>fundamental-input-stream</b></a>
+and <a
+href="eclipse-stream-classes.htm"><b>fundamental-output-stream</b></a>.
+
+<HR>
+<A HREF="advance.htm">[Previous]</A> 
+<A HREF="stream-element-type.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Lisp Concepts for C Programmers</TITLE>
+</HEAD>
+
+<H2>Eclipse C: Lisp Concepts for C Programmers</H2>
+<hr>
+
+<a href="cl.htm">ANSI Common Lisp</a> defines a library of
+functions, variables and other <a
+href="gloss.htm#utility"><i>utilities</i></a>.  For the most part, a C
+programmer can use these utilities and their documentation without
+learning a great deal of Lisp terminology and concepts before hand.
+However, there are a small number of key differences between Lisp and
+C, which programmers do need to be aware of.
+
+<OL>
+
+<P><LI> Every Lisp function returns a type-tagged object as its
+<em>primary value</em>.  All arguments to Lisp functions are
+type-tagged objects.  A type-tagged object is one which carries some
+sort of tagging information that can be examined at run-time to
+determine the type of the data.  
+
+<P>
+In Eclipse, all Lisp data is represented in C as a
+<CODE>typedef</CODE> named <CODE>clObject</CODE>.  Some of these these
+<CODE>clObject</CODE>s are immediate data like a C <CODE>int</CODE>,
+others are created by the system in the <EM>heap</em>, and the
+<CODE>clObject</CODE> is effectively a pointer.
+
+<P><LI>
+The memory for all Lisp data is managed automatically by the system.
+<CODE>clObject</CODE>s are created by Lisp functions as needed, and
+memory is reclaimed when the system is certain that all references to
+the <CODE>clObject</CODE> have disappeared. The latter is called
+<EM>garbage collection</em>.  
+
+<P><LI> There are no programmer-visible pointers in Lisp.
+
+<P><LI> Lisp functions can be defined to have:
+ <ul>
+ <li> ordered, required arguments (like C)
+ <li> ordered, optional arguments (like C <CODE>varargs</CODE>), 
+ <li> unordered, named, optional arguments.  Named arguments are also
+called <em>keyword</em> or <CODE>&KEY</CODE> arguments.
+ <li> some combination of all three.
+ </ul>
+
+In all cases, a Lisp user does not provide an explicit argument count
+or argument terminator -- it is provided internally by the Lisp
+compiler.  Lisp <em>symbols</em> are used to provide the names for the
+named arguments.
+
+All arguments can be thought of as being passed &quot;by value&quot;,
+but recognizing that many <CODE>clObject</CODE>s are effectively
+pointers.
+
+<P><LI> Functions can return zero or more values.  However, these
+values can only be accessed using special <a
+href="gloss.htm#construct"><i>constructs</i></a>.  When not using
+these special multiple-value receiving constructs, all functions
+return a single <i>primary</i> value.
+
+<P><LI> There is a data type in Lisp called a <em>symbol</em>. To some
+extent, this can be thought of as filling all of the following roles:
+ <UL>
+ <LI> an identifier that can be created and accessed at run-time.
+ <LI> an <CODE>enum</CODE> that can be created and accessed at
+ run-time.
+ <LI> a named data structure with various fields.
+ </UL>
+<p>There is a central database of symbols, and
+programs may ask the database to return the symbol with a given name
+-- or create a new one if it doesn't yet exist -- 
+by calling the function <b>intern</b>.  
+
+<UL>
+<p><LI> Because of the central database, Lisp functions can efficiently
+test whether two symbols are the same without, for example, having to
+test whether each character in their name is the same.  This makes
+them suitable for use as flags or named argument identifiers.
+
+<p><LI> Symbols have a number of properties (i.e. fields) which can be
+accessed and manipulated by programs.  For example defining a Lisp
+function attaches a <em>function object</em> to the
+<b>symbol-function</b> property of the symbol naming the function.
+The central database allows programs to be certain they are calling
+the correct function without requiring that all the identifiers be
+resolved at &quot;link time&quot;.  In fact, there is no
+&quot;link&quot; in Lisp.  
+
+<P>For example, one function can call another
+by calling the function stored in the <b>symbol-function</b> property
+of the symbol with a particular name.  The calling function can be
+loaded into a Lisp which was started running long before either the
+caller or called function were defined.  In fact, the calling function
+can even be used without the called function being defined -- provided
+that the part of the code which actually calls the undefined function
+is never run.
+
+</UL> 
+
+<P><LI> In order to support all these features, each Lisp source file
+defines some initialization behavior which is said to occur at the
+point the Lisp file is loaded into a running Lisp.  This includes the
+interning of symbols and the assignment of properties on those
+symbols.
+
+</OL>
+
+How these features are handled in Eclipse is described in <a
+href="impl.htm">&quot;Eclipse Lisp Implementation&quot;</a>.
+
+<HR>
+<A HREF="c.htm">[Previous]</A> <A HREF="syntax.htm">[Next]</A> 
+<A HREF="c.htm">[Up]</A> 
+<A
+HREF="eclipse.htm">[Documentation Contents]</A>
+ <A
+HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

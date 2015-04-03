@@ -1,0 +1,81 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: init.lisp</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: <code>init.lisp</code></H2>
+
+<HR>
+
+The <a href="top.htm">Eclipse top-level</a> program calls the function
+<a href="topf.htm"><b>clLispTopLevel</b></a>, which may load zero or
+more init files.  One option for <a
+href="topf.htm"><b>clLispTopLevel</b></a> is to search the file system
+for init files to load.  See <a
+href="topf.htm"><b>clLispTopLevel</b></a> and <a href="top.htm">"Lisp
+Top-Level"</a> for information on how this is specified.
+
+<P>
+When searching for init files to load, the system will <a
+href="load.htm"><b>load</b></a> each of the following three files, in
+order:
+
+<OL>
+
+<LI> <CODE>(MAKE-PATHNAME :NAME &quot;INIT&quot; :CASE :COMMON)</CODE>
+- This is effectively the file <CODE>&quot;init&quot;</CODE>
+(i.e. <CODE>&quot;init.lisp&quot;</CODE> or
+<CODE>&quot;init.bin&quot;</CODE>) in the current working directory.
+
+<LI> <CODE>&quot;SYS:SITE;INIT&quot;</CODE> - If the first file does
+not change the <CODE>&quot;SYS&quot;</CODE> logical host translations,
+on Unix systems, this is effectively
+<CODE>&quot;site/init&quot;</CODE> in the eclipse home directory
+directory. (See <a href="site.htm">&quot;Site and Other Initial
+Definitions&quot;</a>.)
+
+<LI> <CODE>(MAKE-PATHNAME :NAME "INIT" :CASE :COMMON <br> :DEFAULTS
+(USER-HOMEDIR-PATHNAME))</CODE> On Unix systems, this is the file
+<CODE>&quot;~/init&quot;</CODE>.
+</OL>
+
+If any of the files are missing, no error is signaled, and the
+initialization continues.  
+
+<P>
+<STRONG> N.B.</STRONG>: Eclipse does <STRONG>not</STRONG> make any
+special arrangements to load each file only once if any any of these
+result in the same <EM>truename</EM>.  For example, if you started
+from your home directory, the first and last files would be the same.
+See the example, below, for a way to avoid this problem.
+
+<P>
+These files are read after system defined initialization, such as that
+defined in <a href="site.htm">&quot;Site and Other Initial Definitions&quot</a>.
+
+<P>
+Typical contents for one of these files is:
+
+<PRE>
+(in-package :user)
+(defvar *my-init-loaded-p* nil)
+(unless *my-init-loaded-p*   ;Don't reload.
+  (setq <a href="site-name.htm">*short-site-name*</a> &quot;WIDGETS-R-US.COM&quot;)
+  (setq <a href="site-name.htm">*long-site-name*</a> &quot;Widgets R Us, Incorporated, Somewhere, USA&quot;)
+  (setq <a href="element-type.htm">*default-element-type*</a> 'base-char)
+  (load &quot;/usr/eclipse/site/sys.host&quot;)
+  (setq *my-init-loaded-p* t))
+</PRE>
+
+
+<HR>
+<A HREF="site.htm">[Previous]</A> <A HREF="rep.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

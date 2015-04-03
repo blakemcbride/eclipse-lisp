@@ -1,0 +1,284 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Release Notes</TITLE>
+</HEAD>
+
+<H2>Eclipse Introduction: Release Notes, Release 1.1</H2>
+<i>Last updated: June 4, 1998</i>
+<hr>
+
+The following information is covered:
+
+<UL>
+<li> <a href="new-1.1.htm">New features</a>.  Changes since previous releases.
+
+<li> <a href="platform-specific.htm">Platform Specific Issues</a>.
+
+<li> <a href="#bugs">Bugs</a>.  This includes all known deviations
+from the <a href="cl.htm">ANSI Common Lisp standard</a>. 
+
+<li><a href="#issues">Other Issues</a>. This includes all issues which
+are not technically deviations from the <a
+href="gloss.htm#ansi"><i>standard</i></a>, but which do represent
+significant issues which we would like to address in the next versions.
+
+<li><a href="http://www.elwood.com/eclipse-info/feedback.htm">Future
+Work</a>.  This covers issues which we do not intend to address in the
+next version, but which do represent possible directions for future
+versions. 
+</UL>
+
+<hr>
+<H3><a name="bugs">Bugs</a></H3> It is our intention to fix these bugs
+as soon as possible and distribute the fix <a
+href="http://www.elwood.com/eclipse-info/quality.htm">free of charge</a>
+to paid <a
+href="http://www.elwood.com/eclipse-info/distribution.htm#license">Eclipse
+license-holders</a>.
+
+<OL>
+
+<p><li> <b>No byte-code</b>.  The <code>:BYTE</code> <i>output-format</i>
+option to <a href="compile.htm"><b>compile-file</b></a> is
+non-functional in this version, and the function <b>compile</b>
+produces interpreted closures.  Accordingly:
+<ul>
+
+<li>There is no way to generate byte-code format
+compiled files for <a href="load.htm"><b>load</b></a> to read.
+
+<li>CLOS effective methods for generic functions that do not use
+<b>standard</b> method-combination are interpreted closures, not
+compiled.  
+
+<li>There is no way to add compiled code to a running application.
+</ul>
+
+<P>
+Note, however, that the <code>:C</code> <i>output-format</i> option
+to <b>compile-file</b> is fully functional and that generic functions that
+use <b>standard</b> method-combination and which are created with C
+code (eg. produced by <b>compile-file</b>) do have compiled effective
+methods.
+
+<P>See <a
+href="http://www.elwood.com/eclipse-info/feedback.htm">future
+work</a> for more information about <a
+href="http://www.elwood.com/eclipse-info/feedback.htm#redef">dynamic
+redefinition of built-in functions</a> and <a
+href="http://www.elwood.com/eclipse-info/feedback.htm#load">dynamic
+loading of machine compiled (eg. .o) code</a>.
+
+<P>
+<li> <b>Binary I/O</b>.  Not implemented yet.  Note, however, that <a
+href="extensions.htm#streams">CLOS streams</a> are fully implemented.
+
+<P>
+<li> <b>Conflicts among structure slots</b>.  ANSI requires that
+when one structure includes another, the including structure must
+suppress the generation of slot accessors that happen to have the same
+function name as the accessor of some inherited slot.  Typically, this
+happens when <b>:conc-name</b> is nil.  Eclipse does not currently suppress
+the generation of such duplicate accessors.  Not that in the usual
+case, this only causes functions with identical behavior to
+occasionally be multiply defined.  One might argue that the unusual
+cases are too confusing under ANSI to be considered good programming
+practice.
+
+<P> Furthermore, ANSI requires that an error be signaled in code
+compiled at the highest (non-default) safety levels if any two slot
+names (whether present directly or inherited by the :include option)
+are the same under <b>string=</b>.  Eclipse fails to do this.  Note
+however, that Eclipse does properly signal an error if a <b>defstruct</b>
+defines two or more <em>direct</em> slots with the <em>same</em>
+(<b>eq</b>) name.
+
+<P>
+<li> Eclipse gets its notion of what days daylight savings time is in
+effect, and what the local timezone is for any particular date, from
+the operating system.  Common Lisp can represent Coordinated Universal
+Time from any date begining with January 1, 1900.  Many operating
+systems can represent dates begining only with January 1, 1970.  Thus
+the time conversion functions <b>encode-universal-time</b> and
+<b>decode-universal-time</b> may give incorrect values for converting
+a <i>local time</i> between 1900 and the start of the operating sytem
+time (eg. January 1, 1970).  The conversion will be correct when the
+timezone is explicitly given as an argument to these functions.
+
+<p>
+This has nothing to do with <i>Year-2000</i> issues.  Eclipse is <a
+href="http://www.elwood.com/eclipse-info/y2k.htm">year 2000
+compliant</a>.
+
+</OL>
+
+<hr>
+<H3><a name="work">Other Issues</a></H3>
+
+<OL>
+
+<P>
+<li> Scanning directories for <a name="init"><b>init files</b></a> to
+load, as described in the <a href="top.htm">Lisp Top-Level</a>
+documentation, takes a long time.  This can be avoided by using the <a
+href="top.htm"><b>-n</b></a> option to <code>eclipse</code>.
+
+<p>
+<li> When starting up, <a href="top.htm"><code>eclipse</code></a>
+prints progress reports to standard output.  This will be eliminated
+in future versions when start up time is near instantaneous.  These
+reports are not printed when the <a href="top.htm"><b>-s</b></a>
+option to <code>eclipse</code> is used.
+
+<p>In C applications that do not use the <a
+href="main.htm"><code>eclipse</code> top level
+<code>main()</code></a>, these progress reports are not normally
+printed.  They can be turned on within the <a
+href="initf.htm"><B>clInit</B></a> C function by setting the <code>int
+clPROGRESS_FLAG</code> global C variable to 1.
+
+<P>
+<li> <a name="generic"><b>C functions for generics</b></a>.  It is our intention that each
+Lisp function defined by ANSI should be represented in the C library
+by a C function.  In fact, the library in this release does not
+contain C functions for any Lisp function that is actually defined as
+a <b>generic-function</b> in Eclipse.  A listing of those ANSI C functions
+that are actually implemented as <b>generic-functions</b> is not provided,
+and can only be determined using Lisp.  For example:
+<pre>
+   (typep #'nth 'generic-function) => NIL
+   (typep #'elt 'generic-function) => T
+</pre>
+To call a generic function from C, one must use <b>funcall</b>.  For
+example, given that:
+<ul>
+<li> <code>clNth()</code> and <code>clFuncall()</code> are C functions
+corresponding to the ordinary Lisp <em>functions</em> <b>nth</b> and
+<b>funcall</b>,  
+<li> <code>clNTH</code> and <code>clELT</code> are C global variables
+that holds the <code>clObject</code>s representing the Lisp
+<em>symbols</em> <b>nth</b> and <b>elt</b>, and 
+<li> <b>elt</b> is a generic function in Eclipse,
+</ul> 
+the following calls are correct.
+<pre>
+   clNth(index, list, clEOA);
+   clFuncall(clNTH, index, list, clEOA);
+   clFuncall(clELT, sequence, index, clEOA);
+</pre>
+The following will not compile, because there is no C function clElt():
+<pre>
+   clElt(sequence, index, clEOA);    /* wrong */
+</pre>
+
+<p><li><b>Subforms of defclass</b>.  Eclipse imposes no direct limit
+on the number of direct slots or direct default-initargs in a class.
+Following the MetaObject Protocol, a <b>defclass</b> form macroexpands
+into a call to the <b>ensure-class</b> function.  In Eclipse, some of
+the arguments to <b>ensure-class</b> in the macroexpansion are forms
+involving the <b>list</b> function, which like all function calls, is
+potentially subject to <b>call-arguments-limit</b>.  Thus, in code
+that has not been compiled to C, it is an error to specify more than
+49 direct slots or more than 49 direct default-initargs in a
+<b>defclass</b> form.  A simple workaround is to split the class
+definition into smaller "mixins".  The same issue exists for attached
+methods in a <b>defgeneric</b> form.
+
+<P>This issue may not effect code compiled to C, because C compiled
+calls to <b>clList</b> are not limited by <b>call-arguments-limit</b>.
+Of course, specific C implementations may impose their own
+restrictions on how many arguments may appear in calls to a C function.
+
+<P>
+<li> <b>Room</b> and <b>Time</b>. The format of the information
+reported by <b>room</b> is not documented in this version.  Similarly,
+the format of the memory usage information reported by <b>time</b> is
+not documented.  (The timing information reported by <b>time</b>
+<em>is</em> <a href="defined.htm#time">documented</a>.)
+
+<P>
+<li> <a name="recompilation"><b>Recompilation</b></a>.  The C source
+code for platform-specific utilities, including the complete source
+for the garbage collector, are included in the distribution.  The
+remaining C source code for the <a href="lib.htm">run time library</a>
+may be purchased from <a
+href="http:/www.elwood.com/eclipse-info">Elwood Corporation</a>.
+
+<p>Users are free to edit and/or recompile all or part of the library
+using different compilers or compiler options.  <i>User code</i>
+translated from Lisp to C by <a
+href="compile.htm"><b>compile-file</b></a> can be compiled using
+various compilers, subject to limitations on file size, <a
+href="http://www.elwood.com/eclipse-info/ccomp.htm">etc</a>.
+However, some of the C source files <i>for the Eclipse library
+itself</i> may not compile using compilers other than <code>gcc</code>
+or Visual C++.
+
+<p>Visual C++ project files, and a VC++ generated makefile is included
+in the bin/windows directory, though the use of VC++ is not expressly
+supportable by Elwood Corporation.
+
+<P>
+To compile the Eclipse library using standard <code>make</code>
+utilties, cd to the bin directory for your platform:
+<code>bin/sparc</code>, <code>bin/hppa</code>, <code>bin/linux</code>
+within the versioned eclipse directory.
+<ol>
+
+<li> If you want to start with the object files that are already in
+the archive, execute the command: <code>make unarchive</code>.  This
+will copy all the <code>.o</code> files from the library to the
+directory, so that you will only recompile files with source that has
+changed since these files were compiled by Elwood.  (If you want to
+generate new <code>.o</code> files, you do not need to do this.)
+
+<li> Any out of date files will be recompiled and replaced in the
+archive with the command: <code>make eclipse</code>.
+</ol>
+
+<p>
+To make certain that all files are <em>recompiled</em> from source,
+including the garbage collector, type <code>make recompile</code>.
+This also automatically executes <a href="install.htm"><code>make
+setup</code></a>.
+
+<p>
+<li><a name="versions"><b>Platform versions</b></a>. This distribution
+is available for Microsoft PC/Windows (win32), Sun Sparc/Solaris,
+HP PA-RISC/HP-UX, and PC/Linux machines.
+
+<p>The precompiled libraries and executables distributed on the
+release CD have been produced and tested under Windows NT,
+Windows 95, Solaris 2.6, HP-UX 9.05, and Redhat Linux 4.0.
+They may need to be <a href="#recompilation">recompiled</a> from the
+available C source to work under earlier releases.  For example,
+<ul>
+<li>Eclipse applications must be linked with either real or ``dummy''
+definitions of the ANSI wide character utilties, which are not
+provided by Sun for SunOS-5.5/Solaris-2.5.  See <a
+href="chars.c"><code>chars.c</code></a>.
+
+<li>The system must be <a href="#recompilation">recompiled</a> in
+order to run under SunOS-4.1.
+</ul>
+
+<p>Contact <a
+href="http://www.elwood.com/eclipse-info/constact.htm">Elwood
+Corporation</a> for more information about specific operating system
+versions beyond those listed.
+
+</OL>
+
+<HR>
+<A HREF="install.htm">[Previous]</A> 
+<A HREF="platform-specific.htm">[Next]</A> 
+<A HREF="intro.htm">[Up]</A> 
+<A HREF="new-1.1.htm">[Down]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

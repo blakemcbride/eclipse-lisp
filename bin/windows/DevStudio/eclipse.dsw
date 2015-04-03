@@ -1,0 +1,125 @@
+Microsoft Developer Studio Workspace File, Format Version 5.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "eclipse"=".\eclipse\eclipse.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libeclipse
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name libeclipsed
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "ertest"=".\ertest\ertest.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libeclipse
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name test
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "etest"=".\etest\etest.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libeclipse
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name libeclipsed
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name test
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "gctest"=".\gctest\gctest.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name libeclipse
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "libeclipse"=".\libeclipse\libeclipse.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "libeclipsed"=".\libeclipsed\libeclipsed.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "test"=".\test\test.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

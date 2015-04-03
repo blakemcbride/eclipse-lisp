@@ -1,0 +1,26 @@
+/* tcpoll(int fd) is analogous to POSIX tcdrain(), tcflush(), etc.
+   It returns -1 on error, 0 for no data, n>0 if data is available
+   for immediate reading.  This has been tested on Solaris, HP-UX and
+   Linux. 
+
+   Another way to do this might be:
+      ioctl(fd, I_NREAD, &arg) ? -1 : arg
+   where I_NREAD is for streamio, and FIONREAD would be for FILIO.  
+   */
+
+int tcpoll(fd) int fd; {
+#if (defined linux)
+  struct timeval tm;
+  fd_set fds; int result;
+  tm.tv_sec = 0;
+  tm.tv_usec = 0;
+  FD_ZERO(&fds);
+  FD_SET(fd, &fds);
+  return(select(1, &fds, NULL, &fds, &tm));
+#else
+  struct pollfd fds[1]; 
+  fds[0].fd = fd;
+  fds[0].events = POLLIN | POLLPRI | POLLRDNORM | POLLRDBAND;
+  return(poll(fds, 1, 0)); 
+#endif
+}

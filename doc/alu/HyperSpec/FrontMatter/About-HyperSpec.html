@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!-- Common Lisp HyperSpec (TM), version 3.0 -->
+<HTML>
+<HEAD>
+<TITLE>CLHS: About the Common Lisp HyperSpec (TM)</TITLE>
+<META HTTP-EQUIV="Author" CONTENT="Kent M. Pitman">
+<META HTTP-EQUIV="Organization" CONTENT="The Harlequin Group Limited">
+<LINK REL=TOP HREF="../FrontMatter/index.html">
+<LINK REL=COPYRIGHT HREF="../FrontMatter/About-HyperSpec.html#Legal">
+<LINK REL=DISCLAIMER HREF="../FrontMatter/About-HyperSpec.html#Disclaimer">
+<LINK REL=PREV HREF="../FrontMatter/Starting-Points.html">
+<LINK REL=UP HREF="../FrontMatter/index.html">
+<LINK REL=NEXT HREF="../FrontMatter/Starting-Points.html">
+</HEAD>
+<BODY BGCOLOR="#c0c0c0">
+<A NAME="Top"><H1><A REV=MADE HREF="http://www.harlequin.com/"><IMG ALT="[HARLEQUIN]" SRC="../Graphics/Harlequin-Small.gif" ALIGN=Bottom></A><A REL=TOP HREF="../FrontMatter/index.html"><IMG ALT="[Common Lisp HyperSpec (TM)]" SRC="../Graphics/HyperSpec-Small.gif" ALIGN=Bottom></A> <A REL=PREV HREF="../FrontMatter/Starting-Points.html"><IMG ALT="[Previous]" SRC="../Graphics/Prev.gif" ALIGN=Bottom></A><A REL=UP HREF="../FrontMatter/index.html"><IMG ALT="[Up]" SRC="../Graphics/Up.gif" ALIGN=Bottom></A><A REL=NEXT HREF="../FrontMatter/Starting-Points.html"><IMG ALT="[Next]" SRC="../Graphics/Next.gif" ALIGN=Bottom></A></H1></A>
+
+<HR>
+
+<H2>About the Common Lisp HyperSpec (TM)</H2>
+
+This page contains the following kinds of information:
+
+<UL>
+<LI><A REL=META HREF="#IconKey"><B>Icon Key</B></A>
+<LI><A REL=META HREF="#Abstract"><B>Abstract</B></A>
+<LI><A REL=META HREF="#Authorship"><B>Authorship Information</B></A>
+<LI><A REL=COPYRIGHT HREF="#Legal"><B>Important Legal Notices</B></A>
+<LI><A REL=META HREF="#Trivia"><B>Trivia</B></A>
+<LI><A REL=META HREF="#Bugs"><B>Bug Reports</B></A>
+</UL>
+
+<HR>
+
+<A NAME="IconKey"><H2>Icon Key</H2></A>
+
+<IMG ALT="[Prev]" SRC="../Graphics/Prev.gif" ALIGN="Bottom"> or <IMG ALT="[No Prev]" SRC="../Graphics/NoPrev.gif" ALIGN="Bottom"> Go to the previous page, or no previous page.<P>
+
+<IMG ALT="[Up]" SRC="../Graphics/Up.gif" ALIGN="Bottom"> or <IMG ALT="[No Up]" SRC="../Graphics/NoUp.gif" ALIGN="Bottom"> Go to parent page, or no parent page.<P>
+
+<IMG ALT="[Next]" SRC="../Graphics/Next.gif" ALIGN="Bottom"> or <IMG ALT="[No Next]" SRC="../Graphics/NoNext.gif" ALIGN="Bottom"> Go to the next page, or no next page.<P>
+
+<HR>
+
+<A REL=TOP HREF="../FrontMatter/index.html"><IMG ALT="[Starting Points]" SRC="../Graphics/Starting-Points.gif" ALIGN=Bottom></A>
+Go to the list of starting points.<P>
+
+<A REL=TOC HREF="../FrontMatter/Chapter-Index.html"><IMG ALT="[Contents]" SRC="../Graphics/Contents.gif"></A>
+Go to the Table of Contents<P>
+
+<A REL=INDEX HREF="../FrontMatter/Master-Index.html"><IMG ALT="[Index]" SRC="../Graphics/Index.gif" ALIGN=Bottom></A>
+Go to the Master Index<P>
+
+<A REL=GLOSSARY HREF="../Body/sec_26-1.html"><IMG ALT="[Glossary]" SRC="../Graphics/Glossary.gif" ALIGN=Bottom></A>
+Go to the Glossary.<P>
+
+<A HREF="../Body/sec_1-9.html"><IMG ALT="[Symbols]" SRC="../Graphics/Symbols.gif" ALIGN=Bottom></A>
+Go to the Symbol Index.<P>
+
+<A REL=NAVIGATOR HREF="../FrontMatter/Highlights.html"><IMG ALT="[Highlights]" SRC="../Graphics/Highlights.gif"></A>
+Go to a list of selected Highlights.<P>
+
+<A HREF="../Issues/Issues-Alphabetical.html"><IMG ALT="[Issues]" SRC="../Graphics/Issues.gif"></A>
+Go to the X3J13 Issue index.<P>
+
+<A REL=META HREF="../FrontMatter/About-HyperSpec.html"><IMG ALT="[Help]" SRC="../Graphics/Help.gif" ALIGN=Bottom></A>
+Go to this text.<P>
+
+<HR>
+
+<A REV=MADE HREF="http://www.harlequin.com/"><IMG ALT="[Harlequin]" SRC="../Graphics/Harlequin-Small.gif" ALIGN=Bottom></A> Go to the Harlequin home page.
+
+<HR>
+
+<A NAME="Abstract"><H2>Abstract</H2></A>
+
+Lisp is a family of languages with a long history.
+Early key ideas in Lisp were developed by 
+<A HREF="http://www-formal.stanford.edu/jmc/">John McCarthy</A>
+in 1956.  
+Many important dialects, languages and embedded systems 
+have emerged from this work.<P>
+
+In 1981, representatives of several major dialects began to pool their
+efforts to design 
+<A REL=TOP HREF="../FrontMatter/index.html">Common Lisp</A>,
+an `industrial strength' dialect of
+Lisp that would provide stability for commercial applications.<P>
+
+The initial design of Common Lisp was well received, and in 1986 
+<A HREF="http://www.x3.org/tc_home/x3j13.html">X3J13</A>
+was formed to transform this work into a formal standard.
+The resulting design, 
+<A REL=CITATION HREF="http://www.x3.org/tc_home/tc_sd4/x3j13sd4.html"
+>X3.226-1994</A>,
+is a standard for Common Lisp--<IT>not</IT> for the entire Lisp family.<P>
+
+The Common Lisp standard improves on earlier Common Lisp
+work by 
+<A HREF="../FrontMatter/X3J13-Issues.html">
+placing much greater emphasis on portability,
+clarifying many aspects of compilation semantics</A>,
+and adding several major pieces of
+new functionality: 
+<A HREF="../Body/chap-7.html">an object-oriented programming system</A>,
+<A HREF="../Body/chap-9.html">a condition handling system</A>,
+<A HREF="../Body/sec_6-1.html">an improved iteration facility</A>,
+and 
+<A HREF="../Body/chap-13.html">better support for large character sets</A>.<P>
+
+<HR>
+
+<A NAME="Authorship"><H2>Authorship Information</H2></A>
+
+The <A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>
+is <I>not</I> the ANSI Common Lisp standard, but is based on that standard 
+(with <A HREF="#Acknowledgments">permission</A> from 
+<A HREF="http://www.ansi.org/">ANSI</A> and 
+<A HREF="http://www.x3.org/">X3</A>).<P>
+
+<B>As an official reference to the Common Lisp language,
+<A HREF="#Ordering">hardcopy documentation</A> of 
+<A REL=CITATION HREF="http://www.x3.org/tc_home/tc_sd4/x3j13sd4.html">ANSI Common Lisp,
+(American National Standard X3.226)</A>
+from <A HREF="http://www.ansi.org/">ANSI</A>
+is always definitive.</B><P>
+
+The hypertext markup for this document
+was created by 
+<A REV=MADE HREF="mailto:kmp@harlequin.com">Kent Pitman</A>,
+with the aid of a <A HREF="#Caveats">custom program</A> written in Common Lisp
+and created specifically for this task.
+
+Funding for the markup task was provided by 
+and <A REL=COPYRIGHT HREF="#Copyright">copyright of the result</A> is owned by
+<A REV=MADE HREF="http://www.harlequin.com/">The Harlequin Group Limited</A>.</P>
+
+Some <A REL=META HREF="../FrontMatter/X3J13-Issues.html">additional design
+documents</A> have been included in <A HREF="#Caveats">marked up</A> form and
+cross-referenced which are <I>not</I> part of the standard but may be useful
+in understanding it.  Plaintext versions of these documents, which
+offer a useful historical perspective, are available to anyone by
+anonymous public FTP from <A
+HREF="ftp://parcftp.xerox.com/pub/cl/cleanup/"><TT>ftp://parcftp.xerox.com/pub/cl/cleanup/</TT></A>.<P>
+
+The <A HREF="http://java.sun.com/">Java</A> applet used in the
+<A HREF="../FrontMatter/Symbol-Index.html">Symbol Index</A> 
+(visible only in some browsers)
+was written by
+<A HREF="mailto:evan@harlequin.com">Evan Williams</A>.
+Its <A REL=COPYRIGHT HREF="#Copyright">copyright</A> is owned by
+<A REV=MADE HREF="http://www.harlequin.com/">The Harlequin Group Limited</A>.</P>
+
+<HR>
+
+<A NAME="Legal"><H2>Important Legal Notices</H2></A>
+
+<A NAME="Copyright"><H3>Copyright and Conditions of Use</H3></A>
+
+Copyright 1996, The Harlequin Group Limited.  All Rights Reserved.<P>
+
+The <A HREF="http://www.w3.org/pub/WWW/MarkUp/html-spec/">HTML</A>
+hypertext markup that implements the hypertext features of these 
+World Wide Web pages of the Common Lisp specification, collectively the 
+<A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>,
+is the property of 
+<A REV=MADE HREF="http://www.harlequin.com/">The Harlequin Group Limited</A>.<P>
+
+Distribution of the <A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A> as a hypertext document on
+the Internet does not constitute consent to any use of the underlying
+hypertext markup for redistribution of any kind, commercial or
+otherwise, either via the Internet or using some other form of
+distribution, in hypertext or otherwise.<P>
+
+Permission to copy, distribute, display, and transmit the 
+<A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>
+is granted provided that 
+copies are not made or distributed or displayed or transmitted for direct
+commercial advantage, that notice is
+given that copying, distribution, display, and/or transmission is by
+permission of <A REV=MADE HREF="http://www.harlequin.com/">The Harlequin Group Limited</A>,
+and that any copy made is COMPLETE and UNMODIFIED. IN PARTICULAR,
+the material that
+MUST appear in the copy includes:
+<OL>
+<LI>this copyright notice and its date;
+<LI>the main index page, 
+    <A REL=TOP HREF="../FrontMatter/index.html"><TT>../FrontMatter/index.html</TT></A>;
+<LI>all HTML pages to which the main index page links using relative links;
+<LI>all graphical (GIF) images to which it links using relative links,
+    such as the Harlequin logo that appears on each page; and
+<LI>all hypertext links, relative or absolute, such as the link
+to <A REV=MADE HREF="http://www.harlequin.com/"><TT>http://www.harlequin.com/</TT></A>
+that appears on each page.
+</OL>
+Permissions related to performance and to creation of derivative works
+are expressly NOT granted.<P>
+
+Permission to make partial copies is expressly NOT granted, EXCEPT that 
+limited permission is granted
+to transmit and
+display a partial copy the 
+<A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>
+for the ordinary purpose
+of direct viewing by a human
+being in the usual manner that hypertext browsers permit the viewing of
+such a complete document, provided
+that no recopying, redistribution, redisplay, or retransmission is made of
+any such partial copy.<P>
+
+Permission to make modified copies is expressly NOT granted.<P>
+
+Permission to add or replace any links or any graphical images to any of
+these pages is expressly NOT
+granted.<P>
+
+Permission to use any of the included graphical (GIF) images in any
+document other than the
+<A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>
+is expressly NOT granted.<P>
+
+<A NAME="Acknowledgments"><H3>Acknowledgments</H3></A>
+
+Parts of this work incorporate material taken from 
+<A REL=CITATION HREF="http://www.x3.org/tc_home/tc_sd4/x3j13sd4.html">American National Standard X3.226</A>, copyright 1994, and
+is used with permission of the
+<A HREF="http://www.x3.org/">X3 Secretariat</A>,
+ITI, 1250 Eye St., NW., Suite 200, Washington, DC 20005
+and of the copyright holder, 
+<A HREF="http://www.ansi.org/">American National Standards Institute</A>.
+ANSI/X3.226 was developed by
+<A HREF="http://www.x3.org/tc_home/x3j13.html">Technical Committee X3J13</A>,
+Common Lisp.<P>
+
+<A NAME="Ordering">Copies of the ANSI/X3.226 standard</A>
+may be purchased from the
+<A HREF="http://www.ansi.org">American National Standards Institute</A>,
+11 West 42nd Street, New York, NY 10036.<P>
+
+<H3>Restricted Rights Legend</H3>
+
+The 
+<A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>
+is subject to the following Restricted Rights Legend:
+<BLOCKQUOTE>
+``Use, duplication, or disclosure by the 
+<A HREF="http://www.whitehouse.gov/">United States Government</A>
+is subject to the restrictions set forth in 
+(i)   <A REL=CITATION HREF="http://www.gsa.gov/far/">FAR 52.227-14 Alt III</A>,
+(ii)  <A REL=CITATION HREF="http://www.gsa.gov/far/">FAR 52.227-19</A>,
+(iii) <A REL=CITATION HREF="http://www.dtic.mil/dfars/">DFARS 252.7013(c)(1)(ii)</A>, or
+(iv)  the accompanying license Agreement, as applicable.
+For purposes of the FAR, the Software shall be deemed to be ``unpublished''
+and licensed with disclosure prohibitions, rights reserved under the copyright
+laws of the United States.
+Harlequin Incorporated, One Cambridge Center, Cambridge, Massachusetts 02142.''
+</BLOCKQUOTE>
+
+<A NAME="Disclaimer"><H3>Warranty disclaimer</H3></A>
+
+<B>THIS DOCUMENT IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT.  IN NO EVENT WILL HARLEQUIN BE LIABLE FOR DIRECT,
+INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES RESULTING FROM
+ANY INACCURACY OR ERROR IN THIS DOCUMENT, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGES.</B><P>
+
+<A NAME="Caveats"><H3>Additional Disclaimers</H3></A>
+
+Not all notations in that TeX-based document were possible to represent
+exactly in 
+<A HREF="http://www.w3.org/pub/WWW/MarkUp/html-spec/"
+>HTML</A>, although an attempt has been made to be as accurate as possible.
+Nevertheless, the process of translation was <I>heuristic</I>, and 
+<I>discrepancies might have resulted</I>.
+Formally, <A HREF="#Ordering">the official ANSI printed document</A>
+is always the definitive reference.<P>
+
+The
+<A REL=META HREF="../FrontMatter/X3J13-Issues.html">X3J13 issue documents</A>
+are <I>not</I> part of the standard and are provided purely for historical
+perspective.  It is possible that some of the documents, as included,
+   are not the final form that X3J13 voted,
+or that some which were voted were omitted,
+or that references from these documents into the source text are not complete,
+or that some edits prescribed by these documents were incorrectly implemented,
+or that other discrepancies exist between these documents and the 
+specification.
+These documents have <I>no</I> formal weight,
+and in all cases, the <A HREF="#Ordering">hardcopy specification</A>
+is definitive.
+
+<A NAME="Trademarks"><H3>Trademarks</H3></A>
+
+LispWorks and ScriptWorks are registered trademarks of 
+<A REV=MADE HREF="http://www.harlequin.com/">The Harlequin Group Limited</A>.<P>
+				   
+PostScript is a registered trademark of Adobe Systems, Inc.<P>
+
+Common Lisp HyperSpec;
+Transducer;
+WebMaker;
+Lucid Common Lisp;
+Harpoon;
+Harlequin Screening Library;   HSL;
+Harlequin Dispersed Screening; HDS;
+Harlequin Chain Screening;     HCS;
+Harlequin Micro Screening;     HMS;
+Harlequin Precision Screening; HPS;
+Watson;
+KnowledgeWorks;
+ScriptWorks MicroRIP;
+Harlequin Color Management;    HCMS;
+FreeLisp;
+DylanWorks; and
+MLWorks
+are trademarks of 
+<A REV=MADE HREF="http://www.harlequin.com/">The Harlequin Group Limited</A>.<P>
+
+All other brand and product names mentioned herein are trademarks or
+registered trademarks of their respective owners.<P>
+
+<HR>
+
+<A NAME="Trivia"><H2>Trivia</H2></A>
+
+The Common Lisp HyperSpec consumes approximately 15MB of disk storage
+in about 2300 files.  It contains approximately 105,000 hyperlinks.<P>
+
+<HR>
+
+<A NAME="Bugs"><H2>Bug Reports</H2></A>
+
+Reports of discrepancies between
+the <A REL=TOP HREF="../FrontMatter/index.html">Common Lisp HyperSpec</A>
+and the hardcopy form may be sent to
+<A REV=MADE HREF="mailto:kmp@harlequin.com">Kent Pitman &lt;kmp@harlequin.com&gt;</A>.<P>
+
+Reports of bugs in the specification itself should be addressed to
+<A HREF="http://www.x3.org/tc_home/x3j13.html">subcommittee X3J13</A>.
+
+<HR>
+
+<A REL=NAVIGATOR HREF="../FrontMatter/Starting-Points.html"><IMG ALT="[Starting Points]" SRC="../Graphics/Starting-Points.gif" ALIGN=Bottom></A><A REL=TOC HREF="../FrontMatter/Chapter-Index.html"><IMG ALT="[Contents]" SRC="../Graphics/Contents.gif" ALIGN=Bottom></A><A REL=INDEX HREF="../FrontMatter/Master-Index.html"><IMG ALT="[Index]" SRC="../Graphics/Index.gif" ALIGN=Bottom></A><A REL=INDEX HREF="../FrontMatter/Symbol-Index.html"><IMG ALT="[Symbols]" SRC="../Graphics/Symbols.gif" ALIGN=Bottom></A><A REL=GLOSSARY HREF="../Body/sec_26-1.html"><IMG ALT="[Glossary]" SRC="../Graphics/Glossary.gif" ALIGN=Bottom></A><A HREF="../Issues/Issues-Categorized.html"><IMG ALT="[Issues]" SRC="../Graphics/Issues.gif" ALIGN=Bottom></A><BR>
+
+<A REL=COPYRIGHT HREF="../FrontMatter/About-HyperSpec.html#Legal"><I>Copyright 1996, The Harlequin Group Limited.  All Rights Reserved.</I></A><P>
+</BODY>
+</HTML>

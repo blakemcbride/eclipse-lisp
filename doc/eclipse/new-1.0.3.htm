@@ -1,0 +1,185 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: New in Release 1.0.3</TITLE>
+</HEAD>
+
+<h2>What's New for Eclipse Common Lisp Release 1.0.3</h2>
+
+<h4>February 25, 1998</h4>
+
+See Also:
+
+<ul>
+<li> <a href="new-1.0.2.htm">1.0.2</a> (HP-UX)
+<li> <a href="new-1.0.1.htm">1.0.1</a> (Solaris 2,  Unix System V)
+<li> <a href="new-1.0.htm">1.0</a> (SunOS 4.1, Berkeley Unix)
+</ul>
+
+
+<h3>Features</h3>
+
+<ul>
+
+<p><li> Ported to <b>PC x86/Linux</b>. (First Intel/PC architecture
+for Eclipse.)
+
+<p><li>Source and library features:
+<ul>
+<p><li>Eclipse-generated code, the Eclipse library source, and code
+that calls utilities defined within either, can now be compiled with
+either <b>ANSI or traditional compilers</b>.  (First Standard C
+Eclipse release.) See <a
+href="http://www.elwood.com/eclipse-info/ccomp.htm"> Detailed C
+Compiler Technical Requirements</a>.
+
+<p><li> System source can be recompiled using either 2- or 3- bit
+pointer type tags for use on <b>single or double word aligned
+systems</b>.  (First single word aligned Eclipse platform.)  The
+compiled library distributed with Eclipse uses 2-bit tags on machines
+that are normally single word aligned, and 3-bit tags on machines that
+are normally double word aligned.  Allowing the system source to be
+recompiled using the non-default alignment ensures the maximum
+compatibility with other software.
+
+<p><li>Library archive members now have names that are less than 15
+characters long.
+
+<p><li><code>makefile</code> can delete .o files and restore them from
+the library archive.
+
+<p><li>Year-2000 analysis available at <a
+href="http://www.elwood.com/eclipse-info/y2k.htm">web-site</a> for
+companies doing y2k audits.
+
+</ul>
+
+
+<p><li> A macro definition is now provided for
+<b>eclipse::named-function</b> so that that user-written program
+walkers can expand it to do something reasonable.
+<b>Named-function</b> appears in generated code and is treated as a
+special form by <b>eval</b>, <b>compile-file</b>, etc.  It should now
+be the case that macro expansion produces no list forms except
+function calls, macro calls, or references to the special
+operators defined in the ANSI standard.
+
+<p><li><b>Describe</b> has specialized methods for fixnums, bignums
+and floats. More information is displayed for arrays.
+
+<p><li>The Reader retains <b>backquote</b> information for later
+pretty printing.  The initial value of <b>*print-pretty*</b> is now
+<i>true</i>.
+
+</ul>
+
+<h3>Bug fixes</h3>
+
+<ul>
+
+<p><li> <b>Compiler and other control utilities</b>:
+
+<ul>
+<p> <li> <a name="big-pretty">The special pretty printer</a> used for
+generating formatted C code no longer calls <b>apply</b>, which ran
+into <b>call-arguments-limit</b> problems.
+
+<p>
+This bug was known to occur when compiling large <b>progn</b>s and
+<b>cond</b>s (i.e. more than about 48 subexpressions), and
+<b>lambda</b> or <b>let</b> bindings with more than about 48
+variables.  It may have occurred in other situations as well.
+
+<p>
+<li>Generated code now correctly unwinds the control stack when a
+<b>catch</b> appears in tail position within a function definition.
+Depending on the dynamic calling sequence, this sometimes resulted in
+undeserved and unrecognizable errors which generally occurred AFTER the
+effected code returned normally.
+<p>
+The same bug effected interpreted evaluation of <b>tagbody</b>, as well
+as some <b>loop</b> macroexpansion.
+
+<p><li> A variable that is declared special and then declared special
+again in an inner <b>let</b> body without an intervening non-special
+binding, is now properly recognized as special.
+
+<p><li>Literal data appearing in the <b>load-form</b> for arrays,
+general vectors or hash-tables, is now explicitly quoted.
+
+<p><li> Dotted lists can now be used in <b>equal</b> hash-tables, even
+when there is an even number of cons cells.  Such lists may now appear
+as compile-time literals.
+
+<p><li>Dotted lambda-lists are now accepted by <b>defmacro</b>.
+
+<p><li> The <b>control stack</b> is now traced by the garbage
+collector.  This ensures that old bindings of special variables which
+will later be restored are protected from garbage collection, even if
+not referenced by any other data.
+
+
+</ul>
+
+<p><li><b>Floating point</b>:
+<ul>
+<p><li> <b>Expt</b> now returns a <b>float</b> rather than a
+<b>complex</b> number with a (near) zero imaginary part for negative
+<b>float</b> bases and <b>integer</b> powers.
+
+<p><li><b>Float</b> and <b>scale-float</b> functions now interact
+properly with multiple values machinery.
+
+<p><li><b>Atan</b> is now defined for arguments (ratio integer) and
+(integer ratio).  
+
+<p><li><b>Atanh</b> now works on all platforms, including HP-UX (which
+does not define <code>atanh</code> in the <code>libm</code>).
+
+<p><li>Truncating a <b>single-float</b> which has a value that happens
+to lie outside the range of <code>int</code> now produces the correct
+result.
+
+</ul>
+
+<p><li><b>Integer</b>:
+<ul>
+<li>Fixnum division no longer yields ratios with negative
+denominators.  
+<li> Comparisons (eg. =) between bignums is now correct.
+<li> Fixnum multiplication resulting in integers requring exactly 32
+bits is now correct.
+</ul>
+
+<p><li>
+<b>Bit-vectors</b>: 
+<ul>
+ <li> now hash properly.
+ <li> generate correct <b>make-load-form</b> values.
+ <li> signal correct error class during parsing.
+ <li> read correctly when empty (eg. "#* ", "#0* ").
+ <li> <code>(make-array 0 :element-type 'bit)</code> no longer tries
+ to allocate a negative number of digits. 
+</ul>
+
+<p><li><b>Built-in</b> classes now respond correctly to the
+<b>class-prototype</b> MOP generic function.
+
+<p><li><b>Directory</b> doesn't ommit files (as had happened on the HP
+only), when the first file of a file-system directory block had been
+deleted.
+
+</ul>
+
+
+<HR>
+<A HREF="new-1.1.htm">[Previous]</A> 
+<A HREF="new-1.0.2.htm">[Next]</A> 
+<A HREF="release.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

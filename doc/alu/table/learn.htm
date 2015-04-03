@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Learning Lisp</TITLE>
+<meta name="description" content="How to learn Lisp">
+<meta name="keywords" content="common lisp, learn, tutorial, teach, resource, book">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#CCFFFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2><A NAME="top">Learning Lisp</A></H2>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="contents.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="lisp.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="books.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm"><b>LEARNING</b></a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+<P>
+<a href="books.htm">books</a></br>
+<a href="style.htm">style</a></br>
+</td><td>
+</table>
+</td><td>
+
+The basic concepts of Lisp are easily mastered.  Some computer science
+courses don't &quot;teach&quot; Lisp at all, but allow the students to
+pick it up from class examples.  Most of the work of mastering Lisp
+comes from learning the large <A HREF="environment.htm">libraries of
+utilites</A> available to Lisp programmers.
+
+<P>
+This website gives information mostly about Common Lisp. (See also, <A
+HREF="related-languages.htm">related languages</A>.)  This site gives listings of
+<A HREF="books.htm">books</A>, <A HREF="references.htm">reference
+material</A>, and <A HREF="community.htm">other resources</A>.  There
+is a also a guide to Lisp <A HREF="style.htm">programming style</A>
+which comes from the <A
+HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/faqs/lang/lisp/top.html">Lisp
+FAQ</A> (a listing of Frequently Asked Questions, and their answers).
+
+<P>
+Below, we list some <A HREF="#books">book categories</A>, <A
+HREF="#courses">courses</A>, and <A HREF="#tutorial">on-line
+tutrorials</A>
+
+<p>
+To get your feet wet, here's some classic code:
+
+<pre>
+(write-line "Hello, world.") ;Print the famous greeting.
+
+;;; A function to produce the factorial of an integer.
+(defun factorial (n)
+   (if (= n 1)
+       1
+       (* (factorial (- n 1)) n)))
+
+</pre>
+
+
+<H3> <a name="books">Books</a></H3>
+<UL>
+<LI> <A HREF="books.htm#intro">Introductory</A> Common Lisp texts.
+<LI> <A HREF="books.htm#advanced">Advanced</A> Common Lisp texts.
+<LI> <A HREF="books.htm#clos">Object Oriented Programming</A> in Lisp.
+<LI> Books on <A HREF=books.htm#ai>artificial intelliegence</A> which use Lisp. 
+</UL>
+
+<H3> <a name="courses">Courses</a></H3>
+
+<UL>
+<LI>The <A HREF="http://www.open.ac.uk">Open University</A>
+offers a sort of electronic correspondence course called 
+<A
+HREF="http://www.open.ac.uk/OU/CourseDetails/dm863.html">Introduction
+to Common Lisp programming for artificial intelligence</A> 
+
+<LI>The Oregon Graduate Institute in Portland offsers a <a
+href="http://www.cse.ogi.edu/PacSoft/summerschool96.html">Summer
+School on Advanced Functional Programming</a>.  Apparently, there is,
+or has been, a similar program in Baastad, Sweeden.
+
+<LI> Some <A HREF="conferences.htm">conferences</A> have workshops on Lisp or on some aspect of it.
+
+</UL>
+
+<H3> <a name="tutorial">On-Line Tutorials</a></H3>
+<UL>
+
+		<li> <a href="http://www.apl.jhu.edu/~hall/contents.html">An
+		Introduction to Common Lisp</a> by <a
+		href="http://www.apl.jhu.edu/~hall/">Marty Hall</a> of the <a
+		href="http://www.jhuapl.edu/">Applied Physics Laboratory</a>,
+		<a href="http://www.jhu.edu">The Johns Hopkins University</a>.
+
+		<li> <a
+		href="http://www.cs.tulane.edu/www/Villamil/lisp/lisp1.html">Lisp
+		Tutorial</a> from the <a
+		href="http://www.cs.tulane.edu/">Computer Science
+		Department</a> at <a href="http://www.tulane.edu/">Tulane
+		University</a>.
+
+<LI> <a href="http://www.psychologie.uni-trier.de:8000/projects/ELM/elmart.html">
+Episodic Learner Model The Adaptive Remote Tutor (ELM-ART)</a> has a
+Lisp course in German, and exercises in English and German.  
+
+
+<LI> <A HREF="http://www.nyu.edu/pages/linguistics/marc/contents.html">LISP
+Tutorial</A> by Ray Dougherty and Marc Schwarz of the <A
+HREF="http://www.nyu.edu/pages/linguistics/marc/lingmarc.html">NYU Natural
+Language Computing Project</A>.
+
+<LI> <A HREF="http://snaefell.tamu.edu/~colin/lp/"> LISP Primer</A> by
+<A HREF="mailto:colin.allen@tamu.edu">Collin Allen</A> and <A
+HREF="mailto:manu@caligari.com">Maneesh Dhagat</A>.  <A
+HREF="http://http.tamu.edu:8000/~colin/lp/node1.html">(mirrored)</a>
+Devloped for students at <A HREF="http://www.tamu.edu">Texas A&M</A>.
+
+<LI> <A href="ftp://ftp.cast.uni-linz.ac.at/pub/lisp/doc/cl-tutotrial.txt">Common
+LISP Hints</A>, by <A HREF="mailto:ggordon@cs.cmu.edu">Geoffrey
+Gordon</A> of CMU.
+
+<li> Jeff Dalton's <a
+href="http://www.aiai.ed.ac.uk/~jeff/clos-guide.html">CLOS Guide</a>.
+
+<LI> <A HREF="references.htm#clim">Common Lisp Interface Manager (CLIM)</A>:
+<UL> 
+
+<LI><A
+HREF="http://kogs-www.informatik.uni-hamburg.de/~moeller/uims-clim/clim-intro.html">
+Ralf Moeller's Intro to CLIM</A>.
+
+<LI>Harlequin's <A HREF="http://www.harlequin.com/common-lisp/clim2/">CLIM 2 guide</A>
+</UL>
+
+</UL>
+</td></tr></table>
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Advance-To-Column</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-ADVANCE-TO-COLUMN</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-advance-to-column</B> <I>stream column </i>=&gt; <code>result</code><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>character output stream</EM>. <P>
+<I>column</I>---an <EM>integer</EM>. <P>
+<I>result</I>---a <EM>a generalized boolean</EM>. <P>
+
+<P>
+
+<B>Description:</B>
+
+<P>
+<b>Stream-advance-to-column</b> writes enough blank space on
+<i>stream</i> so that the next character will be written at the
+position specified by <i>column</i>.  Returns <em>true</em> if the the
+operation is successful, or <em>false</em> if it is not supported for
+<i>stream</i>.  This function is used in the implementation of
+<b>pprint</b> and the <b>format ~T</b> directive.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-start-line-p</b></a> (<i>stream</i>
+fundamental-character-output-stream) 
+<br>Returns <em>false</em> if <a
+href="line-column.htm"><b>stream-line-column</b></a> returns
+<code>NIL</code>.  Otherwise, it repeatedly calls <a
+href="read-char.htm"><b>stream-write-char</b></a> with a
+<code>#\space</code> character and returns <em>true</em>.
+
+<p><i>Primary Method</i> <b>stream-advance-to-column</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="terpri.htm"><b>stream-fresh-line</b></a>.
+<P>
+
+<B>Notes:</B> None.<p>
+
+
+<HR>
+<A HREF="eclipse-stream-classes.htm">[Previous]</A> 
+<A HREF="stream-clear.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+<A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

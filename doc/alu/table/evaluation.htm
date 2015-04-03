@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Compiler and Interpreter</TITLE>
+<meta name="description" content="Lisp evaluation">
+<meta name="keywords" content="lisp, compile, interpet, byte-code, virtual machine">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Compiled and Interpreted Lisp -- Evaluation in Lisp</H2>
+
+<blockquote><b>
+Summary:</b> Common Lisp supports both compiled and interpreted programs.  Some implementations also use "virtual machine code" or "byte code".
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="syntax.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="environment.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm"><b>evaluation</b></a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+
+<P>
+From <A HREF="history.htm">the beginning</A>, Lisp has supported
+interactive programming development, in which programs or pieces of
+programs could be quickly tried out.  This contrasts with the FORTRAN
+<EM>batch</EM> style of program development which came from the
+punch-card days in which development proceeded by repeatedly
+editing the program, processing the program, and running the program
+from start to finish (or crash).  The interactive style has been
+adopted to varying degree by other languages such as Smalltalk.
+
+<P>
+A significant consequence of this development style is that programs
+with complicated state can be developed more easily, with the
+developer testing new code <EM>without restarting the program</EM>.
+When problems arise, the program can be fixed and continued, without
+the need to rebuild the program state.  
+
+<P> <A HREF="references.htm#ansi">ANSI</A> <A
+HREF="history.htm#common">Common Lisp</A> requires that all
+implementations support this development style by providing a <A
+HREF="environment.htm">program development environment</A> which can
+<a href="top-level.htm">interactively run</a> arbitrarilly short or long programs, invoke the
+compiler, and load new definitions (whether source or previously
+compiled) -- all without loosing current state such as the values of
+global variables or function definitions.
+
+<P>It is not specified whether interactively running code may
+"interpret" the source directly, or whether it should first "compile"
+the code into machine instructions.  The distinction is somewhat
+blurry:
+
+<DL>
+
+<DD> Lisp was designed to write programs which can efficiently
+manipulate other programs.  In its default configuration, the Lisp
+reader translates Lisp source text into an <a href="syntax.htm">efficient list
+representation</a> of the program <STRONG>at the time the program is
+read</STRONG>.  Lisp programs can then be repeatedly "run", (i.e.
+<EM>evaluated</EM>) by processing this pre-parsed representation of the
+source.  This contrasts with those Perl and Smalltalk evaluators which
+always treat source as text, requiring repeated parsing and/or hashing
+of identifiers.
+
+<P>
+<DD> Many operating systems today have <EM>emulators</EM> which
+"interpret" the machine instructions for other types of computers, allowing
+identical copies of "compiled" programs to run on multiple platforms.
+Thus the compiled code is interpreted by the emulator.  Even "native"
+machine instructions are interpreted by microcode or hardware
+interpreters.  In short, at some level, all software on every machine
+is interpreted.
+
+</DL>
+
+ANSI Common Lisp requires that each implementation provide a compiler
+which obeys certain rules.  The standard recognizes the diffent
+possibilities for implementation.  Some systems always produce "virtual
+machine" instructions (called byte-code) which is portable across all
+platforms supported by the implementation.  (This is what Java does.)
+Other system always compile to "native" machine instructions.
+Some systems do both.  All implementation must at least perform some
+minimal compilation such as expanding macros so that they do not need
+to be expanded again at run-time.
+
+<P>
+Regardless of how such standard functions as <CODE>EVAL</CODE>,
+<CODE>COMPILE</CODE> and <CODE>LOAD</CODE> are implemented, the
+interactive style gives rise to a <A HREF="dynamic.htm">dynamic
+language</A> system.
+
+</td></tr></table>
+
+</BODY>
+</HTML>

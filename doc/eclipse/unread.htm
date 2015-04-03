@@ -1,0 +1,68 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Unread-Char</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-UNREAD-CHAR</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-unread-char</B> <I>stream char </i>=&gt; <I>char</I><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>character input stream</EM>. <P>
+<I>char</I>---a <EM>a character</EM>. <P>
+
+<P>
+
+<B>Description:</B><P>
+
+<b>Stream-unread-char</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function
+<b>unread-char</b>. The <i>char</i> argument must be the most recently
+read character from <i>stream</i> (eg. by <a
+href="read-char.htm"><b>stream-read-char</b></a> or <a
+href="listen.htm"><b>stream-read-char-no-hang</b></a>) and is inserted
+back into the input buffer of <i>stream</i>.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-unread-char</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="read-char.htm"><b>stream-read-char</b></a>, 
+<a href="listen.htm"><b>stream-read-char-no-hang</b></a>,
+<a href="peek.htm"><b>stream-peek-char</b></a>,
+<a href="listen.htm"><b>stream-listen-char</b></a>.
+<P>
+
+<B>Notes:</B> None.
+
+<P>
+
+<HR>
+<A HREF="terpri.htm">[Previous]</A> 
+<A HREF="write-string.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

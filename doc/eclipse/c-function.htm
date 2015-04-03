@@ -1,0 +1,70 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Compound Type Specifier C:FUNCTION</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Compound Type Specifier</I> <B>C:FUNCTION</B><P>
+
+<p>
+<B>Compound Type Specifier Syntax:</B>
+
+<p>
+<b>c:function</b> <i>arg-typespec value-typespec</i>
+
+<p>
+<B>Compound Type Specifier Arguments:</B>
+<p>
+<i>arg-typespec</i>---a <em>list</em> of zero or more <em>type specifiers</em>.
+<p>
+<i>value-typespec</i>---a <em>type-specifier</em>.
+
+<p>
+<B>Compound Type Specifier Description:</B>
+
+<P>
+The list form of the <b>c:function</b> <em>type-specifier</em> can be
+used only for declaration and not for discrimination. Every element of
+this <em>type</em> is a <em>function</em> that accepts arguments of
+the types specified by the <em>argj-types</em> and returns values that
+are members of the types specified by <em>value-type</em>.
+
+<p>
+When a call to a function that has been declared with a
+<b>c:function</b> type specifier is translated to C using <a
+href="compile.htm"><b>compile-file</b></a>, the generated C code will
+use calling conventions appropriate for a call to a C function.
+
+<p>
+
+<B>See Also:</B><P> 
+
+The <b>function</b> <em>type specifier</em> in the <a
+href="cl.htm#ansi">Common Lisp standard</b></a>,  <a
+href="applic.htm">"Delivering Applications"</a>, <a
+href="calls.htm">"Lisp Function Calls in C"</a>, <a
+href="c-macro.htm"><b>c:macro</b></a>.<P>
+
+<B>Notes:</B> 
+
+<P> Unlike the ordinary Lisp <b>function</b> compound type specifier,
+the <code>&amp;optional</code>, <code>&amp;rest</code>,
+<code>&amp;key</code>, and <code>&amp;allow-other-keys</code> markers
+<em>cannot</em> appear in the list of argument types.
+
+<p> It may be useful to use symbols in the <a
+href="defined.htm#package">C package</a> to identity <em>type
+specifiers</em> for use in this compound type specifier.
+
+<HR>
+<A HREF="base-char.htm">[Previous]</A> 
+<A HREF="c-macro.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

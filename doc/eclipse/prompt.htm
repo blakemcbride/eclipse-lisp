@@ -1,0 +1,64 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Variable *PROMPT-HOOK*</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Variable</I> <B>*PROMPT-HOOK*</B><P>
+
+<B>Value Type:</B><P>
+
+a <EM>function</EM> of three arguments, as defined below.<P>
+
+<B>Initial Values:</B><P>
+
+A <em>function</em> that prints a <em>fresh-line</em>, the current debug level
+if non-zero, and the string <CODE>&quot;> &quot;</CODE> to the
+specified stream.<P>
+
+<B>Description:</B><P>
+
+Forms to be evaluated by the <A href="rep.htm">read-eval-print
+loop</a> are prompted for by calling the function which is the value
+of <b>*prompt-hook*</b>.  The function is called with three arguments:
+<UL>
+
+<LI> The stream to which the prompt should be printed.
+
+<LI> The recursive debug level.  The Lisp top-level is at level 0, the
+first entry to the debugger at level 1, etc.
+
+<LI> The condition which caused entry to the read-eval-print loop to
+be entered (i.e. the condition passed to <b>invoke-debugger</b>).
+</UL>
+
+<B>Affected By:</B><P>
+
+Might be set by the user in <a href="init.htm"><code>init.lisp</code></a>.<P>
+
+<B>See Also:</B>
+
+<P><a href="topf.htm"><b>clLispTopLevel</b></a>, <a href="init.htm"><code>init.lisp</code></a>.<P>
+
+<B>Notes:</B> 
+
+<P>Some users prefer to have a prompt that indicates such information
+as the current <b>*package*</b>, time, <b>machine-instance</b>,
+<b>*default-pathname-defaults*</b>, etc.  While some of this
+information is not usually needed by Lisp programmers, the ability to
+change the prompt for the standard read-eval-print loop makes it
+easier to use this loop to provide end-user interaction in delivered
+applications.
+
+
+<HR>
+<A HREF="site-name.htm">[Previous]</A> <A HREF="help.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

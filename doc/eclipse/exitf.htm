@@ -1,0 +1,68 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: EXIT</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Function</I> <B>EXIT</B><P>
+<B>Syntax:</B><P>
+
+<B>exit</B> <TT>&amp;optional</TT> status condition</I> =&gt;| <P>
+
+<B>Arguments and Values:</B><P>
+
+<I>status</I>---a <EM>generalized boolean</EM>. The default is <em>false</em>.<P>
+<I>condition</I>---a <EM>condition object</EM>, or <code>NIL</code>. The default is <code>NIL</code>.<P>
+
+<B>Description:</B><P>
+
+The <b>exit</b> <em>function</em> transfers control to the most
+recently established <em>applicable restart</em> named
+<code>EXIT</code>.  The <i>status</i> argument is passed to the restart.
+
+<p>If no such <em>restart</em> exists, or if that restart returns to
+the caller, <b>exit</b> exits the application by calling the operating
+system <code>exit</code> utility, with a non-zero status.
+
+<p>
+When <i>condition</i> is <em>non-nil</em>, only those
+<em>restarts</em> are considered that are either explicitly associated
+with that <em>condition</em>, or not associated with any
+<em>condition</em>; that is, the excluded <em>restarts</em> are those
+that are associated with a non-empty set of <em>conditions</em> of
+which the given <i>condition</i> is not an element. If
+<i>condition</i> is <code>NIL</code>, all <em>restarts</em> are
+considered.
+
+<P>
+<B>Side Effects:</B> <P> 
+
+Exits the application.
+
+<P>
+<B>Affected By:</B> <P>
+
+The presence of an <a href="exit.htm"><b>exit</b></a> restart.
+
+<P>
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="top.htm">"Lisp top-level"</a>, <a
+href="topf.htm"><b>clLispTopLevel</b></a>, <a
+href="exit.htm"><b>exit</b></a> (<em>restart</em>).<P>
+
+<B>Notes:</B> None.<P>
+
+<HR>
+<A HREF="compile.htm">[Previous]</A>
+<A HREF="exit.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

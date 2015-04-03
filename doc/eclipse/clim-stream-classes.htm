@@ -1,0 +1,170 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: CLIM Stream Classes</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Class</I> <B>FUNDAMENTAL-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-CHARACTER-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-BINARY-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-INPUT-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-OUTPUT-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-CHARACTER-INPUT-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-CHARACTER-OUTPUT-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-BINARY-INPUT-STREAM</B>,
+<I>Class</I> <B>FUNDAMENTAL-BINARY-OUTPUT-STREAM</B>
+<P>
+
+<B>Class Precedence Lists:</B><P>
+
+<b>fundamental-stream</b>, <b>stream</b>, <b>standard-object</b>,
+<b>t</b><p>
+
+<b>fundamental-character-stream</b>, <b>fundamental-stream</b>,
+<b>stream</b>, <b>standard-object</b>, <b>t</b><p>
+
+<b>fundamental-binary-stream</b>, <b>fundamental-stream</b>, <b>stream</b>, <b>standard-object</b>, <b>t</b><p>
+
+<b>fundamental-input-stream</b>, <b>fundamental-stream</b>, <b>stream</b>, <b>standard-object</b>, <b>t</b><p>
+
+<b>fundamental-output-stream</b>, <b>fundamental-stream</b>, <b>stream</b>, <b>standard-object</b>, <b>t</b><p>
+
+<b>fundamental-character-input-stream</b>,
+<b>fundamental-character-stream</b>, <b>fundamental-input-stream</b>,
+<b>fundamental-stream</b>, <b>input-stream</b>, <b>stream</b>,
+<b>standard-object</b>, <b>t</b><p> 
+
+<b>fundamental-character-output-stream</b>,
+<b>fundamental-character-stream</b>, <b>fundamental-output-stream</b>,
+<b>fundamental-stream</b>, <b>output-stream</b>, <b>stream</b>,
+<b>standard-object</b>, <b>t</b><p> 
+
+<B>Description:</B>
+
+<p>
+The following classes must be used as superclasses of user-defined
+stream classes.  They are not intended to be directly instantiated;
+they just provide places to hang default methods.
+
+<p>
+<b>Fundamental-stream</b> is the base class for all CLIM streams.
+Eclipse further defines it to represent an actual stream directly
+connected to an operating system stream or to a <b>string-stream</b>.
+It does not represent an <a
+href="encapsulating-stream.htm"><b>encapsulating-stream</b></a>.
+
+<p>
+<b>Fundamental-input-stream</b> implements input streams.  
+Programmers may define methods for 
+<a href="stream-clear.htm"><b>stream-clear-input</b></a>.
+
+<p>
+<b>Fundamental-output-stream</b> implements output streams.
+Programmers may define methods for 
+<a href="stream-clear.htm"><b>stream-clear-output</b>,
+<a href="stream-clear.htm"><b>stream-force-output</b>, and
+<a href="stream-clear.htm"><b>stream-finish-output</b>.
+
+<p>
+<b>Fundamental-character-stream</b> implements character streams,
+including the <a
+href="stream-element-type.htm"><b>stream-element-type</b></a>
+accessor.  
+Character streams can be created by defining a <em>class</em> that
+includes either <a
+href="clim-stream-classes.htm"><b>fundamental-character-input-stream</b></a>
+or <a
+href="clim-stream-classes.htm"><b>fundamental-character-output-stream</b></a>
+(or both) and arranging to have <a
+href="stream-element-type.htm"><b>stream-element-type</b></a> return a
+subtype of <b>character</b>.
+
+
+<p>
+<b>Fundamental-character-input-stream</b> implements character input
+streams.
+Programmers must define methods for <a
+href="read-char.htm"><b>stream-read-char</b></a>.  Programmers
+may also define methods for <a
+href="read-sequence.htm"><b>stream-read-sequence</b></a>.
+
+
+<p>
+<b>Fundamental-character-output-stream</b> implements character output
+streams.
+Programmers must define methods for 
+<a href="read-char.htm"><b>stream-write-char</b></a> and
+<a href="line-column.htm"><b>stream-line-column</b></a>. 
+Programmers may also define methods for 
+<a href="line-column.htm"><b>stream-start-line-p</b></a>,
+<a href="line-column.htm"><b>stream-advance-to-column</b></a>,
+<a href="terpri.htm"><b>stream-terpri</b></a>,
+<a href="terpri.htm"><b>stream-fresh-line</b></a>,
+<a href="read-sequence.htm"><b>stream-write-sequence</b></a>, and
+<a href="write-string.htm"><b>stream-write-string</b></a>.
+
+
+<p>
+<b>Fundamental-binary-stream</b> implements binary streams.
+Binary streams can be created by defining a <em>class</em> that includes either
+<a
+href="clim-stream-classes.htm"><b>fundamental-binary-input-stream</b></a>
+or <a
+href="clim-stream-classes.htm"><b>fundamental-binary-output-stream</b></a>
+(or both) and arranging to have <a
+href="stream-element-type.htm"><b>stream-element-type</b></a> return a
+subtype of <b>integer</b>.
+
+<p>
+<b>Fundamental-binary-input-stream</b> implements binary input
+streams.  Programmers must define methods for <a
+href="read-char.htm"><b>stream-read-byte</b></a>.  Programmers may
+also define methods for <a
+href="read-sequence.htm"><b>stream-read-sequence</b></a>.
+
+<p>
+<b>Fundamental-binary-output-stream</b> implements binary output
+streams.  Programmers must define methods for <a
+href="read-char.htm"><b>stream-write-byte</b></a>.  Programmers
+may also define methods for <a
+href="read-sequence.htm"><b>stream-write-sequence</b></a>.
+
+
+<P>
+<B>See Also:</B> <P> 
+
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="eclipse-stream-classes.htm"><b>Eclipse stream classes</b></a>, 
+<a href="stream-element-type.htm"><b>stream-element-type</b></a>,
+<a href="open-stream-p.htm"><b>open-stream-p</b></a>
+<a href="close.htm"><b>close</b></a>.
+<p>
+
+<B>Notes:</B> 
+
+<P>
+The basic stream-based input and output protocol used by CLIM is taken
+from the "STREAM-DEFINITION-BY-USER" proposal to the <a
+href="../alu/tables/references.htm#ansi">X3J13</a> committee, made by
+David Gray of Texas Instruments.  This proposal was not accepted by the
+X3J13 committee as part of the ANSI Common Lisp language definition,
+but many Lisp implementations do support it.
+
+<p> The <a href="extensions.htm">CLIM</a> specification does not
+define the precise stream <b>class-precedence-list</b> of these classes; it
+only mentions some required superclass.  The Eclipse-defined
+<b>class-precedence-list</b> specified here is consistent with the
+requirements of CLIM.
+
+
+<HR>
+<A HREF="encapsulating-stream-p.htm">[Previous]</A> <A HREF="input-stream-p.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

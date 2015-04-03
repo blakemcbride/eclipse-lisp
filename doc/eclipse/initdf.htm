@@ -1,0 +1,59 @@
+<!-- The contents of this page are &copy; Copyright 1998 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: C Function clInitD</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>C Function</I> <B>clInitD</B><P>
+<B>Syntax:</B><P>
+
+<B>clInitD</B> =&gt; <I>void</I><P>
+
+<B>Description:</B><P>
+
+Initializes all data used by, and available from, the Eclipse
+development <a href="gloss.htm#library"><i>library (2)</i></a>.
+
+<p><a href="initf.htm"><b>clInit</b></a> must be called before
+<b>clInitD</b>.
+
+<p>
+<B>Side Effects:</B> <P> 
+
+After <b>clInitD</b> returns, all Lisp external and internal symbols
+are interned, bound and fbound appropriately, and have correct
+property lists.  However, <b>clInitD</b> is not required to
+reinitialize any such data if called repeatedly, or after the system
+has already been initialized in some other way.
+
+<p>
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+
+<a href="system.htm">Initializing the Eclipse Library</a>, <a
+href="initf.htm"><b>clInit</b></a>, <a href="top.htm">Lisp
+Top-Level</a>.
+
+<P>
+<B>Notes:</B> 
+
+<p>Any <a href "gloss.htm#stand"><i>stand-alone (2)</i></a> <a
+href="gloss.htm#development"><i>dynamic application</i></a> must be
+initialized by calling <b>clInitD</b>.
+
+
+<HR>
+<A HREF="initf.htm">[Previous]</A>
+<A HREF="topf.htm">[Next]</A> 
+<a href="cdict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

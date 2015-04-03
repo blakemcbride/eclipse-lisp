@@ -1,0 +1,72 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream Classes</TITLE>
+</HEAD>
+
+<a href="extensions.htm">Eclipse</a> defined<BR>
+<I>Class</I> <B>STREAM</B>,
+<I>Class</I> <B>INPUT-STREAM</B>,
+<I>Class</I> <B>OUTPUT-STREAM</B>
+<P>
+
+<B>Class Precedence Lists:</B><P>
+
+<b>stream</b>, <b>standard-object</b>,
+<b>t</b><p>
+
+<b>input-stream</b>, <b>stream</b>, <b>standard-object</b>, <b>t</b><p>
+
+<b>output-stream</b>, <b>stream</b>, <b>standard-object</b>, <b>t</b><p>
+
+<B>Description:</B>
+
+<p>
+The following classes must be used as superclasses of user-defined
+stream classes.  They are not intended to be directly instantiated;
+they just provide places to hang default methods.
+
+<p>
+<b>Stream</b> is the base class for all Eclipse streams.
+
+<p>
+<b>Input-stream</b> is a superclass of all input streams.
+
+<p>
+<b>Output-stream</b> is a superclass of all output streams.
+
+<P>
+
+<B>See Also:</B> <P> 
+
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>, 
+<a href="open-stream-p.htm"><b>open-stream-p</b></a>
+<a href="close.htm"><b>close</b></a>.
+<p>
+
+<B>Notes:</B> 
+
+<P>
+These classes supplement the <a href="clim-stream-classes.htm">CLIM
+stream classes</a>.
+
+<P>
+Eclipse has a very narrow definition of <a
+href="clim-stream-classes.htm"><b>fundamental-stream</b></a>.  Some of
+the methods that CLIM specifies as being defined for
+<b>fundamental-stream</b>, etc, are actually implemented in Eclipse on
+<b>stream</b>, <b>input-stream</b> or <b>output-stream</b>.
+
+
+<HR>
+<A HREF="open-stream-p.htm">[Previous]</A> 
+<A HREF="advance.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

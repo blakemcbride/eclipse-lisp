@@ -1,0 +1,78 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Read-Line</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-READ-LINE</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-read-line</B> <I>stream </i>=&gt; <I>line, missing-newline-p</I><P>
+<P>
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>character input stream</EM>. <P>
+<I>line</I>---a <EM>a string</EM> or the symbol <code>:EOF</code>. <P>
+<I>missing-newline-p</I>---a <EM>generalized boolean</EM>. <P>
+
+<P>
+
+<B>Description:</B><P>
+
+<b>Stream-read-line</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>read-line</b>.
+
+<P>
+The <em>primary value</em>, <i>line</i>, is the line that is read,
+represented as a <em>string</em> (without the trailing
+<em>newline</em>, if any).  If the <em>end of file</em> for
+<i>stream</i> is reached before any characters are read, the symbol
+<code>:EOF</code> is returned as the <i>line</i>.
+
+<p>
+The <em>secondary value</em>, <i>missing-newline-p</i>, is
+<em>false</em> if the line was terminated by a <em>newline</em>, or
+<em>true</em> if the line was terminated by the <em>end of file</em>
+for <i>stream</i>.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>stream-read-line</b></a> (<i>stream</i>
+fundamental-character-input-stream)
+<br>Calls <b>stream-read-char</b> repeatedly.
+
+<p><i>Primary Method</i> <b>stream-read-line</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>, 
+<a href="read-char.htm"><b>stream-read-char</b></a>.
+<P>
+
+<B>Notes:</B> None.
+
+<P>
+
+<HR>
+<A HREF="read-char.htm">[Previous]</A> 
+<A HREF="read-sequence.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

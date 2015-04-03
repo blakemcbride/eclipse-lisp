@@ -1,0 +1,117 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Stream-Read-Sequence, Stream-Write-Sequence</TITLE>
+</HEAD>
+
+<a href="extensions.htm">Eclipse</a> defined<BR>
+<I>Generic Function</I> <B>STREAM-READ-SEQUENCE</B>, <B>STREAM-WRITE-SEQUENCE</B><P>
+<B>Syntax:</B><P>
+
+<B>stream-read-sequence</B> <I>input-stream sequence <TT>&amp;key</TT> start end </i>=&gt; <I>position</I><P>
+<B>stream-write-sequence</B> <I>output-stream sequence <TT>&amp;key</TT> start end </i>=&gt; <I>sequence</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>input-stream</I>---an <EM>input stream</EM> of <i>element-type</i>. <P>
+<I>output-stream</I>---an <EM>output stream</EM> of <i>element-type</i>. <P>
+<I>sequence</I>---a <EM>a sequence</EM> of <i>element-type</i>.<P>
+<I>start, end</I>---a <EM>bounding index designators</em>
+of <i>sequence</i>. The defaults for <i>start</i> and <i>end</i>
+are 0 and <code>NIL</code>, respectively.<P>
+<I>position</I>---a <EM>an integer</EM> greater than or equal to zero,
+and less than or equal to the <em>length</em> of the <i>sequence</i>.
+
+<P>
+
+<B>Description:</B>
+
+<p>
+<b>Stream-read-sequence</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>read-sequence</b> and
+returns the index of the first <em>element</em> of 
+<i>sequence</i> that was not updated, which might be less than
+<i>end</i> because the <em>end of file</em> was reached.
+
+<p>
+<b>Stream-write-sequence</b> is used by the <a
+href="gloss.htm#ansi">ANSI</a> defined function <b>write-sequence</b>
+and returns <i>sequence</i>.
+
+<p><b>Methods:</b> 
+
+<br><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> encapsulating-stream)
+ (<i>sequence</i> sequence) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> encapsulating-stream)
+ (<i>sequence</i> sequence) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br>Calls the same <em>generic-function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+<p><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> fundamental-character-input-stream)
+ (<i>sequence</i> vector) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> fundamental-character-input-stream)
+ (<i>sequence</i> list) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> fundamental-binary-input-stream)
+ (<i>sequence</i> vector) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> fundamental-binary-input-stream)
+ (<i>sequence</i> list) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br>Iterates through sequence, repeatedly calling either
+<a href="read-char.htm"><b>stream-read-char</b></a> or 
+<a href="read-char.htm"><b>stream-read-byte</b></a>, as appropriate.
+
+<p><i>Primary Method</i> <b>stream-write-sequence</b></a> (<i>stream</i> fundamental-character-output-stream)
+ (<i>sequence</i> vector) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-write-sequence</b></a> (<i>stream</i> fundamental-character-output-stream)
+ (<i>sequence</i> list) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-write-sequence</b></a> (<i>stream</i> fundamental-binary-output-stream)
+ (<i>sequence</i> vector) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-write-sequence</b></a> (<i>stream</i> fundamental-binary-output-stream)
+ (<i>sequence</i> list) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br>Iterates through sequence, repeatedly calling either
+<a href="read-char.htm"><b>stream-write-char</b></a>
+ or <a href="read-char.htm"><b>stream-write-byte</b></a>, as appropriate.
+
+
+<p><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> input-stream)
+ (<i>sequence</i> sequence) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br><i>Primary Method</i> <b>stream-read-sequence</b></a> (<i>stream</i> output-stream)
+ (<i>sequence</i> sequence) <b><tt>&amp;key</tt></b> <i>start end</i>
+<br>Signals <b>type-error</b>.  These provide the correct <a
+href="gloss.htm#ansi">ANSI</a> defined behavior
+when <b>read-sequence</b> or <b>write-sequence</b> is given an
+<i>input-stream</i> or <i>output-stream</i> that has a different
+<em>element-type</em> than <i>sequence</i>.  It is up to the programmer
+to provide applicable overriding methods for correctly matching arguments.
+
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>,
+<a href="read-char.htm"><b>stream-read-char</b></a>,
+<a href="read-char.htm"><b>stream-read-byte</b></a>,
+<a href="read-char.htm"><b>stream-write-char</b></a>,
+<a href="read-char.htm"><b>stream-write-byte</b></a>.
+<P>
+
+<B>Notes:</B> None.<P>
+
+<HR>
+<A HREF="line.htm">[Previous]</A> 
+<A HREF="terpri.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

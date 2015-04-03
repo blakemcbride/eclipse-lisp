@@ -1,0 +1,90 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Input-Stream-P, Output-Stream-P</TITLE>
+</HEAD>
+
+<a href="extensions.htm">Eclipse</a> defined<BR>
+<I>Generic Function</I> <B>INPUT-STREAM-P</B>, <B>OUTPUT-STREAM-P</B><P>
+<B>Syntax:</B><P>
+
+<B>input-stream-p</B> <I>stream </i>=&gt; <I>result</I><P>
+<B>input-stream-p</B> <I>stream </i>=&gt; <I>result</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>stream</I>---a <EM>stream</EM>. <P>
+<I>result</I>---a <EM>generalized boolean</EM>.
+<P>
+
+<B>Description:</B><P>
+
+The existing <a href="cl.htm#ansi">ANSI</a> functions
+<b>input-stream-p</b> and <b>output-stream-p</b> is redefined to be a
+generic function, but otherwise behaves the same.
+
+<p><b>Methods:</b> 
+
+<p><i>Primary Method</i> <b>input-stream-p</b></a> 
+ (<i>stream</i> <a href="eclipse-stream-classes.htm">input-stream</a>)
+<br>
+<i>Primary Method</i> <b>output-stream-p</b></a> 
+ (<i>stream</i> <a href="eclipse-stream-classes.htm">output-stream</a>)
+<br>
+Returns <em>true</em>.  
+
+<p><i>Primary Method</i> <b>input-stream-p</b></a> (<i>stream</i> encapsulating-stream)
+<br><i>Primary Method</i> <b>output-stream-p</b></a> (<i>stream</i> encapsulating-stream)
+<br>Calls the same <em>generic function</em> on the <a
+href="encapsulating-stream.htm"><b>encapsulating-stream-stream</b></a> of <i>stream</i>.
+
+
+<p><i>Primary Method</i> <b>input-stream-p</b></a> 
+ (<i>stream</i> stream</a>)
+<br>
+<i>Primary Method</i> <b>output-stream-p</b></a> 
+ (<i>stream</i> stream</a>)
+<br>
+Returns <em>false</em>.  
+
+
+<p><i>Primary Method</i> <b>input-stream-p</b></a> 
+ (<i>stream</i> t</a>)
+<br>
+<i>Primary Method</i> <b>output-stream-p</b></a> 
+ (<i>stream</i> t</a>)
+<br>
+Signals <b>type-error</b>.
+
+<P>
+<B>Side Effects:</B> None.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> <P>Signals <b>type-error</b> if
+<i>stream</i> is not a <a href =
+"eclipse-stream-classes.htm"><b>stream</b></a>.<P>
+
+<B>See Also:</B><P>
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM Stream Classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse Stream
+Classes</b></a>.
+<P>
+
+<B>Notes:</B> <P>
+
+<a href="extensions.htm">CLIM</a> specifies a default method only for <a
+href="clim-stream-classes.htm"><b>fundamental-stream</b></a>
+rather than on <a href="eclipse-stream-classes.htm"><b>stream</b></a>.
+
+<HR>
+<A HREF="clim-stream-classes.htm">[Previous]</A> <A HREF="open-stream-p.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

@@ -1,0 +1,934 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: C Identifier Naming Convention</TITLE>
+</HEAD>
+
+<H2>Eclipse C: C Identifier Naming Convention</H2>
+<hr>
+
+<UL>
+<LI> <a href="#purpose">Purpose</a>
+<LI> <a href="#summary">Summary</a>
+<LI> <a href="#basic">Basic Examples</a>
+<LI> Details
+<UL>
+<LI> <a href="#package">Package Qualification</a>
+<LI> <a href="#case">Case Conversion</a>
+<LI> <a href="#characters">Character Substitution</a>
+<LI> <a href="#function">Function Names</a>
+<LI> <a href="#renaming">Renaming</a>
+<LI> <a href="#constant">Constants</a>
+<LI> <a href="#internal">Other Internally Generated Identifiers</a>
+<LI> <a href="#explicit">Explicit C Identifiers</a>
+<LI> <a href="#header">Other C Identifiers In Headers</a>
+<!-- <LI> <a href="#system">Internal and System Functions</a>-->
+</UL>
+<LI> <a href="#outstanding">Outstanding Issues</a>
+</UL>
+
+<HR><H3><a name="purpose">PURPOSE</a></H3>
+
+The naming convention in Eclipse addresses the problem that names in
+Lisp have certain features that are not available in C, including:
+<UL>
+ <LI> Different namespaces for functions, variables and "go" labels.
+ <LI> Lexically nested functions.
+ <LI> Lexically nested variable bindings in which initial values
+   may be computed from values of outer bindings with the same name.
+ <LI> Lexically nested scopes for "go" labels.
+ <LI> A package system for differentiating names used in different
+   programs (or by different programmers).
+ <LI> A wider range of legal characters in names.
+ <LI> No globally reserved words.
+ <LI> More complex "compile-time" literals.
+</UL>
+
+<HR><H3><a name="purpose">SUMMARY</a></H3>
+			       
+
+Symbol names in Lisp are translated in a predictable and readable
+manner to identifiers in C, using the following techniques:
+
+<H4>Package prefixing:</H4>
+
+  C identifiers which name constructs with limited scope usually use some 
+  form of the Lisp symbol name alone.  When necessary, the Lisp
+  package name is used as a prefix. 
+<P>
+
+  C identifiers which name constructs who's scope includes the entire C
+  file (or files) always use the Lisp package name as a prefix. 
+
+<H4>Case conversion:</H4>
+
+  The names of Lisp variable bindings appear in lower case.  Dashes
+  are converted to underscores. 
+<P>  
+  The names of Lisp symbols and labels appear in upper case.  Dashes
+  are converted to underscores. 
+<P>
+  The names of Lisp functions appear with only the first character in
+  each word capitalized.  Single dashes separating words are removed.
+  
+<P>
+  Escaped (i.e. non-standard cased) characters in Lisp names are
+  escaped in the C identifier as well.
+<P>
+  When there are not enough unescaped letters in a word to make the
+  case apparent, a suffix in a distinguished case is used which
+  identifies the token as a symbol, function, etc.
+
+<H4>Renaming:</H4>
+  
+  If two Lisp symbols correspond to distinct constructs with distinct
+  scope in Lisp, but are translated to C identifiers with overlapping
+  or shadowing scope, the inner one is renamed using a suffix with a
+  distinguished case.
+
+<H4>Character Translation:</H4>
+
+  Non-aphanumeric characters in symbol names are translated into a
+  short identifying string.  The character name appears in a
+  distinguished case from the other characters in the identifier.
+
+<p>
+Special provision is made to provide hexidecimal "names" for
+characters greater than 255.
+
+<H4>Symbols in the C package:</H4>
+
+  None of this is true for Lisp symbols in a package named "C".  The
+  names of symbols in this this package translate "directly" into C
+  identifiers. 
+
+<H4>Identifier length:</H4>
+
+No attempt is made to shorten identifiers, and almost all
+will be longer than 8 characters -- many will be longer than 32.
+Eclipse will simply not work with compilers which impose draconian
+limits on the length of identifiers.
+
+
+<HR><H3><a name="basic"> BASIC EXAMPLES</a></H3>
+
+The Lisp <a href="terminology.htm"><i>symbol</i></a> <b>PI</b> names a
+global constant.  The symbol has a <a
+href="terminology.htm"><i>name</i></a>, "PI", and a <a
+href="terminology.htm"><i>package</i></a> named "COMMON-LISP", or "CL"
+for short.
+
+
+<p>
+In C, the <a href="terminology.htm"><i>identifier</i></a>
+<CODE>clPI</CODE> refers to this symbol.  The <CODE>cl</CODE> part is
+the package qualifier, while the symbol's name, "PI", appears in all
+upper case letters as <CODE>PI</CODE>.
+
+<p>
+The following table gives some examples of the package qualification
+and case conversion, assuming the current package is
+<CODE>USER</CODE>, and that <CODE>USER</CODE>  
+does not inherit any symbols from package <CODE>XY</CODE>.
+
+<PRE>
+	Lisp construct		Lisp symbol	C identifier
+	--------------		----------	------------ 
+Examples of locally scoped constructs which only use package
+qualification when necessary.  If present, the package qualifier is
+separated from the symbol name by an underscore.
+
+lower case
+	local variable		FOO-BAR		   foo_bar
+	              		F-B		   f_b
+	              		XY:FOO-BAR	XY_foo_bar
+	                	XY:F-B		XY_f_b
+upper case
+	local label		FOO-BAR            FOO_BAR
+ 	 (go or block label)	F-B                F_B    
+	             		XY:FOO-BAR      xy_FOO_BAR
+	            		XY:F-B          xy_F_B    
+
+first letter capitalized	
+	local variable 		FOO-BAR            FooBar
+	 representing a		F-B                FBfunc
+	 local function 	XY:FOO-BAR      xy_FooBar
+	 binding		XY:F-B          xy_FBfunc
+
+Constructs who's C scope includes the entire file.  A package qualifier
+is always used, and no underscore separates it from the symbol name.
+
+first letter capitalized
+	function		FOO-BAR		usrFooBar
+	        		F-B		usrFBfunc
+	        		XY:FOO-BAR	 xyFooBar
+	        		XY:F-B		 xyFBfunc
+
+	lexical function	FOO-BAR		usrFooBar_Baz
+	BAZ defined inside	F-B		usrFBfunc_Baz
+	the given function	XY:FOO-BAR	 xyFooBar_Baz
+	        		XY:F-B		 xyFBfunc_Baz
+
+	lexical function	FOO-BAR		usrFooBar_xyBaz
+	XY:BAZ defined inside	F-B		usrFBfunc_xyBaz
+	the given function	XY:FOO-BAR	 xyFooBar_xyBaz
+	        		XY:F-B		 xyFBfunc_xyBaz
+
+upper case
+	a symbol		FOO-BAR		usrFOO_BAR
+	        		F-B		usrF_B
+	        		XY:FOO-BAR	 xyFOO_BAR
+	        		XY:F-B		 xyF_B
+</PRE>
+
+
+
+<HR><H3><a name="package"> PACKAGE QUALIFICATION</a></H3>
+
+An abbreviation for the package name appears at the beginning of 
+package qualified identifiers.  
+
+<P>
+The package qualifier used can be set by the user, and defaults to the
+shortest name or nickname for the package.  
+
+<P>
+The package qualifiers for various system defined packages are:
+<UL>
+<LI> "KEY" for the keyword package
+<LI> "USR" for the Common Lisp user package
+<li> "" (nothing) for the C package
+<LI> "CL" for all other user-visible system defined packages, including
+  the COMMON-LISP package itself.
+<LI> "SYM" for uninterned symbols (i.e. no home package)
+</UL>
+
+The package qualifiers are normally translated to lower case when
+appearing in C identifiers, thus holding to a minimum the number of
+character prefixes "reserved" by Eclipse.
+
+
+<p>
+The Lisp function <code>(<b>package-prefix</b> <i>package</i>)</code>
+returns the current package-prefix used by <a
+href="compile.htm"><b>compile-file</b></a>.  The Lisp function
+<code>(setf (<b>package-prefix</b> <i>package</i>)
+<i>string</i>)</code> assigns <i>string</i> as the new package prefix
+for <i>package</i>.
+
+
+<P>
+<BLOCKQUOTE>
+It would be nice if all package qualification consistently lower
+cased the package qualifier prefix name.  However, the local variable
+<CODE>xy-foo</CODE> would then be indistinguishable from the local variable <CODE>xy:foo</CODE>
+-- both would appear as <CODE>xy_foo</CODE>.
+
+<P>
+Thus the only time upper case qualifiers are used is in local variable
+names in which the programmer explicitly used a name for the local
+variable which is represented by a symbol not accessible in the
+package the programmer is working in.  This is very unusual.  Even
+then, the local variable will shadow any conflicting external
+identifier (i.e. with the same name, including the upper case prefix),
+which is probably what is desired.  If not, only the local variable
+name need be changed.
+
+<P>
+Note, though, that it is customary to define macros which use
+uninterned symbols to name local variables.  These will be package
+qualified using upper case <CODE>SYM</CODE>.
+<P>
+</BLOCKQUOTE>
+
+All C identifiers who's scope includes the entire C file are package
+qualified.  The package qualifier immediately precedes the symbol
+name, without an intervening underscore.  The start of the symbol name
+is distinguishable because the package prefix is always lower cased,
+and global identifiers are always either upper case or capitalized.
+
+<P>
+Other identifiers with scope limited to a single function or compound
+statement block are only package qualified if:
+<UL>
+
+ <LI> The identifier would otherwise begin with a number and would
+   therefore not be legal as C identifier.  By prefixing the
+   identifier with the package name, we ensure that the C identifier
+   begins with a non-number.  Of course, this won't work if the user
+   assigns a an empty string, or a string begining with a number, as a
+   package prefix.
+
+ <LI> The identifier would otherwise be identical to a reserved word in
+   C.  All C reserved words are lower case, and the only identifiers
+   which Eclipse prints in all lower case are local variables.  Thus
+   this situation can only exist with local variables named
+<code>int</code>, <code>char</code>,
+   <code>switch</code>, etc.
+
+ <LI> The symbol is different from a symbol in the current package with
+   the same name.  This ensures that different variables with the
+   same name (but different packages) will use different identifiers.
+</UL>
+
+When locally scoped identifiers do need a package qualifier, package
+qualifier prefix is separated from the symbol name with an underscore.
+This distinguishes such identifiers from global identifiers of the
+same name corresponding to the same type of construct (ex. functions
+and local variables corresponding to local function bindings).
+
+<P>
+Non-alphanumeric characters in package names are mapped into character
+name strings.  However, it is up to the user to make sure that the
+package qualifier does not:
+
+<UL>
+ <LI> begin with a number, which would make any identifiers which used
+   this package prefix illegal in C
+
+ <LI> end with a number, which might cause a
+   conflict with a global identifier which began with the same number.
+   For example, the symbols
+   named xy1:|2| and xy:|12| both translate as xy12SYMBOL.
+
+ <li> have the name "A" "BV" "C" "CONS" "D" "F" "H" "I" "INST" "P" "PKG" "R"
+ "RAND" "STR" "STRUCT" "X" (the constant prefixes, defined <a href="#constants">below</a>), 
+ the name of any system package prefix (defined <a href="#package">above</a>), or "T" the
+ prefix for the internally used temporary variable package.
+</UL>
+
+
+<HR><H3><a name="case">CASE CONVERSION</a></H3>
+
+The default behavior for Lisp symbols, and all Lisp symbols defined by
+Lisp itself, uses all upper case letters.  Case conversion describes
+how upper case alphabetic characters in Lisp symbol names are mapped
+into C identifiers.
+
+<UL>
+ <LI> Local variables are in lower case.  This corresponds to the usual
+  practice in C.
+
+ <LI> Functions have words formed by capitalizing the first letter of each
+  word (and removing dashes).  This corresponds with popular C
+  libraries as such as Xlib.
+
+  Nested functions have underscores between the name of the parent and
+  the local name. 
+
+ <LI> Type-identifiers translated to C as type definitions for local
+  variables use the same convention as functions.  This also
+  corresponds with Xlib convention, and relies on the fact that C
+  tries to treat type-identifiers and function/variable identifiers as
+  separate namespaces. 
+
+ <LI> Everything else such as labels and global "variables" holding interned
+  symbols are in upper case.  The upper case treatment of identifiers
+  referring to symbols is consistent with the C convention for
+  "symbols" and "`const' variables".
+</UL>
+
+Characters in Lisp symbol names which are not upper case are said to
+be "escaped", and they are normally printed in Lisp using escape
+characters to indicate their non-default case.  The same is done in
+translating to C.  Thus:
+
+<PRE>
+	normal 
+symbol	Lisp
+name 	ref.	  as local var.	   as global symbol	as function
+------	-----	  ---------------  -------------------	------------------
+FOO-BAR foo-bar   foo_bar 	   usrFOO_BAR 		usrFooBar 
+FOO-bar foo-|bar| foo_PIPEbarPIPE  usrFOO_pipebarpipe 	usrFooPIPEbarPIPE 
+FOO-BaR foo-b\ar  foo_bBACKSLASHar usrFOO_BbackslashaR  usrFooBBACKSLASHar 
+</PRE>
+
+Note that the escape characters (| or \) print in a case
+distinguishable from unescaped normal characters.
+
+<P>
+
+<BLOCKQUOTE>
+[A bug is that the function <CODE>FOO-|bar|</CODE> is
+indistinguishable from the function <CODE>FOO|bar|</CODE>.]
+<P>
+</BLOCKQUOTE>
+
+When performing case conversion, it sometimes happens that there aren't
+enough unescaped alphabetic characters to form a distinguished
+identifier.  For example, with the rules given so far, a function and
+a global symbol named X would both translate as usrX.  When this
+occurs, a distinguishing suffix of either _SYMBOL or _FUNC is used,
+which itself appears in a distinguishing case.  This is most common for
+numeric functions and other symbols who's names contain no alphabetic
+characters at all.
+
+
+
+<HR><H3><a name="characters">CHARACTER SUBSTITUTION</a></H3>
+
+It is possible for Lisp names to contain non-alpha numeric characters
+and even spaces.  Each such character is translated into a name which
+appears in a distinguishing case so as not to be confused with a name
+which actually contains the characters of the name.  For example:
+<PRE>
+
+symbol	local	 	local   	global 		global
+name	variable 	label   	symbol 		function
+------ 	-------- 	------- 	---------- 	----------
+FOO!	fooBANG  	FOObang 	usrFOObang 	usrFooBANG
+FOOBANG foobang  	FOOBANG 	usrFOOBANG	usrFoobang 
+FOObang fooPIPEbangPIPE FOOpipebangpipe	usrFOOpipebangpipe 
+						     usrFooPIPEbangPIPE
+
+</PRE>
+The mapping of characters to names varies with usage.  For example,
+for most purposes, the mapping is:
+
+<PRE>
+!	"		#	$	% 	& 	  '
+BANG	QUOTATION	HASH	DOLLAR	PERCENT	AMPERSAND QUOTE
+
+( 	) 	*	+ 	,	- &lt;dash&gt;  . 	/
+LPAREN	RPAREN	STAR	PLUS	COMMA	_ &lt;under&gt; DOT 	SLASH 
+
+:	;	  < 	= 	>	? 	 space	@ 
+COLON   SEMICOLON LESS 	EQUAL 	GREATER QUESTION SPACE 	AT         
+
+[	 \ 	   ] 		^	_ &lt;under&gt ` 	    { 
+LBRACKET BACKSLASH RBRACKET     CARET 	__&lt;twice&gt BACKQUOTE LBRACE     
+
+| 	} 	~ 	newline return backspace page 	tab 
+PIPE 	RBRACE	TILDE	NEWLINE RETURN BACK	 PAGE	TAB
+</PRE>
+
+However for functions, the mapping is modified so that / => DIV and - =>
+MINUS.  In addition, underscores remaining after the
+underscore-stripping/capitalization process are represented as UNDER.
+
+<p>
+The "name" of a character who's code is greater than 255 is
+<code>"_X****_"</code>, where <code>****</code> is as many hexidecimal
+digits as necessary to represent the code.
+
+
+<HR><H3><a name="function">FUNCTION NAMES</a></H3>
+
+There are several aspects of Eclipse that require basic function names
+to not have any underscores:
+
+<UL>
+  <LI> Compound names are formed for lexical functions in which the name
+    of the (package qualified) parent is used as a prefix to the local
+    function name, separated by an underscore:
+
+    <CODE>usrFoo_Bar</CODE> is a lexical function <CODE>BAR</CODE>
+    defined within the function <CODE>FOO</CODE>. 
+    <CODE>usrFooBar</CODE> is the function <CODE>FOO-BAR</CODE>.
+  
+<!--  <LI> Since functions may be redefined in a running Lisp program, truly
+    general calls must not be to the C function directly, but to a C
+    variable which holds a pointer to the C function currently
+    implementing the Lisp function.  This hook variable has the same
+    name as the C function but ends in an underscore.-->
+
+<!-- Not any more...
+    <LI> There may be local C variables which store the environment or
+    closure for a lexical function.  These variables look like the
+    function name but start and end with an underscore. -->
+
+  <LI> We may provide for making "internal" versions of some functions
+    which may be more efficient in some circumstances.  The internal
+    functions have the same names as the corresponding C function but
+    the name is preceded by an underscore.  (This follows standard C
+    practice.) 
+</UL>
+
+On the other hand, we still need to distinguish between the function
+<CODE>FOO-BAR</CODE> and <CODE>FOO--BAR</CODE>.  The methodology used is that any
+non-alphanumeric character serves as a word separator.  The first
+character after such a separation will be capitalized if and only if
+it is alphabetic.  If the separating character happens to be a hyphen
+(the usual case) and there is at least one character after the hyphen,
+the separating hyphen is removed.   Any remaining hyphens appear as
+<CODE>MINUS</CODE>. Any underscores appear as "UNDER".
+
+<BLOCKQUOTE>
+[A bug is that <CODE>FOO-1BAR</CODE> and <CODE>FOO1BAR</CODE> both
+translate as <CODE>usrFoo1bar</CODE>. 
+Also, <CODE>-FOO</CODE> and <CODE>FOO</CODE> both translate as
+<CODE>usrFoo</CODE>.  Note, though, that <CODE>1-</CODE>
+translates properly as <CODE>cl1MINUS_FUNC</CODE>.]
+</BLOCKQUOTE>
+
+
+<HR><H3><a name="renaming">RENAMING</A></H3>
+
+
+Within a Lisp function, there may be several constructs such as
+tagbodies which introduce local labels which have the same name, but
+different (perhaps nested) scope.  In C, the corresponding labels must
+be uniquely named within each function.  The compiler keeps track of
+these names for each function.  When the same name is used within a
+function, the compiler renames one of them, appending <CODE>__r1</CODE> to the C
+identifier.  Note the distinguishing case.
+
+<P>
+
+Here's a silly example:
+<pre>
+(tagbody foo (go foo)
+  (tagbody foo (go foo)))
+
+=> {  { FOO: ; goto FOO; { FOO__r1: ; goto FOO__r1; } } }
+</pre>
+
+Lisp variable bindings may refer to outer bindings with the same name
+in their initialization forms.  Again, renaming is used, using a
+distinguishing case.
+
+<pre>
+(let ((a 1))
+  (let ((a a))
+    (print a))
+  (print a))
+
+=> { clObject a;
+     clSetq(a, I_1);
+     { clObject a__R1; clSetq(a__R1, a); clPrint(a__R1, clEOA); }
+     clPrint(a, clEOA); }
+</pre>
+
+Renaming of nested scope variables also avoids the problem of lint
+warnings about inner definitions hiding outer ones.
+
+<P>
+A Lisp function (or file) may also introduce different lexical functions with
+the same name but different scope.  Ex. 
+
+<pre>
+(progn (flet ((foo ...))
+	 ...)
+       (flet ((foo ...))
+	 ...))
+</pre>
+
+Again, renaming with a distinguishing case is used.
+
+
+<HR><H3><a name="constants">CONSTANTS</a></H3>
+
+Constant or literal values which are C primitives such as
+<code>int</code>, <code>float</code>, and <code>char *</code> may
+appear directly where they are used in C code.  The C compiler deals
+with them in an efficient manner.  However, Lisp objects are not C
+primitives.  Each generated C file has a number of "variables" which
+correspond to each literal used in the original Lisp file.  These
+"variables" are initialized once when the system starts up.  The
+constants are coalesced. For example, if several functions in a file
+used the literal value <CODE>2.0d0</CODE>, one variable is created to
+hold the Lisp <CODE>double-float</CODE>.  The variable is initialized
+once at system start up time.  Each function in the file which uses
+the value gets the value from this variable.
+
+<P>
+
+The naming convention for these variables breaks them down into two
+classes: those with unique names and those without.
+
+<P>
+Characters, integers, single and double floats, ratios, complex numbers, packages and
+interned symbols all have unique names that include the "value" of the
+constant.  We have already seen the naming convention for interned
+symbols.  The others use the prefix strings: <CODE>C_</CODE>,
+<CODE>I_</CODE>, <CODE>F_</CODE> or <CODE>D_</CODE>, <CODE>R_</CODE>,
+<CODE>X_</CODE> and <CODE>PKG_</CODE>, respectively.  The value of the constant then
+appears, with suitable character mapping of non-alphanumeric
+characters.  Examples are:
+
+<pre>
+C_a, C_bang, C_space (for #\a #\! and #\Space)
+I_1, I_minus1, I_123456789102345 (for 1, -1, and 123456789102345)
+F_1_2, F_1_3eplus10, D_1_3d0, D_1_5dminus10 (for 1.2 1.3e10 1.3d0 and 1.5d-10)
+R_2div3 (for 2/3)
+X_1plus3I, X_1_5plus3_5I, X_1_5d0plus3_5d0I (for #c(1 3) #c(1.5f0 3.5f0)...)
+PKG_COMMON_LISP, PKG_COMMON_LISP_USER (for #&lt;Package COMMON-LISP&gt; ...)
+</pre>
+
+The remaining constants have names which include a prefix 
+and a small distinguishing integer:
+
+<pre>
+Uninterned symbols: SYM_0_FOO, SYM_1_FOO
+Symbols interned in the C package: CC_0_foo
+Cons cells: CONS_0, CONS_1
+Strings: STR_0, STR_1
+Bit vectors: BV_0, BV_1
+Arrays: A_0, A_1
+Hash tables: H_0, H_1
+Pathnames: P_0, P_1
+Random state: RAND_0, RAND_1
+Structures: STRUCT_0_usrFOO, STRUCT_1_usrFOO 
+Standard-object instances: INST_0_clFOO, INST_1_clFOO
+</pre>
+
+N.B.: The package qualified type/class of structures appear in
+the name.  However, the identifying integer does not necessarily
+indicate the number of objects of that type/class which have been
+made.
+
+<p>
+N.B.: When symbols appear as literals, a "constant" variable is
+created that has a name that more or less matches both the name as it
+appears in Lisp, and the C naming convention that ENUMs and other
+names "flags" appear in upper case.  Package qualification is used.
+There are two exceptions:
+
+<ol>
+<P><li>It is possible to have distinct uninterned symbols with the
+same name in Lisp, so we must use the distinguishing integer
+convention for uninterned symbols. As there is no package from which
+to obtain a package prefix, "SYM" is used as the prefix.
+
+<p><li>Tokens named by symbols in the C package are uniformly exempt
+from case conversion, etc.  However, this might cause clashes in C
+between functions named by symbols in the C package and literal
+symbols in the C package.  Thus literal symbols in the C package also
+use the distinguishing integer convention, and a prefix of "CC".
+</ol>
+
+
+<P>
+The prefixes used for constants are upper case while package qualifiers are
+generally lower case.  The exception occurs when a programmer uses a
+symbol not accessible in the current package to name a local variable.
+Thus users must still avoid using the constant prefixes for package
+prefixes.  The most likely clash would appear to be from a package
+named, <CODE>X</CODE>, but fortunately, it is not possible to make a local variable
+which translates, for example, as <CODE>X_1plus3I</CODE>.  (The substring "plus"
+would be either uppercase or escaped.)
+
+
+<HR><H3><a name="internal">OTHER INTERNALLY GENERATED IDENTIFIERS</a></H3>
+
+The C compiler generates some internal identifiers:
+
+<UL>
+ <LI> Temporary variables for holding:
+  <UL>
+   <LI> arguments to functions.
+   <LI> tests values for if statements.
+  </UL>
+
+   These follow the rules for local variables.
+
+ <LI> Identifiers for labeling constructs:
+   <UL>
+   <LI> catch
+   <LI> tagbody
+   <LI> multiple-value-prog1
+   <LI> multiple-value-call
+   <LI> unwind-protect
+   <LI> throw
+   </UL>
+
+   These are used for arguments to the macros
+   defined in the include files.  They follow the rules for labels. 
+</UL>
+
+In both cases, the names used are interned in a system package with a
+package prefix of "T".
+
+
+
+<HR><H3><a name="explicit">EXPLICIT C IDENTIFIERS</a></H3>
+
+Most of the naming convention is designed to avoid conflicts between C
+identifiers representing different Lisp constructs.  
+<P>
+
+However, Lisp code compiled to C by Eclipse may refer directly to C
+functions and variables defined in other object files and libraries.
+We must, therefore, arrange to translate these names in such a way
+that they will <STRONG>NOT</STRONG> be unique from the identifiers for the desired C
+constructs.
+
+<P>
+The C package in Eclipse does not inherit symbols from any other
+package.  Any Lisp construct identified by a symbol in the C package
+-- local variable, function, "go" label, type, etc -- is translated to C
+with minimal alteration:
+
+<UL>
+<LI> No package qualifier is used.
+<LI> The case is "inverted":
+  <UL>
+  <LI> If the symbol name is all upper case, (the default for all
+    Lisp symbols), it is printed in all lower case (the usual case for
+    C identifiers).
+  <LI> If the symbol name is all lower case, it is printed in all upper
+    case.  
+  <LI> If the symbol name is in mixed, case, it is printed without
+    changing the case. 
+  </UL>
+</UL>
+
+A notable exception is that symbols appearing as literal data in a
+compiled file use a similar convention as for uninterned symbols,
+though the symbol-name itself does appear unaltered.  See <a
+href="#constants"><i>Constants</i></a>, above.
+
+<P>
+The case inversion is intended as a convenience, since the default
+reader behavior is to intern symbols in all uppercase, and most C
+identifiers are all lower case.
+
+<P>
+The compiler does not map any non-alphanumeric characters into their
+names for symbols in the C package.  This allows these symbols to
+appear as arbitrarily complex C syntax.  It is up to the user to
+choose symbols which translate as legal C syntax.
+
+<P>
+The translation of symbols in the C package is essentially an escape
+mechanism in which users can access desired C tokens such as:
+
+<UL>
+ <LI> declaring a type: <CODE>(type c:int x)</CODE> => <CODE>int x;</CODE>
+ <LI> accessing a variable: <CODE>c:errno</CODE> => <CODE>errno</CODE>
+ <LI> accessing a C function or macro: <CODE>(c:isalpha x)</CODE> => <CODE>isalpha(x)</CODE>
+  and <CODE>(c::|XCloseDisplay| x)</CODE> =>
+  <CODE>XCloseDisplay(x)</CODE> 
+</UL>
+  
+Just as it is up to C programmers to avoid conflicts with variables,
+functions, types, and tags identified with the same token, it is
+similarly up to the Lisp programmer to avoid such conflicts with
+symbols in the C package.  
+
+<P>
+Just as it is up to C programmers to not name variables, etc. with
+identifiers that begin with a number, it is similarly up to the Lisp
+programmer to not compile constructs named with C symbols who's name
+begins with a number.
+
+
+<HR><H3><a name="header">OTHER C IDENTIFIERS IN HEADERS</a></H3>
+
+There are some other uses of identifiers which do not appear directly
+in generated code, but do appear in header
+(i.e. <code>#include</code>) files :
+
+<UL>
+
+ <LI> Struct and union members are named using lower case letters
+   separated by underscores.  This follows C convention and relies on
+   the fact that C compilers treat these identifiers and variables as
+   separate namespaces.
+
+ <LI> Global variables involving the inner workings of the system use the same
+   convention as local variables, except that they are all package
+   qualified with  <CODE>CL_</CODE>.  The names are chosen not to be symbols in
+   the Lisp package, so no user code will be able to accidentally
+   define a local variable which would clash.
+
+ <LI> Global constant parameters (<CODE>#defines</CODE>) use all uppercase letters and
+   are package qualified with <CODE>cl_</CODE>
+
+ <LI> The macros defined in the include files sometimes generate internal
+   variables based on a label supplied as argument.  The internal
+   variable names are generated by concatenating a lower case prefix
+   with the label argument (all capital letters).  
+
+</UL>
+
+<!--
+<HR><H3><a name="system">INTERNAL AND SYSTEM FUNCTIONS</a></H3>
+
+Any Common Lisp function which takes a fixed number of arguments and
+returns a single value may have two functions in C: a general function
+which follows the usual function name convention, and an internal
+function with the same name preceded by an underscore.  The
+differences are:
+
+<UL>
+ <LI> Calls to the internal function are not terminated with the clEOA
+   argument terminator.  No argument checking for extra or missing
+   arguments is performed.
+ <LI> No multiple values are produced using the multiple values
+   machinery.  Only a single value is returned through the normal C
+   mechanism. 
+ <LI> There is no function hook for the internal function.  It can only
+   be called using the normal direct C calling mechanism.
+ <LI> The internal "function" may not be a function at all -- it might be
+   defined as a C pre-processor macro (<CODE>#define</CODE>).  
+ <LI>No type checking is performed on arguments.  That is, if a function
+   is defined by the standard to signal an error if the argument is of
+   the incorrect type, the internal function's behavior in such cases
+   is undefined.
+ <LI>If the function accepts or returns arguments of a specific Lisp
+   type which can be converted to C primitives types, the function may
+   expect or return the primitive types instead.
+<P>
+   The types which can be converted are:
+<PRE>
+	fixnum => int
+ 	boolean (i.e. nil/non-nil) => int (0/non-zero, respectively)
+	float (single or double) => double
+	character (base or extended) => int
+</PRE>
+</UL>
+
+
+System functions (i.e. non-Common Lisp functions) are often not Lisp
+<CODE>FUNCTION</CODE>s but <CODE>C:FUNCTION</CODE>s.  Functions defined in Eclipse as
+<CODE>C:FUNCTION</CODE>s and be used in compiled code, but not called directly in
+the interpreter.  These functions always take a fixed number of
+arguments and do not use clEOA to terminate the arguments.  
+
+In general, a <CODE>C:FUNCTION</CODE> just follows the usual notation for function
+names, and an internal version is not defined.  For example, one can
+think of the system function <CODE>MAKE-FIXNUM</CODE> as being declared in Lisp as:
+
+<pre>
+(declaim (ftype (c:function (c:int) ei:object) ei:make-fixnum))
+</pre>
+
+In C, function calls appear like: <CODE>clMakeFixnum(3)</CODE>
+
+<P>
+
+However, there are some cases where it is desirable to have one
+version of a <CODE>C:FUNCTION</CODE> which does type checking of its
+arguments and one which does not.  Here the convention is to use the
+underscore to indicate that no type checking is performed.  This
+doesn't happen automatically, it is just a convention.  For example:
+
+<PRE>
+  _clFixnumValue(obj) => int, but the result is undefined if obj is
+  not really a fixnum.
+
+  clFixnumValue(obj) => int, and signals a type-error if obj is not a
+  fixnum. 
+</PRE>
+
+In summary then, one should adhere to the following rules for
+function calling in C:
+
+<UL>
+  <LI>A normal C function corresponding to Common Lisp function:
+    <UL>
+    <LI>begins with <CODE>cl</CODE>
+    <LI>calls should end with <CODE>clEOA</CODE>
+    <LI>has same semantics as Lisp function
+    </UL>
+
+  <LI>An internal C function corresponding to Common Lisp function: 
+    <UL>
+    <LI>beings with <CODE>_cl</CODE>
+    <LI>calls do not end in <CODE>clEOA</CODE>
+    <LI>does not do type checking
+    <LI>does not produce multiple values
+    <LI>arguments and return values might be C primitives
+    </UL>
+
+  <LI>A normal C function defined by Eclipse (i.e. not Common Lisp):  
+    <UL>
+    <LI>begins with <CODE>cl</CODE>
+    <LI>calls do end in <CODE>clEOA</CODE> only if the function is intended to be
+      used as a normal Lisp function (i.e. declared as a <CODE>FUNCTION</CODE>, not
+      a <CODE>C:FUNCTION</CODE>)
+    <LI>might do type checking.
+    <LI>does not produce multiple values
+    <LI>arguments and return values might be C primitives
+    </UL>
+
+  <LI>An internal C function defined by Eclipse (i.e. not Common Lisp):  
+    <UL>
+    <LI>begins with <CODE>_cl</CODE>
+    <LI>calls do not end in <CODE>clEOA</CODE>
+    <LI>does not do type checking.
+    <LI>does not produce multiple values
+    <LI>arguments and return values might be C primitives
+    </UL>
+</UL>
+-->
+
+<HR><H3><a name="outstanding">OUTSTANDING ISSUES</a></H3>
+
+<H4>C:FUNCTIONS VERSUS ORDINARY LISP FUNCTIONS:</H4>
+
+Maybe we should have a slightly different naming convention for
+functions corresponding to Lisp <a
+href="c-function.htm"><b>c:function</b>s</a> (maybe
+<CODE>cl_FunctionName</CODE>?):
+
+<UL>
+ <LI> It would be nice to have a naming convention which made it clear
+  whether the C function/macro corresponds to a Lisp <b>function</b> or a
+  <b>c:function</b>. 
+
+ <LI> If we make this distinction, should we also make a distinctions for
+  functions vs. macros and function-like macros vs. macros that introduce
+  random bits of C code?  We don't have enough naming variations to go
+  around. 
+
+ <LI> This is for use by C programmers and such people are experienced
+  with names which give no indication of calling sequence/semantics.
+
+ <LI> This will require a small change to our compiler/C-printer so that
+  it knows to use the c-function convention instead of the function
+  convention. 
+
+ <LI> In the particular suggestion given above (an intervening underscore
+  for <b>c:function</b>s), how do we distinguish between a global <b>c:function</b>
+  named <CODE>USER:FOO</CODE> and a binding for local function named with the same
+  name when <CODE>FOO</CODE> is not accessible in the current package.  Both would
+  appear in C as <CODE>usr_Foo</CODE>.
+</UL>
+
+
+<H4>NON FUNCTION-LIKE MACROS:</H4>
+
+Some of the C community is used to seeing macros with arguments which do not
+have function-like semantics in upper case.  We currently do not do
+this.
+
+<UL>
+ <LI> It would be nice to follow a standard convention that gives the user
+  some clue that the macro can only be used in certain contexts.
+
+ <LI> The naming convention still doesn't say what the context is.  For
+  example, we require that only declaration statements can precede certain
+  macros within the current code block.  Other non-function macros can
+  appear more generally, but still cannot be used in expressions the
+  way functions and function-like macros can.
+
+ <LI> Should a macro which evaluates an argument more than once follow
+  the function naming convention or the macro naming convention?
+
+ <LI> Macros are global, so we'd have to use a package qualified
+  convention.  We have a few choices:
+  <UL>
+  <LI>prefix with <CODE>cl_</CODE>.  This is the convention for global constant
+    parameters (see <a href="#internal">Other C Identifiers</a>, above).  However to avoid a
+    clash with local variables, we would need to avoid the use of Lisp
+    symbol names, and these are often the clearest choice for some
+    constructs. 
+  <LI>prefix with <CODE>cl</CODE>.  This is the convention for lisp symbol literals.
+    Again, we would have to avoid the use of Lisp symbol names.
+  <LI>prefix with something else, introducing yet another reserved
+    prefix. 
+  </UL>
+  Note that our compiler uses symbols with the macro names.  We'd have
+  to play some games to keep from creating any Eclipse symbols with
+  the specified names.
+</UL>
+
+<HR>
+<A HREF="impl.htm">[Previous]</A> <A HREF="lib.htm">[Next]</A> 
+<A HREF="c.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>

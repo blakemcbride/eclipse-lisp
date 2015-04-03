@@ -1,0 +1,103 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: DIRECTORY</TITLE>
+</HEAD>
+
+Eclipse behavior for<BR>
+<I>Function</I> <B>DIRECTORY</B><P>
+
+<B>Syntax:</B><P>
+
+Eclipse defines the following additional <a
+href="defined.htm#package"><EM>&KEY</EM></a> argument for the
+<b>directory</b> function:
+
+<P>
+<I>links</I> -- a <i>symbol</i>.  The default is <code>T</code>.
+
+<P>
+<I>if-does-not-exist</I> -- one of <code>:ERROR</code>,
+<code>:CREATE</code>, or <code>NIL</code>.  The default is
+<code>:ERROR</code>.
+
+<P>
+<B>Description:</B><P>
+
+<i>Links</i> specifies whether file system symbolic links should be
+followed during resolution to <em>truenames</em>:
+<ul>
+<li>When <i>links</i> is <em>false</em>, a matching pathname
+that happens to be a file system symbolic link to some other file or
+directory is returned as is (i.e. as an ordinary file).  
+
+<li> When <i>links</i> is <code>:ONCE</code>, such links are
+followed once, and the file or directory pathname that the link points
+to is returned.  
+
+<li> Otherwise, if <i>links</i> is <em>true</em> (the default),
+such links are followed completely, and the file or directory pathname
+that the link ultimately points to is returned, resulting in the same
+behavior as other <em>truename</em>-returning functions.
+</ul>
+
+<p>
+<i>If-does-not-exist</i> specifies the action to be taken if a
+directory component of the <i>filespec</i> being scanned does not
+exist in the file system:
+
+<ul>
+<li>When <i>if-does-not-exist</i> is <code>:ERROR</code> (the
+default), an error of <i>type</i> <b>file-error</b> is signaled.
+
+<li>When <i>if-does-not-exist</i> is <code>:CREATE</code>, 
+missing directories are created as though by
+<b>ensure-directories-exist</b>.  <b>Directory</b> then procedes
+normally, returing either <code>NIL</code> if a specific file was
+requested, or a list of the directory name that was requested.
+
+<li>When <i>if-does-not-exist</i> is <code>NIL</code>,
+<b>directory</b> returns NIL.
+
+</ul>
+
+<P>
+<B>See Also:</B><P>
+
+<a href="path.htm">Eclipse Pathnames</a>, and the <a
+href="defined.htm#package"><i>Packages</i></A> section of <a
+href="defined.htm">&quot;Eclipse-Defined ANSI Features&quot;</a>.<P>
+
+<B>Notes:</B> <P>
+
+The package of the <I>links</I> and <I>if-does-not-exist</I>
+<I>&key</I> designators is the <CODE>KEYWORD</CODE> package.
+
+
+<p>
+Note that, like all file system operations, the pathname argument to
+<b>directory</b> is merged with <b>*default-pathname-defaults*</b>
+and, if necessary, translated to a physical pathname.  The default
+value for <b>*default-pathname-defaults*</b> has a version of
+<code>:newest</code>, and the default value for the
+<em>default-version</em> argument to <b>merge-pathnames</b> is
+<code>:newest</code>, so if the version is not specified in the
+pathname argument to <b>directory</b>, only the newest versions will
+be returned.  Of course, all versions can be returned by explicitly
+providing a wild version component in the pathname argument to
+<b>directory</b>.
+
+
+
+
+<HR>
+<A HREF="unique.htm">[Previous]</A> 
+<A HREF="load.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+<A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

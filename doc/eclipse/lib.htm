@@ -1,0 +1,247 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: C Libraries</TITLE>
+</HEAD>
+
+<H2>Eclipse C: The Eclipse Libraries</H2>
+<hr>
+
+<h3>Description</h3>
+
+<p>
+The Eclipse libraries contain every <a
+href="gloss.htm#utility"><i>utility</i></a> available in the Eclipse
+<a href="gloss.htm#top-level"><i>top-level</i></a> application.
+Programs written in C and other C-compatible languages can be linked
+to these libraries to use the utilities directly.
+
+<p>
+Each utility follows the <a href="names.htm">naming convention</a>.
+For example:
+<ul>
+<p>
+<li> Each <em>function</em> defined in the Eclipse package is
+available as a C function named by an identifier that is the same as
+the symbol naming the function in Lisp, with the first character in
+each word capitalized, dashes removed, and prefixed with the
+characters "<code>cl</code>".  In addition, non-alphanumeric
+characters are replaced by mnemonics in a contrasting case.  Eg.:
+<b>clSymbolValue</b>, <b>clList</b>, <b>clListSTAR</b>.
+
+<p>
+<li> Each <em>symbol</em> defined in the Eclipse package is available
+as an <b>clObject</b> named by an identifier that is the same as the
+symbol naming the function in Lisp, with each letter of the
+symbol-name in upper case, dashes replaced with underscores, and
+prefixed with the characters "<code>cl</code>".  In addition,
+non-alphanumeric characters are replaced by mnemonics in a contrasting
+case.  Eg.: <b>clSYMBOL_VALUE</b>, <b>clLIST</b>, <b>clLISTstar</b>.
+</ul>
+
+<p>
+See <a href="names.htm">"C Identifier Naming Convention"</a> for more
+details.
+
+
+<h3>Run Time and Development Libraries</h3>
+
+There are two Eclipse library units which, taken, together, provide a
+complete Common Lisp implementation:
+
+<ol>
+<p> <li>The <b>run time</b> library provides the definitions needed at
+run time by the vast majority of Lisp applications.  It contains
+everything not defined as being part of the <b>development</b>
+library, and is all that is usually required for <a
+href="gloss.htm#runtime"><i>run time applications</i></a>.
+
+<p> <li>The <b>development</b> library contains features typically
+used to develop programs or to provide the traditional features of a <a
+href="gloss.htm#development"><i>dynamic application</i></a> such as
+the Lisp top-level.  This includes:
+
+<ul>
+<p><li> Utilties which explicitly evaluate or otherwise process
+expressions in either Common Lisp or the Common Lisp <b>format</b>
+directive language.  This includes definitions for: <b>eval</b>;
+<b>compile</b>; <b>compile-file</b>; <b>load</b>; <b>disassemble</b>;
+and the code used by <b>format</b> when given <i>string</i> as a
+second argument.
+
+<p><li> Utilities which are generally only used by the above.  This
+includes: all <b>macro</b>, <i>setf expander</i> and
+<b>compiler-macro</b> definitions; <i>declarations</i>; and the
+functions <b>proclaim</b>, <b>macro-function</b>,
+<b>compiler-macro-function</b>, <b>get-setf-expansion</b>,
+<b>macroexpand</b>, and <b>macroexpand-1</b>.
+
+
+<p><li>Utilities which implicitly use the above.  This includes
+definitions for: <b>invoke-debugger</b>; <b>describe</b>;
+<b>inspect</b>; <b>funcall</b> or <b>apply</b> with a first argument
+that is the result of <b>coerce</b>ing a lambda-expression to
+a <b>function</b>; the default pretty print dispatch table for Lisp code; any
+use of non-standard method-combination; and the <a
+href="topf.htm">Lisp top-level</a> itself.
+
+</ul>
+
+</ol>
+
+<p>A typical interactive programming application, such as the Eclipse
+<a href="gloss.htm#top-level">top-level</a> itself, needs to use
+(eg. be linked with) both the <b>run time</b> and the the
+<b>development</b> libraries.  However, most applications need only use
+the <b>run time</b> library.  All Eclipse applications must use at
+least some parts of the <b>run time</b> library.
+
+<p>
+In addition to defining Lisp <em>functions</em> and <em>symbols</em>, the
+<b>run time</b> library and its header file (<code>eclipse.h</code>)
+define facilitites for using Lisp <a
+href="gloss.htm#construct"><i>constructs</i></a> such as closures and
+<b>unwind-protect</b>, converting between Lisp and C data, and memory
+management.  See <a href="impl.htm">"Implementation of Lisp"</a> for
+more information.
+
+<p>
+It is not unspecified whether <b>development</b> library symbols,
+functions, etc., are present, interned, bound, fbound, etc., in the
+<b>run time</b> library.  In fact, many utilities which have full
+definitions provided only by the development library may have dummy
+definitions in the <b>run time</b> library.
+
+
+<h3>Library Modules and Initialization</h3>
+
+Throughout the Eclipse documentation, we loosely use the term <a
+href="gloss.htm#library"><i>library</i></a> to refer to a coordinated
+collection of utility definitions which can be used by programs
+written in various languages.  The precise format of these libraries
+is defined in the next section (<a href="#format"><i>Library
+Format</i></a>).
+
+<p>
+Each library defines a <a href="gloss.htm#sys-init"><i>system
+initialization function</i></a> that must be called by application
+code before any utilities from the library may be used:
+ <li><a href="initf.htm"><b>clInit</b></a> initializes the run time
+library. 
+ <li><a href="initdf.htm"><b>clInitD</b></a> initializes the development
+library. 
+
+<p>Regardless of format, a library may be made up of a number of
+smaller pieces.  Depending on the needs of an application, it may not
+be necessary to use all the utilities defined within a library.  We
+use the term <i>module</i> to refer to a component of a library which
+defines some subset of utilities within the library.
+<blockquote>
+No facilities are defined at this time to initialize individual
+modules within either the run time or development libraries.  Use of
+one of the Eclipse libraries implies the availability of all utilities
+defined by that library.
+</blockquote>
+
+<p>
+See <a href="system.htm">Initializing the Eclipse
+Library</a>.
+
+<h3><a name="format">Library Format</a></h3>
+
+The Eclipse libraries are provided as pre-compiled, standard, static
+libraries, suitable for creating <a
+href="gloss.htm#stand"><i>stand-alone applications (2)</i></a>. 
+
+<li>libeclipse: defines the Eclipse run time library.
+<li>libeclipsed: defines the Eclipse development library.
+
+<p>
+These are defined using the default file extension and format for each
+platform (eg. <code>libeclipse.a</code>).
+
+<p>All Eclipse <a href="gloss.htm#application"><i>applications</i></a>
+should be linked with the standard operating system provided ANSI
+C libraries (eg. libc.a and libm.a).  See the <a
+href="release.htm">Release Notes</a> to see if there are any <a
+href="platform-specific.htm">platform-specific</a> operating system
+provided libraries that must also be used.
+
+
+<!--
+
+<P>
+The Eclipse libraries are pre-compiled for each platform.  Within each
+platform, there are two possible formats for each library.  Either one
+or both may be distributed, depending on the capabilities of the
+operating system:
+
+<OL>
+<LI> A single, static random access library named
+<code>libeclipse.a</code> and <code>libeclipsed.a</code>.
+
+<LI> A series of &quot;shared object&quot; or &quot;dynamic link&quot;
+modules.  
+
+</OL>
+
+The random access library is essentially a concatenation of a large
+number of smaller <code>.o</code> files.  When user programs are
+linked to this library, the operating system linker includes only
+those <code>.o</code> files from the library that are actually
+referenced directly in the user code, or indirectly by library files
+which are referenced in user code.  The resulting executable is a <a
+href="gloss.htm#stand"><i>stand-alone application (2)</i></a> that can
+be distributed without the library.
+
+<P> The shared object modules consist of a single file each. 
+Several modules are provided so that the user has some control over
+which modules are to be used in an application.  When user programs
+are linked to these modules, the operating system linker includes a
+reference to the module in the executable.  The resulting executable
+is a <a href="gloss.htm#stand"><i>stand-alone application (1)</i></a>
+that must be distributed with the shared object modules.  However,
+multiple executables that use the same shared object modules do not
+repeat the definitions of the shared object modules.
+-->
+
+<h3>Compiling With One Library and Running With Another </a></h3>
+
+It is not necessarily required that one link generated C code with the
+same library (or modules) that were being used by the application that
+generated the C code.
+
+<p>
+For example, suppose you have a "development" application, such as the
+Eclipse <a href="gloss.htm#top-level">top-level</a> itself, that uses
+the <b>development</b> library.  Suppose, further, that you use <a
+href="compile.htm"><b>compile-file</b></a> within this application to
+generate C code.
+
+<p>After compiling the generated C code, you can link it with whatever
+library is appropriate for the application being created --
+regardless of the fact that C code was created with a
+<b>development</b> library.  
+
+<p>
+This is true for different libraries, different library modules, and
+different library formats.
+
+<p>
+In particular, even though <b>defmacro</b> requires the
+<b>development</b> library to be meaningful, one does not necessarilly
+have to strip <b>defmacro</b> definitions from source code if the
+corresponding generated application is to use only the <b>run time</b>
+library.  The macro functions will still be present at run time, but
+there will be no Eclipse-provided utility which uses them.
+
+<HR>
+<A HREF="names.htm">[Previous]</A> <A HREF="system.htm">[Next]</A> 
+<A HREF="c.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

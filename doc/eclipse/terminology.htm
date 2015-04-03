@@ -1,0 +1,76 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Terminology For Mapping Lisp and C Concepts</TITLE>
+</HEAD>
+
+<H2>Eclipse C: Terminology For Mapping Lisp and C Concepts</H2>
+<hr>
+
+The <a href="names.htm">naming convention</a> defines how Lisp
+<em>symbols</em> naming various Lisp <a
+href="gloss.htm#construct"><i>constructs</i></a> are translated into C
+<em>identifiers</em> naming C <i>constructs</i>.  Lisp
+<i>constructs</i> are always named with <em>symbols</em>, while C
+<i>constructs</i> are always named with <em>identifiers</em>.
+
+<P>
+In this case, a <i>construct</i> is an element of the language such as a
+<em>variable</em>, <em>function</em>, <em>type-identifier</em> or "go" label.
+
+<P>
+Which <i>construct</i> a Lisp <em>symbol</em> refers to can always be
+determined by context.  Each C <em>identifier</em> can usually refer to exactly
+one C <i>construct</i> at a time -- regardless of context.
+
+<P>
+<Em>Symbols</Em> in Lisp might be used simply as an
+<em>identifier</em> to be used by the compiler, but in general, they
+are actual data objects with accessible and modifiable run-time
+properties.  C <em>identifiers</em> are used only by the compiler and
+are not accessible at run-time.  When a Lisp <em>symbol</em> must be
+represented in C as data, it is is represented in C by a global
+<CODE>clObject</CODE> "variable" who's value never changes.  However,
+this <CODE>clObject</CODE> is a pointer to a <em>symbol</em> data
+object who's fields may have changing values.
+
+<P>
+A Lisp <em>symbol</em> has a <EM>name</EM> which is a <em>string</em>.
+<EM>Symbols</EM> with different <em>names</em> always refer to
+different <i>constructs</i>.
+
+<P>
+Each Lisp <em>symbol</em> is rooted in zero or one home
+<EM>package</EM>.  A <em>package</em> has a <em>name</em> which is
+unique among all other <em>package</em> names in the system.
+<Em>Symbols</Em> rooted in packages with different <em>names</em>
+always refer to different <i>constructs</i>.
+
+<P>
+A <em>symbol</em> rooted in no home <em>package</em> is said to be
+<EM>uninterned</EM>.  Uninterned <em>symbols</em> with the same <em>name</em>
+may or may not refer to the same <i>constructs</i>.  (They refer to
+the same <i>construct</i> only if they are, in fact, the same data
+object.)
+
+<P>
+A <EM>lexical Lisp function</EM> is one who's text appears wholly
+within the definition of another <EM>parent</EM> function, and who's
+scope is also limited.  This is not supported in C, so the
+corresponding C function is defined separately and, like all C
+functions, has a scope that includes the entire file in which it is
+defined.  Special naming conventions are used by Eclipse to achieve
+the correct effective scoping.
+
+
+<HR>
+<A HREF="syntax.htm">[Previous]</A> 
+<A HREF="impl.htm">[Next]</A> 
+<A HREF="c.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

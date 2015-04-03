@@ -1,0 +1,1370 @@
+<HTML>
+<HEAD>
+<TITLE>MOP: Concepts</TITLE>
+</HEAD>
+
+<A HREF="contents.html">
+<IMG ALT="[Contents]" SRC="../img/Contents.gif" ALIGN=Bottom></A>
+
+<A REL=PREV HREF="contents.html">
+<IMG ALT="[Previous]" SRC="../img/Prev.gif" ALIGN=Bottom></A>
+
+<A REL=UP HREF="index.html">
+<IMG ALT="[Up]" SRC="../img/Up.gif" ALIGN=Bottom></A>
+
+<A REL=NEXT HREF="dictionary.html">
+<IMG ALT="[Next]" SRC="../img/Next.gif" ALIGN=Bottom></A>
+<hr>
+
+<p><h1><a name="spec1"></a>Concepts</h1>
+
+<p><h2><a name="introduction">Introduction</a></h2>
+
+<p>The <a href="references.html#clos-spec">CLOS Specification</a> describes the standard
+Programmer Interface for the Common Lisp Object System (CLOS).  This document
+extends that specification by defining a metaobject protocol for CLOS---that
+is, a description of CLOS itself as an extensible CLOS program.  In this
+description, the fundamental elements of CLOS programs (classes, slot
+definitions, generic functions, methods, specializers and method combinations)
+are represented by first-class objects.  The behavior of CLOS is provided by
+these objects, or, more precisely, by methods specialized to the classes of
+these objects.
+
+<p>Because these objects represent pieces of CLOS programs, and because their
+behavior provides the behavior of the CLOS language itself, they are considered
+meta-level objects or metaobjects.  The protocol followed by the metaobjects to
+provide the behavior of CLOS is called the CLOS Metaobject Protocol (MOP).
+
+<p><h2><a name="metaobjects">Metaobjects</a></h2>
+
+<p>For each kind of program element there is a corresponding <em>basic
+metaobject class</em>.  These are the classes: <b>class</b>, <b>slot-definition</b>,
+<b>generic-function</b>, <b>method</b> and <b>method-combination</b>.  A <em>metaobject class</em> is a subclass of exactly one of these classes.  The results
+are undefined if an attempt is made to define a class that is a subclass of
+more than one basic metaobject class.  A <em>metaobject</em> is an instance of a
+metaobject class.
+
+<p>Each metaobject represents one program element.  Associated with each
+metaobject is the information required to serve its role.  This includes
+information that might be provided directly in a user interface macro such as
+<b>defclass</b> or <b>defmethod</b>.  It also includes information computed
+indirectly from other metaobjects such as that computed from class inheritance
+or the full set of methods associated with a generic function.
+
+<p>Much of the information associated with a metaobject is in the form of
+connections to other metaobjects.  This interconnection means that the role of
+a metaobject is always based on that of other metaobjects.  As an introduction
+to this interconnected structure, this section presents a partial enumeration
+of the kinds of information associated with each kind of metaobject.  More
+detailed information is presented later.
+
+<p><h3><a name="classes">Classes</a></h3>
+
+<p>A <em>class metaobject</em> determines the structure and the default behavior of
+its instances.  The following information is associated with class
+metaobjects:
+
+<p><ul>
+
+<p><li> The name, if there is one, is available as an object.
+
+<p><li> The direct subclasses, direct superclasses and class
+precedence list are available as lists of class metaobjects.
+
+<p><li> The slots defined directly in the class are available as a
+list of direct slot definition metaobjects.  The slots which are
+accessible in instances of the class are available as a list of
+effective slot definition metaobjects.
+
+<p><li> The documentation is available as a string or <b>nil</b>.
+
+<p><li> The methods which use the class as a specializer, and the
+generic functions associated with those methods are available as lists
+of method and generic function metaobjects respectively.
+
+<p></ul>
+
+<p><h3><a name="slot-definitions">Slot Definitions</a></h3>
+
+<p>A <em>slot definition metaobject</em> contains information about the definition
+of a slot.  There are two kinds of slot definition metaobjects.  A direct slot
+definition metaobject is used to represent the direct definition of a slot in
+a class.  This corresponds roughly to the slot specifiers found in <b>defclass</b> forms.  An effective slot definition metaobject is used to represent
+information, including inherited information, about a slot which is accessible
+in instances of a particular class.
+
+<p>Associated with each class metaobject is a list of direct slot
+definition metaobjects representing the slots defined directly in the
+class.  Also associated with each class metaobject is a list of
+effective slot definition metaobjects representing the set of slots
+accessible in instances of that class.
+
+<p>The following information is associated with both direct and effective slot
+definitions metaobjects:
+
+<p><ul>
+
+<p><li> The name, allocation, and type are available as forms that
+could appear in a <b>defclass</b> form.
+
+<p><li> The initialization form, if there is one, is available as a form that
+could appear in a <b>defclass</b> form.  The initialization form together with
+its lexical environment is available as a function of no arguments which, when
+called, returns the result of evaluating the initialization form in its
+lexical environment. This is called the <em>initfunction</em> of the slot.
+
+<p><li> The slot filling initialization arguments are available as a
+list of symbols.
+
+<p><li> The documentation is available as a string or <b>nil</b>.
+
+<p></ul>
+
+<p>Certain other information is only associated with direct slot definition
+metaobjects.  This information applies only to the direct definition of
+the slot in the class (it is not inherited).
+
+<p><ul>
+
+<p><li> The function names of those generic functions for
+which there are automatically generated reader and writer methods.  This
+information is available as lists of function names.  Any accessors
+specified in the <b>defclass</b> form are broken down into their
+equivalent readers and writers in the direct slot definition.
+
+<p></ul>
+
+<p>Information, including inherited information, which applies to the definition
+of a slot in a particular class in which it is accessible is associated only
+with effective slot definition metaobjects.
+
+<p><ul>
+
+<p><li> For certain slots, the location of the slot in instances of the class
+is available.
+
+<p></ul>
+
+<p><h3><a name="generic-functions">Generic Functions</a></h3>
+
+<p>A <em>generic function metaobject</em> contains information about a generic
+function over and above the information associated with each of the generic
+function's methods.
+
+<p><ul>
+
+<p><li> The name is available as a function name.
+
+<p><li> The methods associated with the generic function are available as a list
+of method metaobjects.
+
+<p><li> The default class for this generic function's method metaobjects is
+available as a class metaobject.
+
+<p><li> The lambda list is available as a list.
+
+<p><li> The method combination is available as a method combination
+metaobject.
+
+<p><li> The documentation is available as a string or <b>nil</b>.
+
+<p><li> The argument precedence order is available as a permutation
+of those symbols from the lambda list which name the required arguments
+of the generic function.
+
+<p><li> The declarations are available as a list of declarations.
+
+<p>
+<blockquote><b>Terminology Note:</b> There is some ambiguity in Common
+Lisp about the terms used to identify the various parts of
+<b>declare</b> special forms.  In this document, the term
+<em>declaration</em> is used to refer to an object that could be an
+argument to a <b>declare</b> special form.  For example, in the
+special form <b>(declare (special *g1*))</b>, the list <b>(special
+*g1*)</b> is a declaration.
+</blockquote>
+
+<p></ul>
+
+<p><h3><a name="methods">Methods</a></h3>
+
+<p>A <em>method metaobject</em> contains information about a specific method.
+
+<p><ul>
+
+<p><li> The qualifiers are available as a list of of non-null atoms.
+
+<p><li> The lambda list is available as a list.
+
+<p><li> The specializers are available as a list of specializer metaobjects.
+
+<p><li> The function is available as a function.  This function can be applied
+to arguments and a list of next methods using <b>apply</b> or <b>funcall</b>.
+
+<p><li> When the method is associated with a generic function, that
+generic function metaobject is available.  A method can be associated
+with at most one generic function at a time.
+
+<p><li> The documentation is available as a string or <b>nil</b>.
+
+<p></ul>
+
+<p><h3><a name="specializers">Specializers</a></h3>
+
+<p>A specializer metaobject represents the specializers of a method.  Class
+metaobjects are themselves specializer metaobjects.  A special kind of
+specializer metaobject is used for <b>eql</b> specializers.
+
+<p><h3><a name="method-combination">Method Combinations</a></h3>
+
+<p>A <em>method combination metaobject</em> represents the information about the
+method combination being used by a generic function.
+
+<p><blockquote> <b>Note:</b> 
+This document does not specify the structure of method combination
+metaobjects.
+</blockquote>
+
+<p>
+<h2><a name="inheritance">Inheritance Structure of Metaobject Classes</a></h2>
+
+<p>The inheritance structure of the specified metaobject classes is shown in
+the <a href="#inherit-struct-figure">Table: MOP CLASSES</a>.
+
+<p>
+<table border=yes>
+<caption>
+<a name="inherit-struct-figure"><b>Table: MOP CLASES</b></a>
+Direct superclass relationships among the specified metaobject
+classes.<br>
+The class of every class shown is <b>standard-class</b>
+except for the class <b>t</b> which is an instance of the class
+<b>built-in-class</b> and the classes <b>generic-function</b> and
+<b>standard-generic-function</b> which are instances of the class
+<b>funcallable-standard-class</b>.
+</caption>
+<tr><th> </th> <th>Metaobject Class</th>	<th>Direct Superclasses</th></tr>
+<tr><td> </td> <td>standard-object</td> <td>(t)</td></tr>
+<tr><td> </td> <td>funcallable-standard-object    </td><td>(standard-object function)</td></tr>
+<tr><td>*</td> <td>metaobject                     </td><td>(standard-object)</td></tr>
+<tr><td>*</td> <td>generic-function               </td><td>(metaobject funcallable-standard-object)</td></tr>
+<tr><td> </td> <td>standard-generic-function      </td><td>(generic-function)</td></tr>
+<tr><td>*</td> <td>method                         </td><td>(metaobject)</td></tr>
+<tr><td> </td> <td>standard-method                </td><td>(method)</td></tr>
+<tr><td>*</td> <td>standard-accessor-method       </td><td>(standard-method)</td></tr>
+<tr><td> </td> <td>standard-reader-method         </td><td>(standard-accessor-method)</td></tr>
+<tr><td> </td> <td>standard-writer-method         </td><td>(standard-accessor-method)</td></tr>
+<tr><td>*</td> <td>method-combination             </td><td>(metaobject)</td></tr>
+<tr><td>*</td> <td>slot-definition                </td><td>(metaobject)</td></tr>
+<tr><td>*</td> <td>direct-slot-definition         </td><td>(slot-definition)</td></tr>
+<tr><td>*</td> <td>effective-slot-definition      </td><td>(slot-definition)</td></tr>
+<tr><td>*</td> <td>standard-slot-definition       </td><td>(slot-definition)</td></tr>
+<tr><td> </td> <td> standard-direct-slot-definition          </td><td>(standard-slot-definition direct-slot-definition)</td></tr>
+<tr><td> </td> <td> standard-effective-slot-definition       </td><td>(standard-slot-definition effective-slot-definition)</td></tr>
+<tr><td>*</td> <td>specializer                    <td>(metaobject)</td></tr>
+<tr><td> </td> <td> eql-specializer               </td><td>(specializer)</td></tr>
+<tr><td>*</td> <td>class                          </td><td>(specializer)</td></tr>
+<tr><td> </td> <td> built-in-class                </td><td>(class)</td></tr>
+<tr><td> </td> <td> forward-referenced-class      </td><td>(class)</td></tr>
+<tr><td> </td> <td> standard-class                </td><td>(class)</td></tr>
+<tr><td> </td> <td> funcallable-standard-class    </td><td>(class)</td></tr>
+</table>
+
+<p>Each class marked with a ``*'' is an <em>abstract class</em> and is not intended
+to be instantiated.  The results are undefined if an attempt is made to make
+an instance of one of these classes with <a href="dictionary.html#make-instance"><b>make-instance</b></a>.
+
+<p>The classes <b>standard-class</b>, <b>standard-direct-slot-definition</b>, <b>standard-effective-slot-definition</b>, <b>standard-method</b>, <b>standard-reader-method</b>, <b>standard-writer-method</b> and <b>standard-generic-function</b> are called <em>standard metaobject classes</em>.  For
+each kind of metaobject, this is the class the user interface macros presented
+in the CLOS Specification use by default.  These are also the classes on which
+user specializations are normally based.
+
+<p>The classes <b>built-in-class</b>,
+<b>funcallable-standard-class</b> and <b>forward-referenced-class</b>
+are special-purpose class metaobject classes.  Built-in classes are
+instances of the class <b>built-in-class</b>.  The class
+<b>funcallable-standard-class</b> provides a special kind of instances
+described in the section called <a
+href="#funcallable-instances">``Funcallable Instances.''</a> When the
+definition of a class references another class which has not yet been
+defined, an instance of <b>forward-referenced-class</b> is used as a
+stand-in until the class is actually defined.
+
+<p>The class <b>standard-object</b> is the <em>default direct
+superclass</em> of the class <b>standard-class</b>.  When an instance of the
+class <b>standard-class</b> is created, and no direct superclasses are
+explicitly specified, it defaults to the class <b>standard-object</b>.  In
+this way, any behavior associated with the class <b>standard-object</b>
+will be inherited, directly or indirectly, by all instances of the class
+<b>standard-class</b>.  A subclass of <b>standard-class</b> may have a
+different class as its default direct superclass, but that class must be
+a subclass of the class <b>standard-object</b>.
+
+<p>The same is true for <b>funcallable-standard-class</b> and <b>funcallable-standard-object</b>.
+
+<p>The class <b>specializer</b> captures only the most basic behavior of method
+specializers, and is not itself intended to be instantiated.  The class <b>class</b> is a direct subclass of <b>specializer</b> reflecting the property that
+classes by themselves can be used as method specializers.  The class <b>eql-specializer</b> is used for <b>eql</b> specializers.
+
+<p><h3><a name="implementation-and-users">Implementation and User Specialization</a></h3>
+
+<p>The purpose of the Metaobject Protocol is to provide users with a powerful
+mechanism for extending and customizing the basic behavior of the Common Lisp
+Object System.  As an object-oriented description of the basic CLOS behavior,
+the Metaobject Protocol makes it possible to create these extensions by
+defining specialized subclasses of existing metaobject classes.
+
+<p>The Metaobject Protocol provides this capability without interfering
+with the implementor's ability to develop high-performance
+implementations.  This balance between user extensibility and
+implementor freedom is mediated by placing explicit restrictions on
+each.  Some of these restrictions are general---they apply to the
+entire class graph and the applicability of all methods.  These are
+presented in this section.
+
+<p>The following additional terminology is used to present these
+restrictions:<a name="specialization-terminology"></a>
+
+<p><ul>
+
+<p><li> Metaobjects are divided into three categories.  Those defined
+in this document are called <em>specified</em>; those defined by an
+implementation but not mentioned in this document are called <em>implementation-specific</em>; and those defined by a portable program are
+called <em>portable</em>.
+
+<p><li> A class I is <em>interposed</em> between two other classes
+C<i>1</i> and C<i>2</i> if and only if there is some path, following
+direct superclasses, from the class C<i>1</i> to the class C<i>2</i>
+which includes I.
+
+<p><li> A method is <em>specialized to</em> a class if and only if that
+class is in the list of specializers associated with the method; and the
+method is in the list of methods associated with some generic function.
+
+<p><li> In a given implementation, a specified method is said to have
+been <em>promoted</em> if and only if the specializers of the method,
+S<i>1</i> ... S<i>n</i>, are defined in this specification as the
+classes C<i>1</i> ... C<i>n</i>, but in the implementation, one or
+more of the specializers S<i>i</i>, is a superclass of the class
+given in the specification C<i>i</i>.
+
+<p><li> For a given generic function and set of  arguments, a method M<i>2</i>
+<em>extends</em> a method M<i>1</i> if and only if:
+
+<p><DL>
+<DD>(i) M<i>1</i> and M<i>2</i> are both associated with the given generic
+function,
+
+<DD>(ii) M<i>1</i> and M<i>2</i> are both applicable to the given
+arguments,
+
+<DD>(iii) the specializers and qualifiers of the methods are such that when
+the generic function is called, M<i>2</i> is executed before M<i>1</i>,
+
+<DD>(iv) M<i>1</i> will be executed if and only if <b>call-next-method</b>
+is invoked from within the body of M<i>2</i> and
+
+<DD>(v)<b>call-next-method</b> is invoked from within the body of M<i>2</i>,
+thereby causing M<i>1</i> to be executed.
+</dl>
+
+<p><li> For a given generic function and set of arguments, a method M<i>2</i>
+<em>overrides</em> a method M<i>1</i> if and only if conditions i through iv
+above hold and
+
+<p><dl>
+<DD>(v<i>'</i>) <b>call-next-method</b> is not invoked from within the body
+of M<i>2</i>, thereby preventing M<i>1</i> from being executed.
+</dl>
+</ul>
+
+<p><h4><a name="implementation">Restrictions on Implementations</a></h4>
+
+<p>Implementations are allowed latitude to modify the structure of specified
+classes and methods.  This includes:  the interposition of
+implementation-specific classes; the promotion of specified methods; and the
+consolidation of two or more specified methods into a single method
+specialized to interposed classes.
+
+<p>Any such modifications are permitted only so long as for any portable class
+C<i>p</i> that is a subclass of one or more specified classes
+C<i>0</i> ... C<i>i</i>, the following conditions are met:
+
+<p><ul>
+
+<p><li> In the actual class precedence list of C<i>p</i>, the classes
+C<i>0</i> ... C<i>i</i> must appear in the same order as they would have
+if no implementation-specific modifications had been made.
+
+<p><li> The method applicability of any specified generic function must be the
+same in terms of behavior as it would have been had no implementation-specific
+changes been made.  This includes specified generic functions that have had
+portable methods added.  In this context, the expression ``the same in terms
+of behavior'' means that methods with the same behavior as those specified are
+applicable, and in the same order.
+
+<p><li> No portable class C<i>p</i> may inherit, by virtue
+of being a direct or indirect subclass of a specified class, any slot for
+which the name is a symbol accessible in the <b>common-lisp-user</b> package or
+exported by any package defined in the ANSI Common Lisp standard.
+
+<p><li> Implementations are free to define implementation-specific before-
+and after-methods on specified generic functions.  Implementations are also
+free to define implementation-specific around-methods with extending behavior.
+
+<p></ul>
+
+<p><h4><a name="portable">Restrictions on Portable Programs</a></h4>
+
+<p>Portable programs are allowed to define subclasses of specified classes, and
+are permitted to define methods on specified generic functions, with the
+following restrictions.  The results are undefined if any of these
+restrictions is violated.
+
+<p><ul>
+
+<p><li> Portable programs must not redefine any specified classes, generic
+functions, methods or method combinations.  Any method defined by a portable
+program on a specified generic function must have at least one specializer
+that is neither a specified class nor an <b>eql</b> specializer whose
+associated value is an instance of a specified class.
+
+<p><li> Portable programs may define methods that extend specified methods
+unless the description of the specified method explicitly prohibits this.
+Unless there is a specific statement to the contrary, these extending methods
+must return whatever value was returned by the call to <b>call-next-method</b>.
+
+<p><li> Portable programs may define methods that override specified methods
+only when the description of the specified method explicitly allows this.
+Typically, when a method is allowed to be overridden, a small number of
+related methods will need to be overridden as well.
+
+<p>An example of this is the specified methods on the generic
+functions <a href="dictionary.html#add-dependent"><b>add-dependent</b></a>,
+<a href="dictionary.html#remove-dependent"><b>remove-dependent</b></a> and <a
+href="dictionary.html#map-dependents"><b>map-dependents</b></a>.  Overriding
+a specified method on one of these generic functions requires that the
+corresponding method on the other two generic functions be overridden
+as well.
+
+<p><li> Portable methods on specified generic functions specialized to portable
+metaobject classes must be defined before any instances of those classes (or
+any subclasses) are created, either directly or indirectly by a call to <a href="dictionary.html#make-instance"><b>make-instance</b></a>.  Methods can be defined after instances are created by <a href="dictionary.html#allocate-instance"><b>allocate-instance</b></a> however.  Portable metaobject classes cannot be redefined.
+
+<p><blockquote><b>Implementation Note:</b> 
+The purpose of this last restriction is to permit implementations to provide
+performance optimizations by analyzing, at the time the first instance of a
+metaobject class is initialized, what portable methods will be applicable to
+it.  This can make it possible to optimize calls to those specified generic
+functions which would have no applicable portable methods.
+</blockquote>
+
+<p><blockquote> <b>Note:</b> 
+The specification technology used in this document needs further development.
+The concepts of object-oriented protocols and subclass specialization are
+intuitively familiar to programmers of object-oriented systems; the protocols
+presented here fit quite naturally into this framework.  Nonetheless, in
+preparing this document, we have found it difficult to give
+specification-quality descriptions of the protocols in a way that makes it
+clear what extensions users can and cannot write.  Object-oriented protocol
+specification is inherently about specifying leeway, and this seems difficult
+using current technology.
+</blockquote>
+
+<p></ul>
+
+<p><h2><a name="processing">Processing of the User Interface Macros</a></h2>
+
+<p>A list in which the first element is one of the symbols <b>defclass</b>, <b>defmethod</b>, <b>defgeneric</b>, or <b>define-method-combination</b>,
+<!-- removed from ANSI
+<b>generic-function</b>, <b>generic-flet</b> or <b>generic-labels</b>, -->
+and which has
+proper syntax for that macro is called a <em>user interface macro form</em>.
+This document provides an extended specification of the <b>defclass</b>, <b>defmethod</b> and <b>defgeneric</b> macros.
+
+<p>The user interface macros <b>defclass</b>, <b>defgeneric</b> and <b>defmethod</b>
+can be used not only to define metaobjects that are instances of the
+corresponding standard metaobject class, but also to define metaobjects that
+are instances of appropriate portable metaobject classes.  To make it possible
+for portable metaobject classes to properly process the information appearing
+in the macro form, this document provides a limited specification of the
+processing of these macro forms.
+
+<p>User interface macro forms can be <em>evaluated</em> or <em>compiled</em> and later
+<em>executed</em>.  The effect of evaluating or executing a user interface macro
+form is specified in terms of calls to specified functions and generic
+functions which provide the actual behavior of the macro.  The arguments
+received by these functions and generic functions are derived in a specified
+way from the macro form.
+
+<p>Converting a user interface macro form into the arguments to the appropriate
+functions and generic functions has two major aspects:  the conversion of the
+macro argument syntax into a form more suitable for later processing, and the
+processing of macro arguments which are forms to be evaluated (including
+method bodies).
+
+<p>In the syntax of the <b>defclass</b> macro, the <i>initform</i> and <i>default-initarg-initial-value-form</i> arguments are forms which will be
+evaluated one or more times after the macro form is evaluated or executed.
+Special processing must be done on these arguments to ensure that the lexical
+scope of the forms is captured properly.  This is done by building a function
+of zero arguments which, when called, returns the result of evaluating the
+form in the proper lexical environment.
+
+<p>In the syntax of the <b>defmethod</b> macro the <i>form*</i>
+argument is a list of forms that comprise the body of the method
+definition.  This list of forms must be processed specially to capture
+the lexical scope of the macro form.  In addition, the lexical
+functions available only in the body of methods must be introduced.
+To allow this and any other special processing (such as slot access
+optimization), a specializable protocol is used for processing the
+body of methods.  This is discussed in the section <a
+href="#processing-method-bodies">``Processing Method Bodies.''</a>
+
+<p><h3><a name="compile-file">Compile-file Processing of the User Interface Macros</a></h3>
+
+<p>It is common practice for Common Lisp compilers, while processing a file
+or set of files, to maintain information about the definitions that have
+been compiled so far.  Among other things, this makes it possible to
+ensure that a global macro definition (<b>defmacro</b> form) which
+appears in a file will affect uses of the macro later in that file.
+This information about the state of the compilation is called the <em>compile-file environment</em>.
+
+<p>When compiling files containing CLOS definitions, it is useful to maintain
+certain additional information in the compile-file environment.  This can make
+it possible to issue various kinds of warnings (e.g., lambda list congruence)
+and to do various performance optimizations that would not otherwise be
+possible.
+
+<p>At this time, there is such significant variance in the way existing
+Common Lisp implementations handle compile-file environments that it
+would be premature to specify this mechanism.  Consequently, this
+document specifies only the behavior of evaluating or executing user
+interface macro forms. What functions and generic functions are called
+during compile-file processing of a user interface macro form is not
+specified.  Implementations are free to define and document their own
+behavior.  Users may need to check implementation-specific behavior
+before attempting to compile certain portable programs.
+
+<p><h3><a name="defclass">The defclass Macro</a></h3>
+
+<p>
+<table border=yes>
+<caption>
+<a name="defclass1"><b>Figure 1:</b></a> A <b>defclass</b> form with
+standard slot and class options and an expansion of it that would
+result in the proper call to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.
+</caption>
+<tr><td>
+<pre>
+(defclass plane (moving-object graphics-object)
+     ((altitude :initform 0 :accessor plane-altitude)
+      (speed))
+  (:default-initargs :engine *jet*))
+
+<p>(ensure-class 'plane
+  ':direct-superclasses '(moving-object graphics-object)
+  ':direct-slots (list (list ':name 'altitude
+                             ':initform '0
+                             ':initfunction #'(lambda () 0)
+                             ':readers '(plane-altitude)
+                             ':writers '((setf plane-altitude)))
+                       (list ':name 'speed))
+  ':direct-default-initargs (list (list ':engine
+                                        '*jet*
+                                        #'(lambda () *jet*))))
+</pre>
+</td></tr></table>
+
+<p>
+<table border=yes>
+<caption>
+<a name="defclass2"><b>Figure 2:</b> A <b>defclass</b> form with
+non-standard class and slot options, and an expansion of it which
+results in the proper call to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.  
+<br>Note that the
+order of the slot options has not affected the order of the properties
+in the canonicalized slot specification, but has affected the order of
+the elements in the lists which are the values of those
+properties.</a>
+</caption>
+<tr><td>
+<pre>
+(defclass sst (plane)
+     ((mach mag-step 2
+            locator sst-mach
+            locator mach-location
+            :reader mach-speed
+            :reader mach))
+  (:metaclass faster-class)
+  (another-option foo bar))
+
+<p>(ensure-class 'sst
+  ':direct-superclasses '(plane)
+  ':direct-slots (list (list ':name 'mach
+                             ':readers '(mach-speed mach)
+                             'mag-step '2
+                             'locator '(sst-mach mach-location)))
+  ':metaclass 'faster-class
+  'another-option '(foo bar))
+</pre>
+</td></tr></table>
+
+<p>The evaluation or execution of a <b>defclass</b> form results in a call to the
+<a href="dictionary.html#ensure-class"><b>ensure-class</b></a> function. The arguments received by <a href="dictionary.html#ensure-class"><b>ensure-class</b></a> are
+derived from the <b>defclass</b> form in a defined way.  The exact
+macro-expansion of the <b>defclass</b> form is not defined, only the
+relationship between the arguments to the <b>defclass</b> macro and the
+arguments received by the <a href="dictionary.html#ensure-class"><b>ensure-class</b></a> function.  Examples of typical
+<b>defclass</b> forms and sample expansions are shown in 
+<a href="#defclass1">Figure 1</a> and <a href="#defclass2">Figure 2</a>.
+
+<p><ul>
+
+<p><li> The <i>name</i> argument to <b>defclass</b> becomes the value of the first
+argument to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.  This is the only positional argument accepted
+by <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>; all other arguments are keyword arguments.
+
+<p><li> The <i>direct-superclasses</i> argument to <b>defclass</b> becomes the
+value of the <b>:direct-superclasses</b> keyword argument to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.
+
+<p><li> The <i>direct slots</i> argument to <b>defclass</b> becomes the value of
+the <b>:direct-slots</b> keyword argument to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.  Special
+processing of this value is done to regularize the form of each slot
+specification and to properly capture the lexical scope of the initialization
+forms.  This is done by converting each slot specification to a property list
+called a <em>canonicalized slot specification</em>.  The resulting list of
+canonicalized slot specifications is the value of the <b>:direct-slots</b>
+keyword argument.
+
+<p>Canonicalized slot specifications are later used as the keyword arguments to a
+generic function which will, in turn, pass them to <a href="dictionary.html#make-instance"><b>make-instance</b></a> for use
+as a set of initialization arguments. Each canonicalized slot specification is
+formed from the corresponding slot specification as follows:
+
+<p><ul>
+<li> The name of the slot is the value of the <b>:name</b> property.  This
+property appears in every canonicalized slot specification.
+
+<p><li> When the <b>:initform</b> slot option is present in the slot
+specification, then both the <b>:initform</b> and <b>:initfunction</b>
+properties are present in the canonicalized slot specification.  The
+value of the <b>:initform</b> property is the initialization form.  The value of the
+<b>:initfunction</b> property is a function of zero arguments which, when
+called, returns the result of evaluating the initialization form in its proper
+lexical environment.
+
+<p>If the <b>:initform</b> slot option is not present in the slot specification,
+then either the <b>:initfunction</b> property will not appear, or its value
+will be false.  In such cases, the value of the <b>:initform</b> property, or
+whether it appears, is unspecified.
+
+<p><li> The value of the <b>:initargs</b> property is a list of the
+values of each <b>:initarg</b> slot option.  If there are no <b>:initarg</b> slot options, then either the <b>:initargs</b> property will
+not appear or its value will be the empty list.
+
+<p><li> The value of the <b>:readers</b> property is a list
+of the values of each <b>:reader</b> and <b>:accessor</b> slot option.  If
+there are no <b>:reader</b> or <b>:accessor</b> slot options, then either
+the <b>:readers</b> property will not appear or its value will be the
+empty list.
+
+<p><li> The value of the <b>:writers</b> property is a list of the
+values specified by each <b>:writer</b> and <b>:accessor</b> slot option.
+The value specified by a <b>:writer</b> slot option is just the value of
+the slot option.  The value specified by an <b>:accessor</b> slot option
+is a two element list:  the first element is the symbol <b>setf</b>, the
+second element is the value of the slot option.  If there are no <b>:writer</b> or <b>:accessor</b> slot options, then either the <b>:writers</b>
+property will not appear or its value will be the empty list.
+
+<p><li> The value of the <b>:documentation</b> property is the value of the <b>:documentation</b> slot option.  If there is no <b>:documentation</b> slot option,
+then either the <b>:documentation</b> property will not appear or its value
+will be false.
+
+<p><li> All other slot options appear as the values of properties
+with the same name as the slot option.  Note that this includes not only
+the remaining standard slot options (<b>:allocation</b> and <b>:type</b>),
+but also any other options and values appearing in the slot specification.
+If one of these slot options appears more than once, the value of the
+property will be a list of the specified values.
+
+<p><li> An implementation is free to add additional properties
+to the canonicalized slot specification provided these are not symbols
+accessible in the <b>common-lisp-user</b> package, or exported by any
+package defined in the ANSI Common Lisp standard.
+</ul>
+
+<p>Returning to the correspondence between arguments to the
+<b>defclass</b> macro and the arguments received by the
+<a href="dictionary.html#ensure-class"><b>ensure-class</b></a> function:
+
+<p><li> The <i>default initargs</i> class option, if it is present in
+the <b>defclass</b> form, becomes the value of the <b>:direct-default-initargs</b> keyword argument to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.
+Special processing of this value is done to properly capture the lexical
+scope of the default value forms.  This is done by converting each
+default initarg in the class option into a <em>canonicalized default
+initarg</em>.  The resulting list of canonicalized default initargs is the
+value of the <b>:direct-default-initargs</b> keyword argument to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.
+
+<p>A canonicalized default initarg is a list of three elements.  The first
+element is the name; the second is the actual form itself; and the third
+is a function of zero arguments which, when called, returns the result
+of evaluating the default value form in its proper lexical environment.
+
+<p><li> The <i>metaclass</i> class option, if it is present in
+the <b>defclass</b> form, becomes the value of the <b>:metaclass</b>
+keyword argument to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.
+
+<p><li> The <i>documentation</i> class option, if it is present in the <b>defclass</b> form, becomes the value of the <b>:documentation</b> keyword argument
+to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>.
+
+<p><li> Any other class options become the value of keyword arguments
+with the same name.  The value of the keyword argument is the tail of the
+class option. An error is signaled if any class option appears more than once
+in the <b>defclass</b> form.
+
+<p></ul>
+
+<p>In the call to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a>, every element of its arguments appears in
+the same left-to-right order as the corresponding element of the <b>defclass</b> form, except that the order of the properties of canonicalized
+slot specifications is unspecified.  The values of properties in
+canonicalized slot specifications do follow this ordering requirement.
+Other ordering relationships in the keyword arguments to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a> are unspecified.
+
+<p>The result of the call to <a href="dictionary.html#ensure-class"><b>ensure-class</b></a> is returned as the result
+of evaluating or executing the <b>defclass</b> form.
+
+<p><h3><a name="defmethod">The defmethod Macro</a></h3>
+
+<p>The evaluation or execution of a <b>defmethod</b> form requires
+first that the body of the method be converted to a method function.
+This process is described in the <a
+href="#processing-method-bodies">next section</a>. The result of this
+process is a method function and a set of additional initialization
+arguments to be used when creating the new method.  Given these two
+values, the evaluation or execution of a <b>defmethod</b> form
+proceeds in three steps.
+
+<p>The first step ensures the existence of a generic function with the specified
+name.  This is done by calling the function <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>.  The
+first argument in this call is the generic function name specified in the <b>defmethod</b> form.
+
+<p>The second step is the creation of the new method metaobject by calling <a href="dictionary.html#make-instance"><b>make-instance</b></a>.  The class of the new method metaobject is determined by calling
+<a href="dictionary.html#generic-function-method-class"><b>generic-function-method-class</b></a> on the result of the call to <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a> from the first step.
+
+<p>The initialization arguments received by the call to <a href="dictionary.html#make-instance"><b>make-instance</b></a>
+are as follows:
+
+<p><ul>
+
+<p><li> The value of the <b>:qualifiers</b> initialization argument is a list
+of the qualifiers which appeared in the <b>defmethod</b> form.  No special
+processing is done on these values.  The order of the elements of this list is
+the same as in the <b>defmethod</b> form.
+
+<p><li>  The value of the <b>:lambda-list</b> initialization argument is the
+unspecialized lambda list from the <b>defmethod</b> form.
+
+<p><li> The value of the <b>:specializers</b> initialization argument is a list
+of the specializers for the method.  For specializers which are classes, the
+specializer is the class metaobject itself.  In the case of <b>eql</b>
+specializers, it will be an <b>eql-specializer</b> metaobject obtained by
+calling <b>intern-eql-specializer</b> on the result of evaluating the <b>eql</b>
+specializer form in the lexical environment of the <b>defmethod</b> form.
+
+<p><li> The value of the <b>:function</b> initialization argument is the method
+function.
+
+<p><li> The value of the <b>:declarations</b> initialization argument is a
+list of the declarations from the <b>defmethod</b> form.  If there are no
+declarations in the macro form, this initialization argument either doesn't
+appear, or appears with a value of the empty list.
+
+<p><li> The value of the <b>:documentation</b> initialization argument is the
+documentation string from the <b>defmethod</b> form.  If there is no
+documentation string in the macro form this initialization argument either
+doesn't appear, or appears with a value of false.
+
+<p><li> Any other initialization argument produced in conjunction with the method
+function are also included.
+
+<p><li> The implementation is free to include additional
+initialization arguments provided these are not symbols accessible in the <b>common-lisp-user</b> package, or exported by any package defined in the ANSI
+Common Lisp standard.
+
+<p></ul>
+
+<p>In the third step, <a href="dictionary.html#add-method"><b>add-method</b></a> is called to add the newly created
+method to the set of methods associated with the generic function
+metaobject.
+
+<p>The result of the call to <a href="dictionary.html#add-method"><b>add-method</b></a> is returned as the result of
+evaluating or executing the <b>defmethod</b> form.
+
+<p><table border=yes>
+<caption>
+<a name="defmethod1"><b>Figure 3:</b></a> An example <b>defmethod</b>
+form and one possible correct expansion.  <br> 
+In the expansion,
+<em>method-lambda</em> is the result of calling
+<a href="dictionary.html#make-method-lambda"><b>make-method-lambda</b></a> as described in the section <a
+href="#processing-method-bodies">``Processing Method Bodies''.</a>
+The initargs appearing after <b>:function</b> are assumed to be
+additional initargs returned from the call to
+<a href="dictionary.html#make-method-lambda"><b>make-method-lambda</b></a>.  </caption><tr><td>
+<pre>
+(defmethod move :before ((p position) (l (eql 0))
+                         &optional (visiblyp t)
+                         &key color)
+  (set-to-origin p)
+  (when visiblyp (show-move p 0 color)))
+
+<p>(let ((#:g001 (ensure-generic-function 'move)))
+  (add-method #:g001
+    (make-instance (generic-function-method-class #:g001)
+                   ':qualifiers '(:before)
+                   ':specializers (list (find-class 'position)
+                                        (intern-eql-specializer 0))
+                   ':lambda-list '(p l &optional (visiblyp t)
+                                       &key color)
+                   ':function (function  <i>method-lambda</i>)
+                   'additional-initarg-1 't
+                   'additional-initarg-2 '39)))
+</pre>
+</td></tr></table>
+
+<p>An example showing a typical <b>defmethod</b> form and a sample expansion is
+shown in <a href="#defmethod1">Figure 3</a>.  The processing of the method body for this
+method is shown in <a href="#defmethod2">Figure 4</a>.
+
+<p><h3><a name="processing-method-bodies">Processing Method Bodies</a></h3>
+
+<p>Before a method can be created, the list of forms comprising the method body
+must be converted to a method function.  This conversion is a two step
+process.
+
+<p><blockquote> <b>Note:</b> 
+The body of methods can also appear in the <b>:initial-methods</b> option of
+<b>defgeneric</b> forms.  Initial methods are not considered by any of the
+protocols specified in this document.
+</blockquote>
+
+<p><table border=yes>
+<caption>
+<a name="defmethod2"><b>Figure 4:</b></a>
+During macro-expansion of the <b>defmethod</b> macro shown in
+<a href="#defmethod1">Figure 3</a>, code similar to this would be run to produce
+the method lambda and additional initargs.  <br>In this example, <em>environment</em>
+is the macroexpansion environment of the <b>defmethod</b> macro form.
+</caption><tr><td>
+<pre>
+(let ((gf (ensure-generic-function 'move)))
+  (make-method-lambda
+    gf
+    (class-prototype (generic-function-method-class gf))
+    '(lambda (p l &optional (visiblyp t) &key color)
+       (set-to-origin p)
+       (when visiblyp (show-move p 0 color)))
+   <i>environment</i>))
+</pre>
+</td></tr></table>
+
+<p>The first step occurs during macro-expansion of the macro form.  In this step,
+the method lambda list, declarations and body are converted to a lambda
+expression called a <em>method lambda</em>.  This conversion is based on
+information associated with the generic function definition in effect at the
+time the macro form is expanded.
+
+<p>The generic function definition is obtained by calling <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a> with a first argument of the generic function name
+specified in the macro form.  The <b>:lambda-list</b> keyword argument is not
+passed in this call.
+
+<p>Given the generic function, production of the method lambda proceeds by
+calling <a href="dictionary.html#make-method-lambda"><b>make-method-lambda</b></a>.  The first argument in this call is the
+generic function obtained as described above.  The second argument is the
+result of calling <b>class-prototype</b> on the result of calling <a href="dictionary.html#generic-function-method-class"><b>generic-function-method-class</b></a> on the generic function.  The third argument is
+a lambda expression formed from the method lambda list, declarations and body.
+The fourth argument is the macro-expansion environment of the macro form; this
+is the value of the <b>&amp;environment</b> argument to the <b>defmethod</b> macro.
+
+<p>The generic function <a href="dictionary.html#make-method-lambda"><b>make-method-lambda</b></a> returns two values.  The first
+is the method lambda itself.  The second is a list of initialization arguments
+and values.  These are included in the initialization arguments when the
+method is created.
+
+<p>In the second step, the method lambda is converted to a function which
+properly captures the lexical scope of the macro form.  This is done by having
+the method lambda appear in the macro-expansion as the argument of the <b>function</b> special form.  During the subsequent evaluation of the
+macro-expansion, the result of the <b>function</b> special form is the method
+function.
+
+<p><h3><a name="defgeneric">The defgeneric Macro</a></h3>
+
+<p>The evaluation or execution of a <b>defgeneric</b> form results in a call to
+the <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a> function. The arguments received by <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a> are derived from the <b>defgeneric</b> form in a
+defined way.  As with <b>defclass</b> and <b>defmethod</b>, the exact
+macro-expansion of the <b>defgeneric</b> form is not defined, only the
+relationship between the arguments to the macro and the arguments received by
+<a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>.
+
+<p><ul>
+
+<p><li> The <i>function-name</i> argument to <b>defgeneric</b> becomes the first
+argument to <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>.  This is the only positional
+argument accepted by <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>; all other arguments are
+keyword arguments.
+
+<p><li> The <i>lambda-list</i> argument to <b>defgeneric</b> becomes
+the value of the <b>:lambda-list</b> keyword argument to <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>.
+
+<p><li> For each of the options <b>:argument-precedence-order</b>, <b>:documentation</b>, <b>:generic-function-class</b> and <b>:method-class</b>, the
+value of the option becomes the value of the keyword argument with the same
+name.  If the option does not appear in the macro form, the keyword argument
+does not appear in the resulting call to <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>.
+
+<p><li> For the option <b>declare</b>, the list of declarations becomes the value
+of the <b>:declarations</b> keyword argument.  If the <b>declare</b> option does
+not appear in the macro form, the <b>:declarations</b> keyword argument does
+not appear in the call to <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a>.
+
+<p><li> The handling of the <b>:method-combination</b> option is not specified.
+
+<p></ul>
+
+<p>The result of the call to <a href="dictionary.html#ensure-generic-function"><b>ensure-generic-function</b></a> is returned as the
+result of evaluating or executing the <b>defgeneric</b> form.
+
+<p><h2><a name="subprotocols">Subprotocols</a></h2>
+
+<p>This section provides an overview of the Metaobject Protocols.  The
+detailed behavior of each function, generic function and macro in the
+Metaobject Protocol is presented in the <a name="dictionary">Generic
+Functions and Methods Dictionary</a>.  The remainder of this chapter
+is intended to emphasize connections among the parts of the Metaobject
+Protocol, and to provide some examples of the kinds of specializations
+and extensions the protocols are designed to support.
+
+<p><h3><a name="metaobject-initialization-protocols">Metaobject Initialization Protocols</a></h3>
+
+<p>Like other objects, metaobjects can be created by calling
+<a href="dictionary.html#make-instance"><b>make-instance</b></a>.  The initialization arguments passed to
+<a href="dictionary.html#make-instance"><b>make-instance</b></a> are used to initialize the metaobject in the
+usual way.  The set of legal initialization arguments, and their
+interpretation, depends on the kind of metaobject being created.
+Implementations and portable programs are free to extend the set of
+legal initialization arguments.  Detailed information about the
+initialization of each kind of metaobject are provided in <a
+name="dictionary">Generic Functions and Methods Dictionary</a>; this
+section provides an overview and examples of this behavior.
+
+<p><h4><a name="init-class">Initialization of Class Metaobjects</a></h4>
+
+<p>Class metaobjects created with <a
+href="dictionary.html#make-instance"><b>make-instance</b></a> are
+usually <em>anonymous</em>; that is, they have no proper name.  An
+anonymous class metaobject can be given a proper name using <b>setf
+find-class</b> and <a href="dictionary.html#(setf class-name)"><b>setf
+class-name</b></a>.
+
+<p>When a class metaobject is created with <a href="dictionary.html#make-instance"><b>make-instance</b></a>, it is initialized
+in the usual way.  The initialization arguments passed to <a href="dictionary.html#make-instance"><b>make-instance</b></a>
+are use to establish the definition of the class.  Each initialization argument
+is checked for errors and associated with the class metaobject.  The
+initialization arguments correspond roughly to the arguments accepted by the
+<b>defclass</b> macro, and more closely to the arguments accepted by the <a href="dictionary.html#ensure-class"><b>ensure-class</b></a> function.
+
+<p>Some class metaobject classes allow their instances to be redefined.  When
+permissible, this is done by calling <b>reinitialize-instance</b>.  This is
+discussed in the next section.
+
+<p>An example of creating an anonymous class directly using <a href="dictionary.html#make-instance"><b>make-instance</b></a>
+follows:
+
+<p><pre>
+(flet ((zero () 0)
+       (propellor () *propellor*))
+  (make-instance 'standard-class
+    :name '(my-class foo)
+    :direct-superclasses (list (find-class 'plane)
+                              <i>another-anonymous-class</i>)
+    :direct-slots `((:name x
+                     :initform 0
+                     :initfunction ,#'zero
+                     :initargs (:x)
+                     :readers (position-x)
+                     :writers ((setf position-x)))
+                    (:name y
+                     :initform 0
+                     :initfunction ,#'zero
+                     :initargs (:y)
+                     :readers (position-y)
+                     :writers ((setf position-y))))
+    :direct-default-initargs `((:engine *propellor* ,#'propellor))))
+</pre>
+
+<p><h4><a name="reinit-class">Reinitialization of Class Metaobjects</a></h4>
+
+<p>Some class metaobject classes allow their instances to be reinitialized.  This
+is done by calling <b>reinitialize-instance</b>.  The initialization arguments
+have the same interpretation as in class initialization.
+
+<p>If the class metaobject was finalized before the call to
+<b>reinitialize-instance</b>, <a href="dictionary.html#finalize-inheritance"><b>finalize-inheritance</b></a> will be
+called again once all the initialization arguments have been processed
+and associated with the class metaobject.  In addition, once
+finalization is complete, any dependents of the class metaobject will
+be updated by calling <a
+href="dictionary.html#update-dependent"><b>update-dependent</b></a>.
+
+<p>
+<h4><a name="init-generic">Initialization of Generic Function and Method Metaobjects</a></h4>
+
+<p>An example of creating a generic function and a method metaobject, and then
+adding the method to the generic function is shown below.  This example is
+comparable to the method definition shown in <a href="#defmethod1">Figure 3</a>.
+
+<p><pre>
+(let* ((gf (make-instance 'standard-generic-function
+                          :lambda-list '(p l &optional visiblyp &key)))
+       (method-class (generic-function-method-class gf)))
+  (multiple-value-bind (lambda initargs)
+       (make-method-lambda
+         gf
+         (class-prototype method-class)
+         '(lambda (p l &optional (visiblyp t) &key color)
+            (set-to-origin p)
+            (when visiblyp (show-move p 0 color)))
+         nil)
+    (add-method gf
+                (apply #'make-instance method-class
+                       :function (compile nil lambda)
+                       :specializers (list (find-class 'position)
+                                           (intern-eql-specializer 0))
+                       :qualifiers ()
+                       :lambda-list '(p l &optional (visiblyp t)
+                                          &key color)
+                       initargs))))
+</pre>
+
+<p><h3><a name="class-finalization-protocol">Class Finalization Protocol</a></h3>
+
+<p>Class <em>finalization</em> is the process of computing the information a class
+inherits from its superclasses and preparing to actually allocate instances of
+the class.  The class finalization process includes computing the class's
+class precedence list, the full set of slots accessible in instances of the
+class and the full set of default initialization arguments for the class.
+These values are associated with the class metaobject and can be accessed by
+calling the appropriate reader.  In addition, the class finalization process
+makes decisions about how instances of the class will be implemented.
+
+<p>To support forward-referenced superclasses, and to account for the fact that
+not all classes are actually instantiated, class finalization is not done as
+part of the initialization of the class metaobject.  Instead, finalization is
+done as a separate protocol, invoked by calling the generic function <a href="dictionary.html#finalize-inheritance"><b>finalize-inheritance</b></a>.  The exact point at which <a href="dictionary.html#finalize-inheritance"><b>finalize-inheritance</b></a> is
+called depends on the class of the class metaobject; for <b>standard-class</b>
+it is called sometime after all the classes superclasses are defined, but no
+later than when the first instance of the class is allocated (by <a href="dictionary.html#allocate-instance"><b>allocate-instance</b></a>).
+
+<p>The first step of class finalization is computing the class precedence list.
+Doing this first allows subsequent steps to access the class precedence list.
+This step is performed by calling the generic function <a href="dictionary.html#compute-class-precedence-list"><b>compute-class-precedence-list</b></a>.  The value returned from this call is
+associated with the class metaobject and can be accessed by calling the <a href="dictionary.html#class-mo-readers"><b>class-precedence-list</b></a> generic function.
+
+<p>The second step is computing the full set of slots that will be accessible
+in instances of the class.  This step is performed by calling the generic
+function <a href="dictionary.html#compute-slots"><b>compute-slots</b></a>.  The result of this call is a list of
+effective slot definition metaobjects.  This value is associated with the
+class metaobject and can be accessed by calling the <a href="dictionary.html#class-mo-readers"><b>class-slots</b></a>
+generic function.
+
+<p>The behavior of <a href="dictionary.html#compute-slots"><b>compute-slots</b></a> is itself layered, consisting of calls
+to <a href="dictionary.html#effective-slot-definition-class"><b>effective-slot-definition-class</b></a> and <a href="dictionary.html#compute-effective-slot-definition"><b>compute-effective-slot-definition</b></a>.
+
+<p>The final step of class finalization is computing the full set of
+initialization arguments for the class.  This is done by calling the generic
+function <a href="dictionary.html#compute-default-initargs"><b>compute-default-initargs</b></a>.  The value returned by this generic
+function is associated with the class metaobject and can be accessed by
+calling <a href="dictionary.html#class-mo-readers"><b>class-default-initargs</b></a>.
+
+<p>If the class was previously finalized, <a href="dictionary.html#finalize-inheritance"><b>finalize-inheritance</b></a> may call
+<b>make-instances-obsolete</b>.  The circumstances under which this happens are
+describe in the section of the CLOS specification called ``Redefining
+Classes.''
+
+<p>Forward-referenced classes, which provide a temporary definition for a class
+which has been referenced but not yet defined, can never be finalized.  An
+error is signalled if <a href="dictionary.html#finalize-inheritance"><b>finalize-inheritance</b></a> is called on a
+forward-referenced class.
+
+<p><h3><a name="instance-structure-protocol">Instance Structure Protocol</a></h3>
+
+<p>The instance structure protocol is responsible for implementing the behavior
+of the slot access functions like <b>slot-value</b> and <b>(setf
+slot-value)</b>.
+
+<p>For each CLOS slot access function other than <b>slot-exists-p</b>, there is a
+corresponding generic function which actually provides the behavior of the
+function.  When called, the slot access function finds the pertinent effective
+slot definition metaobject, calls the corresponding generic function and
+returns its result.  The arguments passed on to the generic function include
+one additional value, the class of the <i>object</i> argument, which always
+immediately precedes the <i>object</i> argument
+
+<p>
+The correspondences between slot access function and underlying slot access
+generic function are as follows:
+
+<p><table border=yes>
+<tr><th>Slot Access Function</th>	<th>Corresponding Slot Access Generic Function</th></tr>
+<tr><td>slot-boundp       </td><td>slot-boundp-using-class       </td></tr>
+<tr><td>slot-makunbound   </td><td>slot-makunbound-using-class   </td></tr>
+<tr><td>slot-value        </td><td>slot-value-using-class        </td></tr>
+<tr><td>(setf slot-value) </td><td>(setf slot-value-using-class) </td></tr>
+</table>
+
+<p>At the lowest level, the instance structure protocol provides only limited
+mechanisms for portable programs to control the implementation of instances
+and to directly access the storage associated with instances without going
+through the indirection of slot access.  This is done to allow portable
+programs to perform certain commonly requested slot access optimizations.
+
+<p>In particular, portable programs can control the implementation of, and obtain
+direct access to, slots with allocation <b>:instance</b> and type <b>t</b>.  These
+are called <em>directly accessible slots</em>.
+
+<p>The relevant specified around-method on <a href="dictionary.html#compute-slots"><b>compute-slots</b></a> determines the
+implementation of instances by deciding how each slot in the instance will be
+stored.  For each directly accessible slot, this method allocates a <em>location</em> and associates it with the effective slot definition metaobject.
+The location can be accessed by calling the <b>slot-definition-location</b>
+generic function.  Locations are non-negative integers.  For a given class,
+the locations increase consecutively, in the order that the directly
+accessible slots appear in the list of effective slots.  (Note that here, the
+next paragraph, and the specification of this around-method are the only
+places where the value returned by <a href="dictionary.html#compute-slots"><b>compute-slots</b></a> is described as a list
+rather than a set.)
+
+<p>Given the location of a directly accessible slot, the value of that
+slot in an instance can be accessed with the appropriate accessor.
+For <b>standard-class</b>, this accessor is the function <a
+href="dictionary.html#standard-instance-access"><b>standard-instance-access</b></a>.
+For <b>funcallable-standard-class</b>, this accessor is the function
+<a
+href="dictionary.html#funcallable-standard-instance-access"><b>funcallable-standard-instance-access</b></a>.
+In each case, the arguments to the accessor are the instance and the
+slot location, in that order.  See the definition of each accessor in
+Chapter <a href="#dictionary"></a> for additional restrictions on the
+use of these function.
+
+<p>Portable programs are permitted to affect and rely on the allocation of
+locations only in the following limited way:  By first defining a portable
+primary method on <a href="dictionary.html#compute-slots"><b>compute-slots</b></a> which orders the returned value in a
+predictable way, and then relying on the defined behavior of the specified
+around-method to assign locations to all directly accessible slots.
+Portable programs may compile-in calls to low-level accessors which take
+advantage of the resulting predictable allocation of slot locations.
+
+<p>
+The following example shows the use of this mechanism to implement a new class
+metaobject class, <b>ordered-class</b> and class option <b>:slot-order</b>.  This
+option provides control over the allocation of slot locations.  In this simple
+example implementation, the <b>:slot-order</b> option is not inherited by
+subclasses; it controls only instances of the class itself.
+
+<p><pre>
+(defclass ordered-class (standard-class)
+     ((slot-order :initform ()
+                  :initarg :slot-order
+                  :reader class-slot-order)))
+
+<p>(defmethod compute-slots ((class ordered-class))
+  (let ((order (class-slot-order class)))
+    (sort (copy-list (call-next-method))
+          #'(lambda (a b)
+              (< (position (slot-definition-name a) order)
+                 (position (slot-definition-name b) order))))))
+</pre>
+
+<p>Following is the source code the user of this extension would write.
+ Note that because the code above doesn't implement inheritance of the <b>:slot-order</b> option, the function <b>distance</b> must not be called on
+instances of subclasses of <b>point</b>; it can only be called on instances
+of <b>point</b> itself.
+
+<p><pre>
+(defclass point ()
+     ((x :initform 0)
+      (y :initform 0))
+  (:metaclass ordered-class)
+  (:slot-order x y))
+
+<p>(defun distance (point)
+  (sqrt (/ (+ (expt (standard-instance-access point 0) 2)
+              (expt (standard-instance-access point 1) 2))
+           2.0)))
+</pre>
+
+<p>In more realistic uses of this mechanism, the calls to the low-level
+instance structure accessors would not actually appear textually in the source
+program, but rather would be generated by a meta-level analysis program run
+during the process of compiling the source program.
+
+<p><h3><a name="funcallable-instances">Funcallable Instances</a></h3>
+
+<p>Instances of classes which are themselves instances of
+<b>funcallable-standard-class</b> or one of its subclasses are called
+<i>funcallable instances</i>.  Funcallable instances can only be
+created by <a
+href="dictionary.html#allocate-instance"><b>allocate-instance
+(funcallable-standard-class)</b></a>.
+
+<p>Like standard instances, funcallable instances have slots with the
+normal behavior.  They differ from standard instances in that they can
+be used as functions as well; that is, they can be passed to
+<b>funcall</b> and <b>apply</b>, and they can be stored as the
+definition of a function name.  Associated with each funcallable
+instance is the function which it runs when it is called.  This
+function can be changed with <a
+href="dictionary.html#set-funcallable-instance-function"><b>set-funcallable-instance-function</b></a>.
+
+<p>
+The following simple example shows the use of funcallable instances to create
+a simple, <b>defstruct</b>-like facility.  (Funcallable instances are useful
+when a program needs to construct and maintain a set of functions and
+information about those functions.  They make it possible to maintain both as
+the same object rather than two separate objects linked, for example, by hash
+tables.)
+
+<p><pre>
+(defclass constructor ()
+     ((name :initarg :name :accessor constructor-name)
+      (fields :initarg :fields :accessor constructor-fields))
+  (:metaclass funcallable-standard-class))
+
+<p>(defmethod initialize-instance :after ((c constructor) &key)
+  (with-slots (name fields) c
+    (set-funcallable-instance-function
+      c
+      #'(lambda ()
+          (let ((new (make-array (1+ (length fields)))))
+            (setf (aref new 0) name)
+            new)))))
+
+<p>(setq c1 (make-instance 'constructor
+                        :name 'position :fields '(x y)))
+#&lt;CONSTRUCTOR 262437&gt;
+
+<p>(setq p1 (funcall c1))
+#&lt;ARRAY 3 263674&gt;
+</pre>
+
+<p><h3><a name="generic-function-invocation-protocol">Generic Function Invocation Protocol</a></h3>
+
+<p>Associated with each generic function is its discriminating function.  Each
+time the generic function is called, the discriminating function is called to
+provide the behavior of the generic function.  The discriminating function
+receives the full set of arguments received by the generic function.  It must
+lookup and execute the appropriate methods, and return the appropriate values.
+
+<p>The discriminating function is computed by the highest layer of the
+generic function invocation protocol, <a
+href="dictionary.html#compute-discriminating-function"><b>compute-discriminating-function</b></a>.
+Whenever a generic function metaobject is initialized, reinitialized,
+or a method is added or removed, the discriminating function is
+recomputed.  The new discriminating function is then stored with <a
+href="dictionary.html#set-funcallable-instance-function"><b>set-funcallable-instance-function</b></a>.
+
+<p>Discriminating functions call <a
+href="dictionary.html#compute-applicable-methods"><b>compute-applicable-methods</b></a>
+and <a
+href="dictionary.html#compute-applicable-methods-using-classes"><b>compute-applicable-methods-using-classes</b></a>
+to compute the methods applicable to the generic functions arguments.
+Applicable methods are combined by <a
+href="dictionary.html#compute-effective-method"><b>compute-effective-method</b></a>
+to produce an <i>effective method</i>.  Provisions are made to allow
+memoization of the method applicability and effective methods
+computations.  (See the description of <a
+href="dictionary.html#compute-discriminating-function"><b>compute-discriminating-function</b></a>
+for details.)
+
+<p>The body of method definitions are processed by <a href="dictionary.html#make-method-lambda"><b>make-method-lambda</b></a>.  The
+result of this generic function is a lambda expression which is processed by
+either <b>compile</b> or the file compiler to produce a <i>method function</i>.
+The arguments received by the method function are controlled by the <b>call-method</b> forms appearing in the effective methods.  By default, method
+functions accept two arguments: a list of arguments to the generic function,
+and a list of next methods.  The list of next methods corresponds to the next
+methods argument to <b>call-method</b>.  If <b>call-method</b> appears with
+additional arguments, these will be passed to the method functions as well; in
+these cases, <a href="dictionary.html#make-method-lambda"><b>make-method-lambda</b></a> must have created the method lambdas to
+expect additional arguments.
+
+<p><h3><a name="dependent-maintenance-protocol">Dependent Maintenance Protocol</a></h3>
+
+<p>It is convenient for portable metaobjects to be able to memoize information
+about other metaobjects, portable or otherwise.  Because class and generic
+function metaobjects can be reinitialized, and generic function metaobjects
+can be modified by adding and removing methods, a means must be provided to
+update this memoized information.
+
+<p>The dependent maintenance protocol supports this by providing a way
+to register an object which should be notified whenever a class or
+generic function is modified.  An object which has been registered
+this way is called a <em>dependent</em> of the class or generic
+function metaobject.  The dependents of class and generic function
+metaobjects are maintained with <a
+href="dictionary.html#add-dependent"><b>add-dependent</b></a> and <a
+href="dictionary.html#remove-dependent"><b>remove-dependent</b></a>.  The
+dependents of a class or generic function metaobject can be accessed
+with <a href="dictionary.html#map-dependents"><b>map-dependents</b></a>.
+Dependents are notified about a modification by calling
+<a href="dictionary.html#update-dependent"><b>update-dependent</b></a>.  (See the specification of
+<a href="dictionary.html#update-dependent"><b>update-dependent</b></a> for detailed description of the circumstances
+under which it is called.)
+
+<p>To prevent conflicts between two portable programs, or between portable
+programs and the implementation, portable code must not register metaobjects
+themselves as dependents. Instead, portable programs which need to record a
+metaobject as a dependent, should encapsulate that metaobject in some other
+kind of object, and record that object as the dependent.  The results are
+undefined if this restriction is violated.
+
+<p>
+This example shows a general facility for encapsulating metaobjects before
+recording them as dependents.  The facility defines a basic kind of
+encapsulating object: an updater.  Specializations of the basic class can be
+defined with appropriate special updating behavior.  In this way, information
+about the updating required is associated with each updater rather than with
+the metaobject being updated.
+
+<p>Updaters are used to encapsulate any metaobject which requires
+updating when a given class or generic function is modified.  The
+function <b>record-updater</b> is called to both create an updater and
+add it to the dependents of the class or generic function.  Methods on
+the generic function <a
+href="dictionary.html#update-dependent"><b>update-dependent</b></a>,
+specialized to the specific class of updater do the appropriate update
+work.
+
+<p><pre>
+(defclass updater ()
+     ((dependent :initarg :dependent :reader dependent)))
+
+<p>(defun record-updater (class dependee dependent &rest initargs)
+  (let ((updater (apply #'make-instance class :dependent dependent
+                                              initargs)))
+    (add-dependent dependee updater)
+    updater))
+</pre>
+
+<p>A <b>flush-cache-updater</b> simply flushes the cache of the dependent when it
+is updated.
+
+<p><pre>
+(defclass flush-cache-updater (updater) ())
+
+<p>(defmethod update-dependent (dependee (updater flush-cache-updater)
+                             &rest args)
+  (declare (ignore args))
+  (flush-cache (dependent updater)))
+</pre>
+
+
+</BODY>
+</HTML>

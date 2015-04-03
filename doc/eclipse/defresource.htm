@@ -1,0 +1,105 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>CLIM: Function DEFRESOURCE</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Macro</I> <B>DEFRESOURCE</B><P>
+<B>Syntax:</B><P>
+
+<B>defresource</B> <I>name parameters <TT>&amp;key</TT> constructor initializer deinitializer matcher initial-copies</I> =&gt; <I>name</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>name</I>---a <EM>symbol</EM>. <P>
+<I>parameters</I>---an <EM>ordinary lambda-list</EM>.<P> 
+<I>constructor</I>---an <EM>expression</EM>. This argument is required.<P> 
+<I>initializer</I>---an <EM>expression</EM>.<P> 
+<I>deinitializer</I>---an <EM>expression</EM>.<P> 
+<I>matcher</I>---an <EM>expression</EM>.<P> 
+<I>initial-copies</I>---an <EM>integer</EM> or <code>NIL</code>.  The 
+default is <code>NIL</code><P> 
+
+<B>Description:</B>
+
+<P>
+<b>Defresource</b> defines a resource named <i>name</i>.
+<i>Parameters</i> is a lambda-list giving names and default values (for
+optional and keyword parameters) of parameters to an object of this
+type.
+
+<P>
+<i>Constructor</i> is an expression that is responsible for creating an
+object, and is called when someone tries to allocate an object from
+the resource and no suitable free objects exist.  The constructor form
+can access the parameters as variables.
+
+<P>
+<i>Initializer</i> is an expression that is used to initialize an
+object gotten from the resource.  It can access the parameters as
+variables, and also has access to a variable called <i>name</i>, which
+is the object to be initialized.  The initializer is called both on
+newly created objects and objects that are being reused.
+
+<P>
+<i>Deinitializer</i> is an expression that is used to deinitialize an
+object when it is about to be returned to the resource.  It can access
+the parameters as variables, and also has access to a variable called
+<i>name</i>, which is the object to be deinitialized.  It is called
+whenever an object is deallocated back to the resource, but is not
+called by <a href="clear-resource.htm"><b>clear-resource</b></a>.
+Deinitializers are typically used to clear references to other
+objects.
+
+<P>
+<i>Matcher</i> is an expression that ensures that an object in the
+resource "matches" the specified parameters, which it can access as
+variables.  In addition, the matcher  also has access to a variable
+called <i>name</i>, which is the object in the resource being matched
+against.  If no matcher is supplied, the system remembers the value for
+the parameters (including optional ones that defaulted) that were used
+to construct the object, and assumes that it matches those particular
+values for all time.  This comparison is done with equal.  The matcher
+should return <em>true</em> if there is a match, otherwise it should
+return <em>false</em>.
+
+<P>
+<i>Initial-copies</i> is used to specify the number of objects that
+should be initially put into the resource.  <code>NIL</code> is
+equivalent to 0.  If initial copes are made and there are parameters,
+all the parameters must be optional; in this case, the initial copies
+have the default values of the parameters.<P>
+
+<B>Side Effects:</B> Redefines any existing resource of the same <i>name</i>.<P> 
+
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P> <a
+href="allocate-resource.htm"><b>allocate-resource</b></a>, <a
+href="clear-resource.htm"><b>clear-resource</b></a>, <a
+href="deallocate-resource.htm"><b>deallocate-resource</b></a>, <a
+href="map-resource.htm"><b>map-resource</b></a>, <a
+href="using-resource.htm"><b>using-resource</b></a>.<P>
+
+<B>Notes:</B> 
+
+<P> After redefining a resource, it may be necessary to recompile any
+previously compiled references to that resource, whether the reference
+is through the <em>macro</em> <a
+href="using-resource.htm"><b>using-resource</b></a>, or a
+<em>function</em> such as <a
+href="allocate-resource.htm"><b>allocate-resource</b></a>.
+
+<HR>
+<A HREF="deallocate-resource.htm">[Previous]</A> <A HREF="map-resource.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

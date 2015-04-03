@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#for file in format directives
+#do regenerate $file; done
+
+for file in reader file
+do tregenerate $file; done
+
+# clos-run clos-comp directives reader control-run common-comp env
+# macro evaluation enclose number-comp bits pretty symbol method-comb pkg 
+# package pathname debug describe
+# prim-decs stream comp-stream pathname
+# debug pathname file misc
+# circle pretty directives default-pp file format print-object printer 
+# kernel equalp condition debug reader 
+# evaluation walk-util common-comp macro-comp pretty-comp literal walk-top 
+# stream file-stream comp-stream array struct-run package pathname prim-decs 
+# describe describer character misc dispatch
+
+# tests:
+# misc parsepath
+# pretty4 numbers2
+# pathname parsepath transpath numbers2 pretty pretty3 pretty4 pretty5
+# printer rt condition pathname format c pretty pretty2

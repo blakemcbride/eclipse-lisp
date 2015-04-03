@@ -1,0 +1,192 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Extensions to Common Lisp</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Extensions to ANSI Common Lisp</H2>
+<hr>
+
+The following are extensions to Common Lisp as specified by <A
+HREF="http://www.ansi.org/"> ANSI</A> <A
+HREF="http://www.x3.org/tc_home/tc_sd4/x3j13sd4.html">X3.226:1994</A>
+American National Standard for Programming Language Common LISP.
+
+  <UL>
+  <li> <a href="#mop"> MetaObject Protocol</a>
+  <li> <a href="#clim"> Common Lisp Interface Manager (CLIM)</a>
+  <ul>
+  <li> <a href="#resources">Resources</a>
+  <li> <a href="#streams">CLOS Streams</a>
+  </ul>
+  <LI> <A HREF="char.htm"> Characters</a>
+  <LI> <A HREF="path.htm"> Pathnames</a>
+  </UL>
+
+<hr>
+
+<h3> <a name="mop">MetaObject Protocol</a></h3>
+
+The <a href="cl.htm#ansi">ANSI standard</a> encourages, but does not
+require, implementations to support the <a
+href="gloss.htm#mop">MetaObject Protocol (2)</a> where possible.
+
+<P>
+Eclipse supports the complete MetaObject Protocol (MOP), as defined in
+<a href="../alu/table/bibliography.htm#kickzales"><I>The Art of the
+Metaobject Protocol</I></A>.
+
+<p>
+A copy of the <a href="cl.htm">ALU web-site</a> version of the <a
+href="../alu/mop/index.html">MOP spec</a> is included with this
+Eclipse distribution.
+
+<hr>
+<h3> <a name="clim"></a>Common Lisp Interface Manager (CLIM)</h3>
+
+The <a href="cl.htm#ansi">ANSI standard</a> does not define any
+graphics, windowing or related utilities.  The <a
+href="../alu/table/references.htm#clim">Common Lisp Interface Manager
+(CLIM)</a> is a <em>de facto</em> industry standard for these
+facilities.
+
+<P>
+Like ANSI, Eclipse does not provide any graphics or windowing utilities.  All
+input and output is text based, using the operating system
+provided <code>stdin</code>, <code>stdout</code>, <code>stderr</code>
+streams.
+
+<p>
+However, where Eclipse provides additional facilities beyond that
+defined by either <a href="cl.htm#ansi">ANSI</a> or the <a
+href="cl.htm#mop">MOP</a>, we have chosen to implement such
+facilities in a manner consistent with the CLIM.  These facilities are
+documented in the <a href="dict.htm">Eclipse Dictionary</a>, and include:
+
+<ul>
+<P><li><a href="#resources">Resources</a>
+<P><li><a href="#streams">CLOS Streams</a>
+</ul>
+
+<hr><h2><a name="resources">Resources</a></h2>
+
+Resources are useful for avoid excessive consing and garbage
+collectinging by explicitly maintaining pools of objects for reuse,
+instead of creating them when needed and relying on the garbage
+collector to flush them when they are no longer needed. When an object
+is no longer needed, it is returned to the pool of objects of that
+type, and recycled when a new object of that type is needed.
+
+<p>
+More often than not, this doesn't actually provide real time/space
+savings over the normal automatic memory management provided by the
+system.  However, there are times when it does, and having this
+abstraction to uniformly model the way people think about some kinds
+of problems can provide clearer code.
+
+<p>
+This implementation of resources, compatible with <a href="#clim">CLIM</a>, is based on
+the code written by Brad Miller of U. Rochester, and available at the
+<A href="ftp://ftp.cs.cmu.edu/user/ai/0.html">Carnegie-Mellon AI
+Repository</A>.  This, in turn, was based on the implementation on <a
+href="../alu/table/systems.htm#symbolics">Symbolics Lisp Machines</a>.
+
+ <ul>
+ <li> <a href="allocate-resource.htm"><b>allocate-resource</b></a>
+ <li> <a href="clear-resource.htm"><b>clear-resource</b></a>
+ <li> <a href="deallocate-resource.htm"><b>deallocate-resource</b></a>
+ <li> <a href="defresource.htm"><b>defresource</b></a>
+ <li> <a href="map-resource.htm"><b>map-resource</b></a>
+ <li> <a href="using-resource.htm"><b>using-resource</b></a>
+ </ul>
+
+<hr><h2><a name="streams">CLOS Streams</a></h2>
+
+<P>The CLOS streams protocol allows applications to define their own
+classes of streams, using the Common Lisp Object System (CLOS).
+Certain generic functions are documented to be used by the standard <a
+href="cl.htm#ansi">ANSI</a> defined I/O functions, and specialized
+methods for these functions may be defined for the application's
+stream classes.
+
+<P>
+The basic stream-based input and output protocol used by <a
+href="#clim">CLIM</a> is taken from the "STREAM-DEFINITION-BY-USER"
+proposal to the <a href="../alu/table/references.htm#ansi">X3J13</a>
+committee, made by David Gray of <a
+href="../alu/table/systems.htm#ti">Texas Instruments</a>.  This proposal was
+not accepted by the X3J13 committee as part of the ANSI Common Lisp
+language definition, but many Lisp implementations do support it.
+
+ <ul>
+<li><a href="element-type.htm"><b>*default-element-type*</b></a>
+
+<li><a href="original-stream.htm"><b>*original-stream*</b></a>
+
+<li><a href="close.htm"><b>close</b></a>
+
+<li><a href="encapsulating-stream.htm"><b>encapsulating-stream</b></a>
+
+<li><a href="encapsulating-stream-p.htm"><b>encapsulating-stream-p</b></a>
+
+<li><a href="clim-stream-classes.htm"><b>fundamental-stream</b>,
+<b>fundamental-character-stream</b>, etc.</a>
+
+<li><a href="input-stream-p.htm"><b>input-stream-p</b></a>
+
+<li><a href="open-stream-p.htm"><b>open-stream-p</b></a>
+
+<li><a href="input-stream-p.htm"><b>output-stream-p</b></a>
+
+<li><a href="eclipse-stream-classes.htm"><b>stream</b>,
+<b>input-stream</b>,
+<b>output-stream</b></a>
+
+<li><a href="advance.htm"><b>stream-advance-to-column</b></a>
+
+<li><a href="stream-clear.htm"><b>stream-clear-input</b></a>
+<li><a href="stream-clear.htm"><b>stream-clear-output</b></a>
+<li><a href="stream-element-type.htm"><b>stream-element-type</b></a>
+<li><a href="stream-clear.htm"> <b>stream-force-output</b>, <b>stream-finish-output</b></a>
+<li><a href="terpri.htm"><b>stream-fresh-line</b></a>
+
+<li><a href="listen.htm"><b>stream-listen</b></a>
+
+<li><a href="streamp.htm"><b>streamp</b></a>
+
+<li><a href="peek.htm"><b>stream-peek-char</b></a>
+
+<li><a href="line-column.htm"><b>stream-line-column</b></a>
+
+<li><a href="read-char.htm"><b>stream-read-byte</b></a>
+<li><a href="read-char.htm"><b>stream-read-char</b></a>
+<li><a href="listen.htm"><b>stream-read-char-no-hang</b></a>
+
+<li><a href="line.htm"><b>stream-read-line</b></a>
+
+<li><a href="read-sequence.htm"><b>stream-read-sequence</b></a>
+
+<li><a href="line-column.htm"><b>stream-start-line-p</b></a>
+
+<li><a href="terpri.htm"><b>stream-terpri</b></a>
+
+<li><a href="unread.htm"><b>stream-unread-char</b></a>
+
+<li><a href="read-char.htm"><b>stream-write-byte</b></a>
+<li><a href="read-char.htm"><b>stream-write-char</b></a>
+<li><a href="read-sequence.htm"><b>stream-write-sequence</b></a>
+<li><a href="write-string.htm"><b>stream-write-string</b></a>
+ </ul>
+
+<HR>
+<A HREF="defined.htm">[Previous]</A> <A HREF="char.htm">[Next]</A> <A
+HREF="lisp.htm">[Up]</A> <A HREF="eclipse.htm">[Documentation
+Contents]</A> <A HREF="http://www.elwood.com/eclipse-info">[Eclipse
+Home Page]</A>
+
+</BODY>
+</HTML>
+
+

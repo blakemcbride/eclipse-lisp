@@ -1,0 +1,230 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Dynamic</TITLE>
+<meta name="description" content="Dynamic Lisp">
+<meta name="keywords" content="lisp, dynamic, late-binding, debug, patch, function factory">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Dynamic Lisp</H2>
+
+<blockquote><b>
+Summary: </b> Dynamic languages can be changed while the program is
+running, which makes applications easier to develop and maintain.
+This is orthogonal to issues of <a href="evaluation.htm">compilation
+vs. interpretation</a>, <a href="top-level.htm">development
+environments</a>, and <a href="types.htm">static vs dynamic typing</a>.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="objects.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="types.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm"><b>dynamic</b></a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+
+<P>
+To say that a language is dynamic may mean different things:
+
+<ul>
+<li> That the language is exciting to work with.
+
+<li> That the <a href="types.htm">types of data</a> can be examined
+and checked at run-time. 
+
+<li> That the behavior of functions and other operations can be
+changed (or created) at run-time.
+</ul>
+
+Here we mean the last of these.  In particular, the behavior of a Lisp
+program can be modified while the program is running without
+necessarilly having access to the original source code, and in any
+case without having access to or knowledge of those parts of the
+application which are uneffected by the change.  The changes to the
+program may be made interactively by a programmer or by the program
+itself.
+
+<p>
+There are several ways in which this comes about:
+
+<ol>
+ <p><li> Function are <a href="glossary.htm#first-class">first-class</a>.  A
+ &quot;function factory&quot; can be constructed which returns
+ function objects as values.  If the &quot;function factory&quot; is
+ compiled, these function objects are compiled, too.  These programs
+ can then be explicitly called on arguments.  Thus a program can
+ produce the functions it needs at run time, making different
+ functions for different situations.
+
+ <p><li> The global definition of a named function can be changed at
+ run-time, simply by creating one of these function objects and
+ storing it in the symbol that represents the name of the function.
+
+ <p> By default, the compiler must arrange for callers of a global
+ function to access the object stored in the symbol naming the
+ function.  There are various optimizations permitted where this is
+ not done, however.  Some implementations provide for both the direct
+ call optimizations <STRONG>and</strong> the redefinition of global
+ functions.
+
+ <p><li> The function <a href="combine.htm"><code>LOAD</code></a> can
+be called by any Lisp
+ program.  If the file being loaded contains new definitions, these
+ are added and made available to the application that called
+ <code>LOAD</code>.  If the file being loaded contains new definitions
+ of existing functions, classes, etc., these definitions
+ <strong>replace</strong> the existing definitions in the manner
+ described above.  The Common Lisp Object System allows classes to be
+ redefined in running programs, and the system will automatically
+ update existing instances of the changed class to conform to the new
+ definition.  The programmer has control over how this updating is
+ performed.  In addition, the function <code>COMPILE-FILE</code> can be
+ called by any Lisp program, including one which just created the Lisp
+ source file to be compiled.  The result can then be loaded with
+ <code>LOAD</code>.
+ 
+
+ <p><li> The function <code>EVAL</code> can be called by any Lisp
+ program.  This evaluates a <a href="syntax.htm">list
+ representation</a> of a program.  There are many Lisp utilities for
+ examining and creating list data.  These can be used to construct
+ programs on-the-fly which are then evaluated.  In addition, the
+ function <code>COMPILE</code> can be called by any Lisp program to
+ create compiled-functions directly from list data representations of
+ programs.  These techniques make it easy to write Computer Aided
+ Software Engineering (CASE) and other software development systems in
+ Common Lisp.
+
+</ol>
+
+Using a dynamic language provides several benefits:
+
+<ul>
+<p>  <li> Programs can be developed and delivered more easily.
+  <ul>
+  <p> <li> It is not necessary to define all parts of an application
+ before testing or even delivering part of it.  The combination of the
+ Lisp <a href="top-level.htm">top-level</a> and the function
+ <code>LOAD</code> do not use a traditional static program linker, so
+ one can start the program running without having to track down all
+ undefined references.  If the missing parts are never used, there
+ will never be a problem.
+  
+  <p><li> When there is a problem, only the broken part need be
+ redefined.  This can be done while the application is still running.
+ There is no need to laboriously stop the application, recompile
+ everything, restart the application, and recreate the error state
+ before proceding with testing.
+
+  </ul>
+
+<P> <li> Mission-critical applications can be maintined more easily.
+  <ul>
+  <p> <li> Bug fixes or new functionality can be installed without stopping the
+ application.
+  <p> <li> Only the bug fix or new functionality need be distributed
+ and loaded.  For large applications distributed over modem or other
+ networks, this can be a major consideration.
+  </ul>
+
+<p> <li> The programs themselves can be simpler, more robust and easier
+ to develop and maintain.  This comes partly from:
+  <ul>
+
+  <p><li> The ability to have functions create other first-class
+ functions on the fly.  See <a href="objects.htm">Object-Oriented and
+ Procedural Lisp</a>.  
+
+  <p><li> The fact that Lisp comes with the functions
+ <CODE>LOAD</code>, <CODE>READ</code> and <CODE>EVAL</code> which
+ make it easy for anyone to create initilization or customization
+ files that set global variables, etc.  There is no need for an
+ application developer to write such functions, they are already
+ there.
+
+ <p><li> The well-defined, object-oriented way in which programmers
+ can define how data reconforms itself to changed class definitions
+ makes such code quite clean.
+
+ <p><li>These features can be exposed, at the programmer's discretion,
+ to general users of an application for the purpose of customization.
+ There is no need to define and develop a &quot;customization&quot; or
+ &quot;user macro&quot; language as Lisp itself has everything needed.
+</ul>
+
+</ul>
+
+<P>
+All of this is independent of the environment in which the application
+is to be run.  For example, even in a Lisp implementation that
+supports the creation of stand-alone applications which run outside
+the Lisp <a href="top-level.htm">top-level</a>, that application can still
+be defined to provide the user with a command that calls the function
+<code>LOAD</code> (perhaps after first confirming a manager's
+password).  
+
+<p>A key commonality to the above benefits is that the cost of making
+a change to a dynamic system is <EM>proportional to the size of the
+change</em>, whereas the cost of making the same change in a static
+system is generally <em>proportional to the size of the system</em>.
+As the size of systems or the expected numbers of changes grow, it
+becomes increasingly important to support more aspects of the system
+dynamically.
+
+</td></tr></table>
+
+</BODY>
+</HTML>

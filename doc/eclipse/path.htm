@@ -1,0 +1,383 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Pathnames</TITLE>
+</HEAD>
+
+<H2>Eclipse Lisp: Pathnames</H2>
+<hr>
+
+This section covers:
+<UL> 
+<LI> <A HREF="#general"> General Behavior</A>
+ <UL> 
+ <LI> <A HREF="#hosts"> Hosts</A>
+ <LI> <A HREF="#versions"> Versions</A>
+ <LI> <A HREF="#truenames"> Truenames</A>
+ <LI> <A HREF="#case"> Canonicalization of Components</A>
+ </UL>
+
+<LI> <A HREF="#physical"> Physical Pathnames</A>
+  <UL>
+ <LI> <A HREF="#unix"> Unix Pathnames</A>
+ <LI> <A HREF="#windows"> Windows Pathnames</A>
+ </UL>
+
+<LI> <A HREF="#ansi"> Implementation-defined Behavior of ANSI Functions</A>
+  <UL>
+  <LI> <A HREF="#parse"> Parse-Namestring</A>
+  <LI> <A HREF="#match"> Pathname-Match-P</A>
+  <LI> <A HREF="#translate"> Translate-Pathname, Translate-Logical-Pathname</A>
+  <LI> <A HREF="#load-logical"> Load-Logical-Pathname-Translations</A>
+  <LI> <A HREF="#directory"> Directory</A>
+  <LI> <A HREF="compile.htm">Compile-File, Compile-File-Pathname</A>
+  </UL>
+</UL> 
+
+The printing of pathnames when <b>*print-readable*</b> is
+<em>true</em> is described in the <a
+href="defined.htm#ppath"><i>PRINTING: Readable Pathnames</i></a> section of <a href="defined.htm">&quot;Implementation-Defined ANSI Features&quot;</a>.
+The behavior of the <i>external-format</i> argument to
+<b>open</b>, <a href="compile.htm"><b>compile-file</b></a> and <a
+href="load.htm"><b>load</b></a> is described in the <a
+href="char.htm#streams"><i>Interaction with Streams</i></a> section of
+<a href="char.htm">&quot;Characters in Eclipse&quot;</a>.
+
+<HR>
+<H3> <a name="general">GENERAL</a></H3>
+
+<H4> <a name="hosts">Hosts</a></H4>
+
+A <EM>null</EM> or <CODE>:UNSPECIFIC</CODE> host component is assumed 
+ to refer to the machine on which Eclipse is running.  A host matching
+ the <em>string</em> returned by the <em>function</em>
+<b>machine-instance</b> is
+ also recognized as referring to a pathname on the machine running
+ Eclipse.
+
+<P>
+Other host component strings are accepted within pathnames
+(i.e. within pure pathname operations), but at this time, only the
+local host is recognized for interactions with the file system
+(eg. actually opening a file).
+
+<H4> <a name="versions">Versions</A> </H4>
+
+Numeric versions are recognized, even when the operating system does
+not support versioning.  Version 1 is the oldest, version 2 the next
+oldest, and so on.  In addition, the following keywords are recognized
+in pathname components:
+
+<UL> 
+
+<LI> <CODE>:NEWEST</CODE> refers to the largest version number that
+already exists in the file system when reading, overwriting,
+appending, superseding, or directory listing an existing file. It
+refers to the smallest version number <EM>greater</EM> than any
+existing version number when creating a new file. This can be
+specified within namestrings as <CODE>"newest"</CODE> or
+<CODE>"0"</CODE>.
+
+<LI> <CODE>:PREVIOUS</CODE> refers to the version <EM>before</EM> the
+largest version number that already exists in the file system. This
+can be specified within namestrings as <CODE>"previous"</CODE> or
+<CODE>"-1"</CODE>.
+
+<LI> <CODE>:OLDEST</CODE> designates the smallest existing version
+number.  This can be specified within namestrings as
+<CODE>"oldest"</CODE> or <CODE>"-2"</CODE>.
+
+</UL> 
+
+<P>
+A file in the file system with version <CODE>:UNSPECIFIC</CODE> is
+always considered to be a higher version than any numbered version.
+When creating a <CODE>:NEWEST</CODE> file, there are two possible
+actions, depending on the state of matching files in the file system:
+<OL>
+<LI> If only numbered versions exist for the file, then the new
+file has a numeric version one greater than the other files in the
+system.
+
+<LI> If there is an existing unnumbered version of the file, then it is
+renamed to have a version number one greater than any existing
+numbered version.  The new file that is created will have a version of
+<CODE>:UNSPECIFIC</CODE>.
+
+</OL>
+
+<P>
+This allows mnemonic versions such as <CODE>:NEWEST</CODE> to work
+regardless of whether or not files have been set up outside of Eclipse
+to use version numbers.
+
+<P>
+<STRONG>N.B.</STRONG>: The concept of version numbers, as
+defined by Common Lisp, has nothing to do with
+<B>file-write-date</B>.  It is possible to create a file, using
+Eclipse or some other facility, which has a version number lower
+than another file, but which has a <B>file-write-date</B> that is
+greater than the other file.
+
+<H4> <a name="truenames">Truenames</A> </H4>
+
+As defined by <a href="cl.htm#ansi">ANSI</a>, a <em>truename</em> is a
+canonicalized pathname in which wildcards and mnemonic version numbers
+have been resolved, logical host translations have been resolved, and,
+in general, multiple ways of referring to the same file in the
+file system have been resolved to the most canonical form.
+
+<p>
+There are two Eclipse-specific aspects of this last issue that are of
+note:
+<ol>
+<p><li> In some situations, some file systems, such as Unix, allow
+namestrings that refer to directories to be specified with or without
+the trailing directory separator (eg. <code>"/dir/subdir"</code> or
+<code>"/dir/subdir/"</code>).  In other words, something that looks
+like a filename might refer to a file or to a directory.  
+
+<p>In Eclipse, the <em>truename</em> of a directory is always
+canonicalized such that the namestring prints as a directory
+(eg. <code>"/dir/subdir/"</code>), and the <b>pathname-name</b>,
+<b>pathname-type</b> and <b>pathname-version</b> are all
+<code>:UNSPECIFIC</code>.
+
+<p><li> Some file systems allow files to be symbolically linked to
+other files or directories.  In general, Eclipse <em>truenames</em>
+resolve such links to their ultimate file or directory destination.
+However, <a href="#directory"><b>directory</b></a> allows the programmer
+to specify whether such symbolic links are followed once, completely,
+or not at all.
+
+</ol>
+
+<H4> <a name="case">Canonicalization of Components</a></H4>
+
+Internally, the strings which form the components of pathnames are
+cased analogously to the way strings are cased by the reader when
+creating symbols.  Lisp always compares symbols in a case-sensitive
+way, but canonicalizes the strings during <b>read</b>, based on the
+value of <b>readtable-case</b>.  When <b>readtable-case</b> is
+<CODE>:UPCASE</CODE>, (the default,) all lowercase characters that
+will form the <em>name</em> of a symbol are converted to the
+corresponding uppercase character at <b>read</b> time.
+
+<P> Eclipse uses a similar canonicalization when converting namestrings
+to pathnames.  Logical pathname namestrings are canonicalized as
+though by <b>readtable-case</b> <code>:UPCASE</CODE>, so logical pathnames
+are effectively case insensitive and the component strings are always
+uppercase.  Other pathname types might use other case canonicalizations,
+equivalent to <b>readtable-case</b> <code>:PRESERVE</CODE> for a
+case-sensitive system in which namestrings are normally entered in
+uppercase or <CODE>:INVERT</CODE> for a case-sensitive system in
+which namestrings are normally entered in lowercase.
+
+<P>
+Some pathname types might support additional canonicalizations. For
+example, for a host that only supports three letter <EM>file
+types</EM>, the version component of <CODE>&quot;file.lsp&quot;</CODE>
+might be canonicalized to <CODE>&quot;LISP&quot;</CODE>.  No such
+additional canonicalizations are currently defined.
+
+<P>
+Comparisons of components for <b>pathname-match-p</b> and its
+callers are case sensitive, but use the canonicalized components.
+
+
+<HR>
+<H3><a name="physical">PHYSICAL PATHNAMES</A></H3>
+
+Eclipse pathnames can internally represent physical pathnames that may
+not have legal namestrings for the corresponding file system.  For
+example:
+<ul>
+<li> Explicit components can be given to <b>make-pathname</b> that
+contain illegal characters, such as directory separators.
+<li> Pathnames may have missing, wild, or <code>:UNSPECIFIC</code> components.
+</ul>
+
+<p> <code>:UNSPECIFIC</code> components are ommited from namestrings.
+
+<p> Most Lisp file system operations perform merging, logical-pathname
+translation, and explicit checking for wild components.  The
+consequences are undefined if the result of this process yields a
+namestring that is not valid or complete for the corresponding file
+system.  For example, if a directory is explicitly given as
+<code>:UNSPECIFIC</code>, and thus cannot be merged out by Eclipse,
+then the operating system might use the "root" directory or supply
+some default directory that may be different than the current value of
+<b>*default-pathname-defaults*</b>.
+
+<p>
+The consequences are undefined for file system interactions
+if a character that is not an <a href="char.htm#repertoire">
+<b>ASCII-char</b></a> appears in a final pathname namestring.
+
+<p>
+Eclipse currently recognizes <a href="#unix">Unix</a> pathnames and <a
+href="#windows">Windows</a> pathnames.
+
+<H3><a name="unix">Unix Pathnames</A></H3>
+
+The syntax for physical pathnames on Unix hosts matches that of the
+Unix system.  In addition, a host name may be specified with a
+<CODE>HOST-NAME:</CODE> prefix.  For example,
+<PRE>
+   <CODE>foo:/usr/joe/file.lisp.9</CODE>
+</PRE>
+ parses as 
+<PRE>
+   <CODE>#S(PATHNAME :HOST "foo" :DEVICE :UNSPECIFIC 
+      :DIRECTORY (:ABSOLUTE "usr" "joe") 
+      :NAME "file" :TYPE "lisp" :VERSION 9)</CODE>
+</PRE>
+(See <A HREF="defined.htm#print"><i>Printing</i></A>, in <a
+href="defined.htm">"Eclipse-Defined ANSI features"</a>.)
+
+<P>
+Namestrings are canonicalized as though by <b>readtable-case</b>
+<code>:INVERT</CODE>. 
+
+<p> The default device for all Unix pathnames is
+<CODE>:UNSPECIFIC</CODE>.
+
+<H3><a name="windows">Windows Pathnames</A></H3>
+
+The syntax for physical pathnames on Windows hosts matches Windows'
+long pathname syntax.  In addition, a host name may be specified with
+a <CODE>[HOST-NAME]</CODE> prefix.  For example,
+<PRE>
+   <CODE>[foo]d:\usr\joe\file.lisp.9</CODE>
+</PRE>
+ parses as 
+<PRE>
+   <CODE>#S(PATHNAME :HOST "FOO" :DEVICE "D"
+      :DIRECTORY (:ABSOLUTE "USR" "JOE") 
+      :NAME "FILE" :TYPE "LISP" :VERSION 9)</CODE>
+</PRE>
+(See <A HREF="defined.htm#print"><i>Printing</i></A>, in <a
+href="defined.htm">"Eclipse-Defined ANSI features"</a>.)
+
+<P>
+Namestrings are canonicalized as though by <b>readtable-case</b>
+<code>:UPCASE</CODE>.
+
+
+<p>
+Both forward slashes '<code>/</code>' and backslashes '<code>\</code>'
+may be used in Windows namestrings.  Pathname namestrings are printed
+using backslashes, which the Lisp printer escapes by preceding them
+with an additional backslash: 
+<pre>
+  (pathname "/foo/bar")
+  => #P"\\FOO\\BAR"
+  (length (namestring *))
+  => 8
+</pre>
+
+<p> The default device is <CODE>:UNSPECIFIC</CODE>, which means that
+the operating system's current default drive is used.
+
+
+<HR>
+<H3><a name="ansi">IMPLEMENTATION-DEFINED BEHAVIOR OF ANSI FUNCTIONS</A></H3>
+
+<H4> <a name="parse">Parse-Namestring</a></H4>
+
+<b>Parse-namestring</b> always parses the namestring using the
+syntax specified for a particular host's pathname type (eg logical pathname,
+Unix pathname, etc).  The determination of which host syntax to use is
+computed as follows: 
+ <OL>
+ <LI> If a non-null host argument is specified in the call to
+ <b>parse-namestring</b>, the syntax for that host is used. If
+ a non-null, but unknown host is specified, an error is signaled.
+
+ <LI> Otherwise, if namestring has an explicit host consistent with
+ the syntax used by that host, the syntax of that host is used.
+
+ <LI> Otherwise, the syntax of the <EM>default-pathname</EM> is used.
+ </OL>
+
+Note that regardless of what syntax is used to parse the namestring, a
+host appearing explicitly in namestring is used as the host of the
+resulting pathname and need not match the host of the defaults.  It
+<EM>does</EM> have to match an explicit non-null <EM>host</EM>
+argument, however.  Also, the <EM>default-pathname</EM> argument is
+used only for determining namestring syntax, and is not used for
+merging.
+
+<P>
+
+<H4> <a name="match">Pathname-match-p</a></H4>
+
+The following apply to pathname matching:
+ <UL>
+
+ <LI> <CODE>:WILD-INFERIORS</CODE> and <CODE>:WILD</CODE> are
+ supported. 
+  
+ <LI> The characters <CODE>*</CODE> and <CODE>?</CODE>, when embedded
+ in a component string, act the same with respect to letters as
+ <CODE>:WILD-INFERIORS</CODE> and <CODE>:WILD</CODE>, respectively, do
+ with respect to list structured directory elements.  Wild characters
+ appearing in pathname components are not escaped in namestrings or
+ when interacting with the operating system.
+
+ </UL>
+
+<H4> <a name="translate">Translate-pathname, translate-logical-pathname</a></H4>
+
+The rules for <b>pathname-match-p</b> apply to
+<b>translate-pathname</b>.  The portion of <EM>source</EM> that is
+copied in the resulting <EM>pathname</EM> follows the
+&quot;usual&quot; behavior described in the <a
+href="gloss.htm#ansi">ANSI standard</a>.
+
+<P>
+As with <b>pathname-match-p</b>, the components are operated on in
+<CODE>:COMMON :CASE</CODE>, so the <CODE>:LOCAL :CASE</CODE> of
+translated components may change if the pathname host changes after
+the translation.
+
+<H4> <a name="load-logical">Load-logical-pathname-translations</a></H4>
+
+If the <i>host</i> argument to
+<b>load-logical-pathname-translations</b> is not already defined as a
+<em>logical-host</em>, then this function attempts to load the file:
+<PRE>
+  (make-pathname :host "SYS"
+		 :directory '(:absolute "SITE")
+		 :name <em>host</em> :type "HOST" :version :newest)
+</PRE>
+
+The definition of the <CODE>SYS</CODE> logical host is defined by <A
+
+HREF="top.htm">Lisp Top-Level features</A>. 
+
+<H4> <a name="directory">Directory</a></H4>
+
+As defined by <a href="cl.htm#ansi">ANSI</a>, <b>directory</b> always
+returns <a href="#truenames"><em>truenames</em></a>.
+
+<p>
+In Eclipse, <b>directory</b> accepts an additional keyword argument
+named <CODE>:LINKS</CODE>, which specifies whether links should be
+followed during resolution to <em>truenames</em>.  
+
+<P>
+See the <a href="dict.htm">Eclipse Dictionary</a> specification for <a
+href="directory.htm"><b>directory</b></a>.  
+
+<HR>
+<A HREF="char.htm">[Previous]</A> <A HREF="dict.htm">[Next]</A> 
+<A HREF="lisp.htm">[Up]</A> 
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+
+</BODY>
+</HTML>

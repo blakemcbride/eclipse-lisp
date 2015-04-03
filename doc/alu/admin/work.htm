@@ -1,0 +1,446 @@
+<HTML>
+<HEAD>
+<TITLE>The Association of Lisp Users</TITLE>
+<meta name="description" content="Potential improvements for the ALU website">
+<meta name="keywords" content="lisp, alu, website, work, improvements, construction, activity">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<h3><a href="../index.htm">Go to ALU Welcome Page</a></h3>
+
+<H2> Current Design</h2>
+
+This site consists of an index.htm page and
+five subdirectories:
+
+<ul>
+<li><b>img</b> .gif and .xbm files.
+<li><b>tables</b> tables versions of the site's contents.
+<li><b>simple</b> non-tables versions of the site's contents.
+<li><b>frames</b> frames versions of the site's contents.
+<li><b>admin</b> adminstrative information, including this page.
+</ul>
+
+The welcome page at index.htm allows users to select between tables,
+non-tables, and frames based presentations.  Within each presentation,
+the content material and page names are identical.  There are no-cross
+links between a page with one presentation and a page with a different
+presentation.
+
+<P>
+This current site is completely static -- it does not use any of the
+dynamic output-generation facilities of CL-HTTP, and is thus suitable
+for use with any webserver.  A gnu compressed tar file of the entire
+site is available for download from the file <a
+href="alu.tgz">alu.tgz</a> in this (the admin) directory.
+
+<P>
+If you are reading this file from the www.alu.org or www.lisp.org
+domain, then the pages are being served by CL-HTTP running on Franz
+Allegro Common Lisp on a PC running Linux.  The machine is at the MIT
+AI laboratory using space and an internet port donated by the
+laboratory.  It is administered completely remotely over the internet,
+using the adminstrative facilities of CL-HTTP, rlogin, and a "telnet"
+process within the Lisp running CL-HTTP.
+
+<H2> Further Work</h2>
+
+We need volunteers to serve as editors for each of the sites major areas:
+
+<ul>
+<li><a href="#what">What is Lisp?</a>
+<li><a href="#learn">Learning Lisp</a>
+<li><a href="#applications">Applications</a>
+<li><a href="#tools">Tools</a>
+<li><a href="#community">Community</a>
+<li><a href="#reference">Reference</a>
+<li><a href="#systems">Systems</a>
+<p>
+<blockquote>...as well as webmaster for...</blockquote>
+<li><a href="#site">site in general</a>
+</ul>
+
+Within each area there are a number of improvements we would like to
+make.  These are listed, below, within the appropriate area.  
+
+<P>
+We need volunteers to do each of these.  This is a chance to learn and
+work with such leading edge tools as CL-HTTP, as well as with some
+outstanding members of the Lisp community.  For more information
+please contact the ALU board at <a href="mailto:alu-board@ai.sri.com">
+alu-board@ai.sri.com</a>.
+
+<hr>
+<h2><a name="site">CL-HTTP and the Site Overall</a></h2>
+
+Webmaster: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<ol>
+
+<P><LI> Search! Presumably this would use W4.  The current dummy search
+page is only a suggested starting point for the user interface.  
+
+<p><li>The dynamic output generation capabilities of CL-HTTP should be
+used to provide the three presentation formats (tables, no-tables,
+frames) from a single source.  See <a href="dynamic.htm">proposal</a>.
+
+<P><LI> Discussion pages.  Each page should have a mechanism for
+visitors to leave their comments, and to view the threaded comments
+which have been left.  The <a
+href="http://www.ai.mit.edu/projects/iiip/doc/open-meeting/abstract.html">CL-HTTP
+discussion mechansim</a> should be used. (Example is <a
+href="http://www4.ai.mit.edu/npr/user/structure/national-performance-review-documents.html">
+National Performance Review Open Meeting</a>.) A <a
+href="http://interaction.in-progress.com">chat facility</a> is also
+possible, or archived mail (see below).
+
+<P>In particular, the current pages have a lot of editorial opinion
+which should be moved to such comment threads.  See <a
+href="#learn">Learning Lisp</a> and <a href="#systems">Systems</a>.
+
+<p><li>Window dressing! <a
+href="mailto:howard@elwoodcorp.com">Submit</a> your
+graphics/animation!  Given CL-HTTP's access to HTTP information from
+the client and the ability to generate mobile code, some sort of
+animated "your name in lights" applet based on client information
+would be cute.
+
+<p><li> The site could be used to host the common-lisp mailing list
+and/or comp.lang.lisp and comp.lang.clos newsgroups in a 
+<a href="http://wilson.ai.mit.edu/cl-http/features.html#hyperarchive">
+multiple-view archive hypertext archive style</a>.
+
+<p><LI> It ought to be easy to write a robot which periodically checks
+the links on the static pages and checks to see if they are still
+valid (404 - file not found).  If not, the link would be changed to go
+to the <a href="dead.htm">dead links</a> page, which would report the
+old link and which ALU page refered to it.
+
+<P>we could also maintain a ``responsible-party'' database for each
+linked site, which creates an automatically maintained?  listing of
+linked sites, and allows people to send mail which registers them as
+the responsible party for that site.  The dead-link robot would
+automatically mail these people and ask for a new link.
+
+<P> The idea is just to make it easy for our webmaster to be good
+citizen in term of keeping things up to date.
+
+<p><LI> Rather than trying to maintain lists of certain resources by
+hand, we should use W4 to do it automatically.  This is true for the
+listings of:
+<UL>
+<LI> Commercial sites
+<LI> Available software tools
+<LI> Research projects
+<li> Research papers
+<LI> Consultants
+<LI> Jobs?
+</UL>
+For each of these, a separate W4 robot would be programmed to locate
+candidates for the given category.  Some clever programming (dare I
+use the word 'AI'?) would:
+
+<UL> 
+<LI>Project these into single entries (i.e. reduce multiple pages
+found on ``the same thing'' to a smaller number of unique
+entires).
+
+<LI> Locate the ``top'' or ``home'' page for each entry.  
+
+<LI> Determine if the page is already listed.
+
+<LI> Produce the appropriate description, keywords for our site search
+engines, etc.
+
+<li> In the some cases (such as when gathering information about
+available source code or available commercial applications), it would
+also be desirable for the robot to attempt to determine dependencies
+on other systems.  This can be done from textual descriptions, or in
+the case of source code, by examining the code itself.  The
+information would be displayed in summaries of the application, and
+available to queries.
+
+</UL>
+
+This ``clever programming'' is a good opportunity for graduate student
+research!
+
+<P><li> Bug? In the tables-based hierarchy, returning back to a
+previously visited page does not come back to the same place in the
+page in at least one browser (Netscape 2.0 Sun).  It is not clear if
+this is browser or html coding bug.  If you have any information about
+this (even just to report that your browser does NOT have this
+problem), please <a href="mailto:howard@elwoodcorp.com">contact
+us</a>.
+
+</ol>
+
+<hr>
+<h2><a name="what">What is Lisp?</a></h2>
+
+Editor: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<p>
+No planned changes (other than the <a href="#site">discussion
+threads</a> throughout the site.
+
+<hr>
+<h2><a name="learn">Learning Lisp</a></h2>
+
+Editor: <a href="mailto:sraja@argo.cs.uwf.edu">Raja Sooriamurthi</a>
+
+<ol>
+
+<P><li> We need someone to contact the publishers/authors and obtain the
+publisher's abstract for each book, which would be listed instead of
+the existing editory comments.  The comments would then be moved to a
+discussion thread. 
+
+<p><LI> The Lisp family section is begging for a graphical tree which
+shows the various dialects, and approximate date of introduction.
+Clicking on the nodes of the tree should bring up the description of
+the dialect.
+
+<p><li> A gentle "common examples" page, written by an educator or
+author.  It has been suggested to me that people who know one or more
+programming languages like to see examples of doing common things
+before learning about a new language.  The "hello world" and factorial
+examples that I listed in Learning Lisp are as
+much as I dare.  Things to keep in mind are:
+ <ol>
+ <li> We don't want to confuse beginners with multiple ways of doing
+ things.
+ <li> We don't want to put off people who prefer a particular
+ programming style by only demonstrating things in one style that
+ might be different than the one a particular reader favors.  See the
+``Object Oriented and Procedural Lisp'' page.
+
+ </ol>
+
+<p>This has to be done very carefully.  My feeling is that if we can't
+get something very good, we should not do this at all.
+
+<p><li> A <a name="more">&quot;learn-more-about&quot;</a> section.  This
+would have a number of entries, each of which is a &quot;home&quot;
+page for material on that topic.  Topics might include such things as:
+ <ul>
+ <li> packages
+ <li> setf-expanders
+ <li> pathnames
+ <li> multi-threading
+ <li> foreign-function interfaces, etc.
+ </ul>
+Each topic would have an editor, who is responsible
+for receiving submissions and formatting the ``home page'' for
+that topic.  It is likely that all topics would have each certain
+features such as:
+ <ul> 
+ <li> a friendly overview
+ <li> pointers to the relevent parts of the hyperspec and CLtL2
+ <li> a listing of pending proposals for changes to ANSI
+ <li> a listing of applicable papers
+ <li> a listing of related available Common Lisp source code.  
+ <li> contact information for the editor.
+ </ul>
+
+</ol>
+
+<hr>
+<h2><a name="applications">Applications</a></h2>
+
+Editor: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<ol>
+
+<p><LI> No one should be listed unless some sort of contact
+information is provided, including a name of someone from the project
+who is willing to talk about the use of Lisp in the project.
+
+<p><LI> The information should be set up in such a way that it should
+be easy for users, using search engines or other means, to locate
+users with combinations of properties such as:
+
+<UL>
+<LI> Geographic location
+<LI> Industry
+<LI> Vendor
+<LI> Utilities used
+<LI> Additional software
+<LI> On-line availability of describing documents
+<LI> Availability of resulting software, commercially, free, or otherwise.
+
+</UL>
+
+<p><LI> Wherever possible, the home webpage of the corporation should
+appear as a link.  When this happens, we should also have a button
+which would use W4 to search that hierarchy for references to lisp.
+This would make it easy for people to locate all the people within an
+organization who are making web-public comments about Lisp.
+
+
+<p><li>Twistdowns are probably a good idea here.  See 
+<a
+href="http://www.sears.com/craftsman/toolbox/toolsrch/toolsel.htm">Crafstman
+Tools search</a> for a non-CL-HTTP example.  This should be
+coordinated with activities for the <a href="#tools">Tools Area</a>.
+
+
+</UL>
+
+</ol>
+
+<hr>
+<h2><a name="tools">Tools</a></h2>
+
+Editor: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<ol>
+
+<p><li>The FAQ should be reviewed, with any missing available tools
+added to this page. 
+
+<p><li>A different organization which broke this into a number of
+smaller pages wouldn't be a bad idea.
+
+<p><li>Twistdowns are probably a good idea here.  See 
+<a
+href="http://www.sears.com/craftsman/toolbox/toolsrch/toolsel.htm">Crafstman
+Tools search</a> for a non-CL-HTTP example.  This should be
+coordinated with activities for the <a
+href="#applications">Applications Area</a>.
+
+<p><li>See also, the automated maintainance planned for the <a
+href="#site">site</a>.
+</ol>
+
+<hr>
+<h2><a name="community">Community</a></h2>
+
+Editor: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<ol>
+
+<p><li>The listing of research papers needs to be overhauled into a
+proper research bibliography.  This is a major task.  However, it
+might be automated with a <a href="#site">robot</a>.
+
+
+<P><LI> Who's Who in Lisp.  This provides a place to list mailing
+addresses, websites and other contact information for people in the
+Lisp community, as well as brief descriptions of their interests.
+Options include:
+
+<UL>
+
+<LI> List by invitation only.  A board of editors (the ALU board?) would
+decide who is to be listed.  This option is further qualified as to
+whether or not people should be listed without their permission.  Of
+course, contact information should not be listed without permission
+under any circumstances.
+
+<LI> List by request only.  Anyone can submit their own entry to the
+Lisp Community Editor, who (after possible editing), would post it on
+the page.  Perhaps this could be limited to dues paying members.
+
+<LI> List by request or by editorial selection.  In other words, we
+start with a list of notables and allow people to add themselves.
+
+</UL>
+
+</ol>
+
+<hr>
+<h2><a name="reference">Reference</a></h2>
+
+Editor: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<ol>
+
+<p><li>The CL-HTTP documentation should be available at the ALU site.
+This is necessary for anyone maintaining part of the site remotely if
+they don't have their own working copy of CL-HTTP.  It is also a
+service to the community.
+
+<p><li>It would be nice if links to the local hyperspec were inserted
+as appopriate.
+
+<p><li>The MOP has been converted to HTML by hand.  It woult be nice
+if this were done using more rigourous automatic tools, with indexing,
+etc, as was done for the hyperspec.  (Any volunteers from Harlequin,
+Kent?) Extra credit for inserting links from the MOP to the local
+hyperspec pages.
+
+</ol>
+
+<hr>
+<h2><a name="systems">Systems</a></h2>
+
+Editor: <a href="mailto:alu-board@ai.sri.com">Your name here!</a>
+
+<ol>
+
+<P><li>The editor for this section should establish a uniform format,
+including contact information, for each system entry, and contact the
+vendors to have them supply the appropriate information.  The current
+material, some of which is editorial from the FAQ or CMU, should be
+moved, if appropriate, to a <a href="#site">discussion thread</a>.
+
+<p>Note that we want to have entries for all implementations, even if
+a vendor has a website, because we want searches limited to the ALU
+site to cover the system descriptions.
+
+
+</ol>
+<hr>
+<h2><a name="other">Other Issues</a></h2>
+
+<ol>
+
+<p><li> A language comparison section should include material covering
+the differences between Lisps.  In particular, I would like to see a
+guide to two-way porting between Common Lisp and each of ISLisp and
+Scheme (perhaps others).  The guides should include text and
+compatibility code, and would be used:
+ <ol>
+ <li> In helping people understand which language to use for a given
+ situation.  (For example, it seems to me that ISLisp is suitable for
+ people learning Lisp, before they move up to Common Lisp, but this is
+ before actually writing such a comparison, so...)
+ <li> To actually make use of source code writen in a different
+ language, with the least amount of fuss.
+ </ol>
+It is not clear which area of responsibility this falls under.
+
+<p><li> It would be nice to include material related to other Lisp
+dialects, including Scheme, ISLisp (including ILOG), XLISP, AutoLisp,
+and Interleaf.  However:
+  <ol>
+  <li> It can make it difficult for readers to locate what they are
+  looking for.  There are a number of techniques we might use:
+   <ul>
+   <li> Search engines, with keyword systems, neither of which are yet
+   implemented.
+   <li> A color-coding scheme which distinguishes material as being of
+   general Lisp interest, Common Lisp, Scheme, ISLisp, etc.  If enough
+   material on a subject is distinguishable by dialect (such as in
+   Tools, Implementations,
+   or Research, then separate (color coded)
+   pages would be used.  Otherwise, the color coding would be used for
+   the text.  How this can be integrated with other color coding
+   schemes for this site is not clear.
+   </ul>
+  <li> I am hesitant about including material related to other
+  languages in some areas, but not in others.  For example, if we
+  include Scheme material in general, but not for Tools or Research, then
+   readers might get a false impression of the quantity of material
+   available.
+  </ol> 
+
+I personally believe that ISLisp could be allowed to sneak in without
+fundametally changing the concept and without introducing the above
+problems.  Of course, other people might want to let in
+``just'' XLisp, or ``just'' ...
+
+
+</BODY>
+</HTML>

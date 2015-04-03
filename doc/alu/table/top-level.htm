@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: The Lisp Top-Level</TITLE>
+<meta name="description" content="The Lisp top-level">
+<meta name="keywords" content="lisp, top-level, read-eval-print, main, process, interactive">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>The Lisp Top-Level</H2>
+
+<blockquote>
+<b>Summary:</b> A Lisp Top-Level is a program which allows interactive
+evaluation of Lisp expressions.
+</blockquote>
+
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="lisp.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="syntax.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm"><b>top-level</b></a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm">macros</a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+
+<p>
+Like other computer languages, Lisp allows one to create distinct
+applications which carefully control their own interaction with the
+user.
+
+<P>
+In addition, most Lisp implementations provide a program (i.e. an
+"executable", "application", or "image") which allows a user to
+interact directly with Lisp. This is called the Lisp Top-Level.
+
+<P>
+The Lisp Top-Level is also called a read-eval-print loop, because it
+is an endless loop that reads a Lisp expression, evaluates it, and
+print the results.
+
+<p>
+Some people refer to this as an "interpreter". It is an interpreter in
+the sense that any Lisp expressions typed directly into the Lisp
+Top-Level will be read, evaluated, and printed.  However, these
+expressions might simply be invocations of previously compiled
+functions, which will be executed as compiled code.  See <a
+href="evaluation.htm">Evaluation in Lisp</a>.
+
+<P>
+One way to think of the Lisp Top-Level is as a very powerful "shell"
+in which users have access to the full complement of Lisp <a
+href="environment.htm">utilities</a>, including file and stream
+access, the <a href="evaluation.htm">compiler</a>, and the ability to
+<a href="combine.htm">load</a> source or previously compiled files.
+
+<P>Some implementations allow only one such process to run at a time,
+while others allow multiple process.  Those that do allow multiple
+processes automatically share memory between processes and allow
+programs to directly create and control the various processes.
+
+<P>
+Lisp programs signal controlled errors rather than simply dumping
+core. Any Lisp program can trap these error conditions and invoke a
+system supplied, interactive debugger. This debugger includes a
+read-eval-print loop similar (or even identical) to the Lisp
+Top-Level. Lisp programs can also cause a read-eval-print loop to be
+invoked simply by calling the function BREAK. In fact the entire Lisp
+Top-Level application could be written as essentially a single call to
+the function BREAK.
+
+</td></tr></table>
+
+</BODY>
+</HTML>

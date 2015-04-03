@@ -1,0 +1,112 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: C Function clLispTopLevel</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>C Function</I> <B>clLispTopLevel</B><P>
+<B>Syntax:</B><P>
+
+<B>clLispTopLevel</B> <I>verbose init eoa</I> =&gt; <I>status</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>verbose</I>---an <EM>clObject</EM> denoting a Lisp <b>boolean</b>. <P>
+<I>init</I>---an <EM>clObject</EM> denoting a Lisp <b>boolean</b> or <b>string</b>. <P>
+<I>eoa</I>---the clEOA marker<P>
+<P>
+
+<B>Description:</B><P>
+
+Executes the Lisp <a href="gloss.htm#top-level"><i>top-level
+(2)</i></a> of <a href="gloss.htm#eclipse"><i>eclipse (1)</i></a>.
+
+<p>
+If <i>verbose</i> is <em>true</em>, <b>clLispTopLevel</b> first prints
+a welcome banner, and <b>*load-verbose*</b> is set to <em>true</em>.
+Otherwise, <b>*load-verbose*</b> is set to <em>false</em>.
+
+<p>
+If <i>init</i> is <em>true</em>, <b>clLispTopLevel</b> next loads one
+or more initialization files, using the function <a
+href="load.htm"><b>load</b></a>.  If <i>init</i> is a <b>string</b>,
+the specified string is merged with <a
+href="site.htm"><b>*default-pathname-defaults*</b></a> and loaded.
+Otherwise the init file processing described in <a
+href="init.htm"><code>init.lisp</code></a> is performed.
+
+<p>
+A <a href="rep.htm">read-eval-print loop</a> is then entered.  If
+<i>verbose</i> is <em>true</em>, a condition notice and available
+restarts message is printed (see <a href="rep.htm">"The
+Read-Eval-Print Loop and the Debugger"</a>).
+
+<p>If <i>verbose</i> is <em>true</em>, the user is prompted for input
+on <a href="svars.htm"><b>*standard-input*</b></a> by calling the
+<em>function</em> specified by <a
+href="prompt.htm">*prompt-hook*</b></a>.  If <i>verbose</i> is
+<em>false</em>, no prompt is given.
+
+<p>Results are printed on <a
+href="svars.htm"><b>*standard-output*</b></a>.
+
+<p> <b>clLispTopLevel</b> establishes a restart named <a
+href="exit.htm"><b>exit</b></a>.  If the <a
+href="exitf.htm"><b>exit</b></a> <em>function</em>
+is used while in the top-level, <b>clLispTopLevel</b> immediately
+returns the <i>status</i> argument to <a
+href="exitf.htm"><b>exit</b></a>.  The only way
+conforming programs may exit the <b>clLispTopLevel</b> is by invoking
+this restart.
+
+<p>
+<B>Side Effects:</B> 
+
+<P> Input is read from <a href="svars.htm"><b>*standard-input*</b></a>
+and written to <a href="svars.htm"><b>*standard-output*</b></a>.  The
+<a href="svars.htm"><b>*error-output*</b></a> stream is also used
+(for the condition notice) if <i>verbose</i> is <em>true</em>.
+
+<p>
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+
+The <a href="../alu/table/top-level.htm">"Lisp Top-Level" section</a> of the
+<a href="cl.htm#alu">ALU web-site</a>, 
+<a href="top.htm">"Lisp Top-Level"</a>, 
+<a href="site.htm">"Site and Other Initial Definitions"</a>,
+<A HREF="init.htm"><code>init.lisp</code></a>,
+<a href="rep.htm">"The Read-Eval-Print Loop and the Debugger"</a>, 
+<a href="prompt.htm"><b>*prompt-hook*</b></a>, 
+<a href="exit.htm"><b>exit</b></a> (<em>restart</em>), <a
+href="exitf.htm"><b>exit</b></a> (<em>function</em>).
+<P>
+
+<B>Notes:</B> <P>
+
+The <a href="gloss.htm#eclipse"><i>eclipse (1)</i></a> program
+essentially calls <a href="initf.htm"><b>clInit</b></a>, <a
+href="initdf.htm"><b>clInitD</b></a> and then <a
+href="topf.htm"><b>clLispTopLevel</b></a>.
+
+<P>The behavior of any invocation of the debugger caused by user code
+within the Lisp top-level does not depend on <i>verbose</i> and always
+prompts for input.
+
+
+
+<HR>
+<A HREF="initdf.htm">[Previous]</A>
+<A HREF="dict.htm">[Next]</A> 
+<a href="cdict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

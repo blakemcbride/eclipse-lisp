@@ -1,0 +1,141 @@
+CALL FOR PAPERS
+
+                     DYNAMIC OBJECTS WORKSHOP
+
+                        At Object World East 
+
+                           May 5-9, 1996
+
+                  Boston's Hynes Convention Center
+
+
+Attention authors and potential authors of papers on the use of Dynamic
+Languages: proven and new languages providing full support for Dynamic
+Objects and/or Late Binding functionalities.
+
+The Dynamic Objects Workshop is a forum for technical presentations
+and discussions of innovative and practical applications of dynamic
+objects and late binding techniques to software systems design and
+implementation.  We are looking for concrete, practical papers presenting
+issues of importance to those who build or intend to build commercial
+business and engineering applications that take advantage of these emerging
+software technologies.
+
+This is a chance to share your success stories, discuss your techniques,
+or even document technical and social obstacles you are facing.  The
+workshop brings together experts who are dedicated to make dynamic objects
+and late binding approaches to software development succeed in the
+marketplace, and there is no better forum for you to engage in a public
+dialog on the use of Dynamic Objects and Late Binding languages today.
+
+The DOW96 workshop also replaces the traditional LUV conference technical
+presentation sessions [http://www.cs.rochester.edu/u/miller/alu.html],
+and features a STUDENT SUBMISSION CONTEST. DOW96 is offered as part of
+the Dynamic Objects Event [http://www.omg.org/ow/cbcoloc.htm], a new event
+collocated with Object World East [http://www.omg.org/ow/cbcover.htm].
+
+                           - - - - - - - - - -
+
+
+SCOPE AND CONTENT.  Material in papers must clearly demonstrate a
+ practical value from the use of dynamic objects and/or late bindings;
+ as such, papers need not be especially innovative or original.  Direct 
+ and simple applications of dynamic language features to rapidly and
+ effectively solve practical problems will be noticed. Preference will
+ be given to previously undisseminated reports or experiences. Topics in
+ the area of programming languages and environments are welcome. These
+ include programming with multiple paradigms, generation of domain specific
+ languages, integration with foreign languages, objects distribution,
+ distributed objects recycling, persistent object storages and databases.
+
+ Specific application examples are welcome including issues on software
+ design and architecture, product delivery, realtime, small platforms, 
+ graphical user interfaces, interface builders, CLIM and portability.
+ Untested or purely theoretical examples must clearly demonstrate advantages
+ of one or more specific aspects of dynamism to solve otherwise untractable
+ problems (for example, use of dynamic updates to class hierarchies and
+ dynamic changes to multimethods to adapt to evolving exchange protocols
+ in live distributed systems, distributed objects recycling approaches
+ applied to improve software reliability in distributed systems).
+
+SUBMISSIONS.  Authors should submit an electronic copy of their paper
+ submission (position paper) not later than FRIDAY MARCH 22 1996, including
+ the subject line: "DOW96 SUBMISSION", addressed to:
+
+         DOW96@IEXIST.ATT.COM
+
+ or, THREE (3) printed copies of their paper submission to DOW96 at
+ the following address (must be received on or before FRIDAY MARCH 22
+ 1996):
+
+         DOW96 SUBMISSION, Room 4F-413
+         Att: O.B. Clarisse
+         Lucent Technologies/AT&T Bell Laboratories
+         2000 N Naperville Rd
+         Naperville, Il 60566
+
+FORMATS.  Accepted electronic format for first submission: ASCII text,
+ HTML, or PostScript*. Accepted electronic format for final submission:
+ printable PostScript* only, printed paper submission must be received
+ on or before the due date.
+
+ The length of the written papers should be between 3 and 10 pages
+ (font size 10pt or 12pt).  The printed format must be full page or
+ two columns.  The title, authors, affiliations, and contacting
+ informations must be clearly visible, and centered at the top of the
+ first page.  All pages (text, figures, and references) must be numbered
+ from 1 to N (<= 3 N 10). Printed paper submissions must include an
+ electronic mail address, a return postal address, and a telephone number.
+
+STUDENT PAPERS CONTEST.  Students gain free access to the Dynamic
+ Objects Workshop (DOW96 sessions) using provided Exhibits passes.
+ There will be a selection of Student papers. Submission and acceptance
+ dates, as well as acceptable themes, are the same as for other authors.
+ Accepted papers will appear in the written proceedings (please see
+ following instructions regarding copyright and permission to publish
+ requirements).  The best student paper will be nominated.
+
+DEADLINES.  Please mark your calendar with the following dates:
+  22 MARCH 96  Deadline for receipt of position papers.
+  24 APRIL 96  Deadline for receipt of final copy of accepted papers.
+
+ACCEPTANCE NOTIFICATIONS.
+  29 MARCH 96  Early acceptance notification. Early registration deadline.
+  12 APRIL 96  Final acceptance and corrections notification.
+ 
+COPYRIGHT.  Authors of accepted papers will be required to sign a release 
+ for publication in the workshop proceedings. Authors may retain the
+ copyright themselves if they wish by installing their own copyright
+ notice in the paper. Previously copyrighted material may still be
+ published depending on the permission to publish; in this case, the
+ previous copyright and notice of permission should appear in the paper.
+ 
+PRESENTATION OF ACCEPTED PAPERS.  Accepted papers will appear in the
+ written proceedings, which will be available at the workshop and might
+ or might not also be distributed in some other fashion after the workshop.
+ The authors of certain selected papers will be invited to make a
+ 20-minute verbal presentation at the technical talks sessions during 
+ the workshop.  (Time constraints might prevent the verbal presentation
+ of some accepted papers.)
+
+DOW96 SESSIONS.  Three workshop sessions are scheduled as part of the
+ Dynamic Objects Event collocated with Object World East:
+   
+ Sunday May                     55:15 - 6:30 p.m.
+ Wednesday May 8                6:00 - 7:30 p.m.
+ Thursday May 9                 6:00 - 7:30 p.m.
+
+ADDITIONAL INFORMATION.  For further information about paper submission,
+ please contact DOW96:
+
+         DOW96@IEXIST.ATT.COM
+
+ For further information about the Dynamic Objects Event, see:
+
+         http://www.omg.org/ow/cbcoloc.htm
+
+ For information and registration to Object World East in Boston, see:
+
+         http://www.omg.org/ow/cbcover.htm
+
+PLEASE POST, DISTRIBUTE WIDELY, AND LINK AT YOUR WEB SITES.

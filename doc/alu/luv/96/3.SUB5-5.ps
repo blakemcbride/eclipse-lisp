@@ -1,0 +1,6059 @@
+%!PS-Adobe-3.0
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%PageOrder: (atend)
+%%DocumentFonts: (atend)
+%%Creator: Frame 5.0
+%%DocumentData: Clean7Bit
+%%EndComments
+%%BeginProlog
+%
+% Frame ps_prolog 5.0, for use with Frame 5.0 products
+% This ps_prolog file is Copyright (c) 1986-1995 Frame Technology
+% Corporation.  All rights reserved.  This ps_prolog file may be
+% freely copied and distributed in conjunction with documents created
+% using FrameMaker, FrameMaker/SGML and FrameViewer as long as this 
+% copyright notice is preserved.
+%
+% FrameMaker users specify the proper paper size for each print job in the
+% "Print" dialog's "Printer Paper Size" "Width" and "Height~ fields.  If the
+% printer that the PS file is sent to does not support the requested paper
+% size, or if there is no paper tray of the proper size currently installed, 
+% then the job will not be printed.  The following flag, if set to true, will
+% cause the job to print on the default paper in such cases.
+/FMAllowPaperSizeMismatch            false def
+%
+% Frame products normally print colors as their true color on a color printer
+% or as shades of gray, based on luminance, on a black-and white printer. The
+% following flag, if set to true, forces all non-white colors to print as pure
+% black. This has no effect on bitmap images.
+/FMPrintAllColorsAsBlack             false def
+%
+% Frame products can either set their own line screens or use a printer's 
+% default settings. Three flags below control this separately for no 
+% separations, spot separations and process separations. If a flag
+% is true, then the default printer settings will not be changed. If it is
+% false, Frame products will use their own settings from a table based on
+% the printer's resolution.
+/FMUseDefaultNoSeparationScreen      true  def
+/FMUseDefaultSpotSeparationScreen    true  def
+/FMUseDefaultProcessSeparationScreen false def
+%
+% For any given PostScript printer resolution, Frame products have two sets of 
+% screen angles and frequencies for printing process separations, which are 
+% recomended by Adobe. The following variable chooses the higher frequencies
+% when set to true or the lower frequencies when set to false. This is only
+% effective if the appropriate FMUseDefault...SeparationScreen flag is false.
+/FMUseHighFrequencyScreens true def
+%
+% The following is a set of predefined optimal frequencies and angles for various
+% common dpi settings. This is taken from "Advances in Color Separation Using
+% PostScript Software Technology," from Adobe Systems (3/13/89 P.N. LPS 0043)
+% and corrolated with information which is in various PPD (4.0) files.
+%
+% The "dpiranges" figure is the minimum dots per inch device resolution which
+% can support this setting. The "low" and "high" values are controlled by the
+% setting of the FMUseHighFrequencyScreens flag above. The "TDot" flags control
+% the use of the "Yellow Triple Dot" feature whereby the frequency id divided by
+% three, but the dot function is "trippled" giving a block of 3x3 dots per cell.
+%
+% PatFreq is a compromise pattern frequency for ps Level 2 printers which is close
+% to the ideal WYSIWYG pattern frequency of 9 repetitions/inch but does not beat
+% (too badly) against the screen frequencies of any separations for that DPI.
+/dpiranges   [  2540    2400    1693     1270    1200     635      600      0      ] def
+/CMLowFreqs  [ 100.402  94.8683 89.2289 100.402  94.8683  66.9349  63.2456 47.4342 ] def
+/YLowFreqs   [  95.25   90.0    84.65    95.25   90.0     70.5556  66.6667 50.0    ] def
+/KLowFreqs   [  89.8026 84.8528 79.8088  89.8026 84.8528  74.8355  70.7107 53.033  ] def
+/CLowAngles  [  71.5651 71.5651 71.5651 71.5651  71.5651  71.5651  71.5651 71.5651 ] def
+/MLowAngles  [  18.4349 18.4349 18.4349 18.4349  18.4349  18.4349  18.4349 18.4349 ] def
+/YLowTDot    [  true    true    false    true    true     false    false   false   ] def
+/CMHighFreqs [ 133.87  126.491 133.843  108.503 102.523  100.402   94.8683 63.2456 ] def
+/YHighFreqs  [ 127.0   120.0   126.975  115.455 109.091   95.25    90.0    60.0    ] def
+/KHighFreqs  [ 119.737 113.137 119.713  128.289 121.218   89.8026  84.8528 63.6395 ] def
+/CHighAngles [  71.5651 71.5651 71.5651  70.0169 70.0169  71.5651  71.5651 71.5651 ] def
+/MHighAngles [  18.4349 18.4349 18.4349  19.9831 19.9831  18.4349  18.4349 18.4349 ] def
+/YHighTDot   [  false   false   true     false   false    true     true    false   ] def
+/PatFreq     [	10.5833 10.0     9.4055  10.5833 10.0	  10.5833  10.0	   9.375   ] def
+%
+% PostScript Level 2 printers contain an "Accurate Screens" feature which can
+% improve process separation rendering at the expense of compute time. This 
+% flag is ignored by PostScript Level 1 printers.
+/FMUseAcccurateScreens true def
+%
+% The following PostScript procedure defines the spot function that Frame
+% products will use for process separations. You may un-comment-out one of
+% the alternative functions below, or use your own.
+%
+% Dot function
+/FMSpotFunction {abs exch abs 2 copy add 1 gt 
+		{1 sub dup mul exch 1 sub dup mul add 1 sub }
+		{dup mul exch dup mul add 1 exch sub }ifelse } def
+%
+% Line function
+% /FMSpotFunction { pop } def
+%
+% Elipse function
+% /FMSpotFunction { dup 5 mul 8 div mul exch dup mul exch add 
+%		sqrt 1 exch sub } def
+%
+%
+/FMversion (5.0) def 
+/fMLevel1 /languagelevel where {pop languagelevel} {1} ifelse 2 lt def
+/FMPColor
+	fMLevel1 {
+		false
+		/colorimage where {pop pop true} if
+	} {
+		true
+	} ifelse
+def
+/FrameDict 400 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in PS 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} bind def
+	} if
+/FMshowpage /showpage load def
+/FMquit /quit load def
+/FMFAILURE { 
+	dup = flush 
+	FMshowpage 
+	/Helvetica findfont 12 scalefont setfont
+	72 200 moveto show
+	72 220 moveto show
+	FMshowpage 
+	FMquit 
+	} def 
+/FMVERSION {
+	FMversion ne {
+		(Frame product version does not match ps_prolog!  Check installation;)
+		(also check ~/fminit and ./fminit for old versions) FMFAILURE
+		} if
+	} def 
+/FMBADEPSF { 
+	(Adobe's PostScript Language Reference Manual, 2nd Edition, section H.2.4)
+	(says your EPS file is not valid, as it calls X              )
+	dup dup (X) search pop exch pop exch pop length 
+	5 -1 roll 
+	putinterval 
+	FMFAILURE
+	} def
+/fmConcatProcs
+	{
+	/proc2 exch cvlit def/proc1 exch cvlit def/newproc proc1 length proc2 length add array def
+	newproc 0 proc1 putinterval newproc proc1 length proc2 putinterval newproc cvx
+}def
+FrameDict begin [
+	/ALDsave
+	/FMdicttop
+	/FMoptop
+	/FMpointsize
+	/FMsaveobject
+	/b
+	/bitmapsave
+	/blut
+	/bpside
+	/bs
+	/bstring
+	/bwidth
+	/c
+	/cf
+	/cs
+	/cynu
+	/depth
+	/edown
+	/fh
+	/fillvals
+	/fw
+	/fx
+	/fy
+	/g
+	/gfile
+	/gindex
+	/grnt
+	/gryt
+	/gstring
+	/height
+	/hh
+	/i
+	/im
+	/indx
+	/is
+	/k
+	/kk
+	/landscape
+	/lb
+	/len
+	/llx
+	/lly
+	/m
+	/magu
+	/manualfeed
+	/n
+	/offbits
+	/onbits
+	/organgle
+	/orgbangle
+	/orgbfreq
+	/orgbproc
+	/orgbxfer
+	/orgfreq
+	/orggangle
+	/orggfreq
+	/orggproc
+	/orggxfer
+	/orgmatrix
+	/orgproc
+	/orgrangle
+	/orgrfreq
+	/orgrproc
+	/orgrxfer
+	/orgxfer
+	/pagesave
+	/paperheight
+	/papersizedict
+	/paperwidth
+	/pos
+	/pwid
+	/r
+	/rad
+	/redt
+	/sl
+	/str
+	/tran
+	/u
+	/urx
+	/ury
+	/val
+	/width
+	/width
+	/ws
+	/ww
+	/x
+	/x1
+	/x2
+	/xindex
+	/xpoint
+	/xscale
+	/xx
+	/y
+	/y1
+	/y2
+	/yelu
+	/yindex
+	/ypoint
+	/yscale
+	/yy
+] { 0 def } forall
+/FmBD {bind def} bind def
+systemdict /pdfmark known {
+	/fMAcrobat true def
+	
+	/FmPD /pdfmark load def
+	
+	
+	/FmPT /show load def
+	
+	
+	currentdistillerparams /CoreDistVersion get 2000 ge {
+	
+		
+		/FmPD2 /pdfmark load def
+		
+		
+		
+		
+		
+		/FmPA { mark exch /Dest exch 5 3 roll 
+				/View [ /XYZ null 6 -2 roll FmDC exch pop null] /DEST FmPD 
+		}FmBD
+	} {
+		
+		/FmPD2 /cleartomark load def
+		/FmPA {pop pop pop}FmBD
+	} ifelse
+} {
+	
+	/fMAcrobat false def
+	/FmPD /cleartomark load def
+	/FmPD2 /cleartomark load def
+	/FmPT /pop load def
+	/FmPA {pop pop pop}FmBD
+} ifelse
+/FmDC {
+	transform fMDefaultMatrix itransform cvi exch cvi exch
+}FmBD
+/FmBx {
+	dup 3 index lt {3 1 roll exch} if 
+	1 index 4 index lt {4 -1 roll 3 1 roll exch 4 1 roll} if
+}FmBD
+/FMnone 0 def
+/FMcyan 1 def
+/FMmagenta 2 def
+/FMyellow 3 def
+/FMblack 4 def
+/FMcustom 5 def
+/fMNegative false def 
+/FrameSepIs FMnone def 
+/FrameSepBlack 0 def
+/FrameSepYellow 0 def
+/FrameSepMagenta 0 def
+/FrameSepCyan 0 def
+/FrameSepRed 1 def
+/FrameSepGreen 1 def
+/FrameSepBlue 1 def
+/FrameCurGray 1 def
+/FrameCurPat null def
+/FrameCurColors [ 0 0 0 1 0 0 0 ] def 
+/FrameColorEpsilon .001 def	
+/eqepsilon {		
+	sub dup 0 lt {neg} if
+	FrameColorEpsilon le
+} bind def
+/FrameCmpColorsCMYK { 
+	2 copy 0 get exch 0 get eqepsilon {
+		2 copy 1 get exch 1 get eqepsilon {
+			2 copy 2 get exch 2 get eqepsilon {
+				3 get exch 3 get eqepsilon
+			} {pop pop false} ifelse
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/FrameCmpColorsRGB { 
+	2 copy 4 get exch 0 get eqepsilon {
+		2 copy 5 get exch 1 get eqepsilon {
+			6 get exch 2 get eqepsilon
+		}{pop pop false} ifelse
+	} {pop pop false} ifelse
+} bind def
+/RGBtoCMYK { 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	1 exch sub 
+	3 1 roll 
+	3 copy 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	2 copy 
+	le { pop } { exch pop } ifelse 
+	dup dup dup 
+	6 1 roll 
+	4 1 roll 
+	7 1 roll 
+	sub 
+	6 1 roll 
+	sub 
+	5 1 roll 
+	sub 
+	4 1 roll 
+} bind def
+/CMYKtoRGB { 
+	dup dup 4 -1 roll add 						  
+	5 1 roll 3 -1 roll add 						  
+	4 1 roll add 								  
+	1 exch sub dup 0 lt {pop 0} if 3 1 roll 	  
+	1 exch sub dup 0 lt {pop 0} if exch 	      
+	1 exch sub dup 0 lt {pop 0} if exch	  		  
+} bind def
+/FrameSepInit {
+	1.0 RealSetgray
+} bind def
+/FrameSetSepColor { 
+	/FrameSepBlue exch def
+	/FrameSepGreen exch def
+	/FrameSepRed exch def
+	/FrameSepBlack exch def
+	/FrameSepYellow exch def
+	/FrameSepMagenta exch def
+	/FrameSepCyan exch def
+	/FrameSepIs FMcustom def
+	setCurrentScreen	
+} bind def
+/FrameSetCyan {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 1.0 def
+	/FrameSepIs FMcyan def
+	setCurrentScreen	
+} bind def
+ 
+/FrameSetMagenta {
+	/FrameSepBlue 1.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 1.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMmagenta def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetYellow {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 1.0 def
+	/FrameSepRed 1.0 def
+	/FrameSepBlack 0.0 def
+	/FrameSepYellow 1.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMyellow def
+	setCurrentScreen
+} bind def
+ 
+/FrameSetBlack {
+	/FrameSepBlue 0.0 def
+	/FrameSepGreen 0.0 def
+	/FrameSepRed 0.0 def
+	/FrameSepBlack 1.0 def
+	/FrameSepYellow 0.0 def
+	/FrameSepMagenta 0.0 def
+	/FrameSepCyan 0.0 def
+	/FrameSepIs FMblack def
+	setCurrentScreen
+} bind def
+ 
+/FrameNoSep { 
+	/FrameSepIs FMnone def
+	setCurrentScreen
+} bind def
+/FrameSetSepColors { 
+	FrameDict begin
+	[ exch 1 add 1 roll ]
+	/FrameSepColors  
+	exch def end
+	} bind def
+/FrameColorInSepListCMYK { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsCMYK 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/FrameColorInSepListRGB { 
+	FrameSepColors {  
+       		exch dup 3 -1 roll 
+       		FrameCmpColorsRGB 
+       		{ pop true exit } if
+    	} forall 
+	dup true ne {pop false} if
+	} bind def
+/RealSetgray /setgray load def
+/RealSetrgbcolor /setrgbcolor load def
+/RealSethsbcolor /sethsbcolor load def
+end 
+/setgray { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+		{ RealSetgray } 
+		{ 
+		FrameSepIs FMblack eq 
+			{ RealSetgray } 
+			{ FrameSepIs FMcustom eq 
+			  FrameSepRed 0 eq and
+			  FrameSepGreen 0 eq and
+			  FrameSepBlue 0 eq and {
+			  	RealSetgray
+			  } {
+				1 RealSetgray pop 
+			  } ifelse
+			} ifelse
+		} ifelse
+	end
+} bind def
+/setrgbcolor { 
+	FrameDict begin
+	FrameSepIs FMnone eq
+	{  RealSetrgbcolor }
+	{
+		3 copy [ 4 1 roll ] 
+		FrameColorInSepListRGB
+		{
+				FrameSepBlue eq exch 
+			 	FrameSepGreen eq and exch 
+			 	FrameSepRed eq and
+			 	{ 0 } { 1 } ifelse
+		}
+		{
+			FMPColor {
+				RealSetrgbcolor
+				currentcmykcolor
+			} {
+				RGBtoCMYK
+			} ifelse
+			FrameSepIs FMblack eq
+			{1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		RealSetgray
+	} 
+	ifelse
+	end
+} bind def
+/sethsbcolor {
+	FrameDict begin
+	FrameSepIs FMnone eq 
+	{ RealSethsbcolor } 
+	{
+		RealSethsbcolor 
+		currentrgbcolor  
+		setrgbcolor 
+	} 
+	ifelse
+	end
+} bind def
+FrameDict begin
+/setcmykcolor where {
+	pop /RealSetcmykcolor /setcmykcolor load def
+} {
+	/RealSetcmykcolor {
+		4 1 roll
+		3 { 3 index add 0 max 1 min 1 exch sub 3 1 roll} repeat 
+		RealSetrgbcolor pop
+	} bind def
+} ifelse
+userdict /setcmykcolor { 
+		FrameDict begin
+		FrameSepIs FMnone eq
+		{ RealSetcmykcolor } 
+		{
+			4 copy [ 5 1 roll ]
+			FrameColorInSepListCMYK
+			{
+				FrameSepBlack eq exch 
+				FrameSepYellow eq and exch 
+				FrameSepMagenta eq and exch 
+				FrameSepCyan eq and 
+				{ 0 } { 1 } ifelse
+			}
+			{
+				FrameSepIs FMblack eq
+				{1.0 exch sub 4 1 roll pop pop pop} {
+				FrameSepIs FMyellow eq
+				{pop 1.0 exch sub 3 1 roll pop pop} {
+				FrameSepIs FMmagenta eq
+				{pop pop 1.0 exch sub exch pop } {
+				FrameSepIs FMcyan eq
+				{pop pop pop 1.0 exch sub } 
+				{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+			} ifelse
+			RealSetgray
+		}
+		ifelse
+		end
+	} bind put
+fMLevel1 { 
+	
+	
+	
+	/patScreenDict 7 dict dup begin
+		<0f1e3c78f0e1c387> [ 45  { pop } {exch pop} 		.5   2 sqrt] FmBD
+		<0f87c3e1f0783c1e> [ 135 { pop } {exch pop}			.5   2 sqrt] FmBD
+		<cccccccccccccccc> [ 0   { pop } dup				.5   2	   ] FmBD
+		<ffff0000ffff0000> [ 90  { pop } dup				.5   2	   ] FmBD
+		<8142241818244281> [ 45  { 2 copy lt {exch} if pop}	dup .75  2 sqrt] FmBD
+		<03060c183060c081> [ 45  { pop } {exch pop}			.875 2 sqrt] FmBD
+		<8040201008040201> [ 135 { pop } {exch pop}			.875 2 sqrt] FmBD
+	end def
+} { 
+	
+	/patProcDict 5 dict dup begin
+		<0f1e3c78f0e1c387> { 3 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<0f87c3e1f0783c1e> { 3 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+		<8142241818244281> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke
+											-1 -1 moveto 9 9 lineto stroke } bind def
+		<03060c183060c081> { 1 setlinewidth -1 -1 moveto 9 9 lineto stroke 
+											4 -4 moveto 12 4 lineto stroke
+											-4 4 moveto 4 12 lineto stroke} bind def
+		<8040201008040201> { 1 setlinewidth -1 9 moveto 9 -1 lineto stroke 
+											-4 4 moveto 4 -4 lineto stroke
+											4 12 moveto 12 4 lineto stroke} bind def
+	end def
+	/patDict 15 dict dup begin
+		/PatternType 1 def		
+		/PaintType 2 def		
+		/TilingType 3 def		
+		/BBox [ 0 0 8 8 ] def 	
+		/XStep 8 def			
+		/YStep 8 def			
+		/PaintProc {
+			begin
+			patProcDict bstring known {
+				patProcDict bstring get exec
+			} {
+				8 8 true [1 0 0 -1 0 8] bstring imagemask
+			} ifelse
+			end
+		} bind def
+	end def
+} ifelse
+/combineColor {
+    FrameSepIs FMnone eq
+	{
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceCMYK]] setcolorspace
+			FrameCurColors 0 4 getinterval aload pop FrameCurPat setcolor
+		} {
+			FrameCurColors 3 get 1.0 ge {
+				FrameCurGray RealSetgray
+			} {
+				fMAcrobat not FMPColor graymode and and {
+					0 1 3 { 
+						FrameCurColors exch get
+						1 FrameCurGray sub mul
+					} for
+					RealSetcmykcolor
+				} {
+					4 1 6 {
+						FrameCurColors exch get
+						graymode {
+							1 exch sub 1 FrameCurGray sub mul 1 exch sub
+						} {
+							1.0 lt {FrameCurGray} {1} ifelse
+						} ifelse
+					} for
+					RealSetrgbcolor
+				} ifelse
+			} ifelse
+		} ifelse
+	} { 
+		FrameCurColors 0 4 getinterval aload
+		FrameColorInSepListCMYK {
+			FrameSepBlack eq exch 
+			FrameSepYellow eq and exch 
+			FrameSepMagenta eq and exch 
+			FrameSepCyan eq and
+			FrameSepIs FMcustom eq and
+			{ FrameCurGray } { 1 } ifelse
+		} {
+			FrameSepIs FMblack eq
+			{FrameCurGray 1.0 exch sub mul 1.0 exch sub 4 1 roll pop pop pop} {
+			FrameSepIs FMyellow eq
+			{pop FrameCurGray 1.0 exch sub mul 1.0 exch sub 3 1 roll pop pop} {
+			FrameSepIs FMmagenta eq
+			{pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub exch pop } {
+			FrameSepIs FMcyan eq
+			{pop pop pop FrameCurGray 1.0 exch sub mul 1.0 exch sub } 
+			{pop pop pop pop 1} ifelse } ifelse } ifelse } ifelse 
+		} ifelse
+		graymode fMLevel1 or not {
+			
+			[/Pattern [/DeviceGray]] setcolorspace
+			FrameCurPat setcolor
+		} { 
+			graymode not fMLevel1 and {
+				
+				dup 1 lt {pop FrameCurGray} if
+			} if
+			RealSetgray
+		} ifelse
+	} ifelse
+} bind def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/fMDefaultMatrix matrix defaultmatrix def
+/fMatrix2 matrix def
+/dpi    72 0 fMDefaultMatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+	
+/freq dpi dup 72 div round dup 0 eq {pop 1} if 8 mul div def
+/sangle 1 0 fMDefaultMatrix dtransform exch atan def
+	sangle fMatrix2 rotate 
+	fMDefaultMatrix fMatrix2 concatmatrix 
+	dup 0 get /sflipx exch def
+	    3 get /sflipy exch def
+/screenIndex {
+	0 1 dpiranges length 1 sub { dup dpiranges exch get 1 sub dpi le {exit} {pop} ifelse } for
+} bind def
+/getCyanScreen {
+	FMUseHighFrequencyScreens { CHighAngles CMHighFreqs} {CLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getMagentaScreen {
+	FMUseHighFrequencyScreens { MHighAngles CMHighFreqs } {MLowAngles CMLowFreqs} ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get /FMSpotFunction load
+} bind def
+/getYellowScreen {
+	FMUseHighFrequencyScreens { YHighTDot YHighFreqs} { YLowTDot YLowFreqs } ifelse
+		screenIndex dup 3 1 roll get 3 1 roll get { 3 div
+			{2 { 1 add 2 div 3 mul dup floor sub 2 mul 1 sub exch} repeat
+			FMSpotFunction } } {/FMSpotFunction load } ifelse
+			0.0 exch
+} bind def
+/getBlackScreen  {
+	FMUseHighFrequencyScreens { KHighFreqs } { KLowFreqs } ifelse
+		screenIndex get 45.0 /FMSpotFunction load 
+} bind def
+/getSpotScreen {
+	getBlackScreen
+} bind def
+/getCompositeScreen {
+	getBlackScreen
+} bind def
+/FMSetScreen 
+	fMLevel1 { /setscreen load 
+	}{ {
+		8 dict begin
+		/HalftoneType 1 def
+		/SpotFunction exch def
+		/Angle exch def
+		/Frequency exch def
+		/AccurateScreens FMUseAcccurateScreens def
+		currentdict end sethalftone
+	} bind } ifelse
+def
+/setDefaultScreen {
+	FMPColor {
+		orgrxfer cvx orggxfer cvx orgbxfer cvx orgxfer cvx setcolortransfer
+	}
+	{
+		orgxfer cvx settransfer
+	} ifelse
+	orgfreq organgle orgproc cvx setscreen
+} bind def
+/setCurrentScreen {
+	FrameSepIs FMnone eq {
+		FMUseDefaultNoSeparationScreen {
+			setDefaultScreen
+		} {
+			getCompositeScreen FMSetScreen
+		} ifelse
+	} {
+		FrameSepIs FMcustom eq {
+			FMUseDefaultSpotSeparationScreen {
+				setDefaultScreen
+			} {
+				getSpotScreen FMSetScreen
+			} ifelse
+		} {
+			FMUseDefaultProcessSeparationScreen {
+				setDefaultScreen
+			} {
+				FrameSepIs FMcyan eq {
+					getCyanScreen FMSetScreen
+				} {
+					FrameSepIs FMmagenta eq {
+						getMagentaScreen FMSetScreen
+					} {
+						FrameSepIs FMyellow eq {
+							getYellowScreen FMSetScreen
+						} {
+							getBlackScreen FMSetScreen
+						} ifelse
+					} ifelse
+				} ifelse
+			} ifelse
+		} ifelse
+	} ifelse 
+} bind def
+end
+	
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne /manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	0 ne /fMNegative exch def 
+	0 ne /edown exch def 
+	/yscale exch def
+	/xscale exch def
+	fMLevel1 {
+		manualfeed {setmanualfeed} if
+		/FMdicttop countdictstack 1 add def 
+		/FMoptop count def 
+		setpapername 
+		manualfeed {true} {papersize} ifelse 
+		{manualpapersize} {false} ifelse 
+		{desperatepapersize} {false} ifelse 
+		{papersizefailure} if
+		count -1 FMoptop {pop pop} for
+		countdictstack -1 FMdicttop {pop end} for 
+		}
+		{2 dict
+		 dup /PageSize [paperwidth paperheight] put
+		 manualfeed {dup /ManualFeed manualfeed put} if
+		 {setpagedevice} stopped {papersizefailure} if
+		}
+	ifelse 
+	
+	FMPColor {
+		currentcolorscreen
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+			cvlit /orgbproc exch def
+				  /orgbangle exch def 
+				  /orgbfreq exch def
+			cvlit /orggproc exch def
+				  /orggangle exch def 
+				  /orggfreq exch def
+			cvlit /orgrproc exch def
+				  /orgrangle exch def 
+				  /orgrfreq exch def
+			currentcolortransfer 
+			fMNegative {
+				1 1 4 { 
+					pop { 1 exch sub } fmConcatProcs 4 1 roll
+				} for
+				4 copy
+				setcolortransfer
+			} if
+			cvlit /orgxfer exch def
+			cvlit /orgbxfer exch def
+			cvlit /orggxfer exch def
+			cvlit /orgrxfer exch def
+	} {
+		currentscreen 
+			cvlit /orgproc exch def
+				  /organgle exch def 
+				  /orgfreq exch def
+				  
+		currenttransfer 
+		fMNegative {
+			{ 1 exch sub } fmConcatProcs
+			dup settransfer
+		} if 
+		cvlit /orgxfer exch def
+	} ifelse
+	end 
+} def 
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch dup /pwid exch def neg translate pop 
+	}{
+		pop /pwid exch def
+	} ifelse
+	edown { [-1 0 0 1 pwid 0] concat } if
+	0 0 moveto paperwidth 0 lineto paperwidth paperheight lineto 
+	0 paperheight lineto 0 0 lineto 1 setgray fill
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin dup
+	array /fillvals exch def
+	dict /patCache exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+% See Adobe's "PostScript Language Reference Manual, 2nd Edition", page 714.
+% "...the following operators MUST NOT be used in an EPS file:" (emphasis ours)
+	/banddevice {(banddevice) FMBADEPSF} def
+	/clear {(clear) FMBADEPSF} def
+	/cleardictstack {(cleardictstack) FMBADEPSF} def 
+	/copypage {(copypage) FMBADEPSF} def
+	/erasepage {(erasepage) FMBADEPSF} def
+	/exitserver {(exitserver) FMBADEPSF} def
+	/framedevice {(framedevice) FMBADEPSF} def
+	/grestoreall {(grestoreall) FMBADEPSF} def
+	/initclip {(initclip) FMBADEPSF} def
+	/initgraphics {(initgraphics) FMBADEPSF} def
+	/quit {(quit) FMBADEPSF} def
+	/renderbands {(renderbands) FMBADEPSF} def
+	/setglobal {(setglobal) FMBADEPSF} def
+	/setpagedevice {(setpagedevice) FMBADEPSF} def
+	/setshared {(setshared) FMBADEPSF} def
+	/startjob {(startjob) FMBADEPSF} def
+	/lettertray {(lettertray) FMBADEPSF} def
+	/letter {(letter) FMBADEPSF} def
+	/lettersmall {(lettersmall) FMBADEPSF} def
+	/11x17tray {(11x17tray) FMBADEPSF} def
+	/11x17 {(11x17) FMBADEPSF} def
+	/ledgertray {(ledgertray) FMBADEPSF} def
+	/ledger {(ledger) FMBADEPSF} def
+	/legaltray {(legaltray) FMBADEPSF} def
+	/legal {(legal) FMBADEPSF} def
+	/statementtray {(statementtray) FMBADEPSF} def
+	/statement {(statement) FMBADEPSF} def
+	/executivetray {(executivetray) FMBADEPSF} def
+	/executive {(executive) FMBADEPSF} def
+	/a3tray {(a3tray) FMBADEPSF} def
+	/a3 {(a3) FMBADEPSF} def
+	/a4tray {(a4tray) FMBADEPSF} def
+	/a4 {(a4) FMBADEPSF} def
+	/a4small {(a4small) FMBADEPSF} def
+	/b4tray {(b4tray) FMBADEPSF} def
+	/b4 {(b4) FMBADEPSF} def
+	/b5tray {(b5tray) FMBADEPSF} def
+	/b5 {(b5) FMBADEPSF} def
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fw 2 div add fy fh 2 div add  translate
+	rotate
+	fw 2 div neg fh 2 div neg translate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count def 
+	} bind def
+/FMENDEPSF {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} bind def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} bind def
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} bind def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	statusdict begin stopped end 
+	} bind def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} bind def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped 
+		end
+		} {true} ifelse 
+	} bind def
+/papersizefailure {
+	FMAllowPaperSizeMismatch not
+		{
+(The requested paper size is not available in any currently-installed tray)
+(Edit the PS file to "FMAllowPaperSizeMismatch true" to use default tray)
+		 FMFAILURE } if
+	} def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+FMPColor 
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYK } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKc } def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/BEGINBITMAPCMYK { 
+		BITMAPCMYKGRAY } def
+	/BEGINBITMAPCMYKc { 
+		BITMAPCMYKGRAYc } def
+	}
+ifelse
+/K { 
+	FMPrintAllColorsAsBlack {
+		dup 1 eq 2 index 1 eq and 3 index 1 eq and not
+			{7 {pop} repeat 0 0 0 1 0 0 0} if
+	} if 
+	FrameCurColors astore 
+	pop combineColor
+} bind def
+/graymode true def
+fMLevel1 {
+	/fmGetFlip {
+		fMatrix2 exch get mul 0 lt { -1 } { 1 } ifelse
+	} FmBD
+} if
+/setPatternMode {
+	fMLevel1 {
+		2 index patScreenDict exch known {
+			pop pop
+			patScreenDict exch get aload pop 
+			freq 								
+			mul									
+			5 2 roll							
+			fMatrix2 currentmatrix 1 get 0 ne {
+				3 -1 roll 90 add 3 1 roll 		
+				sflipx 1 fmGetFlip sflipy 2 fmGetFlip neg mul
+			} {  								
+				sflipx 0 fmGetFlip sflipy 3 fmGetFlip mul 
+			} ifelse
+			0 lt {exch pop} {pop} ifelse 		
+			fMNegative { 
+				{neg} fmConcatProcs 			
+			} if
+			bind
+			
+			
+			
+			systemdict /setscreen get exec		
+			/FrameCurGray exch def
+		} {
+			/bwidth  exch def
+			/bpside  exch def
+			/bstring exch def
+			/onbits 0 def  /offbits 0 def
+			freq sangle landscape {90 add} if 
+				{/ypoint exch def
+				 /xpoint exch def
+				 /xindex xpoint 1 add 2 div bpside mul cvi def
+				 /yindex ypoint 1 add 2 div bpside mul cvi def
+				 bstring yindex bwidth mul xindex 8 idiv add get
+				 1 7 xindex 8 mod sub bitshift and 0 ne fMNegative {not} if
+				 {/onbits  onbits  1 add def 1}
+				 {/offbits offbits 1 add def 0}
+				 ifelse
+				}
+				setscreen
+			offbits offbits onbits add div fMNegative {1.0 exch sub} if
+			/FrameCurGray exch def
+		} ifelse
+	} { 
+		pop pop
+		dup patCache exch known {
+			patCache exch get
+		} { 
+			dup
+			patDict /bstring 3 -1 roll put
+			patDict 
+			9 PatFreq screenIndex get div dup matrix scale
+			makepattern
+			dup 
+			patCache 4 -1 roll 3 -1 roll put
+		} ifelse
+		/FrameCurGray 0 def
+		/FrameCurPat exch def
+	} ifelse
+	/graymode false def
+	combineColor
+} bind def
+/setGrayScaleMode {
+	graymode not {
+		/graymode true def
+		fMLevel1 {
+			setCurrentScreen
+		} if
+	} if
+	/FrameCurGray exch def
+	combineColor
+} bind def
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	
+/PFill {
+	graymode fMLevel1 or not {
+		gsave 1 setgray eofill grestore
+	} if
+} bind def
+/PStroke {
+	graymode fMLevel1 or not {
+		gsave 1 setgray stroke grestore
+	} if
+	stroke
+} bind def
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setPatternMode} 
+	{setGrayScaleMode}
+	ifelse
+	} bind def
+/V { 
+	PFill gsave eofill grestore
+	} bind def
+/Vclip {
+	clip
+	} bind def
+/Vstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/N { 
+	PStroke
+	} bind def
+/Nclip {
+	strokepath clip newpath
+	} bind def
+/Nstrk {
+	currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/rarc 
+	{rad 
+	 arcto
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	mark
+	newpath
+	{
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rarc
+	x2 y2 x2 y1 rarc
+	x2 y1 x1 y1 rarc
+	x1 y1 x1 y2 rarc
+	closepath
+	} stopped {x1 y1 x2 y2 R} if 
+	cleartomark
+	} bind def
+/RRR { 
+	/rad exch def
+	normalize /y4 exch def /x4 exch def
+	normalize /y3 exch def /x3 exch def
+	normalize /y2 exch def /x2 exch def
+	normalize /y1 exch def /x1 exch def
+	newpath
+	normalize moveto 
+	mark
+	{
+	x2 y2 x3 y3 rarc
+	x3 y3 x4 y4 rarc
+	x4 y4 x1 y1 rarc
+	x1 y1 x2 y2 rarc
+	closepath
+	} stopped
+	 {x1 y1 x2 y2 x3 y3 x4 y4 newpath moveto lineto lineto lineto closepath} if
+	cleartomark
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	setCurrentScreen
+} bind def
+/CP { 
+	grestore
+	gsave
+	Y 
+	clip
+	setCurrentScreen
+} bind def
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	PFill fill
+	grestore
+	} bind def
+/Gstrk {
+	savematrix
+    newpath
+    2 index 2 div add exch 3 index 2 div sub exch 
+    normalize 2 index 2 div sub exch 3 index 2 div add exch 
+    translate
+    scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+    } bind def
+/Gclip { 
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	clip newpath
+	restorematrix
+	} bind def
+/GG { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	rotate 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath
+	PFill
+	fill
+	grestore
+	} bind def
+/GGclip { 
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	clip newpath
+	restorematrix
+	} bind def
+/GGstrk { 
+	savematrix
+    newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath 
+	restorematrix
+    currentlinewidth exch setlinewidth PStroke setlinewidth
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/Aclip {
+	newpath
+	savematrix
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath 
+	strokepath clip newpath
+	restorematrix
+} bind def
+/Astrk {
+	Gstrk
+} bind def
+/AA { 
+	gsave
+	savematrix
+	newpath
+	
+	3 index 2 div add exch 4 index 2 div sub exch 
+	
+	normalize 3 index 2 div sub exch 4 index 2 div add exch
+	translate 
+	rotate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	PStroke
+	grestore
+	} bind def
+/AAclip {
+	savematrix
+	newpath
+    normalize translate 0.0 0.0 moveto 
+    rotate 
+    dnormalize scale 
+    0.0 0.0 1.0 5 3 roll arc 
+    closepath
+	strokepath clip newpath
+	restorematrix
+} bind def
+/AAstrk {
+	GGstrk
+} bind def
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 7 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/rip { 
+	   
+	  
+	  bis ris copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  ris gis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  gis bis copy pop 
+	  dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/rip4 { 
+	   
+	  
+	  kis cis copy pop 
+      is
+      0
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop 
+	  cis mis copy pop 
+	  dup is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  mis yis copy pop 
+	  dup dup add is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+	  pop pop
+	  yis kis copy pop 
+	  3 mul is exch 
+	  
+      cf cs readline pop 
+      {       ic exch get exec 
+              add 
+              } forall 
+      pop 
+      
+      } bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+/wbytes { 
+      dup dup
+      8 gt { pop 8 idiv mul }
+      { 8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse } ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+		 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	cvtProc                
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/cvtProc exch def
+	/depth exch def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def 
+	cvtProc              
+	/is width depth wbytes string def
+	/cf currentfile def 
+	width height depth [width 0 0 height neg 0 height] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+fMLevel1 {
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/kk cynu magu min yelu min def
+		/u kk currentundercolorremoval exec def
+%		/u 0 def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 kk currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+}
+{
+/colorSetup2 {
+	[ /Indexed /DeviceRGB 255 
+		{dup red exch get 255 div 
+		 exch dup green exch get 255 div 
+		 exch blue exch get 255 div}
+	] setcolorspace
+} bind def
+} ifelse
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch fmConcatProcs settransfer
+} bind def
+/BITMAPCOLOR { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/bitmapsave save def
+	fMLevel1 {	
+		colorsetup
+		/is width depth wbytes string def
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	} {
+		colorSetup2
+		/is width depth wbytes string def
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {cf is readhexstring pop} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/depth 8 def
+	gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	fMLevel1 {	
+		colorsetup
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		width height depth [width 0 0 height neg 0 height] 
+		{ip} {is} {is} true 3 colorimage
+	} {
+		colorSetup2
+		/is im 0 lb getinterval def 
+		ws 0 lb getinterval is copy pop 
+		/cf currentfile def 
+		7 dict dup begin
+			/ImageType 1 def
+			/Width width def
+			/Height height def
+			/ImageMatrix [width 0 0 height neg 0 height] def
+			/DataSource {ip} bind def
+			/BitsPerComponent depth def
+			/Decode [0 255] def
+		end image	
+	} ifelse
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+	/depth 24 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip pop ris} {gis} {bis} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCMYKc { 
+	/depth 32 def
+        gsave
+ 	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	width height 8 [width 0 0 height neg 0 height] 
+	{width rip4 pop cis} {mis} {yis} {kis} true 4 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLOR { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYK { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /mis width string def
+        /yis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop } 
+        { cf mis readhexstring pop } 
+        { cf yis readhexstring pop } 
+        { cf kis readhexstring pop } 
+        true 4 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+	/depth 24 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/ris im 0 width getinterval def	
+	/gis im width width getinterval def	
+	/bis im width 2 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop ris gis bis width gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAYc { 
+	/depth 32 def
+        gsave
+	
+	3 index 2 div add exch	
+	4 index 2 div add exch	
+	translate		
+	rotate			
+	1 index 2 div neg	
+	1 index 2 div neg	
+	translate		
+	scale			
+	/height exch def /width exch def
+	/lb width depth wbytes def 
+	sl lb lt {lb ms} if 
+        /bitmapsave save def 
+        
+	/is im 0 lb getinterval def	
+	/cis im 0 width getinterval def	
+	/mis im width width getinterval def	
+	/yis im width 2 mul width getinterval def 
+	/kis im width 3 mul width getinterval def 
+        ws 0 lb getinterval is copy pop 
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        {width rip pop cis mis yis kis width cgray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/cgray { 
+        /ww exch def
+        /k exch def
+        /y exch def
+        /m exch def
+        /c exch def
+        0 1 ww 1 sub { /i exch def c i get m i get y i get k i get CMYKtoRGB
+				.144 mul 3 1 roll .587 mul 3 1 roll .299 mul add add
+				c i 3 -1 roll floor cvi put } for
+        c
+ 		} bind def
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /gis width string def
+        /bis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop width gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPCMYKGRAY { 
+        gsave
+		
+		3 index 2 div add exch	
+		4 index 2 div add exch	
+		translate		
+		rotate			
+		1 index 2 div neg	
+		1 index 2 div neg	
+		translate		
+		scale			
+		/height exch def /width exch def
+        /bitmapsave save def 
+        /is width string def
+        /yis width string def
+        /mis width string def
+        /kis width string def
+        /cf currentfile def 
+        width height 8 [width 0 0 height neg 0 height] 
+        { cf is readhexstring pop 
+          cf mis readhexstring pop 
+          cf yis readhexstring pop 
+          cf kis readhexstring pop width cgray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+/I { setdash } bind def
+/J { [] 0 setdash } bind def
+%%EndProlog
+%%BeginSetup
+(5.0) FMVERSION
+1 1 0 0 612 792 0 1 7 FMDOCUMENT
+0 0 /Times-Roman FMFONTDEFINE
+1 0 /Times-Bold FMFONTDEFINE
+2 0 /Times-Italic FMFONTDEFINE
+3 0 /Courier FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 0.1 FMFILL
+2 0.3 FMFILL
+3 0.5 FMFILL
+4 0.7 FMFILL
+5 0.9 FMFILL
+6 0.97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 0.9 FMFILL
+18 0.7 FMFILL
+19 0.5 FMFILL
+20 0.3 FMFILL
+21 0.1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "1" 1
+%%BeginPaperSize: Letter
+%%EndPaperSize
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+J
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(1) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 18 Q
+(Gestalt-class: A P) 86.42 708 T
+(ersistent, Multi-user CLOS A) 222.03 708 T
+(pplication) 448.56 708 T
+(En) 255.52 684 T
+(vir) 276.81 684 T
+(onment) 298.48 684 T
+0 12 Q
+(Michael B. McIlrath, Michael L. He) 147.11 600 T
+(ytens, and Thomas J. Lohman) 320.9 600 T
+(Department of Electrical Engineering and Computer Science) 160.03 568 T
+(Massachusetts Institute of T) 156.99 536 T
+(echnology) 291.14 536 T
+(, Cambridge MA 02139) 340.35 536 T
+(Author contact: mbm@mit.edu) 190.38 504 T
+(\050617 253 4183\051) 347.63 504 T
+1 14 Q
+(Abstract) 72 450.67 T
+0 12 Q
+(W) 72 430 T
+(e describe Gestalt-class, a CLOS-based application en) 82.37 430 T
+(vironment supporting persistence, multi-) 341.5 430 T
+(ple inheritance, and relational querying capabilities. Gestalt-class has been in on-line use for se) 72 416 T
+(v-) 527.94 416 T
+(eral years in a multi-user computer inte) 72 402 T
+(grated manuf) 260.45 402 T
+(acturing \050CIM\051 system supporting se) 323.98 402 T
+(v) 500.33 402 T
+(eral) 506.15 402 T
+(inte) 72 388 T
+(grated circuit f) 89.82 388 T
+(abrication laboratories at MIT and else) 160.34 388 T
+(where. Gestalt-class has also been used) 346.33 388 T
+-0.08 (in stand-alone computer aided design \050CAD\051 applications and, more recently) 72 374 P
+-0.08 (, in the de) 439.79 374 P
+-0.08 (v) 486.59 374 P
+-0.08 (elopment) 492.41 374 P
+-0.45 (of infrastructure for distrib) 72 360 P
+-0.45 (uted, collaborati) 198.72 360 P
+-0.45 (v) 275.96 360 P
+-0.45 (e research and design. W) 281.78 360 P
+-0.45 (e e) 399.32 360 P
+-0.45 (xplain the implementation) 412.34 360 P
+(and e) 72 346 T
+(v) 97.36 346 T
+(olution of Gestalt-class and discuss our e) 103.12 346 T
+(xperience with its use in application and schema) 299.58 346 T
+(de) 72 332 T
+(v) 83.03 332 T
+(elopment, support, and maintenance.) 88.85 332 T
+1 14 Q
+(1. Intr) 72 288.67 T
+(oduction) 109.86 288.67 T
+0 12 Q
+(As part of a project on computer aided inte) 72 268 T
+(grated circuit f) 277.78 268 T
+(abrication at MIT) 348.3 268 T
+(, we designed and) 432.06 268 T
+(implemented a dynamic, object-oriented, persistent programming en) 72 254 T
+(vironment using a relational) 400.14 254 T
+(database as the principal backing store. The en) 72 240 T
+(vironment is implemented in CLOS and operates) 295.46 240 T
+-0.26 (atop Gestalt, an independent abstraction layer pro) 72 226 P
+-0.26 (viding an inte) 308.56 226 P
+-0.26 (grated procedural interf) 373.87 226 P
+-0.26 (ace to mul-) 486.53 226 P
+(tiple heterogeneous data storage systems[1]. This or) 72 212 T
+(g) 321.41 212 T
+(anization pro) 327.35 212 T
+(vides applications with trans-) 390.16 212 T
+(parent access to persistent objects, which are described and manipulated solely via CLOS) 72 198 T
+(methods. Application programmers utilize the rich object modeling and generic functions of) 72 184 T
+(CLOS in the inte) 72 170 T
+(grated en) 153.49 170 T
+(vironment of Common Lisp to aid in program de) 197.33 170 T
+(v) 431.69 170 T
+(elopment.) 437.51 170 T
+(W) 72 142 T
+(e be) 82.37 142 T
+(gin with an o) 101.84 142 T
+(v) 164.66 142 T
+(ervie) 170.48 142 T
+(w of the Gestalt system, follo) 194.17 142 T
+(wed by a description of the Gestalt object) 335.2 142 T
+(model, implementation, and mapping from the object model to the relational model.) 72 128 T
+-0.16 (Ne) 72 114 P
+-0.16 (xt, we discuss the implementation of the interf) 85.81 114 P
+-0.16 (ace in CLOS and gi) 307.25 114 P
+-0.16 (v) 400.98 114 P
+-0.16 (e some e) 406.8 114 P
+-0.16 (xamples of its use.) 448.3 114 P
+(W) 72 100 T
+(e conclude with a report on the status of the w) 82.37 100 T
+(ork.) 303.54 100 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "1" 1
+%%Page: "2" 2
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(2) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 14 Q
+(2. Gestalt) 72 710.67 T
+0 12 Q
+(The basic architecture of Gestalt consists of a library) 72 690 T
+(, implemented in C, running atop e) 324.49 690 T
+(xisting) 491.64 690 T
+-0.42 (databases or storage systems. Gestalt is not itself a database; rather) 72 676 P
+-0.42 (, it is a mechanism for logically) 388.27 676 P
+(inte) 72 662 T
+(grating data storage systems. Using Gestalt, applications are written in a host programming) 89.82 662 T
+(language \050originally C; later Common Lisp, via a foreign function interf) 72 648 T
+(ace\051.) 418.18 648 T
+(The main moti) 72 620 T
+(v) 142.37 620 T
+(ation behind the design and implementation of Gestalt w) 148.07 620 T
+(as the need for an appli-) 419.93 620 T
+(cation de) 72 606 T
+(v) 115.36 606 T
+(elopment en) 121.18 606 T
+(vironment that did not require database programming e) 179.69 606 T
+(xpertise. By unify-) 444.47 606 T
+(ing dif) 72 592 T
+(ferent database system interf) 103.37 592 T
+(aces under one common interf) 240.88 592 T
+(ace, application programmers) 386.05 592 T
+(are able to a) 72 578 T
+(v) 130.07 578 T
+(oid learning v) 135.83 578 T
+(arious database manipulation languages and can concentrate on the) 202.19 578 T
+(design of the applications themselv) 72 564 T
+(es. In addition, there w) 241.14 564 T
+(as a desire for database independence,) 351 564 T
+(i.e. for the model visible to applications to be independent of the actual underlying system data) 72 550 T
+-0.09 (models. Gestalt\325) 72 536 P
+-0.09 (s main architectural goal w) 149.91 536 P
+-0.09 (as to encapsulate v) 279.42 536 P
+-0.09 (arious data manipulation interf) 369.17 536 P
+-0.09 (aces) 516.43 536 P
+(and data models, including the relational model, under one common data model and procedural) 72 522 T
+(programming interf) 72 508 T
+(ace. This pro) 166.2 508 T
+(vides a great deal of implementation \337e) 228.34 508 T
+(xibility as well as an ele-) 418.13 508 T
+(g) 72 494 T
+(ant w) 77.94 494 T
+(ay to support \322cross system\323 queries. The latter is especially useful in CAD/CIM; it can) 104.15 494 T
+(pro) 72 480 T
+(vide applications with a uni\336ed vie) 87.82 480 T
+(w of design, manuf) 255.84 480 T
+(acturing, and simulation data, e) 348.37 480 T
+(v) 498.72 480 T
+(en) 504.54 480 T
+(though this information may ph) 72 466 T
+(ysically reside within multiple heterogeneous data storage sys-) 223.94 466 T
+(tems.) 72 452 T
+(Gestalt in essence has a global schema multidatabase architecture and thus allo) 72 424 T
+(ws the underlying) 450.62 424 T
+-0.17 (data storage systems to maintain a le) 72 410 P
+-0.17 (v) 246.67 410 P
+-0.17 (el of autonomy) 252.49 410 P
+-0.17 (. If necessary) 324.03 410 P
+-0.17 (, data can be manipulated by an) 386.55 410 P
+(application directly through the storage system interf) 72 396 T
+(ace \050e.g. SQL\051, independent of Gestalt and) 325.85 396 T
+(its translation module for that particular storage system. An) 72 382 T
+(y acti) 357.46 382 T
+(v) 383.48 382 T
+(ely running Gestalt programs) 389.3 382 T
+(will not see an) 72 368 T
+(y such data updates until the) 141.48 368 T
+(y e) 277.62 368 T
+(xplicitly access the underlying data via the Gestalt) 291.77 368 T
+-0.49 (interf) 72 354 P
+-0.49 (ace. \050In practice, we use direct storage system interf) 97.87 354 P
+-0.49 (aces only rarely) 343.08 354 P
+-0.49 (, for v) 417.29 354 P
+-0.49 (arious maintenance) 445 354 P
+(operations.\051) 72 340 T
+1 F
+(2.1 Gestalt Data Model) 72 300 T
+0 F
+(The Gestalt data model speci\336es, in a language-independent manner) 72 283 T
+(, the mechanisms by which) 399.12 283 T
+(data are described and manipulated. In an actual implementation, these descripti) 72 269 T
+(v) 456.29 269 T
+(e and manipula-) 462.11 269 T
+(ti) 72 255 T
+(v) 78.37 255 T
+(e mechanisms are e) 84.19 255 T
+(xpressed in terms of constructs nati) 177.65 255 T
+(v) 346.99 255 T
+(e to the application programming lan-) 352.81 255 T
+(guage \050e.g., C or Common Lisp\051 being used. All data are captured via typed objects and v) 72 241 T
+(alues,) 502.3 241 T
+(where objects ha) 72 227 T
+(v) 152.4 227 T
+(e identity) 158.22 227 T
+(, and v) 202.44 227 T
+(alues do not. Objects and v) 234.47 227 T
+(alues may contain named, typed) 364.15 227 T
+-0.04 (attrib) 72 213 P
+-0.04 (utes. Gestalt supports an e) 97.09 213 P
+-0.04 (xtended set of pre-de\336ned v) 222.41 213 P
+-0.04 (alue types, including the usual scalars) 355.92 213 P
+(such as strings, inte) 72 199 T
+(gers, and booleans, as well more complicated types for recording interv) 165.82 199 T
+(al,) 508.78 199 T
+(ine) 72 185 T
+(xact, and temporal data. V) 86.48 185 T
+(alue types are not persistent unless the) 211.79 185 T
+(y are contained within a user) 395.58 185 T
+(de\336ned type. Ev) 72 171 T
+(en though a particular type may be b) 150.14 171 T
+(uilt-in, its beha) 325.54 171 T
+(vior is still speci\336ed only in) 397.63 171 T
+(terms of the operators de\336ned on instances of that type, so that the user sees no semantic dif) 72 157 T
+(fer-) 512.96 157 T
+(ence between b) 72 143 T
+(uilt-in and user) 145.73 143 T
+(-de\336ned types; both are accessed by the application programmer) 218.15 143 T
+(through their de\336ned interf) 72 129 T
+(aces.) 201.53 129 T
+(Crucially) 72 101 T
+(, a Gestalt schema is self-describing: the \322meta-data\323 de\336ning Gestalt types are Gestalt) 115.88 101 T
+(data themselv) 72 87 T
+(es, of prede\336ned object types) 138.14 87 T
+2 F
+(dbtype) 281.45 87 T
+0 F
+(and) 316.44 87 T
+2 F
+(dbattrib) 336.77 87 T
+(ute) 375.2 87 T
+1 F
+(.) 389.87 87 T
+0 F
+( Schema maintenance and) 392.87 87 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "2" 2
+%%Page: "3" 3
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(3) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 12 Q
+(modi\336cation is itself a Gestalt application task. Application de) 72 712 T
+(v) 371.35 712 T
+(elopers may create ne) 377.17 712 T
+(w object) 481.16 712 T
+(types and test them by using the enhanced schema in their programs. This ability to create and) 72 698 T
+(modify ne) 72 684 T
+(w object types has pro) 120.7 684 T
+(vided for especially rapid prototyping and de) 227.83 684 T
+(v) 443.5 684 T
+(elopment of appli-) 449.32 684 T
+(cations.) 72 670 T
+(Gestalt did not originally support subtyping or inheritance. The need for \322full object orientation\323) 72 642 T
+(in applications and their persistent data became apparent early on, ho) 72 628 T
+(we) 403.3 628 T
+(v) 416.99 628 T
+(er) 422.81 628 T
+(, and a model and) 431.65 628 T
+(implementation compatible with CLOS w) 72 614 T
+(as chosen, both because of the generality of the CLOS) 273.22 614 T
+(object model and the use of CLOS in the de) 72 600 T
+(v) 282.01 600 T
+(elopment of an e) 287.83 600 T
+(xtensible representation language) 367.97 600 T
+(for f) 72 586 T
+(abrication processes[2].) 92.87 586 T
+(In addition to attrib) 72 558 T
+(ute names and types, the speci\336cation of an object type includes additional) 164.76 558 T
+-0.14 (attrib) 72 544 P
+-0.14 (utes which de\336ne certain inte) 97.09 544 P
+-0.14 (grity constraints or beha) 237 544 P
+-0.14 (vior that instances of the type must sat-) 352.66 544 P
+(isfy) 72 530 T
+(. These attrib) 89.22 530 T
+(utes are recorded in the corresponding) 151.97 530 T
+2 F
+(dbtype) 338.58 530 T
+0 F
+(and) 373.57 530 T
+2 F
+(dbattrib) 393.9 530 T
+(ute) 432.34 530 T
+0 F
+(schema objects.) 450 530 T
+2 F
+-0.47 (Dbtype) 72 516 P
+0 F
+-0.47 ( contains the attrib) 106.66 516 P
+-0.47 (utes) 194 516 P
+2 F
+-0.47 (db-stor) 215.86 516 P
+-0.47 (a) 250.35 516 P
+-0.47 (g) 256.23 516 P
+-0.47 (e-system) 262.11 516 P
+0 F
+-0.47 (, identifying the storage system holding this type;) 303.42 516 P
+2 F
+(deletable;) 72 502 T
+0 F
+( and) 119.99 502 T
+2 F
+(supertypes) 143.32 502 T
+0 F
+(.) 194.64 502 T
+2 F
+(Dbattrib) 200.64 502 T
+(ute) 241.74 502 T
+0 F
+(supports the attrib) 259.4 502 T
+(utes) 345.83 502 T
+2 F
+(one-to-one) 368.16 502 T
+0 F
+(\050) 423.14 502 T
+2 F
+(vs.) 427.14 502 T
+0 F
+( list-v) 440.14 502 T
+(alued\051;) 467.51 502 T
+2 F
+(unique) 503.83 502 T
+0 F
+-0.08 (\050can tw) 72 488 P
+-0.08 (o objects of the same type e) 107.45 488 P
+-0.08 (xist with equal v) 240.1 488 P
+-0.08 (alues of this attrib) 319.23 488 P
+-0.08 (ute\051;) 405.07 488 P
+2 F
+-0.08 (can-be-null) 429.99 488 P
+0 F
+-0.08 (;) 485.31 488 P
+2 F
+-0.08 (in) 491.56 488 P
+-0.08 (vertible) 500.42 488 P
+0 F
+-0.39 (\050should Gestalt pro) 72 474 P
+-0.39 (vide an operator for fetching objects using the v) 163.04 474 P
+-0.39 (alue of this attrib) 389.61 474 P
+-0.39 (ute as a k) 469.87 474 P
+-0.39 (e) 513.58 474 P
+-0.39 (y?\051;) 518.73 474 P
+2 F
+-0.33 (active) 72 460 P
+0 F
+-0.33 (\050is this attrib) 103.33 460 P
+-0.33 (ute\325) 163.1 460 P
+-0.33 (s v) 181.1 460 P
+-0.33 (alue set e) 194.13 460 P
+-0.33 (xplicitly) 237.95 460 P
+-0.33 (, or is it computed as needed by e) 277.17 460 P
+-0.33 (xamining the object\325) 434.66 460 P
+-0.33 (s) 532.66 460 P
+(relationship with other objects?\051;) 72 446 T
+2 F
+(pr) 233.32 446 T
+(efetc) 243.54 446 T
+(hed) 266.02 446 T
+0 F
+( \050should the v) 283.34 446 T
+(alue of this attrib) 348.71 446 T
+(ute be brought into) 430.13 446 T
+(memory whene) 72 432 T
+(v) 146.02 432 T
+(er the object is fetched?\051; and) 151.84 432 T
+2 F
+(mutable) 296.46 432 T
+(.) 334.94 432 T
+0 F
+( Acti) 337.94 432 T
+(v) 361.31 432 T
+(e attrib) 367.13 432 T
+(utes correspond to \322instance) 400.55 432 T
+(v) 72 418 T
+(ariables\323 or \322slots\323 in other object oriented programming en) 77.7 418 T
+(vironments; Gestalt models both) 365.83 418 T
+(acti) 72 404 T
+(v) 89.03 404 T
+(e and \322passi) 94.85 404 T
+(v) 152.53 404 T
+(e\323 \050computed\051 attrib) 158.35 404 T
+(ute access uniformly) 255.42 404 T
+(.) 353.95 404 T
+(Gestalt operators include) 72 376 T
+2 F
+(selector) 194.98 376 T
+(s) 232.85 376 T
+0 F
+(,) 237.52 376 T
+2 F
+(mutator) 243.52 376 T
+(s) 281.4 376 T
+0 F
+(,) 286.07 376 T
+2 F
+(constructor) 292.07 376 T
+(s) 347.28 376 T
+0 F
+(, and) 351.95 376 T
+2 F
+(iter) 378.28 376 T
+(ator) 394.76 376 T
+(s) 414.65 376 T
+0 F
+(\050used to perform set-ori-) 422.32 376 T
+(ented queries using a predicate\051. All Gestalt operators perform dynamic type checking. Routines) 72 362 T
+(that detect run-time errors raise an e) 72 348 T
+(xception \337ag and return a null object consistent with their) 245.1 348 T
+(range type.) 72 334 T
+1 F
+(2.2 Gestalt implementation) 72 308 T
+0 F
+-0.26 (All Gestalt operations are implemented via a generic database e) 72 291 P
+-0.26 (v) 374.92 291 P
+-0.26 (aluator) 380.62 291 P
+-0.26 (,) 413.47 291 P
+2 F
+-0.26 (dbe) 419.2 291 P
+-0.26 (val.) 436.35 291 P
+0 F
+-0.26 ( T) 454.02 291 P
+-0.26 (o implement an) 463.12 291 P
+-0.31 (operation, the e) 72 277 P
+-0.31 (v) 145.4 277 P
+-0.31 (aluator interacts with the underlying storage system through a translation module) 151.1 277 P
+-0.17 (speci\336ed in a operation dispatch table, where each storage system has its o) 72 263 P
+-0.17 (wn translation module.) 427.2 263 P
+(The e) 72 249 T
+(v) 98.69 249 T
+(aluator is independent of the speci\336cs of the underlying data storage systems. The transla-) 104.39 249 T
+(tion module recei) 72 235 T
+(v) 155.69 235 T
+(es requests e) 161.51 235 T
+(xpressed in terms of Gestalt operators, and accesses the appropri-) 221.98 235 T
+(ate storage system through its o) 72 221 T
+(wn speci\336c interf) 223.36 221 T
+(ace. The results of the operation are then) 306.55 221 T
+(formatted and returned to the e) 72 207 T
+(v) 220 207 T
+(aluator) 225.7 207 T
+(. Because of this design, no queries are hardwired into the) 258.36 207 T
+-0.15 (Gestalt system, and all ar) 72 193 P
+-0.15 (guments are e) 192.18 193 P
+-0.15 (v) 258.24 193 P
+-0.15 (aluated at runtime. Ar) 263.94 193 P
+-0.15 (guments to) 368.6 193 P
+2 F
+-0.15 (dbe) 424.31 193 P
+-0.15 (val) 441.46 193 P
+0 F
+-0.15 (include the oper-) 458.98 193 P
+-0.45 (ator type and the data; Gestalt objects are passed and returned via handles uniquely identifying the) 72 179 P
+(object by the logical pair \050) 72 165 T
+2 F
+(type-id, entity-id) 198.31 165 T
+0 F
+(\051, where) 277.63 165 T
+2 F
+(type-id) 319.94 165 T
+0 F
+(identi\336es the type and) 356.27 165 T
+2 F
+(entity-id) 464.93 165 T
+0 F
+( is) 504.92 165 T
+(unique within a type.) 72 151 T
+(Multiple storage systems are typically inte) 72 123 T
+(grated in Gestalt installations; the particular systems) 275.47 123 T
+(used depend on the needs of the intended applications and their data and performance require-) 72 109 T
+(ments. One data storage system is al) 72 95 T
+(w) 246.19 95 T
+(ays present: the) 254.74 95 T
+2 F
+(sc) 332.39 95 T
+(hema-db) 342.2 95 T
+0 F
+( storage system, a pri) 384.19 95 T
+(v) 485.54 95 T
+(ate, f) 491.24 95 T
+(ast) 515.11 95 T
+(access store which holds the meta-data \050objects of type) 72 81 T
+2 F
+(dbtype) 338.94 81 T
+0 F
+(and) 373.93 81 T
+2 F
+(dbattrib) 394.26 81 T
+(ute) 432.7 81 T
+0 F
+(\051.) 447.36 81 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "3" 3
+%%Page: "4" 4
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(4) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 12 Q
+(2.3 Mapping to r) 72 712 T
+(elational model) 157.79 712 T
+0 F
+(A relational database is not required by Gestalt. Ho) 72 695 T
+(we) 317.99 695 T
+(v) 331.68 695 T
+(er) 337.5 695 T
+(, the most hea) 346.34 695 T
+(vily used Gestalt installa-) 412.76 695 T
+(tions ha) 72 681 T
+(v) 109.43 681 T
+(e used a relational database as the storage system for most of the application data types,) 115.25 681 T
+(due to the ability of modern relational systems to handle lar) 72 667 T
+(ge v) 357.76 667 T
+(olumes of data and the relati) 377.84 667 T
+(v) 513.85 667 T
+(e) 519.67 667 T
+(ef) 72 653 T
+(\336cienc) 81.02 653 T
+(y of implementation of set-oriented queries.) 112.84 653 T
+(Each column of a relational table represents an \050acti) 72 625 T
+(v) 320.96 625 T
+(e\051 attrib) 326.78 625 T
+(ute of the relation while each ro) 364.2 625 T
+(w) 516.53 625 T
+(captures the data associated with those attrib) 72 611 T
+(utes. The columns within a relation must all be of a) 285.72 611 T
+(b) 72 597 T
+(uilt-in or atomic type, i.e. a type which is kno) 77.76 597 T
+(wn to the relational database. Gestalt represents) 296.11 597 T
+-0.46 (each object class with tw) 72 583 P
+-0.46 (o primary relational tables and zero or more secondary relations. The tw) 190.03 583 P
+-0.46 (o) 531.46 583 P
+(primary relations are the) 72 569 T
+2 F
+(base) 192.64 569 T
+0 F
+( and) 214.63 569 T
+2 F
+(eid.) 237.96 569 T
+0 F
+( The base table is used to store all single-v) 255.62 569 T
+(alued attrib) 458.96 569 T
+(utes) 513.05 569 T
+(within the object. The) 72 555 T
+2 F
+(eid) 180.32 555 T
+0 F
+( relation is used to store the ne) 194.99 555 T
+(xt a) 341.12 555 T
+(v) 358.55 555 T
+(ailable entity id for this object type.) 364.25 555 T
+(Secondary or associati) 72 541 T
+(v) 179.68 541 T
+(e relations are used to store data associated with multi-v) 185.5 541 T
+(alued object) 454.15 541 T
+(attrib) 72 527 T
+(utes. Each attrib) 97.09 527 T
+(ute within an object type that is list-v) 174.5 527 T
+(alued \050not) 352.54 527 T
+2 F
+(one-to-one) 403.86 527 T
+0 F
+(\051 has an associ-) 455.84 527 T
+(ated relational table.) 72 513 T
+(Each object instance has a single entry within the base table. Each base table contains an internal) 72 485 T
+(column, named) 72 471 T
+2 F
+(eid) 148.99 471 T
+0 F
+(, which stores the entity id associated with this object instance. This Gestalt-) 163.66 471 T
+-0.31 (internal column is used to uniquely identify an entry within the base relation \050i.e., it is the primary) 72 457 P
+(k) 72 443 T
+(e) 77.88 443 T
+(y\051. Each object instance may ha) 83.03 443 T
+(v) 235.42 443 T
+(e multiple entries within the associati) 241.24 443 T
+(v) 419.93 443 T
+(e relations associated) 425.75 443 T
+-0.01 (with that object type. Each entry within an associati) 72 429 P
+-0.01 (v) 319.94 429 P
+-0.01 (e relation contains the entity id of the object) 325.76 429 P
+-0.26 (instance which is stored in the base table, its v) 72 415 P
+-0.26 (alue, and a sequence number) 291.33 415 P
+-0.26 (. The entity id can then) 427.91 415 P
+(be used to) 72 401 T
+2 F
+(join) 123.66 401 T
+0 F
+( the base table with the associati) 142.33 401 T
+(v) 296.68 401 T
+(e table in order to fetch the object\325) 302.5 401 T
+(s attrib) 467.46 401 T
+(ute v) 500.22 401 T
+(al-) 523.58 401 T
+(ues. The sequence number is used to order the attrib) 72 387 T
+(ute v) 321.71 387 T
+(alues associated with that object) 345.07 387 T
+(instance.) 72 373 T
+(The relational model has no concept of inheritance or sub-typing. Inheritance is implemented) 72 345 T
+(entirely at the Gestalt le) 72 331 T
+(v) 186.35 331 T
+(el, by cop) 192.17 331 T
+(ying inherited attrib) 239.04 331 T
+(utes. Subtypes are treated just lik) 334.13 331 T
+(e other) 492.66 331 T
+-0.16 (types when mapped onto the relational model \050i.e. the) 72 317 P
+-0.16 (y ha) 328.52 317 P
+-0.16 (v) 348.45 317 P
+-0.16 (e their o) 354.27 317 P
+-0.16 (wn base tables, eid tables, and) 392.98 317 P
+(associati) 72 303 T
+(v) 113.03 303 T
+(e tables\051.) 118.85 303 T
+1 F
+(2.4 T) 72 277 T
+(ransaction/Concurr) 97.12 277 T
+(ency Support) 198.23 277 T
+0 F
+(Gestalt is more than just a persistent storage layer; it allo) 72 260 T
+(ws multiple applications to access and) 344.34 260 T
+(manipulate data concurrently and maintains the inte) 72 246 T
+(grity of Gestalt objects. All primiti) 320.45 246 T
+(v) 486.82 246 T
+(e Gestalt) 492.64 246 T
+(database operations \050selectors, mutators, etc.\051 use transactions when interacting with the underly-) 72 232 T
+(ing data storage system. F) 72 218 T
+(or e) 196.81 218 T
+(xample, when creating an object within the Ingres relational data-) 214.96 218 T
+-0.29 (base system, se) 72 204 P
+-0.29 (v) 144.78 204 P
+-0.29 (eral entries may be made to e) 150.6 204 P
+-0.29 (xisting relational tables. In order to assure that these) 289.31 204 P
+(are treated as one logical operation, the) 72 190 T
+(y are packaged into a multi-statement Ingres transaction.) 260.1 190 T
+(Gestalt does not ha) 72 162 T
+(v) 163.42 162 T
+(e true user) 169.24 162 T
+(-de\336ned application-le) 218.98 162 T
+(v) 326.99 162 T
+(el transactions. Instead, a simple locking) 332.81 162 T
+(mechanism allo) 72 148 T
+(ws concurrent applications to obtain and release locks on Gestalt objects.) 147.36 148 T
+1 14 Q
+(3. CLOS interface) 72 118.67 T
+0 12 Q
+(Gestalt w) 72 98 T
+(as originally designed for use with a static \050C\051 application programming interf) 117.54 98 T
+(ace; type-) 492.37 98 T
+(speci\336c procedure declarations are automatically generated from the schema de\336nitions. The) 72 84 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "4" 4
+%%Page: "5" 5
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(5) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 12 Q
+(adv) 72 712 T
+(antages of e) 89.03 712 T
+(xposing the generic e) 146.16 712 T
+(v) 248.17 712 T
+(aluator) 253.87 712 T
+(,) 286.72 712 T
+2 F
+(dbe) 292.72 712 T
+(val,) 309.86 712 T
+0 F
+( were soon apparent, particularly in being) 327.53 712 T
+(able to write generic inspector and bro) 72 698 T
+(wser programs and deb) 256.32 698 T
+(ugging tools; it w) 367.72 698 T
+(as \336rst used) 451.94 698 T
+(through Common Lisp via a foreign-function interf) 72 684 T
+(ace \050without CLOS\051. It is the) 317.86 684 T
+2 F
+(dbe) 460.18 684 T
+(val) 477.32 684 T
+0 F
+( interf) 491.99 684 T
+(ace) 520.86 684 T
+(that is used in the CLOS implementation.) 72 670 T
+1 F
+(3.1 Gestalt-object classes and the gestalt-class metaclass) 72 644 T
+0 F
+(Gestalt objects appear to CLOS application programmers as CLOS objects. F) 72 627 T
+(or each Gestalt) 443.45 627 T
+(object type, there is a corresponding CLOS class whose metaclass is) 72 613 T
+2 F
+(g) 403.28 613 T
+(estalt-class) 409.16 613 T
+0 F
+( \050a subclass of) 463.16 613 T
+2 F
+-0.24 (standar) 72 599 P
+-0.24 (d-class) 108.23 599 P
+0 F
+-0.24 (\051, and whose) 142.22 599 P
+2 F
+-0.24 (instance-slots) 205.49 599 P
+0 F
+-0.24 ( are the acti) 271.49 599 P
+-0.24 (v) 326.12 599 P
+-0.24 (e attrib) 331.94 599 P
+-0.24 (utes. These classes also inherit from) 365.12 599 P
+2 F
+(g) 72 585 T
+(estalt-object) 77.88 585 T
+0 F
+(, an abstract class used to dispatch certain generic functions b) 137.21 585 T
+(ut principally to store) 431.9 585 T
+(the Gestalt object handle \050) 72 571 T
+2 F
+(entity-id, type-id\051) 197.98 571 T
+0 F
+(pair as an instance v) 284.29 571 T
+(ariable. The purpose of the) 381.3 571 T
+2 F
+(g) 72 557 T
+(estalt-class) 77.88 557 T
+0 F
+( metaclass is to o) 131.88 557 T
+(v) 213.7 557 T
+(erride the) 219.52 557 T
+2 F
+(standar) 268.16 557 T
+(d-class) 304.39 557 T
+0 F
+( accessors;) 338.39 557 T
+2 F
+(g) 393.04 557 T
+(estalt-class) 398.92 557 T
+0 F
+( accessors in) 452.92 557 T
+(v) 513.08 557 T
+(ok) 518.84 557 T
+(e) 530.72 557 T
+2 F
+(dbe) 72 543 T
+(val) 89.15 543 T
+0 F
+( \050via a foreign-function or remote procedure call interf) 103.81 543 T
+(ace\051 to perform the appropriate) 364.94 543 T
+(Gestalt) 72 529 T
+2 F
+(select) 109 529 T
+0 F
+( or) 136.32 529 T
+2 F
+(mutate) 152.32 529 T
+0 F
+( operation. Both primiti) 184.98 529 T
+(v) 298.02 529 T
+(e data and objects are translated transparently) 303.84 529 T
+(between lisp and Gestalt; when object references are returned from the persistent store through) 72 515 T
+(Gestalt \050e.g., as a result of a slot access\051, CLOS objects of the appropriate) 72 501 T
+2 F
+(g) 428.59 501 T
+(estalt-object) 434.47 501 T
+0 F
+( subclass) 493.8 501 T
+-0.45 (are created. Acti) 72 487 P
+-0.45 (v) 149.77 487 P
+-0.45 (e attrib) 155.59 487 P
+-0.45 (ute v) 188.56 487 P
+-0.45 (alues are sa) 211.48 487 P
+-0.45 (v) 265.65 487 P
+-0.45 (ed in the) 271.47 487 P
+2 F
+-0.45 (instance-slots) 314.46 487 P
+0 F
+-0.45 (, both when written by the CLOS) 380.46 487 P
+(application and when returned from a Gestalt access; the CLOS objects thus act as both proxy) 72 473 T
+(objects and application caches for the Gestalt objects.) 72 459 T
+(The) 72 431 T
+2 F
+(g) 93.66 431 T
+(estalt-class) 99.54 431 T
+0 F
+( metaclass is also used to specialize) 153.54 431 T
+2 F
+(mak) 327.18 431 T
+(e-instance) 347.05 431 T
+0 F
+(; after the standard initializa-) 396.37 431 T
+-0.42 (tion protocol is run, slot-v) 72 417 P
+-0.42 (alues from the ne) 195.01 417 P
+-0.42 (wly initialized object instance are used as ar) 276.41 417 P
+-0.42 (guments to) 484.85 417 P
+(the Gestalt constructor \050ag) 72 403 T
+(ain, via) 198.91 403 T
+2 F
+(dbe) 237.24 403 T
+(val) 254.39 403 T
+0 F
+(\051. Slots are typed according to the corresponding) 269.05 403 T
+2 F
+(dbat-) 505.34 403 T
+-0.3 (trib) 72 389 P
+-0.3 (ute) 89.1 389 P
+0 F
+-0.3 (, and type-check) 103.76 389 P
+-0.3 (ed \050actually) 182.02 389 P
+-0.3 (, the type-checking is an option b) 237.26 389 P
+-0.3 (ut we normally lea) 394.89 389 P
+-0.3 (v) 483.41 389 P
+-0.3 (e it turned) 489.23 389 P
+-0.11 (on\051. Of course, type errors w) 72 375 P
+-0.11 (ould be caught by the Gestalt layer b) 209.61 375 P
+-0.11 (ut we ha) 384.9 375 P
+-0.11 (v) 425.09 375 P
+-0.11 (e found it much easier) 430.91 375 P
+(for deb) 72 361 T
+(ugging to ha) 106.08 361 T
+(v) 165.84 361 T
+(e these errors caught at the CLOS le) 171.66 361 T
+(v) 344.99 361 T
+(el.) 350.81 361 T
+(Instance identity \050) 72 333 T
+2 F
+(eq) 158.65 333 T
+0 F
+(-ness\051 of objects of class) 169.98 333 T
+2 F
+(g) 290.95 333 T
+(estalt-object) 296.83 333 T
+0 F
+( is preserv) 356.16 333 T
+(ed by maintaining a hash-) 405.3 333 T
+(table of instances in each) 72 319 T
+2 F
+(g) 195.64 319 T
+(estalt-class) 201.52 319 T
+0 F
+(class object, using the) 258.52 319 T
+2 F
+(entity-id) 366.84 319 T
+0 F
+( as the hash k) 406.84 319 T
+(e) 471.37 319 T
+(y) 476.52 319 T
+(. Whene) 481.74 319 T
+(v) 521.42 319 T
+(er) 527.24 319 T
+-0.01 (an object reference is returned by Gestalt \050i.e., in response to a slot-access, object creation, or set-) 72 305 P
+-0.16 (oriented query\051, the appropriate hash table is check) 72 291 P
+-0.16 (ed. If the) 316.02 291 P
+2 F
+-0.16 (entity-id) 361.52 291 P
+0 F
+-0.16 ( is already present, the corre-) 401.52 291 P
+-0.25 (sponding instance is updated and returned, rather than a ne) 72 277 P
+-0.25 (w one being created. Hence, within the) 351.43 277 P
+(same program image, CLOS instances representing the same Gestalt object are al) 72 263 T
+(w) 462.47 263 T
+(ays) 471.01 263 T
+2 F
+(eq) 490.01 263 T
+0 F
+(.) 501.34 263 T
+(Programs can also create non-persistent \322prototype\323 instances by de\336ning classes that inherit) 72 235 T
+(from a) 72 221 T
+2 F
+(g) 106.66 221 T
+(estalt-object) 112.54 221 T
+0 F
+( class b) 171.86 221 T
+(ut specify) 206.95 221 T
+2 F
+(standar) 256.94 221 T
+(d-class) 293.17 221 T
+0 F
+( as the metaclass instead. F) 327.17 221 T
+(or e) 456.97 221 T
+(xample, a) 475.12 221 T
+(lar) 72 207 T
+(ge, comple) 84.44 207 T
+(x design object may need to be fully assembled in order to be check) 136.92 207 T
+(ed ag) 462.41 207 T
+(ainst) 488 207 T
+(design rules before being committed to the database. By de\336ning a transient class that is fully) 72 193 T
+(type-compatible with the persistent one, the object need not be stored only to be deleted ag) 72 179 T
+(ain if) 507.88 179 T
+-0.25 (one of the design rule checks f) 72 165 P
+-0.25 (ails. \050W) 217 165 P
+-0.25 (e ha) 253.78 165 P
+-0.25 (v) 272.94 165 P
+-0.25 (e not pro) 278.76 165 P
+-0.25 (vided such classes automatically as the) 320.74 165 P
+-0.25 (y ha) 506.27 165 P
+-0.25 (v) 526.1 165 P
+-0.25 (e) 531.92 165 P
+(been required for only a limited number of application types.\051) 72 151 T
+1 F
+(3.2 Queries) 72 125 T
+0 F
+-0.2 (Methods that in) 72 108 P
+-0.2 (v) 146.46 108 P
+-0.2 (ok) 152.22 108 P
+-0.2 (e) 164.1 108 P
+2 F
+-0.2 (dbe) 172.22 108 P
+-0.2 (val) 189.37 108 P
+0 F
+-0.2 ( to perform in) 204.04 108 P
+-0.2 (v) 269.28 108 P
+-0.2 (erse \050e.g.,) 275.1 108 P
+2 F
+-0.2 (per) 324.34 108 P
+-0.2 (son-with-name) 340.22 108 P
+0 F
+-0.2 (\051 and passi) 411.55 108 P
+-0.2 (v) 462.17 108 P
+-0.2 (e attrib) 467.99 108 P
+-0.2 (ute que-) 501.21 108 P
+-0.12 (ries are generated by an e) 72 94 P
+-0.12 (xtended initialization protocol for) 193.49 94 P
+2 F
+-0.12 (g) 357.65 94 P
+-0.12 (estalt-class) 363.53 94 P
+0 F
+-0.12 (. Set-oriented queries are) 417.53 94 P
+-0.38 (assembled dynamically and may include a pattern speci\336cation used to construct a Gestalt iterator) 72 80 P
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "5" 5
+%%Page: "6" 6
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(6) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 12 Q
+(predicate.) 72 712 T
+1 F
+(3.3 Schema e) 72 686 T
+(v) 138.14 686 T
+(olution) 144.02 686 T
+0 F
+(As with Gestalt types, the) 72 669 T
+2 F
+(dbtype) 198.66 669 T
+0 F
+(and) 233.65 669 T
+2 F
+(dbattrib) 253.98 669 T
+(ute) 292.42 669 T
+0 F
+( types are a) 307.08 669 T
+(v) 361.15 669 T
+(ailable as CLOS class objects. W) 366.85 669 T
+(e) 525.2 669 T
+(do not hide them from the CLOS programmer) 72 655 T
+(, nor ha) 292.5 655 T
+(v) 328.58 655 T
+(e we attempted to pro) 334.4 655 T
+(vide automatic cre-) 438.2 655 T
+-0.05 (ation of) 72 641 P
+2 F
+-0.05 (dbtype) 111.89 641 P
+0 F
+-0.05 ( objects from \050or as a result of\051 instantiation of) 143.88 641 P
+2 F
+-0.05 (g) 369.97 641 P
+-0.05 (estalt-classes.) 375.85 641 P
+0 F
+-0.05 ( Instead, CLOS pro-) 442.84 641 P
+(grammers create ne) 72 627 T
+(w schema types using) 165.66 627 T
+2 F
+(mak) 273.65 627 T
+(e-instance) 293.52 627 T
+0 F
+( on the) 342.84 627 T
+2 F
+(dbtype) 378.5 627 T
+0 F
+( class. The function) 410.5 627 T
+2 F
+(g) 72 613 T
+(ener) 77.88 613 T
+(ate-class-de\336nitions-fr) 99.02 613 T
+(om-sc) 207.14 613 T
+(hema) 235.62 613 T
+0 F
+( creates the appropriate CLOS class de\336nitions, gi) 261.61 613 T
+(v) 501.95 613 T
+(en the) 507.77 613 T
+(name of an e) 72 599 T
+(xisting) 133.46 599 T
+2 F
+(dbtype) 169.14 599 T
+0 F
+(. It also generates the necessary de\336nitions for the associated in) 201.13 599 T
+(v) 504.92 599 T
+(erse) 510.74 599 T
+-0.24 (and passi) 72 585 P
+-0.24 (v) 115.79 585 P
+-0.24 (e query methods. W) 121.61 585 P
+-0.24 (e normally run this function o) 216.59 585 P
+-0.24 (v) 358.22 585 P
+-0.24 (er all types in the database when cre-) 364.04 585 P
+(ating a ne) 72 571 T
+(w system image. Ho) 118.36 571 T
+(we) 216.05 571 T
+(v) 229.74 571 T
+(er) 235.56 571 T
+(, dynamically loaded code may call) 244.4 571 T
+2 F
+(g) 417.37 571 T
+(ener) 423.25 571 T
+(ate-class-de\336ni-) 444.4 571 T
+(tions-fr) 72 557 T
+(om-sc) 106.8 557 T
+(hema) 135.28 557 T
+0 F
+( in order to obtain class de\336nitions for types created or modi\336ed since the last) 161.27 557 T
+(system b) 72 543 T
+(uild. Schema changes do not mandate recompiling or reloading an) 114.1 543 T
+(y \336les.) 431.87 543 T
+1 14 Q
+(4. Examples) 72 513.67 T
+0 12 Q
+-0.26 (Before one can create a type within a Gestalt database, the attrib) 72 493 P
+-0.26 (utes that are to be associated with) 377.5 493 P
+(that type must be created. The follo) 72 479 T
+(wing code e) 242 479 T
+(xample creates an attrib) 299.81 479 T
+(ute called) 413.87 479 T
+2 F
+(facility) 463.19 479 T
+0 F
+(, assum-) 495.74 479 T
+(ing that a) 72 465 T
+2 F
+(dbtype) 119.66 465 T
+0 F
+( F) 151.66 465 T
+(A) 160.44 465 T
+(CILITY already e) 168.62 465 T
+(xists:) 254.41 465 T
+3 F
+(\050make-dbattribute :name \322facility\323) 72 437 T
+(                  :dbtype \050dbtype-with-name \322FACILITY\323\051) 72 423 T
+(                  :onetoone t :unique t) 72 409 T
+(                  :canbenull nil :invertible nil) 72 395 T
+(                  :active t :mutable t :prefetched t\051) 72 381 T
+0 F
+(The follo) 72 353 T
+(wing code fragment creates the) 116.03 353 T
+2 F
+(dbtype) 268.98 353 T
+0 F
+( MA) 300.97 353 T
+(CHINE, assuming) 322.82 353 T
+2 F
+(dbattrib) 413.82 353 T
+(ute-list) 452.26 353 T
+0 F
+(is the list) 488.59 353 T
+(of necessary attrib) 72 339 T
+(utes:) 159.73 339 T
+3 F
+(\050make-dbtype :name \322MACHINE\323 :overview \322Lab Equipment\323) 72 311 T
+(             :domainspecific t) 72 297 T
+(             :dbattributes dbattribute-list\051) 72 283 T
+0 F
+(When a ne) 72 255 T
+(w type is created, all necessary Ingres relations are also created. In Figure 1, we ha) 123.01 255 T
+(v) 519.98 255 T
+(e) 525.8 255 T
+(the MA) 72 241 T
+(CHINE type along with the Ingres relations that are created in order to hold the actual) 108.52 241 T
+(data. There are three interesting points to mak) 72 227 T
+(e about the mapping e) 292.5 227 T
+(xample. First, all atomic and) 398.3 227 T
+(composite types are stored \322in-line\323, i.e. within the base relation. Composite types \050e.g. TIME,) 72 213 T
+-0.22 (which is made up of a D) 72 199 P
+-0.22 (A) 187.52 199 P
+-0.22 (TE and a TIMEOFD) 194.86 199 P
+-0.22 (A) 293.37 199 P
+-0.22 (Y\051 are brok) 300.77 199 P
+-0.22 (en do) 355.53 199 P
+-0.22 (wn into their atomic parts before) 381.34 199 P
+(the) 72 185 T
+(y are ph) 86.48 185 T
+(ysically stored within a base relation record. Second, all one-to-one references to) 125.08 185 T
+-0.35 (objects of a user) 72 171 P
+-0.35 (-de\336ned type are stored within a base relation record as an \050entity id, type id\051 pair) 149.02 171 P
+-0.35 (.) 534.35 171 P
+(The type id is also stored because it mak) 72 157 T
+(es the support of subtyping easier) 266.52 157 T
+(. If an attrib) 426.84 157 T
+(ute is) 483.25 157 T
+(de\336ned to be of a certain type then it is possible for objects of that type, as well as objects of an) 72 143 T
+(y) 529.75 143 T
+-0.09 (of its subtypes, to be stored within that slot. Third, all attrib) 72 129 P
+-0.09 (utes that are lists are stored in an asso-) 356.1 129 P
+(ciati) 72 115 T
+(v) 92.36 115 T
+(e relation. Here, the) 98.18 115 T
+2 F
+(oper) 196.15 115 T
+(ator) 217.97 115 T
+(s) 237.85 115 T
+0 F
+( attrib) 242.52 115 T
+(ute is a list of type LAB) 270.61 115 T
+(USER, and its related data are) 385.82 115 T
+(stored in the Operators_Associati) 72 101 T
+(v) 232.01 101 T
+(e relation. Each MA) 237.83 101 T
+(CHINE instance will ha) 334.66 101 T
+(v) 449.4 101 T
+(e zero or more) 455.22 101 T
+(entries in this relation.) 72 87 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "6" 6
+%%Page: "7" 7
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(7) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 12 Q
+-0.39 (Once a ne) 72 698 P
+-0.39 (w) 118.89 698 P
+2 F
+-0.39 ( dbtype) 127.56 698 P
+0 F
+-0.39 (has been created, a call to the function) 164.77 698 P
+2 F
+-0.39 (g) 348.58 698 P
+-0.39 (ener) 354.46 698 P
+-0.39 (ate-class-fr) 375.61 698 P
+-0.39 (om-sc) 429.73 698 P
+-0.39 (hema) 458.2 698 P
+0 F
+-0.39 (creates the) 486.81 698 P
+-0.25 (necessary CLOS classes and methods in order to create and manipulate instances of the ne) 72 684 P
+-0.25 (w type.) 502.16 684 P
+(Using our e) 72 670 T
+(xample MA) 127.81 670 T
+(CHINE type, we can create ne) 184.99 670 T
+(w instances of type MA) 330.64 670 T
+(CHINE. Since the) 444.8 670 T
+2 F
+(last_maintenance) 72 656 T
+0 F
+(attrib) 159.66 656 T
+(ute can ha) 184.75 656 T
+(v) 233.16 656 T
+(e a null v) 238.98 656 T
+(alue, it need not speci\336ed upon the creation of the) 283.01 656 T
+(ne) 72 642 T
+(w MA) 83.03 642 T
+(CHINE instances.) 113.54 642 T
+3 F
+(\050make-machine :name \322machine1\323 :facility fab1) 72 614 T
+(              :operators labuser-list1\051) 72 600 T
+0 F
+(Once the instances of MA) 72 572 T
+(CHINE ha) 196.82 572 T
+(v) 247.57 572 T
+(e been created, it is no) 253.39 572 T
+(w possible to access and to manipu-) 360.4 572 T
+-0.07 (late the data. All database access \050including the pre) 72 558 P
+-0.07 (viously mentioned object creation statements\051) 316.72 558 P
+-0.06 (goes through three layers: the Gestalt CLOS interf) 72 544 P
+-0.06 (ace layer) 313.06 544 P
+-0.06 (, the Gestalt) 355.49 544 P
+2 F
+-0.06 (dbe) 415.96 544 P
+-0.06 (val) 433.11 544 P
+0 F
+-0.06 ( layer) 447.77 544 P
+-0.06 (, and the rela-) 474.22 544 P
+(tional data manipulation layer) 72 530 T
+(.) 214.99 530 T
+-0.15 (The follo) 72 502 P
+-0.15 (wing e) 115.88 502 P
+-0.15 (xamples illustrate the transformation of CLOS le) 147.87 502 P
+-0.15 (v) 381.3 502 P
+-0.15 (el calls to relational query state-) 387.12 502 P
+-0.29 (ments. All relational queries are generated dynamically \050e.g. using dynamic SQL\051. Gi) 72 488 P
+-0.29 (v) 479.39 488 P
+-0.29 (en the e) 485.21 488 P
+-0.29 (v) 521.64 488 P
+-0.29 (al-) 527.34 488 P
+(uator operation code, the correct query statement is generated, using information which is stored) 72 474 T
+-0.34 (with the type and attrib) 72 460 P
+-0.34 (ute de\336nitions. Relational table names and column names are fetched from) 181.74 460 P
+(this meta-data store and used to create the query at runtime. This gi) 72 446 T
+(v) 394.64 446 T
+(es the system added \337e) 400.46 446 T
+(xibil-) 510.94 446 T
+(ity and means that no code need be changed if a table or column name were to change.) 72 432 T
+(The \336rst is a simple update of) 72 404 T
+2 F
+(my-mac) 217.66 404 T
+(hine) 255.46 404 T
+0 F
+(\325) 276.12 404 T
+(s) 279.46 404 T
+2 F
+(last_maintenance) 287.12 404 T
+0 F
+( attrib) 371.78 404 T
+(ute. The last tw) 399.88 404 T
+(o e) 473.75 404 T
+(xamples) 487.9 404 T
+-0.24 (sho) 72 390 P
+-0.24 (w ho) 88.37 390 P
+-0.24 (w one can query the database to either fetch a list v) 111.49 390 P
+-0.24 (alued attrib) 354.18 390 P
+-0.24 (ute or fetch a list of objects) 408.02 390 P
+(which match a gi) 72 376 T
+(v) 154.02 376 T
+(en criterion.) 159.84 376 T
+3 F
+(\050setf \050machine-last_maintenance my-machine\051 new-time\051) 72 348 T
+0 F
+(ef) 72 320 T
+(fecti) 81.02 320 T
+(v) 102.05 320 T
+(ely calls the \322e) 107.87 320 T
+(v) 178.55 320 T
+(aluator\323:) 184.25 320 T
+3 F
+(dbeval\050MUTATE, \322last_maintenance\323, my-machine, new-time\051;) 72 292 T
+0 F
+(This tells) 72 264 T
+2 F
+(dbe) 119.34 264 T
+(val) 136.49 264 T
+0 F
+( to update the) 151.15 264 T
+2 F
+(last_maintenance) 219.14 264 T
+0 F
+( attrib) 303.8 264 T
+(ute with the v) 331.9 264 T
+(alue) 397.26 264 T
+2 F
+(ne) 420.25 264 T
+(w-time) 431.4 264 T
+0 F
+(for the object:) 467.06 264 T
+2 F
+(my-mac) 72 250 T
+(hine) 109.8 250 T
+0 F
+(. This, in turn, generates the follo) 130.46 250 T
+(wing underlying SQL relational query statement) 289.81 250 T
+(\050refer to Figure 1 for the names of the relational tables\051:) 72 236 T
+3 F
+(UPDATE Machine_Base SET Date = :DateVariable,) 72 208 T
+(                        Timeofday = :TimeofDayVariable) 72 194 T
+(                    WHERE EntityId = :machineEntityId) 72 180 T
+0 F
+-0.43 (Because TIME is a composite type, it must \336rst be brok) 72 152 P
+-0.43 (en do) 335.26 152 P
+-0.43 (wn into its atomic parts in order to be) 360.86 152 P
+(stored. Those parts are represented by the DateV) 72 138 T
+(ariable and the T) 304.6 138 T
+(imeofdayV) 385.15 138 T
+(ariable.) 437.81 138 T
+(The follo) 72 110 T
+(wing selects all MA) 116.03 110 T
+(CHINE objects with name) 211.87 110 T
+2 F
+(mac) 341.86 110 T
+(hinename) 361.67 110 T
+0 F
+( and belonging to f) 408.32 110 T
+(acility) 498.86 110 T
+2 F
+(fab1) 72 96 T
+0 F
+(:) 93.34 96 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "7" 7
+%%Page: "8" 8
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(8) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+3 12 Q
+(\050setof \324machine) 72 712 T
+(   :where `\050and \050= facility ,fab1\051 \050= name ,machinename\051\051\051) 72 698 T
+0 F
+-0.42 (When this query is passed to) 72 670 P
+2 F
+-0.42 (dbe) 210.11 670 P
+-0.42 (val) 227.26 670 P
+0 F
+-0.42 (, the) 241.92 670 P
+2 F
+-0.42 (wher) 264.74 670 P
+-0.42 (e) 288.3 670 P
+0 F
+-0.42 ( clause is assembled into a Gestalt) 293.62 670 P
+2 F
+-0.42 (pr) 457.64 670 P
+-0.42 (edicate) 467.86 670 P
+0 F
+-0.42 ( object.) 502.52 670 P
+(Predicate objects represent arbitrary boolean e) 72 656 T
+(xpressions that are used as query constraints.) 294.08 656 T
+3 F
+(dbeval\050ITERATOR_GENERATE, \322MACHINE\323, predicate\051;) 72 628 T
+0 F
+(where \322MA) 72 600 T
+(CHINE\323 is the type name of the type to be queried, and) 128.5 600 T
+2 F
+(pr) 398.11 600 T
+(edicate) 408.34 600 T
+0 F
+( is an object repre-) 442.99 600 T
+(senting the) 72 586 T
+2 F
+(wher) 127.33 586 T
+(e) 150.89 586 T
+0 F
+( conditions.  This generates the follo) 156.22 586 T
+(wing relational query:) 330.9 586 T
+3 F
+(SELECT EntityId, Date, Timeofday FROM Machine_Base) 72 558 T
+(   WHERE Name = :MachineName AND) 72 544 T
+(         FacilityId = :fab1EntityId AND) 72 530 T
+(         FacilityTypeId = :facilityTypeId) 72 516 T
+0 F
+-0.03 (Here, we ha) 72 488 P
+-0.03 (v) 129.34 488 P
+-0.03 (e supplied the machine name, and the) 135.16 488 P
+2 F
+-0.03 (entity-id) 318.27 488 P
+0 F
+-0.03 (and) 361.23 488 P
+2 F
+-0.03 (type-id) 381.54 488 P
+0 F
+-0.03 ( of the F) 414.86 488 P
+-0.03 (A) 454.22 488 P
+-0.03 (CILITY object,) 462.4 488 P
+(and are getting back the remaining \050prefetched\051 attrib) 72 474 T
+(utes for all MA) 328.02 474 T
+(CHINEs which match the) 401.2 474 T
+2 F
+-0.34 (wher) 72 460 P
+-0.34 (e) 95.56 460 P
+0 F
+-0.34 (clause.  Gestalt creates the proper MA) 103.54 460 P
+-0.34 (CHINE objects and an) 284.62 460 P
+2 F
+-0.34 (iter) 394.56 460 P
+-0.34 (ator) 411.05 460 P
+0 F
+-0.34 ( object to obtain them.) 431.05 460 P
+(The CLOS interf) 72 446 T
+(ace layer uses the iterator to create a list of) 153.2 446 T
+2 F
+( g) 361.14 446 T
+(estalt-class) 370.02 446 T
+0 F
+( object instances.  Note) 424.02 446 T
+(that attrib) 72 432 T
+(utes of type TIME are v) 118.09 432 T
+(alues, not objects with identity) 232.76 432 T
+(, and hence persist only for the) 378.98 432 T
+(duration of their associated MA) 72 418 T
+(CHINE objects.) 224.16 418 T
+(The method in) 72 390 T
+(v) 141.52 390 T
+(ocation) 147.28 390 T
+3 F
+(\050machine-operators my-machine\051) 72 362 T
+0 F
+(results in the ef) 72 334 T
+(fecti) 145.36 334 T
+(v) 166.38 334 T
+(e equi) 172.2 334 T
+(v) 200.89 334 T
+(alent of) 206.59 334 T
+3 F
+(dbeval\050SELECT, \322operators\323, my-machine\051;) 72 306 T
+0 F
+(producing the follo) 72 278 T
+(wing  SQL query:) 163.69 278 T
+3 F
+(SELECT t1.name, t2.sequence) 72 250 T
+(   FROM Labuser_Base t1,Operators_Associative t2) 72 236 T
+(   WHERE t2.MachineId = :machineEntityId AND) 72 222 T
+(         t2.LabuserTypeId = :labuserTypeId AND) 72 208 T
+(         t1.EntityId = t2.LabuserId) 72 194 T
+(   ORDER BY t2.sequence ASC) 72 180 T
+0 F
+(Here, we are assuming that the LAB) 72 152 T
+(USER type contains one prefetched attrib) 246.84 152 T
+(ute,) 446.23 152 T
+2 F
+(name) 466.9 152 T
+0 F
+(. The) 492.89 152 T
+-0.06 (query will return to Gestalt a list of names that were found to match the) 72 138 P
+2 F
+-0.06 (wher) 417.41 138 P
+-0.06 (e) 440.97 138 P
+0 F
+-0.06 ( clause. This list of) 446.3 138 P
+-0.1 (names will then be used to create Gestalt LAB) 72 124 P
+-0.1 (USER objects that are then passed up to the CLOS) 294.36 124 P
+(layer) 72 110 T
+(. If LAB) 95.33 110 T
+(USER had subtypes, then additional queries w) 136.2 110 T
+(ould be required to fetch an) 359.06 110 T
+(y objects) 491.18 110 T
+(belonging to those subtypes.) 72 96 T
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "8" 8
+%%Page: "9" 9
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(9) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+0 12 Q
+(                                                                 Figure 1) 72 712 T
+72 72 540 720 C
+72 90 540 708 C
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+72 72 540 720 C
+0 0 612 792 C
+0 46 140 591 745 545 605 33.5 93.5 FMBEGINEPSF
+%%BeginDocument: /amd/garcon/a/mbm/papers/dow96/oo-rel.idraw
+%!PS-Adobe-2.0 EPSF-1.2
+%%Creator: idraw
+%%DocumentFonts: Helvetica Times-Bold Times-Roman Helvetica-Bold
+%%Pages: 1
+%%BoundingBox: 46 140 591 745
+%%EndComments
+
+/arrowHeight 10 def
+/arrowWidth 5 def
+
+/IdrawDict 54 dict def
+IdrawDict begin
+
+/reencodeISO {
+dup dup findfont dup length dict begin
+{ 1 index /FID ne { def }{ pop pop } ifelse } forall
+/Encoding ISOLatin1Encoding def
+currentdict end definefont
+} def
+
+/ISOLatin1Encoding [
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/space/exclam/quotedbl/numbersign/dollar/percent/ampersand/quoteright
+/parenleft/parenright/asterisk/plus/comma/minus/period/slash
+/zero/one/two/three/four/five/six/seven/eight/nine/colon/semicolon
+/less/equal/greater/question/at/A/B/C/D/E/F/G/H/I/J/K/L/M/N
+/O/P/Q/R/S/T/U/V/W/X/Y/Z/bracketleft/backslash/bracketright
+/asciicircum/underscore/quoteleft/a/b/c/d/e/f/g/h/i/j/k/l/m
+/n/o/p/q/r/s/t/u/v/w/x/y/z/braceleft/bar/braceright/asciitilde
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/dotlessi/grave/acute/circumflex/tilde/macron/breve
+/dotaccent/dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut
+/ogonek/caron/space/exclamdown/cent/sterling/currency/yen/brokenbar
+/section/dieresis/copyright/ordfeminine/guillemotleft/logicalnot
+/hyphen/registered/macron/degree/plusminus/twosuperior/threesuperior
+/acute/mu/paragraph/periodcentered/cedilla/onesuperior/ordmasculine
+/guillemotright/onequarter/onehalf/threequarters/questiondown
+/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla
+/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex
+/Idieresis/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis
+/multiply/Oslash/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute
+/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis
+/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave
+/iacute/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex
+/otilde/odieresis/divide/oslash/ugrave/uacute/ucircumflex/udieresis
+/yacute/thorn/ydieresis
+] def
+/Helvetica reencodeISO def
+/Times-Bold reencodeISO def
+/Times-Roman reencodeISO def
+/Helvetica-Bold reencodeISO def
+
+/none null def
+/numGraphicParameters 17 def
+/stringLimit 65535 def
+
+/Begin {
+save
+numGraphicParameters dict begin
+} def
+
+/End {
+end
+restore
+} def
+
+/SetB {
+dup type /nulltype eq {
+pop
+false /brushRightArrow idef
+false /brushLeftArrow idef
+true /brushNone idef
+} {
+/brushDashOffset idef
+/brushDashArray idef
+0 ne /brushRightArrow idef
+0 ne /brushLeftArrow idef
+/brushWidth idef
+false /brushNone idef
+} ifelse
+} def
+
+/SetCFg {
+/fgblue idef
+/fggreen idef
+/fgred idef
+} def
+
+/SetCBg {
+/bgblue idef
+/bggreen idef
+/bgred idef
+} def
+
+/SetF {
+/printSize idef
+/printFont idef
+} def
+
+/SetP {
+dup type /nulltype eq {
+pop true /patternNone idef
+} {
+dup -1 eq {
+/patternGrayLevel idef
+/patternString idef
+} {
+/patternGrayLevel idef
+} ifelse
+false /patternNone idef
+} ifelse
+} def
+
+/BSpl {
+0 begin
+storexyn
+newpath
+n 1 gt {
+0 0 0 0 0 0 1 1 true subspline
+n 2 gt {
+0 0 0 0 1 1 2 2 false subspline
+1 1 n 3 sub {
+/i exch def
+i 1 sub dup i dup i 1 add dup i 2 add dup false subspline
+} for
+n 3 sub dup n 2 sub dup n 1 sub dup 2 copy false subspline
+} if
+n 2 sub dup n 1 sub dup 2 copy 2 copy false subspline
+patternNone not brushLeftArrow not brushRightArrow not and and { ifill } if
+brushNone not { istroke } if
+0 0 1 1 leftarrow
+n 2 sub dup n 1 sub dup rightarrow
+} if
+end
+} dup 0 4 dict put def
+
+/Circ {
+newpath
+0 360 arc
+patternNone not { ifill } if
+brushNone not { istroke } if
+} def
+
+/CBSpl {
+0 begin
+dup 2 gt {
+storexyn
+newpath
+n 1 sub dup 0 0 1 1 2 2 true subspline
+1 1 n 3 sub {
+/i exch def
+i 1 sub dup i dup i 1 add dup i 2 add dup false subspline
+} for
+n 3 sub dup n 2 sub dup n 1 sub dup 0 0 false subspline
+n 2 sub dup n 1 sub dup 0 0 1 1 false subspline
+patternNone not { ifill } if
+brushNone not { istroke } if
+} {
+Poly
+} ifelse
+end
+} dup 0 4 dict put def
+
+/Elli {
+0 begin
+newpath
+4 2 roll
+translate
+scale
+0 0 1 0 360 arc
+patternNone not { ifill } if
+brushNone not { istroke } if
+end
+} dup 0 1 dict put def
+
+/Line {
+0 begin
+2 storexyn
+newpath
+x 0 get y 0 get moveto
+x 1 get y 1 get lineto
+brushNone not { istroke } if
+0 0 1 1 leftarrow
+0 0 1 1 rightarrow
+end
+} dup 0 4 dict put def
+
+/MLine {
+0 begin
+storexyn
+newpath
+n 1 gt {
+x 0 get y 0 get moveto
+1 1 n 1 sub {
+/i exch def
+x i get y i get lineto
+} for
+patternNone not brushLeftArrow not brushRightArrow not and and { ifill } if
+brushNone not { istroke } if
+0 0 1 1 leftarrow
+n 2 sub dup n 1 sub dup rightarrow
+} if
+end
+} dup 0 4 dict put def
+
+/Poly {
+3 1 roll
+newpath
+moveto
+-1 add
+{ lineto } repeat
+closepath
+patternNone not { ifill } if
+brushNone not { istroke } if
+} def
+
+/Rect {
+0 begin
+/t exch def
+/r exch def
+/b exch def
+/l exch def
+newpath
+l b moveto
+l t lineto
+r t lineto
+r b lineto
+closepath
+patternNone not { ifill } if
+brushNone not { istroke } if
+end
+} dup 0 4 dict put def
+
+/Text {
+ishow
+} def
+
+/idef {
+dup where { pop pop pop } { exch def } ifelse
+} def
+
+/ifill {
+0 begin
+gsave
+patternGrayLevel -1 ne {
+fgred bgred fgred sub patternGrayLevel mul add
+fggreen bggreen fggreen sub patternGrayLevel mul add
+fgblue bgblue fgblue sub patternGrayLevel mul add setrgbcolor
+eofill
+} {
+eoclip
+originalCTM setmatrix
+pathbbox /t exch def /r exch def /b exch def /l exch def
+/w r l sub ceiling cvi def
+/h t b sub ceiling cvi def
+/imageByteWidth w 8 div ceiling cvi def
+/imageHeight h def
+bgred bggreen bgblue setrgbcolor
+eofill
+fgred fggreen fgblue setrgbcolor
+w 0 gt h 0 gt and {
+l b translate w h scale
+w h true [w 0 0 h neg 0 h] { patternproc } imagemask
+} if
+} ifelse
+grestore
+end
+} dup 0 8 dict put def
+
+/istroke {
+gsave
+brushDashOffset -1 eq {
+[] 0 setdash
+1 setgray
+} {
+brushDashArray brushDashOffset setdash
+fgred fggreen fgblue setrgbcolor
+} ifelse
+brushWidth setlinewidth
+originalCTM setmatrix
+stroke
+grestore
+} def
+
+/ishow {
+0 begin
+gsave
+fgred fggreen fgblue setrgbcolor
+/fontDict printFont printSize scalefont dup setfont def
+/descender fontDict begin 0 [FontBBox] 1 get FontMatrix end
+transform exch pop def
+/vertoffset 1 printSize sub descender sub def {
+0 vertoffset moveto show
+/vertoffset vertoffset printSize sub def
+} forall
+grestore
+end
+} dup 0 3 dict put def
+/patternproc {
+0 begin
+/patternByteLength patternString length def
+/patternHeight patternByteLength 8 mul sqrt cvi def
+/patternWidth patternHeight def
+/patternByteWidth patternWidth 8 idiv def
+/imageByteMaxLength imageByteWidth imageHeight mul
+stringLimit patternByteWidth sub min def
+/imageMaxHeight imageByteMaxLength imageByteWidth idiv patternHeight idiv
+patternHeight mul patternHeight max def
+/imageHeight imageHeight imageMaxHeight sub store
+/imageString imageByteWidth imageMaxHeight mul patternByteWidth add string def
+0 1 imageMaxHeight 1 sub {
+/y exch def
+/patternRow y patternByteWidth mul patternByteLength mod def
+/patternRowString patternString patternRow patternByteWidth getinterval def
+/imageRow y imageByteWidth mul def
+0 patternByteWidth imageByteWidth 1 sub {
+/x exch def
+imageString imageRow x add patternRowString putinterval
+} for
+} for
+imageString
+end
+} dup 0 12 dict put def
+
+/min {
+dup 3 2 roll dup 4 3 roll lt { exch } if pop
+} def
+
+/max {
+dup 3 2 roll dup 4 3 roll gt { exch } if pop
+} def
+
+/midpoint {
+0 begin
+/y1 exch def
+/x1 exch def
+/y0 exch def
+/x0 exch def
+x0 x1 add 2 div
+y0 y1 add 2 div
+end
+} dup 0 4 dict put def
+
+/thirdpoint {
+0 begin
+/y1 exch def
+/x1 exch def
+/y0 exch def
+/x0 exch def
+x0 2 mul x1 add 3 div
+y0 2 mul y1 add 3 div
+end
+} dup 0 4 dict put def
+
+/subspline {
+0 begin
+/movetoNeeded exch def
+y exch get /y3 exch def
+x exch get /x3 exch def
+y exch get /y2 exch def
+x exch get /x2 exch def
+y exch get /y1 exch def
+x exch get /x1 exch def
+y exch get /y0 exch def
+x exch get /x0 exch def
+x1 y1 x2 y2 thirdpoint
+/p1y exch def
+/p1x exch def
+x2 y2 x1 y1 thirdpoint
+/p2y exch def
+/p2x exch def
+x1 y1 x0 y0 thirdpoint
+p1x p1y midpoint
+/p0y exch def
+/p0x exch def
+x2 y2 x3 y3 thirdpoint
+p2x p2y midpoint
+/p3y exch def
+/p3x exch def
+movetoNeeded { p0x p0y moveto } if
+p1x p1y p2x p2y p3x p3y curveto
+end
+} dup 0 17 dict put def
+
+/storexyn {
+/n exch def
+/y n array def
+/x n array def
+n 1 sub -1 0 {
+/i exch def
+y i 3 2 roll put
+x i 3 2 roll put
+} for
+} def
+
+/SSten {
+fgred fggreen fgblue setrgbcolor
+dup true exch 1 0 0 -1 0 6 -1 roll matrix astore
+} def
+
+/FSten {
+dup 3 -1 roll dup 4 1 roll exch
+newpath
+0 0 moveto
+dup 0 exch lineto
+exch dup 3 1 roll exch lineto
+0 lineto
+closepath
+bgred bggreen bgblue setrgbcolor
+eofill
+SSten
+} def
+
+/Rast {
+exch dup 3 1 roll 1 0 0 -1 0 6 -1 roll matrix astore
+} def
+
+%%EndProlog
+
+%%BeginIdrawPrologue
+/arrowhead {
+0 begin
+transform originalCTM itransform
+/taily exch def
+/tailx exch def
+transform originalCTM itransform
+/tipy exch def
+/tipx exch def
+/dy tipy taily sub def
+/dx tipx tailx sub def
+/angle dx 0 ne dy 0 ne or { dy dx atan } { 90 } ifelse def
+gsave
+originalCTM setmatrix
+tipx tipy translate
+angle rotate
+newpath
+arrowHeight neg arrowWidth 2 div moveto
+0 0 lineto
+arrowHeight neg arrowWidth 2 div neg lineto
+patternNone not {
+originalCTM setmatrix
+/padtip arrowHeight 2 exp 0.25 arrowWidth 2 exp mul add sqrt brushWidth mul
+arrowWidth div def
+/padtail brushWidth 2 div def
+tipx tipy translate
+angle rotate
+padtip 0 translate
+arrowHeight padtip add padtail add arrowHeight div dup scale
+arrowheadpath
+ifill
+} if
+brushNone not {
+originalCTM setmatrix
+tipx tipy translate
+angle rotate
+arrowheadpath
+istroke
+} if
+grestore
+end
+} dup 0 9 dict put def
+
+/arrowheadpath {
+newpath
+arrowHeight neg arrowWidth 2 div moveto
+0 0 lineto
+arrowHeight neg arrowWidth 2 div neg lineto
+} def
+
+/leftarrow {
+0 begin
+y exch get /taily exch def
+x exch get /tailx exch def
+y exch get /tipy exch def
+x exch get /tipx exch def
+brushLeftArrow { tipx tipy tailx taily arrowhead } if
+end
+} dup 0 4 dict put def
+
+/rightarrow {
+0 begin
+y exch get /tipy exch def
+x exch get /tipx exch def
+y exch get /taily exch def
+x exch get /tailx exch def
+brushRightArrow { tipx tipy tailx taily arrowhead } if
+end
+} dup 0 4 dict put def
+
+%%EndIdrawPrologue
+
+%I Idraw 10 Grid 8 8 
+
+%%Page: 1 1
+
+Begin
+%I b u
+%I cfg u
+%I cbg u
+%I f u
+%I p u
+%I t
+[ 0.796717 0 0 0.796717 0 0 ] concat
+/originalCTM matrix currentmatrix def
+
+Begin %I Line
+%I b 65535
+0 0 1 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+%I p
+0 SetP
+%I t
+[ 1.36058 0.429334 -0.379558 1.53901 -160.023 56.2929 ] concat
+%I
+283 270 388 114 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -178 62 ] concat
+%I
+441 273 759 273 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.375 -0 -0 1.1855 393.625 3.26852 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.25 -0 -0 1.18671 136.75 3.87772 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0 -0 -0 1.18681 503 2.84692 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.5 -0 -0 1.18676 170.5 3.8645 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ -0 -0 0 1.17552 343 5.48181 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 280 375 ] concat
+%I
+[
+(Machine)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 299 359 ] concat
+%I
+[
+(Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 361 374 ] concat
+%I
+[
+(Labuser)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 378 360 ] concat
+%I
+[
+(Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 441 375 ] concat
+%I
+[
+(Labuser)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 442 362 ] concat
+%I
+[
+(Type Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 515 366 ] concat
+%I
+[
+(Sequence)
+] Text
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -178 62 ] concat
+%I
+442 235 760 235 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -178 62 ] concat
+%I
+442 194 761 194 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 300 320 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 374 320 ] concat
+%I
+[
+(53)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 375 280 ] concat
+%I
+[
+(64)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 455 321 ] concat
+%I
+[
+(20)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 455 280 ] concat
+%I
+[
+(20)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 539 319 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 300 282 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -178 62 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 539 281 ] concat
+%I
+[
+(2)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 375 242 ] concat
+%I
+[
+(24)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 456 240 ] concat
+%I
+[
+(20)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 541 240 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.49983 -0 -0 3.75 -398.08 -81.25 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.00627 -0 -0 1 -180.759 230 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.50845 -0 -0 2.25 -404.413 319.25 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.125 -0 -0 0.960674 520.875 357.663 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.125 -0 -0 0.960674 439.875 357.663 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.125 -0 -0 0.960674 359.875 358.663 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.125 -0 -0 0.960674 278.875 359.663 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.09375 -0 -0 0.949438 215.656 361.281 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.50533 -0 -0 2.5 -401.054 233.5 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.50217 -0 -0 1.875 -398.664 289.375 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.50846 -0 -0 3.75 -403.446 -41.25 ] concat
+%I
+442 155 759 155 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.03125 -0 -0 0.960674 647.219 359.663 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 280 648 ] concat
+%I
+[
+(Entity Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 367 647 ] concat
+%I
+[
+(Name)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 602 655 ] concat
+%I
+[
+(Facility)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 299 608 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 298 566 ] concat
+%I
+[
+(2)
+] Text
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.125 -0 -0 0.960674 677.875 357.663 ] concat
+%I
+505 322 505 147 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 619 643 ] concat
+%I
+[
+(Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 683 658 ] concat
+%I
+[
+(Facility)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 682 642 ] concat
+%I
+[
+(Type Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 618 603 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 618 564 ] concat
+%I
+[
+(2)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 618 525 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 696 603 ] concat
+%I
+[
+(10)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 695 563 ] concat
+%I
+[
+(10)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 696 524 ] concat
+%I
+[
+(10)
+] Text
+End
+
+Begin %I Rect
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.09107 -0 -0 1.6689 -320.341 -615.097 ] concat
+%I
+357 558 432 610 Rect
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -281 -210 ] concat
+%I
+351 566 434 566 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 82 394 ] concat
+%I
+[
+(Entity Id)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 97 381 ] concat
+%I
+[
+(Seed)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 301 241 ] concat
+%I
+[
+(2)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 299 526 ] concat
+%I
+[
+(3)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 106 342 ] concat
+%I
+[
+(4)
+] Text
+End
+
+Begin %I MLine
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -31 332 ] concat
+%I 1
+18 80
+1 MLine
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 -31 332 ] concat
+%I
+234 529 411 529 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 1 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+%I p
+0 SetP
+%I t
+[ 0.666667 -0 -0 1.10405 106.333 276.855 ] concat
+%I
+410 530 410 359 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.01342 -0 -0 2.25 -38.1678 -234.25 ] concat
+%I
+237 453 534 453 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 2 -0 -0 1.78846 -564 -25.173 ] concat
+%I
+533 453 533 403 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 1 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+%I p
+0 SetP
+%I t
+[ 0.756757 -0 -0 0.674419 99.4054 423.512 ] concat
+%I
+532 407 499 367 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 1 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+%I p
+0 SetP
+%I t
+[ 0.0755161 0.670972 -0.688177 0.0736282 744.013 308.859 ] concat
+%I
+532 407 499 367 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1.01089 -0 -0 2 -34.549 -48 ] concat
+%I
+234 379 693 379 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 1 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+%I p
+0 SetP
+%I t
+[ 1 -0 -0 1 -30 413 ] concat
+%I
+697 296 661 261 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 1 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+%I p
+0 SetP
+%I t
+[ 0.0722309 0.997388 -0.997388 0.0722309 911.416 -5.87506 ] concat
+%I
+697 296 661 261 Line
+%I 1
+End
+
+Begin %I Pict
+%I b u
+%I cfg u
+%I cbg u
+%I f u
+%I p u
+%I t
+[ 1 0 0 1 28.105 1.00372 ] concat
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 63 880 ] concat
+%I
+[
+(name)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-bold-r-normal-*-14-*-*-*-*-*-*-*
+Times-Bold 14 SetF
+%I t
+[ 1 0 0 1 80 845 ] concat
+%I
+[
+(STRING)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-bold-r-normal-*-14-*-*-*-*-*-*-*
+Times-Bold 14 SetF
+%I t
+[ 1 0 0 1 61 801 ] concat
+%I
+[
+(  )
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-medium-r-normal-*-14-*-*-*-*-*-*-*
+Times-Roman 14 SetF
+%I t
+[ 1 0 0 1 59 733 ] concat
+%I
+[
+(facility)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-bold-r-normal-*-14-*-*-*-*-*-*-*
+Times-Bold 14 SetF
+%I t
+[ 1 0 0 1 79 695 ] concat
+%I
+[
+(FACILITY)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-medium-r-normal-*-14-*-*-*-*-*-*-*
+Times-Roman 14 SetF
+%I t
+[ 1 0 0 1 53 658 ] concat
+%I
+[
+(operators)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-bold-r-normal-*-14-*-*-*-*-*-*-*
+Times-Bold 14 SetF
+%I t
+[ 1 0 0 1 78 621 ] concat
+%I
+[
+(LABUSER)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 53 639 ] concat
+%I
+[
+(\(one to many\))
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 58 715 ] concat
+%I
+[
+(\(one to one\))
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 63 792 ] concat
+%I
+[
+(\(one to one\))
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 65 865 ] concat
+%I
+[
+(\(one to one\))
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 64 806 ] concat
+%I
+[
+(last_maintenance)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-times-bold-r-normal-*-14-*-*-*-*-*-*-*
+Times-Bold 14 SetF
+%I t
+[ 1 0 0 1 85 775 ] concat
+%I
+[
+(TIME)
+] Text
+End
+
+End %I eop
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 449 656 ] concat
+%I
+[
+(Date)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 516 657 ] concat
+%I
+[
+(Timeofday)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*
+Helvetica-Bold 14 SetF
+%I t
+[ 1 0 0 1 68 931 ] concat
+%I
+[
+(Machine Type)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 351 605 ] concat
+%I
+[
+("machine1")
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 351 565 ] concat
+%I
+[
+("machine2")
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 350 523 ] concat
+%I
+[
+("machine3")
+] Text
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 1 -0 -0 1 19 34 ] concat
+%I
+244 143 567 143 Line
+%I 1
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 300 200 ] concat
+%I
+[
+(3)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 375 201 ] concat
+%I
+[
+(14)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 455 199 ] concat
+%I
+[
+(20)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 540 201 ] concat
+%I
+[
+(1)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 435 605 ] concat
+%I
+[
+(19960410)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 430 641 ] concat
+%I
+[
+(\(yyyymmdd\))
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 518 640 ] concat
+%I
+[
+(\(hhmmss\))
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 519 605 ] concat
+%I
+[
+(103400)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 519 564 ] concat
+%I
+[
+(120509)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 520 526 ] concat
+%I
+[
+(154556)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 434 564 ] concat
+%I
+[
+(19960330)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-medium-r-normal-*-12-*-*-*-*-*-*-*
+Helvetica 12 SetF
+%I t
+[ 1 0 0 1 433 524 ] concat
+%I
+[
+(19960226)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*
+Helvetica-Bold 14 SetF
+%I t
+[ 1 0 0 1 331 422 ] concat
+%I
+[
+(Operators_Associative Table)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*
+Helvetica-Bold 14 SetF
+%I t
+[ 1 0 0 1 440 488 ] concat
+%I
+[
+(Machine_Base Table)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*
+Helvetica-Bold 14 SetF
+%I t
+[ 1 0 0 1 62 433 ] concat
+%I
+[
+(         )
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*
+Helvetica-Bold 14 SetF
+%I t
+[ 1 0 0 1 60 444 ] concat
+%I
+[
+(Machine_Seed)
+] Text
+End
+
+Begin %I Text
+%I cfg Black
+0 0 0 SetCFg
+%I f -*-helvetica-bold-r-normal-*-14-*-*-*-*-*-*-*
+Helvetica-Bold 14 SetF
+%I t
+[ 1 0 0 1 93 426 ] concat
+%I
+[
+(Table)
+] Text
+End
+
+Begin %I Rect
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.941875 -0 -0 1.00038 5.78188 96.0266 ] concat
+%I
+63 499 207 795 Rect
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.935424 -0 -0 0.250938 7.11728 523.205 ] concat
+%I
+63 571 207 571 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.941875 -0 -0 0.501875 5.78188 420.069 ] concat
+%I
+63 651 207 651 Line
+%I 1
+End
+
+Begin %I Line
+%I b 65535
+0 0 0 [] 0 SetB
+%I cfg Black
+0 0 0 SetCFg
+%I cbg White
+1 1 1 SetCBg
+none SetP %I p n
+%I t
+[ 0.941875 -0 -0 0.501875 5.78188 456.204 ] concat
+%I
+63 723 207 723 Line
+%I 1
+End
+
+End %I eop
+
+showpage
+
+%%Trailer
+
+end
+
+%%EndDocument
+FMENDEPSF
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "9" 9
+%%Page: "10" 10
+612 792 0 FMBEGINPAGE
+[0 0 0 1 0 0 0]
+[ 0 1 1 0 1 0 0]
+[ 1 0 1 0 0 1 0]
+[ 1 1 0 0 0 0 1]
+[ 1 0 0 0 0 1 1]
+[ 0 1 0 0 1 0 1]
+[ 0 0 1 0 1 1 0]
+ 7 FrameSetSepColors
+FrameNoSep
+0 0 0 1 0 0 0 K
+0 10 Q
+0 X
+0 0 0 1 0 0 0 K
+(10) 72 36 T
+0 0 0 1 0 0 0 K
+0 0 0 1 0 0 0 K
+1 14 Q
+(5. Use and experience) 72 710.67 T
+0 12 Q
+-0.01 (The CLOS application en) 72 690 P
+-0.01 (vironment described has been used principally in CAFE[3], a computer) 194.48 690 P
+(inte) 72 676 T
+(grated manuf) 89.82 676 T
+(acturing system for inte) 153.35 676 T
+(grated circuit semiconductor f) 266.82 676 T
+(abrication that has been in) 411 676 T
+(use for se) 72 662 T
+(v) 117.68 662 T
+(eral years in research and de) 123.5 662 T
+(v) 259.48 662 T
+(elopment laboratories at the main campus at MIT) 265.3 662 T
+(, at the) 501.37 662 T
+(MIT Lincoln Laboratory) 72 648 T
+(, and at Case W) 189.86 648 T
+(estern Reserv) 264.55 648 T
+(e Uni) 329.35 648 T
+(v) 355.38 648 T
+(ersity) 361.2 648 T
+(. Gestalt-class has also been) 387.08 648 T
+(used in related computer aided design applications; e.g., [4].) 72 634 T
+-0 (The current CAFE implementation runs on SUNOS platforms using an implementation of K) 72 606 P
+-0 (yoto) 515.66 606 P
+-0.08 (Common Lisp \050KCL\051 with enhancements and additions by W) 72 592 P
+-0.08 (illiam Schelter) 366.86 592 P
+-0.08 (, Rick Harris, Rajee) 436.64 592 P
+-0.08 (v) 531.08 592 P
+(Jaya) 72 578 T
+(v) 93.08 578 T
+(ant, and the authors, and the PCL implementation of CLOS, using the INGRES relational) 98.78 578 T
+-0.23 (database as the principal storage system for application data. A lar) 72 564 P
+-0.23 (ge number of students and staf) 387.72 564 P
+-0.23 (f) 533.24 564 P
+-0.26 (at dif) 72 550 P
+-0.26 (ferent institutions ha) 96.43 550 P
+-0.26 (v) 194.34 550 P
+-0.26 (e contrib) 200.16 550 P
+-0.26 (uted v) 241.98 550 P
+-0.26 (arious applications to CAFE; the v) 271.08 550 P
+-0.26 (ast majority were nei-) 435.81 550 P
+-0.09 (ther database nor lisp e) 72 536 P
+-0.09 (xperts. W) 182.08 536 P
+-0.09 (e ha) 227.68 536 P
+-0.09 (v) 247.01 536 P
+-0.09 (e added, remo) 252.83 536 P
+-0.09 (v) 320.1 536 P
+-0.09 (ed, and upgraded v) 325.92 536 P
+-0.09 (arious databases and stor-) 416.65 536 P
+(age systems to the CAFE system, transparently to Gestalt-class and its applications.) 72 522 T
+(The CAFE database and Gestalt-class ha) 72 494 T
+(v) 267.38 494 T
+(e been used recently in the de) 273.2 494 T
+(v) 414.86 494 T
+(elopment of a remotely) 420.68 494 T
+(accessible repository for semiconductor f) 72 480 T
+(abrication processes[5]. Ne) 269.83 480 T
+(w schema objects to model) 400.49 480 T
+(catalogs and libraries of manuf) 72 466 T
+(acturing processes were added to the on-line, running, CAFE sys-) 220.51 466 T
+(tem at MIT) 72 452 T
+(, connected to our e) 125.77 452 T
+(xisting laboratory processes, and used in a demonstration \050at Stan-) 219.9 452 T
+(ford\051 of a web-based process editor) 72 438 T
+(, all without the need to do an) 241.13 438 T
+(y recompiles, of) 383.6 438 T
+(f-line \322schema) 460.96 438 T
+(reloads\323, or \322system b) 72 424 T
+(uilds.) 178.4 424 T
+(\323) 203.9 424 T
+1 14 Q
+(Ackno) 72 394.67 T
+(wledgments) 110.75 394.67 T
+0 12 Q
+-0.01 (W) 72 374 P
+-0.01 (e thank Gre) 82.37 374 P
+-0.01 (gor Kiczales for getting us started in connecting a persistent storage system in PCL.) 138.15 374 P
+(W) 72 360 T
+(e are especially thankful to all the programmers who ha) 82.37 360 T
+(v) 349.07 360 T
+(e used Gestalt-class, particularly) 354.89 360 T
+-0.09 (Duane Boning and Donald T) 72 346 P
+-0.09 (rox) 209.87 346 P
+-0.09 (el for their man) 225.69 346 P
+-0.09 (y suggestions. V) 299.55 346 P
+-0.09 (arious enhancements and utilities) 377.71 346 P
+(were contrib) 72 332 T
+(uted by W) 132.07 332 T
+(ill Martinez, Michael Ruf, and Jef) 181.58 332 T
+(f Thompson. W) 344.26 332 T
+(e thank our re) 418.96 332 T
+(vie) 484.97 332 T
+(wers,) 499.33 332 T
+-0.17 (Janet Coleman and Geof) 72 318 P
+-0.17 (fre) 189.51 318 P
+-0.17 (y Mar) 202.65 318 P
+-0.17 (gra) 231.27 318 P
+-0.17 (v) 246.35 318 P
+-0.17 (e, for their comments. This w) 252.17 318 P
+-0.17 (ork w) 392.88 318 P
+-0.17 (as supported by D) 420.25 318 P
+-0.17 (ARP) 506.26 318 P
+-0.17 (A) 528.5 318 P
+(under contracts MD) 72 304 T
+(A-972-88-K-0008 and N00174-93-K-0035.) 167.5 304 T
+1 14 Q
+(Refer) 72 274.67 T
+(ences) 105.17 274.67 T
+0 12 Q
+(1.) 72 254 T
+(He) 90 254 T
+(ytens, M. L. and R. S. Nikhil, \322GEST) 103.81 254 T
+(AL) 283.03 254 T
+(T) 297.92 254 T
+(: an e) 304.66 254 T
+(xpressi) 330.47 254 T
+(v) 364.16 254 T
+(e database programming system\323,) 369.98 254 T
+(A) 90 240 T
+(CM SIGMOD Record, v) 98.18 240 T
+(ol. 18, no. 1, March, 1989.) 216.6 240 T
+(2.) 72 226 T
+(McIlrath, M. B. and D. S. Boning, \322Inte) 90 226 T
+(grating semiconductor process design and manuf) 281.47 226 T
+(ac-) 516.31 226 T
+-0.01 (ture using a uni\336ed process \337o) 90 212 P
+-0.01 (w representation\323, Proc. Second Intl. Conf. on CIM, T) 236.65 212 P
+-0.01 (ro) 497.14 212 P
+-0.01 (y) 507.01 212 P
+-0.01 (, NY) 512.23 212 P
+-0.01 (,) 534.01 212 P
+(May) 90 198 T
+(, 1990 \050IEEE Comp. Society\051) 111.22 198 T
+(3.) 72 184 T
+(McIlrath, M. B., D. E. T) 90 184 T
+(rox) 206.57 184 T
+(el, M. L. He) 222.38 184 T
+(ytens, P) 280.86 184 T
+(. Pen\336eld, Jr) 317.53 184 T
+(., D. S. Boning, and R. Jaya) 376.87 184 T
+(v) 509.96 184 T
+(ant,) 515.66 184 T
+(\322CAFE -- the MIT computer aided f) 90 170 T
+(abrication en) 263.84 170 T
+(vironment\323, IEEE T) 325.68 170 T
+(ransactions on Compo-) 422.24 170 T
+(nents, Hybrids, and Manuf) 90 156 T
+(acturing T) 218.2 156 T
+(echnology) 267.01 156 T
+(, v) 316.22 156 T
+(ol. 15, no. 2, 353-360, May) 327.98 156 T
+(, 1992.) 458.53 156 T
+(4.) 72 142 T
+(Boning, D. S., M. L. He) 90 142 T
+(ytens, and A. W) 205.49 142 T
+(ong, \322The intertool pro\336le interchange format: an) 282.18 142 T
+(object-oriented approach,) 90 128 T
+(\323 IEEE T) 211.79 128 T
+(ransactions on CAD., v) 256.02 128 T
+(ol. 10, 1150-1156, Sep. 1991.) 368.1 128 T
+(5.) 72 114 T
+-0.28 (McIlrath, M. and D. Boning, \322Process repository\323, 1995 Symposium on Hierarchical T) 90 114 P
+-0.28 (echnol-) 504.01 114 P
+-0.05 (ogy CAD---Process, De) 90 100 P
+-0.05 (vice, and Circuits, Stanford Uni) 204.58 100 P
+-0.05 (v) 356.75 100 P
+-0.05 (ersity) 362.57 100 P
+-0.05 (, P) 388.45 100 P
+-0.05 (alo Alto, CA, Aug. 10, 1995.) 400.9 100 P
+0 0 0 1 0 0 0 K
+FMENDPAGE
+%%EndPage: "10" 10
+%%Trailer
+%%BoundingBox: 0 0 612 792
+%%PageOrder: Ascend
+%%Pages: 10
+%%DocumentFonts: Times-Roman
+%%+ Times-Bold
+%%+ Times-Italic
+%%+ Courier
+%%EOF
+
+

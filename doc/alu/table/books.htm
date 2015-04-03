@@ -1,0 +1,640 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Lisp Books</TITLE>
+<meta name="description" content="Lisp books, listed by subject">
+<meta name="keywords" content="lisp, books, introduction, advanced, object, ai,
+style, implement, program">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#CCFFFF">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Lisp Books by Subject</H3>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="learn.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="learn.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="style.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm">lisp</a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm"><b>LEARNING</b></a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+<P>
+<a href="books.htm"><b>books</b></a></br>
+<a href="style.htm">style</a></br>
+</td><td>
+</table>
+</td><td>
+
+<BLOCKQUOTE>
+"You come in with a mind full of mush, and you leave thinking like a
+computer scientist."
+</BLOCKQUOTE>
+
+Books are listed in the following categories:
+<DD> <A HREF="#intro">Introductions to Lisp</A>
+<DD> <A HREF="#advanced">Advanced Texts</A>
+<DD> <A HREF="#clos">Object Oriented Programming</A>
+<DD> <A HREF="#ai">Books on Artificial Intelligence and Mathemetics, with a Lisp language emphasis</A>
+<DD> <A HREF="#style">Books on Lisp Style</A>
+<DD> <A HREF="#impl">Books on Implementing Lisp</A>
+
+<P> This page does not list <A HREF="references.htm">standard references</A>,
+<A HREF="periodicals.htm">periodicals</A>, or <A
+HREF="community.htm">electronic resources</A> such as <A HREF="newsgroups.htm">newsgroups</A>.
+
+<P> Each book title, below, is a link to a <A HREF="bibliography.htm">bibliography
+arranged by author</A>, which gives publishing information, and may
+also provide links to web sites associated with the book, links to
+ftp sites where source code from the book is available, or links to
+contact the author.
+
+<P> The authors of the comments which follow some of the book listings are
+identified by initials following the comment.  These correspond to:
+<UL>
+<LI> <A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>Mark
+Kantrowitz and Barry Margolin, who maintain the 
+<A HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/faqs/lang/lisp/top.html">Lisp FAQ</A>
+<LI> <A HREF="mailto:howard@elwoodcorp.com">[HRS]</A> Howard R.
+Stearns, who set up a version of this site.
+</UL>
+
+You can mail to these people by clicking on their initials.  These comments
+are, of course, personal opinions and do not carry the blessing of the
+ALU.
+
+<P>
+The ordering of books within categories mostly follows the
+organization within the Lisp FAQ.
+
+<P>
+See also <A
+HREF="http://www-mitpress.mit.edu/mitp/recent-books/comp/comp-sci-toc.html">
+recent MIT Press books</A> on Computer Science & Artificial
+Intelligence, <a
+href="http://www.ishops.com/quantum/index.html">Quantum Books</a>, and
+<a href="http://www.powells.portland.or.us/">Powell's Books</a>, which
+has a usefull search form.
+
+
+<HR>
+<H3><A NAME="intro">Introductions to Lisp</A></H3>
+
+<DL>
+
+<DT> 	<A NAME="touretzky" HREF="bibliography.htm#touretzky"><I>Common LISP: A Gentle Introduction to Symbolic Computation</I></A>.
+<DD> 	David S. Touretzky.
+<DD> Perhaps the best tutorial introduction to the language. It has
+           clear and correct explanations, and covers some fairly advanced
+           topics. The book is an updated Common Lisp version of the 1984
+           edition published by Harper and Row Publishers. 
+<P>
+
+           Three free Lisp educational tools which were used in the book:
+	   Evaltrace is a graphical notation for explaining how evaluation
+	   works and is described in "Visualizing Evaluation in
+	   Applicative Languages" by David S. Touretzky and Peter Lee,
+	   CACM 45-59, October 1992. DTRACE is a "detailed trace" which
+	   provides more information than the tracing tools provided with
+	   most Common Lisp implementations. SDRAW is a read-eval-draw
+	   loop that evaluates Lisp expressions and draws the result as a
+	   cons cell diagram (for both X11 and ascii terminals). Also
+	   available is PPMX, a tool for pretty printing macro expansions. 
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <I><A NAME="graham2" href="bibliography.htm#graham">ANSI Common Lisp</a></i>.
+<DD> Paul Graham.
+<DD> Combines an introduction to Lisp programming, and a convenient, up-to-date reference
+manual for ANSI Common Lisp. Beginners will find that its careful
+explanations and interesting examples make Lisp programming easy to
+learn. Professional programmers will appreciate its thorough,
+practical approach. [publisher's abstract]  A German translation is reportedly in the works.
+
+<DT> <I><A NAME="wilensky" HREF="bibliography.htm#willensky">Common LISPcraft</A></I>.
+<DD> Robert Wilensky.
+
+<DT> <I><A NAME="hennessey" HREF="bibliography.htm#hennessey">Common Lisp</A></I>.
+<DD> Wade L. Hennessey.
+<DD> Fairly good, but jumps back and forth from the simple to the
+           complex rather quickly, with no clear progression in difficulty.<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <I><A NAME="siklossy" HREF="bibliography.htm#siklossy">Let's Talk LISP</A></I>
+<DD> Laurent Siklossy.
+<DD>           Good introduction, but quite out of date.<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT>       <I><A NAME="shapiro" HREF="bibliography.htm#shapiro">Common Lisp: An Interactive Approach</A></I>.
+<DD>       Stuart C. Shapiro.
+
+<DT> <I> <A NAME="berk" HREF="bibliography.htm#berk">LISP, The Language of Artificial Intelligence</A></I>.
+<DD>  A. A. Berk.
+
+<DT>  <I><A NAME="gloess" HREF="bibliography.htm#gloess">An Alfred handy guide to Understanding LISP</A></I>,
+<DD> Paul Y. Gloess.
+
+<DT> <I> <A NAME="maurer" HREF="bibliography.htm#maurer">The Programmer's Introduction to LISP</A></I>.
+<DD> Ward D. Maurer
+
+<DT> <I><A NAME="bromley" HREF="bibliography.htm#bromley">LISP Lore: A Guide to Programming the LISP Machine</A></I>, 2nd edition.
+<DD> Hank Bromley, and Richard Lamson. 
+
+<DT> <I><A NAME="hekmatpour" HREF="bibliography.htm#hekmatpour">Introduction to LISP and Symbol Manipulation</A></I>.
+<DD> Sharam Hekmatpour.
+
+<DT> <I><A NAME="tatar" HREF="bibliography.htm#tatar">A programmer's guide to Common Lisp</A></I>.
+<DD> Deborah G. Tatar.
+<DD> Good introduction on Common Lisp for programmers familiar
+           with other programming languages, such as FORTRAN, PASCAL, or C.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <I><A NAME="koschmann" HREF="bibliography.htm#koschmann">The Common Lisp Companion</A></I>.
+<DD> Timothy Koschmann.
+<DD> Targeted for those with some programming experience who wish to 
+           learn draft-ANSI Common Lisp, including CLOS and the CL condition 
+           system. Examples progress incrementally from simple numerical 
+           calculation all the way to a logic-programming extension to CL.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+
+</DL>
+
+<HR>
+<H3><A NAME="advanced">Advanced Texts</A></H3>
+
+<DL>
+
+<DT> <I><A NAME="abelson" HREF="bibliography.htm#abelson">Structure
+and Interpretation of Computer Programs</A></I>.  <DD> Harold Abelson,
+Gerald Jay Sussman and Julie Sussman.  <DD> Required reading for a
+degree in either CS or EE at M.I.T.  It deals with <A
+HREF="glossary.htm#scheme">Scheme</A> rather than Common Lisp, and the
+first edition sometimes uses its own terminology for concepts which go
+by other names elsewhere in the industry.  Nonetheless, the <A
+HREF="#top">quote above</A> is possibly more true of this book than
+any other.  A new printing corresponding to IEEE Scheme has just been
+released.<A HREF="mailto:howard@elwoodcorp.com">[HRS]</A> <DD> See <A
+HREF="#abelson2">below</A>.
+
+<DT> <I><A NAME="anderson" HREF="bibliography.htm#anderson">Essential LISP</A></I>.
+<DD>  John R. Anderson, Albert T. Corbett, and Brian J. Reiser.
+<DD> Concentrates on how to use Lisp with iteration and recursion.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+
+<DT> <I><A NAME="cameron" HREF="bibliography.htm#cameron">Symbolic Computing with Lisp</A></I>.
+<DD> Robert D. Cameron and Anthony H. Dixon.
+<DD>           The book is intended primarily as a third-year computer science
+           text. In terms of programming techniques, it emphasizes recursion
+           and induction, data abstraction, grammar-based definition of Lisp
+           data structures and functional programming style. It uses
+           two Lisp languages: 
+<OL>
+ <LI> a purely functional subset of Lisp called Small Lisp and
+ <LI> Common Lisp.
+</OL>
+           An MS-DOS interpreter for Small Lisp (including source) is
+           provided with the book.  It considers applications of Lisp
+           to formal symbolic data domains: algebraic expressions,
+           logical formulas, grammars and programming languages. 
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+
+<DT><I><A NAME="graham" HREF="bibliography.htm#graham">On LISP</A></I>
+<DD>    Paul Graham.
+
+<DD> A comprehensive study of advanced Lisp techniques, with bottom-up
+programming as the unifying theme. It gives the first complete
+description of macros and macro applications. The book also covers
+important subjects related to bottom-up programming, including
+functional programming, rapid prototyping, interactive development,
+and embedded languages. The final chapter takes a deeper look at
+object-oriented programming than previous Lisp books, showing the
+step-by-step construction of a working model of the Common Lisp Object
+System (CLOS).
+
+<P>
+As well as an indispensable reference, On Lisp is a source of
+software. Its examples form a library of functions and macros that
+readers will be able to use in their own Lisp programs. [publisher's abstract] 
+
+
+<p>
+         Emphasizes a bottom-up style of writing programs, which he
+         claims is natural in Lisp and has advantages over the
+         traditional way of writing programs in C and Pascal.
+         Also has in-depth sections on writing macros with several
+         nice examples.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>  See <a href="#graham4">below</a>.
+
+<DT> <I><A NAME="graham3" href="bibliography.htm#graham">ANSI Common Lisp</a></i>.
+<DD> See <A HREF="#graham2">above</A>.
+
+<DT> <I><A NAME="moyne" HREF="bibliography.htm#moyne">Lisp: A first language for computing</A></I>
+<DD> John A. Moyne</A>
+
+
+</DL>
+
+<HR>
+<H3><A NAME="clos">Object Oriented Programming in Lisp</A></H3>
+<DL>
+
+<DT> <I><A NAME="keene" HREF="bibliography.htm#keene">Object-Oriented Programming in Common Lisp: A Programmer's Guide to CLOS</A></I>.
+<DD> Sonya E. Keene.
+<DD>           Tutorial introduction to CLOS with many examples and
+           a lot of good advice for designing large programs using CLOS.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<dt> <i><a name="castagna" href="bibliography.htm#castagna">
+Object-Oriented Programming: A Unified Foundation</a></i>.
+<DD> Giuseppe Castagna.
+
+<DD> The language Simula is the precursor of all object-oriented
+languages. This language imposed a certain style of programming that
+was followed by all class-based object-oriented languages until the
+appearance of the so-called multiple-dispatching languages, like CLOS,
+in which a different style of object-oriented programming arose.
+
+<P>Although much work has been done to define a theory of
+object-oriented languages, efforts have concentrated mostly on
+languages that follow Simula's style, ignoring multiple-dispatching
+languages. This book fills the gap. It elucidates object-oriented
+concepts, facilitate comparisons of these two different styles of
+programming and sheds new light on some long-standing problems
+concerning, for example, the use of covariance and contravariance, or
+the typing of binary methods.
+
+
+<P> This book also shows that it is possible to smoothly integrate
+both Simula's and CLOS's styles of programming into a single
+language. The book is self-contained and does not assume any expertise
+in object-oriented programming or type theory.  It will be consulted
+by professional computer scientists interested in the theory of
+programming and can serve as the text for a variety of advanced
+courses in type theory of object-oriented programming. <a
+href="http://www.birkhauser.com">[Publisher's Abstract]</a>
+
+
+<DT> 	<A NAME="lawless" HREF="bibliography.htm#lawless"><I>Understanding CLOS: The Common LISP Object System</I></A>.
+<DD> Jo A. Lawless and Molly M. Miller.
+
+<DT> <A NAME="kiczales" HREF="bibliography.htm#kickzales"><I>The Art of the Metaobject Protocol</I></A>
+<DD> See <A
+HREF="references.htm#mop">references</A> and <A HREF="#kiczales2">below</A>.
+
+<DT> <A NAME="kessler" HREF="bibliography.htm#kessler"><I>LISP, Objects, and Symbolic Programming</I></A>
+<DD> Robert R. Kessler and Amy R. Petajan.
+<DD> Includes a small Lisp compiler.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <A NAME="paepcke" HREF="bibliography.htm#paepcke"><I>Object-Oriented Programming: The CLOS Perspective</I></A>
+<DD>    Andreas Paepcke, editor.
+<DD> This book is a collection of essays on the following topics:
+<UL><LI> Description of CLOS and its design philosophy.
+          <LI> The Metaobject Protocol and its use.
+          <LI> Comparison of CLOS with Smalltalk, Eiffel, Sather, and C++.
+          <LI> CLOS Uses and Methodology. Descriptions of two large CLOS
+              applications (Sun's LispView and a hybrid knowledge
+              representation tool) and an approach to documenting
+              object-oriented protocols (similar to that of AMOP).
+          <LI> Implementation details. Descriptions of TI CLOS for the
+              Explorer and PCL's method dispatch mechanism.
+</ul>
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+  <DD> The collection has excellent coverage of
+MOPs and <A NAME="mop"
+HREF="http://www.parc.xerox.com/spl/projects/oi/">&quot;Open
+Implementation&quot;</A> (although the book predates the term),
+giving the reader a good understanding of what they are and why they
+are a good thing.  <DD> See <A HREF="#paepcke2">below</A>.
+<A HREF="mailto:howard@elwoodcorp.com">[HRS]</A>
+</DL>
+
+<HR>
+<H3><A NAME="ai">Books on Artificial Intelligence and Mathematics, with a Lisp language emphasis</A></H3>
+
+For general books on Artificial Intelligence consult the <A HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/faqs/ai/top.html">AI FAQ</A>.
+
+<p>
+See also, the <a
+href="http://yoda.cis.temple.edu:8080/UGAIWWW/books/index.html">book
+list</a> of the <a
+href="http://yoda.cis.temple.edu:8080/UGAIWWW/">UGAI Workshop</a>.
+
+
+<DL>
+
+<DT>    <A NAME="norvig" HREF="bibliography.htm#norvig"><I>Paradigms of Artificial Intelligence Programming: Case Studies in Common Lisp</I></A>
+<DD> Peter Norvig.
+<DD> Provides an in-depth exposition of advanced AI programming techniques
+        and includes large-scale detailed examples. The book is the most
+        advanced AI/Common-Lisp programming text and reference currently
+        available, and hence is not for the complete novice.  It focuses on the
+        programming techniques necessary for building large AI systems,
+        including object-oriented programming, and has a strong performance
+        orientation.
+
+<P>
+        The text is marked by its use of "non-toy" examples to illustrate the
+        techniques. All of the examples are written in Common Lisp, and copies
+        of the source code are available on disk in Macintosh or DOS format from
+        the publisher. Some of the techniques described include rule-based
+        pattern matching (GPS, Eliza, a subset of Macsyma, the Emycin expert
+        system shell), constraint propagation and backtracking (Waltz
+        line-labelling), alpha-beta search (Othello), natural language
+        processing (top-down, bottom-up and chart parsing), logic-programming
+        (unification and Prolog), interpreters and compilers for Scheme, and
+        object-oriented programming (CLOS).
+<P>
+        The examples are also used to illustrate good programming style and
+        efficiency. There is a guide to trouble-shooting and debugging Lisp
+        programs, a style guide, and a discussion of portability problems.
+        Some of the efficiency techniques described include memoization,
+        data indexing, compilation, delaying computation, proper use of
+        declarations, avoiding garbage collection, and choosing and using the
+        correct data structure.
+<P>
+        The book also serves as an advanced introduction to Common Lisp, with
+        sections on the Loop macro, CLOS and sequences, and some coverage of 
+        error handling, series, and the package facility.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+<DD> See <A HREF="#norvig2">below</A>.
+
+
+<DT> <I><A NAME="cohen" HREF="bibliography.htm#cohen">Emperical Methods for Artificial Intelligence</A></I>.
+<DD> Paul R. Cohen.
+<DD> Computer science and artificial intelligence in particular have no curriculum
+in research methods, as other sciences do. This book presents empirical methods
+for studying complex computer programs: exploratory tools to help find patterns
+in data, experiment designs and hypothesis-testing tools to help data speak
+convincingly, and modeling tools to help explain data.  Although many of these
+techniques are statistical, the book discusses statistics in the context of the
+broader empirical enterprise. The first three chapters introduce empirical
+questions, exploratory data analysis, and experiment design.  The blunt
+interrogation of statistical hypothesis testing is postponed until chapters 4
+and 5, which present classical parametric methods and computer-intensive (Monte
+Carlo) resampling methods, respectively. This is one of few books to present
+these new, flexible resampling techniques in an accurate, accessible manner.<p>
+  Much of the book is devoted to research strategies and tactics, introducing
+new methods in the context of case studies. Chapter 6 covers performance
+assessment, chapter 7 shows how to identify interactions and dependencies among
+several factors that explain performance, and chapter 8 discusses predictive
+models of programs, including causal models.  The final chapter asks what
+counts as a theory in AI, and how empirical methods -- which deal with
+specific 
+systems -- can foster general theories.<p>
+  Mathematical details are confined to appendixes and no prior knowledge of
+statistics or probability theory is assumed. All of the examples can be
+analyzed by hand or with commercially available statistics packages.
+<a href="http://eksl-www.cs.umass.edu/clasp.html">The Common Lisp Analytical
+Statistics Package (CLASP)</a>, developed in the author's
+laboratory for Unix and Macintosh computers, available from The MIT Press.
+<A HREF="http://www-mitpress.mit.edu">[Publisher's Abstract]</A>
+
+<dt> <i> <a name="chaitin" href="bibliography.htm#chaitin">
+The Limits of Mathematics</a></i>
+<dd> G. J. Chaitin
+<dd> This book presents the final version of Chaitin's course on the limits
+of mathematical reasoning.  This course uses algorithmic information
+theory to show that mathematics has serious limitations, and features
+a new more didactic approach to algorithmic information theory using
+LISP and Mathematica software.  The thesis of the book is that the
+incompleteness phenomenon discovered by Goedel is much more widespread
+and serious than hitherto suspected.  Also Goedel and Einstein's views
+on the foundations of mathematics are discussed, and it is suggested
+that mathematics is quasi-empirical and that experimental mathematics
+should be used more freely. 
+<a href="http://www.springer.com.sg">[Publisher's Abstract]</a>
+
+<DT> <I><A NAME="charniak" HREF="bibliography.htm#charniak">Artificial Intelligence Programming</A></I>, 2nd edition.
+<DD> Eugene Charniak, Christopher K. Riesbeck, Drew V. McDermott and James R. Meehan.
+<DD>           Provides many nice code fragments, all of which are written
+           in Common Lisp. The first half of the book covers topics
+           like macros, the reader, data structures, control structures,
+           and defstructs. The second half of the book describes
+           programming techniques specific to AI, such as
+           discrimination nets, production systems, deductive database
+           retrieval, logic programming, and truth maintenance.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT>   <I><A HREF="bibliography.htm#winston" NAME="winston">LISP</A></I>, 3rd edition.
+<DD>   Patrick H. Winston and Berthold K. P. Horn.
+<DD>           Covers the basic concepts of the language, but also gives a lot
+           of detail about programming AI topics such as rule-based expert
+           systems, forward chaining, interpreting transition trees, 
+           compiling transition trees, object oriented programming,
+           and finding patterns in images. Not a tutorial. Has many
+           good examples. 
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <I> <A NAME="hasemer" HREF="bibliography.htm#hasemer">Common LISP Programming for Artificial Intelligence</A></I>.
+<DD>  Tony Hasemer and John Domingue.
+<DD>	 This book presents an introduction to Artificial Intelligence
+	 with an emphasis on the role of knowledge representation. Three
+	 chapters focus on object-oriented programming, including the
+	 construction and use of a subset of CLOS.
+<P>
+	 The authors' research into the problems faced by novice Lisp
+	 users influenced the content and style of the book. (The authors
+	 are members of the Human Cognition Research Laboratory at the
+	 Open University in the United Kingdom.) The book employs a
+	 tutorial approach, especially in areas that students often find
+	 difficult, such as recursion.  Early and progressive treatment of
+	 the evaluator promotes understanding of program execution.
+	 Hands-on exercises are used to reinforce basic concepts.
+<P>
+	 The book assumes no prior knowledge of Lisp or AI and is a
+	 suitable textbook for students in Cognitive Science, Computer
+	 Science and other disciplines taking courses in Lisp or AI
+	 programming as well as being invaluable for professional
+	 programmers who are learning Lisp for developing AI applications.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <I><A NAME="tanimoto" HREF="bibliography.htm#tanimoto">The Elements of Artificial Intelligence Using Common Lisp</A></I>, 2nd edition.
+<DD> Steven Tanimoto.
+
+<DT> <I><A NAME="harrison" HREF="bibliography.htm#harrison">Common Lisp and Artificial Intelligence</A></I>.
+<DD> Patrick R. Harrison.
+
+<DT> <I><a name="watson" href="bibliography.htm#watson">
+Common LISP Modules: Artificial Intelligence in the Era of Neural Networks and Chaos Theory</a></i>.
+<DD> Mark Watson.
+
+</DL>
+
+<HR>
+<H3><A NAME="style">Books on Lisp Style</A></H3>
+
+Also see the <A HREF="style.htm">notes on improving your Lisp style</A>,
+derived from the <A
+HREF="http://www.cs.cmu.edu/Web/Groups/AI/html/faqs/lang/lisp/top.html">Lisp FAQ</A>. 
+
+<DL>
+
+<DT><I><A name="graham4" HREF="bibliography.htm#graham">On LISP</A></I>
+<DD>    See <a href="#graham">above</a>.
+
+
+<DT> <I><A NAME="miller" HREF="bibliography.htm#miller">LISP Style and Design</A></I>
+<DD> Molly M. Miller and Eric Benson.
+<DD>           How to write large Lisp programs and improve Lisp programming 
+           style. Uses the development of Lucid CL as an example. 
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <I><A NAME="jones" HREF="bibliography.htm#jones">The Art of Lisp Programming</A></I>
+<DD> Robin Jones, Clive Maynard, and Ian Stewart.
+
+<DT> <I><A NAME="stark" HREF="bibliography.htm#stark">LISP, Lore, and Logic: An Algebraic View of LISP</A></I>
+<DD> W. Richard Stark.
+<DD>           Self-modifying code, self-reproducing programs, etc.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT>   <I>CMU CL User's Manual</I>
+<DD>  Chapter 7 talks about writing efficient code. 
+   <A href="ftp://ftp.cs.cmu.edu/afs/cs.cmu.edu/project/clisp/docs/cmu-user/cmu-user.ps"><IMG ALIGN=TOP SRC="../img/ftp.xbm"></A>
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT>    <A NAME="norvig2"><I>Paradigms of
+Artificial Intelligence Programming: Case Studies in Common Lisp</I></A>
+<DD> See <A HREF="#norvig">above</A>.
+
+<DT> <I><A NAME="abelson2">Structure and Interpretation of Computer Programs</A></I>.
+<DD> See <A HREF="#abelson">above</A> and <A HREF="#abelson3">below</A>.
+
+<DT> 	<I><A NAME="spring" HREF="bibliography.htm#spring">Scheme and the Art of Programming</A></I>
+<DD> 	George Springer and Daniel P. Friedman.
+
+<DT> 	<I><A NAME="sangal" HREF="bibliography.htm#sangal">Programming Paradigms in LISP</A></I>.
+<DD> Rajeev Sangal
+
+<DT> <I> <A NAME="brooks" HREF="bibliography.htm#brooks">Programming in Common Lisp</A></I>.
+<DD> Rodney A. Brooks.
+<DD>      Chapter 5 discusses Lisp programming style.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+</DL>
+
+
+<HR>
+<H3><A NAME="impl">Books on Implementing Lisp</A></H3>
+
+<DL>
+
+<DT> <I><A NAME="abelson3">Structure and Interpretation of Computer Programs</A></I>.
+<DD> See <A HREF="#abelson2">above</A>.
+
+<DT> <A NAME="kiczales2"><I>The Art of the Metaobject Protocol</I></A>
+<DD> See <A HREF="#kiczales">above</A>.
+
+<DT> <A NAME="paepcke2"><I>Object-Oriented Programming: The CLOS Perspective</I></A>
+<DD> Discusses some CLOS implementation techniques. See <A HREF="#paepcke">above</A>.
+
+
+<DT> <A NAME="allen" HREF="bibliography.htm#allen"> <I>Anatomy of Lisp</I></A>
+<DD> John Allen.
+<DD>           Discusses some of the fundamental issues involved in
+           the implemention of Lisp.  
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT><A NAME="kamin" HREF="bibliography.htm#kamin"><I>Programming Languages, An Interpreter-Based Approach</I></A>
+<DD> Samuel Kamin
+<DD> Includes sources to several interpreters for Lisp-like languages.
+<DD> Tim Budd has reimplemented the interpreters in C++. 
+   <A href="ftp://cs.orst.edu/pub/budd/kamin/"><IMG ALIGN=TOP
+SRC="../img/ftp.xbm"></A>
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <A NAME="hekmatpour2" HREF="bibliography.htm#hekmatpour"><I>Lisp: A Portable Implementation</I></A>
+<DD> Sharam Hekmatpour
+<DD> Describes a portable implementation of a small dynamic
+           Lisp interpreter (including C source code). 
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <A NAME="henderson" HREF="bibliography.htm#henderson"> <I>Functional Programming: Application and Implementation</I></A>
+<DD> Peter Henderson
+
+<DT> <A NAME="kogge" HREF="bibliography.htm#kogge"><I>The Architecture of Symbolic Computers</I></A>
+<DD> Peter M. Kogge.
+<DD> Includes sections on memory management, the SECD and
+           Warren Abstract Machines, and overviews of the various
+           Lisp Machine architectures.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+   
+<DT> <A NAME="friedman" HREF="bibliography.htm#friedman"<I>Essentials of Programming Languages</I></A>
+<DD> Daniel P. Friedman, Mitchell Wand, and Christopher T. Haynes.
+<DD>           Teaches fundamental concepts of programming language
+           design by using small interpreters as examples. Covers
+           most of the features of Scheme. Includes a discussion
+           of parameter passing techniques, object oriented languages,
+           and techniques for transforming interpreters to allow
+           their implementation in terms of any low-level language.
+           Also discusses scanners, parsers, and the derivation of
+           a compiler and virtual machine from an interpreter.
+           Includes a few chapters on converting code into a
+           continuation passing style.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <A NAME="lee" HREF="bibliography.htm#lee"><I>Topics in Advanced Language Implementation</I></A>
+<DD> Peter Lee, editor.
+<DD> Articles relevant to the implementation of functional programming languages.
+<A HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A>
+
+<DT> <A NAME="queinnec" HREF="bibliography.htm#queinnec"><I>Les Langages Lisp</I></A>
+<dt> <A HREF="bibliography.htm#queinnec"><I>LiSP in Small Pieces</I></A>
+<DD>Christian Queinnec
+<DD> The book covers Lisp, Scheme and other related dialects,
+      their interpretation, semantics and compilation.  <A
+HREF="mailto:ai+lisp-faq@cs.cmu.edu">[MK&BM]</A> <i>Les Languages
+Lisp</i> is the French version, <i>LiSP in Small Pieces</i> is the
+English version.
+
+<DT><I><A NAME="gabriel" HREF="bibliography.htm#gabriel">Performance and Evalution of Lisp Systems</A></I> 
+<DD> Richard P. Gabriel.
+<DD> Defines and comments on the &quot;Gabriel Benchmarks&quot;, and
+gives performance figures and implementation details for early 1980's
+implementations.
+<A HREF="mailto:howard@elwoodcorp.com">[HRS]</A>
+
+<DT><I><A NAME="civilized" HREF="bibliography.htm#civilized">Interpreting Lisp</A></i>
+<DD> Civilized Software.
+<DD> A downloadable postscript book on how Lisp works and how to build a Lisp interpreter.
+
+<DT><i><a name="rjones" href="bibliography.htm#rjones">
+Garbage Collection: Algorithms for Automatic Dynamic Memory Management
+</a></i>
+<DD> <a href="http://www.ukc.ac.uk/computer_science/Html/Jones/">Richard Jones</a>
+
+</DL>
+</td></tr></table>
+
+</BODY>
+</HTML>

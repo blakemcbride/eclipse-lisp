@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>ALU: Macros</TITLE>
+<meta name="description" content="Lisp macros">
+<meta name="keywords" content="lisp, macros, automatic programming, embedded,
+language, syntax, translate">
+<meta name="date" content="1/30/97">
+</HEAD>
+
+<body BGCOLOR="#FFCC66">
+<table cellpadding="0" cellspacing="0" border="0"> <tr>
+
+<H2>Lisp Macros</H2>
+
+<blockquote><b>
+Summary: </b> Lisp macros are different than macros in other languages, and
+have the ability to define fundamentally different languages to solve
+specific problems.
+</blockquote>
+
+</tr> <tr valign=top>
+<td>
+<table>
+<tr> <td>
+<A HREF="contents.htm"><IMG ALIGN=TOP SRC="../img/lisp.gif" BORDER=0> </A>
+</td></tr> <tr><td>
+
+<table>
+<tr align=center>
+<td></td>
+<td><a href="lisp.htm"><img ALT="up" src="../img/31ab3dUC.gif" border=0></a>  </td>
+<td></td>
+</tr>
+<tr align=center>
+<td><a href="memory.htm"><img ALT="prev" src="../img/31ab3dLC.gif" border=0></a>  </td>
+<td></td>
+<td><a href="3GL.htm"><img ALT="next" src="../img/31ab3dRC.gif" border=0></a>  </td>
+<td></td>
+</table>
+</td>
+
+</td></tr> <tr><td>
+<p>
+<a href="search.htm">search</a><br>
+<a href="map.htm">site map</a><br>
+<a href="about.htm#navigate">navigate</a><br>
+<a href="about.htm">about</a><br>
+
+<p>
+<font color="#FFCC66">&lt;*<a href="lisp.htm"><b>LISP</b></a>*&gt;</font><br>
+<font color="#CCFFFF">&lt;*<a href="learn.htm">learning</a>*&gt;</font><br>
+<font color="#CCCC99">&lt;*<a href="applications.htm">applications</a>*&gt;</font><br>
+<font color="#FFCCFF">&lt;*<a href="tools.htm">tools</a>*&gt;</font><br>
+<font color="#FFCCCC">&lt;*<a href="community.htm">community</a>*&gt;</font><br>
+<font color="#CCCCFF">&lt;*<a href="references.htm">references</a>*&gt;</font><br>
+<font color="#CCFFCC">&lt;*<a href="systems.htm">systems</a>*&gt;</font><br>
+<font color="#FFFFCC">&lt;*<a href="related-languages.htm">related</a>*&gt;</font><br>
+
+<P>
+<a href="top-level.htm">top-level</a></br>
+<a href="syntax.htm">syntax</a></br>
+<a href="evaluation.htm">evaluation</a></br>
+<a href="environment.htm">environment</a></br>
+<a href="objects.htm">objects</a></br>
+<a href="dynamic.htm">dynamic</a></br>
+<a href="types.htm">typing</a></br>
+<a href="memory.htm">memory</a></br>
+<a href="macros.htm"><b>macros</b></a></br>
+<a href="3GL.htm">3GL</a></br>
+<a href="history.htm">history</a></br>
+<a href="compare.htm">compare</a></br>
+<a href="combine.htm">combine</a></br>
+</td><td>
+</table>
+</td><td>
+
+<p>
+At some point in the <a href="evaluation.htm">compilation or evaluation
+process</a>, Lisp programs are <a href="syntax.htm">represented by
+list data</a>.  Lisp provides many tools for examining and
+constructing list data.  The Common Lisp macro facility allows
+programmers to use these tools to write small programs that translate one
+list representation of a program into another.  
+
+<P> The Lisp system will automatically make use of any such macros
+that the programmer defines.  The macros can be defined to operate on
+lists representing complex Lisp expressions, or on individual symbols
+that would otherwise represent variable references.  The macros can
+have global scope, or be active only during a certain region of the
+program code.  The system will automatically invoke any required
+additional macros which are introduced by the translated
+results.
+
+<P> Allowing the programmer to use the entire Common Lisp language
+in defining programs to translate one program expression into another
+is very different than the simple character-based text substitution
+found in other languages.  
+
+<P> Another feature is that there are no statements in Common Lisp,
+only nested lists of program expressions.  This makes it easy to
+define a single macro that can check the syntax of its own usage and
+be used in a variety of situations.  It is the lack of this ability in
+C that has lead to complicated template utilities in C++.  Lisp macros
+are a more flexible, uniform and easier to use approach.
+
+<P>The macro mechanism allows small (or complex) utilties for solving
+specific problems to be defined by the programmer, and then used at
+will.
+
+</td></tr></table>
+
+</BODY>
+</HTML>

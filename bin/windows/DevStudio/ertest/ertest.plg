@@ -1,0 +1,202 @@
+--------------------Configuration: eclipse - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\eclipse\eclipse.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/eclipse.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/eclipse.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/eclipse.pdb" /machine:I386 /out:"Release/eclipse.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+
+
+
+eclipse.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: eclipse - Win32 Debug--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\eclipse\eclipse.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/eclipse.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/eclipse.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/eclipse.pdb" /debug /machine:I386 /out:"Debug/eclipse.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+
+
+
+eclipse.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: ertest - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\ertest\ertest.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /I "../../../../c" /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "RUNTIME" /Fp"Release/ertest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/ertest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ertest.pdb" /machine:I386 /out:"Release/ertest.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSP5170.TMP" with contents </nologo /ML /W3 /GX /O2 /I "../../../../c" /D "NDEBUG" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /D "RUNTIME" /Fp"Release/ertest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\HOWARD\eclipse-1.1\test\driver.c"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5170.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSP5171.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/ertest.pdb" /machine:I386 /out:"Release/ertest.exe" 
+".\Release\driver.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Release\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\test\Release\test.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP5171.TMP" 
+Compiling...
+driver.c
+Linking...
+
+
+
+ertest.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: ertest - Win32 Debug--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\ertest\ertest.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "_DEBUG" /D "RUNTIME" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ertest.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/ertest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ertest.pdb" /debug /machine:I386 /out:"Debug/ertest.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSP93B5.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "_DEBUG" /D "RUNTIME" /D "WIN32" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ertest.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\HOWARD\eclipse-1.1\test\driver.c"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP93B5.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSP93B6.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ertest.pdb" /debug /machine:I386 /out:"Debug/ertest.exe" /pdbtype:sept 
+".\Debug\driver.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Debug\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\test\Debug\test.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP93B6.TMP" 
+Compiling...
+driver.c
+Linking...
+
+
+
+ertest.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: etest - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\etest\etest.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/etest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/etest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/etest.pdb" /machine:I386 /out:"Release/etest.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPA1F2.TMP" with contents </nologo /ML /W3 /GX /O2 /I "../../../../c" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Release/etest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\HOWARD\eclipse-1.1\test\driver.c"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA1F2.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPA1F3.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/etest.pdb" /machine:I386 /out:"Release/etest.exe" 
+".\Release\driver.obj"
+".\Release\env.obj"
+".\Release\format.obj"
+".\Release\macro.obj"
+".\Release\mop-defs.obj"
+".\Release\mop.obj"
+".\Release\pretty.obj"
+".\Release\pretty2.obj"
+".\Release\pretty3.obj"
+".\Release\pretty4.obj"
+".\Release\pretty5.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Release\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipsed\Release\libeclipsed.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\test\Release\test.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPA1F3.TMP" 
+Compiling...
+driver.c
+Linking...
+LINK : fatal error LNK1104: cannot open file "Release/etest.exe"
+Error executing link.exe.
+
+
+
+etest.exe - 1 error(s), 0 warning(s)
+--------------------Configuration: etest - Win32 Debug--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\etest\etest.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/etest.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/etest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/etest.pdb" /debug /machine:I386 /out:"Debug/etest.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "C:\WINDOWS\TEMP\RSPA234.TMP" with contents </nologo /MLd /W3 /Gm /GX /Zi /Od /I "../../../../c" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/etest.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c 
+"C:\HOWARD\eclipse-1.1\test\driver.c"
+>
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA234.TMP" 
+Creating temp file "C:\WINDOWS\TEMP\RSPA235.TMP" with contents <kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/etest.pdb" /debug /machine:I386 /out:"Debug/etest.exe" /pdbtype:sept 
+".\Debug\driver.obj"
+".\Debug\env.obj"
+".\Debug\format.obj"
+".\Debug\macro.obj"
+".\Debug\mop-defs.obj"
+".\Debug\mop.obj"
+".\Debug\pretty.obj"
+".\Debug\pretty2.obj"
+".\Debug\pretty3.obj"
+".\Debug\pretty4.obj"
+".\Debug\pretty5.obj"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipse\Debug\libeclipse.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\libeclipsed\Debug\libeclipsed.lib"
+"\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\test\Debug\test.lib">
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPA235.TMP" 
+Compiling...
+driver.c
+Linking...
+
+
+
+etest.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: gctest - Win32 Release--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\gctest\gctest.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /ML /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "SMALL_CONFIG" /D "SILENT" /D "ALL_INTERIOR_POINTERS" /D "__STDC__" /Fp"Release/gctest.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "NDEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Release/gctest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/gctest.pdb" /machine:I386 /out:"Release/gctest.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+
+
+
+gctest.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: gctest - Win32 Debug--------------------
+Begining build with project "C:\HOWARD\eclipse-1.1\BIN\WINDOWS\DevStudio\gctest\gctest.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MLd /W3 /Gm /GX /Zi /Od /D "_DEBUG" /D "SMALL_CONFIG" /D "SILENT" /D "ALL_INTERIOR_POINTERS" /D "__STDC__" /D "WIN32" /D "_WINDOWS" /Fp"Debug/gctest.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "_DEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o"Debug/gctest.bsc" "
+			"COFF Linker for 80x86" with flags "kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/gctest.pdb" /debug /machine:I386 /out:"Debug/gctest.exe" /pdbtype:sept "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+
+
+
+gctest.exe - 0 error(s), 0 warning(s)

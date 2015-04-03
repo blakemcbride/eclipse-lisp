@@ -1,0 +1,324 @@
+<HTML>
+<HEAD><TITLE>Eclipse Product Information</TITLE>
+</HEAD>
+<A NAME="home"></A>
+
+<!--<A HREF="index.htm">[previous]</A> <A HREF="distribution.htm">[next]</A> -->
+<A HREF="index.htm">[contents]</A>
+
+<HR>
+<CENTER> <H3>SAMPLE GENERATED C CODE</H3></CENTER>
+
+The details of how Lisp code appears when translated to C depends on
+the code being translated.  It is not simply a matter of translating
+one Lisp form pattern directly into another C statement pattern.  
+
+<p>
+However, there are some general statements that can be made about the
+translation:
+
+<ul>
+<p><li> The C typedef <code>clObject</code> is defined in
+<code>eclipse.h</code>, and defines the type of all Lisp data.  
+<code>#include &lt;eclipse.h&gt;</code> appears at the top of the
+generated C file, followed by <code>extern</code> references to Lisp
+library functions and data.
+
+<p><li>Each Lisp function, whether top-level or enclosed within
+another function, causes a C function to be defined in the generated C
+file.  The names of the C functions follow the <a
+href="names.htm">Eclipse library naming convention</a>.  In
+particular:
+ <ul>
+ <li> The C identifier for a function associated with a top-level
+ <b>defun</b> has a name that has dashes removed, and the first
+ letter of each word in the original Lisp symbol-name is capitalized
+ in the C identifier.  There are other transformations to `escape'
+ illegal C characters.
+ <li> Anonymous functions are named with lambda.  
+ <li> Enclosed (i.e. nested) functions are named using the name of the
+ parent (enclosing) function and the name of the child (inner)
+ function, separated by an underscore.
+ <li> Functions names begin with a package prefix.
+ </ul>
+For example, <code>(defun foo-bar ...)</code> => 
+ <code>clObject usrFooBar(...)</code> 
+
+<p>Each Lisp function compiled to C uses varargs, and begins with a
+compound C statement block that parses the arguments (including
+optional, keyword and supplied-p arguments).
+
+<p>
+<li> A Lisp source file contains top-level forms that describe
+behavior that is to be executed when the Lisp file is loaded into a
+running Lisp system.  Even defining forms such as <b>defun</b> expand
+into forms that create the appropriate Lisp function object at load-time.
+
+<P>In addition to the C functions corresponding the various Lisp
+functions, Eclipse defines an <em>initialization</em> function for
+each Lisp source file translated to C.  This initialization function
+takes no arguments, and returns no values.  When called in a C
+program, it provides the same behavior that the Lisp <b>load</b>
+function would provide when loading the original Lisp file.  This
+includes all explicit load-time behavior, such as assigning function
+properties, etc.
+
+<p>The name of the initialization function can be controled by
+arguments to <a href="compile.htm"><b>compile-file</b></a>, but the
+default is based on the name of the file being compiled to C.  The
+initialization function appears at the end of the generated C file.
+
+<p><li> The types of objects that can be treated as compile-time
+literal data in Lisp is much more extensive than that which is
+possible in C, and is even expandable by the user by using
+<b>make-load-form</b>.  The literal data is represented by static
+objects near the top of the generated C file.  The names of these
+`constants' follow the <a href="names.htm">Eclipse library naming
+convention</a>.  This data is initialized as necessary 
+during execution of the Eclipse-generated initialization function.
+
+<p> The Eclipse <a href="compile.htm"><b>compile-file</b></a> function
+may coalesce similar literals that appear in the same source file,
+taking care to compute the proper ordering between components of
+(possibly circular) compound objects.  
+
+<p>Any initialization of literals appears first within the initialization
+function, followed by code generated from explicit load-time user code.
+
+<p><li> In general, each compound Lisp form in the original source
+code will have one (possibly compound) C statement in the generated C
+code.  For example, a Lisp <b>let</b> form that introduces lexical
+variables translates to a C compound statement that also introduces
+lexical variables.
+
+<p>Again, the <a href="names.htm">Eclipse library naming
+convention</a> is used to define the names of C identifiers corresponding
+to Lisp variables, named blocks, go tags, etc.  In general, the C
+identifiers for variables are the same as the name in Lisp, in lower
+case, with dashes replaced by underscores.
+
+<p>C macros are defined in <code>eclipse.h</code> to implement Lisp
+constructions such as <b>catch</b>, <b>block</b>,
+<b>unwind-protect</b>, multiple value handling, etc.
+
+<p><li> The order of evaluations of arguments to functions is defined
+by ANSI Common Lisp as being left to right, while the order is not
+defined by C.  Temporary variable may be introduced by
+<b>compile-file</b> to guarantee the correct ordering.  Temporary
+variables may also be introduced when the argument to a function in
+the original Lisp source is an expression which can only be translated
+to one or more C statements.  C statements cannot be used within the C
+syntax for a function call.
+
+<p>Otherwise, the arguments to function calls in C appear as they do
+in the original Lisp source code, terminated by the special `symbol',
+<code>clEOA</code>, to mark the end-of-arguments.  
+
+<p>Lisp functions known to be compiled to C (such as those defined by
+ANSI) are called directly.  Other functions are called by funcalling
+the closure stored in an <b>fdefinition</b>.
+
+</ul>
+
+The above outline may be modified by information that the
+<b>compile-file</b> can determine while processing the file, and
+between Eclipse releases.  In particular, we expect the details of how
+this outline is followed to change as we provide more efficient or
+more readable implementations in future releases.
+
+<hr>
+Here is a sample Lisp source file.
+<pre>
+<a href="#in-package">(in-package :user)</a>			;The <a href="#init">initializer</a> for the
+					;generated code <a href="#ipackage">BINDS *package*</a>
+
+;;; Here's some top-level code that gets executed at load time in
+;;; Lisp, or at initialization time in the generated C code.
+(<a href="#print-hello">print</a> 'hello)				;In the generated code,
+(<a href="#write-line">write-line</a> "This is a string")		;literals are initialized  
+(<a href="#print-42">print</a> 42)				;before user code.
+
+(<a href="#let">let</a> ((x (foo 42))			;Call to unknown function.
+      (y (bar "This is a string")))	;Literals are coalesced.
+  (when (baz x)
+    (print y)))
+      
+
+;;; A silly function with fairly complicated argument parsing.
+(<a href="#defun">defun</a> foo-bar (<a href="#parse-x">x</a> &optional (<a href="#parse-y">y</a> 1) &rest <a href="#parse-keys">keys</a>
+		  &key (<a href="#parse-a">a</a> 'base-char) &allow-other-keys)
+  (<a href="#mvc">multiple-value-call</a> 'some-function
+    (block foo
+      (if (minusp y)
+	  (<a href="#setq">setq</a> y x)
+	  (<a href="#return-from">return-from foo</a> (<a href="#valuesc">values</a> y keys))))
+    (baz y)
+    42
+    #'(<a href="#closure">lambda</a> (arg)			;A closure over a.
+	(make-array arg <a href="#element-type">:element-type</a> <a href="#closed-a">a</a>)))) ;Keyword arg.
+
+</pre>
+
+<hr>
+Here is the C code produced with:
+<pre>
+   (compile-file "sample"
+                 :output-file "sample.c"
+                 :external-format :ascii)
+</pre>
+The result is shown with exactly the same indentation produced by
+Eclipse.  No additional hand whitespace formatting has been performed
+for presentation here. 
+
+<p>Please note that details such as function argument parsing, the
+creation or elimination of temporary variables, and the C compile-time
+vs. C initialization-time (i.e. startup) initialization of Lisp
+literals may vary in future versions.
+
+<pre>
+/* Generated by Eclipse Common Lisp 1.0 for howard on circe.
+   Friday the twelfth of September, 1997, 4:45:46 pm CDT. */
+#include &lt;eclipse.h&gt;
+
+clObject clCar(clProto), <a name="charpsimplebasestring">clCharpSimpleBaseString(clProto)</a>,
+  <a name="extraargs">clExtraArgs</a>(clProto), <a name="intern">clIntern(clProto)</a>, <a name="keyarg">clKeyArg</a>(clProto),
+  <a name="makearray">clMakeArray(clProto)</a>, <a name="makekeyword">clMakeKeyword(clProto)</a>, <a name="minusp">clMinusp(clProto)</a>,
+  <a name="missingargs">clMissingArgs(clProto)</a>, clPkg(clProto), <a name="print">clPrint(clProto)</a>,
+  <a name="values">clValues(clProto)</a>, <a name="writeline">clWriteLine(clProto)</a>;
+
+extern clObject <a name="package">clstarPACKAGEstar</a>, <a name="base_char">clBASE_CHAR</a>;
+
+static clObject <a name="i_1">I_1</a>, <a name="i_42">I_42</a>, <a name="key_a">keyA</a>, <a name="key_element_type">keyELEMENT_TYPE</a>, <a name="key_user">keyUSER</a>, <a name="pkg_user">PKG_USER</a>,
+  <a name="str_a">STR_A__7</a>, <a name="str_bar">STR_BAR__4</a>, <a name="str_baz">STR_BAZ__5</a>, <a name="str_element_type">STR_ELEMENT_TYPE__9</a>,
+  <a name="str_foo_bar">STR_FOO_BAR__6</a>, <a name="str_foo">STR_FOO__3</a>, <a name="str_hello">STR_HELLO__1</a>, <a name="str_some_function">STR_SOME_FUNCTION__8</a>,
+  <a name="str_this">STR_This_is_a_string__2</a>, <a name="str_user">STR_USER__0</a>, <a name="bar">usrBAR</a>, <a name="baz">usrBAZ</a>, <a name="foo">usrFOO</a>,
+  <a name="foo_bar">usrFOO_BAR</a>, <a name="hello">usrHELLO</a>, <a name="some_function">usrSOME_FUNCTION</a>;
+
+<a name="denv">clDeclareEnv(<a href="#closure">usrFooBar_Lambda</a>);</a>
+<a name="foobar_lambda">static clObject usrFooBar_Lambda(clVaAlist) clVaDcl
+{ <a name="env">clUseEnv(<a href="#denv">usrFooBar_Lambda</a>);</a>
+  { clObject CL_ap, <a name="arg">arg</a>;
+    { clBeginParse(_ap);
+      <a name="iarg">clSetq(<a href="#arg">arg</a>,
+             (_clPresentp(clSetq(CL_ap, clGetObjectArg(_ap))) ? CL_ap :
+              <a href="#missingargs">clMissingArgs</a>(clNIL)));</a>
+      if (clTrue(clSetq(CL_ap, clVlist(_ap))))
+        { clObject CL_0; clSetq(CL_0, CL_ap); <a href="#extraargs">clExtraArgs</a>(CL_0); }
+      clEndParse(_ap); }
+    { clObject CL_2;
+      clSetq(CL_2, <a name="closed-a"><a href="#env">clEnv</a>(0, <a href="#a-hook">*a</a>)</a>);
+      return(<a href="#makearray">clMakeArray</a>(<a href="#iarg">arg</a>, <a name="element-type" href="#ikey_element_type">keyELEMENT_TYPE</a>, CL_2, clEOA)); } } }</a>
+
+<a name="foobar">clObject usrFooBar</a>(clVaAlist) clVaDcl
+{ clObject CL_ap, <a name="xx">x</a>, <a name="yy">y</a>, <a name="keys">keys</a>, <a name="a">*a = clMakeBinding()</a>;
+  { clBeginParse(_ap);
+    <a name="parse-x">clSetq(<a href="#xx">x</a>,
+           (_clPresentp(clSetq(CL_ap, clGetObjectArg(_ap))) ? CL_ap :
+            <a href="#missingargs">clMissingArgs</a>(clNIL)));</a>
+    <a name="parse-y">clSetq(<a href="#yy">y</a>,
+           (_clPresentp(clSetq(CL_ap, clGetObjectArg(_ap))) ? CL_ap :
+            <a href="#ii_1">I_1</a>));</a>
+    <a name="parse-keys">clSetq(<a href="#keys">keys</a>, clVlist(_ap));</a>
+    <a name="parse-a">if (clTrue(clSetq(CL_ap, <a href="#keyarg">clKeyArg</a>(<a href="#ikey_a">keyA</a>, <a href="#parse-keys">keys</a>, clEOA))))
+      { clObject CL_0;
+        clSetq(CL_0, CL_ap);
+        clSetq(<a href="#a">*a</a>, clCar(CL_0, clEOA)); }
+    else
+      clSetq(<a href="#a">*a</a>, <a href="#base_char">clBASE_CHAR</a>);</a>
+    clEndParse(_ap); }
+  { <a name="mvc">clMultipleValueCall(cl_MVC);</a>
+    clSetq(<a href="#mvc">cl_MVC</a>, <a href="#isome_function">usrSOME_FUNCTION</a>);
+    { clObject CL_test;
+      { clObject CL_0;
+        clSetq(CL_0, y);
+        clSetq(CL_test, <a href="#minusp">clMinusp</a>(CL_0, clEOA)); }
+      if (clTrue(CL_test))
+        clValues1(<a name="setq">clSetq</a>(y, x));
+      else
+        { <a name="valuesc">{ clObject CL_0;
+            clSetq(CL_0, y);
+            <a href="#values">clValues</a>(CL_0, keys, clEOA); }</a>
+          <a name="return-from">clLocalReturn(<a href="#foo-return">FOO</a>); } </a>}
+    <a name="foo-return">clBlockEnd(FOO);</a>
+    clAccumulateValues(<a href="#mvc">cl_MVC</a>);
+    { clObject CL_0;
+      clSetq(CL_0, y);
+      clFuncallFunction(clFdefinition(<a href="#ibaz">usrBAZ</a>, clEOA), CL_0, clEOA); }
+    clAccumulateValues(<a href="#mvc">cl_MVC</a>);
+    clValues1(I_42);
+    clAccumulateValues(<a href="#mvc">cl_MVC</a>);
+    clValues1(<a name="closure">clMakeClosure(1,
+                            <a href="#foobar_lambda">usrFooBar_Lambda</a>,
+                            <a href="#denv">&clEnvHook(usrFooBar_Lambda)</a>,
+                            <a href="#a" name="a-hook">&*a</a>)</a>);
+    clAccumulateValues(<a href="#mvc">cl_MVC</a>);
+    return(clMultipleValueFuncall(<a href="#mvc">cl_MVC</a>)); } }
+
+void <a name="init">usrSample() </a>
+{ <a name="ipackage">clDbind(<a href="#package">clstarPACKAGEstar</a>);</a>
+  clDbind(clstarREADTABLEstar);
+  clDbind(clstarLOAD_TRUENAMEstar);
+  clDbind(clstarLOAD_PATHNAMEstar);
+  <a name="istr_user">clSetq(<a href="#str_user">STR_USER__0</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("USER"));</a>
+  <a name="ikey_user">clSetq(<a href="#key_user">keyUSER</a>, <a href="#makekeyword">clMakeKeyword</a>(<a href="#istr_user">STR_USER__0</a>, clEOA));</a>
+  <a name="istr_hello">clSetq(<a href="#str_hello">STR_HELLO__1</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("HELLO"));</a>
+  <a name="ipkg_user">clSetq(<a href="#pkg_user">PKG_USER</a>, clPkg(<a href="#istr_user">STR_USER__0</a>, clEOA));</a>
+  <a name="ihello">clSetq(<a href="#hello">usrHELLO</a>, <a href="#intern">clIntern</a>(<a href="#istr_hello">STR_HELLO__1</a>, <a href="#ipkg_user">PKG_USER</a>, clEOA));</a>
+  <a name="istr_this">clSetq(<a href="#str_this">STR_This_is_a_string__2</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("This is a string"));</a>
+  <a name="ii_42">clSetq(<a href="#i_42">I_42</a>, clIntFixnum(42));</a>
+  <a name="istr_foo">clSetq(<a href="#str_foo">STR_FOO__3</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("FOO"));</a>
+  <a name="ifoo">clSetq(<a href="#foo">usrFOO</a>, <a href="#intern">clIntern</a>(<a href="#istr_foo">STR_FOO__3</a>, <a href="#ipkg_user">PKG_USER</a>, clEOA));</a>
+  <a name="istr_bar">clSetq(<a href="#str_bar">STR_BAR__4</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("BAR"));</a>
+  <a name="ibar">clSetq(<a href="#bar">usrBAR</a>, <a href="#intern">clIntern</a>(<a href="#istr_bar">STR_BAR__4</a>, <a href="#ipkg_user">PKG_USER</a>, clEOA));</a>
+  <a name="istr_baz">clSetq(<a href="#str_baz">STR_BAZ__5</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("BAZ"));</a>
+  <a name="ibaz">clSetq(<a href="#baz">usrBAZ</a>, <a href="#intern">clIntern</a>(<a href="#istr_baz">STR_BAZ__5</a>, <a href="#ipkg_user">PKG_USER</a>, clEOA));</a>
+  <a name="istr_foo_bar">clSetq(<a href="#str_foo_bar">STR_FOO_BAR__6</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("FOO-BAR"));</a>
+  <a name="ifoo_bar">clSetq(<a href="#foo_bar">usrFOO_BAR</a>, <a href="#intern">clIntern</a>(<a href="#istr_foo_bar">STR_FOO_BAR__6</a>, <a href="#ipkg_user">PKG_USER</a>, clEOA));</a>
+  <a name="ii_1">clSetq(<a href="#i_1">I_1</a>, clIntFixnum(1));</a>
+  <a name="istr_a">clSetq(<a href="#str_a">STR_A__7</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("A"));</a>
+  <a name="ikey_a">clSetq(<a href="#key_a">keyA</a>, <a href="#makekeyword">clMakeKeyword</a>(<a href="#istr_a">STR_A__7</a>, clEOA));</a>
+  <a name="istr_some_function">clSetq(<a href="#str_some_function">STR_SOME_FUNCTION__8</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("SOME-FUNCTION"));</a>
+  <a name="isome_function">clSetq(<a href="#some_function">usrSOME_FUNCTION</a>,
+         <a href="#intern">clIntern</a>(<a href="#istr_some_function">STR_SOME_FUNCTION__8</a>, <a href="#ipkg_user">PKG_USER</a>, clEOA));</a>
+  <a name="istr_element_type">clSetq(<a href="#str_element_type">STR_ELEMENT_TYPE__9</a>,
+         <a href="#charpsimplebasestring">clCharpSimpleBaseString</a>("ELEMENT-TYPE"));</a>
+  <a name="ikey_element_type">clSetq(<a href="#key_element_type">keyELEMENT_TYPE</a>, <a href="#makekeyword">clMakeKeyword</a>(<a href="#istr_element_type">STR_ELEMENT_TYPE__9</a>, clEOA));</a>
+
+  <a name="in-package">clSetSymbolValueValue(<a href="#ipackage">clstarPACKAGEstar</a>, clPkg(<a href="#ikey_user">keyUSER</a>, clEOA));</a>
+  <a name="print-hello"><a href="#print">clPrint</a>(<a href="#ihello">usrHELLO</a>, clEOA);</a>
+  <a name="write-line"><a href="#writeline">clWriteLine</a>(<a href="#istr_this">STR_This_is_a_string__2</a>, clEOA);</a>
+  <a name="print-42"><a href="#print">clPrint</a>(<a href="#ii_42">I_42</a>, clEOA);</a>
+  <a name="let">{ clObject <a name="x">x</a>, <a name="y">y</a>;
+    <a name="ix">clSetq(<a href="#x">x</a>,
+           clFuncallFunction(clFdefinition(<a href="#ifoo">usrFOO</a>, clEOA),
+                             <a href="#ii_42">I_42</a>,
+                             clEOA));</a>
+    <a name="iy">clSetq(<a href="#y">y</a>,
+           clFuncallFunction(clFdefinition(<a href="#ibar">usrBAR</a>, clEOA),
+                             <a href="#istr_this">STR_This_is_a_string__2</a>,
+                             clEOA));</a>
+    if (clTrue(clFuncallFunction(clFdefinition(<a href="#ibaz">usrBAZ</a>, clEOA),
+                                 <a href="#ix">x</a>,
+                                 clEOA)))
+      <a href="#print">clPrint</a>(<a href="#iy">y</a>, clEOA); }</a>
+  <a name="defun">clSetSymbolFunctionValue(<a href="#ifoo_bar">usrFOO_BAR</a>,
+                           clMakeClosure(0, <a href="#foobar">usrFooBar</a>, clNULL_HOOK));</a>
+  usrFOO_BAR;
+  clUnwind(4); }
+</pre>
+
+<HR>
+<!--<a href="index.htm">[previous]</A> <A HREF="distribution.htm">[next]</A> -->
+<A HREF="index.htm">[contents]</A>
+</BODY>
+</HTML>
+

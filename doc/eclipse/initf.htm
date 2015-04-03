@@ -1,0 +1,76 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: C Function clInit</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>C Function</I> <B>clInit</B><P>
+<B>Syntax:</B><P>
+
+<B>clInit</B> <I>initial_stack_size</I> =&gt; <I>void</I><P>
+
+<B>Arguments and Values:</B><P>
+
+<I>initial_stack_size</I>---an <code>unsigned int</code>. <P>
+<P>
+
+<B>Description:</B><P>
+
+Initializes all data used by, and available from, the Eclipse run time
+<a href="gloss.htm#library"><i>library (2)</i></a>, and prepares the
+system for use.
+
+<p>
+Space for <i>initial_stack_size</i> entries are allocated for the Lisp
+control stack (i.e. that which keeps track of bindings, catch tags,
+unwind-protects, etc.)  If 0 is specified for
+<i>initial_stack_size</i>, an implementation-specific default value is
+used.
+
+<p>
+<B>Side Effects:</B> <P> 
+
+After <b>clInit</b> returns, some Lisp external and internal symbols
+used by the the run time library are interned, bound and fbound
+appropriately, and have correct property lists.  However,
+<b>clInit</b> is not required to reinitialize any such data if called
+repeatedly, or after the system has already been initialized in some
+other way.
+
+<p>
+<B>Affected By:</B> None.<P>
+
+<B>Exceptional Situations:</B> None.<P>
+
+<B>See Also:</B><P>
+
+<a href="system.htm">Initializing the Eclipse Library</a>, <a
+href="initdf.htm"><b>clInitD</b></a>, <a
+href="top.htm">Lisp Top-Level</a>.
+
+<P>
+<B>Notes:</B> 
+
+<P>
+The default <i>initial_stack_size</i> is currently 1024.
+
+<p>
+<p>Any <a href="gloss.htm#stand"><i>stand-alone
+application (1)</i></a>, (both <a
+href="gloss.htm#development"><i>dynamic applications</i></a> and <a
+href="gloss.htm#runtime"><i>run time applications</i></a>,) must be
+initialized by calling <b>clInit</b>.
+
+
+<HR>
+<A HREF="cdict.htm">[Previous]</A>
+<A HREF="initdf.htm">[Next]</A> 
+<a href="cdict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

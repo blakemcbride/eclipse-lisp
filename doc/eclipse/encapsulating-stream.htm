@@ -1,0 +1,85 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Encapsulating-Stream</TITLE>
+</HEAD>
+
+<a href="extensions.htm">CLIM</a> defined<BR>
+<I>Class</I> <B>ENCAPSULATING-STREAM</B>,
+<P>
+
+<B>Class Precedence List:</B><P>
+
+<b>encapsulating-stream</b>, <b>stream</b>, <b>standard-object</b>,
+<b>t</b><p>
+
+<B>Description:</B>
+
+<p>
+An encapsulating stream is a special kind of stream that "closes over"
+another stream, handling some of the usual stream protocol operations
+itself, and delegating the remaining operations to the "encapsulated"
+stream.  Encapsulating streams may be used by some CLIM
+implementations in order to facilitate the implementation of features
+that require the dynamic modification of a stream's state and
+operations.
+
+<P>
+<b>Encapsulating-stream</b> classes must provide "trampoline" methods
+for all stream protocol operations in which they will participate.
+These "trampolines" will simply call the same generic function on the
+encapsulated stream.  
+
+<p>
+<b>Initialization:</b>
+<P><b>:stream</b> All encapsulating streams must handle the
+<b>:stream</b> initarg, which used to specify the stream to be encapsulated.
+
+<p>
+<b>Readers:</b>
+
+<P>
+<b>encapsulating-stream-stream</b> <i>stream</i><br>
+<i>Primary Method</i> <b>encapsulating-stream-stream</b></a> 
+ (<i>stream</i> encapsulating-stream)
+
+<p> Returns the stream encapsulated by the <b>encapsulating-stream</b>
+<i>stream</i>.
+
+<P>
+<B>See Also:</B> <P> 
+
+<a href="extensions.htm">"Extensions to Common Lisp"</a>, 
+<a href="clim-stream-classes.htm"><b>CLIM stream classes</b></a>,
+<a href="eclipse-stream-classes.htm"><b>Eclipse stream classes</b></a>, 
+<a href="stream-element-type.htm"><b>stream-element-type</b></a>,
+<a href="open-stream-p.htm"><b>open-stream-p</b></a>
+<a href="close.htm"><b>close</b></a>.
+<p>
+
+<B>Notes:</B> 
+
+<P>
+CLIM implementations need not use encapsulating streams at all.  If
+encapsulating streams are used, they must adhere to the the
+encapsulating-stream protocol.  Encapsulating streams are not part of
+CLIM's API.
+
+<p> The <a href="extensions.htm">CLIM</a> specification does not
+define the precise <b>class-precedence-list</b> of this classes.  The
+Eclipse-defined <b>class-precedence-list</b> specified here is
+consistent with the requirements of CLIM.
+
+<P> Eclipse may use <b>encapsulating-stream</b> to implement various
+<a href="cl.htm#ansi">ANSI<a></a> <em>composite streams</em>. 
+
+<HR>
+<A HREF="close.htm">[Previous]</A> <A HREF="encapsulating-stream-p.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>

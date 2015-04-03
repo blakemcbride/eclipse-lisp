@@ -1,0 +1,9 @@
+#!/bin/sh
+lisp -core hpcmucl.core -eval "(ccq \"test/$1\" :et)"
+
+
+# c-pkg common-comp macro-comp pretty-comp prim-decs kernel 
+# array character condition equalp file-stream comp-stream circle 
+# printer format print-object file describe debug literal c-walk 
+# default-pp reader stream pretty directives c pathname temp 
+# character file-stream comp-stream evaluation describer walk-top walk-util 

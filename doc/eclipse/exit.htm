@@ -1,0 +1,65 @@
+<!-- The contents of this page are &copy; Copyright 1996 Elwood Corp. -->
+<!-- <A HREF=index.htm>See title page.</A> -->
+
+<HTML>
+<HEAD>
+<TITLE>Eclipse: Restart EXIT</TITLE>
+</HEAD>
+
+Eclipse defined<BR>
+<I>Restart</I> <B>EXIT</B><P>
+<B>Data Arguments Accepted:</B><P>
+
+<i>status</i>--a generalized boolean.  The default is <code>NIL</code>.<p>
+
+<i>exitp</i>--a generalized boolean.  The default is <code>T</code>.<p>
+
+<B>Description:</B><P>
+
+The <b>exit</b> <em>restart</em> is used by a top-level application
+loop (such as the <a href="gloss.htm#top-level"><i>Lisp top-level</i></a>)
+to provide a way to cleanly exit the application.
+
+<p>
+If <i>exitp</i> is <em>true</em>, the <i>status</i> argument is
+returned as the value of the application that defined the restart.  
+
+<p>
+If <i>exitp</i> is <em>false</em>, <code>NIL</code> is returned to the
+caller of the restart, and no non-local exit is performed (i.e. the
+restart <em>declines</em>).
+
+<p>
+<B>See Also:</B><P> 
+
+<a href="top.htm">"Lisp top-level"</a>, 
+<a href="rep.htm">"The Read-Eval-Print Loop and the Debugger"</a>, 
+<a href="topf.htm"><b>clLispTopLevel</b></a>, 
+<a href="exitf.htm"><b>exit</b></a> (<em>function</em>).<P>
+
+<B>Notes:</B> <P>
+
+The <a href="topf.htm"><b>clLispTopLevel</b></a> establishes an
+<b>exit</b> restart which, when invoked interactively, prompts on <a
+href="svars.htm"><b>*query-io*</b></a> for confirmation that the user
+really wants to exit Lisp.  The <i>exitp</i> argument to the restart
+will be <em>true</em> if the user agrees, and <em>false</em>
+otherwise.  The <i>status</i> argument is <code>NIL</code> in either
+case.
+
+<p>Regardless of how it is invoked, the <b>exit</b> restart
+established by <a href="topf.htm"><b>clLispTopLevel</b></a>
+immediately returns <i>status</i> to the caller of
+<b>clLispTopLevel</b> if <i>exitp</i> is <em>true</em>, and returns
+<code>NIL</code> as the value of <b>invoke-restart</b> or
+<b>invoke-restart-interactively</b> if <i>exitp</i> is <em>false</em>.
+
+<HR>
+<A HREF="exitf.htm">[Previous]</A> 
+<A HREF="machine-id.htm">[Next]</A> 
+<a href="dict.htm">[Up]</a>
+<A HREF="eclipse.htm">[Documentation Contents]</A>
+ <A HREF="http://www.elwood.com/eclipse-info">[Eclipse Home Page]</A>
+
+</BODY>
+</HTML>
