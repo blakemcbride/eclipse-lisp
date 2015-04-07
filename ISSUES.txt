@@ -1,0 +1,34 @@
+
+
+Open items in Eclipse Common Lisp
+
+These two items need to be corrected before serious use of the system
+is made.  Operating on a 32 bit machine may hide these problems, but
+they definitely cause problems on a 64 bit machine.
+
+1.  exit_EXCEPTION declared and assigned as an int but used as a
+pointer to a structure.
+
+eclipse defines exit_EXCEPTION by use of the clUnwindingp macro
+defined in eclipse.h.
+
+The macro clUnwindProtect in eclipse.h uses clUnwindingp and defines it
+to be an int.  It then assigns it an int value from _setjmp.
+
+Later in the macro clCleanupEnd macro defined in eclipse.h,
+the same int variable is passed to clUnwindExit_int.
+clUnwindExit_int is then defined to clUnwindExit while
+typecasting the int value passed to a pointer to a structure!
+
+clUnwindExit is defined in interface.c where is accepts _and_ uses /
+de-references a pointer to that structure (which is really only an int).
+
+2.  Pointer / int confusion in UnrecognizedControlTag()
+
+UnrecognizedControlTag() is defined in interface.c.  It uses
+clRemoveControlOp() which is defined as a pointer to a clControlOpCell
+structure in eclipse.h.  It is then cast to an int and passed to
+clIntFixnum() which expects an int.
+
+
+Blake McBride
