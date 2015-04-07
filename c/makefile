@@ -67,6 +67,8 @@ RM = rm -f
 #LINT.c=$(LINT) $(LINTFLAGS) $(CPPFLAGS) $(TARGET_ARCH)
 #.SUFFIXES: .ln
 
+USERSOURCE = 
+
 #########################################################################
 # THE SOURCE FILES AND THEIR DEPENDENCIES
 #########################################################################
@@ -98,6 +100,7 @@ dobjects =       $(dsources:.c=.o)
 static-objects = $(static-sources:.c=.o)
 lints =          $(sources:.c=.ln) $(dsources:.c=.ln) eclipse.ln initd.ln
 static-lints =   $(static-sources:.c=.ln)
+user-objects =   $(USERSOURCE:.c=.o)
 
 l = libeclipse
 
@@ -105,7 +108,7 @@ l = libeclipse
 test: eclipse
 #	./eclipse -n
 
-$(objects) $(dobjects) $(static-objects) $(lints) eclipse.o initd.o: eclipse.h 
+$(objects) $(dobjects) $(static-objects) $(lints) eclipse.o initd.o $(user-objects): eclipse.h 
 
 interface.o $(static-objects) $(static_lints): statics.h
 
@@ -117,9 +120,9 @@ character.o character.ln: chars.h
 # TARGETS
 #########################################################################
 # The LIBDL hair is to handle broken dl library name on HP.
-eclipse: $(l).a $(l)d.a  eclipse.o 
+eclipse: $(l).a $(l)d.a  eclipse.o  $(user-objects)
 	if [ `uname -s` = "HP-UX" ]; then LIBDL=dld; else LIBDL=dl; fi; \
-	$(CC) $(CFLAGS) $(LDFLAGS) -L. eclipse.o -o eclipse -leclipse -leclipsed -lm -l$$LIBDL -lgc
+	$(CC) $(CFLAGS) $(LDFLAGS) -L. eclipse.o -o eclipse $(user-objects) -leclipse -leclipsed -lm -l$$LIBDL -lgc
 
 # See bottom of file for alternatives that don't keep .o files lying around.
 $(l).a: $(objects) $(static-objects) 
