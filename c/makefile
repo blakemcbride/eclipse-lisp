@@ -126,11 +126,11 @@ eclipse: $(l).a $(l)d.a  eclipse.o  $(user-objects)
 
 # See bottom of file for alternatives that don't keep .o files lying around.
 $(l).a: $(objects) $(static-objects) 
-	$(AR) $(ARFLAGS)l $@ $?
+	$(AR) $(ARFLAGS) $@ $?
 	ranlib $@
 
 $(l)d.a: $(dobjects) initd.o
-	$(AR) $(ARFLAGS)l $@ $?
+	$(AR) $(ARFLAGS) $@ $?
 	ranlib $@
 
 libgc.a:
