@@ -3013,6 +3013,11 @@ void clProgvDbind __P((clProgvCell *, clObject, clObject));
 #define clUvar(label)		clPaste2(unwind_,label)
 #define clUnwindingp(label) 	clPaste2(exit_,label)
 
+/* The setjmp/longjmp API only passes an int value.  On 64-bit systems
+   a pointer does not fit in an int.  We store the clExitCell pointer
+   in this global and pass only a flag (1) through longjmp. */
+extern clExitCell *clPendingUnwindExit;
+
 #define clUnwindProtect(label)				\
   clMultipleValueProg1(clCleanupValues(label));		\
   clCleanupCell clUvar(label);				\
@@ -3030,12 +3035,15 @@ void clProgvDbind __P((clProgvCell *, clObject, clObject));
 #define clCleanupEnd(label)			\
   clRestoreValues(clCleanupValues(label));	\
   if (clUnwindingp(label)) 			\
-    clUnwindExit_int(clUnwindingp(label))
+    clUnwindExit(clPendingUnwindExit)
 
+/* clJumpToExit stores the exit pointer in the global and passes 1
+   through longjmp so that _setjmp returns nonzero. */
 #ifdef LINT
-   void clUnwindExit_int __P((int));
+   void clJumpToExitCleanup __P((jmp_buf, clExitCell *));
 #else
-#  define clUnwindExit_int(i) clUnwindExit((clExitCell *)(intptr_t) i)
+#  define clJumpToExitCleanup(jbuf, exitp) \
+     (clPendingUnwindExit = (exitp), _longjmp(jbuf, 1))
 #endif
 
 /*********************************************************************

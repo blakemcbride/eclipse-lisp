@@ -542,15 +542,17 @@ clObject clFuncall(clVaAlist) clVaDcl {
 /******************************************************************
   CONTROL STACK
  ******************************************************************/
+/* Global used to pass the exit pointer around setjmp/longjmp.
+   See eclipse.h clUnwindProtect/clCleanupEnd for explanation. */
+clExitCell *clPendingUnwindExit = NULL;
+
 #ifdef LINT
    clControlOpCell *clMallocControlStack();
    clControlOpCell *clReallocControlStack();
-   void clJumpToExit();
 #else
 #  define clMallocControlStack(size) (clControlOpCell *) clMalloc(size)
 #  define clReallocControlStack(p, size) \
  	(clControlOpCell *) clRMalloc((char *)p, size)
-#  define clJumpToExit(jbuf, exitp) _longjmp(jbuf, (int)(intptr_t) exitp)
 #endif
 
 #ifdef EXPANDABLE_CONTROL_STACK
@@ -699,8 +701,8 @@ void clUnwindExit(exitp) clExitCell *exitp; {
       clRemoveControlOp();
       break;
     case cl_CLEANUP_TAG:
-      clJumpToExit(clRemoveControlOp()->cleanup_data->machine_state,
-		   exitp); 
+      clJumpToExitCleanup(clRemoveControlOp()->cleanup_data->machine_state,
+		   exitp);
     case cl_ENVIRONMENT_CLEANUP_TAG:
       *CL_dynamic_environment->environment_cleanup_data->hook =
 	CL_dynamic_environment->environment_cleanup_data->old_env; 

@@ -1,34 +1,41 @@
 
-
 Open items in Eclipse Common Lisp
 
-These two items need to be corrected before serious use of the system
-is made.  Operating on a 32 bit machine may hide these problems, but
-they definitely cause problems on a 64 bit machine.
 
-1.  exit_EXCEPTION declared and assigned as an int but used as a
-pointer to a structure.
+1.  K&R (old-style) function definitions throughout C source.
 
-eclipse defines exit_EXCEPTION by use of the clUnwindingp macro
-defined in eclipse.h.
+    The C source uses pre-ANSI K&R function definition syntax
+    throughout interface.c and eclipse.c (hundreds of functions).
+    These are suppressed with -Wno-old-style-definition in the
+    makefile.  While not a correctness issue, K&R definitions prevent
+    the compiler from checking argument types at call sites.
 
-The macro clUnwindProtect in eclipse.h uses clUnwindingp and defines it
-to be an int.  It then assigns it an int value from _setjmp.
+2.  No FASL format or image save/load.
 
-Later in the macro clCleanupEnd macro defined in eclipse.h,
-the same int variable is passed to clUnwindExit_int.
-clUnwindExit_int is then defined to clUnwindExit while
-typecasting the int value passed to a pointer to a structure!
+    The byte-code compiler was never completed (skeleton in
+    lisp/non-build/byte.lisp).  There is no way to save a Lisp image
+    or produce fast-load files.  The only compilation path is
+    compile-file to C.
 
-clUnwindExit is defined in interface.c where is accepts _and_ uses /
-de-references a pointer to that structure (which is really only an int).
+3.  No thread support.
 
-2.  Pointer / int confusion in UnrecognizedControlTag()
+    A threads module exists (lisp/non-build/threads.lisp) but is not
+    part of the build.  The runtime is single-threaded.
 
-UnrecognizedControlTag() is defined in interface.c.  It uses
-clRemoveControlOp() which is defined as a pointer to a clControlOpCell
-structure in eclipse.h.  It is then cast to an int and passed to
-clIntFixnum() which expects an int.
+4.  ed function not implemented.
+
+    The standard ed function does nothing.
+
+5.  Fixnum range is 29 bits.
+
+    MOST-POSITIVE-FIXNUM is 536,870,911 (2^29 - 1).  This is smaller
+    than most modern implementations provide.
+
+6.  Float type conflation.
+
+    short-float and single-float are the same type.  double-float and
+    long-float are the same type.  This is permitted by the ANSI
+    standard but may surprise users expecting four distinct float types.
 
 
 Blake McBride
