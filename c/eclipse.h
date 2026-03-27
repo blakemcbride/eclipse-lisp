@@ -89,6 +89,7 @@
 #endif
 
 #include <stddef.h>		/* wchar_t and other types */
+#include <stdint.h>		/* intptr_t */
 #include <limits.h>		/* CHAR_BIT */
 #include <setjmp.h>		/* control structure */
 
@@ -3034,7 +3035,7 @@ void clProgvDbind __P((clProgvCell *, clObject, clObject));
 #ifdef LINT
    void clUnwindExit_int __P((int));
 #else
-#  define clUnwindExit_int(i) clUnwindExit((clExitCell *) i)
+#  define clUnwindExit_int(i) clUnwindExit((clExitCell *)(intptr_t) i)
 #endif
 
 /*********************************************************************

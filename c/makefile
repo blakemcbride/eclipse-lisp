@@ -11,7 +11,7 @@ pflags=$(gcc-wflags)
 # On some platforms, there may not be enough space in /tmp, so it may
 # also be necessary to also export TMPDIR=`pwd` 
 #CFLAGS=-I. -O2 $(pflags)
-CFLAGS=-I. -g $(pflags)
+CFLAGS=-I. -g -Wno-old-style-definition $(pflags)
 ADDITIONAL_LINTFLAGS=-i
 LINTFLAGS=-DLINT $(LINT_FLAGS)
 
@@ -235,8 +235,8 @@ clean-lint:
 	$(RM) $(lints)
 
 clean:	clean-objects clean-lint
-	$(RM) gc.h libgc.a 
-	cd gc; make clean
+	$(RM) gc.h libgc.a
+	if [ -d gc ]; then cd gc; make clean; fi
 
 # get rid of sources so we can get them again from the master
 # directory
@@ -323,7 +323,7 @@ clean-all: clean clean-c clean-bin
 # ADDITIONAL RULES
 #########################################################################
 # This is not defined on some platforms (Motorola).
-.c.ln: eclipse.h
+.c.ln:
 	$(LINT.c) $(OUTPUT_OPTION) $(ADDITIONAL_LINTFLAGS) $<
 
 #########################################################################

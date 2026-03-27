@@ -25,6 +25,7 @@
 
 #include <stdio.h>		/* rename remove cuserid */
 #include <stdlib.h>		/* exit rand getenv mbtowc wctomb */
+#include <stdint.h>		/* intptr_t */
 #include <ctype.h>		/* isprint isalpha isalnum isupper islower toupper tolower */ 
 #include <math.h>		/* fabs ldexp cel floor (trig functions) */
 #include <string.h>		/* memcpy strlen memmove */
@@ -549,7 +550,7 @@ clObject clFuncall(clVaAlist) clVaDcl {
 #  define clMallocControlStack(size) (clControlOpCell *) clMalloc(size)
 #  define clReallocControlStack(p, size) \
  	(clControlOpCell *) clRMalloc((char *)p, size)
-#  define clJumpToExit(jbuf, exitp) _longjmp(jbuf, (int) exitp)
+#  define clJumpToExit(jbuf, exitp) _longjmp(jbuf, (int)(intptr_t) exitp)
 #endif
 
 #ifdef EXPANDABLE_CONTROL_STACK
@@ -636,8 +637,8 @@ static void UnrecognizedControlTag() {
   clError(clCONTROL_ERROR, keyFORMAT_CONTROL,
 	  clCharpSimpleBaseString("Unrecognized control tag #x~x at #x~x."),
 	  keyFORMAT_ARGUMENTS,
-	  clList(clIntFixnum((int) x),
-		 clIntFixnum((int) clRemoveControlOp()),
+	  clList(clIntFixnum((int)(intptr_t) x),
+		 clIntFixnum((int)(intptr_t) clRemoveControlOp()),
 		 clEOA),
 	  clEOA);
 }
@@ -1313,7 +1314,6 @@ clObject clGetenv(clVaAlist) clVaDcl {
 clObject clUname(c) int c; {
 	char *p; 
 #ifdef unix
-  extern char *cuserid();
   struct utsname name;
   switch (c) {
   case 'u':
@@ -1321,7 +1321,7 @@ clObject clUname(c) int c; {
   default: if (uname(&name) == -1) c = '\0'; break;
   }
   switch (c) {
-  case 'u': p = cuserid(NULL); break;
+  case 'u': p = getlogin(); break;
   case 'h': p = getenv("HOME"); break;
   case 's': p = name.sysname; break;
   case 'n': p = name.nodename; break;
@@ -2777,7 +2777,9 @@ clObject clMakeRatio(n, d) clObject n, d; {
 #endif
 
 #if !(defined SunOS4)
-#  define signbit(x) ((x) < 0.0 )
+#  ifndef signbit
+#    define signbit(x) ((x) < 0.0 )
+#  endif
    /* modf() could also be used. */
    double aint __P((double));
    double aint (x) double x; { return ( signbit(x) ? ceil(x) : floor(x) ); }

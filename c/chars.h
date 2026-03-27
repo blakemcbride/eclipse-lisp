@@ -1,5 +1,7 @@
 #ifdef linux
-#  define __STDC_VERSION__ 1	/* claims conformance, but isn't */
+#  ifndef __STDC_VERSION__
+#    define __STDC_VERSION__ 1	/* claims conformance, but isn't */
+#  endif
 #endif
 
 #if (defined __STDC_VERSION__) && __STDC_VERSION__ == 199409L 
