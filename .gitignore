@@ -5,3 +5,7 @@
 *.a
 c/eclipse
 
+
+# Code-RAG local index files (written by bld; machine-local, not part of the project)
+.mcp.json
+CLAUDE.local.md
