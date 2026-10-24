@@ -45,7 +45,7 @@ extern clObject clBASE_CHAR, clBASE_STRING, clBIT_VECTOR, clCONS,
   clCOMPLEX_EXTENDED_STRING, clCOMPLEX_VECTOR, clCONS_CLASSOBJ,
   clDERIVED_TYPE, clDERIVED_TYPE_EXPANSION_FUNCTION, clDERIVED_TYPE_P,
   clENSURE_CLASS, clENSURE_DEFTYPE, clEQ_NUMBER, clEQL, clEQUAL,
-  clERRORP, clEXPAND_DEFTYPE, clEXPAND_DEFTYPE1, clEXPAND_TYPE,
+  clEXPAND_DEFTYPE, clEXPAND_DEFTYPE1, clEXPAND_TYPE,
   clFLOAT, clFLOAT_LIMIT, clFUNCTION, clGETHASH, clGT,
   clILLEGAL_DISCRIMINATION_ERROR, clINTEGERIZE_LIMIT,
   clINTERN_ARRAY_TYPE, clINTERN_COMPLEX_TYPE, clINTERN_CONS_TYPE,
@@ -1117,10 +1117,7 @@ clObject clIllegalDiscriminationError clVdecl(_ap)
              clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clERRORP),
-                             STRn_19,
-                             L_1,
-                             clEOA)); } }
+    return(clError(STRn_19, L_1, clEOA)); } }
 
 clObject clUnionTypes clVdecl(_ap)
 { clObject type_specifiers, errorp, environment;

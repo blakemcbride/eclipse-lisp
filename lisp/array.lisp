@@ -271,7 +271,7 @@
   (if (< -1 axis-number (simple-array-rank array))
       (index-fixnum (simple-array-dimension
 		     array (fixnum-index axis-number)))
-      (illegal-array-axis-number array axis-number)))
+      (illegal-array-axis array axis-number)))
 
 (defgeneric ARRAY-TOTAL-SIZE (array))
 (defmethod ARRAY-TOTAL-SIZE ((array simple-basic-vector))

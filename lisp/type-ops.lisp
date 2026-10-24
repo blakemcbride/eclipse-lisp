@@ -195,7 +195,7 @@
 ;;;               UTILITIES                                      ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun illegal-discrimination-error (type)
-  (errorp "Type specifier ~s cannot be used for discrimination."
+  (error "Type specifier ~s cannot be used for discrimination."
 	  (type-name (type-name type))))
 
 (defun union-types (type-specifiers &optional (errorp t) environment)

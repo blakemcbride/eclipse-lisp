@@ -102,7 +102,7 @@ extern clObject clampersandOPTIONAL, clampersandREST, clBASE_CHAR,
   clDOT_ALLOWED_P, clDOUBLE_READER, clELT, clEND, clENOUGH_NAMESTRING,
   clENVIRONMENT, clEQ_NUMBER, clEQL, clEQUAL, clEQUAL_HASH, clEQUALP,
   clERRORP, clEXTENDED_STRING, clFILE_ERROR, clFILE_NAMESTRING,
-  clFILE_STREAM, clFILE_STREAM_PATHNAME, clFINALIZE_INHERITANCE,
+  clFILE_STREAM, clSTREAM_PATHNAME, clFINALIZE_INHERITANCE,
   clFIXED_VERSION_P, clFORMAT, clFROM_WILDNAME, clGE, clGETHASH,
   clGLOBAL_VARIABLE, clGT, clHASH_CODE, clHOST, clHOST_NAMESTRING,
   clHOST_PATHNAME_CLASS, clIDENTITY, clILLEGAL_PARSE_CHARACTER,
@@ -3554,7 +3554,7 @@ clObject clParseNamestring clVdecl(_ap)
         { { clObject L_0;
             clSetq(L_0, thing);
             clSetq(thing,
-                   clFuncallFunction(clSymbolFunctionValue(clFILE_STREAM_PATHNAME),
+                   clFuncallFunction(clSymbolFunctionValue(clSTREAM_PATHNAME),
                                      L_0,
                                      clEOA)); }
           if (clTrue(host))

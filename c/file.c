@@ -74,7 +74,7 @@ extern clObject clampersandKEY, clBASE_CHAR, clCONS, clIGNORE,
   clCLASS_PROTOTYPE, clCLEAN_VERSION, clCLOSE, clCOMPLEX_BASE_STRING,
   clCOMPLEX_BIT_VECTOR, clCOMPLEX_EXTENDED_STRING, clCOMPLEX_STRING,
   clCOMPLEX_VECTOR, clCOMPUTED_FILE_SEQUENCE_LENGTH,
-  clCOMPUTED_FILE_STRING_LENGTH, clDELETE_FILE, clDIRECTION,
+  clDELETE_FILE, clDIRECTION,
   clDIRECTORY, clDIV, clELEMENT_TYPE, clEND,
   clENSURE_DIRECTORIES_EXIST, clENSURE_DIRECTORY_PATHNAME, clEQL,
   clEQUALP, clEXPUNGE_FILE, clEXTEND_DIRECTORY, clEXTERNAL_FORMAT,
@@ -97,8 +97,7 @@ extern clObject clampersandKEY, clBASE_CHAR, clCONS, clIGNORE,
   clLEU8_FILE_INPUT_STREAM, clLEU8_FILE_OUTPUT_STREAM, clLT,
   clMAKE_DIRECTORY_PATH, clMAKE_INSTANCE,
   clMB_FILE_BIDIRECTIONAL_STREAM, clMB_FILE_INPUT_STREAM,
-  clMB_FILE_OUTPUT_STREAM, clMB_FILE_STREAM, clMB_INPUT_STREAM,
-  clMB_OUTPUT_STREAM, clMEMBER, clMETHOD_FUNCTION, clMULT,
+  clMB_FILE_OUTPUT_STREAM, clMB_FILE_STREAM, clMEMBER, clMETHOD_FUNCTION, clMULT,
   clNO_NEXT_METHOD, clNON_DIRECTORY_P, clNULL, clOBJECT, clOPEN,
   clOS_ENOUGH_NAMESTRING, clOS_NAMESTRING, clOUTPUT_BUFFER,
   clOUTPUT_FD, clOUTPUT_STREAM_P, clPARSE_DIRECTORY_NAMESTRING, clPATH,
@@ -2257,14 +2256,18 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
                                (_clEq(L_class_name543, clSIMPLE_BASE_STRING) ?
                                 CONS_169 :
                                 clNIL))))))))))))
-        { { clObject L_test__R2;
-            { clObject L_0;
-              { clObject L_0__R1;
-                clSetq(L_0__R1, object);
-                clSetq(L_0, clLength(L_0__R1, clEOA)); }
-              clSetq(L_test__R2, clZerop(L_0, clEOA)); }
-            if (clTrue(L_test__R2)) ; }
-          clSetq(L_g541, I_0); }
+        { clObject L_test__R2;
+          { clObject L_1, L_0;
+            clSetq(L_0, start);
+            if (clTrue(end)) clSetq(L_1, end);
+            else clSetq(L_1, clLength(object, clEOA));
+            clSetq(L_test__R2,
+                   clFuncallFunction(clSymbolFunctionValue(clGE),
+                                     L_0,
+                                     L_1,
+                                     clEOA)); }
+          if (clTrue(L_test__R2)) clSetq(L_g541, I_0);
+          else clSetq(L_g541, clNIL); }
       else clSetq(L_g541, clNIL); }
     if (clTrue(L_g541))
       return(clValues1(L_g541));
@@ -2817,16 +2820,15 @@ clObject clFileSequenceLength_clMB_FILE_STREAM_clT clVdecl(_ap)
       clSetq(L_1, object);
       clSetq(L_2, start);
       clSetq(L_3, end);
-      return(clFuncallFunction(clSymbolFunctionValue(clCOMPUTED_FILE_STRING_LENGTH),
-                               L_0,
-                               L_1,
-                               L_2,
-                               L_3,
-                               clEOA)); } } }
+      return(clComputedFileSequenceLength(L_0,
+                                          L_1,
+                                          L_2,
+                                          L_3,
+                                          clEOA)); } } }
 
-clDeclareEnv(clGetFilePosition_clMB_INPUT_STREAM_CallNextMethod);
-static clObject clGetFilePosition_clMB_INPUT_STREAM_CallNextMethod clVdecl(_ap)
-{ clUseEnv(clGetFilePosition_clMB_INPUT_STREAM_CallNextMethod);
+clDeclareEnv(clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod);
+static clObject clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod clVdecl(_ap)
+{ clUseEnv(clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod);
   { clObject cnm_args;
     { clBeginParse(_ap);
       clSetq(cnm_args, clVargs(_ap));
@@ -2858,7 +2860,7 @@ static clObject clGetFilePosition_clMB_INPUT_STREAM_CallNextMethod clVdecl(_ap)
                                    clEOA));
           return(clApply(L_0, L_1, L_2, cnm_args, clEOA)); } } } }
 
-clObject clGetFilePosition_clMB_INPUT_STREAM clVdecl(_ap)
+clObject clGetFilePosition_clMB_FILE_INPUT_STREAM clVdecl(_ap)
 { clObject *L_args586 = clMakeBinding(),
   *L_methods587 = clMakeBinding();
   { clBeginParse(_ap);
@@ -2871,8 +2873,8 @@ clObject clGetFilePosition_clMB_INPUT_STREAM clVdecl(_ap)
   { clObject _CallNextMethod_;
     clSetq(_CallNextMethod_,
            clMakeClosure(2,
-                         clGetFilePosition_clMB_INPUT_STREAM_CallNextMethod,
-                         &clEnvHook(clGetFilePosition_clMB_INPUT_STREAM_CallNextMethod),
+                         clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod,
+                         &clEnvHook(clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod),
                          &*L_methods587,
                          &*L_args586));
     { clObject L_form589, stream;
@@ -2912,7 +2914,7 @@ clObject clGetFilePosition_clMB_INPUT_STREAM clVdecl(_ap)
           return(clFuncallFunction(_CallNextMethod_, clEOA));
         else return(clValues1(clNIL)); } } } }
 
-clObject clGetFilePosition_keyBEFORE_clMB_OUTPUT_STREAM clVdecl(_ap)
+clObject clGetFilePosition_keyBEFORE_clMB_FILE_OUTPUT_STREAM clVdecl(_ap)
 { clObject *L_args591 = clMakeBinding(),
   *L_methods592 = clMakeBinding();
   { clBeginParse(_ap);
@@ -3990,11 +3992,11 @@ void clInitFile __P((void))
   { clObject L_8, L_6, L_0;
     clSetq(L_0, clEnsureGenericFunction(clGET_FILE_POSITION, clEOA));
     clSetq(L_6,
-           clList(clCanonicalizeSpecializer(clMB_INPUT_STREAM, clEOA),
+           clList(clCanonicalizeSpecializer(clMB_FILE_INPUT_STREAM, clEOA),
                   clEOA));
     clSetq(L_8,
            clMakeClosure(0,
-                         clGetFilePosition_clMB_INPUT_STREAM,
+                         clGetFilePosition_clMB_FILE_INPUT_STREAM,
                          clNULL_HOOK));
     clEnsureMethod(L_0, keyQUALIFIERS, clNIL, keyLAMBDA_LIST, CONS_155,
                    keySPECIALIZERS, L_6, keyFUNCTION, L_8,
@@ -4003,11 +4005,11 @@ void clInitFile __P((void))
   { clObject L_8, L_6, L_0;
     clSetq(L_0, clEnsureGenericFunction(clGET_FILE_POSITION, clEOA));
     clSetq(L_6,
-           clList(clCanonicalizeSpecializer(clMB_OUTPUT_STREAM, clEOA),
+           clList(clCanonicalizeSpecializer(clMB_FILE_OUTPUT_STREAM, clEOA),
                   clEOA));
     clSetq(L_8,
            clMakeClosure(0,
-                         clGetFilePosition_keyBEFORE_clMB_OUTPUT_STREAM,
+                         clGetFilePosition_keyBEFORE_clMB_FILE_OUTPUT_STREAM,
                          clNULL_HOOK));
     clEnsureMethod(L_0, keyQUALIFIERS, CONS_185, keyLAMBDA_LIST,
                    CONS_155, keySPECIALIZERS, L_6, keyFUNCTION, L_8,

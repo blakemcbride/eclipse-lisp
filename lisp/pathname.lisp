@@ -650,7 +650,7 @@
 		 proto thing host start end junk-allowed))))
     (PATHNAME (when host
 		(setq host (pathname-common-case thing host :host))))
-    (FILE-STREAM (setq thing (file-stream-pathname thing))
+    (FILE-STREAM (setq thing (stream-pathname thing))
 		 (when host
 		   (setq host (pathname-common-case thing host :host)))))
   (when (and host thing

@@ -58,7 +58,7 @@ extern clObject clBASE_CHAR, clBASE_STRING, clBIT_VECTOR, clINTEGER,
   clCONSTANT, clCOPY_ARRAY_CONTENTS, clELEMENT_VECTOR_TYPE, clELT,
   clEQ_NUMBER, clEXTENSION, clFILL_POINTER, clFORMAT, clGE,
   clGENERAL_VECTOR, clGLOBAL_VARIABLE, clILLEGAL_ARRAY_AXIS,
-  clILLEGAL_ARRAY_AXIS_NUMBER, clINDEX, clINITIALIZE_VECTOR, clLE,
+  clINDEX, clINITIALIZE_VECTOR, clLE,
   clLIST, clLT, clMAKE_ARRAY, clMAKE_OR_ADJUST_ARRAY,
   clMAKE_UNINITIALIZED_VECTOR, clMAKE_VECTOR, clMETHOD_FUNCTION,
   clMISSING_FILL_POINTER_ERROR, clMULT, clNEW_ELT, clNO_NEXT_METHOD,
@@ -1920,10 +1920,7 @@ clObject clArrayDimension_clARRAY_clINTEGER clVdecl(_ap)
         { clObject L_1, L_0;
           clSetq(L_0, array);
           clSetq(L_1, axis_number);
-          return(clFuncallFunction(clSymbolFunctionValue(clILLEGAL_ARRAY_AXIS_NUMBER),
-                                   L_0,
-                                   L_1,
-                                   clEOA)); } } } }
+          return(clIllegalArrayAxis(L_0, L_1, clEOA)); } } } }
 
 clObject clArrayTotalSize_clSIMPLE_BASIC_VECTOR clVdecl(_ap)
 { clObject *L_args622 = clMakeBinding(),

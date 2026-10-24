@@ -632,7 +632,7 @@
 (defun computed-file-sequence-length (stream object start end)
   (or (typecase object
 	(null 0)
-	(vector (when (zerop (length object))) 0))
+	(vector (when (>= start (or end (length object))) 0)))
       (let ((pos (when (output-stream-p stream) (get-file-position stream))))
 	(when (and pos (set-file-position stream pos)
 		   (typecase object
@@ -682,12 +682,12 @@
 ;;; Can't assume one element will be one byte.
 (defmethod File-Sequence-Length ((stream MB-FILE-STREAM) object
 			       &key (start 0) end)
-  (computed-file-string-length stream object start end))
-(defmethod Get-File-Position ((stream mb-input-stream))
+  (computed-file-sequence-length stream object start end))
+(defmethod Get-File-Position ((stream mb-file-input-stream))
   (when (>= (input-buffer-position stream)
 	    (input-buffer-end stream))
     (call-next-method)))
-(defmethod Get-File-Position :BEFORE ((stream mb-output-stream))    
+(defmethod Get-File-Position :BEFORE ((stream mb-file-output-stream))    
   (finish-output stream))
 
 (defmethod Set-File-Position :before ((stream buffered-file-input-stream)
