@@ -276,7 +276,8 @@ extern clObject clstarINTERRUPTSstar, clstarKEYWORD_PACKAGEstar,
   clEQL, clEQL_HASH, clEQUAL, clEQUAL_HASH, clEQUALP, clEQUALP_HASH,
   clFILE_ERROR, clFIXNUMP, clFLOATING_POINT_INEXACT,
   clFLOATING_POINT_INVALID_OPERATION, clFLOATING_POINT_OVERFLOW,
-  clFLOATING_POINT_UNDERFLOW, clFORMAT, clFPE_HANDLER, clFUNCALL,
+  clFIRST_NON_EMPTY_INDEX, clFLOATING_POINT_UNDERFLOW, clFORMAT,
+  clFPE_HANDLER, clFUNCALL, clHASH_TABLE_KEY, clHASH_TABLE_VALUE,
   clFUNCALL_FUNCTION, clGETCWD, clGETENV,
   clINTERNAL_TIME_UNITS_PER_SECOND, clILLEGAL_INSTRUCTION_HANDLER,
   clINTERRUPT_HANDLER, clLISTstar, clMACHINE_ID, clMAKE_KEYWORD,
@@ -3537,6 +3538,24 @@ clObject clSetSymbolSetfFunctionValue_HELPER(clVaAlist) clVaDcl {
   return(clValues1(clSetSymbolSetfFunctionValue(symbol, val)));
 }
 
+/* Used by the expansions of WITH-HASH-TABLE-ITERATOR and
+   WITH-PACKAGE-ITERATOR (and so DO-SYMBOLS, LOOP hash/symbol
+   iteration, etc.). */
+clObject clFirstNonEmptyIndex_HELPER(clVaAlist) clVaDcl {
+  clObject table, index; TwoArgs(table, index);
+  return(clValues1(clFirstNonEmptyIndex(table, index)));
+}
+
+clObject clHashTableKey_HELPER(clVaAlist) clVaDcl {
+  clObject table, index; TwoArgs(table, index);
+  return(clValues1(clHashTableKey(table, index)));
+}
+
+clObject clHashTableValue_HELPER(clVaAlist) clVaDcl {
+  clObject table, index; TwoArgs(table, index);
+  return(clValues1(clHashTableValue(table, index)));
+}
+
 /*********************************************************************
  * INITIALIZATION
  *********************************************************************/
@@ -3718,6 +3737,12 @@ void clInit(control_stack_size) unsigned int control_stack_size; {
 			   clMakeClosure(0, clSetSymbolFunctionValue_HELPER, clNULL_HOOK));
   clSetSymbolFunctionValue(clSET_SYMBOL_SETF_FUNCTION_VALUE,
 			   clMakeClosure(0, clSetSymbolSetfFunctionValue_HELPER, clNULL_HOOK));
+  clSetSymbolFunctionValue(clFIRST_NON_EMPTY_INDEX,
+			   clMakeClosure(0, clFirstNonEmptyIndex_HELPER, clNULL_HOOK));
+  clSetSymbolFunctionValue(clHASH_TABLE_KEY,
+			   clMakeClosure(0, clHashTableKey_HELPER, clNULL_HOOK));
+  clSetSymbolFunctionValue(clHASH_TABLE_VALUE,
+			   clMakeClosure(0, clHashTableValue_HELPER, clNULL_HOOK));
   
   clSetSymbolFunctionValue(clFUNCALL_FUNCTION,
 			   clMakeClosure(0, clFuncallFunction, clNULL_HOOK));
