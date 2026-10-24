@@ -576,7 +576,7 @@ static clObject clPrintPathnameReadably_Lambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, xp);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                       L_0,
                       STR_hashS__0,
                       clEOA); }
@@ -637,7 +637,7 @@ clObject clPrintPathnameReadably clVdecl(_ap)
         clSetq(L_0__R1, pathname);
         clSetq(L_6, clPathnameType(L_0__R1, clEOA)); }
       clSetq(L_7, clEql(version, keyNEWEST, clEOA));
-      return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                L_0,
                                L_1,
                                L_2,
@@ -659,7 +659,7 @@ clObject clWildcardp clVdecl(_ap)
   { clObject L_object430, L_class_name431;
     clSetq(L_object430, thing);
     clSetq(L_class_name431, clInstanceTag(L_object430));
-    if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+    if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  L_object430,
                                  SYM_0_LTV,
                                  clEOA)))
@@ -690,7 +690,7 @@ clObject clWildcardp clVdecl(_ap)
                                 CONS_29 :
                                 clNIL))))))))))))))
       { clObject L_1, L_0;
-        clSetq(L_0, clSymbolFunctionValue(clWILDCARDP));
+        clSetq(L_0, clSymbolFunctionChecked(clWILDCARDP));
         clSetq(L_1, thing);
         return(clSome(L_0, L_1, clEOA)); }
     else return(clValues1(clNIL)); } }
@@ -711,7 +711,7 @@ clObject clPathnameComponentEqual clVdecl(_ap)
       clSetq(L_0__R1, p1);
       clSetq(L_1__R1, name);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0__R1,
                                L_1__R1,
                                clEOA)); }
@@ -719,11 +719,11 @@ clObject clPathnameComponentEqual clVdecl(_ap)
       clSetq(L_0__R1, p2);
       clSetq(L_1__R1, name);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0__R1,
                                L_1__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                              L_0,
                              L_1,
                              L_2,
@@ -775,7 +775,7 @@ clObject clRegexp clVdecl(_ap)
       clSetq(L_0, start_s);
       clSetq(L_1, end_s);
       clSetq(source_done_p,
-             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -784,7 +784,7 @@ clObject clRegexp clVdecl(_ap)
         clSetq(L_0, start_r);
         clSetq(L_1, end_r);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+               clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -806,7 +806,7 @@ clObject clRegexp clVdecl(_ap)
             clSetq(L_0, regexp);
             clSetq(L_1, start_r);
             clSetq(key,
-                   clFuncallFunction(clSymbolFunctionValue(clELT),
+                   clFuncallFunction(clSymbolFunctionChecked(clELT),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -842,7 +842,7 @@ clObject clRegexp clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, end_r);
                 clSetq(L_test__R3,
-                       clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                       clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                          rest_regexp,
                                          L_1,
                                          clEOA)); }
@@ -856,7 +856,7 @@ clObject clRegexp clVdecl(_ap)
                     { clObject L_1;
                       clSetq(L_1, end_s);
                       clSetq(L_test__R4,
-                             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                                nsource,
                                                L_1,
                                                clEOA)); }
@@ -888,11 +888,11 @@ clObject clRegexp clVdecl(_ap)
                   clSetq(L_0, source);
                   clSetq(L_1, start_s);
                   clSetq(s,
-                         clFuncallFunction(clSymbolFunctionValue(clELT),
+                         clFuncallFunction(clSymbolFunctionChecked(clELT),
                                            L_0,
                                            L_1,
                                            clEOA)); }
-                if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                              s,
                                              clSEQUENCE,
                                              clEOA)))
@@ -945,7 +945,7 @@ clObject clPathnameComponentMatch clVdecl(_ap)
       clSetq(L_0__R1, p1);
       clSetq(L_1__R1, name);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0__R1,
                                L_1__R1,
                                clEOA)); }
@@ -953,11 +953,11 @@ clObject clPathnameComponentMatch clVdecl(_ap)
       clSetq(L_0__R1, p2);
       clSetq(L_1__R1, name);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0__R1,
                                L_1__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_MATCH),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_MATCH),
                              L_0,
                              L_1,
                              L_2,
@@ -975,7 +975,7 @@ clObject clCachedNamestring clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(pathname__R1,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     if (clTrue(clSlotBoundp(pathname__R1, clNAMESTRING, clEOA)))
@@ -983,7 +983,7 @@ clObject clCachedNamestring clVdecl(_ap)
     else
       { clObject L_value465;
         clSetq(L_value465,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_NAMESTRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_NAMESTRING),
                                  pathname__R1,
                                  clNIL,
                                  clEOA));
@@ -1010,7 +1010,7 @@ static clObject clNamestringError_Lambda clVdecl(_ap)
     clFuncall(L_0, L_1, L_2, clNIL, clNIL, clEOA); }
   { clObject L_0;
     clSetq(L_0, xp);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                       L_0,
                       STRn_19,
                       clEOA); }
@@ -1089,7 +1089,7 @@ clObject clLocalCase clVdecl(_ap)
                 clSetq(L_0__R2, *pathname);
                 clSetq(L_1__R1, *name);
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                          L_0__R2,
                                          L_1__R1,
                                          clEOA)); }
@@ -1132,7 +1132,7 @@ clObject clCompactifyString clVdecl(_ap)
         { clObject CL_char;
           clSetq(CL_char, clNIL);
           clLabel(NEXT_LOOP);
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        i,
                                        length,
                                        clEOA)))
@@ -1140,7 +1140,7 @@ clObject clCompactifyString clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, string);
             clSetq(CL_char,
-                   clFuncallFunction(clSymbolFunctionValue(clCHAR),
+                   clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                      L_0,
                                      i,
                                      clEOA)); }
@@ -1150,7 +1150,7 @@ clObject clCompactifyString clVdecl(_ap)
                 clSetq(L_0__R1, CL_char);
                 clSetq(L_0, clCharInt(L_0__R1, clEOA)); }
               clSetq(L_test,
-                     clFuncallFunction(clSymbolFunctionValue(clGE),
+                     clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        L_0,
                                        I_256,
                                        clEOA)); }
@@ -1187,7 +1187,7 @@ clObject clMakeDirectoryNamestring clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(dirs,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                L_0,
                                keyDIRECTORY,
                                clEOA)); }
@@ -1239,7 +1239,7 @@ clObject clMakeDirectoryNamestring clVdecl(_ap)
               clSetq(L_1, dir);
               clSetq(L_3, errorp);
               clSetq(str,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                        L_0,
                                        L_1,
                                        keyDIRECTORY,
@@ -1307,7 +1307,7 @@ clObject clNamestringPathnameClass clVdecl(_ap)
             clSetq(L_2, start);
             clSetq(L_3, end);
             clSetq(host__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_HOST),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_HOST),
                                      L_0,
                                      L_1,
                                      L_2,
@@ -1324,7 +1324,7 @@ clObject clNamestringPathnameClass clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, CL_class);
                   clSetq(L_test__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                            L_0,
                                            clSTANDARD_HOST_PATHNAME,
                                            clEOA)); }
@@ -1337,7 +1337,7 @@ clObject clNamestringPathnameClass clVdecl(_ap)
                     { clObject L_0;
                       clSetq(L_0, defaults);
                       clSetq(L_test__R3,
-                             clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                             clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                L_0,
                                                clSTANDARD_HOST_PATHNAME,
                                                clEOA)); }
@@ -1351,7 +1351,7 @@ clObject clNamestringPathnameClass clVdecl(_ap)
                       { clObject L_0;
                         clSetq(L_0, defaults);
                         clSetq(L_test__R4,
-                               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                  L_0,
                                                  clSTANDARD_HOST_PATHNAME,
                                                  clEOA)); }
@@ -1383,14 +1383,14 @@ clObject clNamestringPathnameClass clVdecl(_ap)
                     { clObject L_0__R1;
                       clSetq(L_0__R1, CL_class);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                             clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                                L_0__R1,
                                                clEOA)); }
                     clSetq(L_1, string);
                     clSetq(L_2, start);
                     clSetq(L_3, end);
                     clSetq(host__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_HOST),
+                           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_HOST),
                                              L_0,
                                              L_1,
                                              L_2,
@@ -1409,7 +1409,7 @@ clObject clNamestringPathnameClass clVdecl(_ap)
                         clSetq(L_0, host_class);
                         clSetq(L_1, CL_class);
                         clSetq(L_test__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                                  L_0,
                                                  L_1,
                                                  clEOA)); }
@@ -1830,7 +1830,7 @@ clObject clDirectoryReader clVdecl(_ap)
               clSetq(L_0__R1, namestring);
               clSetq(L_1, clLength(L_0__R1, clEOA)); } }
         clSetq(L_test__R1,
-               clFuncallFunction(clSymbolFunctionValue(clLT),
+               clFuncallFunction(clSymbolFunctionChecked(clLT),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -1840,7 +1840,7 @@ clObject clDirectoryReader clVdecl(_ap)
             clSetq(L_0, namestring);
             clSetq(L_1, start);
             clSetq(c,
-                   clFuncallFunction(clSymbolFunctionValue(clCHAR),
+                   clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -1859,7 +1859,7 @@ clObject clDirectoryReader clVdecl(_ap)
       { { clObject L_0;
           clSetq(L_0, start);
           clSetq(start,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0,
                                    I_1,
                                    clEOA)); }
@@ -1879,7 +1879,7 @@ clObject clDirectoryReader clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, pathname);
           clSetq(STARreadtableSTAR,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                    L_0,
                                    keyDIRECTORY,
                                    clEOA)); }
@@ -1898,7 +1898,7 @@ clObject clDirectoryReader clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, pathname);
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clDOT_ALLOWED_P),
+                         clFuncallFunction(clSymbolFunctionChecked(clDOT_ALLOWED_P),
                                            L_0__R1,
                                            keyDIRECTORY,
                                            clEOA)); }
@@ -1920,7 +1920,7 @@ clObject clDirectoryReader clVdecl(_ap)
                     { clObject L_0;
                       clSetq(L_0, start__R1);
                       clSetq(start__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0,
                                                I_1,
                                                clEOA)); }
@@ -1942,7 +1942,7 @@ clObject clDirectoryReader clVdecl(_ap)
                       { { clObject L_0;
                           clSetq(L_0, start__R1);
                           clSetq(start__R1,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0,
                                                    I_2,
                                                    clEOA)); }
@@ -1960,7 +1960,7 @@ clObject clDirectoryReader clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, dir);
                   clSetq(L_1__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                         clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                            L_0__R2,
                                            clEOA)); }
                 clSetq(L_0, clDelete(keyCURRENT, L_1__R1, clEOA)); }
@@ -1986,7 +1986,7 @@ clObject clDirectoryReader clVdecl(_ap)
                        clTerminatedReader(s, L_1, L_2, clEOA)); }
               clSaveValues(MVP1__r1);
               clSetq(terminal,
-                     clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                        s,
                                        clEOA));
               clRestoreValues(MVP1__r1); }
@@ -2040,7 +2040,7 @@ clObject clMergeDevice clVdecl(_ap)
           clSetq(L_2, host);
           clSetq(L_3, dhost);
           clSetq(L_test__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                    L_0,
                                    keyHOST,
                                    L_2,
@@ -2182,7 +2182,7 @@ clObject clMergeDirectories clVdecl(_ap)
           clBlockEnd(NIL__r1); }
         { clObject L_0;
           clSetq(L_0, *results);
-          return(clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+          return(clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                    L_0,
                                    clEOA)); } }
     else
@@ -2207,7 +2207,7 @@ static clObject clUnmergeDirectories_Lambda clVdecl(_ap)
       clSetq(L_0, clEnv(0, *pathname));
       clSetq(L_2, pc);
       clSetq(L_3, dc);
-      return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+      return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                L_0,
                                keyDIRECTORY,
                                L_2,
@@ -2252,7 +2252,7 @@ clObject clUnmergeDirectories clVdecl(_ap)
             clSetq(L_0__R2, d);
             clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    L_0__R1,
                                    index,
                                    clEOA)); }
@@ -2262,7 +2262,7 @@ clObject clUnmergeDirectories clVdecl(_ap)
       return(clValues1(clNIL));
     else
       { clObject L_test__R1;
-        if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+        if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      index,
                                      I_1,
                                      clEOA)))
@@ -2276,7 +2276,7 @@ clObject clUnmergeDirectories clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, *pathname);
                 clSetq(L_test__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                          L_0,
                                          keyBACK,
                                          keyDIRECTORY,
@@ -2305,15 +2305,15 @@ clObject clCombineSubcomponents clVdecl(_ap)
   { clBeginParse(_ap); clSetq(subs, clVargs(_ap)); clEndParse(_ap); }
   { clObject key;
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clIDENTITY));
+      clSetq(L_0, clSymbolFunctionChecked(clIDENTITY));
       clSetq(key, clFindIf(L_0, subs, clEOA)); }
     if (clTrue(clListp(key, clEOA)))
       { clObject L_0;
-        clSetq(L_0, clSymbolFunctionValue(clNCONC));
+        clSetq(L_0, clSymbolFunctionChecked(clNCONC));
         return(clApply(L_0, subs, clEOA)); }
     else
       { clObject L_1, L_0;
-        clSetq(L_0, clSymbolFunctionValue(clCONCATENATE));
+        clSetq(L_0, clSymbolFunctionChecked(clCONCATENATE));
         clSetq(L_1, clTypeOf(key, clEOA));
         return(clApply(L_0, L_1, subs, clEOA)); } } }
 
@@ -2343,7 +2343,7 @@ clObject clCanonicalizeComp clVdecl(_ap)
   { clObject L_object527, L_class_name528;
     clSetq(L_object527, comp);
     clSetq(L_class_name528, clInstanceTag(L_object527));
-    if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+    if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  L_object527,
                                  SYM_1_LTV,
                                  clEOA)))
@@ -2496,7 +2496,7 @@ clObject clTranslateItem clVdecl(_ap)
                     { clObject L_test__R3;
                       { clObject L_1, L_0;
                         clSetq(L_0,
-                               clSymbolFunctionValue(clWILDCARDP));
+                               clSymbolFunctionChecked(clWILDCARDP));
                         clSetq(L_1, to);
                         clSetq(L_test__R3,
                                clSetq(m,
@@ -2519,7 +2519,7 @@ clObject clTranslateItem clVdecl(_ap)
                           clSetq(L_0, to);
                           clSetq(L_1, m);
                           clSetq(mastercard,
-                                 clFuncallFunction(clSymbolFunctionValue(clELT),
+                                 clFuncallFunction(clSymbolFunctionChecked(clELT),
                                                    L_0,
                                                    L_1,
                                                    clEOA)); }
@@ -2531,7 +2531,7 @@ clObject clTranslateItem clVdecl(_ap)
                                  clNIL)));
                         { clObject L_1, L_0;
                           clSetq(L_0,
-                                 clSymbolFunctionValue(clWILDCARDP));
+                                 clSymbolFunctionChecked(clWILDCARDP));
                           clSetq(L_1, from);
                           clSetq(wp,
                                  clPositionIf(L_0,
@@ -2554,7 +2554,7 @@ clObject clTranslateItem clVdecl(_ap)
                             { clObject L_0__R1;
                               clSetq(L_0__R1, from);
                               clSetq(L_1,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                                        L_0__R1,
                                                        start_w,
                                                        clEOA)); }
@@ -2562,7 +2562,7 @@ clObject clTranslateItem clVdecl(_ap)
                               clSetq(L_0__R1, to);
                               clSetq(L_1__R1, m);
                               clSetq(L_2,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                                        L_0__R1,
                                                        L_1__R1,
                                                        clEOA)); }
@@ -2575,12 +2575,12 @@ clObject clTranslateItem clVdecl(_ap)
                           { clObject L_0__R1;
                             clSetq(L_0__R1, w);
                             clSetq(L_1,
-                                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                      L_0__R1,
                                                      start_w,
                                                      clEOA)); }
                           clSetq(s,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    start_s,
                                                    L_1,
                                                    clEOA)); }
@@ -2600,7 +2600,7 @@ clObject clTranslateItem clVdecl(_ap)
                         { clObject L_0;
                           clSetq(L_0, from);
                           clSetq(wildcard,
-                                 clFuncallFunction(clSymbolFunctionValue(clELT),
+                                 clFuncallFunction(clSymbolFunctionChecked(clELT),
                                                    L_0,
                                                    wp,
                                                    clEOA)); }
@@ -2612,7 +2612,7 @@ clObject clTranslateItem clVdecl(_ap)
                             clSetq(L_0__R1, to);
                             clSetq(L_2__R1, m);
                             clSetq(L_1,
-                                   clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                                   clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                                      L_0__R1,
                                                      start_m,
                                                      L_2__R1,
@@ -2621,7 +2621,7 @@ clObject clTranslateItem clVdecl(_ap)
                             { clObject L_0__R1;
                               clSetq(L_0__R1, wildcard);
                               clSetq(L_test__R4,
-                                     clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                                     clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                        L_0__R1,
                                                        clSEQUENCE,
                                                        clEOA)); }
@@ -2631,7 +2631,7 @@ clObject clTranslateItem clVdecl(_ap)
                                 { clObject L_0__R3;
                                   clSetq(L_0__R3, source);
                                   clSetq(L_0__R2,
-                                         clFuncallFunction(clSymbolFunctionValue(clELT),
+                                         clFuncallFunction(clSymbolFunctionChecked(clELT),
                                                            L_0__R3,
                                                            s,
                                                            clEOA)); }
@@ -2648,7 +2648,7 @@ clObject clTranslateItem clVdecl(_ap)
                               clSetq(L_2__R1,
                                      (clTrue(wp) ? s2 : end_s));
                               clSetq(L_2,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                                        L_0__R1,
                                                        s,
                                                        L_2__R1,
@@ -2673,7 +2673,7 @@ clObject clTranslateItem clVdecl(_ap)
                             clSetq(L_0__R1, to);
                             clSetq(L_1__R1, start_m);
                             clSetq(L_1,
-                                   clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                                   clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                                      L_0__R1,
                                                      L_1__R1,
                                                      end_m,
@@ -2705,7 +2705,7 @@ clObject clTranslateComponent clVdecl(_ap)
       clSetq(L_0, source_path);
       clSetq(L_1, slot);
       clSetq(source,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -2713,7 +2713,7 @@ clObject clTranslateComponent clVdecl(_ap)
       clSetq(L_0, from_path);
       clSetq(L_1, slot);
       clSetq(from,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -2721,7 +2721,7 @@ clObject clTranslateComponent clVdecl(_ap)
       clSetq(L_0, to_path);
       clSetq(L_1, slot);
       clSetq(to,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -2772,18 +2772,18 @@ clObject clPathnameHost clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(path,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_g550;
       clSetq(L_g550, CL_case);
       if (_clEq(L_g550, keyCOMMON))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  path,
                                  keyHOST,
                                  clEOA));
       else if (_clEq(L_g550, keyLOCAL))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                  path,
                                  keyHOST,
                                  clEOA));
@@ -2812,18 +2812,18 @@ clObject clPathnameDevice clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(path,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_g552;
       clSetq(L_g552, CL_case);
       if (_clEq(L_g552, keyCOMMON))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  path,
                                  keyDEVICE,
                                  clEOA));
       else if (_clEq(L_g552, keyLOCAL))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                  path,
                                  keyDEVICE,
                                  clEOA));
@@ -2852,18 +2852,18 @@ clObject clPathnameDirectory clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(path,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_g554;
       clSetq(L_g554, CL_case);
       if (_clEq(L_g554, keyCOMMON))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  path,
                                  keyDIRECTORY,
                                  clEOA));
       else if (_clEq(L_g554, keyLOCAL))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                  path,
                                  keyDIRECTORY,
                                  clEOA));
@@ -2892,18 +2892,18 @@ clObject clPathnameName clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(path,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_g556;
       clSetq(L_g556, CL_case);
       if (_clEq(L_g556, keyCOMMON))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  path,
                                  keyNAME,
                                  clEOA));
       else if (_clEq(L_g556, keyLOCAL))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                  path,
                                  keyNAME,
                                  clEOA));
@@ -2932,18 +2932,18 @@ clObject clPathnameType clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(path,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_g558;
       clSetq(L_g558, CL_case);
       if (_clEq(L_g558, keyCOMMON))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  path,
                                  keyTYPE,
                                  clEOA));
       else if (_clEq(L_g558, keyLOCAL))
-        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                  path,
                                  keyTYPE,
                                  clEOA));
@@ -2966,10 +2966,10 @@ clObject clPathnameVersion clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, pathname);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                              L_0,
                              keyVERSION,
                              clEOA)); } }
@@ -2985,10 +2985,10 @@ clObject clHostNamestring clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, pathname);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_HOST_NAMESTRING),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_HOST_NAMESTRING),
                              L_0,
                              clT,
                              clEOA)); } }
@@ -3004,10 +3004,10 @@ clObject clDirectoryNamestring clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, pathname);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_DIRECTORY_NAMESTRING),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_DIRECTORY_NAMESTRING),
                              L_0,
                              clT,
                              clEOA)); } }
@@ -3023,10 +3023,10 @@ clObject clFileNamestring clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, pathname);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_FILE_NAMESTRING),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_FILE_NAMESTRING),
                              L_0,
                              clT,
                              clEOA)); } }
@@ -3064,13 +3064,13 @@ clObject clEnoughNamestring clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, defaults);
       clSetq(def,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(path, clParseNamestring(L_0, clNIL, def, clEOA)); }
-    return(clNamestring(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_UNMERGE),
+    return(clNamestring(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_UNMERGE),
                                           path,
                                           def,
                                           clEOA),
@@ -3135,7 +3135,7 @@ clObject clMakePathname clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, defaults);
         clSetq(defaults__R1,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                  L_0,
                                  clEOA)); }
     else clSetq(defaults__R1, clNIL);
@@ -3148,7 +3148,7 @@ clObject clMakePathname clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, def);
       clSetq(dhost,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                L_0,
                                keyHOST,
                                clEOA)); }
@@ -3164,14 +3164,14 @@ clObject clMakePathname clVdecl(_ap)
         if (_clEq(L_g563, keyLOCAL))
           { clObject proto;
             clSetq(proto,
-                   clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                      clFindClass(CL_class, clEOA),
                                      clEOA));
             if (clTrue(hostp))
               { clObject L_1;
                 clSetq(L_1, host__R1);
                 clSetq(host__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                          proto,
                                          L_1,
                                          keyHOST,
@@ -3180,7 +3180,7 @@ clObject clMakePathname clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, device);
                 clSetq(device,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                          proto,
                                          L_1,
                                          keyDEVICE,
@@ -3189,7 +3189,7 @@ clObject clMakePathname clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, directory);
                 clSetq(directory,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                          proto,
                                          L_1,
                                          keyDIRECTORY,
@@ -3198,7 +3198,7 @@ clObject clMakePathname clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, name);
                 clSetq(name,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                          proto,
                                          L_1,
                                          keyNAME,
@@ -3207,7 +3207,7 @@ clObject clMakePathname clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, type);
                 clSetq(type,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                          proto,
                                          L_1,
                                          keyTYPE,
@@ -3216,7 +3216,7 @@ clObject clMakePathname clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, version);
                 clSetq(version,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                          proto,
                                          L_1,
                                          keyVERSION,
@@ -3225,7 +3225,7 @@ clObject clMakePathname clVdecl(_ap)
           clError(clTYPE_ERROR, keyDATUM, L_g563, keyEXPECTED_TYPE,
                   CONS_63, clEOA); }
     { clObject L_12, L_11, L_9, L_7, L_5, L_3, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clMAKE_INSTANCE));
+      clSetq(L_0, clSymbolFunctionChecked(clMAKE_INSTANCE));
       clSetq(L_3, host__R1);
       if (clTrue(directoryp))
         { clObject L_g583;
@@ -3243,7 +3243,7 @@ clObject clMakePathname clVdecl(_ap)
                   { clObject L_0__R2;
                     clSetq(L_0__R2, directory);
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                           clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                              L_0__R2,
                                              CONS_61,
                                              clEOA)); }
@@ -3268,7 +3268,7 @@ clObject clMakePathname clVdecl(_ap)
                 clSetq(L_5, clList(keyABSOLUTE, L_1__R1, clEOA)); }
             else
               clSetq(L_5,
-                     (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                     (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                L_g583,
                                                SYM_2_LTV,
                                                clEOA)) ?
@@ -3285,7 +3285,7 @@ clObject clMakePathname clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, defaults__R1);
           clSetq(L_5,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                    L_0__R1,
                                    keyDIRECTORY,
                                    clEOA)); }
@@ -3296,7 +3296,7 @@ clObject clMakePathname clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, defaults__R1);
           clSetq(L_7,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                    L_0__R1,
                                    keyNAME,
                                    clEOA)); }
@@ -3307,7 +3307,7 @@ clObject clMakePathname clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, defaults__R1);
           clSetq(L_9,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                    L_0__R1,
                                    keyTYPE,
                                    clEOA)); }
@@ -3322,7 +3322,7 @@ clObject clMakePathname clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, defaults__R1);
               clSetq(L_g590,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                        L_0__R1,
                                        keyVERSION,
                                        clEOA)); }
@@ -3335,7 +3335,7 @@ clObject clMakePathname clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, def);
           clSetq(L_4__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                    L_0__R2,
                                    keyDEVICE,
                                    clEOA)); }
@@ -3367,7 +3367,7 @@ clObject clMergePathnames clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, defaults);
       clSetq(def,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     clDbind(clstarDEFAULT_PATHNAME_DEFAULTSstar);
@@ -3376,11 +3376,11 @@ clObject clMergePathnames clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, pathname);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_2, default_version);
-      clUnwindReturn(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_MERGE),
+      clUnwindReturn(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_MERGE),
                                        L_0,
                                        def,
                                        L_2,
@@ -3434,7 +3434,7 @@ clObject clParseNamestring clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, defaults);
               clSetq(def,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                        L_0,
                                        clEOA)); }
           else
@@ -3472,7 +3472,7 @@ clObject clParseNamestring clVdecl(_ap)
                       clSetq(L_2__R1, start);
                       clSetq(L_3__R1, end);
                       clSetq(L_0__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_HOST),
+                             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_HOST),
                                                L_0__R2,
                                                L_1__R2,
                                                L_2__R1,
@@ -3498,28 +3498,28 @@ clObject clParseNamestring clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, CL_class);
             clSetq(proto,
-                   clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                      L_0,
                                      clEOA)); }
           if (clTrue(host))
             { clObject L_1;
               clSetq(L_1, host);
               clSetq(host,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                        proto,
                                        L_1,
                                        keyHOST,
                                        clEOA)); }
           { clObject L_values603, L_thing601, L_start602;
             { clMultipleValueCall(MVC);
-              clSetq(MVC, clSymbolFunctionValue(clLIST));
+              clSetq(MVC, clSymbolFunctionChecked(clLIST));
               { clObject L_5, L_4, L_3, L_2, L_1;
                 clSetq(L_1, thing);
                 clSetq(L_2, host);
                 clSetq(L_3, start);
                 clSetq(L_4, end);
                 clSetq(L_5, junk_allowed);
-                clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_NAMESTRING),
+                clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_NAMESTRING),
                                   proto,
                                   L_1,
                                   L_2,
@@ -3545,7 +3545,7 @@ clObject clParseNamestring clVdecl(_ap)
               clSetq(L_0, thing);
               clSetq(L_1, host);
               clSetq(host,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                        L_0,
                                        L_1,
                                        keyHOST,
@@ -3554,7 +3554,7 @@ clObject clParseNamestring clVdecl(_ap)
         { { clObject L_0;
             clSetq(L_0, thing);
             clSetq(thing,
-                   clFuncallFunction(clSymbolFunctionValue(clSTREAM_PATHNAME),
+                   clFuncallFunction(clSymbolFunctionChecked(clSTREAM_PATHNAME),
                                      L_0,
                                      clEOA)); }
           if (clTrue(host))
@@ -3562,7 +3562,7 @@ clObject clParseNamestring clVdecl(_ap)
               clSetq(L_0, thing);
               clSetq(L_1, host);
               clSetq(host,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                        L_0,
                                        L_1,
                                        keyHOST,
@@ -3585,7 +3585,7 @@ clObject clParseNamestring clVdecl(_ap)
                                     keyCOMMON,
                                     clEOA)); }
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_MATCH),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_MATCH),
                                      L_0__R1,
                                      keyHOST,
                                      L_2,
@@ -3621,11 +3621,11 @@ clObject clWildPathnameP clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, pathname);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
     clSetq(L_1, field_key);
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                              L_0,
                              L_1,
                              clEOA)); } }
@@ -3641,16 +3641,16 @@ clObject clPathnameMatchP clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, p1);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, p2);
       clSetq(L_1,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_MATCH),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_MATCH),
                              L_0,
                              L_1,
                              clEOA)); } }
@@ -3669,19 +3669,19 @@ clObject clTranslatePathname clVdecl(_ap)
   { clObject L_0;
     clSetq(L_0, source);
     clSetq(source,
-           clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                              L_0,
                              clEOA)); }
   { clObject L_0;
     clSetq(L_0, from_wildname);
     clSetq(from_wildname,
-           clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                              L_0,
                              clEOA)); }
   { clObject L_0;
     clSetq(L_0, to_wildname);
     clSetq(to_wildname,
-           clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                              L_0,
                              clEOA)); }
   { clObject L_test;
@@ -3700,7 +3700,7 @@ clObject clTranslatePathname clVdecl(_ap)
     clSetq(L_0, source);
     clSetq(L_1, from_wildname);
     clSetq(L_2, to_wildname);
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_TRANSLATE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_TRANSLATE),
                              L_0,
                              L_1,
                              L_2,
@@ -3785,7 +3785,7 @@ clObject clSharedInitialize_keyAFTER_clPATHNAME_clT clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, path);
             clSetq(L_value615,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_DEFAULT_DEVICE),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_DEFAULT_DEVICE),
                                      L_0,
                                      clEOA)); }
           return(cl_SETF_SlotValue(L_value615,
@@ -3920,7 +3920,7 @@ clObject clPathnamep clVdecl(_ap)
       clEndParse(_ap); }
     { clObject L_0;
       clSetq(L_0, x);
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                L_0,
                                clEnv(0, *pathname),
                                clEOA)); } } }
@@ -4060,7 +4060,7 @@ clObject clPathnameLocalComponent_clPATHNAME_clT clVdecl(_ap)
         clSetq(L_0__R1, pathname);
         clSetq(L_1__R1, component_name);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  L_0__R1,
                                  L_1__R1,
                                  clEOA)); }
@@ -4312,7 +4312,7 @@ clObject clPathnameComponentString_clPATHNAME_clSYMBOL_clT_clT clVdecl(_ap)
             clSetq(L_0__R2, pathname);
             clSetq(L_1__R1, component_name);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_KEY_MAP),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_KEY_MAP),
                                      L_0__R2,
                                      L_1__R1,
                                      clEOA)); }
@@ -4463,12 +4463,12 @@ clObject clPathnameHostNamestring_clPATHNAME clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, pathname);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                  L_0__R1,
                                  keyHOST,
                                  clEOA)); }
       clSetq(L_3, errorp);
-      return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+      return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                L_0,
                                L_1,
                                keyHOST,
@@ -4517,13 +4517,13 @@ clObject clPathnameFileNamestring_clPATHNAME clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, pathname);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                    L_0__R1,
                                    keyNAME,
                                    clEOA)); }
         clSetq(L_3, errorp);
         clSetq(name,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                  L_0,
                                  L_1,
                                  keyHOST,
@@ -4534,13 +4534,13 @@ clObject clPathnameFileNamestring_clPATHNAME clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, pathname);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                    L_0__R1,
                                    keyTYPE,
                                    clEOA)); }
         clSetq(L_3, errorp);
         clSetq(type,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                  L_0,
                                  L_1,
                                  keyTYPE,
@@ -4551,26 +4551,26 @@ clObject clPathnameFileNamestring_clPATHNAME clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, pathname);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                    L_0__R1,
                                    keyVERSION,
                                    clEOA)); }
         clSetq(L_3, errorp);
         clSetq(version,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                  L_0,
                                  L_1,
                                  keyVERSION,
                                  L_3,
                                  clEOA)); }
       clSetq(typep,
-             clNot(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+             clNot(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                      type,
                                      STR___78,
                                      clEOA),
                    clEOA));
       clSetq(versionp,
-             clNot(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+             clNot(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                      version,
                                      STR___78,
                                      clEOA),
@@ -4636,7 +4636,7 @@ static clObject clPathnameNamestringFormatControl_clPATHNAME_Lambda clVdecl(_ap)
         clUnwind(2); }
       { clObject L_0;
         clSetq(L_0, xp);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                           L_0,
                           STR_colon__80,
                           clEOA); } }
@@ -4825,7 +4825,7 @@ clObject clPathnameNamestring_clPATHNAME clVdecl(_ap)
         clSetq(L_0, pathname);
         clSetq(L_1, errorp);
         clSetq(host,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_HOST_NAMESTRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_HOST_NAMESTRING),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -4834,13 +4834,13 @@ clObject clPathnameNamestring_clPATHNAME clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, pathname);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_LOCAL_COMPONENT),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_LOCAL_COMPONENT),
                                    L_0__R1,
                                    keyDEVICE,
                                    clEOA)); }
         clSetq(L_3, errorp);
         clSetq(device,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT_STRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT_STRING),
                                  L_0,
                                  L_1,
                                  keyDEVICE,
@@ -4850,7 +4850,7 @@ clObject clPathnameNamestring_clPATHNAME clVdecl(_ap)
         clSetq(L_0, pathname);
         clSetq(L_1, errorp);
         clSetq(directory,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_DIRECTORY_NAMESTRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_DIRECTORY_NAMESTRING),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -4858,7 +4858,7 @@ clObject clPathnameNamestring_clPATHNAME clVdecl(_ap)
         clSetq(L_0, pathname);
         clSetq(L_1, errorp);
         clSetq(file,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_FILE_NAMESTRING),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_FILE_NAMESTRING),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -4870,7 +4870,7 @@ clObject clPathnameNamestring_clPATHNAME clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, pathname);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_NAMESTRING_FORMAT_CONTROL),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_NAMESTRING_FORMAT_CONTROL),
                                      L_0__R1,
                                      clEOA)); }
           clSetq(L_2,
@@ -4891,7 +4891,7 @@ clObject clPathnameNamestring_clPATHNAME clVdecl(_ap)
                  (clTrue(clNot(clStringEQUAL(file, STR___78, clEOA),
                                clEOA)) ?
                   file : clNIL));
-          clUnwindReturn(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+          clUnwindReturn(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                            clNIL,
                                            L_1,
                                            L_2,
@@ -4951,7 +4951,7 @@ clObject clPathnameCommonCase_clPATHNAME_clSTRING_clT clVdecl(_ap)
         clSetq(L_0, pathname);
         clSetq(L_1, component_name);
         clSetq(STARreadtableSTAR,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -4974,7 +4974,7 @@ static clObject clPathnameCommonCase_clPATHNAME_clCONS_clT_Lambda clVdecl(_ap)
       clSetq(L_0, clEnv(0, *pathname));
       clSetq(L_1, comp);
       clSetq(L_2, clEnv(1, *name));
-      return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMMON_CASE),
+      return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMMON_CASE),
                                L_0,
                                L_1,
                                L_2,
@@ -5122,14 +5122,14 @@ clObject clDotAllowedP_clPATHNAME_clT clVdecl(_ap)
             clSetq(L_0__R3, pathname);
             clSetq(L_1__R2, component_name);
             clSetq(L_1__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                      L_0__R3,
                                      L_1__R2,
                                      clEOA)); }
           clSetq(L_0__R1,
                  clGetMacroCharacter(C_dot, L_1__R1, clEOA)); }
         clSetq(L_0,
-               clEql(L_0__R1, clSymbolFunctionValue(clILLEGAL_READER),
+               clEql(L_0__R1, clSymbolFunctionChecked(clILLEGAL_READER),
                      clEOA)); }
       return(clNot(L_0, clEOA)); } } }
 
@@ -5212,7 +5212,7 @@ clObject clPathnameParseHost_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, pathname);
           clSetSymbolValueValue(clstarREADTABLEstar,
-                                clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                                clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                                   L_0,
                                                   keyHOST,
                                                   clEOA)); }
@@ -5237,7 +5237,7 @@ clObject clPathnameParseHost_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
               clTerminatedReader(s, C_colon, clEOA);
               clSaveValues(MVP1__r1);
               clSetq(L_terminal,
-                     clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                        s,
                                        clEOA));
               clRestoreValues(MVP1__r1);
@@ -5319,7 +5319,7 @@ clObject clPathnameParseDevice_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, pathname);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_DEFAULT_DEVICE),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_DEFAULT_DEVICE),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_1, start);
@@ -5404,7 +5404,7 @@ clObject clPathnameParseName_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, pathname);
           clSetSymbolValueValue(clstarREADTABLEstar,
-                                clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                                clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                                   L_0,
                                                   keyNAME,
                                                   clEOA)); }
@@ -5429,7 +5429,7 @@ clObject clPathnameParseName_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
               clRead(s, clNIL, clNIL, clEOA);
               clSaveValues(MVP1__r1);
               clSetq(L_terminal,
-                     clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                        s,
                                        clEOA));
               clRestoreValues(MVP1__r1);
@@ -5537,7 +5537,7 @@ clObject clPathnameParseType_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
                     clSetq(L_0__R1, namestring);
                     clSetq(L_1, clLength(L_0__R1, clEOA)); } }
               clSetq(L_test__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                     clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -5545,7 +5545,7 @@ clObject clPathnameParseType_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, pathname);
                 clSetq(L_test,
-                       clFuncallFunction(clSymbolFunctionValue(clDOT_ALLOWED_P),
+                       clFuncallFunction(clSymbolFunctionChecked(clDOT_ALLOWED_P),
                                          L_0,
                                          keyTYPE,
                                          clEOA)); }
@@ -5567,7 +5567,7 @@ clObject clPathnameParseType_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
                     { clObject L_0__R1;
                       clSetq(L_0__R1, pathname);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clDOT_ALLOWED_P),
+                             clFuncallFunction(clSymbolFunctionChecked(clDOT_ALLOWED_P),
                                                L_0__R1,
                                                keyNAME,
                                                clEOA)); }
@@ -5590,7 +5590,7 @@ clObject clPathnameParseType_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, pathname);
                     clSetSymbolValueValue(clstarREADTABLEstar,
-                                          clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                                          clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                                             L_0,
                                                             keyTYPE,
                                                             clEOA)); }
@@ -5615,7 +5615,7 @@ clObject clPathnameParseType_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
                         clRead(s, clNIL, clNIL, clEOA);
                         clSaveValues(MVP1__r1);
                         clSetq(L_terminal,
-                               clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                               clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                                  s,
                                                  clEOA));
                         clRestoreValues(MVP1__r1);
@@ -5739,12 +5739,12 @@ clObject clPathnameParseVersion_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
               { clObject L_1__R1;
                 clSetq(L_1__R1, version_dot);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          dot,
                                          L_1__R1,
                                          clEOA)); }
               clSetq(L_g847,
-                     clFuncallFunction(clSymbolFunctionValue(clGT),
+                     clFuncallFunction(clSymbolFunctionChecked(clGT),
                                        L_0,
                                        I_1,
                                        clEOA)); }
@@ -5754,7 +5754,7 @@ clObject clPathnameParseVersion_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, pathname);
                 clSetq(L_test,
-                       clFuncallFunction(clSymbolFunctionValue(clDOT_ALLOWED_P),
+                       clFuncallFunction(clSymbolFunctionChecked(clDOT_ALLOWED_P),
                                          L_0,
                                          keyTYPE,
                                          clEOA)); } }
@@ -5775,7 +5775,7 @@ clObject clPathnameParseVersion_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, pathname);
                 clSetSymbolValueValue(clstarREADTABLEstar,
-                                      clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                                      clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                                         L_0,
                                                         keyVERSION,
                                                         clEOA)); }
@@ -5807,7 +5807,7 @@ clObject clPathnameParseVersion_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
                         clFind(token,
                                L_1,
                                keyTEST,
-                               clSymbolFunctionValue(clSTRING_EQUAL),
+                               clSymbolFunctionChecked(clSTRING_EQUAL),
                                clEOA); }
                       else
                       (clTrue(clFixnump(token, clEOA)) ?
@@ -5821,7 +5821,7 @@ clObject clPathnameParseVersion_clPATHNAME_clT_clT_clT_clT clVdecl(_ap)
                        clValues1(clNIL)); }
                     clSaveValues(MVP1__r1);
                     clSetq(L_terminal,
-                           clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                           clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                              s,
                                              clEOA));
                     clRestoreValues(MVP1__r1);
@@ -5930,13 +5930,13 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
           clSetq(end, clLength(L_0, clEOA)); } }
     { clObject L_values861, host, start__R1;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_3, L_2, L_1, L_0;
           clSetq(L_0, pathname);
           clSetq(L_1, namestring);
           clSetq(L_2, start);
           clSetq(L_3, end);
-          clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_HOST),
+          clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_HOST),
                             L_0,
                             L_1,
                             L_2,
@@ -5953,12 +5953,12 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
         clSetq(start__R1, clCar(L_0, clEOA)); }
       { clObject L_values862, device, start__R2;
         { clMultipleValueCall(MVC__r1);
-          clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+          clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
           { clObject L_3, L_1, L_0;
             clSetq(L_0, pathname);
             clSetq(L_1, namestring);
             clSetq(L_3, end);
-            clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_DEVICE),
+            clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_DEVICE),
                               L_0,
                               L_1,
                               start__R1,
@@ -5975,12 +5975,12 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
           clSetq(start__R2, clCar(L_0, clEOA)); }
         { clObject L_values863, directory, start__R3;
           { clMultipleValueCall(MVC__r2);
-            clSetq(MVC__r2, clSymbolFunctionValue(clLIST));
+            clSetq(MVC__r2, clSymbolFunctionChecked(clLIST));
             { clObject L_3, L_1, L_0;
               clSetq(L_0, pathname);
               clSetq(L_1, namestring);
               clSetq(L_3, end);
-              clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_DIRECTORY),
+              clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_DIRECTORY),
                                 L_0,
                                 L_1,
                                 start__R2,
@@ -5998,12 +5998,12 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
             clSetq(start__R3, clCar(L_0, clEOA)); }
           { clObject L_values864, version, end__R1, type_end;
             { clMultipleValueCall(MVC__r3);
-              clSetq(MVC__r3, clSymbolFunctionValue(clLIST));
+              clSetq(MVC__r3, clSymbolFunctionChecked(clLIST));
               { clObject L_3, L_1, L_0;
                 clSetq(L_0, pathname);
                 clSetq(L_1, namestring);
                 clSetq(L_3, end);
-                clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_VERSION),
+                clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_VERSION),
                                   L_0,
                                   L_1,
                                   start__R3,
@@ -6027,11 +6027,11 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
               clSetq(type_end, clCar(L_0, clEOA)); }
             { clObject L_values865, type, type_terminal, name_end;
               { clMultipleValueCall(MVC__r4);
-                clSetq(MVC__r4, clSymbolFunctionValue(clLIST));
+                clSetq(MVC__r4, clSymbolFunctionChecked(clLIST));
                 { clObject L_1, L_0;
                   clSetq(L_0, pathname);
                   clSetq(L_1, namestring);
-                  clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_TYPE),
+                  clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_TYPE),
                                     L_0,
                                     L_1,
                                     start__R3,
@@ -6053,7 +6053,7 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
                   clSetq(L_0,
                          clSetq(L_values865, clCdr(L_0__R1, clEOA))); }
                 clSetq(name_end, clCar(L_0, clEOA)); }
-              if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLT),
+              if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                            type_terminal,
                                            type_end,
                                            clEOA)))
@@ -6061,12 +6061,12 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
                   clSetq(end__R1, type_terminal); }
               { clObject L_values866, name, name_terminal;
                 { clMultipleValueCall(MVC__r5);
-                  clSetq(MVC__r5, clSymbolFunctionValue(clLIST));
+                  clSetq(MVC__r5, clSymbolFunctionChecked(clLIST));
                   { clObject L_4, L_1, L_0;
                     clSetq(L_0, pathname);
                     clSetq(L_1, namestring);
                     clSetq(L_4, junk_allowed);
-                    clFuncallFunction(clSymbolFunctionValue(clPATHNAME_PARSE_NAME),
+                    clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_PARSE_NAME),
                                       L_0,
                                       L_1,
                                       start__R3,
@@ -6084,7 +6084,7 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
                            clSetq(L_values866,
                                   clCdr(L_0__R1, clEOA))); }
                   clSetq(name_terminal, clCar(L_0, clEOA)); }
-                if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLT),
+                if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                              name_terminal,
                                              name_end,
                                              clEOA)))
@@ -6100,7 +6100,7 @@ clObject clPathnameParseNamestring_clPATHNAME_clT_clT_clT_clT_clT clVdecl(_ap)
                     clSetq(L_10, type);
                     clSetq(L_12, version);
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+                           clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                              L_0__R1,
                                              keyHOST,
                                              L_2,
@@ -6175,7 +6175,7 @@ clObject clPathnameItemEqual_clPATHNAME_clT_clT_clT clVdecl(_ap)
     { clObject L_1, L_0;
       clSetq(L_0, item1);
       clSetq(L_1, item2);
-      return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+      return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -6253,7 +6253,7 @@ clObject clPathnameItemMatch_clPATHNAME_clT_clT_clT clVdecl(_ap)
               clSetq(L_2, item1);
               clSetq(L_3, item2);
               clSetq(L_g886,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                        L_0,
                                        L_1,
                                        L_2,
@@ -6266,7 +6266,7 @@ clObject clPathnameItemMatch_clPATHNAME_clT_clT_clT clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, item1);
                   clSetq(L_test__R3,
-                         clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                         clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                            L_0,
                                            clSEQUENCE,
                                            clEOA)); }
@@ -6275,7 +6275,7 @@ clObject clPathnameItemMatch_clPATHNAME_clT_clT_clT clVdecl(_ap)
                     { clObject L_0;
                       clSetq(L_0, item2);
                       clSetq(L_test__R4,
-                             clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                             clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                L_0,
                                                clSEQUENCE,
                                                clEOA)); }
@@ -6403,11 +6403,11 @@ clObject clPathnameComponentsEqual_clPATHNAME_clT_clT_clT_clT_clT_clT clVdecl(_a
           clSetq(L_0, path);
           clSetq(L_2, host);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                    L_0,
                                    keyHOST,
                                    L_2,
-                                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                      L_class899,
                                                      L_instance898,
                                                      L_host900,
@@ -6419,11 +6419,11 @@ clObject clPathnameComponentsEqual_clPATHNAME_clT_clT_clT_clT_clT_clT clVdecl(_a
               clSetq(L_0, path);
               clSetq(L_2, device);
               clSetq(L_test__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                        L_0,
                                        keyDEVICE,
                                        L_2,
-                                       clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                       clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                          L_class899,
                                                          L_instance898,
                                                          L_device901,
@@ -6435,11 +6435,11 @@ clObject clPathnameComponentsEqual_clPATHNAME_clT_clT_clT_clT_clT_clT clVdecl(_a
                   clSetq(L_0, path);
                   clSetq(L_2, directory);
                   clSetq(L_test__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                         clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                            L_0,
                                            keyDIRECTORY,
                                            L_2,
-                                           clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                           clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                              L_class899,
                                                              L_instance898,
                                                              L_directory902,
@@ -6451,11 +6451,11 @@ clObject clPathnameComponentsEqual_clPATHNAME_clT_clT_clT_clT_clT_clT clVdecl(_a
                       clSetq(L_0, path);
                       clSetq(L_2, name);
                       clSetq(L_test__R3,
-                             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                                L_0,
                                                keyNAME,
                                                L_2,
-                                               clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                               clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                                  L_class899,
                                                                  L_instance898,
                                                                  L_name903,
@@ -6467,11 +6467,11 @@ clObject clPathnameComponentsEqual_clPATHNAME_clT_clT_clT_clT_clT_clT clVdecl(_a
                           clSetq(L_0, path);
                           clSetq(L_2, type);
                           clSetq(L_test__R4,
-                                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                                    L_0,
                                                    keyTYPE,
                                                    L_2,
-                                                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                                      L_class899,
                                                                      L_instance898,
                                                                      L_type904,
@@ -6481,11 +6481,11 @@ clObject clPathnameComponentsEqual_clPATHNAME_clT_clT_clT_clT_clT_clT clVdecl(_a
                         { clObject L_2, L_0;
                           clSetq(L_0, path);
                           clSetq(L_2, version);
-                          return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                          return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                                    L_0,
                                                    keyVERSION,
                                                    L_2,
-                                                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                                      L_class899,
                                                                      L_instance898,
                                                                      L_version905,
@@ -6600,14 +6600,14 @@ clObject clPathnameMatch_clPATHNAME_clPATHNAME clVdecl(_ap)
                           { clObject L_0;
                             clSetq(L_0, p1);
                             clSetq(v1,
-                                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                                      L_0,
                                                      keyVERSION,
                                                      clEOA)); }
                           { clObject L_0;
                             clSetq(L_0, p2);
                             clSetq(v2,
-                                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                                      L_0,
                                                      keyVERSION,
                                                      clEOA)); }
@@ -6615,7 +6615,7 @@ clObject clPathnameMatch_clPATHNAME_clPATHNAME clVdecl(_ap)
                             { clObject L_0;
                               clSetq(L_0, p1);
                               clSetq(L_g914,
-                                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_MATCH),
+                                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_MATCH),
                                                        L_0,
                                                        keyVERSION,
                                                        v1,
@@ -6746,44 +6746,44 @@ clObject clEqual_clPATHNAME_clPATHNAME clVdecl(_ap)
         { clObject L_5, L_4, L_3, L_2, L_1, L_0;
           clSetq(L_0, p1);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class922,
                                    L_instance921,
                                    L_host923,
                                    clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class922,
                                    L_instance921,
                                    L_device924,
                                    clEOA));
           clSetq(L_3,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class922,
                                    L_instance921,
                                    L_directory925,
                                    clEOA));
           clSetq(L_4,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class922,
                                    L_instance921,
                                    L_name926,
                                    clEOA));
           clSetq(L_5,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class922,
                                    L_instance921,
                                    L_type927,
                                    clEOA));
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENTS_EQUAL),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENTS_EQUAL),
                                    L_0,
                                    L_1,
                                    L_2,
                                    L_3,
                                    L_4,
                                    L_5,
-                                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                      L_class922,
                                                      L_instance921,
                                                      L_version928,
@@ -6830,7 +6830,7 @@ clObject clEqualp_clPATHNAME_clPATHNAME clVdecl(_ap)
     { clObject L_1, L_0;
       clSetq(L_0, p1);
       clSetq(L_1, p2);
-      return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+      return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -6865,7 +6865,7 @@ clObject clEqualHash_clPATHNAME clVdecl(_ap)
       clSetq(L_hash_code942, clFastFindSlot(L_class941, clHASH_CODE));
       { clObject L_g943;
         clSetq(L_g943,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                  L_class941,
                                  L_instance940,
                                  L_hash_code942,
@@ -6878,7 +6878,7 @@ clObject clEqualHash_clPATHNAME clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, pathname);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                          L_0__R1,
                                          keyHOST,
                                          clEOA)); }
@@ -6886,7 +6886,7 @@ clObject clEqualHash_clPATHNAME clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, pathname);
                   clSetq(L_0__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                         clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                            L_0__R2,
                                            keyDEVICE,
                                            clEOA)); }
@@ -6894,7 +6894,7 @@ clObject clEqualHash_clPATHNAME clVdecl(_ap)
                   { clObject L_0__R3;
                     clSetq(L_0__R3, pathname);
                     clSetq(L_0__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                              L_0__R3,
                                              keyDIRECTORY,
                                              clEOA)); }
@@ -6902,7 +6902,7 @@ clObject clEqualHash_clPATHNAME clVdecl(_ap)
                     { clObject L_0__R4;
                       clSetq(L_0__R4, pathname);
                       clSetq(L_0__R3,
-                             clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                                L_0__R4,
                                                keyNAME,
                                                clEOA)); }
@@ -6910,14 +6910,14 @@ clObject clEqualHash_clPATHNAME clVdecl(_ap)
                       { clObject L_0__R5;
                         clSetq(L_0__R5, pathname);
                         clSetq(L_0__R4,
-                               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                                  L_0__R5,
                                                  keyTYPE,
                                                  clEOA)); }
                       { clObject L_0__R5;
                         clSetq(L_0__R5, pathname);
                         clSetq(L_1__R4,
-                               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+                               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                                  L_0__R5,
                                                  keyVERSION,
                                                  clEOA)); }
@@ -6974,7 +6974,7 @@ clObject clPathnameWildP_clPATHNAME_clNULL clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, pathname);
         clSetq(L_g954,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                                  L_0,
                                  keyHOST,
                                  clEOA)); }
@@ -6985,7 +6985,7 @@ clObject clPathnameWildP_clPATHNAME_clNULL clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, pathname);
             clSetq(L_g955,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                                      L_0,
                                      keyDEVICE,
                                      clEOA)); }
@@ -6996,7 +6996,7 @@ clObject clPathnameWildP_clPATHNAME_clNULL clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, pathname);
                 clSetq(L_g956,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                                          L_0,
                                          keyDIRECTORY,
                                          clEOA)); }
@@ -7007,7 +7007,7 @@ clObject clPathnameWildP_clPATHNAME_clNULL clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, pathname);
                     clSetq(L_g957,
-                           clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+                           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                                              L_0,
                                              keyNAME,
                                              clEOA)); }
@@ -7018,7 +7018,7 @@ clObject clPathnameWildP_clPATHNAME_clNULL clVdecl(_ap)
                       { clObject L_0;
                         clSetq(L_0, pathname);
                         clSetq(L_g958,
-                               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+                               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                                                  L_0,
                                                  keyTYPE,
                                                  clEOA)); }
@@ -7027,7 +7027,7 @@ clObject clPathnameWildP_clPATHNAME_clNULL clVdecl(_ap)
                       else
                       { clObject L_0;
                         clSetq(L_0, pathname);
-                        return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_WILD_P),
+                        return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_WILD_P),
                                                  L_0,
                                                  keyVERSION,
                                                  clEOA)); } } } } } } } }
@@ -7071,7 +7071,7 @@ clObject clPathnameWildP_clPATHNAME_clSYMBOL clVdecl(_ap)
         clSetq(L_0__R1, pathname);
         clSetq(L_1, component_name);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  L_0__R1,
                                  L_1,
                                  clEOA)); }
@@ -7174,7 +7174,7 @@ clObject clPathnameTranslate_clPATHNAME_clPATHNAME_clPATHNAME clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, to_wildname);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENTS_EQUAL),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENTS_EQUAL),
                                    L_0,
                                    host,
                                    device,
@@ -7270,14 +7270,14 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
         { clObject host, device_plist, directory, name, type, version;
           { clObject L_g995;
             clSetq(L_g995,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_host981,
                                      clEOA));
             clSetq(host,
                    (clTrue(L_g995) ? L_g995 :
-                    clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                       L_class988,
                                       L_instance987,
                                       L_host989,
@@ -7285,20 +7285,20 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
           { clObject L_4, L_3, L_2, L_1, L_0;
             clSetq(L_0, path);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_device982,
                                      clEOA));
             clSetq(L_2,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_device982,
                                      clEOA));
             clSetq(L_3, host);
             clSetq(L_4,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class988,
                                      L_instance987,
                                      L_device990,
@@ -7309,7 +7309,7 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
                                  L_2,
                                  L_3,
                                  L_4,
-                                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                    L_class988,
                                                    L_instance987,
                                                    L_host989,
@@ -7317,14 +7317,14 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
                                  clEOA)); }
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_directory983,
                                      clEOA));
             clSetq(directory,
                    clMergeDirectories(L_0,
-                                      clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                      clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                         L_class988,
                                                         L_instance987,
                                                         L_directory991,
@@ -7332,35 +7332,35 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
                                       clEOA)); }
           { clObject L_g996;
             clSetq(L_g996,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_name984,
                                      clEOA));
             clSetq(name,
                    (clTrue(L_g996) ? L_g996 :
-                    clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                       L_class988,
                                       L_instance987,
                                       L_name992,
                                       clEOA))); }
           { clObject L_g997;
             clSetq(L_g997,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_type985,
                                      clEOA));
             clSetq(type,
                    (clTrue(L_g997) ? L_g997 :
-                    clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                       L_class988,
                                       L_instance987,
                                       L_type993,
                                       clEOA))); }
           { clObject L_g998;
             clSetq(L_g998,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class980,
                                      L_instance979,
                                      L_version986,
@@ -7370,13 +7370,13 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
             else
               { clObject L_g999;
                 clSetq(L_g999,
-                       (clTrue(clNot(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                       (clTrue(clNot(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                        L_class980,
                                                        L_instance979,
                                                        L_name984,
                                                        clEOA),
                                      clEOA)) ?
-                        clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                        clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                           L_class988,
                                           L_instance987,
                                           L_version994,
@@ -7396,14 +7396,14 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, path);
                   clSetq(L_2,
-                         clFuncallFunction(clSymbolFunctionValue(clPATHNAME_DEFAULT_DEVICE),
+                         clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_DEFAULT_DEVICE),
                                            L_0__R1,
                                            clEOA)); }
               clSetq(L_4, name);
               clSetq(L_5, type);
               clSetq(L_6, version);
               clSetq(L_test,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENTS_EQUAL),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENTS_EQUAL),
                                        L_0,
                                        L_1,
                                        L_2,
@@ -7416,7 +7416,7 @@ clObject clPathnameMerge_clPATHNAME_clPATHNAME_clT clVdecl(_ap)
               return(clValues1(path));
             else
               { clObject L_11, L_9, L_7, L_3, L_1, L_0;
-                clSetq(L_0, clSymbolFunctionValue(clMAKE_INSTANCE));
+                clSetq(L_0, clSymbolFunctionChecked(clMAKE_INSTANCE));
                 { clObject L_1__R1, L_0__R1;
                   clSetq(L_0__R1, host);
                   { clObject L_0__R2;
@@ -7517,7 +7517,7 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
             { clObject L_3, L_2, L_0;
               clSetq(L_0, path);
               clSetq(L_2,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class1007,
                                        L_instance1006,
                                        L_device1009,
@@ -7525,11 +7525,11 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, path);
                 clSetq(L_3,
-                       clFuncallFunction(clSymbolFunctionValue(clPATHNAME_DEFAULT_DEVICE),
+                       clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_DEFAULT_DEVICE),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(devicep,
-                     clFuncallFunction(clSymbolFunctionValue(clPATHNAME_ITEM_EQUAL),
+                     clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_ITEM_EQUAL),
                                        L_0,
                                        keyDEVICE,
                                        L_2,
@@ -7548,7 +7548,7 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
               clSetq(L_test, clNot(L_0, clEOA)); }
             clSetq(rname,
                    (clTrue(L_test) ?
-                    clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                       L_class1007,
                                       L_instance1006,
                                       L_name1011,
@@ -7560,7 +7560,7 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
               clSetq(L_0, clClassOf(L_0__R1, clEOA)); }
             clSetq(L_2,
                    (clTrue(clNot(hosts_match_p, clEOA)) ?
-                    clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                       L_class1007,
                                       L_instance1006,
                                       L_host1008,
@@ -7572,7 +7572,7 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
                 clSetq(L_test, clNot(L_0__R1, clEOA)); }
               clSetq(L_4,
                      (clTrue(L_test) ?
-                      clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                      clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                         L_class1007,
                                         L_instance1006,
                                         L_device1009,
@@ -7580,13 +7580,13 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
                       clNIL)); }
             { clObject L_2__R1, L_1__R1, L_0__R1;
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class1007,
                                        L_instance1006,
                                        L_directory1010,
                                        clEOA));
               clSetq(L_1__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class1015,
                                        L_instance1014,
                                        L_directory1016,
@@ -7611,7 +7611,7 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
                 clSetq(L_test, clNot(L_0__R1, clEOA)); }
               clSetq(L_10,
                      (clTrue(L_test) ?
-                      clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                      clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                         L_class1007,
                                         L_instance1006,
                                         L_type1012,
@@ -7622,7 +7622,7 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
                 if (clTrue(rname))
                   { clObject L_0__R2;
                     clSetq(L_0__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                           clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                              L_class1007,
                                              L_instance1006,
                                              L_version1013,
@@ -7640,13 +7640,13 @@ clObject clPathnameUnmerge_clPATHNAME_clPATHNAME clVdecl(_ap)
                 clSetq(L_test, clNot(L_0__R1, clEOA)); }
               clSetq(L_12,
                      (clTrue(L_test) ?
-                      clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                      clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                         L_class1007,
                                         L_instance1006,
                                         L_version1013,
                                         clEOA) :
                       clNIL)); }
-            return(clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+            return(clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                      L_0,
                                      keyHOST,
                                      L_2,
@@ -7674,7 +7674,7 @@ clObject clHostPathnameClass clVdecl(_ap)
     clSetq(L_0, host);
     clSetq(L_1, clSymbolValue(clstarHOSTSstar, clEOA));
     clSetq(L_2, CL_default);
-    return(clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+    return(clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                              L_0,
                              L_1,
                              L_2,
@@ -7715,7 +7715,7 @@ clObject clUpdateHostPathnameClass clVdecl(_ap)
         { clObject L_1;
           clSetq(L_1, new_class);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                    old_class,
                                    L_1,
                                    clEOA)); }
@@ -7912,7 +7912,7 @@ clObject clLogicalPathnameP clVdecl(_ap)
       clEndParse(_ap); }
     { clObject L_0;
       clSetq(L_0, x);
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                L_0,
                                clEnv(0, *logical_pathname),
                                clEOA)); } } }
@@ -7929,7 +7929,7 @@ clObject clLogicalPathnameTranslations clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, host);
       clSetq(L_g1060,
-             clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+             clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                L_0,
                                clSymbolValue(clstarLOGICAL_HOSTSstar,
                                              clEOA),
@@ -8000,7 +8000,7 @@ static clObject clUpdateLogicalPathnameTranslations_Lambda clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, to_wild);
           clSetq(to,
-                 clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+                 clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                    L_0,
                                    clEOA)); }
         if (clTrue(clNot(clPathnameHost(to, keyCASE, keyCOMMON, clEOA),
@@ -8053,7 +8053,7 @@ clObject clUpdateLogicalPathnameTranslations clVdecl(_ap)
           clSetq(L_0__R1,
                  clHostPathnameClass(L_0__R2, clPATHNAME, clEOA)); }
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  L_0__R1,
                                  clLOGICAL_PATHNAME,
                                  clEOA)); }
@@ -8092,13 +8092,13 @@ clObject clLogicalPathname clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, pathname);
       clSetq(p,
-             clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+             clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                                L_0,
                                clEOA)); }
     { clObject L_test;
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPATHNAME_COMPONENT),
+               clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_COMPONENT),
                                  p,
                                  keyHOST,
                                  clEOA));
@@ -8126,7 +8126,7 @@ clObject clTranslateLogicalPathname clVdecl(_ap)
   { clObject L_0;
     clSetq(L_0, pathname);
     clSetq(pathname,
-           clFuncallFunction(clSymbolFunctionValue(clPATHNAME),
+           clFuncallFunction(clSymbolFunctionChecked(clPATHNAME),
                              L_0,
                              clEOA)); }
   { clObject rules, rule;
@@ -8141,7 +8141,7 @@ clObject clTranslateLogicalPathname clVdecl(_ap)
       clSetq(L_0, pathname);
       clSetq(rule,
              clAssoc(L_0, rules, keyTEST,
-                     clSymbolFunctionValue(clPATHNAME_MATCH_P),
+                     clSymbolFunctionChecked(clPATHNAME_MATCH_P),
                      clEOA)); }
     if (clTrue(rules))
       if (clTrue(rule))
@@ -8150,7 +8150,7 @@ clObject clTranslateLogicalPathname clVdecl(_ap)
             clSetq(L_0__R1, pathname);
             clSetq(L_1, clFirst(rule, clEOA));
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clPATHNAME_TRANSLATE),
+                   clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_TRANSLATE),
                                      L_0__R1,
                                      L_1,
                                      clSecond(rule, clEOA),
@@ -8605,7 +8605,7 @@ static clObject clPathnameNamestringFormatControl_clWINDOWS_PATHNAME_Lambda clVd
   if (clTrue(clCar(L_args, clEOA)))
     { { clObject L_0;
         clSetq(L_0, xp);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                           L_0,
                           STR_lbracket__92,
                           clEOA); }
@@ -8630,7 +8630,7 @@ static clObject clPathnameNamestringFormatControl_clWINDOWS_PATHNAME_Lambda clVd
         clUnwind(2); }
       { clObject L_0;
         clSetq(L_0, xp);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                           L_0,
                           STR_rbracket__93,
                           clEOA); } }
@@ -8671,7 +8671,7 @@ static clObject clPathnameNamestringFormatControl_clWINDOWS_PATHNAME_Lambda clVd
           clUnwind(2); }
         { clObject L_0;
           clSetq(L_0, xp);
-          clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+          clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                             L_0,
                             STR_colon__80,
                             clEOA); } }
@@ -8916,7 +8916,7 @@ clObject clPathnameParseHost_clWINDOWS_PATHNAME_clT_clT_clT_clT clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, pathname);
           clSetSymbolValueValue(clstarREADTABLEstar,
-                                clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                                clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                                   L_0,
                                                   keyHOST,
                                                   clEOA)); }
@@ -8947,7 +8947,7 @@ clObject clPathnameParseHost_clWINDOWS_PATHNAME_clT_clT_clT_clT clVdecl(_ap)
                clValues1(clNIL));
               clSaveValues(MVP1__r1);
               clSetq(L_terminal,
-                     clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                        s,
                                        clEOA));
               clRestoreValues(MVP1__r1);
@@ -9041,7 +9041,7 @@ clObject clPathnameParseDevice_clWINDOWS_PATHNAME_clT_clT_clT_clT clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, pathname);
           clSetSymbolValueValue(clstarREADTABLEstar,
-                                clFuncallFunction(clSymbolFunctionValue(clPATHNAME_READTABLE),
+                                clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_READTABLE),
                                                   L_0,
                                                   keyDEVICE,
                                                   clEOA)); }
@@ -9066,7 +9066,7 @@ clObject clPathnameParseDevice_clWINDOWS_PATHNAME_clT_clT_clT_clT clVdecl(_ap)
               clTerminatedReader(s, C_colon, clEOA);
               clSaveValues(MVP1__r1);
               clSetq(L_terminal,
-                     clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                        s,
                                        clEOA));
               clRestoreValues(MVP1__r1);
@@ -10096,7 +10096,7 @@ void clInitPathname __P((void))
       clSetq(CL_char, clCodeChar(i, clEOA));
       if (clTrue(clNot(clAlphanumericp(CL_char, clEOA), clEOA)))
         { clObject L_1;
-          clSetq(L_1, clSymbolFunctionValue(clILLEGAL_READER));
+          clSetq(L_1, clSymbolFunctionChecked(clILLEGAL_READER));
           clSetMacroCharacter(CL_char,
                               L_1,
                               clNIL,
@@ -10114,7 +10114,7 @@ void clInitPathname __P((void))
                                     clEOA),
                       clEOA);
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clWILD_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clWILD_READER));
     clSetMacroCharacter(C_star,
                         L_1,
                         clT,
@@ -10998,7 +10998,7 @@ void clInitPathname __P((void))
            clSymbolValue(clstarUNIX_PATHNAME_READTABLEstar, clEOA));
     cl_SETF_ReadtableCase(keyINVERT, L_arg1120, clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clWILD_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clWILD_READER));
     clSetMacroCharacter(C_star,
                         L_1,
                         clT,
@@ -11006,7 +11006,7 @@ void clInitPathname __P((void))
                                       clEOA),
                         clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSTOPPER_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clSTOPPER_READER));
     clSetMacroCharacter(C_slash,
                         L_1,
                         clNIL,
@@ -11034,7 +11034,7 @@ void clInitPathname __P((void))
                                         clEOA));
   (void) clstarUNIX_DIRECTORY_READTABLEstar;
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSTOPPER_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clSTOPPER_READER));
     clSetMacroCharacter(C_colon,
                         L_1,
                         clNIL,
@@ -11042,7 +11042,7 @@ void clInitPathname __P((void))
                                       clEOA),
                         clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDIRECTORY_DOT_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clDIRECTORY_DOT_READER));
     clSetMacroCharacter(C_dot,
                         L_1,
                         clT,
@@ -11145,7 +11145,7 @@ void clInitPathname __P((void))
                          clEOA));
     cl_SETF_ReadtableCase(keyUPCASE, L_arg1168, clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSTOPPER_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clSTOPPER_READER));
     clSetMacroCharacter(C_rbracket,
                         L_1,
                         clNIL,
@@ -11153,7 +11153,7 @@ void clInitPathname __P((void))
                                       clEOA),
                         clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSTOPPER_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clSTOPPER_READER));
     clSetMacroCharacter(C_backslash,
                         L_1,
                         clNIL,
@@ -11161,7 +11161,7 @@ void clInitPathname __P((void))
                                       clEOA),
                         clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDIRECTORY_DOT_READER));
+    clSetq(L_1, clSymbolFunctionChecked(clDIRECTORY_DOT_READER));
     clSetMacroCharacter(C_dot,
                         L_1,
                         clT,
@@ -11306,13 +11306,13 @@ void clInitPathname __P((void))
                                      clLOGICAL_PATHNAME,
                                      clEOA));
     clSetSymbolValueValue(clstarLOGICAL_PATHstar,
-                          clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+                          clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                             L_0,
                                             keyHOST,
                                             STR_SYS__86,
                                             clEOA)); }
   clSetSymbolValueValue(clstarNONSTANDARD_HOST_SYNTAX_CLASSESstar,
-                        clList(clFuncallFunction(clSymbolFunctionValue(clFINALIZE_INHERITANCE),
+                        clList(clFuncallFunction(clSymbolFunctionChecked(clFINALIZE_INHERITANCE),
                                                  clFindClass(clWINDOWS_PATHNAME,
                                                              clEOA),
                                                  clEOA),
@@ -11340,7 +11340,7 @@ void clInitPathname __P((void))
     { clObject L_0;
       clSetq(L_0, CL_class);
       clSetq(path,
-             clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+             clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                L_0,
                                keyHOST,
                                keyUNSPECIFIC,
@@ -11385,7 +11385,7 @@ void clInitPathname __P((void))
     { clObject L_1, L_0;
       { clObject L_1__R1, L_0__R1;
         clSetq(L_0__R1,
-               clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+               clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                  clLOGICAL_PATHNAME,
                                  keyHOST,
                                  STR_SYS__86,
@@ -11418,7 +11418,7 @@ void clInitPathname __P((void))
         clSetq(L_0, clList(L_0__R1, L_1__R1, clEOA)); }
       { clObject L_1__R1, L_0__R1;
         clSetq(L_0__R1,
-               clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+               clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                  clLOGICAL_PATHNAME,
                                  keyHOST,
                                  STR_SYS__86,

@@ -182,7 +182,8 @@ extern clObject clampersandREST, clBASE_CHAR, clBIGNUM, clCONS,
   clSUBT_RATIO_DOUBLE_FLOAT, clSUBT_RATIO_SINGLE_FLOAT,
   clSUBT_SINGLE_FLOAT_DOUBLE_FLOAT, clSUBT_SINGLE_FLOAT_INTEGER,
   clSUBT_SINGLE_FLOAT_RATIO, clSUBT_SINGLE_FLOAT_SINGLE_FLOAT,
-  clSYMBOL_FUNCTION_VALUE, clSYMBOL_PACKAGE_SETTER,
+  clSYMBOL_FUNCTION_CHECKED, clSYMBOL_FUNCTION_VALUE,
+  clSYMBOL_PACKAGE_SETTER,
   clSYMBOL_PACKAGE_VALUE, clSYMBOL_PLIST, clSYMBOL_SETF_FUNCTION_VALUE,
   clSYMBOL_VALUE_VALUE, clSYSTEM_PROPERTY, clSYSTEM_PROPERTY_SETTER,
   clTAGGED_INSTANCE, clTAGGED_INSTANCE_CLASS,
@@ -2044,6 +2045,7 @@ void clInitPrimDecs __P((void))
   clSetq(CONS_1339,
          clCons(clSYMBOL_SETF_FUNCTION_VALUE, CONS_1340, clEOA));
   clSetq(CONS_1338, clCons(clSYMBOL_FUNCTION_VALUE, CONS_1339, clEOA));
+  clSetq(CONS_1338, clCons(clSYMBOL_FUNCTION_CHECKED, CONS_1338, clEOA));
   clSetq(CONS_1332, clCons(CONS_1333, CONS_1338, clEOA));
   clSetq(CONS_1331, clCons(clFTYPE, CONS_1332, clEOA));
   clSetq(CONS_1346, clCons(clSYMBOL, CONS_1335, clEOA));
@@ -2501,58 +2503,58 @@ void clInitPrimDecs __P((void))
                   clMakeClosure(0, clLambda_r6, clNULL_HOOK), clEOA);
   (void) clFUNCALLABLE_STANDARD_INSTANCE;
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_0, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_3, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_235, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_290, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_328, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_415, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_451, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_498, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_503, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1082, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1095, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1121, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1133, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1350, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1366, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1499, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1526, clEOA); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_1684, clEOA); }
 
   clUnwind(4); }

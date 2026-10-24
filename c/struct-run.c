@@ -226,7 +226,7 @@ clObject clAbstractStructureClassP clVdecl(_ap)
     if (clTrue(L_test))
       { clObject L_0;
         clSetq(L_0, CL_class);
-        return(clFuncallFunction(clSymbolFunctionValue(clABSTRACT_CLASS_P),
+        return(clFuncallFunction(clSymbolFunctionChecked(clABSTRACT_CLASS_P),
                                  L_0,
                                  clEOA)); }
     else return(clValues1(clNIL)); } }
@@ -283,7 +283,7 @@ static clObject clLambda_r7 clVdecl(_ap)
 { { clBeginParse(_ap);
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clValues1(clSymbolFunctionValue(clILLEGAL_STRUCTURE_INITIALIZATION))); }
+  return(clValues1(clSymbolFunctionChecked(clILLEGAL_STRUCTURE_INITIALIZATION))); }
 
 clObject clMakeLoadForm_clSTRUCTURE_CLASS clVdecl(_ap)
 { clObject *L_args396 = clMakeBinding(),
@@ -386,7 +386,7 @@ clObject clMakeHiddenSlot clVdecl(_ap)
       clSetq(L_0__R1, (clTrue(initform) ? STR_NAME__3 : STR_PAD__26));
       clSetq(L_2, clGensym(L_0__R1, clEOA)); }
     clSetq(L_8, initform);
-    return(clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                              clSTRUCTURE_DIRECT_SLOT_DEFINITION,
                              keyNAME,
                              L_2,
@@ -452,17 +452,17 @@ clObject clComputeEffectiveSlotDefinition_clSTRUCTURE_CLASS_clT_clT clVdecl(_ap)
       { clObject L_9, L_7, L_5, L_3, L_1;
         clSetq(L_1, name);
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_INITFORM),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_INITFORM),
                                  first,
                                  clEOA));
         { clObject type, super;
           clSetq(type,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_TYPE),
                                    first,
                                    clEOA));
           clSetq(super,
                  (clTrue(second) ?
-                  clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_TYPE),
+                  clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_TYPE),
                                     second,
                                     clEOA) :
                   clT));
@@ -470,7 +470,7 @@ clObject clComputeEffectiveSlotDefinition_clSTRUCTURE_CLASS_clT_clT clVdecl(_ap)
             { clObject L_1__R1;
               clSetq(L_1__R1, super);
               clSetq(L_test,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                        type,
                                        L_1__R1,
                                        clEOA)); }
@@ -487,15 +487,15 @@ clObject clComputeEffectiveSlotDefinition_clSTRUCTURE_CLASS_clT_clT clVdecl(_ap)
                                             L_3__R1,
                                             clEOA)); } } }
         clSetq(L_7,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_HIDDEN),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_HIDDEN),
                                  first,
                                  clEOA));
-        if (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_READ_ONLY),
+        if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_READ_ONLY),
                                      first,
                                      clEOA)))
           clSetq(L_9, clT);
         else if (clTrue((clTrue(second) ?
-                         clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_READ_ONLY),
+                         clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_READ_ONLY),
                                            second,
                                            clEOA) :
                          clNIL)))
@@ -575,7 +575,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
       clSetq(L_name429, clFastFindSlot(L_class428, clNAME));
       { clObject struct_name;
         clSetq(struct_name,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                  L_class428,
                                  L_instance427,
                                  L_name429,
@@ -584,7 +584,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
           { clObject L_0;
             { clObject L_0__R1;
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class428,
                                        L_instance427,
                                        L_type431,
@@ -598,14 +598,14 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
                             L_abstract430,
                             clEOA); }
         { clObject L_test;
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class428,
                                        L_instance427,
                                        L_abstract430,
                                        clEOA)))
             { clObject L_0;
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class428,
                                        L_instance427,
                                        L_direct_superclasses433,
@@ -657,7 +657,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
             { clObject L_arg458, L_value457;
               clSetq(L_arg458, structure);
               clSetq(L_value457,
-                     clNot(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clNot(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                              L_class428,
                                              L_instance427,
                                              L_abstract430,
@@ -742,7 +742,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
             { clObject L_arg486, L_value485;
               clSetq(L_arg486, structure);
               clSetq(L_value485,
-                     (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                L_class428,
                                                L_instance427,
                                                L_named432,
@@ -799,17 +799,17 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
                                 clEOA); } }
         { clObject slots;
           clSetq(slots,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class428,
                                    L_instance427,
                                    L_direct_slots435,
                                    clEOA));
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class428,
                                        L_instance427,
                                        L_abstract430,
                                        clEOA)))
-            { if (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+            { if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                            L_class428,
                                            L_instance427,
                                            L_named432,
@@ -817,7 +817,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
                 { clObject L_1, L_0;
                   clSetq(L_0,
                          clMakeHiddenSlot(clList(clQUOTE,
-                                                 clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                                    L_class428,
                                                                    L_instance427,
                                                                    L_name429,
@@ -828,7 +828,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
                   clSetq(slots, clCons(L_0, L_1, clEOA)); }
               { clObject L_end502, n;
                 clSetq(L_end502,
-                       clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                       clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                          L_class428,
                                          L_instance427,
                                          L_initial_offset434,
@@ -857,7 +857,7 @@ clObject clSharedInitialize_keyAFTER_clSTRUCTURE_CLASS_clT clVdecl(_ap)
           { clObject L_value508;
             { clObject L_sublist512, spec;
               clSetq(L_sublist512,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class428,
                                        L_instance427,
                                        L_inherited_slots436,
@@ -934,14 +934,14 @@ clObject clFinalizeInheritance_keyAFTER_clSTRUCTURE_CLASS clVdecl(_ap)
         { clObject L_0;
           { clObject L_g528;
             clSetq(L_g528,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class520,
                                      L_instance519,
                                      L_abstract521,
                                      clEOA));
             clSetq(L_0,
                    (clTrue(L_g528) ? L_g528 :
-                    clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                       L_class520,
                                       L_instance519,
                                       L_named522,
@@ -951,12 +951,12 @@ clObject clFinalizeInheritance_keyAFTER_clSTRUCTURE_CLASS clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, structure);
             clKeyNotAllowed(keyNAMED, STRn_33, L_2, clEOA); } }
-      if (clTrue((clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+      if (clTrue((clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                            L_class520,
                                            L_instance519,
                                            L_predicate523,
                                            clEOA)) ?
-                  clNot(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                  clNot(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                           L_class520,
                                           L_instance519,
                                           L_named522,
@@ -966,12 +966,12 @@ clObject clFinalizeInheritance_keyAFTER_clSTRUCTURE_CLASS clVdecl(_ap)
         { clObject L_2;
           clSetq(L_2, structure);
           clKeyNotAllowed(keyPREDICATE, STRn_34, L_2, clEOA); }
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                    L_class520,
                                    L_instance519,
                                    L_abstract521,
                                    clEOA)))
-        if (clTrue(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+        if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class520,
                                      L_instance519,
                                      L_named522,
@@ -979,23 +979,23 @@ clObject clFinalizeInheritance_keyAFTER_clSTRUCTURE_CLASS clVdecl(_ap)
           { clObject L_value529;
             { clObject L_1, L_0;
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                     clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                        L_class520,
                                        L_instance519,
                                        L_initial_offset524,
                                        clEOA));
               { clObject L_0__R1;
                 clSetq(L_0__R1,
-                       clLength(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                       clLength(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                   L_class520,
                                                   L_instance519,
                                                   L_effective_slots527,
                                                   clEOA),
                                 clEOA));
                 clSetq(L_1,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0__R1,
-                                         clLength(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                         clLength(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                                     L_class520,
                                                                     L_instance519,
                                                                     L_contributing_slots526,
@@ -1003,7 +1003,7 @@ clObject clFinalizeInheritance_keyAFTER_clSTRUCTURE_CLASS clVdecl(_ap)
                                                   clEOA),
                                          clEOA)); }
               clSetq(L_value529,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -1018,7 +1018,7 @@ clObject clFinalizeInheritance_keyAFTER_clSTRUCTURE_CLASS clVdecl(_ap)
         { clObject L_test__R1;
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      L_class520,
                                      L_instance519,
                                      L_initial_offset524,
@@ -1058,14 +1058,14 @@ clObject clAllocateInstance_clSTRUCTURE_CLASS clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, CL_class);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_FINALIZED_P),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_FINALIZED_P),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_test, clNot(L_0, clEOA)); }
       if (clTrue(L_test))
         { clObject L_0;
           clSetq(L_0, CL_class);
-          clFuncallFunction(clSymbolFunctionValue(clFINALIZE_INHERITANCE),
+          clFuncallFunction(clSymbolFunctionChecked(clFINALIZE_INHERITANCE),
                             L_0,
                             clEOA); } }
     { clObject L_1, L_0;
@@ -1074,7 +1074,7 @@ clObject clAllocateInstance_clSTRUCTURE_CLASS clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, CL_class);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                    L_0__R2,
                                    clEOA)); }
         clSetq(L_1, clLength(L_0__R1, clEOA)); }
@@ -1129,7 +1129,7 @@ clObject clSlotValueUsingClass_clSTRUCTURE_CLASS_clSTRUCTURE_OBJECT_clSTRUCTURE_
       { clObject L_0__R1;
         clSetq(L_0__R1, slot);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_LOCATION),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_LOCATION),
                                  L_0__R1,
                                  clEOA)); }
       return(clStructref(L_0, L_1, clEOA)); } } }
@@ -1193,7 +1193,7 @@ clObject cl_SETF_SlotValueUsingClass_clT_clSTRUCTURE_CLASS_clSTRUCTURE_OBJECT_cl
       { clObject L_0;
         clSetq(L_0, slot);
         clSetq(L_arg555,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_LOCATION),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_LOCATION),
                                  L_0,
                                  clEOA)); }
       clSetq(L_value553, new_value);
@@ -1257,12 +1257,12 @@ clObject clEnsureStructure clVdecl(_ap)
     clEndParse(_ap); }
   { clObject CL_class;
     { clObject L_1, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_CLASS));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_CLASS));
       clSetq(L_1, name);
       clSetq(CL_class,
              clApply(L_0, L_1, keyMETACLASS, clSTRUCTURE_CLASS, keys,
                      clEOA)); }
-    clFuncallFunction(clSymbolFunctionValue(clFINALIZE_INHERITANCE),
+    clFuncallFunction(clSymbolFunctionChecked(clFINALIZE_INHERITANCE),
                       CL_class,
                       clEOA);
     return(clValues1(CL_class)); } }
@@ -1323,11 +1323,11 @@ clObject clShallowCopy_clT clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, object);
         clSetq(CL_class,
-               clFuncallFunction(clSymbolFunctionValue(clTYPE_FOR_COPY),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPE_FOR_COPY),
                                  L_0,
                                  clEOA)); }
       clSetq(copy,
-             clFuncallFunction(clSymbolFunctionValue(clALLOCATE_INSTANCE),
+             clFuncallFunction(clSymbolFunctionChecked(clALLOCATE_INSTANCE),
                                CL_class,
                                clEOA));
       { clObject L_sublist575, slot;
@@ -1336,7 +1336,7 @@ clObject clShallowCopy_clT clVdecl(_ap)
             clSetq(L_0__R1, object);
             clSetq(L_0, clClassOf(L_0__R1, clEOA)); }
           clSetq(L_sublist575,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                    L_0,
                                    clEOA)); }
         clSetq(slot, clCar(L_sublist575, clEOA));
@@ -1345,13 +1345,13 @@ clObject clShallowCopy_clT clVdecl(_ap)
         { clObject L_arg580, L_value577;
           clSetq(L_arg580,
                  clFastFindSlot(CL_class,
-                                clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                                clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                                   slot,
                                                   clEOA)));
           { clObject L_1;
             clSetq(L_1, object);
             clSetq(L_value577,
-                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                      CL_class,
                                      L_1,
                                      slot,
@@ -1386,7 +1386,7 @@ clObject clCopyStructure clVdecl(_ap)
       if (clTrue(clFastFind(SYM_0_LTV, L_cpl584)))
         { clObject L_0;
           clSetq(L_0, structure);
-          return(clFuncallFunction(clSymbolFunctionValue(clSHALLOW_COPY),
+          return(clFuncallFunction(clSymbolFunctionChecked(clSHALLOW_COPY),
                                    L_0,
                                    clEOA)); }
       else
@@ -1422,7 +1422,7 @@ clObject clMakeStructureKeylist clVdecl(_ap)
     { clObject slot, L_g1;
       clSetq(slot, clNIL);
       clSetq(L_g1,
-             clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+             clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                CL_class,
                                clEOA));
       { clObject L_g2, L_g3, plist;
@@ -1442,7 +1442,7 @@ clObject clMakeStructureKeylist clVdecl(_ap)
                 { clObject L_0__R3;
                   clSetq(L_0__R3, slot);
                   clSetq(L_0__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                         clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                            L_0__R3,
                                            clEOA)); }
                 clSetq(L_0__R1, clMakeKeyword(L_0__R2, clEOA)); }
@@ -1451,7 +1451,7 @@ clObject clMakeStructureKeylist clVdecl(_ap)
                 { clObject L_0__R3;
                   clSetq(L_0__R3, slot);
                   clSetq(L_1__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_LOCATION),
+                         clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_LOCATION),
                                            L_0__R3,
                                            clEOA)); }
                 clSetq(L_1, clStructref(L_0__R2, L_1__R1, clEOA)); }
@@ -1464,7 +1464,7 @@ clObject clMakeStructureKeylist clVdecl(_ap)
         clLabel(END_LOOP);
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_NAME),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_NAME),
                                    CL_class,
                                    clEOA));
           clSetq(L_1, plist);

@@ -8,6 +8,10 @@
 	  (symbol-function name)));;)
     )
 
+(defun eclipse::symbol-function-checked (name)
+  (or (eclipse::symbol-function-value name)
+      (error 'undefined-function :name name)))
+
 (defun eclipse::symbol-setf-function-value (name)
   (or (get name 'setf nil)
       (let ((name `(setf ,name)))

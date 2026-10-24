@@ -183,7 +183,7 @@ clObject clMakeCondition clVdecl(_ap)
     clSetq(slot_initializations, clVargs(_ap));
     clEndParse(_ap); }
   { clObject L_1, L_0;
-    clSetq(L_0, clSymbolFunctionValue(clMAKE_INSTANCE));
+    clSetq(L_0, clSymbolFunctionChecked(clMAKE_INSTANCE));
     clSetq(L_1, type);
     return(clApply(L_0, L_1, slot_initializations, clEOA)); } }
 
@@ -197,18 +197,18 @@ clObject clSimpleConditionPrinter clVdecl(_ap)
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
   { clObject L_3, L_2, L_1, L_0;
-    clSetq(L_0, clSymbolFunctionValue(clFORMAT));
+    clSetq(L_0, clSymbolFunctionChecked(clFORMAT));
     clSetq(L_1, stream);
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clSIMPLE_CONDITION_FORMAT_CONTROL),
+             clFuncallFunction(clSymbolFunctionChecked(clSIMPLE_CONDITION_FORMAT_CONTROL),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clSIMPLE_CONDITION_FORMAT_ARGUMENTS),
+             clFuncallFunction(clSymbolFunctionChecked(clSIMPLE_CONDITION_FORMAT_ARGUMENTS),
                                L_0__R1,
                                clEOA)); }
     return(clApply(L_0, L_1, L_2, L_3, clEOA)); } }
@@ -233,7 +233,7 @@ static clObject clPrintObject_clSIMPLE_CONDITION_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -244,10 +244,10 @@ static clObject clPrintObject_clSIMPLE_CONDITION_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -316,10 +316,10 @@ static clObject clPrintObject_clUNBOUND_VARIABLE_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clCELL_ERROR_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clCELL_ERROR_NAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_19,
                              L_2,
@@ -339,7 +339,7 @@ static clObject clPrintObject_clUNBOUND_VARIABLE_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -350,10 +350,10 @@ static clObject clPrintObject_clUNBOUND_VARIABLE_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -427,16 +427,16 @@ static clObject clPrintObject_clUNBOUND_SLOT_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clCELL_ERROR_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clCELL_ERROR_NAME),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clUNBOUND_SLOT_INSTANCE),
+             clFuncallFunction(clSymbolFunctionChecked(clUNBOUND_SLOT_INSTANCE),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_23,
                              L_2,
@@ -457,7 +457,7 @@ static clObject clPrintObject_clUNBOUND_SLOT_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -468,10 +468,10 @@ static clObject clPrintObject_clUNBOUND_SLOT_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -545,10 +545,10 @@ static clObject clPrintObject_clUNDEFINED_FUNCTION_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clCELL_ERROR_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clCELL_ERROR_NAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_26,
                              L_2,
@@ -568,7 +568,7 @@ static clObject clPrintObject_clUNDEFINED_FUNCTION_clT_CallNextMethod clVdecl(_a
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -579,10 +579,10 @@ static clObject clPrintObject_clUNDEFINED_FUNCTION_clT_CallNextMethod clVdecl(_a
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -656,10 +656,10 @@ static clObject clPrintObject_clPRINT_NOT_READABLE_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clPRINT_NOT_READABLE_OBJECT),
+             clFuncallFunction(clSymbolFunctionChecked(clPRINT_NOT_READABLE_OBJECT),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_30,
                              L_2,
@@ -679,7 +679,7 @@ static clObject clPrintObject_clPRINT_NOT_READABLE_clT_CallNextMethod clVdecl(_a
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -690,10 +690,10 @@ static clObject clPrintObject_clPRINT_NOT_READABLE_clT_CallNextMethod clVdecl(_a
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -767,16 +767,16 @@ static clObject clPrintObject_clTYPE_ERROR_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_ERROR_DATUM),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_ERROR_DATUM),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_ERROR_EXPECTED_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_ERROR_EXPECTED_TYPE),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_35,
                              L_2,
@@ -797,7 +797,7 @@ static clObject clPrintObject_clTYPE_ERROR_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -808,10 +808,10 @@ static clObject clPrintObject_clTYPE_ERROR_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -885,16 +885,16 @@ static clObject clPrintObject_clOUT_OF_BOUNDS_ERROR_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_ERROR_DATUM),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_ERROR_DATUM),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clOUT_OF_BOUNDS_ERROR_LENGTH),
+             clFuncallFunction(clSymbolFunctionChecked(clOUT_OF_BOUNDS_ERROR_LENGTH),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_39,
                              L_2,
@@ -915,7 +915,7 @@ static clObject clPrintObject_clOUT_OF_BOUNDS_ERROR_clT_CallNextMethod clVdecl(_
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -926,10 +926,10 @@ static clObject clPrintObject_clOUT_OF_BOUNDS_ERROR_clT_CallNextMethod clVdecl(_
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -1042,10 +1042,10 @@ static clObject clPrintObject_clARITHMETIC_ERROR_clT_Lambda clVdecl(_ap)
         clSetq(L_0__R2, condition);
         clSetq(L_0__R1, clClassOf(L_0__R2, clEOA)); }
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clCLASS_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clCLASS_NAME),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STR_tildesdot__45,
                              L_2,
@@ -1065,7 +1065,7 @@ static clObject clPrintObject_clARITHMETIC_ERROR_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -1076,10 +1076,10 @@ static clObject clPrintObject_clARITHMETIC_ERROR_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -1195,7 +1195,7 @@ clObject clInitializeInstance_keyAFTER_clAUTO_ARGUMENTS_ERROR clVdecl(_ap)
             { clObject slot, L_g16;
               clSetq(slot, clNIL);
               clSetq(L_g16,
-                     clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+                     clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                        CL_class,
                                        clEOA));
               { clObject name;
@@ -1212,7 +1212,7 @@ clObject clInitializeInstance_keyAFTER_clAUTO_ARGUMENTS_ERROR clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, slot);
                     clSetq(name,
-                           clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                           clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                              L_0,
                                              clEOA)); }
                   { clObject L_test__R1;
@@ -1242,7 +1242,7 @@ clObject clInitializeInstance_keyAFTER_clAUTO_ARGUMENTS_ERROR clVdecl(_ap)
                             clSetq(L_1__R1, condition);
                             clSetq(L_2, slot);
                             clSetq(L_0__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+                                   clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                                      CL_class,
                                                      L_1__R1,
                                                      L_2,
@@ -1388,7 +1388,7 @@ static clObject clPrintObject_clRESTART_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -1399,10 +1399,10 @@ static clObject clPrintObject_clRESTART_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -1615,7 +1615,7 @@ clObject clCanonicalizeCondition clVdecl(_ap)
                   (_clEq(L_class_name481, clNULL) ? CONS_163 :
                    clNIL))))
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clMAKE_CONDITION));
+          clSetq(L_0, clSymbolFunctionChecked(clMAKE_CONDITION));
           clSetq(L_1, datum);
           clSetq(L_2, arguments);
           return(clApply(L_0, L_1, L_2, clEOA)); }
@@ -1630,7 +1630,7 @@ clObject clCanonicalizeCondition clVdecl(_ap)
                            clNULL,
                            clEOA)); }
         else return(clValues1(datum));
-      else if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      else if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                         L_g479,
                                         SYM_1_LTV,
                                         clEOA)))
@@ -1668,7 +1668,7 @@ clObject clError clVdecl(_ap)
                                      clSIMPLE_ERROR,
                                      clEOA)); }
     clSignal(c, clEOA);
-    return(clFuncallFunction(clSymbolFunctionValue(clINVOKE_DEBUGGER),
+    return(clFuncallFunction(clSymbolFunctionChecked(clINVOKE_DEBUGGER),
                              c,
                              clEOA)); } }
 
@@ -1691,7 +1691,7 @@ static clObject clCerror_Lambda_r1 clVdecl(_ap)
       if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
       clEndParse(_ap); }
     { clObject L_2, L_1, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clFORMAT));
+      clSetq(L_0, clSymbolFunctionChecked(clFORMAT));
       clSetq(L_1, s);
       clSetq(L_2, clEnv(0, *continue_string));
       return(clApply(L_0, L_1, L_2, clEnv(1, *arguments), clEOA)); } } }
@@ -1715,7 +1715,7 @@ clObject clCerror clVdecl(_ap)
             { clObject L_0__R3;
               clSetq(L_0__R3, datum);
               clSetq(L_0__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                     clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                        L_0__R3,
                                        clCONDITION,
                                        clEOA)); }
@@ -1805,7 +1805,7 @@ clObject clSignal clVdecl(_ap)
       clDbind(clstarBREAK_ON_SIGNALSstar);
       clSetSymbolValueValue(clstarBREAK_ON_SIGNALSstar,
                             STARbreak_on_signalsSTAR);
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                    c,
                                    bos,
                                    clEOA)))
@@ -1824,7 +1824,7 @@ clObject clSignal clVdecl(_ap)
           clSetq(handler, clCar(L_sublist491, clEOA));
           clLabel(l_ITERATE492);
           if (clTrue(clEndp(L_sublist491, clEOA))) clLocalReturn(NIL);
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                        c,
                                        clHandlerConditionType(handler,
                                                               clEOA),
@@ -1885,7 +1885,7 @@ clObject clWarn clVdecl(_ap)
                                          arguments,
                                          clSIMPLE_WARNING,
                                          clEOA)); }
-        if (clTrue(clNot(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+        if (clTrue(clNot(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                            c,
                                            clWARNING,
                                            clEOA),
@@ -1961,7 +1961,7 @@ clObject clReadEvaluatedForm clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, clSymbolValue(clstarDEBUG_IOstar, clEOA));
-    clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                       L_0,
                       STRn_73,
                       clEOA); }
@@ -1999,7 +1999,7 @@ static clObject clCheckTypeError_Lambda_r1 clVdecl(_ap)
     { clObject L_2, L_0;
       clSetq(L_0, stream);
       clSetq(L_2, clEnv(0, *place));
-      return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                L_0,
                                STRn_77,
                                L_2,
@@ -2033,7 +2033,7 @@ clObject clCheckTypeError clVdecl(_ap)
             { clObject L_2__R2;
               clSetq(L_2__R2, type);
               clSetq(L_2__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+                     clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                        clNIL,
                                        STR_of_type_tildes__75,
                                        L_2__R2,
@@ -2090,7 +2090,7 @@ clObject clCheckTypeError clVdecl(_ap)
                                            keyREPORT_FUNCTION,
                                            L_5,
                                            keyINTERACTIVE_FUNCTION,
-                                           clSymbolFunctionValue(clINTERACTIVE_EVALUATED_FORM),
+                                           clSymbolFunctionChecked(clINTERACTIVE_EVALUATED_FORM),
                                            clEOA)); }
                     clSetq(L_0, clList(L_0__R1, clEOA)); }
                   clSetq(STARrestartsSTAR,
@@ -2149,7 +2149,7 @@ static clObject clAssertError_Lambda_r1 clVdecl(_ap)
           clSetq(L_0__R1, clEnv(0, *places));
           clSetq(L_2, clLength(L_0__R1, clEOA)); }
         clSetq(L_3, clEnv(0, *places));
-        return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                  L_0,
                                  STRn_80,
                                  L_2,
@@ -2158,7 +2158,7 @@ static clObject clAssertError_Lambda_r1 clVdecl(_ap)
     else
       { clObject L_0;
         clSetq(L_0, stream);
-        return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                  L_0,
                                  STR_Retrydot__81,
                                  clEOA)); } } }
@@ -2565,7 +2565,7 @@ clObject clComputeRestarts clVdecl(_ap)
            clSymbolValue(clstarRESTARTSstar, clEOA));
     clLabel(l_ITERATE527);
     if (clTrue(clNull(L_restart_frames39, clEOA)))
-      return(clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+      return(clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                results,
                                clEOA));
     { clObject L_sublist528, L_restart40;
@@ -2845,7 +2845,7 @@ static clObject clBreak_Lambda_r1 clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, s);
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STR_Return_from_BREAKdot__88,
                              clEOA)); } }
@@ -2906,7 +2906,7 @@ clObject clBreak clVdecl(_ap)
                                          format_arguments,
                                          clEOA)); }
                 clReturnFrom(l_RESTART_BIND44,
-                             clFuncallFunction(clSymbolFunctionValue(clINVOKE_DEBUGGER),
+                             clFuncallFunction(clSymbolFunctionChecked(clINVOKE_DEBUGGER),
                                                L_0,
                                                clEOA)); } }
             clUnwind(1); }
@@ -2950,7 +2950,7 @@ static clObject clInvokeDebugger_keyAROUND_clT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2961,10 +2961,10 @@ static clObject clInvokeDebugger_keyAROUND_clT_CallNextMethod clVdecl(_ap)
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clINVOKE_DEBUGGER, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -3077,7 +3077,7 @@ clObject clPrettySymbolName clVdecl(_ap)
                 clSetq(L_1__R1, clLength(L_0__R3, clEOA)); }
             else clSetq(L_1__R1, I_0); }
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                    name,
                                    L_1__R1,
                                    clEOA)); }
@@ -3177,22 +3177,22 @@ static clObject clPrintObject_clASYNCHRONOUS_INTERRUPT_clT_Lambda clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_2,
-             clFuncallFunction(clSymbolFunctionValue(clASYNCHRONOUS_INTERRUPT_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clASYNCHRONOUS_INTERRUPT_NAME),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clASYNCHRONOUS_INTERRUPT_SIGNAL),
+             clFuncallFunction(clSymbolFunctionChecked(clASYNCHRONOUS_INTERRUPT_SIGNAL),
                                L_0__R1,
                                clEOA)); }
     { clObject L_0__R1;
       clSetq(L_0__R1, condition);
       clSetq(L_4,
-             clFuncallFunction(clSymbolFunctionValue(clASYNCHRONOUS_INTERRUPT_CODE),
+             clFuncallFunction(clSymbolFunctionChecked(clASYNCHRONOUS_INTERRUPT_CODE),
                                L_0__R1,
                                clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STRn_99,
                              L_2,
@@ -3214,7 +3214,7 @@ static clObject clPrintObject_clASYNCHRONOUS_INTERRUPT_clT_CallNextMethod clVdec
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -3225,10 +3225,10 @@ static clObject clPrintObject_clASYNCHRONOUS_INTERRUPT_clT_CallNextMethod clVdec
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clPRINT_OBJECT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -4363,7 +4363,7 @@ void clInitCondition __P((void))
   (void) clstarRESTARTSstar;
   { clObject L_g19;
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(L_g19, clApply(L_0, clHANDLER, CONS_86, clEOA)); }
     clSetSymbolFunctionValue(clMAKE_HANDLER,
                              clMakeClosure(0,
@@ -4383,7 +4383,7 @@ void clInitCondition __P((void))
     (void) clHANDLER; }
   { clObject *L_g20 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g20, clApply(L_0, clRESTART, CONS_113, clEOA)); }
     { clObject L_1;
       clSetq(L_1,

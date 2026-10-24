@@ -87,7 +87,7 @@ static clObject clDescribeObject_clINTEGER_clT_l_LogicalBlock clVdecl(_ap)
             clLabel(l_ITERATE404);
             if (clTrue(clGeInteger(i, L_end403, clEOA)))
               clLocalReturn(NIL);
-            clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+            clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                               clT,
                               STR_tildepercent__tildedcolon_tildex__4,
                               i,
@@ -177,7 +177,7 @@ static clObject clDescribeObject_clFLOAT_clT_l_LogicalBlock clVdecl(_ap)
       clWriteChar(C_colon, L_1, clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clSIGNIFICAND,
@@ -185,7 +185,7 @@ static clObject clDescribeObject_clFLOAT_clT_l_LogicalBlock clVdecl(_ap)
                         clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clEXPONENT,
@@ -193,7 +193,7 @@ static clObject clDescribeObject_clFLOAT_clT_l_LogicalBlock clVdecl(_ap)
                         clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clSIGN,
@@ -240,7 +240,7 @@ clObject clDescribeObject_clFLOAT_clT clVdecl(_ap)
     { clObject L_values411, *significand = clMakeBinding(),
       *exponent = clMakeBinding(), *sign = clMakeBinding();
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_0;
           clSetq(L_0, *object);
           clIntegerDecodeFloat(L_0, clEOA); }
@@ -304,7 +304,7 @@ static clObject clDescribeStructure_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clClassOf(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clCLASS,
@@ -312,7 +312,7 @@ static clObject clDescribeStructure_l_LogicalBlock clVdecl(_ap)
                         clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__SLOTScolon___9,
                         clEOA); }
@@ -335,7 +335,7 @@ static clObject clDescribeStructure_l_LogicalBlock clVdecl(_ap)
               clSetq(L_0__R1, clEnv(0, *object));
               clSetq(L_4, clSlotValue(L_0__R1, sn, clEOA)); }
           else clSetq(L_4, clNIL); }
-        clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+        clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                           L_0,
                           STRn_10,
                           sn,
@@ -366,13 +366,13 @@ clObject clDescribeStructure clVdecl(_ap)
       clSetq(*slot_names, clVpop(_ap));
     else
       { clObject L_1, L_0;
-        clSetq(L_0, clSymbolFunctionValue(clSLOT_DEFINITION_NAME));
+        clSetq(L_0, clSymbolFunctionChecked(clSLOT_DEFINITION_NAME));
         { clObject L_0__R1;
           { clObject L_0__R2;
             clSetq(L_0__R2, *object);
             clSetq(L_0__R1, clClassOf(L_0__R2, clEOA)); }
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(*slot_names, clMapcar(L_0, L_1, clEOA)); }
@@ -515,13 +515,13 @@ clObject clDescribeObject_clCLASS_clT clVdecl(_ap)
       { clObject L_1__R1;
         { clObject L_1__R2, L_0__R2;
           clSetq(L_0__R2,
-                 clSymbolFunctionValue(clSLOT_DEFINITION_NAME));
+                 clSymbolFunctionChecked(clSLOT_DEFINITION_NAME));
           { clObject L_0__R3;
             { clObject L_0__R4;
               clSetq(L_0__R4, object);
               clSetq(L_0__R3, clClassOf(L_0__R4, clEOA)); }
             clSetq(L_1__R2,
-                   clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+                   clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                      L_0__R3,
                                      clEOA)); }
           clSetq(L_1__R1, clMapcar(L_0__R2, L_1__R2, clEOA)); }
@@ -551,10 +551,10 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_TEST),
+               clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_TEST),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clTEST,
@@ -565,10 +565,10 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_COUNT),
+               clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_COUNT),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clCOUNT,
@@ -579,10 +579,10 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_SIZE),
+               clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_SIZE),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clSIZE,
@@ -593,10 +593,10 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_REHASH_SIZE),
+               clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_REHASH_SIZE),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clREHASH_SIZE,
@@ -607,10 +607,10 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_REHASH_THRESHOLD),
+               clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_REHASH_THRESHOLD),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clREHASH_THRESHOLD,
@@ -621,7 +621,7 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clHashTableNBuckets(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clN_BUCKETS,
@@ -629,7 +629,7 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
                         clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__COMPONENTScolon___11,
                         clEOA); }
@@ -651,7 +651,7 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
             { clObject L_0;
               clSetq(L_0, this_index);
               clSetq(L_test,
-                     clFuncallFunction(clSymbolFunctionValue(clGE),
+                     clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        L_0,
                                        limit,
                                        clEOA)); }
@@ -667,7 +667,7 @@ static clObject clDescribeObject_clOPEN_ADDRESS_HASH_TABLE_clT_l_LogicalBlock cl
               clSetq(L_0__R1, clEnv(0, *object));
               clSetq(L_1__R1, this_index);
               clSetq(L_4, clHashTableValue(L_0__R1, L_1__R1)); }
-            clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+            clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                               L_0,
                               STR_tildepercent____tildedcolon_tildes_equalgreater_tildes__12,
                               L_2,
@@ -762,10 +762,10 @@ static clObject clDescribeObject_clSIMPLE_ARRAY_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clELEMENT_TYPE,
@@ -776,7 +776,7 @@ static clObject clDescribeObject_clSIMPLE_ARRAY_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clArrayDimensions(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clDIMENSIONS,
@@ -864,10 +864,10 @@ static clObject clDescribeObject_clARRAY_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clELEMENT_TYPE,
@@ -878,7 +878,7 @@ static clObject clDescribeObject_clARRAY_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clArrayDimensions(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clDIMENSIONS,
@@ -886,7 +886,7 @@ static clObject clDescribeObject_clARRAY_clT_l_LogicalBlock clVdecl(_ap)
                         clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clDISPLACED_TO,
@@ -894,7 +894,7 @@ static clObject clDescribeObject_clARRAY_clT_l_LogicalBlock clVdecl(_ap)
                         clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clDISPLACED_INDEX_OFFSET,
@@ -904,7 +904,7 @@ static clObject clDescribeObject_clARRAY_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clEnv(0, *object));
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clARRAY_HAS_FILL_POINTER_P),
+               clFuncallFunction(clSymbolFunctionChecked(clARRAY_HAS_FILL_POINTER_P),
                                  L_0,
                                  clEOA)); }
       if (clTrue(L_test))
@@ -912,7 +912,7 @@ static clObject clDescribeObject_clARRAY_clT_l_LogicalBlock clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, clEnv(0, *object));
             clSetq(L_2, clFillPointer(L_0__R1, clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+          clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                             clT,
                             STRn_13,
                             L_2,
@@ -958,10 +958,10 @@ clObject clDescribeObject_clARRAY_clT clVdecl(_ap)
     { clObject L_values450, *displaced_to = clMakeBinding(),
       *offset = clMakeBinding();
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_0;
           clSetq(L_0, *object);
-          clFuncallFunction(clSymbolFunctionValue(clARRAY_DISPLACEMENT),
+          clFuncallFunction(clSymbolFunctionChecked(clARRAY_DISPLACEMENT),
                             L_0,
                             clEOA); }
         clAccumulateValues(MVC);
@@ -1018,7 +1018,7 @@ static clObject clDescribeObject_clSYMBOL_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clSymbolName(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clNAME,
@@ -1029,7 +1029,7 @@ static clObject clDescribeObject_clSYMBOL_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clSymbolPackage(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clPACKAGE,
@@ -1046,7 +1046,7 @@ static clObject clDescribeObject_clSYMBOL_clT_l_LogicalBlock clVdecl(_ap)
             clSetq(L_0__R1, clEnv(0, *object));
             clSetq(L_3, clSymbolValue(L_0__R1, clEOA)); }
         else clSetq(L_3, STR_lessunboundgreater__14); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clVALUE,
@@ -1063,7 +1063,7 @@ static clObject clDescribeObject_clSYMBOL_clT_l_LogicalBlock clVdecl(_ap)
             clSetq(L_0__R1, clEnv(0, *object));
             clSetq(L_3, clSymbolFunction(L_0__R1, clEOA)); }
         else clSetq(L_3, STR_lessunboundgreater__14); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clFUNCTION,
@@ -1074,7 +1074,7 @@ static clObject clDescribeObject_clSYMBOL_clT_l_LogicalBlock clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, clEnv(0, *object));
         clSetq(L_3, clSymbolPlist(L_0__R1, clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STR_tildepercent__tildeatlesstildescolon_tildestildecolongreater__8,
                         clPLIST,

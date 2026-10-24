@@ -165,14 +165,14 @@ clObject clMakeMethodLambdaStandardGenericFunctionStandardMethodTT clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, generic_function);
           clSetq(name,
-                 clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_NAME),
+                 clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_NAME),
                                    L_0,
                                    clEOA)); }
         clSetq(args, clGensym(STR_ARGS__5, clEOA));
         clSetq(methods, clGensym(STR_METHODS__6, clEOA));
         { clObject L_values408, decl, body__R1, doc;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             clFindDeclarations(body, clNIL, clEOA);
             clAccumulateValues(MVC);
             clSetq(L_values408, clMultipleValueFuncall(MVC)); }
@@ -221,7 +221,7 @@ clObject clMakeMethodLambdaStandardGenericFunctionStandardMethodTT clVdecl(_ap)
                             clSetq(L_0__R8, generic_function);
                             clSetq(L_1__R8, environment);
                             clSetq(L_2__R5,
-                                   clFuncallFunction(clSymbolFunctionValue(clMAKE_LOAD_FORM),
+                                   clFuncallFunction(clSymbolFunctionChecked(clMAKE_LOAD_FORM),
                                                      L_0__R8,
                                                      L_1__R8,
                                                      clEOA)); }
@@ -395,7 +395,7 @@ void clInitDevMeth __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clMAKE_METHOD_LAMBDA_STANDARD_GENERIC_FUNCTION_STANDARD_METHOD_T_T));
+               clSymbolFunctionChecked(clMAKE_METHOD_LAMBDA_STANDARD_GENERIC_FUNCTION_STANDARD_METHOD_T_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,

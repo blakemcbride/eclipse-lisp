@@ -99,7 +99,7 @@ clObject clUnion clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(res, list2);
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
@@ -156,7 +156,7 @@ clObject clIntersection clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(res, clNIL);
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
@@ -210,7 +210,7 @@ clObject clSetDifference clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(res, clNIL);
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
@@ -267,7 +267,7 @@ clObject clSetExclusiveOr clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(res, clNIL);
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
@@ -365,7 +365,7 @@ clObject clSubsetp clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(res, clT);
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
@@ -420,7 +420,7 @@ clObject clNunion clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(first, clNIL);
     clSetq(last, clNIL);
     clCheckKeys(L_keys, CONS_1, clEOA);
@@ -479,7 +479,7 @@ clObject clNintersection clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(first, clNIL);
     clSetq(last, clNIL);
     clCheckKeys(L_keys, CONS_1, clEOA);
@@ -534,7 +534,7 @@ clObject clNsetDifference clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clSetq(first, clNIL);
     clSetq(last, clNIL);
     clCheckKeys(L_keys, CONS_1, clEOA);
@@ -592,7 +592,7 @@ clObject clNsetExclusiveOr clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
   { clObject list1__R1, list2__R1, x, splicex;

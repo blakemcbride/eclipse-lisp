@@ -328,7 +328,7 @@ clObject clEql clVdecl(_ap)
             { clObject L_1, L_0;
               clSetq(L_0, x);
               clSetq(L_1, y);
-              return(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+              return(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -391,11 +391,11 @@ clObject clEqlHash clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, x);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clABS),
+                       clFuncallFunction(clSymbolFunctionChecked(clABS),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_test__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clLT),
+                     clFuncallFunction(clSymbolFunctionChecked(clLT),
                                        L_0__R2,
                                        I_1000,
                                        clEOA)); }
@@ -403,7 +403,7 @@ clObject clEqlHash clVdecl(_ap)
               { clObject L_0__R2;
                 clSetq(L_0__R2, x);
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clMULT),
+                       clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                          L_0__R2,
                                          I_1000,
                                          clEOA)); }
@@ -700,7 +700,7 @@ clObject clMap1 clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, args);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                 clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(res, clApply(L_0, L_1, clEOA)); }
@@ -798,7 +798,7 @@ clObject clSatisfiesTheTest clVdecl(_ap)
           clSetq(L_g492, test);
           clSetq(f,
                  (clTrue(L_g492) ? L_g492 :
-                  clSymbolFunctionValue(clEQL))); } }
+                  clSymbolFunctionChecked(clEQL))); } }
     { clObject L_1, L_0;
       clSetq(L_0, key);
       clSetq(L_1, x);

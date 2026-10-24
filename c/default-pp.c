@@ -459,7 +459,7 @@ clObject clAlternativeFnCall clVdecl(_ap)
           clSetq(L_0__R1, clSymbolName(L_0__R2, clEOA)); }
         clSetq(L_0, clLength(L_0__R1, clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clGT),
+             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                L_0,
                                I_12,
                                clEOA)); }
@@ -573,7 +573,7 @@ static clObject clPrintFancyFnCall_l_LogicalBlock clVdecl(_ap)
       clSetq(L_1, xp);
       clWriteToplevel(L_0, L_1, clEOA); }
     clSetq(clEnv(0, *i),
-           clFuncallFunction(clSymbolFunctionValue(clADD),
+           clFuncallFunction(clSymbolFunctionChecked(clADD),
                              clEnv(0, *i),
                              I_1,
                              clEOA));
@@ -1852,7 +1852,7 @@ static clObject clFunctionPrint_Lambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, xp);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                       L_0,
                       STR_hashquote__9,
                       clEOA); }
@@ -2244,7 +2244,7 @@ static clObject clQuotePrint_Lambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, xp);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                       L_0,
                       STR_quote__10,
                       clEOA); }
@@ -3207,7 +3207,7 @@ static clObject clBqPrint_Lambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, xp);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                       L_0,
                       STR_backquote__52,
                       clEOA); }
@@ -3246,7 +3246,7 @@ static clObject clBqVectorPrint_Lambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, xp);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                       L_0,
                       STR_backquotehash__53,
                       clEOA); }
@@ -3711,7 +3711,7 @@ clObject clBqtifyInline clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, clBqStructCode(tem, clEOA));
               clSetq(L_test__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                     clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                        L_0,
                                        STR_comma__59,
                                        clEOA)); }
@@ -4278,7 +4278,7 @@ void clInitDefaultPp __P((void))
   (void) clBQ_VECTOR_PRINT;
   { clObject *L_g4 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g4, clApply(L_0, clBQ_STRUCT, CONS_42, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -4333,21 +4333,21 @@ void clInitDefaultPp __P((void))
                                          clNULL_HOOK));
   (void) clBQTIFY_INLINE;
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clFN_CALL));
+    clSetq(L_1, clSymbolFunctionChecked(clFN_CALL));
     clSetPprintDispatchPLUS(CONS_60,
                             L_1,
                             CONS_62,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clPPRINT_FILL));
+    clSetq(L_1, clSymbolFunctionChecked(clPPRINT_FILL));
     clSetPprintDispatchPLUS(clCONS,
                             L_1,
                             CONS_63,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBQ_STRUCT_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_STRUCT_PRINT));
     clSetPprintDispatchPLUS(clBQ_STRUCT,
                             L_1,
                             CONS_64,
@@ -4360,7 +4360,7 @@ void clInitDefaultPp __P((void))
                          clSymbolValue(clstarBQ_CONSstar, clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
@@ -4373,7 +4373,7 @@ void clInitDefaultPp __P((void))
                          clSymbolValue(clstarBQ_LISTstar, clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
@@ -4386,7 +4386,7 @@ void clInitDefaultPp __P((void))
                          clSymbolValue(clstarBQ_LISTstarstar, clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
@@ -4399,7 +4399,7 @@ void clInitDefaultPp __P((void))
                          clSymbolValue(clstarBQ_APPENDstar, clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
@@ -4412,7 +4412,7 @@ void clInitDefaultPp __P((void))
                          clSymbolValue(clstarBQ_NCONCstar, clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
@@ -4425,7 +4425,7 @@ void clInitDefaultPp __P((void))
                          clSymbolValue(clstarBQ_VECTORstar, clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_VECTOR_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_VECTOR_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
@@ -4439,406 +4439,406 @@ void clInitDefaultPp __P((void))
                                        clEOA),
                          clEOA),
                   clEOA));
-    clSetq(L_1, clSymbolFunctionValue(clBQ_VECTOR_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clBQ_VECTOR_PRINT));
     clSetPprintDispatchPLUS(L_0,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_65,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_69,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_73,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_77,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_81,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clCOND_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clCOND_PRINT));
     clSetPprintDispatchPLUS(CONS_85,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_89,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_93,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_97,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_101,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDMM_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clDMM_PRINT));
     clSetPprintDispatchPLUS(CONS_105,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_109,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFSETF_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFSETF_PRINT));
     clSetPprintDispatchPLUS(CONS_113,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_65,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_117,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_121,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_125,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDO_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clDO_PRINT));
     clSetPprintDispatchPLUS(CONS_129,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDO_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clDO_PRINT));
     clSetPprintDispatchPLUS(CONS_133,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_137,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_141,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_145,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_149,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_153,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_157,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_161,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_165,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clFLET_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clFLET_PRINT));
     clSetPprintDispatchPLUS(CONS_169,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clFUNCTION_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clFUNCTION_PRINT));
     clSetPprintDispatchPLUS(CONS_173,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clFLET_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clFLET_PRINT));
     clSetPprintDispatchPLUS(CONS_177,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_181,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clLET_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clLET_PRINT));
     clSetPprintDispatchPLUS(CONS_185,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clLET_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clLET_PRINT));
     clSetPprintDispatchPLUS(CONS_189,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_193,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clPRETTY_LOOP));
+    clSetq(L_1, clSymbolFunctionChecked(clPRETTY_LOOP));
     clSetPprintDispatchPLUS(CONS_197,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clFLET_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clFLET_PRINT));
     clSetPprintDispatchPLUS(CONS_201,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clMVB_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clMVB_PRINT));
     clSetPprintDispatchPLUS(CONS_205,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_209,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clPROG_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clPROG_PRINT));
     clSetPprintDispatchPLUS(CONS_213,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clPROG_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clPROG_PRINT));
     clSetPprintDispatchPLUS(CONS_217,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clDEFUN_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clDEFUN_LIKE));
     clSetPprintDispatchPLUS(CONS_221,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSETQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clSETQ_PRINT));
     clSetPprintDispatchPLUS(CONS_225,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSETQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clSETQ_PRINT));
     clSetPprintDispatchPLUS(CONS_229,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clQUOTE_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clQUOTE_PRINT));
     clSetPprintDispatchPLUS(CONS_233,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_237,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSETQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clSETQ_PRINT));
     clSetPprintDispatchPLUS(CONS_241,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clSETQ_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clSETQ_PRINT));
     clSetPprintDispatchPLUS(CONS_245,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clTAGBODY_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clTAGBODY_PRINT));
     clSetPprintDispatchPLUS(CONS_249,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_253,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_257,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_261,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clUP_PRINT));
+    clSetq(L_1, clSymbolFunctionChecked(clUP_PRINT));
     clSetPprintDispatchPLUS(CONS_265,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_269,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_273,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_277,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_281,
                             L_1,
                             CONS_64,
                             clSymbolValue(clstarIPDstar, clEOA),
                             clEOA); }
   { clObject L_1;
-    clSetq(L_1, clSymbolFunctionValue(clBLOCK_LIKE));
+    clSetq(L_1, clSymbolFunctionChecked(clBLOCK_LIKE));
     clSetPprintDispatchPLUS(CONS_285,
                             L_1,
                             CONS_64,

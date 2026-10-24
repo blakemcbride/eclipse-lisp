@@ -74,12 +74,12 @@ clObject clRoundPrime clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, num);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clREM),
+               clFuncallFunction(clSymbolFunctionChecked(clREM),
                                  L_0__R1,
                                  I_2,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                L_0,
                                I_0,
                                clEOA)); }
@@ -87,7 +87,7 @@ clObject clRoundPrime clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, num);
         clSetq(num,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_1,
                                  clEOA)); } }
@@ -96,12 +96,12 @@ clObject clRoundPrime clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, num);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clREM),
+               clFuncallFunction(clSymbolFunctionChecked(clREM),
                                  L_0__R1,
                                  I_3,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                L_0,
                                I_0,
                                clEOA)); }
@@ -109,7 +109,7 @@ clObject clRoundPrime clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, num);
         clSetq(num,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_2,
                                  clEOA)); } }
@@ -118,12 +118,12 @@ clObject clRoundPrime clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, num);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clREM),
+               clFuncallFunction(clSymbolFunctionChecked(clREM),
                                  L_0__R1,
                                  I_7,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                L_0,
                                I_0,
                                clEOA)); }
@@ -131,7 +131,7 @@ clObject clRoundPrime clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, num);
         clSetq(num,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_4,
                                  clEOA)); } }
@@ -155,7 +155,7 @@ clObject clComputeNBuckets clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_2, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clRoundPrime(clFuncallFunction(clSymbolFunctionValue(clDIV),
+  return(clRoundPrime(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                         size,
                                         threshold,
                                         clEOA),
@@ -170,7 +170,7 @@ clObject clComputeSize clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_2, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clFloor(clFuncallFunction(clSymbolFunctionValue(clMULT),
+  return(clFloor(clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                    n_buckets,
                                    threshold,
                                    clEOA),
@@ -185,25 +185,25 @@ clObject clResizeHashTable clVdecl(_ap)
     clEndParse(_ap); }
   { clObject size, rehash_size, load, new_n;
     clSetq(size,
-           clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_SIZE),
+           clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_SIZE),
                              table,
                              clEOA));
     clSetq(rehash_size,
-           clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_REHASH_SIZE),
+           clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_REHASH_SIZE),
                              table,
                              clEOA));
     clSetq(load,
-           clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_REHASH_THRESHOLD),
+           clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_REHASH_THRESHOLD),
                              table,
                              clEOA));
     { clObject L_0;
       clSetq(L_0,
              (clTrue(clIntegerp(rehash_size, clEOA)) ?
-              clFuncallFunction(clSymbolFunctionValue(clADD),
+              clFuncallFunction(clSymbolFunctionChecked(clADD),
                                 size,
                                 rehash_size,
                                 clEOA) :
-              clFuncallFunction(clSymbolFunctionValue(clMULT),
+              clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                 size,
                                 rehash_size,
                                 clEOA)));
@@ -214,7 +214,7 @@ clObject clResizeHashTable clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, clIntegerIndex(clComputeSize(new_n, load, clEOA)));
       clOpenAddressHashTableSizeSetter(L_0, table); } }
-  return(clFuncallFunction(clSymbolFunctionValue(clCLRHASH),
+  return(clFuncallFunction(clSymbolFunctionChecked(clCLRHASH),
                            table,
                            clEOA)); }
 
@@ -241,7 +241,7 @@ clObject clMakeHashTable clVdecl(_ap)
       { clObject L_1;
         clSetq(L_1, rehash_threshold);
         clSetq(size,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  I_83,
                                  L_1,
                                  clEOA)); }
@@ -264,7 +264,7 @@ clObject clMakeHashTable clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, test);
             clSetq(L_test__R1,
-                   clEq(L_0, clSymbolFunctionValue(clEQ), clEOA)); }
+                   clEq(L_0, clSymbolFunctionChecked(clEQ), clEOA)); }
           if (clTrue(L_test__R1))
             clSetq(test_name, clEQ);
           else
@@ -273,7 +273,7 @@ clObject clMakeHashTable clVdecl(_ap)
                 clSetq(L_0, test);
                 clSetq(L_test__R2,
                        clEq(L_0,
-                            clSymbolFunctionValue(clEQL),
+                            clSymbolFunctionChecked(clEQL),
                             clEOA)); }
               if (clTrue(L_test__R2))
                 clSetq(test_name, clEQL);
@@ -283,7 +283,7 @@ clObject clMakeHashTable clVdecl(_ap)
                     clSetq(L_0, test);
                     clSetq(L_test__R3,
                            clEq(L_0,
-                                clSymbolFunctionValue(clEQUAL),
+                                clSymbolFunctionChecked(clEQUAL),
                                 clEOA)); }
                   if (clTrue(L_test__R3))
                     clSetq(test_name, clEQUAL);
@@ -293,7 +293,7 @@ clObject clMakeHashTable clVdecl(_ap)
                         clSetq(L_0, test);
                         clSetq(L_test__R4,
                                clEq(L_0,
-                                    clSymbolFunctionValue(clEQUALP),
+                                    clSymbolFunctionChecked(clEQUALP),
                                     clEOA)); }
                       clSetq(test_name,
                              (clTrue(L_test__R4) ?
@@ -355,11 +355,11 @@ clObject clHashTableRehashThreshold_clOPEN_ADDRESS_HASH_TABLE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0,
-             clFloat(clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_SIZE),
+             clFloat(clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_SIZE),
                                        table,
                                        clEOA),
                      clEOA));
-      return(clFuncallFunction(clSymbolFunctionValue(clDIV),
+      return(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                L_0,
                                clHashTableNBuckets(table, clEOA),
                                clEOA)); } } }
@@ -561,7 +561,7 @@ clObject clHashTableP clVdecl(_ap)
     clSetq(x, (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_1, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+  return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                            x,
                            clHASH_TABLE,
                            clEOA)); }
@@ -592,15 +592,15 @@ clObject clCopyHashTable clVdecl(_ap)
   { clObject *copy = clMakeBinding();
     { clObject L_5, L_3, L_1;
       clSetq(L_1,
-             clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_TEST),
+             clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_TEST),
                                x,
                                clEOA));
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_SIZE),
+             clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_SIZE),
                                x,
                                clEOA));
       clSetq(L_5,
-             clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_REHASH_SIZE),
+             clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_REHASH_SIZE),
                                x,
                                clEOA));
       clSetq(*copy,
@@ -611,7 +611,7 @@ clObject clCopyHashTable clVdecl(_ap)
                              keyREHASH_SIZE,
                              L_5,
                              keyREHASH_THRESHOLD,
-                             clFuncallFunction(clSymbolFunctionValue(clHASH_TABLE_REHASH_THRESHOLD),
+                             clFuncallFunction(clSymbolFunctionChecked(clHASH_TABLE_REHASH_THRESHOLD),
                                                x,
                                                clEOA),
                              clEOA)); }
@@ -621,7 +621,7 @@ clObject clCopyHashTable clVdecl(_ap)
                            clCopyHashTable_Lambda,
                            &clEnvHook(clCopyHashTable_Lambda),
                            &*copy));
-      clFuncallFunction(clSymbolFunctionValue(clMAPHASH),
+      clFuncallFunction(clSymbolFunctionChecked(clMAPHASH),
                         L_0,
                         x,
                         clEOA); }

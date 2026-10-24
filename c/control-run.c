@@ -98,7 +98,7 @@ clObject clCheckKeys clVdecl(_ap)
           clSetq(bad, clFindBadKey(L_0, L_1, clEOA)); }
         if (clTrue(bad))
           { clObject L_2, L_0;
-            clSetq(L_0, clSymbolFunctionValue(clKEY_NOT_ALLOWED));
+            clSetq(L_0, clSymbolFunctionChecked(clKEY_NOT_ALLOWED));
             clSetq(L_2, error_fmt);
             return(clApply(L_0, bad, L_2, error_args, clEOA)); }
         else return(clValues1(clNIL)); }

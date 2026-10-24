@@ -99,7 +99,7 @@ clObject clListTraced clVdecl(_ap)
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clCAR));
+    clSetq(L_0, clSymbolFunctionChecked(clCAR));
     return(clMapcar(L_0, clSymbolValue(clstarTRACE_DATAstar, clEOA),
                     clEOA)); } }
 
@@ -117,14 +117,14 @@ static clObject clTrace1_Lambda clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clSymbolValue(clstarTRACE_LEVELstar, clEOA));
         clSetq(indent,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  L_0,
                                  I_2,
                                  clEOA)); }
       { clObject L_3, L_0;
         clSetq(L_0, clSymbolValue(clstarTRACE_OUTPUTstar, clEOA));
         clSetq(L_3, clSymbolValue(clstarTRACE_LEVELstar, clEOA));
-        clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+        clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                           L_0,
                           STRn_0,
                           indent,
@@ -134,14 +134,14 @@ static clObject clTrace1_Lambda clVdecl(_ap)
                           clEOA); }
       { clObject values;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           clApply(clEnv(1, *original), args, clEOA);
           clAccumulateValues(MVC);
           clSetq(values, clMultipleValueFuncall(MVC)); }
         { clObject L_3, L_0;
           clSetq(L_0, clSymbolValue(clstarTRACE_OUTPUTstar, clEOA));
           clSetq(L_3, clSymbolValue(clstarTRACE_LEVELstar, clEOA));
-          clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+          clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                             L_0,
                             STRn_1,
                             indent,
@@ -236,7 +236,7 @@ clObject clUntrace1 clVdecl(_ap)
                    clFind(function_name,
                           L_1,
                           keyKEY,
-                          clSymbolFunctionValue(clCAR),
+                          clSymbolFunctionChecked(clCAR),
                           clEOA)); }
           if (clTrue(pair))
             { clFuncallFunction(_Untrace0_, pair, clEOA);
@@ -247,7 +247,7 @@ clObject clUntrace1 clVdecl(_ap)
                                       clDelete(function_name,
                                                L_1,
                                                keyKEY,
-                                               clSymbolFunctionValue(clCAR),
+                                               clSymbolFunctionChecked(clCAR),
                                                clEOA)); } } }
         { clObject L_0;
           clSetq(L_0, L_sublist417);
@@ -332,17 +332,17 @@ clObject clEndTime clVdecl(_ap)
               L_0__R3 = clObjectWord(L_0__R4); }
             clSetq(L_1__R2, clIntInteger(L_0__R3)); }
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    L_0__R2,
                                    L_1__R2,
                                    clEOA)); }
         clSetq(L_2,
-               clFuncallFunction(clSymbolFunctionValue(clDIV),
+               clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                  L_0__R1,
                                  clSymbolValue(clINTERNAL_TIME_UNITS_PER_SECOND,
                                                clEOA),
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STRn_3,
                         L_2,
@@ -358,17 +358,17 @@ clObject clEndTime clVdecl(_ap)
               L_0__R3 = clObjectWord(L_0__R4); }
             clSetq(L_1__R2, clIntInteger(L_0__R3)); }
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    L_0__R2,
                                    L_1__R2,
                                    clEOA)); }
         clSetq(L_2,
-               clFuncallFunction(clSymbolFunctionValue(clDIV),
+               clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                  L_0__R1,
                                  clSymbolValue(clINTERNAL_TIME_UNITS_PER_SECOND,
                                                clEOA),
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STRn_4,
                         L_2,
@@ -378,11 +378,11 @@ clObject clEndTime clVdecl(_ap)
       { clObject L_1__R1;
         clSetq(L_1__R1, heap_start);
         clSetq(L_2,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  heap_end,
                                  L_1__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         L_0,
                         STRn_5,
                         L_2,
@@ -436,7 +436,7 @@ clObject clDescribe clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, stream);
       clSetq(L_1, clOutputStream(L_0__R1, clEOA)); }
-    clFuncallFunction(clSymbolFunctionValue(clDESCRIBE_OBJECT),
+    clFuncallFunction(clSymbolFunctionChecked(clDESCRIBE_OBJECT),
                       L_0,
                       L_1,
                       clEOA); }
@@ -459,7 +459,7 @@ static clObject clInspect_Lambda_r1 clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, s);
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              L_0,
                              STR_Quit_inspectordot__8,
                              clEOA)); } }
@@ -508,7 +508,7 @@ clObject clInspect clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, object);
               clReturnFrom(l_RESTART_BIND0,
-                           clFuncallFunction(clSymbolFunctionValue(clINSPECT_OBJECT),
+                           clFuncallFunction(clSymbolFunctionChecked(clINSPECT_OBJECT),
                                              L_0,
                                              clSymbolValue(clstarDEBUG_IOstar,
                                                            clEOA),
@@ -532,7 +532,7 @@ clObject clRoom clVdecl(_ap)
   if (clTrue(amount))
     { clObject L_values429, bytes, since, mem, limit;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         clGcData();
         clAccumulateValues(MVC);
         clSetq(L_values429, clMultipleValueFuncall(MVC)); }
@@ -554,7 +554,7 @@ clObject clRoom clVdecl(_ap)
         clSetq(limit, clCar(L_0, clEOA)); }
       { clObject L_0;
         clSetq(L_0, clSymbolValue(clstarSTANDARD_OUTPUTstar, clEOA));
-        clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+        clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                           L_0,
                           STRn_10,
                           bytes,
@@ -567,7 +567,7 @@ clObject clRoom clVdecl(_ap)
           { { clObject L_0;
               clSetq(L_0,
                      clSymbolValue(clstarSTANDARD_OUTPUTstar, clEOA));
-              clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+              clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                 L_0,
                                 STRn_11,
                                 since,
@@ -575,7 +575,7 @@ clObject clRoom clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0,
                      clSymbolValue(clstarSTANDARD_OUTPUTstar, clEOA));
-              clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+              clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                 L_0,
                                 STRn_12,
                                 mem,
@@ -610,7 +610,7 @@ static clObject clApropos_l_NextSymbol13 clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, index);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clLT),
+                 clFuncallFunction(clSymbolFunctionChecked(clLT),
                                    L_0,
                                    clEnv(2, *L_limit6),
                                    clEOA)); }
@@ -628,10 +628,10 @@ static clObject clApropos_l_NextSymbol13 clVdecl(_ap)
                 if (_clEq(clEnv(3, *L_acessibility12), keyINHERITED))
                   { clObject L_values432, L_ignore_431, L_keeper430;
                     { clMultipleValueCall(MVC);
-                      clSetq(MVC, clSymbolFunctionValue(clLIST));
+                      clSetq(MVC, clSymbolFunctionChecked(clLIST));
                       { clObject L_0__R1;
                         clSetq(L_0__R1, clSymbolName(symbol, clEOA));
-                        clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                        clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                           L_0__R1,
                                           clPackageInternals(clEnv(4, *L_package9),
                                                              clEOA),
@@ -746,7 +746,7 @@ static clObject clApropos_l_NextSymbol26 clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, index);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clLT),
+                 clFuncallFunction(clSymbolFunctionChecked(clLT),
                                    L_0,
                                    clEnv(2, *L_limit19),
                                    clEOA)); }
@@ -764,10 +764,10 @@ static clObject clApropos_l_NextSymbol26 clVdecl(_ap)
                 if (_clEq(clEnv(3, *L_acessibility25), keyINHERITED))
                   { clObject L_values443, L_ignore_442, L_keeper441;
                     { clMultipleValueCall(MVC);
-                      clSetq(MVC, clSymbolFunctionValue(clLIST));
+                      clSetq(MVC, clSymbolFunctionChecked(clLIST));
                       { clObject L_0__R1;
                         clSetq(L_0__R1, clSymbolName(symbol, clEOA));
-                        clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                        clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                           L_0__R1,
                                           clPackageInternals(clEnv(4, *L_package22),
                                                              clEOA),
@@ -925,7 +925,7 @@ clObject clApropos clVdecl(_ap)
         clLabel(l_LOOP15);
         { clObject L_values438, L_more4, symbol;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject symbol__R1;
               clSetq(symbol__R1,
                      clFuncallFunction(_l_NextSymbol13_, clEOA));
@@ -1002,7 +1002,7 @@ clObject clApropos clVdecl(_ap)
         clLabel(l_LOOP28);
         { clObject L_values449, L_more17, symbol;
           { clMultipleValueCall(MVC__r1);
-            clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+            clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
             { clObject symbol__R1;
               clSetq(symbol__R1,
                      clFuncallFunction(_l_NextSymbol26_, clEOA));
@@ -1053,7 +1053,7 @@ static clObject clAproposList_l_NextSymbol39 clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, index);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clLT),
+                 clFuncallFunction(clSymbolFunctionChecked(clLT),
                                    L_0,
                                    clEnv(2, *L_limit32),
                                    clEOA)); }
@@ -1071,10 +1071,10 @@ static clObject clAproposList_l_NextSymbol39 clVdecl(_ap)
                 if (_clEq(clEnv(3, *L_acessibility38), keyINHERITED))
                   { clObject L_values454, L_ignore_453, L_keeper452;
                     { clMultipleValueCall(MVC);
-                      clSetq(MVC, clSymbolFunctionValue(clLIST));
+                      clSetq(MVC, clSymbolFunctionChecked(clLIST));
                       { clObject L_0__R1;
                         clSetq(L_0__R1, clSymbolName(symbol, clEOA));
-                        clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                        clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                           L_0__R1,
                                           clPackageInternals(clEnv(4, *L_package35),
                                                              clEOA),
@@ -1190,7 +1190,7 @@ static clObject clAproposList_l_NextSymbol52 clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, index);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clLT),
+                 clFuncallFunction(clSymbolFunctionChecked(clLT),
                                    L_0,
                                    clEnv(2, *L_limit45),
                                    clEOA)); }
@@ -1208,10 +1208,10 @@ static clObject clAproposList_l_NextSymbol52 clVdecl(_ap)
                 if (_clEq(clEnv(3, *L_acessibility51), keyINHERITED))
                   { clObject L_values465, L_ignore_464, L_keeper463;
                     { clMultipleValueCall(MVC);
-                      clSetq(MVC, clSymbolFunctionValue(clLIST));
+                      clSetq(MVC, clSymbolFunctionChecked(clLIST));
                       { clObject L_0__R1;
                         clSetq(L_0__R1, clSymbolName(symbol, clEOA));
-                        clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                        clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                           L_0__R1,
                                           clPackageInternals(clEnv(4, *L_package48),
                                                              clEOA),
@@ -1370,7 +1370,7 @@ clObject clAproposList clVdecl(_ap)
         clLabel(l_LOOP41);
         { clObject L_values460, L_more30, symbol;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject symbol__R1;
               clSetq(symbol__R1,
                      clFuncallFunction(_l_NextSymbol39_, clEOA));
@@ -1450,7 +1450,7 @@ clObject clAproposList clVdecl(_ap)
         clLabel(l_LOOP54);
         { clObject L_values471, L_more43, symbol;
           { clMultipleValueCall(MVC__r1);
-            clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+            clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
             { clObject symbol__R1;
               clSetq(symbol__R1,
                      clFuncallFunction(_l_NextSymbol52_, clEOA));
@@ -1505,7 +1505,7 @@ clObject clGetUniversalTime clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, clUnixTime());
-    return(clFuncallFunction(clSymbolFunctionValue(clADD),
+    return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                              L_0,
                              I_2208988800,
                              clEOA)); } }
@@ -1520,12 +1520,12 @@ clObject clDecodeUniversalTime clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values546, weeks, secs;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_0;
         { clObject L_0__R1;
           clSetq(L_0__R1, universal_time);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R1,
                                    I_432000,
                                    clEOA)); }
@@ -1541,7 +1541,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
     { clObject weeks__R1, second, minute, hour, date, month, year, day,
       daylightp, zone;
       clSetq(weeks__R1,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                weeks,
                                I_2145,
                                clEOA));
@@ -1557,19 +1557,19 @@ clObject clDecodeUniversalTime clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, time_zone);
           clSetq(zone,
-                 clFuncallFunction(clSymbolFunctionValue(clMULT),
+                 clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                    L_0,
                                    I_60,
                                    clEOA)); }
       else
         { clObject L_values547, minwest, dst;
           { clMultipleValueCall(MVC__r1);
-            clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+            clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
             { clObject L_0;
               { clObject L_0__R1;
                 clSetq(L_0__R1, universal_time);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0__R1,
                                          I_2208988800,
                                          clEOA)); }
@@ -1587,7 +1587,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
           clSetq(zone, minwest); }
       { clObject L_values549, t1, seconds;
         { clMultipleValueCall(MVC__r2);
-          clSetq(MVC__r2, clSymbolFunctionValue(clLIST));
+          clSetq(MVC__r2, clSymbolFunctionChecked(clLIST));
           clTruncate(secs, I_60, clEOA);
           clAccumulateValues(MVC__r2);
           clSetq(L_values549, clMultipleValueFuncall(MVC__r2)); }
@@ -1602,7 +1602,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
           clSetq(L_0, t1);
           clSetq(L_1, zone);
           clSetq(t1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -1611,7 +1611,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, t1);
               clSetq(L_test,
-                     clFuncallFunction(clSymbolFunctionValue(clLT),
+                     clFuncallFunction(clSymbolFunctionChecked(clLT),
                                        L_0,
                                        I_0,
                                        clEOA)); }
@@ -1629,19 +1629,19 @@ clObject clDecodeUniversalTime clVdecl(_ap)
                 clSetq(tday, clTruncate(L_0, I_1440, clEOA)); } }
           { clObject L_values552, L_hour550, L_minute551;
             { clMultipleValueCall(MVC__r3);
-              clSetq(MVC__r3, clSymbolFunctionValue(clLIST));
+              clSetq(MVC__r3, clSymbolFunctionChecked(clLIST));
               { clObject L_0;
                 { clObject L_1__R1, L_0__R1;
                   clSetq(L_0__R1, t1);
                   { clObject L_0__R2;
                     clSetq(L_0__R2, tday);
                     clSetq(L_1__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clMULT),
+                           clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                              L_0__R2,
                                              I_1440,
                                              clEOA)); }
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                            L_0__R1,
                                            L_1__R1,
                                            clEOA)); }
@@ -1663,7 +1663,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
               { clObject L_0__R1;
                 { clObject L_1__R1, L_0__R2;
                   clSetq(L_0__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clMULT),
+                         clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                            weeks__R1,
                                            I_7,
                                            clEOA));
@@ -1674,7 +1674,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
                                      I_678882,
                                      clEOA)); }
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clMULT),
+                       clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                          L_0__R1,
                                          I_4,
                                          clEOA)); }
@@ -1690,18 +1690,18 @@ clObject clDecodeUniversalTime clVdecl(_ap)
                   clSetq(L_0__R2, t2);
                   clSetq(L_1__R1, clMod(L_0__R2, I_4, clEOA)); }
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0__R1,
                                          L_1__R1,
                                          clEOA)); }
               clSetq(t2,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        I_3,
                                        clEOA)); }
             { clObject L_1, L_0;
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clMULT),
+                     clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                        tcent,
                                        I_100,
                                        clEOA));
@@ -1709,7 +1709,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
                 clSetq(L_0__R1, t2);
                 clSetq(L_1, clTruncate(L_0__R1, I_1461, clEOA)); }
               clSetq(year,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -1725,7 +1725,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, tday);
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0__R1,
                                            I_2,
                                            clEOA)); }
@@ -1733,23 +1733,23 @@ clObject clDecodeUniversalTime clVdecl(_ap)
               { clObject t3;
                 { clObject L_0;
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clMULT),
+                         clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                            days_since_mar0,
                                            I_5,
                                            clEOA));
                   clSetq(t3,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0,
                                            I_456,
                                            clEOA)); }
-                if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+                if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                              t3,
                                              I_1989,
                                              clEOA)))
                   { { clObject L_0;
                       clSetq(L_0, t3);
                       clSetq(t3,
-                             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                L_0,
                                                I_1836,
                                                clEOA)); }
@@ -1758,7 +1758,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
                       clSetq(year, cl1PLUS_FUNC(L_0, clEOA)); } }
                 { clObject L_values555, L_month553, L_t3554;
                   { clMultipleValueCall(MVC__r4);
-                    clSetq(MVC__r4, clSymbolFunctionValue(clLIST));
+                    clSetq(MVC__r4, clSymbolFunctionChecked(clLIST));
                     { clObject L_0;
                       clSetq(L_0, t3);
                       clTruncate(L_0, I_153, clEOA); }
@@ -1795,7 +1795,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
             { clObject L_0__R2;
               clSetq(L_0__R2, zone);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clDIV),
+                     clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                        L_0__R2,
                                        I_60,
                                        clEOA)); }
@@ -1804,7 +1804,7 @@ clObject clDecodeUniversalTime clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, zone);
             clSetq(L_8,
-                   clFuncallFunction(clSymbolFunctionValue(clDIV),
+                   clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                      L_0__R1,
                                      I_60,
                                      clEOA)); }
@@ -1836,7 +1836,7 @@ clObject clCanonicalYear clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, year);
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clGE),
+             clFuncallFunction(clSymbolFunctionChecked(clGE),
                                L_0,
                                I_100,
                                clEOA)); }
@@ -1847,7 +1847,7 @@ clObject clCanonicalYear clVdecl(_ap)
         { clObject L_values625, L_ignore_624, L_ignore_623,
           L_ignore_622, L_ignore_621, L_ignore_620, L_keeper619;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             clGetDecodedTime(clEOA);
             clAccumulateValues(MVC);
             clSetq(L_values625, clMultipleValueFuncall(MVC)); }
@@ -1888,35 +1888,35 @@ clObject clCanonicalYear clVdecl(_ap)
           { clObject L_0__R1;
             { clObject L_0__R2;
               clSetq(L_0__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                        current_year,
                                        I_50,
                                        clEOA));
               clSetq(L_0__R1, clTruncate(L_0__R2, I_100, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      L_0__R1,
                                      I_100,
                                      clEOA)); }
           clSetq(guess,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0,
                                    L_1,
                                    clEOA)); }
         { clObject L_test__R1;
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      current_year,
                                      guess,
                                      clEOA));
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0,
                                      I_50,
                                      clEOA)); }
           if (clTrue(L_test__R1))
-            return(clFuncallFunction(clSymbolFunctionValue(clADD),
+            return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      guess,
                                      I_100,
                                      clEOA));
@@ -1933,7 +1933,7 @@ clObject clLeapDaysSince1900 clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values626, year_by_4, rem_by_4;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_0;
         clSetq(L_0, years_since_1900);
         clTruncate(L_0, I_4, clEOA); }
@@ -1947,7 +1947,7 @@ clObject clLeapDaysSince1900 clVdecl(_ap)
       clSetq(rem_by_4, clCar(L_0, clEOA)); }
     { clObject L_values627, year_by_100, rem_by_100;
       { clMultipleValueCall(MVC__r1);
-        clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+        clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
         { clObject L_0;
           clSetq(L_0, years_since_1900);
           clTruncate(L_0, I_100, clEOA); }
@@ -1961,12 +1961,12 @@ clObject clLeapDaysSince1900 clVdecl(_ap)
         clSetq(rem_by_100, clCar(L_0, clEOA)); }
       { clObject L_values628, year_by_400, rem_by_400;
         { clMultipleValueCall(MVC__r2);
-          clSetq(MVC__r2, clSymbolFunctionValue(clLIST));
+          clSetq(MVC__r2, clSymbolFunctionChecked(clLIST));
           { clObject L_0;
             { clObject L_1__R1;
               clSetq(L_1__R1, years_since_1900);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        I_1900,
                                        L_1__R1,
                                        clEOA)); }
@@ -1981,7 +1981,7 @@ clObject clLeapDaysSince1900 clVdecl(_ap)
           clSetq(rem_by_400, clCar(L_0, clEOA)); }
         { clObject L_4, L_1;
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    I_0,
                                    year_by_100,
                                    clEOA));
@@ -1998,7 +1998,7 @@ clObject clLeapDaysSince1900 clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, days_in_year);
                     clSetq(L_test,
-                           clFuncallFunction(clSymbolFunctionValue(clLT),
+                           clFuncallFunction(clSymbolFunctionChecked(clLT),
                                              L_0__R1,
                                              I_59,
                                              clEOA)); }
@@ -2039,7 +2039,7 @@ clObject clEncodeUniversalTime clVdecl(_ap)
         clSetq(L_0__R1, year);
         clSetq(L_0, clCanonicalYear(L_0__R1, clEOA)); }
       clSetq(years_since_1900,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                I_1900,
                                clEOA)); }
@@ -2050,7 +2050,7 @@ clObject clEncodeUniversalTime clVdecl(_ap)
         clSetq(L_1__R1, month);
         clSetq(L_1, clSvref(L_0__R1, L_1__R1, clEOA)); }
       clSetq(days_in_year,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -2058,7 +2058,7 @@ clObject clEncodeUniversalTime clVdecl(_ap)
       { clObject L_1__R1;
         { clObject L_1__R2, L_0__R2;
           clSetq(L_0__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clMULT),
+                 clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                    I_365,
                                    years_since_1900,
                                    clEOA));
@@ -2069,7 +2069,7 @@ clObject clEncodeUniversalTime clVdecl(_ap)
                   { clObject L_0__R5;
                     clSetq(L_0__R5, month);
                     clSetq(L_test__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                           clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                              L_0__R5,
                                              I_2,
                                              clEOA)); }
@@ -2077,14 +2077,14 @@ clObject clEncodeUniversalTime clVdecl(_ap)
                     { clObject L_0__R5;
                       clSetq(L_0__R5, date);
                       clSetq(L_test,
-                             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                                L_0__R5,
                                                I_29,
                                                clEOA)); }
                   else clSetq(L_test, clNIL); }
                 clSetq(L_1__R4, (clTrue(L_test) ? I_1 : I_0)); }
               clSetq(L_1__R3,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                        days_in_year,
                                        L_1__R4,
                                        clEOA)); }
@@ -2095,7 +2095,7 @@ clObject clEncodeUniversalTime clVdecl(_ap)
           clSetq(L_1__R1,
                  clPLUS_FUNC(L_0__R2, L_1__R2, days_in_year, clEOA)); }
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  I_86400,
                                  L_1__R1,
                                  clEOA)); }
@@ -2104,19 +2104,19 @@ clObject clEncodeUniversalTime clVdecl(_ap)
           clSetq(L_0__R2, hour);
           clSetq(L_1__R2, time_zone);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R2,
                                    L_1__R2,
                                    clEOA)); }
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  L_0__R1,
                                  I_3600,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, minute);
         clSetq(L_2,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  L_0__R1,
                                  I_60,
                                  clEOA)); }
@@ -2128,16 +2128,16 @@ clObject clEncodeUniversalTime clVdecl(_ap)
       { clObject L_1;
         { clObject L_0__R1;
           clSetq(L_0__R1,
-                 clGetTimezone(clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clGetTimezone(clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                  raw,
                                                  I_2208988800,
                                                  clEOA)));
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clMULT),
+                 clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                    L_0__R1,
                                    I_60,
                                    clEOA)); }
-        return(clFuncallFunction(clSymbolFunctionValue(clADD),
+        return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  raw,
                                  L_1,
                                  clEOA)); } } }
@@ -2154,7 +2154,7 @@ clObject clSleep clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, seconds);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  L_0__R1,
                                  I_1000,
                                  clEOA)); }
@@ -2275,7 +2275,7 @@ static clObject clIdString_Lambda clVdecl(_ap)
     else
       { clObject L_0;
         clSetq(L_0, xp);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                           L_0,
                           STR_dot__20,
                           clEOA); } }
@@ -2316,7 +2316,7 @@ static clObject clIdString_Lambda clVdecl(_ap)
     else
       { clObject L_0;
         clSetq(L_0, xp);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                           L_0,
                           STR____21,
                           clEOA); } }
@@ -2376,7 +2376,7 @@ clObject clIdString clVdecl(_ap)
     clSetq(L_4, minor);
     clSetq(L_5, (clTrue(spacep) ? qualifier : clNIL));
     clSetq(L_6, qualifier);
-    return(clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                              clNIL,
                              L_1,
                              L_2,
@@ -2728,14 +2728,14 @@ void clInitMiscel __P((void))
   if (clTrue(clBoundp(clMINUTES_PER_DAY, clEOA)))
     { if (clTrue(clSymbolValue(clstarCONSTANT_CHECK_HOOKstar, clEOA)))
         clRedefineConstant(clMINUTES_PER_DAY,
-                           clFuncallFunction(clSymbolFunctionValue(clMULT),
+                           clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                              I_24,
                                              I_60,
                                              clEOA),
                            clEOA); }
   else
     clSetSymbolValueValue(clMINUTES_PER_DAY,
-                          clFuncallFunction(clSymbolFunctionValue(clMULT),
+                          clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                             I_24,
                                             I_60,
                                             clEOA));
@@ -2832,7 +2832,7 @@ void clInitMiscel __P((void))
   if (clTrue(clBoundp(clQUARTER_DAYS_PER_YEAR, clEOA)))
     { if (clTrue(clSymbolValue(clstarCONSTANT_CHECK_HOOKstar, clEOA)))
         clRedefineConstant(clQUARTER_DAYS_PER_YEAR,
-                           cl1PLUS_FUNC(clFuncallFunction(clSymbolFunctionValue(clMULT),
+                           cl1PLUS_FUNC(clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           I_365,
                                                           I_4,
                                                           clEOA),
@@ -2840,7 +2840,7 @@ void clInitMiscel __P((void))
                            clEOA); }
   else
     clSetSymbolValueValue(clQUARTER_DAYS_PER_YEAR,
-                          cl1PLUS_FUNC(clFuncallFunction(clSymbolFunctionValue(clMULT),
+                          cl1PLUS_FUNC(clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                          I_365,
                                                          I_4,
                                                          clEOA),
@@ -2886,14 +2886,14 @@ void clInitMiscel __P((void))
   if (clTrue(clBoundp(clSECONDS_PER_HOUR, clEOA)))
     { if (clTrue(clSymbolValue(clstarCONSTANT_CHECK_HOOKstar, clEOA)))
         clRedefineConstant(clSECONDS_PER_HOUR,
-                           clFuncallFunction(clSymbolFunctionValue(clMULT),
+                           clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                              I_60,
                                              I_60,
                                              clEOA),
                            clEOA); }
   else
     clSetSymbolValueValue(clSECONDS_PER_HOUR,
-                          clFuncallFunction(clSymbolFunctionValue(clMULT),
+                          clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                             I_60,
                                             I_60,
                                             clEOA));

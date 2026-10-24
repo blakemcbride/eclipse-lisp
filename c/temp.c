@@ -22,7 +22,7 @@ clObject clCm clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, clFdefinition(name, clEOA));
-    return(clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS),
+    return(clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS),
                              L_0,
                              args,
                              clEOA)); } }
@@ -63,7 +63,7 @@ clObject clCmc clVdecl(_ap)
         clLocalReturn(NIL);
         clSetq(L_1, clNIL);
         clBlockEnd(NIL); } }
-    return(clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES),
+    return(clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES),
                              L_0,
                              L_1,
                              clEOA)); } }
@@ -81,16 +81,16 @@ clObject clDeleteMethod clVdecl(_ap)
     clSetq(gf, clFdefinition(name, clEOA));
     { clObject L_2;
       { clObject L_0__R1;
-        clSetq(L_0__R1, clSymbolFunctionValue(clCANONICALIZE_CLASS));
+        clSetq(L_0__R1, clSymbolFunctionChecked(clCANONICALIZE_CLASS));
         clSetq(L_2, clMapcar(L_0__R1, classes, clEOA)); }
       clSetq(method,
-             clFuncallFunction(clSymbolFunctionValue(clFIND_METHOD),
+             clFuncallFunction(clSymbolFunctionChecked(clFIND_METHOD),
                                gf,
                                qualifiers,
                                L_2,
                                clEOA)); }
     clPrint(method, clEOA);
-    return(clFuncallFunction(clSymbolFunctionValue(clREMOVE_METHOD),
+    return(clFuncallFunction(clSymbolFunctionChecked(clREMOVE_METHOD),
                              gf,
                              method,
                              clEOA)); } }

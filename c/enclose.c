@@ -28,7 +28,7 @@ clObject clEnclose clVdecl(_ap)
       clSetq(L_4, env);
       clSetq(L_6, name);
       clSetq(closure,
-             clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+             clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                clINTERPRETED_FUNCTION,
                                keyLAMBDA,
                                L_2,

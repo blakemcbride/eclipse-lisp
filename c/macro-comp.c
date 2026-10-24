@@ -102,7 +102,7 @@ clObject clParseMacro clVdecl(_ap)
   { clObject L_values401, bindings, decl0, body__R1, doc,
     real_bindings;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_3, L_2, L_1, L_0;
         clSetq(L_0, lambda_list);
         clSetq(L_1, body);
@@ -314,7 +314,7 @@ clObject clDefineSetfExpander clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values413, f, doc;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, access_fn);
         clSetq(L_1, lambda_list);
@@ -392,7 +392,7 @@ clObject clDefmacro clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values418, lambda, doc;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, name);
         clSetq(L_1, lambda_list);
@@ -473,7 +473,7 @@ clObject clDefun clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values423, decl, body__R1, doc;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clFindDeclarations(body, clNIL, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values423, clMultipleValueFuncall(MVC)); }
@@ -698,8 +698,8 @@ clObject clDefsetf clVdecl(_ap)
           if (clTrue(L_test__R1))
             { clObject L_values437, locals, env, lambda_list__R1;
               { clMultipleValueCall(MVC);
-                clSetq(MVC, clSymbolFunctionValue(clLIST));
-                clFuncallFunction(clSymbolFunctionValue(clLAMBDA_VARS),
+                clSetq(MVC, clSymbolFunctionChecked(clLIST));
+                clFuncallFunction(clSymbolFunctionChecked(clLAMBDA_VARS),
                                   lambda_list,
                                   clEOA);
                 clAccumulateValues(MVC);
@@ -719,7 +719,7 @@ clObject clDefsetf clVdecl(_ap)
                 clSetq(lambda_list__R1, clCar(L_0, clEOA)); }
               { clObject L_values438, decl, body__R1, doc;
                 { clMultipleValueCall(MVC__r1);
-                  clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+                  clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
                   { clObject L_0;
                     clSetq(L_0, body);
                     clFindDeclarations(L_0, clNIL, clEOA); }
@@ -851,8 +851,8 @@ clObject clDefsetf clVdecl(_ap)
           else
             { clObject locals;
               clSetq(locals,
-                     clFuncallFunction(clSymbolFunctionValue(clREVERSE),
-                                       clFuncallFunction(clSymbolFunctionValue(clLAMBDA_VARS),
+                     clFuncallFunction(clSymbolFunctionChecked(clREVERSE),
+                                       clFuncallFunction(clSymbolFunctionChecked(clLAMBDA_VARS),
                                                          lambda_list,
                                                          clEOA),
                                        clEOA));
@@ -993,7 +993,7 @@ clObject clDefineCompilerMacro clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values443, lambda, doc;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, name);
         clSetq(L_1, lambda_list);

@@ -163,7 +163,7 @@ clObject clMakePprintDispatch clVdecl(_ap)
     else
       clSetq(L_conses_with_cars,
              clMakeHashTable(keyTEST,
-                             clSymbolFunctionValue(clEQ),
+                             clSymbolFunctionChecked(clEQ),
                              clEOA));
     if (clTrue(clSetq(L_ap,
                       clKeyArg(keyDISPATCH_CLASSES, L_keys, clEOA))))
@@ -173,7 +173,7 @@ clObject clMakePprintDispatch clVdecl(_ap)
     else
       clSetq(L_dispatch_classes,
              clMakeHashTable(keyTEST,
-                             clSymbolFunctionValue(clEQ),
+                             clSymbolFunctionChecked(clEQ),
                              clEOA));
     if (clTrue(clSetq(L_ap,
                       clKeyArg(keyDISPATCH_OTHERS, L_keys, clEOA))))
@@ -502,7 +502,7 @@ clObject clSpecifierCategory clVdecl(_ap)
                         { clObject L_0;
                           clSetq(L_0, spec);
                           clSetq(L_test__R5,
-                                 clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                                 clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                    L_0,
                                                    clEnv(0, *limited_cons_type),
                                                    clEOA)); }
@@ -512,7 +512,7 @@ clObject clSpecifierCategory clVdecl(_ap)
                             { clObject L_0__R1;
                               clSetq(L_0__R1, spec);
                               clSetq(L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                                     clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                                        L_0__R1,
                                                        clEOA)); }
                             clSetq(L_test__R6,
@@ -524,7 +524,7 @@ clObject clSpecifierCategory clVdecl(_ap)
                             { clObject L_0__R1;
                               clSetq(L_0__R1, spec);
                               clSetq(L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                                     clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                                        L_0__R1,
                                                        clEOA)); }
                             clSetq(L_test__R4,
@@ -540,7 +540,7 @@ clObject clSpecifierCategory clVdecl(_ap)
                         { clObject L_0;
                           clSetq(L_0, spec);
                           clSetq(L_test__R5,
-                                 clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                                 clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                    L_0,
                                                    clEnv(2, *type_type),
                                                    clEOA)); }
@@ -610,7 +610,7 @@ clObject clEnterInSubtable clVdecl(_ap)
     { clObject L_1, L_0;
       clSetq(L_0, key);
       clSetq(L_1, subtable);
-      return(clFuncallFunction(clSymbolFunctionValue(clREMHASH),
+      return(clFuncallFunction(clSymbolFunctionChecked(clREMHASH),
                                L_0,
                                L_1,
                                clEOA)); } }
@@ -656,14 +656,14 @@ clObject clEnterInOthers clVdecl(_ap)
               clSetq(L_0, CL_entry);
               { clObject L_3, L_0__R1;
                 clSetq(L_0__R1, type_specifier);
-                clSetq(L_3, clSymbolFunctionValue(clEQUAL));
+                clSetq(L_3, clSymbolFunctionChecked(clEQUAL));
                 clSetq(L_1,
                        clDelete(L_0__R1,
                                 others,
                                 keyTEST,
                                 L_3,
                                 keyKEY,
-                                clSymbolFunctionValue(clENTRY_TYPE_SPEC),
+                                clSymbolFunctionChecked(clENTRY_TYPE_SPEC),
                                 clEOA)); }
               clSetq(new_tail, clCons(L_0, L_1, clEOA)); }
             if (clTrue(last))
@@ -682,7 +682,7 @@ clObject clEnterInOthers clVdecl(_ap)
             clSetq(L_0__R1, old_entry);
             clSetq(L_1, clEntryTypeSpec(L_0__R1, clEOA)); }
           clSetq(L_test__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                 clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -705,14 +705,14 @@ clObject clEnterInOthers clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, table);
           clSetq(L_1, clDispatchOthers(L_0__R1, clEOA)); }
-        clSetq(L_3, clSymbolFunctionValue(clEQUAL));
+        clSetq(L_3, clSymbolFunctionChecked(clEQUAL));
         clSetq(L_value453,
                clDelete(L_0,
                         L_1,
                         keyTEST,
                         L_3,
                         keyKEY,
-                        clSymbolFunctionValue(clENTRY_TYPE_SPEC),
+                        clSymbolFunctionChecked(clENTRY_TYPE_SPEC),
                         clEOA)); }
       return(cl_SETF_DispatchOthers(L_value453, L_arg454, clEOA)); } }
 
@@ -764,7 +764,7 @@ clObject clSetPprintDispatchPLUS clVdecl(_ap)
           { clObject L_0__R2;
             clSetq(L_0__R2, type_specifier);
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                      L_0__R2,
                                      clEOA)); }
           clSetq(L_1, clEqlSpecializerObject(L_0__R1, clEOA)); }
@@ -788,7 +788,7 @@ clObject clSetPprintDispatchPLUS clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, type_specifier);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME),
+                 clFuncallFunction(clSymbolFunctionChecked(clTYPE_NAME),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_2, table);
@@ -827,7 +827,7 @@ clObject clPriorityGREATER clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, y);
               clSetq(L_1, clCar(L_0__R1, clEOA)); }
-            return(clFuncallFunction(clSymbolFunctionValue(clGT),
+            return(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -843,7 +843,7 @@ clObject clPriorityGREATER clVdecl(_ap)
           { clObject L_1, L_0;
             clSetq(L_0, x);
             clSetq(L_1, y);
-            return(clFuncallFunction(clSymbolFunctionValue(clGT),
+            return(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0,
                                      L_1,
                                      clEOA)); } } } }
@@ -872,7 +872,7 @@ clObject clPprintDispatch clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0,
              (clTrue(fn) ? fn :
-              clSymbolFunctionValue(clPRINT_OBJECT_REVERSED_ARGS)));
+              clSymbolFunctionChecked(clPRINT_OBJECT_REVERSED_ARGS)));
       return(clValues(L_0,
                       clNot(clNull(fn, clEOA), clEOA),
                       clEOA)); } } }
@@ -888,7 +888,7 @@ clObject clPrintObjectReversedArgs clVdecl(_ap)
   { clObject L_1, L_0;
     clSetq(L_0, object);
     clSetq(L_1, s);
-    return(clFuncallFunction(clSymbolFunctionValue(clPRINT_OBJECT),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPRINT_OBJECT),
                              L_0,
                              L_1,
                              clEOA)); } }
@@ -916,7 +916,7 @@ clObject clGetPrinter clVdecl(_ap)
             clSetq(L_0__R1, table);
             clSetq(L_1, clConsesWithCars(L_0__R1, clEOA)); }
           clSetq(entry1,
-                 clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                 clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -943,7 +943,7 @@ clObject clGetPrinter clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, CL_class);
                 clSetq(CL_entry__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                       clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                          L_0,
                                          classes,
                                          clEOA)); }
@@ -1018,7 +1018,7 @@ clObject clGetPrinter clVdecl(_ap)
                clFind(L_0,
                       L_1,
                       keyTEST,
-                      clSymbolFunctionValue(clFITS),
+                      clSymbolFunctionChecked(clFITS),
                       clEOA)); }
     if (clTrue(CL_entry))
       { clObject L_0;
@@ -1040,7 +1040,7 @@ clObject clFits clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, CL_entry);
       clSetq(L_1, clEntryTypeSpec(L_0__R1, clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+    return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                              L_0,
                              L_1,
                              clEOA)); } }
@@ -1217,7 +1217,7 @@ void clInitDispatch __P((void))
 
   { clObject L_g0;
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(L_g0, clApply(L_0, clPPRINT_DISPATCH, CONS_0, clEOA)); }
     { clObject L_8, L_6, L_0;
       clSetq(L_0, clEnsureGenericFunction(clPRINT_OBJECT, clEOA));
@@ -1274,7 +1274,7 @@ void clInitDispatch __P((void))
     (void) clPPRINT_DISPATCH; }
   { clObject L_g3;
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(L_g3, clApply(L_0, clDISPATCH_ENTRY, CONS_47, clEOA)); }
     clSetSymbolFunctionValue(clMAKE_DISPATCH_ENTRY,
                              clMakeClosure(0,

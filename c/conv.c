@@ -392,7 +392,7 @@ clObject clFloat clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_1;
     clSetq(L_1, other);
-    return(clFuncallFunction(clSymbolFunctionValue(clFLOAT2),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFLOAT2),
                              number,
                              L_1,
                              clEOA)); } }
@@ -655,7 +655,7 @@ clObject clTruncate2_clINTEGER_clINTEGER clVdecl(_ap)
     else
       { clObject L_values1642, q, r;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           { clObject L_0;
             clSetq(L_0, clIntegerXint(number));
             clTruncXint(L_0, clIntegerXint(divisor), clEOA); }
@@ -707,8 +707,8 @@ clObject clCeiling2_clINTEGER_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1649, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                           number,
                           divisor,
                           clEOA);
@@ -726,12 +726,12 @@ clObject clCeiling2_clINTEGER_clINTEGER clVdecl(_ap)
                   clNIL)))
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    tru,
                                    I_1,
                                    clEOA));
           return(clValues(L_0,
-                          clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                          clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                             rem,
                                             divisor,
                                             clEOA),
@@ -774,8 +774,8 @@ clObject clFloor2_clINTEGER_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1656, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                           number,
                           divisor,
                           clEOA);
@@ -794,7 +794,7 @@ clObject clFloor2_clINTEGER_clINTEGER clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, cl1MINUS_FUNC(tru, clEOA));
           return(clValues(L_0,
-                          clFuncallFunction(clSymbolFunctionValue(clADD),
+                          clFuncallFunction(clSymbolFunctionChecked(clADD),
                                             rem,
                                             divisor,
                                             clEOA),
@@ -837,8 +837,8 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1663, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                           number,
                           divisor,
                           clEOA);
@@ -853,20 +853,20 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
       { clObject thresh;
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clABS),
+                 clFuncallFunction(clSymbolFunctionChecked(clABS),
                                    divisor,
                                    clEOA));
           clSetq(thresh, clMakeRatio(L_0, I_2)); }
         { clObject L_test;
           { clObject L_g1664;
             clSetq(L_g1664,
-                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      rem,
                                      thresh,
                                      clEOA));
             clSetq(L_test,
                    (clTrue(L_g1664) ? L_g1664 :
-                    (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                    (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                               rem,
                                               thresh,
                                               clEOA)) ?
@@ -875,12 +875,12 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
             if (clTrue(clMinusp(divisor, clEOA)))
               { clObject L_0;
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          tru,
                                          I_1,
                                          clEOA));
                 return(clValues(L_0,
-                                clFuncallFunction(clSymbolFunctionValue(clADD),
+                                clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                   rem,
                                                   divisor,
                                                   clEOA),
@@ -888,12 +888,12 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
             else
               { clObject L_0;
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          tru,
                                          I_1,
                                          clEOA));
                 return(clValues(L_0,
-                                clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                   rem,
                                                   divisor,
                                                   clEOA),
@@ -902,20 +902,20 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
             { clObject L_test__R1;
               { clObject minus_thresh;
                 clSetq(minus_thresh,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          I_0,
                                          thresh,
                                          clEOA));
                 { clObject L_g1665;
                   clSetq(L_g1665,
-                         clFuncallFunction(clSymbolFunctionValue(clLT),
+                         clFuncallFunction(clSymbolFunctionChecked(clLT),
                                            rem,
                                            minus_thresh,
                                            clEOA));
                   clSetq(L_test__R1,
                          (clTrue(L_g1665) ?
                           L_g1665 :
-                          (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                          (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                                     rem,
                                                     minus_thresh,
                                                     clEOA)) ?
@@ -925,12 +925,12 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
                 if (clTrue(clMinusp(divisor, clEOA)))
                   { clObject L_0;
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                              tru,
                                              I_1,
                                              clEOA));
                     return(clValues(L_0,
-                                    clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                    clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                       rem,
                                                       divisor,
                                                       clEOA),
@@ -938,12 +938,12 @@ clObject clRound2_clINTEGER_clINTEGER clVdecl(_ap)
                 else
                   { clObject L_0;
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                              tru,
                                              I_1,
                                              clEOA));
                     return(clValues(L_0,
-                                    clFuncallFunction(clSymbolFunctionValue(clADD),
+                                    clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                       rem,
                                                       divisor,
                                                       clEOA),
@@ -986,8 +986,8 @@ clObject clFtruncate2_clRATIONAL_clRATIONAL clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1676, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                           number,
                           divisor,
                           clEOA);
@@ -1039,8 +1039,8 @@ clObject clFceiling2_clRATIONAL_clRATIONAL clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1687, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clCEILING2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clCEILING2),
                           number,
                           divisor,
                           clEOA);
@@ -1092,8 +1092,8 @@ clObject clFfloor2_clRATIONAL_clRATIONAL clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1698, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clFLOOR2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clFLOOR2),
                           number,
                           divisor,
                           clEOA);
@@ -1145,8 +1145,8 @@ clObject clFround2_clRATIONAL_clRATIONAL clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1709, tru, rem;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clROUND2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clROUND2),
                           number,
                           divisor,
                           clEOA);
@@ -1189,22 +1189,22 @@ clObject clFtruncate1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+               clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                                  n,
                                  d,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, clFloat(q, clEOA));
         return(clValues(L_0,
-                        clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                        clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                           number,
                                           q,
                                           clEOA),
@@ -1237,22 +1237,22 @@ clObject clFceiling1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clCEILING2),
+               clFuncallFunction(clSymbolFunctionChecked(clCEILING2),
                                  n,
                                  d,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, clFloat(q, clEOA));
         return(clValues(L_0,
-                        clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                        clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                           number,
                                           q,
                                           clEOA),
@@ -1285,22 +1285,22 @@ clObject clFfloor1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clFLOOR2),
+               clFuncallFunction(clSymbolFunctionChecked(clFLOOR2),
                                  n,
                                  d,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, clFloat(q, clEOA));
         return(clValues(L_0,
-                        clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                        clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                           number,
                                           q,
                                           clEOA),
@@ -1333,22 +1333,22 @@ clObject clFround1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clROUND2),
+               clFuncallFunction(clSymbolFunctionChecked(clROUND2),
                                  n,
                                  d,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, clFloat(q, clEOA));
         return(clValues(L_0,
-                        clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                        clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                           number,
                                           q,
                                           clEOA),
@@ -1381,20 +1381,20 @@ clObject clTruncate1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+               clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                                  n,
                                  d,
                                  clEOA)); }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1427,20 +1427,20 @@ clObject clFloor1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clFLOOR2),
+               clFuncallFunction(clSymbolFunctionChecked(clFLOOR2),
                                  n,
                                  d,
                                  clEOA)); }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1473,20 +1473,20 @@ clObject clCeiling1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clCEILING2),
+               clFuncallFunction(clSymbolFunctionChecked(clCEILING2),
                                  n,
                                  d,
                                  clEOA)); }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1519,20 +1519,20 @@ clObject clRound1_clRATIO clVdecl(_ap)
     { clObject q;
       { clObject n, d;
         clSetq(n,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         clSetq(q,
-               clFuncallFunction(clSymbolFunctionValue(clROUND2),
+               clFuncallFunction(clSymbolFunctionChecked(clROUND2),
                                  n,
                                  d,
                                  clEOA)); }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1575,40 +1575,40 @@ clObject clTruncate2_clRATIONAL_clRATIONAL clVdecl(_ap)
     { clObject q;
       { clObject n1, d1;
         clSetq(n1,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d1,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         { clObject n2, d2;
           clSetq(n2,
-                 clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                    divisor,
                                    clEOA));
           clSetq(d2,
-                 clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                    divisor,
                                    clEOA));
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      n1,
                                      d2,
                                      clEOA));
             clSetq(q,
-                   clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+                   clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                                      L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                        n2,
                                                        d1,
                                                        clEOA),
                                      clEOA)); } } }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -1652,40 +1652,40 @@ clObject clFloor2_clRATIONAL_clRATIONAL clVdecl(_ap)
     { clObject q;
       { clObject n1, d1;
         clSetq(n1,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d1,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         { clObject n2, d2;
           clSetq(n2,
-                 clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                    divisor,
                                    clEOA));
           clSetq(d2,
-                 clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                    divisor,
                                    clEOA));
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      n1,
                                      d2,
                                      clEOA));
             clSetq(q,
-                   clFuncallFunction(clSymbolFunctionValue(clFLOOR2),
+                   clFuncallFunction(clSymbolFunctionChecked(clFLOOR2),
                                      L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                        n2,
                                                        d1,
                                                        clEOA),
                                      clEOA)); } } }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -1729,40 +1729,40 @@ clObject clCeiling2_clRATIONAL_clRATIONAL clVdecl(_ap)
     { clObject q;
       { clObject n1, d1;
         clSetq(n1,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d1,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         { clObject n2, d2;
           clSetq(n2,
-                 clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                    divisor,
                                    clEOA));
           clSetq(d2,
-                 clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                    divisor,
                                    clEOA));
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      n1,
                                      d2,
                                      clEOA));
             clSetq(q,
-                   clFuncallFunction(clSymbolFunctionValue(clCEILING2),
+                   clFuncallFunction(clSymbolFunctionChecked(clCEILING2),
                                      L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                        n2,
                                                        d1,
                                                        clEOA),
                                      clEOA)); } } }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -1806,40 +1806,40 @@ clObject clRound2_clRATIONAL_clRATIONAL clVdecl(_ap)
     { clObject q;
       { clObject n1, d1;
         clSetq(n1,
-               clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                  number,
                                  clEOA));
         clSetq(d1,
-               clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+               clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                  number,
                                  clEOA));
         { clObject n2, d2;
           clSetq(n2,
-                 clFuncallFunction(clSymbolFunctionValue(clNUMERATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clNUMERATOR),
                                    divisor,
                                    clEOA));
           clSetq(d2,
-                 clFuncallFunction(clSymbolFunctionValue(clDENOMINATOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clDENOMINATOR),
                                    divisor,
                                    clEOA));
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      n1,
                                      d2,
                                      clEOA));
             clSetq(q,
-                   clFuncallFunction(clSymbolFunctionValue(clROUND2),
+                   clFuncallFunction(clSymbolFunctionChecked(clROUND2),
                                      L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                        n2,
                                                        d1,
                                                        clEOA),
                                      clEOA)); } } }
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -1873,7 +1873,7 @@ clObject clTruncate1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateSingleFloat(clFtruncateSingleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1906,7 +1906,7 @@ clObject clTruncate1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateDoubleFloat(clFtruncateDoubleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1939,7 +1939,7 @@ clObject clFtruncate1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFtruncateSingleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -1972,7 +1972,7 @@ clObject clFtruncate1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFtruncateDoubleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -2014,14 +2014,14 @@ clObject clTruncate2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2064,14 +2064,14 @@ clObject clTruncate2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2114,14 +2114,14 @@ clObject clTruncate2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2164,14 +2164,14 @@ clObject clTruncate2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2214,14 +2214,14 @@ clObject clTruncate2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2264,14 +2264,14 @@ clObject clTruncate2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2314,14 +2314,14 @@ clObject clTruncate2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2364,14 +2364,14 @@ clObject clTruncate2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2414,14 +2414,14 @@ clObject clTruncate2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2464,14 +2464,14 @@ clObject clTruncate2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2514,14 +2514,14 @@ clObject clTruncate2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2564,14 +2564,14 @@ clObject clTruncate2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                             number,
                                                                             divisor,
                                                                             clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2614,14 +2614,14 @@ clObject clFtruncate2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2664,14 +2664,14 @@ clObject clFtruncate2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2714,14 +2714,14 @@ clObject clFtruncate2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2764,14 +2764,14 @@ clObject clFtruncate2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2814,14 +2814,14 @@ clObject clFtruncate2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2864,14 +2864,14 @@ clObject clFtruncate2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2914,14 +2914,14 @@ clObject clFtruncate2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -2964,14 +2964,14 @@ clObject clFtruncate2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3014,14 +3014,14 @@ clObject clFtruncate2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3064,14 +3064,14 @@ clObject clFtruncate2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3114,14 +3114,14 @@ clObject clFtruncate2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3164,14 +3164,14 @@ clObject clFtruncate2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFtruncateDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                       number,
                                                       divisor,
                                                       clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3205,7 +3205,7 @@ clObject clFloor1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateSingleFloat(clFfloorSingleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -3238,7 +3238,7 @@ clObject clFloor1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateDoubleFloat(clFfloorDoubleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -3271,7 +3271,7 @@ clObject clFfloor1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFfloorSingleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -3304,7 +3304,7 @@ clObject clFfloor1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFfloorDoubleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -3346,14 +3346,14 @@ clObject clFloor2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3396,14 +3396,14 @@ clObject clFloor2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3446,14 +3446,14 @@ clObject clFloor2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3496,14 +3496,14 @@ clObject clFloor2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3546,14 +3546,14 @@ clObject clFloor2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3596,14 +3596,14 @@ clObject clFloor2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3646,14 +3646,14 @@ clObject clFloor2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3696,14 +3696,14 @@ clObject clFloor2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3746,14 +3746,14 @@ clObject clFloor2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3796,14 +3796,14 @@ clObject clFloor2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3846,14 +3846,14 @@ clObject clFloor2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3896,14 +3896,14 @@ clObject clFloor2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3946,14 +3946,14 @@ clObject clFfloor2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -3996,14 +3996,14 @@ clObject clFfloor2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4046,14 +4046,14 @@ clObject clFfloor2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4096,14 +4096,14 @@ clObject clFfloor2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4146,14 +4146,14 @@ clObject clFfloor2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4196,14 +4196,14 @@ clObject clFfloor2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4246,14 +4246,14 @@ clObject clFfloor2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4296,14 +4296,14 @@ clObject clFfloor2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4346,14 +4346,14 @@ clObject clFfloor2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4396,14 +4396,14 @@ clObject clFfloor2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4446,14 +4446,14 @@ clObject clFfloor2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4496,14 +4496,14 @@ clObject clFfloor2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFfloorDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4537,7 +4537,7 @@ clObject clCeiling1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateSingleFloat(clFceilingSingleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -4570,7 +4570,7 @@ clObject clCeiling1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateDoubleFloat(clFceilingDoubleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -4603,7 +4603,7 @@ clObject clFceiling1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFceilingSingleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -4636,7 +4636,7 @@ clObject clFceiling1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFceilingDoubleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -4678,14 +4678,14 @@ clObject clCeiling2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4728,14 +4728,14 @@ clObject clCeiling2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4778,14 +4778,14 @@ clObject clCeiling2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4828,14 +4828,14 @@ clObject clCeiling2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4878,14 +4878,14 @@ clObject clCeiling2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4928,14 +4928,14 @@ clObject clCeiling2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -4978,14 +4978,14 @@ clObject clCeiling2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5028,14 +5028,14 @@ clObject clCeiling2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5078,14 +5078,14 @@ clObject clCeiling2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5128,14 +5128,14 @@ clObject clCeiling2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5178,14 +5178,14 @@ clObject clCeiling2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5228,14 +5228,14 @@ clObject clCeiling2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                            number,
                                                                            divisor,
                                                                            clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5278,14 +5278,14 @@ clObject clFceiling2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5328,14 +5328,14 @@ clObject clFceiling2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5378,14 +5378,14 @@ clObject clFceiling2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5428,14 +5428,14 @@ clObject clFceiling2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5478,14 +5478,14 @@ clObject clFceiling2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5528,14 +5528,14 @@ clObject clFceiling2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5578,14 +5578,14 @@ clObject clFceiling2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5628,14 +5628,14 @@ clObject clFceiling2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5678,14 +5678,14 @@ clObject clFceiling2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5728,14 +5728,14 @@ clObject clFceiling2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5778,14 +5778,14 @@ clObject clFceiling2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5828,14 +5828,14 @@ clObject clFceiling2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFceilingDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                      number,
                                                      divisor,
                                                      clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -5869,7 +5869,7 @@ clObject clRound1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateSingleFloat(clFroundSingleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -5902,7 +5902,7 @@ clObject clRound1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clTruncateDoubleFloat(clFroundDoubleFloat(number)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -5935,7 +5935,7 @@ clObject clFround1_clSINGLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFroundSingleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -5968,7 +5968,7 @@ clObject clFround1_clDOUBLE_FLOAT clVdecl(_ap)
     { clObject q;
       clSetq(q, clFroundDoubleFloat(number));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
                                         q,
                                         clEOA),
@@ -6010,14 +6010,14 @@ clObject clRound2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6060,14 +6060,14 @@ clObject clRound2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6110,14 +6110,14 @@ clObject clRound2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6160,14 +6160,14 @@ clObject clRound2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6210,14 +6210,14 @@ clObject clRound2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6260,14 +6260,14 @@ clObject clRound2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6310,14 +6310,14 @@ clObject clRound2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6360,14 +6360,14 @@ clObject clRound2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6410,14 +6410,14 @@ clObject clRound2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6460,14 +6460,14 @@ clObject clRound2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateSingleFloat(clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6510,14 +6510,14 @@ clObject clRound2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6560,14 +6560,14 @@ clObject clRound2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clTruncateDoubleFloat(clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                                          number,
                                                                          divisor,
                                                                          clEOA))));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6610,14 +6610,14 @@ clObject clFround2_clSINGLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6660,14 +6660,14 @@ clObject clFround2_clSINGLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6710,14 +6710,14 @@ clObject clFround2_clSINGLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6760,14 +6760,14 @@ clObject clFround2_clSINGLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6810,14 +6810,14 @@ clObject clFround2_clDOUBLE_FLOAT_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6860,14 +6860,14 @@ clObject clFround2_clDOUBLE_FLOAT_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6910,14 +6910,14 @@ clObject clFround2_clDOUBLE_FLOAT_clRATIO clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -6960,14 +6960,14 @@ clObject clFround2_clDOUBLE_FLOAT_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -7010,14 +7010,14 @@ clObject clFround2_clRATIO_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -7060,14 +7060,14 @@ clObject clFround2_clINTEGER_clSINGLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundSingleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -7110,14 +7110,14 @@ clObject clFround2_clRATIO_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -7160,14 +7160,14 @@ clObject clFround2_clINTEGER_clDOUBLE_FLOAT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject q;
       clSetq(q,
-             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionValue(clDIV),
+             clFroundDoubleFloat(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                                    number,
                                                    divisor,
                                                    clEOA)));
       return(clValues(q,
-                      clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                      clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                         number,
-                                        clFuncallFunction(clSymbolFunctionValue(clMULT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                                           q,
                                                           divisor,
                                                           clEOA),
@@ -7187,12 +7187,12 @@ clObject clTruncate clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clTRUNCATE1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE1),
                              number,
                              clEOA)); }
 
@@ -7209,12 +7209,12 @@ clObject clFloor clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clFLOOR2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFLOOR2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clFLOOR1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFLOOR1),
                              number,
                              clEOA)); }
 
@@ -7231,12 +7231,12 @@ clObject clCeiling clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clCEILING2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clCEILING2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clCEILING1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clCEILING1),
                              number,
                              clEOA)); }
 
@@ -7253,12 +7253,12 @@ clObject clRound clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clROUND2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clROUND2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clROUND1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clROUND1),
                              number,
                              clEOA)); }
 
@@ -7275,12 +7275,12 @@ clObject clFtruncate clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clFTRUNCATE2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFTRUNCATE2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clFTRUNCATE1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFTRUNCATE1),
                              number,
                              clEOA)); }
 
@@ -7297,12 +7297,12 @@ clObject clFfloor clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clFFLOOR2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFFLOOR2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clFFLOOR1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFFLOOR1),
                              number,
                              clEOA)); }
 
@@ -7319,12 +7319,12 @@ clObject clFceiling clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clFCEILING2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFCEILING2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clFCEILING1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFCEILING1),
                              number,
                              clEOA)); }
 
@@ -7341,12 +7341,12 @@ clObject clFround clVdecl(_ap)
   if (clTrue(divisorp))
     { clObject L_1;
       clSetq(L_1, divisor);
-      return(clFuncallFunction(clSymbolFunctionValue(clFROUND2),
+      return(clFuncallFunction(clSymbolFunctionChecked(clFROUND2),
                                number,
                                L_1,
                                clEOA)); }
   else
-    return(clFuncallFunction(clSymbolFunctionValue(clFROUND1),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFROUND1),
                              number,
                              clEOA)); }
 
@@ -7390,8 +7390,8 @@ clObject clRem_clINTEGER_clINTEGER clVdecl(_ap)
     else
       { clObject L_values3958, L_ignore_3957, L_keeper3956;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
-          clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
+          clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                             number,
                             divisor,
                             clEOA);
@@ -7441,8 +7441,8 @@ clObject clRem_clREAL_clREAL clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values3967, L_ignore_3966, L_keeper3965;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
-        clFuncallFunction(clSymbolFunctionValue(clTRUNCATE2),
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
+        clFuncallFunction(clSymbolFunctionChecked(clTRUNCATE2),
                           number,
                           divisor,
                           clEOA);

@@ -145,7 +145,7 @@ static clObject clLambda clVdecl(_ap)
     { clObject L_0; clSetq(L_0, L_form); clExtraArgs(L_0, clEOA); }
   { clObject L_values407, temps, vals, stores, store_form, access_form;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, CL_int);
         clSetq(L_1, env);
@@ -238,7 +238,7 @@ static clObject clLambda_r1 clVdecl(_ap)
     { clObject L_0; clSetq(L_0, L_form); clExtraArgs(L_0, clEOA); }
   { clObject L_values412, temps, vals, stores, store_form, access_form;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, CL_int);
         clSetq(L_1, env);

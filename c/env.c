@@ -318,7 +318,7 @@ clObject clPrintObject_clBINDING_clT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_1, L_0;
       clSetq(L_0,
-             clLevelStructurePrinter(clSymbolFunctionValue(clPRINT_BINDING),
+             clLevelStructurePrinter(clSymbolFunctionChecked(clPRINT_BINDING),
                                      clEOA));
       clSetq(L_1, L_object1);
       clSetq(L_2, L_stream2);
@@ -3142,7 +3142,7 @@ clObject clPrintObject_clENV_clT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_1, L_0;
       clSetq(L_0,
-             clLevelStructurePrinter(clSymbolFunctionValue(clPRINT_ENV),
+             clLevelStructurePrinter(clSymbolFunctionChecked(clPRINT_ENV),
                                      clEOA));
       clSetq(L_1, L_object18);
       clSetq(L_2, L_stream19);
@@ -4628,7 +4628,7 @@ clObject clPrintEnvData_clBINDING_ENV_clT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_0;
       { clObject L_1__R1, L_0__R1;
-        clSetq(L_0__R1, clSymbolFunctionValue(clBINDING_NAME));
+        clSetq(L_0__R1, clSymbolFunctionChecked(clBINDING_NAME));
         { clObject L_0__R2;
           clSetq(L_0__R2, env);
           clSetq(L_1__R1, clFrameBindings(L_0__R2, clEOA)); }
@@ -4670,7 +4670,7 @@ clObject clPrintEnv clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, depth);
             clSetq(L_test,
-                   clFuncallFunction(clSymbolFunctionValue(clLE),
+                   clFuncallFunction(clSymbolFunctionChecked(clLE),
                                      L_0,
                                      clSymbolValue(clstarPRINT_LEVELstar,
                                                    clEOA),
@@ -4682,7 +4682,7 @@ clObject clPrintEnv clVdecl(_ap)
                 clSetq(L_0, env);
                 clSetq(L_1, stream);
                 clSetq(L_test__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clPRINT_ENV_DATA),
+                       clFuncallFunction(clSymbolFunctionChecked(clPRINT_ENV_DATA),
                                          L_0,
                                          L_1,
                                          clEOA)); }
@@ -4754,13 +4754,13 @@ clObject clCanonicalizeDeclarations clVdecl(_ap)
     if (clTrue(clEndp(L_sublist711, clEOA))) clLocalReturn(NIL__r4);
     { clObject L_values713, returned_declaration_type, items_to_add;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject key;
           clSetq(key, clCar(decl, clEOA));
           { clObject L_2, L_0;
             { clObject L_g714;
               clSetq(L_g714,
-                     clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                     clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                        key,
                                        clSymbolValue(clstarDECLARATION_HANDLERSstar,
                                                      clEOA),
@@ -4771,7 +4771,7 @@ clObject clCanonicalizeDeclarations clVdecl(_ap)
                 { clObject L_g715;
                   clSetq(L_g715,
                          (clTrue(clFindType(key, clNIL, clEOA)) ?
-                          clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                          clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                             clTYPE_ABBREVIATION,
                                             clSymbolValue(clstarDECLARATION_HANDLERSstar,
                                                           clEOA),
@@ -4780,7 +4780,7 @@ clObject clCanonicalizeDeclarations clVdecl(_ap)
                   clSetq(L_0,
                          (clTrue(L_g715) ?
                           L_g715 :
-                          clSymbolFunctionValue(clUNKNOWN_DECLARATION))); } }
+                          clSymbolFunctionChecked(clUNKNOWN_DECLARATION))); } }
             clSetq(L_2, env);
             clFuncall(L_0, decl, L_2, clEOA); } }
         clAccumulateValues(MVC);
@@ -4842,7 +4842,7 @@ clObject clCanonicalizeDeclarations clVdecl(_ap)
                     clSetq(L_0, name);
                     clSetq(L_1, fname);
                     clSetq(L_test__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                           clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                              L_0,
                                              L_1,
                                              clEOA)); }
@@ -4887,7 +4887,7 @@ clObject clCanonicalizeDeclarations clVdecl(_ap)
                     clSetq(L_0, name);
                     clSetq(L_1, fname);
                     clSetq(L_test__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                           clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                              L_0,
                                              L_1,
                                              clEOA)); }
@@ -4932,7 +4932,7 @@ clObject clCanonicalizeDeclarations clVdecl(_ap)
                     clSetq(L_0, name);
                     clSetq(L_1, fname);
                     clSetq(L_test__R3,
-                           clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                           clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                              L_0,
                                              L_1,
                                              clEOA)); }
@@ -5004,7 +5004,7 @@ static clObject clAugmentEnvironment_AddFreeDeclarations clVdecl(_ap)
               { clObject L_1;
                 clSetq(L_1, type);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                          clEnv(0, *body_env),
                                          L_1,
                                          clEOA)); }
@@ -5119,7 +5119,7 @@ clObject clAugmentEnvironment clVdecl(_ap)
                          &*init_env));
     { clObject L_values738, vars, funs, decs;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_1, L_0;
           clSetq(L_0, declare);
           clSetq(L_1, env);
@@ -5193,7 +5193,7 @@ clObject clAugmentEnvironment clVdecl(_ap)
                           clSetq(L_0__R2, bname);
                           clSetq(L_1__R2, name);
                           clSetq(L_test__R1,
-                                 clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                                 clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                                    L_0__R2,
                                                    L_1__R2,
                                                    clEOA)); }
@@ -5342,7 +5342,7 @@ clObject clAugmentEnvironment clVdecl(_ap)
                                          clEOA)); } } }
       { clObject L_1, L_0;
         clSetq(L_0, vars);
-        clSetq(L_1, clSymbolFunctionValue(clMAKE_VARIABLE_ENV));
+        clSetq(L_1, clSymbolFunctionChecked(clMAKE_VARIABLE_ENV));
         clFuncallFunction(_AddFreeDeclarations_,
                           L_0,
                           L_1,
@@ -5393,7 +5393,7 @@ clObject clAugmentEnvironment clVdecl(_ap)
                           clSetq(L_0__R2, bname);
                           clSetq(L_1__R2, name);
                           clSetq(L_test__R1,
-                                 clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                                 clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                                    L_0__R2,
                                                    L_1__R2,
                                                    clEOA)); }
@@ -5477,14 +5477,14 @@ clObject clAugmentEnvironment clVdecl(_ap)
             clSetq(*init_env, *body_env); }
       { clObject L_1, L_0;
         clSetq(L_0, funs);
-        clSetq(L_1, clSymbolFunctionValue(clMAKE_FUNCTION_ENV));
+        clSetq(L_1, clSymbolFunctionChecked(clMAKE_FUNCTION_ENV));
         clFuncallFunction(_AddFreeDeclarations_,
                           L_0,
                           L_1,
                           clFUNCTION_ENV,
                           clEOA); }
       { clObject L_1;
-        clSetq(L_1, clSymbolFunctionValue(clMAKE_DECLARATION_ENV));
+        clSetq(L_1, clSymbolFunctionChecked(clMAKE_DECLARATION_ENV));
         clFuncallFunction(_AddFreeDeclarations_,
                           decs,
                           L_1,
@@ -5838,7 +5838,7 @@ clObject clControlInformation clVdecl(_ap)
     clSetq(captured_constructor,
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_4, clEOA)));
     clSetq(test,
-           (_clVp(_ap) ? clVpop(_ap) : clSymbolFunctionValue(clEQ)));
+           (_clVp(_ap) ? clVpop(_ap) : clSymbolFunctionChecked(clEQ)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
   { clObject declarations, boundaries, frame;
@@ -5859,7 +5859,7 @@ clObject clControlInformation clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, clGetf(declarations, clCONTROLS, I_0, clEOA));
             clSetq(L_newval811,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      I_1,
                                      clEOA)); }
@@ -5901,7 +5901,7 @@ clObject clControlInformation clVdecl(_ap)
                                clFrameBindings(frame, clEOA),
                                clEOA)); }
             clSetq(L_newval818,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -5917,7 +5917,7 @@ clObject clControlInformation clVdecl(_ap)
           { clObject L_1;
             clSetq(L_1, type);
             clSetq(L_test__R4,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      frame,
                                      L_1,
                                      clEOA)); }
@@ -5933,7 +5933,7 @@ clObject clControlInformation clVdecl(_ap)
                               keyTEST,
                               L_3,
                               keyKEY,
-                              clSymbolFunctionValue(clBINDING_NAME),
+                              clSymbolFunctionChecked(clBINDING_NAME),
                               clEOA)); }
               if (clTrue(b))
                 { clObject L_1, L_0;
@@ -6115,7 +6115,7 @@ clObject clNameClash clVdecl(_ap)
                     clSetq(L_test__R3, clEql(L_0, L_1, clEOA)); }
                   if (clTrue(L_test__R3))
                     { clObject L_2, L_1, L_0;
-                      clSetq(L_0, clSymbolFunctionValue(clNAME_CLASH));
+                      clSetq(L_0, clSymbolFunctionChecked(clNAME_CLASH));
                       { clObject L_0__R1;
                         clSetq(L_0__R1, symbol_a);
                         clSetq(L_1, clCdr(L_0__R1, clEOA)); }
@@ -6179,14 +6179,14 @@ static clObject clIndexBinding_Check clVdecl(_ap)
       { clObject L_3, L_1, L_0;
         clSetq(L_0, name);
         clSetq(L_1, bindings);
-        clSetq(L_3, clSymbolFunctionValue(clBINDING_NAME));
+        clSetq(L_3, clSymbolFunctionChecked(clBINDING_NAME));
         clSetq(match,
                clFind(L_0,
                       L_1,
                       keyKEY,
                       L_3,
                       keyTEST,
-                      clSymbolFunctionValue(clNAME_CLASH),
+                      clSymbolFunctionChecked(clNAME_CLASH),
                       clEOA)); }
       if (clTrue(match))
         { { clObject L_arg834, L_newval835;
@@ -6245,7 +6245,7 @@ clObject clIndexBinding clVdecl(_ap)
             return(clValues1(clNIL));
           if (clTrue(clBoundaryEnvP(frame, clEOA)))
             return(clValues1(clNIL));
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                        frame,
                                        L_type45,
                                        clEOA)))
@@ -6366,7 +6366,7 @@ clObject clVariableInformation clVdecl(_ap)
         { clObject L_1;
           clSetq(L_1, boundaries);
           clSetq(boundaries, clCons(frame, L_1, clEOA)); }
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                    frame,
                                    L_type46,
                                    clEOA)))
@@ -6374,7 +6374,7 @@ clObject clVariableInformation clVdecl(_ap)
           { clObject L_3, L_1, L_0;
             clSetq(L_0, name);
             clSetq(L_1, clFrameBindings(frame, clEOA));
-            clSetq(L_3, clSymbolFunctionValue(clEQUAL));
+            clSetq(L_3, clSymbolFunctionChecked(clEQUAL));
             clSetq(L_test__R1,
                    clSetq(binding,
                           clFind(L_0,
@@ -6382,7 +6382,7 @@ clObject clVariableInformation clVdecl(_ap)
                                  keyTEST,
                                  L_3,
                                  keyKEY,
-                                 clSymbolFunctionValue(clBINDING_NAME),
+                                 clSymbolFunctionChecked(clBINDING_NAME),
                                  clEOA))); }
           if (clTrue(L_test__R1))
             { { clObject L_1, L_0;
@@ -6425,7 +6425,7 @@ clObject clVariableInformation clVdecl(_ap)
                         { clObject L_2__R1, L_1__R1, L_0__R1;
                           clSetq(L_0__R1, binding);
                           clSetq(L_1__R1,
-                                 clSymbolFunctionValue(clMAKE_CAPTURED_VAR));
+                                 clSymbolFunctionChecked(clMAKE_CAPTURED_VAR));
                           clSetq(L_2__R1, boundaries);
                           clSetq(L_1,
                                  clMakeCapturedBinding(L_0__R1,
@@ -6569,7 +6569,7 @@ clObject clFunctionInformation clVdecl(_ap)
             { clObject L_1;
               clSetq(L_1, boundaries);
               clSetq(boundaries, clCons(frame, L_1, clEOA)); }
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                        frame,
                                        L_type47,
                                        clEOA)))
@@ -6577,7 +6577,7 @@ clObject clFunctionInformation clVdecl(_ap)
               { clObject L_3, L_1, L_0;
                 clSetq(L_0, name);
                 clSetq(L_1, clFrameBindings(frame, clEOA));
-                clSetq(L_3, clSymbolFunctionValue(clEQUAL));
+                clSetq(L_3, clSymbolFunctionChecked(clEQUAL));
                 clSetq(L_test__R2,
                        clSetq(binding,
                               clFind(L_0,
@@ -6585,7 +6585,7 @@ clObject clFunctionInformation clVdecl(_ap)
                                      keyTEST,
                                      L_3,
                                      keyKEY,
-                                     clSymbolFunctionValue(clBINDING_NAME),
+                                     clSymbolFunctionChecked(clBINDING_NAME),
                                      clEOA))); }
               if (clTrue(L_test__R2))
                 { { clObject L_1, L_0;
@@ -6625,7 +6625,7 @@ clObject clFunctionInformation clVdecl(_ap)
                             { clObject L_2__R1, L_1__R1, L_0__R1;
                               clSetq(L_0__R1, binding);
                               clSetq(L_1__R1,
-                                     clSymbolFunctionValue(clMAKE_CAPTURED_FUNCTION));
+                                     clSymbolFunctionChecked(clMAKE_CAPTURED_FUNCTION));
                               clSetq(L_2__R1, boundaries);
                               clSetq(L_1,
                                      clMakeCapturedBinding(L_0__R1,
@@ -6718,7 +6718,7 @@ clObject clDeclarationInformation clVdecl(_ap)
         { clObject L_1;
           clSetq(L_1, boundaries);
           clSetq(boundaries, clCons(frame, L_1, clEOA)); }
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                    frame,
                                    L_type48,
                                    clEOA)))
@@ -6726,7 +6726,7 @@ clObject clDeclarationInformation clVdecl(_ap)
           { clObject L_3, L_1, L_0;
             clSetq(L_0, name);
             clSetq(L_1, clFrameBindings(frame, clEOA));
-            clSetq(L_3, clSymbolFunctionValue(clEQUAL));
+            clSetq(L_3, clSymbolFunctionChecked(clEQUAL));
             clSetq(L_test__R1,
                    clSetq(binding,
                           clFind(L_0,
@@ -6734,7 +6734,7 @@ clObject clDeclarationInformation clVdecl(_ap)
                                  keyTEST,
                                  L_3,
                                  keyKEY,
-                                 clSymbolFunctionValue(clBINDING_NAME),
+                                 clSymbolFunctionChecked(clBINDING_NAME),
                                  clEOA))); }
           if (clTrue(L_test__R1))
             { { clObject L_1, L_0;
@@ -7398,7 +7398,7 @@ void clInitEnv __P((void))
   (void) clGLOBAL_SYMBOL_MACRO_FUNCTION;
   { clObject *L_g0 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g0, clApply(L_0, clBINDING, CONS_0, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -7472,7 +7472,7 @@ void clInitEnv __P((void))
     (void) clBINDING; }
   { clObject *L_g3 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g3, clApply(L_0, clRUNTIME_BINDING, CONS_46, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -7530,7 +7530,7 @@ void clInitEnv __P((void))
     (void) clRUNTIME_BINDING; }
   { clObject *L_g4 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g4, clApply(L_0, clVAR, CONS_62, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -7579,7 +7579,7 @@ void clInitEnv __P((void))
     (void) clVAR; }
   { clObject *L_g5 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g5,
              clApply(L_0, clLEXICAL_FUNCTION, CONS_75, clEOA)); }
     { clObject L_1;
@@ -7638,7 +7638,7 @@ void clInitEnv __P((void))
     (void) clLEXICAL_FUNCTION; }
   { clObject *L_g6 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g6, clApply(L_0, clCAPTURED_VAR, CONS_85, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -7726,7 +7726,7 @@ void clInitEnv __P((void))
     (void) clCAPTURED_VAR; }
   { clObject *L_g7 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g7,
              clApply(L_0, clCAPTURED_FUNCTION, CONS_119, clEOA)); }
     { clObject L_1;
@@ -7815,7 +7815,7 @@ void clInitEnv __P((void))
     (void) clCAPTURED_FUNCTION; }
   { clObject *L_g8 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g8,
              clApply(L_0, clCOMPILETIME_BINDING, CONS_138, clEOA)); }
     { clObject L_1;
@@ -7874,7 +7874,7 @@ void clInitEnv __P((void))
     (void) clCOMPILETIME_BINDING; }
   { clObject *L_g9 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g9,
              clApply(L_0, clSYMBOL_MACRO_BINDING, CONS_148, clEOA)); }
     { clObject L_1;
@@ -7933,7 +7933,7 @@ void clInitEnv __P((void))
     (void) clSYMBOL_MACRO_BINDING; }
   { clObject *L_g10 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g10, clApply(L_0, clMACRO_BINDING, CONS_161, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -7991,7 +7991,7 @@ void clInitEnv __P((void))
     (void) clMACRO_BINDING; }
   { clObject *L_g11 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g11, clApply(L_0, clTAG, CONS_171, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8040,7 +8040,7 @@ void clInitEnv __P((void))
     (void) clTAG; }
   { clObject *L_g12 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g12, clApply(L_0, clNAMED_BLOCK, CONS_181, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8108,7 +8108,7 @@ void clInitEnv __P((void))
     (void) clNAMED_BLOCK; }
   { clObject *L_g13 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g13, clApply(L_0, clGO_TAG, CONS_206, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8176,7 +8176,7 @@ void clInitEnv __P((void))
     (void) clGO_TAG; }
   { clObject *L_g14 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g14, clApply(L_0, clVALUES_BUFFER, CONS_228, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8234,7 +8234,7 @@ void clInitEnv __P((void))
     (void) clVALUES_BUFFER; }
   { clObject *L_g15 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g15,
              clApply(L_0, clCAPTURED_BLOCK, CONS_240, clEOA)); }
     { clObject L_1;
@@ -8333,7 +8333,7 @@ void clInitEnv __P((void))
     (void) clCAPTURED_BLOCK; }
   { clObject *L_g16 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g16, clApply(L_0, clCAPTURED_TAG, CONS_264, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8441,7 +8441,7 @@ void clInitEnv __P((void))
   (void) clSPECIAL_BINDING_P;
   { clObject *L_g17 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g17, clApply(L_0, clENV, CONS_288, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8479,7 +8479,7 @@ void clInitEnv __P((void))
     (void) clENV; }
   { clObject *L_g20 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g20, clApply(L_0, clBINDING_ENV, CONS_302, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8522,7 +8522,7 @@ void clInitEnv __P((void))
     (void) clBINDING_ENV; }
   { clObject *L_g21 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g21,
              clApply(L_0, clBASIC_VARIABLE_ENV, CONS_323, clEOA)); }
     { clObject L_1;
@@ -8566,7 +8566,7 @@ void clInitEnv __P((void))
     (void) clBASIC_VARIABLE_ENV; }
   { clObject *L_g22 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g22, clApply(L_0, clVARIABLE_ENV, CONS_334, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8609,7 +8609,7 @@ void clInitEnv __P((void))
     (void) clVARIABLE_ENV; }
   { clObject *L_g23 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g23,
              clApply(L_0, clMACRO_VARIABLE_ENV, CONS_345, clEOA)); }
     { clObject L_1;
@@ -8653,7 +8653,7 @@ void clInitEnv __P((void))
     (void) clMACRO_VARIABLE_ENV; }
   { clObject *L_g24 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g24,
              clApply(L_0, clBASIC_FUNCTION_ENV, CONS_353, clEOA)); }
     { clObject L_1;
@@ -8697,7 +8697,7 @@ void clInitEnv __P((void))
     (void) clBASIC_FUNCTION_ENV; }
   { clObject *L_g25 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g25, clApply(L_0, clFUNCTION_ENV, CONS_361, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8740,7 +8740,7 @@ void clInitEnv __P((void))
     (void) clFUNCTION_ENV; }
   { clObject *L_g26 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g26,
              clApply(L_0, clMACRO_FUNCTION_ENV, CONS_372, clEOA)); }
     { clObject L_1;
@@ -8784,7 +8784,7 @@ void clInitEnv __P((void))
     (void) clMACRO_FUNCTION_ENV; }
   { clObject *L_g27 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g27,
              clApply(L_0, clDECLARATION_ENV, CONS_380, clEOA)); }
     { clObject L_1;
@@ -8828,7 +8828,7 @@ void clInitEnv __P((void))
     (void) clDECLARATION_ENV; }
   { clObject *L_g28 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g28, clApply(L_0, clBLOCK_ENV, CONS_388, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8871,7 +8871,7 @@ void clInitEnv __P((void))
     (void) clBLOCK_ENV; }
   { clObject *L_g29 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g29, clApply(L_0, clTAGBODY_ENV, CONS_396, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8914,7 +8914,7 @@ void clInitEnv __P((void))
     (void) clTAGBODY_ENV; }
   { clObject *L_g30 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g30, clApply(L_0, clVALUES_ENV, CONS_404, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -8957,7 +8957,7 @@ void clInitEnv __P((void))
     (void) clVALUES_ENV; }
   { clObject *L_g31 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g31, clApply(L_0, clCONTROL_ENV, CONS_412, clEOA)); }
     { clObject L_1;
       clSetq(L_1,
@@ -9000,7 +9000,7 @@ void clInitEnv __P((void))
     (void) clCONTROL_ENV; }
   { clObject *L_g32 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g32, clApply(L_0, clBOUNDARY_ENV, CONS_423, clEOA)); }
     { clObject L_1;
       clSetq(L_1,

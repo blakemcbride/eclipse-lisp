@@ -62,7 +62,7 @@ clObject clSimilar_clT_clT clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_form1937);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+    return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                              x,
                              y,
                              clEOA)); } }
@@ -103,7 +103,7 @@ clObject clSimilar_clPACKAGE_clPACKAGE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0, clPackageName(x, clEOA));
-      return(clFuncallFunction(clSymbolFunctionValue(clSIMILAR),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSIMILAR),
                                L_0,
                                clPackageName(y, clEOA),
                                clEOA)); } } }
@@ -186,7 +186,7 @@ clObject clSimilar_clSYMBOL_clSYMBOL clVdecl(_ap)
         if (clTrue(clNull(clSymbolPackage(y, clEOA), clEOA)))
           { clObject L_0;
             clSetq(L_0, clSymbolName(x, clEOA));
-            return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+            return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                      L_0,
                                      clSymbolName(y, clEOA),
                                      clEOA)); }
@@ -205,7 +205,7 @@ static clObject clSimilar_keyAROUND_clARRAY_clARRAY_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -218,10 +218,10 @@ static clObject clSimilar_keyAROUND_clARRAY_clARRAY_CallNextMethod clVdecl(_ap)
                                    clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clSIMILAR, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -271,12 +271,12 @@ clObject clSimilar_keyAROUND_clARRAY_clARRAY clVdecl(_ap)
       { clObject L_test;
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                    x,
                                    clEOA));
           clSetq(L_test,
                  clEq(L_0,
-                      clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                      clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                         y,
                                         clEOA),
                       clEOA)); }
@@ -333,7 +333,7 @@ clObject clSimilar_clVECTOR_clVECTOR clVdecl(_ap)
           { clObject L_1;
             clSetq(L_1, L_g2);
             clSetq(L_g1971,
-                   clFuncallFunction(clSymbolFunctionValue(clGE),
+                   clFuncallFunction(clSymbolFunctionChecked(clGE),
                                      L_g1,
                                      L_1,
                                      clEOA)); }
@@ -343,7 +343,7 @@ clObject clSimilar_clVECTOR_clVECTOR clVdecl(_ap)
             { clObject L_1;
               clSetq(L_1, L_g5);
               clSetq(L_test,
-                     clFuncallFunction(clSymbolFunctionValue(clGE),
+                     clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        L_g4,
                                        L_1,
                                        clEOA)); } }
@@ -364,7 +364,7 @@ clObject clSimilar_clVECTOR_clVECTOR clVdecl(_ap)
             clSetq(L_0__R1, ex);
             clSetq(L_1, ey);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSIMILAR),
+                   clFuncallFunction(clSymbolFunctionChecked(clSIMILAR),
                                      L_0__R1,
                                      L_1,
                                      clEOA)); }
@@ -411,12 +411,12 @@ clObject clSimilar_clARRAY_clARRAY clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject rank;
       clSetq(rank,
-             clFuncallFunction(clSymbolFunctionValue(clARRAY_RANK),
+             clFuncallFunction(clSymbolFunctionChecked(clARRAY_RANK),
                                x,
                                clEOA));
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                    rank,
-                                   clFuncallFunction(clSymbolFunctionValue(clARRAY_RANK),
+                                   clFuncallFunction(clSymbolFunctionChecked(clARRAY_RANK),
                                                      y,
                                                      clEOA),
                                    clEOA)))
@@ -430,14 +430,14 @@ clObject clSimilar_clARRAY_clARRAY clVdecl(_ap)
               { clObject L_0;
                 { clObject L_0__R1;
                   clSetq(L_0__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clARRAY_DIMENSION),
+                         clFuncallFunction(clSymbolFunctionChecked(clARRAY_DIMENSION),
                                            x,
                                            i,
                                            clEOA));
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                         clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                            L_0__R1,
-                                           clFuncallFunction(clSymbolFunctionValue(clARRAY_DIMENSION),
+                                           clFuncallFunction(clSymbolFunctionChecked(clARRAY_DIMENSION),
                                                              y,
                                                              i,
                                                              clEOA),
@@ -454,7 +454,7 @@ clObject clSimilar_clARRAY_clARRAY clVdecl(_ap)
           if (clTrue(L_test__R1))
             { clObject L_end1981, i;
               clSetq(L_end1981,
-                     clFuncallFunction(clSymbolFunctionValue(clARRAY_TOTAL_SIZE),
+                     clFuncallFunction(clSymbolFunctionChecked(clARRAY_TOTAL_SIZE),
                                        x,
                                        clEOA));
               clSetq(i, I_0);
@@ -465,14 +465,14 @@ clObject clSimilar_clARRAY_clARRAY clVdecl(_ap)
                 { clObject L_0;
                   { clObject L_0__R1;
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clROW_MAJOR_AREF),
+                           clFuncallFunction(clSymbolFunctionChecked(clROW_MAJOR_AREF),
                                              x,
                                              i,
                                              clEOA));
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clSIMILAR),
+                           clFuncallFunction(clSymbolFunctionChecked(clSIMILAR),
                                              L_0__R1,
-                                             clFuncallFunction(clSymbolFunctionValue(clROW_MAJOR_AREF),
+                                             clFuncallFunction(clSymbolFunctionChecked(clROW_MAJOR_AREF),
                                                                y,
                                                                i,
                                                                clEOA),
@@ -658,7 +658,7 @@ void clInitInit __P((void))
                    keyDECLARATIONS, clNIL, keyDOCUMENTATION, clNIL,
                    clEOA); }
   clSetSymbolValueValue(clstarCONSTANT_CHECK_HOOKstar,
-                        clSymbolFunctionValue(clSIMILAR));
+                        clSymbolFunctionChecked(clSIMILAR));
   clEnsureGenericFunction(clCOMPILE_OBJECT,
                           keyLAMBDA_LIST,
                           CONS_3,

@@ -204,7 +204,7 @@ clObject clComputeEffectiveMethodStandardGenericFunctionTT clVdecl(_ap)
                             STARgeneric_functionSTAR);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMETHOD_COMBINATION_FUNCTION),
+               clFuncallFunction(clSymbolFunctionChecked(clMETHOD_COMBINATION_FUNCTION),
                                  clSymbolValue(clstarMETHOD_COMBINATIONstar,
                                                clEOA),
                                  clEOA));
@@ -227,10 +227,10 @@ clObject clReinitializeInstanceAfterMethodCombinationType clVdecl(_ap)
           clSetq(L_form1671, clCdr(L_0, clEOA)); }
         clSetq(instance, L_top1672); }
     else clSetq(instance, clMissingArgs(I_1, clEOA));
-    if (clTrue(clFuncallFunction(clSymbolFunctionValue(clCLASS_FINALIZED_P),
+    if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clCLASS_FINALIZED_P),
                                  instance,
                                  clEOA)))
-      return(clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCES_OBSOLETE),
+      return(clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCES_OBSOLETE),
                                instance,
                                clEOA));
     else return(clValues1(clNIL)); } }
@@ -297,7 +297,7 @@ clObject clUpdateInstanceForRedefinedClassAfterMethodCombinationTTT clVdecl(_ap)
         { clObject L_g1689;
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_COMBINATION_TYPE_FUNCTION),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_COMBINATION_TYPE_FUNCTION),
                                      clClassOf(method_combination,
                                                clEOA),
                                      clEOA));
@@ -343,7 +343,7 @@ clObject clSetfGenericFunctionNameTT clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_form1706);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clREINITIALIZE_INSTANCE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clREINITIALIZE_INSTANCE),
                              gf,
                              keyNAME,
                              new_name,
@@ -401,7 +401,7 @@ clObject clAddAttachedMethodsStandardGenericFunctionT clVdecl(_ap)
             clLabel(l_ITERATE1729);
             if (clTrue(clEndp(L_sublist1728, clEOA)))
               clLocalReturn(NIL);
-            clFuncallFunction(clSymbolFunctionValue(clADD_METHOD),
+            clFuncallFunction(clSymbolFunctionChecked(clADD_METHOD),
                               standard_generic_function,
                               method,
                               clEOA);
@@ -465,7 +465,7 @@ clObject clRemoveAttachedMethodsStandardGenericFunction clVdecl(_ap)
           clSetq(method, clCar(L_sublist1750, clEOA));
           clLabel(l_ITERATE1751);
           if (clTrue(clEndp(L_sublist1750, clEOA))) clLocalReturn(NIL);
-          clFuncallFunction(clSymbolFunctionValue(clREMOVE_METHOD),
+          clFuncallFunction(clSymbolFunctionChecked(clREMOVE_METHOD),
                             standard_generic_function,
                             method,
                             clEOA);
@@ -522,7 +522,7 @@ clObject clEnsureGenericFunctionUsingClassNullT clVdecl(_ap)
     else clSetq(gf_class, clSTANDARD_GENERIC_FUNCTION);
     { clObject L_value1767;
       { clObject L_1, L_0;
-        clSetq(L_0, clSymbolFunctionValue(clMAKE_INSTANCE));
+        clSetq(L_0, clSymbolFunctionChecked(clMAKE_INSTANCE));
         { clObject L_0__R1;
           clSetq(L_0__R1, gf_class);
           clSetq(L_1, clCanonicalizeClass(L_0__R1, clT, clEOA)); }
@@ -579,7 +579,7 @@ clObject clEnsureGenericFunctionUsingClassGenericFunctionT clVdecl(_ap)
       clSetq(L_1, gf_class);
       clCheckMetaclass(generic_function, L_1, clEOA); }
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clREINITIALIZE_INSTANCE));
+      clSetq(L_0, clSymbolFunctionChecked(clREINITIALIZE_INSTANCE));
       return(clApply(L_0, generic_function, keyNAME, function_name,
                      clCanonicalizeEnsureGenericFunctionArgs(keys,
                                                              clEOA),
@@ -681,7 +681,7 @@ clObject clSharedInitializeGenericFunctionT clVdecl(_ap)
             { clObject L_2__R1;
               clSetq(L_2__R1, options);
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clFIND_METHOD_COMBINATION),
+                     clFuncallFunction(clSymbolFunctionChecked(clFIND_METHOD_COMBINATION),
                                        gf,
                                        name,
                                        L_2__R1,
@@ -694,7 +694,7 @@ clObject clSharedInitializeGenericFunctionT clVdecl(_ap)
                               clEOA)); } } }
     { clObject L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+             clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                clCar(CL_DOTmethodsDOT, clEOA),
                                clEOA));
       { clObject L_2__R1;
@@ -721,7 +721,7 @@ clObject clReinitializeInstanceBeforeGenericFunction clVdecl(_ap)
           clSetq(L_form1800, clCdr(L_0, clEOA)); }
         clSetq(gf, L_top1801); }
     else clSetq(gf, clMissingArgs(I_1, clEOA));
-    return(clFuncallFunction(clSymbolFunctionValue(clREMOVE_ATTACHED_METHODS),
+    return(clFuncallFunction(clSymbolFunctionChecked(clREMOVE_ATTACHED_METHODS),
                              gf,
                              clEOA)); } }
 
@@ -735,7 +735,7 @@ static clObject clReinitializeInstanceAfterGenericFunction_Lambda clVdecl(_ap)
       if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
       clEndParse(_ap); }
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clUPDATE_DEPENDENT));
+      clSetq(L_0, clSymbolFunctionChecked(clUPDATE_DEPENDENT));
       return(clApply(L_0, clEnv(0, *gf), dep, clEnv(1, initargs),
                      clEOA)); } } }
 
@@ -765,7 +765,7 @@ clObject clReinitializeInstanceAfterGenericFunction clVdecl(_ap)
                            &clEnvHook(clReinitializeInstanceAfterGenericFunction_Lambda),
                            &*gf,
                            &initargs));
-      return(clFuncallFunction(clSymbolFunctionValue(clMAP_DEPENDENTS),
+      return(clFuncallFunction(clSymbolFunctionChecked(clMAP_DEPENDENTS),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -906,7 +906,7 @@ clObject clComputeApplicableMethodsStandardGenericFunctionT clVdecl(_ap)
         clSetq(arg, clNIL);
         clSetq(L_g62, arguments);
         clSetq(parameter,
-               clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
+               clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
                                  generic_function,
                                  clEOA));
         { clObject L_g63, L_g64;
@@ -948,7 +948,7 @@ clObject clComputeApplicableMethodsStandardGenericFunctionT clVdecl(_ap)
           clBlockEnd(NIL); } }
       { clObject L_sublist1871, method;
         clSetq(L_sublist1871,
-               clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_METHODS),
+               clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_METHODS),
                                  generic_function,
                                  clEOA));
         clSetq(method, clCar(L_sublist1871, clEOA));
@@ -958,7 +958,7 @@ clObject clComputeApplicableMethodsStandardGenericFunctionT clVdecl(_ap)
         { clObject specializer, L_g65, arg, L_g66, CL_class;
           clSetq(specializer, clNIL);
           clSetq(L_g65,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_SPECIALIZERS),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_SPECIALIZERS),
                                    method,
                                    clEOA));
           clSetq(arg, clNIL);
@@ -1088,7 +1088,7 @@ clObject clComputeApplicableMethodsUsingClassesStandardGenericFunctionT clVdecl(
             { clObject specializer, L_g67, CL_class, L_g68;
               clSetq(specializer, clNIL);
               clSetq(L_g67,
-                     clFuncallFunction(clSymbolFunctionValue(clMETHOD_SPECIALIZERS),
+                     clFuncallFunction(clSymbolFunctionChecked(clMETHOD_SPECIALIZERS),
                                        method,
                                        clEOA));
               clSetq(CL_class, clNIL);
@@ -1187,7 +1187,7 @@ clObject clComputeDiscriminatingFunctionStandardGenericFunction clVdecl(_ap)
         clSetq(L_0, L_form1913);
         clExtraArgs(L_0, clEOA); }
     return(clStandardDiscriminatingFunction(generic_function,
-                                            clLength(clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
+                                            clLength(clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
                                                                        generic_function,
                                                                        clEOA),
                                                      clEOA),
@@ -1398,7 +1398,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clFIND_METHOD_COMBINATION_STANDARD_GENERIC_FUNCTION_SYMBOL_T));
+               clSymbolFunctionChecked(clFIND_METHOD_COMBINATION_STANDARD_GENERIC_FUNCTION_SYMBOL_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -1507,7 +1507,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clCOMPUTE_EFFECTIVE_METHOD_STANDARD_GENERIC_FUNCTION_T_T));
+               clSymbolFunctionChecked(clCOMPUTE_EFFECTIVE_METHOD_STANDARD_GENERIC_FUNCTION_T_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -1575,7 +1575,7 @@ void clInitGfunc __P((void))
       { clObject L_5, L_4;
         clSetq(L_4, clList(clMETHOD_COMBINATION_TYPE_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clREINITIALIZE_INSTANCE_AFTER_METHOD_COMBINATION_TYPE));
+               clSymbolFunctionChecked(clREINITIALIZE_INSTANCE_AFTER_METHOD_COMBINATION_TYPE));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -1630,7 +1630,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clUPDATE_INSTANCE_FOR_REDEFINED_CLASS_AFTER_METHOD_COMBINATION_T_T_T));
+               clSymbolFunctionChecked(clUPDATE_INSTANCE_FOR_REDEFINED_CLASS_AFTER_METHOD_COMBINATION_T_T_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -1745,7 +1745,7 @@ void clInitGfunc __P((void))
       { clObject L_5, L_4;
         clSetq(L_4, clList(clT_CLASSOBJ, clT_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clSETF_GENERIC_FUNCTION_NAME_T_T));
+               clSymbolFunctionChecked(clSETF_GENERIC_FUNCTION_NAME_T_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -1843,7 +1843,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clADD_ATTACHED_METHODS_STANDARD_GENERIC_FUNCTION_T));
+               clSymbolFunctionChecked(clADD_ATTACHED_METHODS_STANDARD_GENERIC_FUNCTION_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -1939,7 +1939,7 @@ void clInitGfunc __P((void))
         clSetq(L_4,
                clList(clSTANDARD_GENERIC_FUNCTION_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clREMOVE_ATTACHED_METHODS_STANDARD_GENERIC_FUNCTION));
+               clSymbolFunctionChecked(clREMOVE_ATTACHED_METHODS_STANDARD_GENERIC_FUNCTION));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2028,7 +2028,7 @@ void clInitGfunc __P((void))
       { clObject L_5, L_4;
         clSetq(L_4, clList(clNULL_CLASSOBJ, clT_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clENSURE_GENERIC_FUNCTION_USING_CLASS_NULL_T));
+               clSymbolFunctionChecked(clENSURE_GENERIC_FUNCTION_USING_CLASS_NULL_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2091,7 +2091,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clENSURE_GENERIC_FUNCTION_USING_CLASS_GENERIC_FUNCTION_T));
+               clSymbolFunctionChecked(clENSURE_GENERIC_FUNCTION_USING_CLASS_GENERIC_FUNCTION_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2152,7 +2152,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clSHARED_INITIALIZE_GENERIC_FUNCTION_T));
+               clSymbolFunctionChecked(clSHARED_INITIALIZE_GENERIC_FUNCTION_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2210,7 +2210,7 @@ void clInitGfunc __P((void))
       { clObject L_5, L_4;
         clSetq(L_4, clList(clGENERIC_FUNCTION_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clREINITIALIZE_INSTANCE_BEFORE_GENERIC_FUNCTION));
+               clSymbolFunctionChecked(clREINITIALIZE_INSTANCE_BEFORE_GENERIC_FUNCTION));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2258,7 +2258,7 @@ void clInitGfunc __P((void))
       { clObject L_5, L_4;
         clSetq(L_4, clList(clGENERIC_FUNCTION_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clREINITIALIZE_INSTANCE_AFTER_GENERIC_FUNCTION));
+               clSymbolFunctionChecked(clREINITIALIZE_INSTANCE_AFTER_GENERIC_FUNCTION));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2344,7 +2344,7 @@ void clInitGfunc __P((void))
         clSetq(L_4,
                clList(clSTANDARD_GENERIC_FUNCTION_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clFLUSH_METHOD_CACHE_STANDARD_GENERIC_FUNCTION));
+               clSymbolFunctionChecked(clFLUSH_METHOD_CACHE_STANDARD_GENERIC_FUNCTION));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2394,7 +2394,7 @@ void clInitGfunc __P((void))
                clList(clSTANDARD_SYSTEM_GENERIC_FUNCTION_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clFLUSH_METHOD_CACHE_STANDARD_SYSTEM_GENERIC_FUNCTION));
+               clSymbolFunctionChecked(clFLUSH_METHOD_CACHE_STANDARD_SYSTEM_GENERIC_FUNCTION));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2479,7 +2479,7 @@ void clInitGfunc __P((void))
       clSetq(L_1, clStandardInstanceAccess(CL_meta, I_16, clEOA));
       { clObject L_5, L_4;
         clSetq(L_4, clList(clT_CLASSOBJ, clEOA));
-        clSetq(L_5, clSymbolFunctionValue(clNO_APPLICABLE_METHOD_T));
+        clSetq(L_5, clSymbolFunctionChecked(clNO_APPLICABLE_METHOD_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2567,7 +2567,7 @@ void clInitGfunc __P((void))
                       clSTANDARD_METHOD_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clNO_NEXT_METHOD_STANDARD_GENERIC_FUNCTION_STANDARD_METHOD));
+               clSymbolFunctionChecked(clNO_NEXT_METHOD_STANDARD_GENERIC_FUNCTION_STANDARD_METHOD));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2666,7 +2666,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS_STANDARD_GENERIC_FUNCTION_T));
+               clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS_STANDARD_GENERIC_FUNCTION_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2769,7 +2769,7 @@ void clInitGfunc __P((void))
                       clT_CLASSOBJ,
                       clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES_STANDARD_GENERIC_FUNCTION_T));
+               clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES_STANDARD_GENERIC_FUNCTION_T));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,
@@ -2869,7 +2869,7 @@ void clInitGfunc __P((void))
         clSetq(L_4,
                clList(clSTANDARD_GENERIC_FUNCTION_CLASSOBJ, clEOA));
         clSetq(L_5,
-               clSymbolFunctionValue(clCOMPUTE_DISCRIMINATING_FUNCTION_STANDARD_GENERIC_FUNCTION));
+               clSymbolFunctionChecked(clCOMPUTE_DISCRIMINATING_FUNCTION_STANDARD_GENERIC_FUNCTION));
         clSetq(L_2,
                clMakeStaticSlots(clNIL,
                                  clNIL,

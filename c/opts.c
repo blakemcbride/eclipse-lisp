@@ -462,7 +462,7 @@ static clObject clLambda_r4 clVdecl(_ap)
             { clObject L_test__R2;
               if (clTrue(clConstantp(list, clEOA)))
                 { clObject L_0__R1;
-                  clSetq(L_0__R1, clSymbolFunctionValue(clEQ_TEST_P));
+                  clSetq(L_0__R1, clSymbolFunctionChecked(clEQ_TEST_P));
                   clSetq(L_test__R2,
                          clEvery(L_0__R1,
                                  clEval(list, clEOA),

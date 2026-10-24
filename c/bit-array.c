@@ -141,7 +141,7 @@ clObject clRowMajorBitref_clSIMPLE_ARRAY_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0, clSimpleArrayContents(array));
-      return(clFuncallFunction(clSymbolFunctionValue(clROW_MAJOR_BITREF),
+      return(clFuncallFunction(clSymbolFunctionChecked(clROW_MAJOR_BITREF),
                                L_0,
                                index,
                                clEOA)); } } }
@@ -182,9 +182,9 @@ clObject clRowMajorBitref_clARRAY_clINTEGER clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0, clSimpleArrayContents(array));
-      return(clFuncallFunction(clSymbolFunctionValue(clROW_MAJOR_BITREF),
+      return(clFuncallFunction(clSymbolFunctionChecked(clROW_MAJOR_BITREF),
                                L_0,
-                               clFuncallFunction(clSymbolFunctionValue(clADD),
+                               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                  index,
                                                  clComplexArrayOffset(array),
                                                  clEOA),
@@ -335,7 +335,7 @@ clObject cl_SETF_RowMajorBitref_clINTEGER_clARRAY_clINTEGER clVdecl(_ap)
     { clObject L_arg516, L_arg517;
       clSetq(L_arg516, clSimpleArrayContents(array));
       clSetq(L_arg517,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                index,
                                clComplexArrayOffset(array),
                                clEOA));
@@ -354,9 +354,9 @@ clObject clSbit clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_1;
     { clObject L_0__R1;
-      clSetq(L_0__R1, clSymbolFunctionValue(clARRAY_ROW_MAJOR_INDEX));
+      clSetq(L_0__R1, clSymbolFunctionChecked(clARRAY_ROW_MAJOR_INDEX));
       clSetq(L_1, clApply(L_0__R1, array, indices, clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clROW_MAJOR_BITREF),
+    return(clFuncallFunction(clSymbolFunctionChecked(clROW_MAJOR_BITREF),
                              array,
                              L_1,
                              clEOA)); } }
@@ -372,7 +372,7 @@ clObject cl_SETF_Sbit clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_arg520;
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clARRAY_ROW_MAJOR_INDEX));
+      clSetq(L_0, clSymbolFunctionChecked(clARRAY_ROW_MAJOR_INDEX));
       clSetq(L_arg520, clApply(L_0, array, indices, clEOA)); }
     return(clFuncallFunction(clFdefinition(CONS_5, clEOA),
                              new_elt,
@@ -388,7 +388,7 @@ clObject clBit clVdecl(_ap)
     clSetq(indices, clVargs(_ap));
     clEndParse(_ap); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clSBIT));
+    clSetq(L_0, clSymbolFunctionChecked(clSBIT));
     return(clApply(L_0, array, indices, clEOA)); } }
 
 clObject cl_SETF_Bit clVdecl(_ap)
@@ -416,7 +416,7 @@ clObject clBitBoole clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values521, array1, offset1;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clGetSimpleVector(bit_array1, I_0, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values521, clMultipleValueFuncall(MVC)); }
@@ -428,7 +428,7 @@ clObject clBitBoole clVdecl(_ap)
       clSetq(offset1, clCar(L_0, clEOA)); }
     { clObject L_values522, array2, offset2;
       { clMultipleValueCall(MVC__r1);
-        clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+        clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
         clGetSimpleVector(bit_array2, I_0, clEOA);
         clAccumulateValues(MVC__r1);
         clSetq(L_values522, clMultipleValueFuncall(MVC__r1)); }
@@ -440,7 +440,7 @@ clObject clBitBoole clVdecl(_ap)
         clSetq(offset2, clCar(L_0, clEOA)); }
       { clObject L_values523, array3, offset3;
         { clMultipleValueCall(MVC__r2);
-          clSetq(MVC__r2, clSymbolFunctionValue(clLIST));
+          clSetq(MVC__r2, clSymbolFunctionChecked(clLIST));
           if (_clEq(clT, result_array))
             { clSetq(result_array, bit_array1);
               clValues(array1, offset1, clEOA); }
@@ -469,28 +469,28 @@ clObject clBitBoole clVdecl(_ap)
           clSetq(offset3, clCar(L_0, clEOA)); }
         { clObject l;
           clSetq(l,
-                 clFuncallFunction(clSymbolFunctionValue(clARRAY_TOTAL_SIZE),
+                 clFuncallFunction(clSymbolFunctionChecked(clARRAY_TOTAL_SIZE),
                                    bit_array1,
                                    clEOA));
           { clObject L_test;
             { clObject L_0;
               { clObject L_mid525, L_high526;
                 clSetq(L_mid525,
-                       clFuncallFunction(clSymbolFunctionValue(clARRAY_TOTAL_SIZE),
+                       clFuncallFunction(clSymbolFunctionChecked(clARRAY_TOTAL_SIZE),
                                          bit_array2,
                                          clEOA));
                 { clObject L_0__R1;
                   clSetq(L_0__R1, result_array);
                   clSetq(L_high526,
-                         clFuncallFunction(clSymbolFunctionValue(clARRAY_TOTAL_SIZE),
+                         clFuncallFunction(clSymbolFunctionChecked(clARRAY_TOTAL_SIZE),
                                            L_0__R1,
                                            clEOA)); }
                 clSetq(L_0,
-                       (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                       (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                                  l,
                                                  L_mid525,
                                                  clEOA)) ?
-                        clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                        clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                           L_mid525,
                                           L_high526,
                                           clEOA) :
@@ -539,21 +539,21 @@ clObject clBitBoole clVdecl(_ap)
                 { clObject a, b;
                   clSetq(a,
                          clSbit(array1,
-                                clFuncallFunction(clSymbolFunctionValue(clADD),
+                                clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                   i,
                                                   offset1,
                                                   clEOA),
                                 clEOA));
                   clSetq(b,
                          clSbit(array2,
-                                clFuncallFunction(clSymbolFunctionValue(clADD),
+                                clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                   i,
                                                   offset2,
                                                   clEOA),
                                 clEOA));
                   { clObject L_arg533, L_value531;
                     clSetq(L_arg533,
-                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                              i,
                                              offset3,
                                              clEOA));

@@ -183,7 +183,7 @@ clObject clMakeName clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     { clObject L_2, L_0__R1;
-      clSetq(L_0__R1, clSymbolFunctionValue(clFORMAT));
+      clSetq(L_0__R1, clSymbolFunctionChecked(clFORMAT));
       { clObject L_0__R2;
         clSetq(L_0__R2, format);
         clSetq(L_2, clString(L_0__R2, clEOA)); }
@@ -206,7 +206,7 @@ clObject clMakeNameInPackage clVdecl(_ap)
     clDbind(clstarPACKAGEstar);
     clSetSymbolValueValue(clstarPACKAGEstar, STARpackageSTAR);
     { clObject L_1, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clMAKE_NAME));
+      clSetq(L_0, clSymbolFunctionChecked(clMAKE_NAME));
       clSetq(L_1, format);
       clUnwindReturn(clApply(L_0, L_1, args, clEOA), 1); } } }
 
@@ -220,7 +220,7 @@ clObject clMakeBindingList clVdecl(_ap)
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
   { clObject L_2, L_1, L_0;
-    clSetq(L_0, clSymbolFunctionValue(clLIST));
+    clSetq(L_0, clSymbolFunctionChecked(clLIST));
     clSetq(L_1, names);
     clSetq(L_2, inits);
     return(clMapcar(L_0, L_1, L_2, clEOA)); } }
@@ -260,7 +260,7 @@ clObject clFindDeclarations clVdecl(_ap)
           if (clTrue(L_test__R1))
             { clObject L_values401, decls, b;
               { clMultipleValueCall(MVC);
-                clSetq(MVC, clSymbolFunctionValue(clLIST));
+                clSetq(MVC, clSymbolFunctionChecked(clLIST));
                 { clObject L_0;
                   { clObject L_0__R1;
                     clSetq(L_0__R1, body);
@@ -279,7 +279,7 @@ clObject clFindDeclarations clVdecl(_ap)
           else if (clTrue(clCarEq(d, clDECLARE, clEOA)))
             { clObject L_values402, decls, b, doc;
               { clMultipleValueCall(MVC__r1);
-                clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+                clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
                 { clObject L_1, L_0;
                   { clObject L_0__R1;
                     clSetq(L_0__R1, body);
@@ -486,7 +486,7 @@ void clInitCommonComp __P((void))
   clSetq(I_3, clIntFixnum(3));
 
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clPROCLAIM));
+    clSetq(L_0, clSymbolFunctionChecked(clPROCLAIM));
     clMapc(L_0, CONS_0, clEOA); }
   { clObject L_value395;
     clSetq(L_value395,

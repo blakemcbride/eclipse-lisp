@@ -245,14 +245,14 @@ clObject clEqual_clCONS_clCONS clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clCar(x, clEOA));
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+               clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                  L_0,
                                  clCar(y, clEOA),
                                  clEOA)); }
       if (clTrue(L_test))
         { clObject L_0;
           clSetq(L_0, clCdr(x, clEOA));
-          return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+          return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                    L_0,
                                    clCdr(y, clEOA),
                                    clEOA)); }
@@ -330,7 +330,7 @@ clObject clEqual_clBIT_VECTOR_clBIT_VECTOR clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject lx;
       clSetq(lx, clLength(x, clEOA));
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                    lx,
                                    clLength(y, clEOA),
                                    clEOA)))
@@ -344,7 +344,7 @@ clObject clEqual_clBIT_VECTOR_clBIT_VECTOR clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, clBit(x, n, clEOA));
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                       clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                          L_0__R1,
                                          clBit(y, n, clEOA),
                                          clEOA)); }
@@ -409,7 +409,7 @@ clObject clEqualHash_clCONS clVdecl(_ap)
     { clObject x__R1, n, cdr, cddr, circlep, slow;
       clSetq(x__R1, x);
       clSetq(n,
-             clFuncallFunction(clSymbolFunctionValue(clEQUAL_HASH),
+             clFuncallFunction(clSymbolFunctionChecked(clEQUAL_HASH),
                                clCar(x__R1, clEOA),
                                clEOA));
       clSetq(cdr, clCdr(x__R1, clEOA));
@@ -425,7 +425,7 @@ clObject clEqualHash_clCONS clVdecl(_ap)
             clSetq(L_0, n);
             clSetq(n,
                    clMergeHashCodes(L_0,
-                                    clFuncallFunction(clSymbolFunctionValue(clEQUAL_HASH),
+                                    clFuncallFunction(clSymbolFunctionChecked(clEQUAL_HASH),
                                                       clCar(cdr,
                                                             clEOA),
                                                       clEOA))); }
@@ -433,7 +433,7 @@ clObject clEqualHash_clCONS clVdecl(_ap)
       else
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clEQUAL_HASH),
+                 clFuncallFunction(clSymbolFunctionChecked(clEQUAL_HASH),
                                    cdr,
                                    clEOA));
           clSetq(L_1, n);
@@ -448,7 +448,7 @@ clObject clEqualHash_clCONS clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, cddr);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clEQUAL_HASH),
+                       clFuncallFunction(clSymbolFunctionChecked(clEQUAL_HASH),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(L_1, n);
@@ -459,7 +459,7 @@ clObject clEqualHash_clCONS clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, cddr);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clEQUAL_HASH),
+                     clFuncallFunction(clSymbolFunctionChecked(clEQUAL_HASH),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_1, n);
@@ -472,7 +472,7 @@ clObject clEqualHash_clCONS clVdecl(_ap)
             clSetq(L_0__R2, x__R1);
             clSetq(L_0__R1, clCar(L_0__R2, clEOA)); }
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clEQUAL_HASH),
+                 clFuncallFunction(clSymbolFunctionChecked(clEQUAL_HASH),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(n, clMergeHashCodes(L_0, L_1)); }
@@ -545,7 +545,7 @@ clObject clEqualHash_clSIMPLE_BIT_VECTOR clVdecl(_ap)
           clSetq(L_0, clVectorSize(x));
           clSetq(L_g0, clCeiling(L_0, I_16, clEOA)); }
         clLabel(NEXT_LOOP);
-        if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+        if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                      i,
                                      L_g0,
                                      clEOA)))
@@ -588,7 +588,7 @@ clObject clEqualHash_clBIT_VECTOR clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values523, vector, offset;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         clGetSimpleVector(x, I_0, clEOA);
         clAccumulateValues(MVC);
         clSetq(L_values523, clMultipleValueFuncall(MVC)); }
@@ -606,7 +606,7 @@ clObject clEqualHash_clBIT_VECTOR clVdecl(_ap)
             clSetq(L_0, clLength(x, clEOA));
             clSetq(L_g1, clCeiling(L_0, I_16, clEOA)); }
           clLabel(NEXT_LOOP);
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        i,
                                        L_g1,
                                        clEOA)))
@@ -616,7 +616,7 @@ clObject clEqualHash_clBIT_VECTOR clVdecl(_ap)
             clSetq(code,
                    clMergeHashCodes(L_0,
                                     clEqHash(clDigitref(vector,
-                                                        clFuncallFunction(clSymbolFunctionValue(clADD),
+                                                        clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                                           i,
                                                                           offset,
                                                                           clEOA))))); }

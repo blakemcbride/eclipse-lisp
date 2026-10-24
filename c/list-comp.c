@@ -2495,7 +2495,7 @@ clObject clPop clVdecl(_ap)
         return(clList(clLET, L_1, L_2, temp, clEOA)); } }
   { clObject L_values533, vars, vals, stores, store_form, access_form;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clGetSetfExpansion(place, env, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values533, clMultipleValueFuncall(MVC)); }

@@ -40,9 +40,9 @@ clObject clConcatenateNames clVdecl(_ap)
   { clBeginParse(_ap); clSetq(names, clVargs(_ap)); clEndParse(_ap); }
   { clObject L_0;
     { clObject L_2, L_0__R1;
-      clSetq(L_0__R1, clSymbolFunctionValue(clCONCATENATE));
+      clSetq(L_0__R1, clSymbolFunctionChecked(clCONCATENATE));
       { clObject L_0__R2;
-        clSetq(L_0__R2, clSymbolFunctionValue(clSTRING));
+        clSetq(L_0__R2, clSymbolFunctionChecked(clSTRING));
         clSetq(L_2, clMapcar(L_0__R2, names, clEOA)); }
       clSetq(L_0, clApply(L_0__R1, clSTRING, L_2, clEOA)); }
     return(clIntern(L_0, clEOA)); } }
@@ -124,10 +124,10 @@ clObject clMakeMacroFunction clVdecl(_ap)
                   clFboundp(clFUNCTION_SOURCE, clEOA) : clNIL)))
         { clObject L_values396, mlambda, menv;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject L_0;
               clSetq(L_0, mfunc);
-              clFuncallFunction(clSymbolFunctionValue(clFUNCTION_LAMBDA_EXPRESSION),
+              clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_LAMBDA_EXPRESSION),
                                 L_0,
                                 clEOA); }
             clAccumulateValues(MVC);
@@ -213,7 +213,7 @@ clObject clMacroFunctionP clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, x);
-    return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+    return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                              L_0,
                              clMACRO_FUNCTION_CLASSOBJ,
                              clEOA)); } }
@@ -487,7 +487,7 @@ void clInitMopInit __P((void))
                             clSPECIAL,
                             clEOA);
   clSetSymbolValueValue(clstarMACROEXPAND_HOOKstar,
-                        clSymbolFunctionValue(clFUNCALL));
+                        clSymbolFunctionChecked(clFUNCALL));
   (void) clstarMACROEXPAND_HOOKstar;
   clSetSymbolFunctionValue(clGENERATE_SETF_METHOD,
                            clMakeClosure(0,

@@ -70,7 +70,7 @@ clObject clDestructureLambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values471, decl, body__R1, doc;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clFindDeclarations(body, ignore_doc_p, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values471, clMultipleValueFuncall(MVC)); }
@@ -87,7 +87,7 @@ clObject clDestructureLambda clVdecl(_ap)
       clSetq(doc, clCar(L_0, clEOA)); }
     { clObject L_values472, bindings, checks, decl2, real_bindings;
       { clMultipleValueCall(MVC__r1);
-        clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+        clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
         clParseLambda(lambda_list,
                       form_var,
                       keyMACRO,
@@ -160,7 +160,7 @@ clObject clDestructuringBind clVdecl(_ap)
     clSetq(form_var, clGensym(STR_FORM__2, clEOA));
     { clObject L_values479, bindings, decs, body__R1;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         clDestructureLambda(lambda_list,
                             body,
                             form_var,
@@ -263,7 +263,7 @@ clObject clSetf clVdecl(_ap)
           { clObject L_values489, temps, vals, stores, store_form,
             value_form;
             { clMultipleValueCall(MVC);
-              clSetq(MVC, clSymbolFunctionValue(clLIST));
+              clSetq(MVC, clSymbolFunctionChecked(clLIST));
               { clObject L_0__R2;
                 clSetq(L_0__R2, place);
                 clGetSetfExpansion(L_0__R2, env, clEOA); }
@@ -767,7 +767,7 @@ static clObject clGeneratePset_Pset1 clVdecl(_ap)
             clSignalProgramError(STRn_6, name, L_2, clEOA); }
         { clObject L_values528, subvars, subvals, vals, setter;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             clGetSetfExpansion(name, clEnv(1, *env), clEOA);
             clAccumulateValues(MVC);
             clSetq(L_values528, clMultipleValueFuncall(MVC)); }
@@ -829,7 +829,7 @@ static clObject clGeneratePset_Pset1 clVdecl(_ap)
     else
       { clObject forms;
         clSetq(forms,
-               clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+               clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                  clCons(clNIL,
                                         clEnv(2, *setters),
                                         clEOA),
@@ -878,7 +878,7 @@ clObject clPsetq clVdecl(_ap)
     clSetq(args, L_form);
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clFuncallFunction(clSymbolFunctionValue(clGENERATE_PSET),
+  return(clFuncallFunction(clSymbolFunctionChecked(clGENERATE_PSET),
                            args,
                            env,
                            clPSETQ,
@@ -901,7 +901,7 @@ clObject clModifyBody clVdecl(_ap)
     { clObject L_values533, vars, vals, stores, store_form,
       access_form;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         clGetSetfExpansion(place, env, clEOA);
         clAccumulateValues(MVC);
         clSetq(L_values533, clMultipleValueFuncall(MVC)); }
@@ -1075,7 +1075,7 @@ clObject clPsetf clVdecl(_ap)
     clSetq(args, L_form);
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clFuncallFunction(clSymbolFunctionValue(clGENERATE_PSET),
+  return(clFuncallFunction(clSymbolFunctionChecked(clGENERATE_PSET),
                            args,
                            env,
                            clEOA)); }
@@ -1135,7 +1135,7 @@ clObject clShiftf clVdecl(_ap)
           clLocalReturn(NIL); }
       { clObject L_values554, temps, exprs, store_vars, setter, getter;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           { clObject L_0;
             clSetq(L_0, clCar(a, clEOA));
             clGetSetfExpansion(L_0, env, clEOA); }
@@ -1191,14 +1191,14 @@ clObject clShiftf clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, *letSTAR_bindings);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+               clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_1__R1;
         { clObject L_0__R2;
           clSetq(L_0__R2, forms);
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                 clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                    L_0__R2,
                                    clEOA)); }
         clSetq(L_2,
@@ -1284,7 +1284,7 @@ clObject clRotatef clVdecl(_ap)
         { clObject L_values565, temps, subforms, store_vars, setter,
           getter;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             clGetSetfExpansion(arg, env, clEOA);
             clAccumulateValues(MVC);
             clSetq(L_values565, clMultipleValueFuncall(MVC)); }
@@ -1347,7 +1347,7 @@ clObject clRotatef clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, *setters);
         clSetq(*setters,
-               clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+               clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                  L_0,
                                  clEOA)); }
       { clObject L_top569;
@@ -1381,14 +1381,14 @@ clObject clRotatef clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, *letSTAR_bindings);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                   clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_1__R1, L_0__R1;
             { clObject L_0__R2;
               clSetq(L_0__R2, mv_bindings);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                     clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                        L_0__R2,
                                        clEOA)); }
             clSetq(L_1__R1, getters);
@@ -1436,7 +1436,7 @@ static clObject clLambda_r1 clVdecl(_ap)
     { clObject L_0; clSetq(L_0, L_form); clExtraArgs(L_0, clEOA); }
   { clObject L_values577, temps, values, stores, set, get;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clGetSetfExpansion(place, env, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values577, clMultipleValueFuncall(MVC)); }
@@ -1496,7 +1496,7 @@ static clObject clLambda_r2 clVdecl(_ap)
     clSetq(get, clNIL);
     { clObject L_sublist580, place;
       clSetq(L_sublist580,
-             clFuncallFunction(clSymbolFunctionValue(clREVERSE),
+             clFuncallFunction(clSymbolFunctionChecked(clREVERSE),
                                places,
                                clEOA));
       clSetq(place, clCar(L_sublist580, clEOA));
@@ -1504,7 +1504,7 @@ static clObject clLambda_r2 clVdecl(_ap)
       if (clTrue(clEndp(L_sublist580, clEOA))) clLocalReturn(NIL);
       { clObject L_values582, ptemps, pvalues, pstores, pset, pget;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           clGetSetfExpansion(place, env, clEOA);
           clAccumulateValues(MVC);
           clSetq(L_values582, clMultipleValueFuncall(MVC)); }
@@ -1935,7 +1935,7 @@ clObject clCase clVdecl(_ap)
                           { clObject L_test__R2;
                             { clObject L_1__R4, L_0__R5;
                               clSetq(L_0__R5,
-                                     clSymbolFunctionValue(clEQ_TEST_P));
+                                     clSymbolFunctionChecked(clEQ_TEST_P));
                               clSetq(L_1__R4, keys);
                               clSetq(L_test__R2,
                                      clEvery(L_0__R5,
@@ -2008,7 +2008,7 @@ clObject clCaseKeys clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_2, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                CL_class,
                                clCLASS,
                                clEOA)))
@@ -2023,19 +2023,19 @@ clObject clCaseKeys clVdecl(_ap)
           { clObject L_0;
             { clObject L_g622;
               clSetq(L_g622,
-                     clFuncallFunction(clSymbolFunctionValue(clSEALED_CLASS_P),
+                     clFuncallFunction(clSymbolFunctionChecked(clSEALED_CLASS_P),
                                        CL_class__R1,
                                        clEOA));
               clSetq(L_0,
                      (clTrue(L_g622) ?
                       L_g622 :
-                      clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                      clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                         CL_class__R1,
                                         clBUILT_IN_CLASS,
                                         clEOA))); }
             clSetq(L_test__R1, clNot(L_0, clEOA)); }
           if (clTrue(L_test__R1)) return(clValues1(clNIL)); }
-        if (clTrue(clNot(clFuncallFunction(clSymbolFunctionValue(clABSTRACT_CLASS_P),
+        if (clTrue(clNot(clFuncallFunction(clSymbolFunctionChecked(clABSTRACT_CLASS_P),
                                            CL_class__R1,
                                            clEOA),
                          clEOA)))
@@ -2051,7 +2051,7 @@ clObject clCaseKeys clVdecl(_ap)
           clSetq(L_0, clRest(classes, clEOA));
           clSetq(classes,
                  clAppend(L_0,
-                          clFuncallFunction(clSymbolFunctionValue(clCLASS_DIRECT_SUBCLASSES),
+                          clFuncallFunction(clSymbolFunctionChecked(clCLASS_DIRECT_SUBCLASSES),
                                             CL_class__R1,
                                             clEOA),
                           clEOA)); } }
@@ -2178,11 +2178,11 @@ clObject clTypecase clVdecl(_ap)
             clSetq(these_types1,
                    clExpandType(this_typespec, clNIL, env, clEOA));
             clSetq(these_types,
-                   (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                              these_types1,
                                              clTYPE_UNION,
                                              clEOA)) ?
-                    clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                    clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                       these_types1,
                                       clEOA) :
                     clList(these_types1, clEOA)));
@@ -2260,7 +2260,7 @@ clObject clTypecase clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, this_type);
                     clSetq(type_name,
-                           clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME),
+                           clFuncallFunction(clSymbolFunctionChecked(clTYPE_NAME),
                                              L_0,
                                              clEOA)); }
                   clSetq(type_object, this_type);
@@ -2270,7 +2270,7 @@ clObject clTypecase clVdecl(_ap)
                         { clObject L_0__R2;
                           clSetq(L_0__R2, this_type);
                           clSetq(L_test__R1,
-                                 clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                                 clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                                    L_0__R2,
                                                    clCLASS,
                                                    clEOA)); }
@@ -2281,7 +2281,7 @@ clObject clTypecase clVdecl(_ap)
                                         type_object,
                                         cpl,
                                         clEOA)) :
-                                (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+                                (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                                           type_name,
                                                           clList(clINTEGER,
                                                                  I_minus536870912,
@@ -2337,7 +2337,7 @@ clObject clTypecase clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, clauses__R1);
                   clSetq(L_2,
-                         clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                         clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                            L_0__R2,
                                            clEOA)); }
                 clSetq(L_0, clListSTAR(clCASE, name, L_2, clEOA)); }
@@ -2348,7 +2348,7 @@ clObject clTypecase clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, clauses__R1);
                   clSetq(L_1,
-                         clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                         clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                            L_0__R2,
                                            clEOA)); }
                 clSetq(L_0, clListSTAR(clCOND, L_1, clEOA)); }

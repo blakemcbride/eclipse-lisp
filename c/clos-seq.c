@@ -168,7 +168,7 @@ clObject clQuicksortList clVdecl(_ap)
       clSetq(unsorted, L_form1341);
       { clObject L_values1343, high, low;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           clHighlow(unsorted, item, clNIL, clNIL, pred, key, clEOA);
           clAccumulateValues(MVC);
           clSetq(L_values1343, clMultipleValueFuncall(MVC)); }

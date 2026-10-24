@@ -188,10 +188,10 @@ clObject clPrintObject_clFORWARD_REFERENCED_TYPE_clT clVdecl(_ap)
                                     clNIL,
                                     clT,
                                     clEOA);
-      clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+      clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                         stream,
                         STR_Undefined_Type_tildes__19,
-                        clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME),
+                        clFuncallFunction(clSymbolFunctionChecked(clTYPE_NAME),
                                           object,
                                           clEOA),
                         clEOA);
@@ -215,7 +215,7 @@ clObject clExpandToForwardReference clVdecl(_ap)
            (clTrue((clTrue(clConsp(type_specifier, clEOA)) ?
                     clCdr(type_specifier, clEOA) : clNIL)) ?
             type_specifier : clCar(type_specifier, clEOA)));
-    return(clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                              clFORWARD_REFERENCED_TYPE,
                              keyNAME,
                              L_2,
@@ -225,7 +225,7 @@ static clObject clLambda clVdecl(_ap)
 { { clBeginParse(_ap);
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clValues1(clSymbolFunctionValue(clEXPAND_TO_FORWARD_REFERENCE))); }
+  return(clValues1(clSymbolFunctionChecked(clEXPAND_TO_FORWARD_REFERENCE))); }
 
 static clObject clLambda_r1 clVdecl(_ap)
 { { clBeginParse(_ap);
@@ -324,7 +324,7 @@ clObject clMakeLoadForm_clTYPE clVdecl(_ap)
     { clObject L_1;
       clSetq(L_1,
              clList(clQUOTE,
-                    clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME),
+                    clFuncallFunction(clSymbolFunctionChecked(clTYPE_NAME),
                                       object,
                                       clEOA),
                     clEOA));
@@ -619,7 +619,7 @@ static clObject clLambda_r26 clVdecl(_ap)
           clSetq(bound, clAsh(I_1, L_1, clEOA)); }
         { clObject L_1;
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    I_0,
                                    bound,
                                    clEOA));
@@ -850,7 +850,7 @@ clObject clCharacterDesignatorNameP clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0, clSymbolName(symbol, clEOA));
-    return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+    return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                              L_0,
                              clCHARACTER_DESIGNATOR,
                              clEOA)); } }
@@ -894,7 +894,7 @@ clObject clTypeComplement_clT clVdecl(_ap)
         clSetq(L_2, environment);
         clSetq(L_0, clExpandType(type, clT, L_2, clEOA)); }
       clSetq(L_1, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -971,7 +971,7 @@ clObject clTypeComplement_clTYPE_COMPLEMENT clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_form1073);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                              type,
                              clEOA)); } }
 
@@ -1011,10 +1011,10 @@ clObject clTypeComplement_clTYPE_UNION clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_0;
       { clObject L_0__R1;
-        clSetq(L_0__R1, clSymbolFunctionValue(clTYPE_COMPLEMENT));
+        clSetq(L_0__R1, clSymbolFunctionChecked(clTYPE_COMPLEMENT));
         clSetq(L_0,
                clMapcar(L_0__R1,
-                        clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                        clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                           type,
                                           clEOA),
                         clEOA)); }
@@ -1057,10 +1057,10 @@ clObject clTypeComplement_clTYPE_INTERSECTION clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_1, L_0;
       { clObject L_0__R1;
-        clSetq(L_0__R1, clSymbolFunctionValue(clTYPE_COMPLEMENT));
+        clSetq(L_0__R1, clSymbolFunctionChecked(clTYPE_COMPLEMENT));
         clSetq(L_0,
                clMapcar(L_0__R1,
-                        clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                        clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                           type,
                                           clEOA),
                         clEOA)); }
@@ -1118,19 +1118,19 @@ clObject clTypeComplement_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject base, low, high, CL_new;
       clSetq(base,
-             clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                type,
                                clEOA));
       clSetq(low,
-             clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                type,
                                clEOA));
       clSetq(high,
-             clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                type,
                                clEOA));
       clSetq(CL_new,
-             clList(clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT),
+             clList(clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT),
                                       base,
                                       clEOA),
                     clEOA));
@@ -1140,12 +1140,12 @@ clObject clTypeComplement_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
             { clObject L_1__R2;
               { clObject L_0__R3;
                 clSetq(L_0__R3,
-                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                          type,
                                          clEOA));
                 clSetq(L_1__R2,
                        clNewLimit(L_0__R3,
-                                  clNot(clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX),
+                                  clNot(clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX),
                                                           type,
                                                           clEOA),
                                         clEOA),
@@ -1162,12 +1162,12 @@ clObject clTypeComplement_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
             { clObject L_2__R1;
               { clObject L_0__R3;
                 clSetq(L_0__R3,
-                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                          type,
                                          clEOA));
                 clSetq(L_2__R1,
                        clNewLimit(L_0__R3,
-                                  clNot(clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN),
+                                  clNot(clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN),
                                                           type,
                                                           clEOA),
                                         clEOA),
@@ -1236,7 +1236,7 @@ clObject clTypeUnion_clT_clT clVdecl(_ap)
         clSetq(L_2__R1, environment);
         clSetq(L_1, clExpandType(type_2, clT, L_2__R1, clEOA)); }
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPE_UNION),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPE_UNION),
                                L_0,
                                L_1,
                                L_2,
@@ -1290,7 +1290,7 @@ clObject clTypeUnion_clTYPE_clTYPE clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  type_1,
                                  type_2,
                                  L_2,
@@ -1302,7 +1302,7 @@ clObject clTypeUnion_clTYPE_clTYPE clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, environment);
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                      type_2,
                                      type_1,
                                      L_2,
@@ -1323,7 +1323,7 @@ static clObject clTypeUnion_clTYPE_COMPLEMENT_clTYPE_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -1336,10 +1336,10 @@ static clObject clTypeUnion_clTYPE_COMPLEMENT_clTYPE_CallNextMethod clVdecl(_ap)
                                    clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clTYPE_UNION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -1415,7 +1415,7 @@ static clObject clTypeUnion_clTYPE_clTYPE_COMPLEMENT_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -1428,10 +1428,10 @@ static clObject clTypeUnion_clTYPE_clTYPE_COMPLEMENT_CallNextMethod clVdecl(_ap)
                                    clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clTYPE_UNION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -1544,7 +1544,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
       clSetq(new_type, type);
       { clObject L_sublist1132, component;
         clSetq(L_sublist1132,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  combination,
                                  clEOA));
         clSetq(component, clCar(L_sublist1132, clEOA));
@@ -1555,7 +1555,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
             { clObject L_2;
               clSetq(L_2, environment);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                        component,
                                        type,
                                        L_2,
@@ -1566,7 +1566,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
               { clObject L_2;
                 clSetq(L_2, environment);
                 clSetq(CL_new,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPE_UNION),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPE_UNION),
                                          component,
                                          type,
                                          L_2,
@@ -1577,7 +1577,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
                 { clObject L_2;
                   clSetq(L_2, environment);
                   clSetq(L_test__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                         clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                            CL_new,
                                            clTYPE_UNION,
                                            L_2,
@@ -1585,7 +1585,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
                 if (clTrue(L_test__R1))
                   { clObject L_1, L_0;
                     clSetq(L_0,
-                           clFirst(clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                           clFirst(clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                                      CL_new,
                                                      clEOA),
                                    clEOA));
@@ -1610,7 +1610,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
             clSetq(L_0, new_type);
             clSetq(L_2, environment);
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      L_0,
                                      clTYPE_UNION,
                                      L_2,
@@ -1620,7 +1620,7 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, new_type);
                   clSetq(L_sublist1134,
-                         clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                         clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                            L_0,
                                            clEOA)); }
                 clSetq(component, clCar(L_sublist1134, clEOA));
@@ -1644,11 +1644,11 @@ clObject clTypeUnion_clTYPE_UNION_clTYPE clVdecl(_ap)
               clSetq(L_1, components);
               clSetq(components, clCons(L_0, L_1, clEOA)); } }
       { clObject L_1, L_0;
-        clSetq(L_0, clSymbolFunctionValue(clINTERN_TYPE_UNION));
+        clSetq(L_0, clSymbolFunctionChecked(clINTERN_TYPE_UNION));
         { clObject L_0__R1;
           clSetq(L_0__R1, components);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                 clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                    L_0__R1,
                                    clEOA)); }
         return(clApply(L_0, L_1, clEOA)); } } } }
@@ -1703,7 +1703,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
       clSetq(new_type, type);
       { clObject L_sublist1143, component;
         clSetq(L_sublist1143,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  combination,
                                  clEOA));
         clSetq(component, clCar(L_sublist1143, clEOA));
@@ -1714,7 +1714,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
             { clObject L_2;
               clSetq(L_2, environment);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                        component,
                                        type,
                                        L_2,
@@ -1725,7 +1725,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
               { clObject L_2;
                 clSetq(L_2, environment);
                 clSetq(CL_new,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPE_UNION),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPE_UNION),
                                          type,
                                          component,
                                          L_2,
@@ -1736,7 +1736,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
                 { clObject L_2;
                   clSetq(L_2, environment);
                   clSetq(L_test__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                         clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                            CL_new,
                                            clTYPE_UNION,
                                            L_2,
@@ -1744,7 +1744,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
                 if (clTrue(L_test__R1))
                   { clObject L_1, L_0;
                     clSetq(L_0,
-                           clSecond(clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                           clSecond(clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                                       CL_new,
                                                       clEOA),
                                     clEOA));
@@ -1755,7 +1755,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
                       clSetq(L_1, components);
                       clSetq(components, clCons(CL_new, L_1, clEOA)); }
                     if (clTrue(combine)) clSetq(new_type, clNIL); } }
-              if (clTrue(clFuncallFunction(clSymbolFunctionValue(clAMBIGUOUS_TYPE_P),
+              if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clAMBIGUOUS_TYPE_P),
                                            component,
                                            clEOA)))
                 clSetq(combine, clNIL); } }
@@ -1770,7 +1770,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, components);
         clSetq(components,
-               clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+               clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                  L_0,
                                  clEOA)); }
       if (clTrue(new_type))
@@ -1778,7 +1778,7 @@ clObject clTypeUnion_clTYPE_clTYPE_UNION clVdecl(_ap)
           clSetq(L_1, components);
           clSetq(components, clCons(type, L_1, clEOA)); }
       { clObject L_1, L_0;
-        clSetq(L_0, clSymbolFunctionValue(clINTERN_TYPE_UNION));
+        clSetq(L_0, clSymbolFunctionChecked(clINTERN_TYPE_UNION));
         clSetq(L_1, components);
         return(clApply(L_0, L_1, clEOA)); } } } }
 
@@ -1830,14 +1830,14 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
           clExtraArgs(L_0, clEOA); }
       { clObject base;
         clSetq(base,
-               clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                  type_1,
                                  clEOA));
         { clObject L_test;
           { clObject L_0;
             { clObject L_0__R1;
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                     clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                        type_2,
                                        clEOA));
               clSetq(L_0, clEq(L_0__R1, base, clEOA)); }
@@ -1849,7 +1849,7 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
               { clObject L_2;
                 clSetq(L_2, environment);
                 clSetq(L_test__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                          type_1,
                                          type_2,
                                          L_2,
@@ -1861,7 +1861,7 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                   { clObject L_2;
                     clSetq(L_2, environment);
                     clSetq(L_test__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                              type_2,
                                              type_1,
                                              L_2,
@@ -1874,20 +1874,20 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                       lower_exclusive,
                       upper_exclusive;
                       clSetq(lower,
-                             clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                                type_1,
                                                clEOA));
                       clSetq(upper,
-                             clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                                type_1,
                                                clEOA));
                       clSetq(lower_exclusive,
-                             clNot(clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN),
+                             clNot(clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN),
                                                      type_1,
                                                      clEOA),
                                    clEOA));
                       clSetq(upper_exclusive,
-                             clNot(clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX),
+                             clNot(clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX),
                                                      type_1,
                                                      clEOA),
                                    clEOA));
@@ -1915,7 +1915,7 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                           { { clObject L_0;
                               clSetq(L_0, lower);
                               clSetq(lower,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                        L_0,
                                                        I_1,
                                                        clEOA)); }
@@ -1924,7 +1924,7 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                           { { clObject L_0;
                               clSetq(L_0, upper);
                               clSetq(upper,
-                                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                        L_0,
                                                        I_1,
                                                        clEOA)); }
@@ -1981,13 +1981,13 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                         clSetq(new_high_p, clNIL);
                         clSetq(new_low,
                                (clTrue(new_low_p) ?
-                                clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                                clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                                   type_2,
                                                   clEOA) :
                                 clNIL));
                         clSetq(new_high,
                                (clTrue(new_high_p) ?
-                                clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                                clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                                   type_2,
                                                   clEOA) :
                                 clNIL));
@@ -2008,7 +2008,7 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                                         lower));
                                 if (clTrue(new_low_p))
                                 clSetq(L_1__R2,
-                                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN),
+                                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN),
                                                          type_1,
                                                          clEOA));
                                 else
@@ -2027,7 +2027,7 @@ clObject clTypeUnion_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
                                         upper));
                                 if (clTrue(new_high_p))
                                 clSetq(L_1__R2,
-                                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX),
+                                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX),
                                                          type_1,
                                                          clEOA));
                                 else
@@ -2101,32 +2101,32 @@ clObject clTypeUnion_clLIMITED_CONS_TYPE_clLIMITED_CONS_TYPE clVdecl(_ap)
       { clObject L_1__R1, L_0__R1;
         { clObject L_2__R1, L_1__R2, L_0__R2;
           clSetq(L_0__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2__R1, environment);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clTYPE_UNION),
+                 clFuncallFunction(clSymbolFunctionChecked(clTYPE_UNION),
                                    L_0__R2,
                                    L_1__R2,
                                    L_2__R1,
                                    clEOA)); }
         { clObject L_2__R1, L_1__R2, L_0__R2;
           clSetq(L_0__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2__R1, environment);
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clTYPE_UNION),
+                 clFuncallFunction(clSymbolFunctionChecked(clTYPE_UNION),
                                    L_0__R2,
                                    L_1__R2,
                                    L_2__R1,
@@ -2187,7 +2187,7 @@ clObject clTypeIntersection_clT_clT clVdecl(_ap)
         clSetq(L_2__R1, environment);
         clSetq(L_1, clExpandType(type_2, clT, L_2__R1, clEOA)); }
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                L_0,
                                L_1,
                                L_2,
@@ -2241,7 +2241,7 @@ clObject clTypeIntersection_clTYPE_clTYPE clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  type_1,
                                  type_2,
                                  L_2,
@@ -2253,7 +2253,7 @@ clObject clTypeIntersection_clTYPE_clTYPE clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, environment);
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                      type_2,
                                      type_1,
                                      L_2,
@@ -2313,7 +2313,7 @@ clObject clTypeIntersection_clLIMITED_NUMERIC_TYPE_clCLASS clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  type_1,
                                  type_2,
                                  L_2,
@@ -2366,7 +2366,7 @@ clObject clTypeIntersection_clCLASS_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_form1192);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                              type_2,
                              type_1,
                              clEOA)); } }
@@ -2383,7 +2383,7 @@ static clObject clTypeIntersection_clTYPE_COMPLEMENT_clTYPE_CallNextMethod clVde
       if (clTrue(next_method))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2396,10 +2396,10 @@ static clObject clTypeIntersection_clTYPE_COMPLEMENT_clTYPE_CallNextMethod clVde
                                    clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clTYPE_INTERSECTION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -2475,7 +2475,7 @@ static clObject clTypeIntersection_clTYPE_clTYPE_COMPLEMENT_CallNextMethod clVde
       if (clTrue(next_method))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2488,10 +2488,10 @@ static clObject clTypeIntersection_clTYPE_clTYPE_COMPLEMENT_CallNextMethod clVde
                                    clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clTYPE_INTERSECTION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -2603,7 +2603,7 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  type_1,
                                  type_2,
                                  L_2,
@@ -2614,7 +2614,7 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
         { clObject L_test__R1;
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPE_NAME),
                                      type_1,
                                      clEOA));
             clSetq(L_test__R1, clEq(L_0, clT, clEOA)); }
@@ -2624,12 +2624,12 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
             { clObject common;
               { clObject L_2, L_1;
                 clSetq(L_1,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                          type_2,
                                          clEOA));
                 clSetq(L_2, environment);
                 clSetq(common,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                          type_1,
                                          L_1,
                                          L_2,
@@ -2639,7 +2639,7 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
                   { clObject L_2__R1;
                     clSetq(L_2__R1, environment);
                     clSetq(L_test__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                              common,
                                              type_1,
                                              L_2__R1,
@@ -2650,14 +2650,14 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
                         { clObject L_1__R1;
                           clSetq(L_1__R1, environment);
                           clSetq(complement,
-                                 clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT),
+                                 clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT),
                                                    common,
                                                    L_1__R1,
                                                    clEOA)); }
                         { clObject sub, L_g78;
                           clSetq(sub, clNIL);
                           clSetq(L_g78,
-                                 clFuncallFunction(clSymbolFunctionValue(clCLASS_DIRECT_SUBCLASSES),
+                                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_DIRECT_SUBCLASSES),
                                                    type_1,
                                                    clEOA));
                           { clObject L_g79, L_g80;
@@ -2677,7 +2677,7 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
                                   clSetq(L_0__R3, sub);
                                   clSetq(L_2__R1, environment);
                                   clSetq(L_0__R2,
-                                         clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                                         clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                                            L_0__R3,
                                                            complement,
                                                            L_2__R1,
@@ -2697,7 +2697,7 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
                         { clObject L_0__R1;
                           { clObject L_g1219;
                             clSetq(L_g1219,
-                                   clFuncallFunction(clSymbolFunctionValue(clABSTRACT_CLASS_P),
+                                   clFuncallFunction(clSymbolFunctionChecked(clABSTRACT_CLASS_P),
                                                      type_1,
                                                      clEOA));
                             if (clTrue(L_g1219))
@@ -2706,7 +2706,7 @@ clObject clTypeIntersection_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
                             { clObject L_2__R1;
                               clSetq(L_2__R1, environment);
                               clSetq(L_0__R1,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                                        type_1,
                                                        common,
                                                        L_2__R1,
@@ -2772,7 +2772,7 @@ clObject clTypeIntersection_clTYPE_COMPLEMENT_clCLASS clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2;
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                type_2,
                                type_1,
                                L_2,
@@ -2826,7 +2826,7 @@ clObject clTypeIntersection_clCLASS_clCLASS clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  type_1,
                                  type_2,
                                  L_2,
@@ -2838,7 +2838,7 @@ clObject clTypeIntersection_clCLASS_clCLASS clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, environment);
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                      type_2,
                                      type_1,
                                      L_2,
@@ -2850,7 +2850,7 @@ clObject clTypeIntersection_clCLASS_clCLASS clVdecl(_ap)
               { clObject sub, L_g81;
                 clSetq(sub, clNIL);
                 clSetq(L_g81,
-                       clFuncallFunction(clSymbolFunctionValue(clCLASS_DIRECT_SUBCLASSES),
+                       clFuncallFunction(clSymbolFunctionChecked(clCLASS_DIRECT_SUBCLASSES),
                                          type_2,
                                          clEOA));
                 { clObject L_g82, L_g83;
@@ -2869,7 +2869,7 @@ clObject clTypeIntersection_clCLASS_clCLASS clVdecl(_ap)
                         clSetq(L_1__R2, sub);
                         clSetq(L_2__R1, environment);
                         clSetq(L_0__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                               clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                                  type_1,
                                                  L_1__R2,
                                                  L_2__R1,
@@ -2934,7 +2934,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_UNION clVdecl(_ap)
       { clObject type, L_g84;
         clSetq(type, clNIL);
         clSetq(L_g84,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_2,
                                  clEOA));
         { clObject L_g85, L_g86;
@@ -2953,7 +2953,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_UNION clVdecl(_ap)
                 clSetq(L_1__R2, type);
                 clSetq(L_2__R1, environment);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                          type_1,
                                          L_1__R2,
                                          L_2__R1,
@@ -3017,7 +3017,7 @@ clObject clTypeIntersection_clTYPE_UNION_clTYPE clVdecl(_ap)
       { clObject type, L_g87;
         clSetq(type, clNIL);
         clSetq(L_g87,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_1,
                                  clEOA));
         { clObject L_g88, L_g89;
@@ -3036,7 +3036,7 @@ clObject clTypeIntersection_clTYPE_UNION_clTYPE clVdecl(_ap)
                 clSetq(L_0__R3, type);
                 clSetq(L_2__R1, environment);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                          L_0__R3,
                                          type_2,
                                          L_2__R1,
@@ -3102,7 +3102,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
         clSetq(components, clNIL);
         { clObject L_sublist1255, component;
           clSetq(L_sublist1255,
-                 clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                 clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                    combination,
                                    clEOA));
           clSetq(component, clCar(L_sublist1255, clEOA));
@@ -3112,7 +3112,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
             { clObject L_2;
               clSetq(L_2, environment);
               clSetq(CL_new,
-                     clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                     clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                        type,
                                        component,
                                        L_2,
@@ -3123,7 +3123,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
               { clObject L_2;
                 clSetq(L_2, environment);
                 clSetq(L_test,
-                       clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                       clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                          CL_new,
                                          clTYPE_INTERSECTION,
                                          L_2,
@@ -3131,7 +3131,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
               if (clTrue(L_test))
                 { clObject L_1, L_0;
                   clSetq(L_0,
-                         clSecond(clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                         clSecond(clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                                     CL_new,
                                                     clEOA),
                                   clEOA));
@@ -3149,7 +3149,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, components);
           clSetq(components,
-                 clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                 clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                    L_0,
                                    clEOA)); }
         { clObject L_1, L_0;
@@ -3158,7 +3158,7 @@ clObject clTypeIntersection_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
           clSetq(components, clCons(L_0, L_1, clEOA)); }
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clSymbolFunctionValue(clINTERN_TYPE_INTERSECTION));
+                 clSymbolFunctionChecked(clINTERN_TYPE_INTERSECTION));
           clSetq(L_1, components);
           return(clApply(L_0, L_1, clEOA)); } } } } }
 
@@ -3208,8 +3208,8 @@ clObject clTypeIntersection_clTYPE_INTERSECTION_clTYPE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_sublist1264, component;
       clSetq(L_sublist1264,
-             clFuncallFunction(clSymbolFunctionValue(clREVERSE),
-                               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+             clFuncallFunction(clSymbolFunctionChecked(clREVERSE),
+                               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                                  combination,
                                                  clEOA),
                                clEOA));
@@ -3221,7 +3221,7 @@ clObject clTypeIntersection_clTYPE_INTERSECTION_clTYPE clVdecl(_ap)
         clSetq(L_1, type);
         clSetq(L_2, environment);
         clSetq(type,
-               clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                  component,
                                  L_1,
                                  L_2,
@@ -3280,14 +3280,14 @@ clObject clTypeIntersection_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdec
         clExtraArgs(L_0, clEOA); }
     { clObject base;
       clSetq(base,
-             clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                type_1,
                                clEOA));
       { clObject L_test;
         { clObject L_0;
           { clObject L_0__R1;
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                      type_2,
                                      clEOA));
             clSetq(L_0, clEq(L_0__R1, base, clEOA)); }
@@ -3299,7 +3299,7 @@ clObject clTypeIntersection_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdec
             { clObject L_2;
               clSetq(L_2, environment);
               clSetq(L_test__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                        type_1,
                                        type_2,
                                        L_2,
@@ -3311,7 +3311,7 @@ clObject clTypeIntersection_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdec
                 { clObject L_2;
                   clSetq(L_2, environment);
                   clSetq(L_test__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                            type_2,
                                            type_1,
                                            L_2,
@@ -3323,35 +3323,35 @@ clObject clTypeIntersection_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdec
                     inclusive_upper_1, inclusive_upper_2,
                     inclusive_lower_1, inclusive_lower_2;
                     clSetq(upper_1,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                              type_1,
                                              clEOA));
                     clSetq(upper_2,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                              type_2,
                                              clEOA));
                     clSetq(lower_1,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                              type_1,
                                              clEOA));
                     clSetq(lower_2,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                              type_2,
                                              clEOA));
                     clSetq(inclusive_upper_1,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX),
                                              type_1,
                                              clEOA));
                     clSetq(inclusive_upper_2,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX),
                                              type_2,
                                              clEOA));
                     clSetq(inclusive_lower_1,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN),
                                              type_1,
                                              clEOA));
                     clSetq(inclusive_lower_2,
-                           clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN),
+                           clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN),
                                              type_2,
                                              clEOA));
                     { clObject L_2, L_0;
@@ -3459,32 +3459,32 @@ clObject clTypeIntersection_clLIMITED_CONS_TYPE_clLIMITED_CONS_TYPE clVdecl(_ap)
       { clObject L_1__R1, L_0__R1;
         { clObject L_2__R1, L_1__R2, L_0__R2;
           clSetq(L_0__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2__R1, environment);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                    L_0__R2,
                                    L_1__R2,
                                    L_2__R1,
                                    clEOA)); }
         { clObject L_2__R1, L_1__R2, L_0__R2;
           clSetq(L_0__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2__R1, environment);
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clTYPE_INTERSECTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clTYPE_INTERSECTION),
                                    L_0__R2,
                                    L_1__R2,
                                    L_2__R1,
@@ -3595,8 +3595,8 @@ clObject clAmbiguousTypeP_clTYPE_COMPLEMENT clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_form1298);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clAMBIGUOUS_TYPE_P),
-                             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clAMBIGUOUS_TYPE_P),
+                             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                                type,
                                                clEOA),
                              clEOA)); } }
@@ -3626,9 +3626,9 @@ clObject clAmbiguousTypeP_clTYPE_COMBINATION clVdecl(_ap)
         clSetq(L_0, L_form1303);
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clAMBIGUOUS_TYPE_P));
+      clSetq(L_0, clSymbolFunctionChecked(clAMBIGUOUS_TYPE_P));
       return(clSome(L_0,
-                    clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+                    clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                       type,
                                       clEOA),
                     clEOA)); } } }
@@ -3681,7 +3681,7 @@ clObject clTypep_clT_clT clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, environment);
         clSetq(L_1, clExpandType(type, clT, L_2, clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                object,
                                L_1,
                                clEOA)); } } }
@@ -3918,7 +3918,7 @@ clObject clTypep_clT_clTYPE_UNION clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_sublist1348, type__R1;
       clSetq(L_sublist1348,
-             clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+             clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                type,
                                clEOA));
       clSetq(type__R1, clCar(L_sublist1348, clEOA));
@@ -3929,7 +3929,7 @@ clObject clTypep_clT_clTYPE_UNION clVdecl(_ap)
         { clObject L_2;
           clSetq(L_2, environment);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                 clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                    object,
                                    type__R1,
                                    L_2,
@@ -3989,7 +3989,7 @@ clObject clTypep_clT_clTYPE_INTERSECTION clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_sublist1357, type__R1;
       clSetq(L_sublist1357,
-             clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+             clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                type,
                                clEOA));
       clSetq(type__R1, clCar(L_sublist1357, clEOA));
@@ -4000,7 +4000,7 @@ clObject clTypep_clT_clTYPE_INTERSECTION clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, environment);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      object,
                                      type__R1,
                                      L_2,
@@ -4062,12 +4062,12 @@ clObject clTypep_clT_clTYPE_COMPLEMENT clVdecl(_ap)
     { clObject L_0;
       { clObject L_2, L_1;
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                  type,
                                  clEOA));
         clSetq(L_2, environment);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  object,
                                  L_1,
                                  L_2,
@@ -4120,7 +4120,7 @@ clObject clTypep_clT_clTYPE_SATISFIES clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_PREDICATE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_PREDICATE),
                                type,
                                clEOA));
       return(clFuncall(L_0, object, clEOA)); } } }
@@ -4172,12 +4172,12 @@ clObject clTypep_clT_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
     { clObject L_test;
       { clObject L_2, L_1;
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                  type,
                                  clEOA));
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  object,
                                  L_1,
                                  L_2,
@@ -4235,12 +4235,12 @@ clObject clTypep_clT_clLIMITED_CHARACTER_TYPE clVdecl(_ap)
     { clObject L_test;
       { clObject L_2, L_1;
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                  type,
                                  clEOA));
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  object,
                                  L_1,
                                  L_2,
@@ -4300,12 +4300,12 @@ clObject clTypep_clT_clLIMITED_COMPLEX_TYPE clVdecl(_ap)
     { clObject L_test;
       { clObject L_2, L_1;
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                  type,
                                  clEOA));
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  object,
                                  L_1,
                                  L_2,
@@ -4313,15 +4313,15 @@ clObject clTypep_clT_clLIMITED_COMPLEX_TYPE clVdecl(_ap)
       if (clTrue(L_test))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clREALPART),
+                 clFuncallFunction(clSymbolFunctionChecked(clREALPART),
                                    object,
                                    clEOA));
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clCOMPLEX_PART_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCOMPLEX_PART_TYPE),
                                    type,
                                    clEOA));
           clSetq(L_2, environment);
-          return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+          return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                    L_0,
                                    L_1,
                                    L_2,
@@ -4375,12 +4375,12 @@ clObject clTypep_clT_clLIMITED_CONS_TYPE clVdecl(_ap)
     { clObject L_test;
       { clObject L_2, L_1;
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                  type,
                                  clEOA));
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  object,
                                  L_1,
                                  L_2,
@@ -4390,12 +4390,12 @@ clObject clTypep_clT_clLIMITED_CONS_TYPE clVdecl(_ap)
           { clObject L_2, L_1, L_0;
             clSetq(L_0, clCar(object, clEOA));
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                      type,
                                      clEOA));
             clSetq(L_2, environment);
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      L_0,
                                      L_1,
                                      L_2,
@@ -4404,11 +4404,11 @@ clObject clTypep_clT_clLIMITED_CONS_TYPE clVdecl(_ap)
             { clObject L_2, L_1, L_0;
               clSetq(L_0, clCdr(object, clEOA));
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                     clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                        type,
                                        clEOA));
               clSetq(L_2, environment);
-              return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+              return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                        L_0,
                                        L_1,
                                        L_2,
@@ -4517,12 +4517,12 @@ clObject clTypep_clT_clLIMITED_ARRAY_TYPE clVdecl(_ap)
     { clObject L_test;
       { clObject L_2, L_1;
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                  type,
                                  clEOA));
         clSetq(L_2, environment);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  object,
                                  L_1,
                                  L_2,
@@ -4531,12 +4531,12 @@ clObject clTypep_clT_clLIMITED_ARRAY_TYPE clVdecl(_ap)
         { clObject L_test__R1;
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                      object,
                                      clEOA));
             clSetq(L_test__R1,
                    clEq(L_0,
-                        clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_ELEMENT_TYPE),
+                        clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_ELEMENT_TYPE),
                                           type,
                                           clEOA),
                         clEOA)); }
@@ -4544,7 +4544,7 @@ clObject clTypep_clT_clLIMITED_ARRAY_TYPE clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, clArrayDimensions(object, clEOA));
               return(clDimensionsMatchP(L_0,
-                                        clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_DIMENSIONS),
+                                        clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_DIMENSIONS),
                                                           type,
                                                           clEOA),
                                         clEOA)); }
@@ -4605,7 +4605,7 @@ clObject clSubtypep_clT_clT clVdecl(_ap)
       if (clTrue((clTrue(t1) ? t2 : clNIL)))
         { clObject L_2;
           clSetq(L_2, environment);
-          return(clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+          return(clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                    t1,
                                    t2,
                                    L_2,
@@ -4953,12 +4953,12 @@ clObject clSubtypep_clLIMITED_NUMERIC_TYPE_clTYPE_SATISFIES clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject val;
       clSetq(val,
-             clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                type_1,
                                clEOA));
       if (clTrue((clTrue(val) ?
                   clEql(val,
-                        clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                        clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                           type_1,
                                           clEOA),
                         clEOA) :
@@ -4967,7 +4967,7 @@ clObject clSubtypep_clLIMITED_NUMERIC_TYPE_clTYPE_SATISFIES clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, environment);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      val,
                                      type_2,
                                      L_2,
@@ -5021,12 +5021,12 @@ clObject clSubtypep_clLIMITED_CHARACTER_TYPE_clTYPE_SATISFIES clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject val;
       clSetq(val,
-             clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                type_1,
                                clEOA));
       if (clTrue((clTrue(val) ?
                   clEql(val,
-                        clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                        clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                           type_1,
                                           clEOA),
                         clEOA) :
@@ -5036,7 +5036,7 @@ clObject clSubtypep_clLIMITED_CHARACTER_TYPE_clTYPE_SATISFIES clVdecl(_ap)
             clSetq(L_0__R1, clCodeChar(val, clEOA));
             clSetq(L_2, environment);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      L_0__R1,
                                      type_2,
                                      L_2,
@@ -5134,11 +5134,11 @@ clObject clSubtypep_clCLASS_clCLASS clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_form1488);
         clExtraArgs(L_0, clEOA); }
-    if (clTrue(clNot(clFuncallFunction(clSymbolFunctionValue(clCLASS_FINALIZED_P),
+    if (clTrue(clNot(clFuncallFunction(clSymbolFunctionChecked(clCLASS_FINALIZED_P),
                                        type_1,
                                        clEOA),
                      clEOA)))
-      clFuncallFunction(clSymbolFunctionValue(clFINALIZE_INHERITANCE),
+      clFuncallFunction(clSymbolFunctionChecked(clFINALIZE_INHERITANCE),
                         type_1,
                         clEOA);
     { clObject L_0;
@@ -5196,7 +5196,7 @@ clObject clSubtypep_clEQL_SPECIALIZER_clTYPE clVdecl(_ap)
         clSetq(L_0__R1, clEqlSpecializerObject(type_1, clEOA));
         clSetq(L_2, environment);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  L_0__R1,
                                  type_2,
                                  L_2,
@@ -5254,7 +5254,7 @@ clObject clSubtypep_clTYPE_clEQL_SPECIALIZER clVdecl(_ap)
           { clObject L_2;
             clSetq(L_2, environment);
             clSetq(L_test,
-                   clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                      object,
                                      type_1,
                                      L_2,
@@ -5314,7 +5314,7 @@ clObject clSubtypep_clTYPE_COMPLEMENT_clTYPE clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, clEq(type_2, clT_CLASSOBJ, clEOA));
       return(clValues(L_0,
-                      clNot(clFuncallFunction(clSymbolFunctionValue(clAMBIGUOUS_TYPE_P),
+                      clNot(clFuncallFunction(clSymbolFunctionChecked(clAMBIGUOUS_TYPE_P),
                                               type_1,
                                               clEOA),
                             clEOA),
@@ -5366,15 +5366,15 @@ clObject clSubtypep_clTYPE_COMPLEMENT_clTYPE_COMBINATION clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT),
                                type_2,
                                clEOA));
       clSetq(L_1,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                type_1,
                                clEOA));
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                L_0,
                                L_1,
                                L_2,
@@ -5426,13 +5426,13 @@ clObject clSubtypep_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject comp;
       clSetq(comp,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                type_2,
                                clEOA));
       { clObject L_values1527, sub, sure;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
-          clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
+          clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                             type_1,
                             comp,
                             clEOA);
@@ -5449,8 +5449,8 @@ clObject clSubtypep_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
         else
           { clObject L_values1528, super, sure_super;
             { clMultipleValueCall(MVC__r1);
-              clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 comp,
                                 type_1,
                                 clEOA);
@@ -5469,7 +5469,7 @@ clObject clSubtypep_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
               { clSetq(sure, (clTrue(sure) ? sure_super : clNIL));
                 { clObject L_sublist1529, sub__R1;
                   clSetq(L_sublist1529,
-                         clFuncallFunction(clSymbolFunctionValue(clCLASS_DIRECT_SUBCLASSES),
+                         clFuncallFunction(clSymbolFunctionChecked(clCLASS_DIRECT_SUBCLASSES),
                                            type_1,
                                            clEOA));
                   clSetq(sub__R1, clCar(L_sublist1529, clEOA));
@@ -5481,10 +5481,10 @@ clObject clSubtypep_clCLASS_clTYPE_COMPLEMENT clVdecl(_ap)
                       return(clValues(L_0, L_1, clEOA)); }
                   { clObject L_values1531, subp, surep;
                     { clMultipleValueCall(MVC__r2);
-                      clSetq(MVC__r2, clSymbolFunctionValue(clLIST));
+                      clSetq(MVC__r2, clSymbolFunctionChecked(clLIST));
                       { clObject L_2;
                         clSetq(L_2, environment);
-                        clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                        clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                           sub__R1,
                                           type_2,
                                           L_2,
@@ -5559,15 +5559,15 @@ clObject clSubtypep_clTYPE_clTYPE_COMPLEMENT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject type;
       clSetq(type,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                type_2,
                                clEOA));
       { clObject L_values1539, sub, sub_sure;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           { clObject L_2;
             clSetq(L_2, environment);
-            clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+            clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                               type,
                               type_1,
                               L_2,
@@ -5582,10 +5582,10 @@ clObject clSubtypep_clTYPE_clTYPE_COMPLEMENT clVdecl(_ap)
           clSetq(sub_sure, clCar(L_0, clEOA)); }
         { clObject L_values1540, super, super_sure;
           { clMultipleValueCall(MVC__r1);
-            clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+            clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
             { clObject L_2;
               clSetq(L_2, environment);
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 type_1,
                                 type,
                                 L_2,
@@ -5651,15 +5651,15 @@ clObject clSubtypep_clTYPE_COMPLEMENT_clTYPE_COMPLEMENT clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                type_2,
                                clEOA));
       clSetq(L_1,
-             clFuncallFunction(clSymbolFunctionValue(clTYPE_COMPLEMENT_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clTYPE_COMPLEMENT_TYPE),
                                type_1,
                                clEOA));
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                L_0,
                                L_1,
                                L_2,
@@ -5713,7 +5713,7 @@ clObject clSubtypep_clTYPE_UNION_clTYPE clVdecl(_ap)
       clSetq(surep, clT);
       { clObject L_sublist1569, type;
         clSetq(L_sublist1569,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_1,
                                  clEOA));
         clSetq(type, clCar(L_sublist1569, clEOA));
@@ -5722,10 +5722,10 @@ clObject clSubtypep_clTYPE_UNION_clTYPE clVdecl(_ap)
           return(clValues(surep, surep, clEOA));
         { clObject L_values1571, sub, sure;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject L_2;
               clSetq(L_2, environment);
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 type,
                                 type_2,
                                 L_2,
@@ -5799,7 +5799,7 @@ clObject clSubtypep_clTYPE_clTYPE_UNION clVdecl(_ap)
       clSetq(surep, clT);
       { clObject L_sublist1591, type;
         clSetq(L_sublist1591,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_2,
                                  clEOA));
         clSetq(type, clCar(L_sublist1591, clEOA));
@@ -5808,10 +5808,10 @@ clObject clSubtypep_clTYPE_clTYPE_UNION clVdecl(_ap)
           return(clValues(clNIL, surep, clEOA));
         { clObject L_values1593, sub, sure;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject L_2;
               clSetq(L_2, environment);
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 type_1,
                                 type,
                                 L_2,
@@ -5883,7 +5883,7 @@ clObject clSubtypep_clTYPE_INTERSECTION_clTYPE clVdecl(_ap)
       clSetq(surep, clT);
       { clObject L_sublist1613, type;
         clSetq(L_sublist1613,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_1,
                                  clEOA));
         clSetq(type, clCar(L_sublist1613, clEOA));
@@ -5892,10 +5892,10 @@ clObject clSubtypep_clTYPE_INTERSECTION_clTYPE clVdecl(_ap)
           return(clValues(clNIL, surep, clEOA));
         { clObject L_values1615, sub, sure;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject L_2;
               clSetq(L_2, environment);
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 type,
                                 type_2,
                                 L_2,
@@ -5967,7 +5967,7 @@ clObject clSubtypep_clTYPE_INTERSECTION_clTYPE_INTERSECTION clVdecl(_ap)
       clSetq(surep, clT);
       { clObject L_sublist1635, type;
         clSetq(L_sublist1635,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_2,
                                  clEOA));
         clSetq(type, clCar(L_sublist1635, clEOA));
@@ -5976,10 +5976,10 @@ clObject clSubtypep_clTYPE_INTERSECTION_clTYPE_INTERSECTION clVdecl(_ap)
           return(clValues(surep, surep, clEOA));
         { clObject L_values1637, sub, sure;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject L_2;
               clSetq(L_2, environment);
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 type_1,
                                 type,
                                 L_2,
@@ -6053,7 +6053,7 @@ clObject clSubtypep_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
       clSetq(surep, clT);
       { clObject L_sublist1657, type;
         clSetq(L_sublist1657,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPONENT_TYPES),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPONENT_TYPES),
                                  type_2,
                                  clEOA));
         clSetq(type, clCar(L_sublist1657, clEOA));
@@ -6062,10 +6062,10 @@ clObject clSubtypep_clTYPE_clTYPE_INTERSECTION clVdecl(_ap)
           return(clValues(surep, surep, clEOA));
         { clObject L_values1659, sub, sure;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             { clObject L_2;
               clSetq(L_2, environment);
-              clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                 type_1,
                                 type,
                                 L_2,
@@ -6103,7 +6103,7 @@ static clObject clSubtypep_clCLASS_clTYPE_UNION_CallNextMethod clVdecl(_ap)
       if (clTrue(next_method))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -6116,10 +6116,10 @@ static clObject clSubtypep_clCLASS_clTYPE_UNION_CallNextMethod clVdecl(_ap)
                                    clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clSUBTYPEP, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -6178,10 +6178,10 @@ clObject clSubtypep_clCLASS_clTYPE_UNION clVdecl(_ap)
           clExtraArgs(L_0, clEOA); }
       { clObject subs;
         clSetq(subs,
-               (clTrue(clFuncallFunction(clSymbolFunctionValue(clABSTRACT_CLASS_P),
+               (clTrue(clFuncallFunction(clSymbolFunctionChecked(clABSTRACT_CLASS_P),
                                          type_1,
                                          clEOA)) ?
-                clFuncallFunction(clSymbolFunctionValue(clCLASS_DIRECT_SUBCLASSES),
+                clFuncallFunction(clSymbolFunctionChecked(clCLASS_DIRECT_SUBCLASSES),
                                   type_1,
                                   clEOA) :
                 clNIL));
@@ -6196,10 +6196,10 @@ clObject clSubtypep_clCLASS_clTYPE_UNION clVdecl(_ap)
                 return(clValues(surep, surep, clEOA));
               { clObject L_values1669, sub, sure;
                 { clMultipleValueCall(MVC);
-                  clSetq(MVC, clSymbolFunctionValue(clLIST));
+                  clSetq(MVC, clSymbolFunctionChecked(clLIST));
                   { clObject L_2;
                     clSetq(L_2, environment);
-                    clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                    clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                       subclass,
                                       type_2,
                                       L_2,
@@ -6273,11 +6273,11 @@ clObject clSubtypep_clLIMITED_TYPE_clCLASS clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                type_1,
                                clEOA));
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                L_0,
                                type_2,
                                L_2,
@@ -6329,34 +6329,34 @@ clObject clSubtypep_clLIMITED_ARRAY_TYPE_clCLASS clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject base, dims;
       clSetq(base,
-             clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                type_1,
                                clEOA));
       clSetq(dims,
-             clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_DIMENSIONS),
+             clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_DIMENSIONS),
                                type_1,
                                clEOA));
       { clObject L_2, L_0;
         if (clTrue((clTrue(clListp(dims, clEOA)) ?
-                    clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                    clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                       I_1,
                                       clLength(dims, clEOA),
                                       clEOA) :
                     clNIL)))
           { clObject L_0__R1;
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clCLASS_NAME),
+                   clFuncallFunction(clSymbolFunctionChecked(clCLASS_NAME),
                                      base,
                                      clEOA));
             clSetq(L_0,
                    clElementVectorType(L_0__R1,
-                                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_ELEMENT_TYPE),
+                                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_ELEMENT_TYPE),
                                                          type_1,
                                                          clEOA),
                                        clEOA)); }
         else clSetq(L_0, base);
         clSetq(L_2, environment);
-        return(clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+        return(clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                  L_0,
                                  type_2,
                                  L_2,
@@ -6410,7 +6410,7 @@ clObject clSubtypep_clCLASS_clLIMITED_ARRAY_TYPE clVdecl(_ap)
       { clObject L_test;
         { clObject L_0__R1;
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_DIMENSIONS),
+                 clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_DIMENSIONS),
                                    type_2,
                                    clEOA));
           clSetq(L_test, clEq(L_0__R1, clstarsymbol, clEOA)); }
@@ -6418,20 +6418,20 @@ clObject clSubtypep_clCLASS_clLIMITED_ARRAY_TYPE clVdecl(_ap)
           { clObject L_2, L_1__R1;
             { clObject L_0__R2;
               clSetq(L_0__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clCLASS_NAME),
-                                       clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                     clFuncallFunction(clSymbolFunctionChecked(clCLASS_NAME),
+                                       clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                                          type_2,
                                                          clEOA),
                                        clEOA));
               clSetq(L_1__R1,
                      clElementVectorType(L_0__R2,
-                                         clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_ELEMENT_TYPE),
+                                         clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_ELEMENT_TYPE),
                                                            type_2,
                                                            clEOA),
                                          clEOA)); }
             clSetq(L_2, environment);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                      type_1,
                                      L_1__R1,
                                      L_2,
@@ -6485,15 +6485,15 @@ clObject clSubtypep_clLIMITED_COMPLEX_TYPE_clLIMITED_COMPLEX_TYPE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_2, L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clCOMPLEX_PART_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clCOMPLEX_PART_TYPE),
                                type_1,
                                clEOA));
       clSetq(L_1,
-             clFuncallFunction(clSymbolFunctionValue(clCOMPLEX_PART_TYPE),
+             clFuncallFunction(clSymbolFunctionChecked(clCOMPLEX_PART_TYPE),
                                type_2,
                                clEOA));
       clSetq(L_2, environment);
-      return(clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                L_0,
                                L_1,
                                L_2,
@@ -6545,18 +6545,18 @@ clObject clSubtypep_clLIMITED_CONS_TYPE_clLIMITED_CONS_TYPE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1705, car_sub, car_sure;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clCONS_CAR_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCONS_CAR_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2, environment);
-          clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+          clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                             L_0,
                             L_1,
                             L_2,
@@ -6571,18 +6571,18 @@ clObject clSubtypep_clLIMITED_CONS_TYPE_clLIMITED_CONS_TYPE clVdecl(_ap)
         clSetq(car_sure, clCar(L_0, clEOA)); }
       { clObject L_values1706, cdr_sub, cdr_sure;
         { clMultipleValueCall(MVC__r1);
-          clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+          clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
           { clObject L_2, L_1, L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                      type_1,
                                      clEOA));
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clCONS_CDR_TYPE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCONS_CDR_TYPE),
                                      type_2,
                                      clEOA));
             clSetq(L_2, environment);
-            clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+            clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                               L_0,
                               L_1,
                               L_2,
@@ -6660,16 +6660,16 @@ clObject clSubtypep_clLIMITED_ARRAY_TYPE_clLIMITED_ARRAY_TYPE clVdecl(_ap)
       { clObject L_test;
         { clObject L_2, L_1__R1, L_0__R1;
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2, environment);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                    L_0__R1,
                                    L_1__R1,
                                    L_2,
@@ -6678,24 +6678,24 @@ clObject clSubtypep_clLIMITED_ARRAY_TYPE_clLIMITED_ARRAY_TYPE clVdecl(_ap)
           { clObject L_test__R1;
             { clObject L_0__R1;
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_ELEMENT_TYPE),
+                     clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_ELEMENT_TYPE),
                                        type_1,
                                        clEOA));
               clSetq(L_test__R1,
                      clEq(L_0__R1,
-                          clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_ELEMENT_TYPE),
+                          clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_ELEMENT_TYPE),
                                             type_2,
                                             clEOA),
                           clEOA)); }
             if (clTrue(L_test__R1))
               { clObject L_0__R1;
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_DIMENSIONS),
+                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_DIMENSIONS),
                                          type_1,
                                          clEOA));
                 clSetq(L_0,
                        clDimensionsMatchP(L_0__R1,
-                                          clFuncallFunction(clSymbolFunctionValue(clLIMITED_ARRAY_DIMENSIONS),
+                                          clFuncallFunction(clSymbolFunctionChecked(clLIMITED_ARRAY_DIMENSIONS),
                                                             type_2,
                                                             clEOA),
                                           clEOA)); }
@@ -6749,18 +6749,18 @@ clObject clSubtypep_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_values1722, sub, sure;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                    type_1,
                                    clEOA));
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE),
                                    type_2,
                                    clEOA));
           clSetq(L_2, environment);
-          clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+          clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                             L_0,
                             L_1,
                             L_2,
@@ -6779,36 +6779,36 @@ clObject clSubtypep_clLIMITED_NUMERIC_TYPE_clLIMITED_NUMERIC_TYPE clVdecl(_ap)
             { clObject L_test__R2;
               { clObject upper;
                 clSetq(upper,
-                       clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                       clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                          type_1,
                                          clEOA));
                 clSetq(L_test__R2,
                        (clTrue(upper) ?
                         clMeetsHigh(upper,
                                     type_2,
-                                    clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX),
+                                    clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX),
                                                       type_1,
                                                       clEOA),
                                     clEOA) :
-                        clNull(clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX),
+                        clNull(clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX),
                                                  type_2,
                                                  clEOA),
                                clEOA))); }
               if (clTrue(L_test__R2))
                 { clObject lower;
                   clSetq(lower,
-                         clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                         clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                            type_1,
                                            clEOA));
                   clSetq(L_0,
                          (clTrue(lower) ?
                           clMeetsLow(lower,
                                      type_2,
-                                     clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN),
+                                     clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN),
                                                        type_1,
                                                        clEOA),
                                      clEOA) :
-                          clNull(clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN),
+                          clNull(clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN),
                                                    type_2,
                                                    clEOA),
                                  clEOA))); }

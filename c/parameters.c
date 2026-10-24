@@ -101,14 +101,14 @@ void clInitParameters __P((void))
   if (clTrue(clBoundp(clDIGIT_BASE, clEOA)))
     { if (clTrue(clSymbolValue(clstarCONSTANT_CHECK_HOOKstar, clEOA)))
         clRedefineConstant(clDIGIT_BASE,
-                           clFuncallFunction(clSymbolFunctionValue(clEXPT),
+                           clFuncallFunction(clSymbolFunctionChecked(clEXPT),
                                              I_2,
                                              I_16,
                                              clEOA),
                            clEOA); }
   else
     clSetSymbolValueValue(clDIGIT_BASE,
-                          clFuncallFunction(clSymbolFunctionValue(clEXPT),
+                          clFuncallFunction(clSymbolFunctionChecked(clEXPT),
                                             I_2,
                                             I_16,
                                             clEOA));
@@ -146,12 +146,12 @@ void clInitParameters __P((void))
         { clObject L_1;
           { clObject L_0__R1;
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      I_2,
                                      I_16,
                                      clEOA));
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_3,
                                      clEOA)); }
@@ -160,12 +160,12 @@ void clInitParameters __P((void))
     { clObject L_1;
       { clObject L_0__R1;
         clSetq(L_0__R1,
-               clFuncallFunction(clSymbolFunctionValue(clMULT),
+               clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  I_2,
                                  I_16,
                                  clEOA));
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  L_0__R1,
                                  I_3,
                                  clEOA)); }

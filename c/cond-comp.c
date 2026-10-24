@@ -179,10 +179,10 @@ clObject clDefineCondition clVdecl(_ap)
   { clObject report_clause, options__R1;
     clSetq(report_clause,
            clFind(keyREPORT, options, keyKEY,
-                  clSymbolFunctionValue(clFIRST), clEOA));
+                  clSymbolFunctionChecked(clFIRST), clEOA));
     clSetq(options__R1,
            clDelete(keyREPORT, options, keyKEY,
-                    clSymbolFunctionValue(clFIRST), clEOA));
+                    clSymbolFunctionChecked(clFIRST), clEOA));
     { clObject L_2, L_1;
       { clObject L_2__R1;
         clSetq(L_2__R1,
@@ -359,7 +359,7 @@ clObject clCtypecase clVdecl(_ap)
                         { clObject L_1__R9;
                           { clObject L_0__R11;
                             clSetq(L_0__R11,
-                                   clSymbolFunctionValue(clFIRST));
+                                   clSymbolFunctionChecked(clFIRST));
                             clSetq(L_1__R9,
                                    clMapcar(L_0__R11,
                                             clauses,
@@ -982,7 +982,7 @@ clObject clHandlerCase clVdecl(_ap)
             return(clList(clBLOCK, error_return, L_2, clEOA)); } }
       else
         { clObject L_4;
-          clSetq(L_4, clSymbolFunctionValue(clHANDLER_CASE_BODY));
+          clSetq(L_4, clSymbolFunctionChecked(clHANDLER_CASE_BODY));
           return(clBindFormFromCase(clHANDLER_BIND,
                                     expression,
                                     bindings,
@@ -1039,8 +1039,8 @@ clObject clRestartCase clVdecl(_ap)
     else clSetq(exp, expression__R1);
     { clObject L_6, L_4, L_3, L_1;
       clSetq(L_1, exp);
-      clSetq(L_3, clSymbolFunctionValue(clRESTART_CASE_OPTIONS));
-      clSetq(L_4, clSymbolFunctionValue(clRESTART_CASE_BODY));
+      clSetq(L_3, clSymbolFunctionChecked(clRESTART_CASE_OPTIONS));
+      clSetq(L_4, clSymbolFunctionChecked(clRESTART_CASE_BODY));
       clSetq(L_6, condition_var);
       clSetq(form,
              clBindFormFromCase(clRESTART_BIND,

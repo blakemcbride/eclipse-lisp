@@ -856,6 +856,13 @@ typedef struct clSymbolCell {
 #define clSetSymbolValueValue(obj, val)		clSetq(_clSymbolValue(obj), val)
 
 #define clSymbolFunctionValue(obj)		_clSymbolFunction(obj)
+/* Like clSymbolFunctionValue, but signals UNDEFINED-FUNCTION instead
+   of returning clNIL.  Used where compiled code fetches a global
+   function in order to call it or take it as #'name. */
+clObject clUndefinedFunctionValue __P((clObject));
+#define clSymbolFunctionChecked(obj)				\
+  (_clNull(_clSymbolFunction(obj)) ?				\
+   clUndefinedFunctionValue(obj) : _clSymbolFunction(obj))
 #define clSymbolSetfFunctionValue(obj)		_clSymbolSetfFunction(obj)
 #define clSetfExpander(symbol) clSystemProperty(symbol, clSETF_EXPANDER, clNIL)
 

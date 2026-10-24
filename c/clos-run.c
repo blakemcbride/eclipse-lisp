@@ -186,7 +186,7 @@ clObject clInvalidMethodError clVdecl(_ap)
     clSetq(args, clVargs(_ap));
     clEndParse(_ap); }
   { clObject L_3, L_2, L_0;
-    clSetq(L_0, clSymbolFunctionValue(clMETHOD_COMBINATION_ERROR));
+    clSetq(L_0, clSymbolFunctionChecked(clMETHOD_COMBINATION_ERROR));
     clSetq(L_2, method);
     clSetq(L_3, format_string);
     return(clApply(L_0, STRn_3, L_2, L_3, args, clEOA)); } }
@@ -202,7 +202,7 @@ clObject clLocalSlotP clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, slot);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_ALLOCATION),
+             clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_ALLOCATION),
                                L_0__R1,
                                clEOA)); }
     return(clEq(L_0, keyINSTANCE, clEOA)); } }
@@ -301,25 +301,25 @@ clObject clStdMethodMoreSpecificP clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, gf);
       clSetq(args,
-             clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
+             clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, gf);
       clSetq(order,
-             clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_ARGUMENT_PRECEDENCE_ORDER),
+             clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_ARGUMENT_PRECEDENCE_ORDER),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, method1);
       clSetq(specs1,
-             clFuncallFunction(clSymbolFunctionValue(clMETHOD_SPECIALIZERS),
+             clFuncallFunction(clSymbolFunctionChecked(clMETHOD_SPECIALIZERS),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, method2);
       clSetq(specs2,
-             clFuncallFunction(clSymbolFunctionValue(clMETHOD_SPECIALIZERS),
+             clFuncallFunction(clSymbolFunctionChecked(clMETHOD_SPECIALIZERS),
                                L_0,
                                clEOA)); }
     if (clTrue(clListEq(args, order, clEOA)))
@@ -387,7 +387,7 @@ clObject clStdMethodMoreSpecificP clVdecl(_ap)
                       { clObject L_0;
                         clSetq(L_0, CL_class);
                         clSetq(cpl,
-                               clFuncallFunction(clSymbolFunctionValue(clCLASS_PRECEDENCE_LIST),
+                               clFuncallFunction(clSymbolFunctionChecked(clCLASS_PRECEDENCE_LIST),
                                                  L_0,
                                                  clEOA)); }
                       { clObject L_1, L_0;
@@ -442,7 +442,7 @@ clObject clStdMethodMoreSpecificP clVdecl(_ap)
                     clSetq(L_1, required_classes);
                     clSetq(L_0, clNth(position, L_1, clEOA)); }
                   clSetq(cpl,
-                         clFuncallFunction(clSymbolFunctionValue(clCLASS_PRECEDENCE_LIST),
+                         clFuncallFunction(clSymbolFunctionChecked(clCLASS_PRECEDENCE_LIST),
                                            L_0,
                                            clEOA)); }
                 { clObject L_1;
@@ -542,7 +542,7 @@ clObject clProperName clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, CL_class);
       clSetq(name,
-             clFuncallFunction(clSymbolFunctionValue(clCLASS_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clCLASS_NAME),
                                L_0,
                                clEOA)); }
     { clObject L_test;
@@ -626,7 +626,7 @@ clObject clLambdaAMPERSANDRestIndex clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, index);
               clSetq(index,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        I_1,
                                        clEOA)); } }
@@ -645,7 +645,7 @@ clObject clGenericFunctionAMPERSANDRestIndex clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, gf);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_LAMBDA_LIST),
+             clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_LAMBDA_LIST),
                                L_0__R1,
                                clEOA)); }
     return(clLambdaAMPERSANDRestIndex(L_0, clEOA)); } }
@@ -661,7 +661,7 @@ clObject clEqlSpecializerObject clVdecl(_ap)
     clSetq(L_instance431, eql_specializer);
     clSetq(L_class432, clClassOf(L_instance431, clEOA));
     clSetq(L_object433, clFastFindSlot(L_class432, clOBJECT));
-    return(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+    return(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                              L_class432,
                              L_instance431,
                              L_object433,
@@ -724,7 +724,7 @@ clObject clFindSlotDefinition clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, CL_class);
       clSetq(L_g8,
-             clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+             clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                L_0,
                                clEOA)); }
     clLabel(NEXT_LOOP);
@@ -739,7 +739,7 @@ clObject clFindSlotDefinition clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, slot);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_test, clEq(L_0, L_1, clEOA)); }
@@ -788,7 +788,7 @@ clObject clSlotBoundp clVdecl(_ap)
     if (clTrue(slot_definition))
       { clObject L_1;
         clSetq(L_1, instance);
-        return(clFuncallFunction(clSymbolFunctionValue(clSLOT_BOUNDP_USING_CLASS),
+        return(clFuncallFunction(clSymbolFunctionChecked(clSLOT_BOUNDP_USING_CLASS),
                                  CL_class,
                                  L_1,
                                  slot_definition,
@@ -799,7 +799,7 @@ clObject clSlotBoundp clVdecl(_ap)
           clSetq(L_1, instance);
           clSetq(L_2, slot_name);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_MISSING),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_MISSING),
                                    CL_class,
                                    L_1,
                                    L_2,
@@ -826,7 +826,7 @@ clObject clSlotValue clVdecl(_ap)
     if (clTrue(slot_definition))
       { clObject L_1;
         clSetq(L_1, instance);
-        return(clFuncallFunction(clSymbolFunctionValue(clSLOT_VALUE_USING_CLASS),
+        return(clFuncallFunction(clSymbolFunctionChecked(clSLOT_VALUE_USING_CLASS),
                                  CL_class,
                                  L_1,
                                  slot_definition,
@@ -837,7 +837,7 @@ clObject clSlotValue clVdecl(_ap)
           clSetq(L_1, instance);
           clSetq(L_2, slot_name);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clSLOT_MISSING),
+                 clFuncallFunction(clSymbolFunctionChecked(clSLOT_MISSING),
                                    CL_class,
                                    L_1,
                                    L_2,
@@ -864,7 +864,7 @@ clObject clSlotMakunbound clVdecl(_ap)
     if (clTrue(slot_definition))
       { clObject L_1;
         clSetq(L_1, instance);
-        return(clFuncallFunction(clSymbolFunctionValue(clSLOT_MAKUNBOUND_USING_CLASS),
+        return(clFuncallFunction(clSymbolFunctionChecked(clSLOT_MAKUNBOUND_USING_CLASS),
                                  CL_class,
                                  L_1,
                                  slot_definition,
@@ -873,7 +873,7 @@ clObject clSlotMakunbound clVdecl(_ap)
       { { clObject L_2, L_1;
           clSetq(L_1, instance);
           clSetq(L_2, slot_name);
-          clFuncallFunction(clSymbolFunctionValue(clSLOT_MISSING),
+          clFuncallFunction(clSymbolFunctionChecked(clSLOT_MISSING),
                             CL_class,
                             L_1,
                             L_2,
@@ -914,7 +914,7 @@ clObject cl_SETF_SlotValue clVdecl(_ap)
           clSetq(L_1, instance);
           clSetq(L_2, slot_name);
           clSetq(L_4, new_value);
-          clFuncallFunction(clSymbolFunctionValue(clSLOT_MISSING),
+          clFuncallFunction(clSymbolFunctionChecked(clSLOT_MISSING),
                             CL_class,
                             L_1,
                             L_2,
@@ -936,7 +936,7 @@ static clObject clUpdateInstance_OldValue clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, old_slot);
         clSetq(location,
-               clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_LOCATION),
+               clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_LOCATION),
                                  L_0,
                                  clEOA)); }
       if (clTrue(clConsp(location, clEOA)))
@@ -964,7 +964,7 @@ clObject clUpdateInstance clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, CL_class);
       clSetq(new_slot_definitions,
-             clFuncallFunction(clSymbolFunctionValue(clCLASS_SLOTS),
+             clFuncallFunction(clSymbolFunctionChecked(clCLASS_SLOTS),
                                L_0,
                                clEOA)); }
     { clObject L_0;
@@ -981,7 +981,7 @@ clObject clUpdateInstance clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, CL_class);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clCLASS_WRAPPER),
+               clFuncallFunction(clSymbolFunctionChecked(clCLASS_WRAPPER),
                                  L_0__R1,
                                  clEOA)); }
       clSetTaggedInstanceWrapper(L_0, L_1); }
@@ -1013,21 +1013,21 @@ clObject clUpdateInstance clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, new_slot);
                   clSetq(name,
-                         clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                         clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                            L_0,
                                            clEOA)); }
                 clSetq(old_slot,
                        clFind(name,
                               old_slot_definitions,
                               keyKEY,
-                              clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                              clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                               clEOA));
                 if (clTrue(old_slot))
                   { clObject L_1;
                     { clObject L_0__R1;
                       clSetq(L_0__R1, new_slot);
                       clSetq(L_1,
-                             clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_LOCATION),
+                             clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_LOCATION),
                                                L_0__R1,
                                                clEOA)); }
                     clSetSlot(new_slots,
@@ -1060,14 +1060,14 @@ clObject clUpdateInstance clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, old_slot);
                   clSetq(name,
-                         clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                         clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                            L_0,
                                            clEOA)); }
                 clSetq(new_slot,
                        clFind(name,
                               new_slot_definitions,
                               keyKEY,
-                              clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                              clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                               clEOA));
                 if (clTrue(clNot(new_slot, clEOA)))
                   { { clObject L_1;
@@ -1094,7 +1094,7 @@ clObject clUpdateInstance clVdecl(_ap)
           clSetq(L_1, added_names);
           clSetq(L_2, discarded_names);
           clSetq(L_3, plist);
-          return(clFuncallFunction(clSymbolFunctionValue(clUPDATE_INSTANCE_FOR_REDEFINED_CLASS),
+          return(clFuncallFunction(clSymbolFunctionChecked(clUPDATE_INSTANCE_FOR_REDEFINED_CLASS),
                                    L_0,
                                    L_1,
                                    L_2,
@@ -1284,7 +1284,7 @@ clObject clSetGfLambdaList clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, gf);
             clSetq(L_sublist473,
-                   clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_METHODS),
+                   clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_METHODS),
                                      L_0,
                                      clEOA)); }
           clSetq(method, clCar(L_sublist473, clEOA));
@@ -1320,13 +1320,13 @@ clObject clFinalizeGenericFunction clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, generic_function);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_DISCRIMINATING_FUNCTION),
+                   clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_DISCRIMINATING_FUNCTION),
                                      L_0__R1,
                                      clEOA)); }
           clSetFuncallableInstanceFunction(L_0, L_1, clEOA); }
         { clObject L_0;
           clSetq(L_0, generic_function);
-          clFuncallFunction(clSymbolFunctionValue(clFLUSH_METHOD_CACHE),
+          clFuncallFunction(clSymbolFunctionChecked(clFLUSH_METHOD_CACHE),
                             L_0,
                             clEOA); } } }
   return(clValues1(generic_function)); }
@@ -1384,7 +1384,7 @@ clObject clMakeInternalMethod clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_2;
     clSetq(L_2, function);
-    return(clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+    return(clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                              clSTANDARD_METHOD_CLASSOBJ,
                              keyFUNCTION,
                              L_2,
@@ -1631,11 +1631,11 @@ static clObject clStandardDiscriminatingFunction_Lambda clVdecl(_ap)
                 clBlockEnd(NIL); } } }
           { clObject L_values479, applicable_methods, by_class_p;
             { clMultipleValueCall(MVC);
-              clSetq(MVC, clSymbolFunctionValue(clLIST));
+              clSetq(MVC, clSymbolFunctionChecked(clLIST));
               { clObject L_1, L_0;
                 clSetq(L_0, clEnv(0, *generic_function));
                 clSetq(L_1, classes);
-                clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES),
+                clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES),
                                   L_0,
                                   L_1,
                                   clEOA); }
@@ -1652,7 +1652,7 @@ static clObject clStandardDiscriminatingFunction_Lambda clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, clEnv(0, *generic_function));
                 clSetq(applicable_methods,
-                       clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS),
+                       clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS),
                                          L_0,
                                          args,
                                          clEOA)); }
@@ -1662,7 +1662,7 @@ static clObject clStandardDiscriminatingFunction_Lambda clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, clEnv(0, *generic_function));
                   clSetq(L_1,
-                         clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_METHOD_COMBINATION),
+                         clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_METHOD_COMBINATION),
                                            L_0__R1,
                                            clEOA)); }
                 clSetq(L_2, applicable_methods);
@@ -1702,7 +1702,7 @@ static clObject clComputeEffectiveMethodFunction_Lambda clVdecl(_ap)
   { clObject args;
     { clBeginParse(_ap); clSetq(args, clVargs(_ap)); clEndParse(_ap); }
     { clObject L_1, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clNO_APPLICABLE_METHOD));
+      clSetq(L_0, clSymbolFunctionChecked(clNO_APPLICABLE_METHOD));
       clSetq(L_1, clEnv(0, *generic_function));
       return(clApply(L_0, L_1, args, clEOA)); } } }
 
@@ -1770,10 +1770,10 @@ clObject clComputeEffectiveMethodFunction clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, *generic_function);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_NAME),
+                   clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_NAME),
                                      L_0__R1,
                                      clEOA)); }
-          return(clFuncallFunction(clSymbolFunctionValue(clCOMPILE_OBJECT),
+          return(clFuncallFunction(clSymbolFunctionChecked(clCOMPILE_OBJECT),
                                    L_0,
                                    L_1,
                                    clEOA)); } }
@@ -1949,7 +1949,7 @@ clObject clComputeMethodFunction clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, method);
               clSetq(direct_slot,
-                     clFuncallFunction(clSymbolFunctionValue(clACCESSOR_METHOD_SLOT_DEFINITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clACCESSOR_METHOD_SLOT_DEFINITION),
                                        L_0,
                                        clEOA)); }
             if (clTrue(readerp))
@@ -1964,12 +1964,12 @@ clObject clComputeMethodFunction clVdecl(_ap)
               clSetq(L_0, main_class);
               clSetq(slot,
                      clFastFindSlot(L_0,
-                                    clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_NAME),
+                                    clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_NAME),
                                                       direct_slot,
                                                       clEOA))); }
             { clObject L_values483, methods, by_classp;
               { clMultipleValueCall(MVC);
-                clSetq(MVC, clSymbolFunctionValue(clLIST));
+                clSetq(MVC, clSymbolFunctionChecked(clLIST));
                 { clObject L_1, L_0;
                   { clObject L_0__R1;
                     clSetq(L_0__R1,
@@ -1999,7 +1999,7 @@ clObject clComputeMethodFunction clVdecl(_ap)
                                clCons(L_0__R1,
                                       value_classes,
                                       clEOA)); } }
-                  clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES),
+                  clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS_USING_CLASSES),
                                     L_0,
                                     L_1,
                                     clEOA); }
@@ -2017,7 +2017,7 @@ clObject clComputeMethodFunction clVdecl(_ap)
                           clNIL)))
                 { clObject *location = clMakeBinding();
                   clSetq(*location,
-                         clFuncallFunction(clSymbolFunctionValue(clSLOT_DEFINITION_LOCATION),
+                         clFuncallFunction(clSymbolFunctionChecked(clSLOT_DEFINITION_LOCATION),
                                            slot,
                                            clEOA));
                   if (clTrue(readerp))
@@ -2053,7 +2053,7 @@ clObject clComputeMethodFunction clVdecl(_ap)
       else
         { clObject L_0;
           clSetq(L_0, method);
-          return(clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+          return(clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    L_0,
                                    clEOA)); } } } }
 
@@ -2069,7 +2069,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda clVdecl(_ap)
       if (clTrue(clEndp(L_sublist524, clEOA))) clLocalReturn(NIL);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+               clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                  before,
                                  clEOA));
         clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2095,7 +2095,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda clVdecl(_ap)
           clLocalReturn(NIL__r1);
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    after,
                                    clEOA));
           clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2128,7 +2128,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda_r1 clVdecl(_ap)
         if (clTrue(clEndp(L_sublist538, clEOA))) clLocalReturn(NIL);
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    after,
                                    clEOA));
           clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2155,7 +2155,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda_r2 clVdecl(_ap)
       if (clTrue(clEndp(L_sublist544, clEOA))) clLocalReturn(NIL);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+               clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                  before,
                                  clEOA));
         clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2200,7 +2200,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda_r4 clVdecl(_ap)
       if (clTrue(clEndp(L_sublist558, clEOA))) clLocalReturn(NIL);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+               clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                  before,
                                  clEOA));
         clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2226,7 +2226,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda_r4 clVdecl(_ap)
           clLocalReturn(NIL__r1);
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    after,
                                    clEOA));
           clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2265,7 +2265,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda_r5 clVdecl(_ap)
         if (clTrue(clEndp(L_sublist574, clEOA))) clLocalReturn(NIL);
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    after,
                                    clEOA));
           clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2298,7 +2298,7 @@ static clObject clComputeStandardEffectiveMethodFunction_Lambda_r6 clVdecl(_ap)
       if (clTrue(clEndp(L_sublist582, clEOA))) clLocalReturn(NIL);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+               clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                  before,
                                  clEOA));
         clFuncallFunction(L_0, args, clNIL, clEOA); }
@@ -2386,14 +2386,14 @@ clObject clComputeStandardEffectiveMethodFunction clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, gf);
       clSetq(*keys,
-             clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_KEYWORDS),
+             clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_KEYWORDS),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, gf);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_ALLOW_OTHER_KEYS_P),
+               clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_ALLOW_OTHER_KEYS_P),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(check_keys_p, clNot(L_0, clEOA)); }
@@ -2415,10 +2415,10 @@ clObject clComputeStandardEffectiveMethodFunction clVdecl(_ap)
         if (clTrue(check_keys_p))
           { clObject L_values511, method_keys, allow_other_keys_p;
             { clMultipleValueCall(MVC);
-              clSetq(MVC, clSymbolFunctionValue(clLIST));
+              clSetq(MVC, clSymbolFunctionChecked(clLIST));
               { clObject L_0;
                 clSetq(L_0, method);
-                clFuncallFunction(clSymbolFunctionValue(clFUNCTION_KEYWORDS),
+                clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_KEYWORDS),
                                   L_0,
                                   clEOA); }
               clAccumulateValues(MVC);
@@ -2443,7 +2443,7 @@ clObject clComputeStandardEffectiveMethodFunction clVdecl(_ap)
                 clSetq(L_0__R1, method);
                 clSetq(L_0,
                        clSetq(qualifier,
-                              clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                              clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                                 L_0__R1,
                                                 clEOA))); }
               clSetq(L_test, clRest(L_0, clEOA)); }
@@ -2501,7 +2501,7 @@ clObject clComputeStandardEffectiveMethodFunction clVdecl(_ap)
                           { clObject L_0;
                             clSetq(L_0, gf);
                             clSetq(STARmethod_combinationSTAR,
-                                   clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_METHOD_COMBINATION),
+                                   clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_METHOD_COMBINATION),
                                                      L_0,
                                                      clEOA)); }
                           clDbind(clstarMETHOD_COMBINATIONstar);
@@ -2531,7 +2531,7 @@ clObject clComputeStandardEffectiveMethodFunction clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, gf);
             clSetq(STARmethod_combinationSTAR,
-                   clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_METHOD_COMBINATION),
+                   clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_METHOD_COMBINATION),
                                      L_0,
                                      clEOA)); }
           clDbind(clstarMETHOD_COMBINATIONstar);
@@ -2667,7 +2667,7 @@ clObject clComputeStandardEffectiveMethodFunction clVdecl(_ap)
                 clSetq(L_0__R1, all_around);
                 clSetq(L_0, clFirst(L_0__R1, clEOA)); }
               clSetq(*first_around_function,
-                     clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                     clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                        L_0,
                                        clEOA)); }
             { clObject L_0;
@@ -2701,12 +2701,12 @@ clObject clMakeEffectiveMethodLambda clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values598, form, options;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_2, L_1, L_0;
         clSetq(L_0, gf);
         clSetq(L_1, method_combination);
         clSetq(L_2, methods);
-        clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_EFFECTIVE_METHOD),
+        clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_EFFECTIVE_METHOD),
                           L_0,
                           L_1,
                           L_2,
@@ -2721,14 +2721,14 @@ clObject clMakeEffectiveMethodLambda clVdecl(_ap)
       clSetq(options, clCar(L_0, clEOA)); }
     { clObject L_values599, bindings, arg_var, key_var;
       { clMultipleValueCall(MVC__r1);
-        clSetq(MVC__r1, clSymbolFunctionValue(clLIST));
+        clSetq(MVC__r1, clSymbolFunctionChecked(clLIST));
         { clObject L_0;
           clSetq(L_0, gf);
           clAdjustedLambdaBindings(L_0,
                                    clRest(clFind(keyARGUMENTS,
                                                  options,
                                                  keyKEY,
-                                                 clSymbolFunctionValue(clCAR),
+                                                 clSymbolFunctionChecked(clCAR),
                                                  clEOA),
                                           clEOA),
                                    clEOA); }
@@ -2750,7 +2750,7 @@ clObject clMakeEffectiveMethodLambda clVdecl(_ap)
                clFind(keyGENERIC_FUNCTION,
                       options,
                       keyKEY,
-                      clSymbolFunctionValue(clCAR),
+                      clSymbolFunctionChecked(clCAR),
                       clEOA));
         if (clTrue(gf_var))
           { clObject L_1, L_0;
@@ -2773,7 +2773,7 @@ clObject clMakeEffectiveMethodLambda clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, gf);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_ALLOW_OTHER_KEYS_P),
+                     clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_ALLOW_OTHER_KEYS_P),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_test, clNot(L_0, clEOA)); }
@@ -2782,7 +2782,7 @@ clObject clMakeEffectiveMethodLambda clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, gf);
                 clSetq(allowed_keys,
-                       clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_KEYWORDS),
+                       clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_KEYWORDS),
                                          L_0,
                                          clEOA)); }
               { clObject method, L_g22;
@@ -2796,10 +2796,10 @@ clObject clMakeEffectiveMethodLambda clVdecl(_ap)
                   clSetq(L_g22, clCdr(L_0, clEOA)); }
                 { clObject L_values600, keys, allow_other_keys_p;
                   { clMultipleValueCall(MVC__r2);
-                    clSetq(MVC__r2, clSymbolFunctionValue(clLIST));
+                    clSetq(MVC__r2, clSymbolFunctionChecked(clLIST));
                     { clObject L_0;
                       clSetq(L_0, method);
-                      clFuncallFunction(clSymbolFunctionValue(clFUNCTION_KEYWORDS),
+                      clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_KEYWORDS),
                                         L_0,
                                         clEOA); }
                     clAccumulateValues(MVC__r2);
@@ -2916,7 +2916,7 @@ clObject clAdjustedLambdaBindings clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, gf);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clGENERIC_FUNCTION_REQUIRED_PARAMETERS),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(max, clLength(L_0, clEOA)); }
@@ -2933,7 +2933,7 @@ clObject clAdjustedLambdaBindings clVdecl(_ap)
               clSetq(L_key603, parameter);
               if (_clEq(L_key603, clampersandOPTIONAL))
                 { clSetq(cdring,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                            max,
                                            index,
                                            clEOA));
@@ -2959,7 +2959,7 @@ clObject clAdjustedLambdaBindings clVdecl(_ap)
                     clSetq(L_0, max);
                     clSetq(L_1, index);
                     clSetq(cdring,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                              L_0,
                                              L_1,
                                              clEOA)); }
@@ -2984,7 +2984,7 @@ clObject clAdjustedLambdaBindings clVdecl(_ap)
                           clSetq(L_0, max);
                           clSetq(L_1, index);
                           clSetq(cdring,
-                                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                    L_0,
                                                    L_1,
                                                    clEOA)); } } }
@@ -3012,7 +3012,7 @@ clObject clAdjustedLambdaBindings clVdecl(_ap)
                     clSetq(L_0, index);
                     clSetq(L_1, max);
                     clSetq(advancep,
-                           clFuncallFunction(clSymbolFunctionValue(clLT),
+                           clFuncallFunction(clSymbolFunctionChecked(clLT),
                                              L_0,
                                              L_1,
                                              clEOA)); }
@@ -3159,7 +3159,7 @@ clObject clAdjustedLambdaBindings clVdecl(_ap)
                     { clObject L_0;
                       clSetq(L_0, index);
                       clSetq(index,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0,
                                                I_1,
                                                clEOA)); } } }
@@ -3194,7 +3194,7 @@ clObject clCheckInitargs1 clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clFdefinition(clCar(call, clEOA), clEOA));
         clSetq(L_sublist611,
-               clFuncallFunction(clSymbolFunctionValue(clCOMPUTE_APPLICABLE_METHODS),
+               clFuncallFunction(clSymbolFunctionChecked(clCOMPUTE_APPLICABLE_METHODS),
                                  L_0,
                                  clRest(call, clEOA),
                                  clEOA)); }
@@ -3203,8 +3203,8 @@ clObject clCheckInitargs1 clVdecl(_ap)
       if (clTrue(clEndp(L_sublist611, clEOA))) clLocalReturn(NIL);
       { clObject L_values613, keys, allow_other_keys_p;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
-          clFuncallFunction(clSymbolFunctionValue(clFUNCTION_KEYWORDS),
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
+          clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_KEYWORDS),
                             method,
                             clEOA);
           clAccumulateValues(MVC);

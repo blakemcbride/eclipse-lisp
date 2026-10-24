@@ -122,7 +122,7 @@ static clObject clLambda_r1 clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, circularity_map);
         clSetq(L_0, clCdr(L_0__R1, clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clCLRHASH),
+      return(clFuncallFunction(clSymbolFunctionChecked(clCLRHASH),
                                L_0,
                                clEOA)); } } }
 
@@ -208,7 +208,7 @@ clObject clPrintCircularP clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, object);
           clSetq(id,
-                 clFuncallFunction(clSymbolFunctionValue(clGETHASH),
+                 clFuncallFunction(clSymbolFunctionChecked(clGETHASH),
                                    L_0,
                                    clSymbolValue(clstarCIRCULARITY_MAPstar,
                                                  clEOA),
@@ -239,7 +239,7 @@ clObject clPrintCircularP clVdecl(_ap)
                                          clEOA));
                     clSetq(L_value424,
                            clSetSymbolValueValue(clstarCURRENT_CIRCLEstar,
-                                                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                                    L_0,
                                                                    I_1,
                                                                    clEOA))); }
@@ -268,7 +268,7 @@ clObject clPrintCircularP clVdecl(_ap)
                        clSymbolValue(clstarCIRCULARITY_MAPstar,
                                      clEOA));
                 clSetq(L_value427,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          I_0,
                                          id,
                                          clEOA));
@@ -375,7 +375,7 @@ void clInitCircle __P((void))
   { clObject L_resource0;
     { clObject L_7, L_5, L_3;
       clSetq(L_3, clMakeClosure(0, clLambda, clNULL_HOOK));
-      clSetq(L_5, clSymbolFunctionValue(clIDENTITY_REST));
+      clSetq(L_5, clSymbolFunctionChecked(clIDENTITY_REST));
       clSetq(L_7, clMakeClosure(0, clLambda_r1, clNULL_HOOK));
       clSetq(L_resource0,
              clMakeResource(keyNAME,
@@ -387,7 +387,7 @@ void clInitCircle __P((void))
                             keyDEINITIALIZER,
                             L_7,
                             keyMATCHER,
-                            clSymbolFunctionValue(clDEFAULT_RESOURCE_MATCHER),
+                            clSymbolFunctionChecked(clDEFAULT_RESOURCE_MATCHER),
                             clEOA)); }
     cl_SETF_Get(L_resource0, clCIRCULARITY_MAP, clRESOURCE, clEOA);
     { clObject L_end413, n;

@@ -343,7 +343,7 @@ clObject clGentemp clVdecl(_ap)
   clLabel(l_LOOP0);
   { clObject L_values435, sym, existedp;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         { clObject L_1__R1, L_0__R1;
           clSetq(L_0__R1, prefix);
@@ -352,7 +352,7 @@ clObject clGentemp clVdecl(_ap)
                    clSymbolValue(clstarGENTEMP_COUNTERstar, clEOA));
             clSetq(L_1__R1,
                    clSetSymbolValueValue(clstarGENTEMP_COUNTERstar,
-                                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                            L_0__R2,
                                                            I_1,
                                                            clEOA))); }

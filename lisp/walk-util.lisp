@@ -743,7 +743,7 @@ become c:int, c:float, etc.
 		(let ((package (symbol-package function-name)))
 		  (or (eq package #.(find-package :eclipse))
 		      #+lisp-host (eq package #.(find-package :cl)))))
-	   `(symbol-function-value ,name)
+	   `(symbol-function-checked ,name)
 	   `(fdefinition ,name ,eoa-flag))))
     (t (fdefinition function-name))))
 

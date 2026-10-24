@@ -98,7 +98,7 @@ clObject clWithOpenStream clVdecl(_ap)
     clSetq(abortp, clGensym(STR_ABORTED__0, clEOA));
     { clObject L_values401, decls, body__R1;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         clFindDeclarations(body, clT, clEOA);
         clAccumulateValues(MVC);
         clSetq(L_values401, clMultipleValueFuncall(MVC)); }
@@ -487,7 +487,7 @@ clObject clUsingResource clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values417, decls, body__R1;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clFindDeclarations(body, clT, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values417, clMultipleValueFuncall(MVC)); }

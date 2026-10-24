@@ -65,7 +65,7 @@ clObject clDocumentation_clMETAOBJECT_eqlpipeclpipeQpipeuotepipelparenpipeclpipe
       { clObject L_0;
         clSetq(L_0, L_form632);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                              x,
                              clEOA)); } }
 
@@ -152,7 +152,7 @@ clObject clDocumentation_clCLASS_eqlpipeclpipeQpipeuotepipelparenpipeclpipeTYPEr
       { clObject L_0;
         clSetq(L_0, L_form647);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                              x,
                              clEOA)); } }
 
@@ -239,7 +239,7 @@ clObject clDocumentation_clMETHOD_COMBINATION_eqlpipeclpipeQpipeuotepipelparenpi
       { clObject L_0;
         clSetq(L_0, L_form662);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                              x,
                              clEOA)); } }
 
@@ -326,7 +326,7 @@ clObject clDocumentation_clGENERIC_FUNCTION_eqlpipeclpipeQpipeuotepipelparenpipe
       { clObject L_0;
         clSetq(L_0, L_form677);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                              x,
                              clEOA)); } }
 
@@ -415,11 +415,11 @@ clObject clDocumentation_clPACKAGED_FUNCTION_eqlpipeclpipeQpipeuotepipelparenpip
         clExtraArgs(L_0, clEOA); }
     { clObject name;
       clSetq(name,
-             clFuncallFunction(clSymbolFunctionValue(clFUNCTION_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_NAME),
                                x,
                                clEOA));
       if (clTrue(name))
-        return(clFuncallFunction(clSymbolFunctionValue(clDOCUMENTATION),
+        return(clFuncallFunction(clSymbolFunctionChecked(clDOCUMENTATION),
                                  name,
                                  doc_type,
                                  clEOA));
@@ -461,11 +461,11 @@ clObject clDocumentation_clPACKAGED_FUNCTION_eqlpipeclpipeQpipeuotepipelparenpip
         clExtraArgs(L_0, clEOA); }
     { clObject name;
       clSetq(name,
-             clFuncallFunction(clSymbolFunctionValue(clFUNCTION_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_NAME),
                                x,
                                clEOA));
       if (clTrue(name))
-        return(clFuncallFunction(clSymbolFunctionValue(clDOCUMENTATION),
+        return(clFuncallFunction(clSymbolFunctionChecked(clDOCUMENTATION),
                                  name,
                                  doc_type,
                                  clEOA));
@@ -517,7 +517,7 @@ clObject cl_SETF_Documentation_clT_clPACKAGED_FUNCTION_eqlpipeclpipeQpipeuotepip
         clExtraArgs(L_0, clEOA); }
     { clObject name;
       clSetq(name,
-             clFuncallFunction(clSymbolFunctionValue(clFUNCTION_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_NAME),
                                x,
                                clEOA));
       if (clTrue(name))
@@ -574,7 +574,7 @@ clObject cl_SETF_Documentation_clT_clPACKAGED_FUNCTION_eqlpipeclpipeQpipeuotepip
         clExtraArgs(L_0, clEOA); }
     { clObject name;
       clSetq(name,
-             clFuncallFunction(clSymbolFunctionValue(clFUNCTION_NAME),
+             clFuncallFunction(clSymbolFunctionChecked(clFUNCTION_NAME),
                                x,
                                clEOA));
       if (clTrue(name))
@@ -1016,7 +1016,7 @@ clObject clDocumentation_clSYMBOL_eqlpipeclpipeQpipeuotepipelparenpipeclpipeTYPE
     { clObject CL_class;
       clSetq(CL_class, clFindClass(x, clNIL, clEOA));
       if (clTrue(CL_class))
-        return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+        return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                                  CL_class,
                                  clEOA));
       else return(clDocData(x, doc_type, clEOA)); } } }
@@ -1108,7 +1108,7 @@ clObject clDocumentation_clSYMBOL_eqlpipeclpipeQpipeuotepipelparenpipeclpipeSTRU
       { clObject L_0;
         clSetq(L_0, L_form828);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                              clFindClass(x, clEOA),
                              clEOA)); } }
 
@@ -1197,7 +1197,7 @@ clObject clDocumentation_clSYMBOL_eqlpipeclpipeQpipeuotepipelparenpipeclpipeMETH
       { clObject L_0;
         clSetq(L_0, L_form843);
         clExtraArgs(L_0, clEOA); }
-    return(clFuncallFunction(clSymbolFunctionValue(clOBJECT_DOCUMENTATION),
+    return(clFuncallFunction(clSymbolFunctionChecked(clOBJECT_DOCUMENTATION),
                              clFindMethodCombinationType(x, clEOA),
                              clEOA)); } }
 

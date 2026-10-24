@@ -267,7 +267,7 @@ clObject clOsEnoughNamestring clVdecl(_ap)
           { clObject L_1__R1;
             clSetq(L_1__R1, pos1);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clCHAR),
+                   clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                      name,
                                      L_1__R1,
                                      clEOA)); }
@@ -293,7 +293,7 @@ clObject clOsEnoughNamestring clVdecl(_ap)
       { clObject L_2;
         clSetq(L_2, pos);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                  name,
                                  I_0,
                                  L_2,
@@ -516,7 +516,7 @@ static clObject clResolveVersion1_Lambda clVdecl(_ap)
           clSetq(L_0__R1, b);
           clSetq(L_1, clPathnameVersion(L_0__R1, clEOA)); }
         clSetq(L_test__R1,
-               clFuncallFunction(clSymbolFunctionValue(clLT),
+               clFuncallFunction(clSymbolFunctionChecked(clLT),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -539,7 +539,7 @@ clObject clResolveVersion1 clVdecl(_ap)
       clSetq(L_1, choices);
       clSetq(unspecific,
              clFind(keyUNSPECIFIC, L_1, keyKEY,
-                    clSymbolFunctionValue(clPATHNAME_VERSION),
+                    clSymbolFunctionChecked(clPATHNAME_VERSION),
                     clEOA)); }
     { clObject L_key403;
       clSetq(L_key403, version);
@@ -555,7 +555,7 @@ clObject clResolveVersion1 clVdecl(_ap)
             return(clFind(L_0,
                           L_1,
                           keyKEY,
-                          clSymbolFunctionValue(clPATHNAME_VERSION),
+                          clSymbolFunctionChecked(clPATHNAME_VERSION),
                           clEOA)); }
       else if (_clEq(L_key403, keyOLDEST))
         { clObject L_g405;
@@ -584,7 +584,7 @@ clObject clResolveVersion1 clVdecl(_ap)
             return(clFind(L_0,
                           choices__R1,
                           keyKEY,
-                          clSymbolFunctionValue(clPATHNAME_VERSION),
+                          clSymbolFunctionChecked(clPATHNAME_VERSION),
                           clEOA)); } }
       else return(clValues1(clNIL)); } } }
 
@@ -624,14 +624,14 @@ clObject clProbeFile1 clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, path);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+               clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                  L_0,
                                  clEnv(0, *file_stream),
                                  clEOA)); }
       if (clTrue(L_test))
         { clObject L_0;
           clSetq(L_0, path);
-          return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_TRUENAME),
+          return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_TRUENAME),
                                    L_0,
                                    clEOA)); } }
     { clObject path__R1, file;
@@ -677,7 +677,7 @@ clObject clFileWriteDate clVdecl(_ap)
     if (clTrue(modified))
       { clObject L_0;
         clSetq(L_0, modified);
-        return(clFuncallFunction(clSymbolFunctionValue(clADD),
+        return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_2208988800,
                                  clEOA)); }
@@ -737,7 +737,7 @@ clObject clRenameFile clVdecl(_ap)
       clSetq(L_0, new_file);
       clSetq(CL_new, clMergePathnames(L_0, file, clEOA)); }
     clSetq(true1,
-           clFuncallFunction(clSymbolFunctionValue(clTRUENAME),
+           clFuncallFunction(clSymbolFunctionChecked(clTRUENAME),
                              file,
                              clEOA));
     clSetq(translated2, clTranslateLogicalPathname(CL_new, clEOA));
@@ -764,7 +764,7 @@ clObject clRenameFile clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, name2);
         clSetq(L_2,
-               clFuncallFunction(clSymbolFunctionValue(clTRUENAME),
+               clFuncallFunction(clSymbolFunctionChecked(clTRUENAME),
                                  L_0__R1,
                                  clEOA)); }
       return(clValues(CL_new, true1, L_2, clEOA)); } } }
@@ -793,7 +793,7 @@ clObject clExpungeFile clVdecl(_ap)
         clSetq(L_0__R1, filename);
         clSetq(L_0, clMergePathnames(L_0__R1, clEOA)); }
       clSetq(true1,
-             clFuncallFunction(clSymbolFunctionValue(clTRUENAME),
+             clFuncallFunction(clSymbolFunctionChecked(clTRUENAME),
                                L_0,
                                clEOA)); }
     { clObject L_g408;
@@ -838,7 +838,7 @@ clObject clEnsureDirectoriesExist clVdecl(_ap)
       clSetq(i, I_1);
       clSetq(L_g0, clLength(dirs, clEOA));
       clLabel(NEXT_LOOP);
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    i,
                                    L_g0,
                                    clEOA)))
@@ -846,7 +846,7 @@ clObject clEnsureDirectoriesExist clVdecl(_ap)
       { clObject path;
         { clObject L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                    dirs,
                                    I_0,
                                    i,
@@ -858,7 +858,7 @@ clObject clEnsureDirectoriesExist clVdecl(_ap)
                 clSetq(L_0,
                        clSymbolValue(clstarSTANDARD_OUTPUTstar,
                                      clEOA));
-                clFuncallFunction(clSymbolFunctionValue(clFORMAT),
+                clFuncallFunction(clSymbolFunctionChecked(clFORMAT),
                                   L_0,
                                   STR_tildeampersandCreating_tildesdottildepercent__29,
                                   path,
@@ -900,7 +900,7 @@ clObject clExtendDirectory clVdecl(_ap)
         clSetq(L_0, clLength(so_far, clEOA));
         clSetq(L_1, pos);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clGT),
+               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -915,7 +915,7 @@ clObject clExtendDirectory clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, pos);
                 clSetq(pos,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          L_0,
                                          I_1,
                                          clEOA)); } }
@@ -924,7 +924,7 @@ clObject clExtendDirectory clVdecl(_ap)
               { clObject L_1__R2;
                 clSetq(L_1__R2, pos);
                 clSetq(L_1__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                          directory,
                                          L_1__R2,
                                          clEOA)); }
@@ -1003,7 +1003,7 @@ static clObject clDirectory_Lambda clVdecl(_ap)
                                      clEOA)); }
           if (clTrue(extension))
             { clObject L_0;
-              clSetq(L_0, clSymbolFunctionValue(clDIRECTORY));
+              clSetq(L_0, clSymbolFunctionChecked(clDIRECTORY));
               return(clApply(L_0,
                              extension,
                              keyIF_DOES_NOT_EXIST,
@@ -1042,7 +1042,7 @@ static clObject clDirectory_Match clVdecl(_ap)
   { clObject L_1, L_0;
     clSetq(L_0, a);
     clSetq(L_1, b);
-    return(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_MATCH),
+    return(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_MATCH),
                              L_0,
                              L_1,
                              clNIL,
@@ -1077,7 +1077,7 @@ clObject clDirectory clVdecl(_ap)
     clSetq(dir, clPathnameDirectory(*file, keyCASE, keyCOMMON, clEOA));
     clSetq(host, clPathnameHost(*file, keyCASE, keyCOMMON, clEOA));
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clWILDCARDP));
+      clSetq(L_0, clSymbolFunctionChecked(clWILDCARDP));
       clSetq(*wild_pos, clPositionIf(L_0, dir, clEOA)); }
     if (clTrue(*wild_pos))
       { clObject *wildcard = clMakeBinding(),
@@ -1086,7 +1086,7 @@ clObject clDirectory clVdecl(_ap)
         if (clTrue(clNot(clKeywordp(*wildcard, clEOA), clEOA)))
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                      dir,
                                      I_0,
                                      cl1PLUS_FUNC(*wild_pos, clEOA),
@@ -1097,7 +1097,7 @@ clObject clDirectory clVdecl(_ap)
         { clObject L_1, L_0;
           if (_clEq(*wildcard, keyWILD_INFERIORS))
             { clObject L_1__R1, L_0__R1;
-              clSetq(L_0__R1, clSymbolFunctionValue(clDIRECTORY));
+              clSetq(L_0__R1, clSymbolFunctionChecked(clDIRECTORY));
               clSetq(L_1__R1, clRemoveWild(*file, clEOA));
               clSetq(L_0,
                      clApply(L_0__R1,
@@ -1118,12 +1118,12 @@ clObject clDirectory clVdecl(_ap)
                                  &*wildcard,
                                  &*keys));
             { clObject L_2, L_1__R2, L_0__R2;
-              clSetq(L_0__R2, clSymbolFunctionValue(clDIRECTORY));
+              clSetq(L_0__R2, clSymbolFunctionChecked(clDIRECTORY));
               { clObject L_1__R3, L_0__R3;
                 { clObject L_2__R2;
                   clSetq(L_2__R2, *wild_pos);
                   clSetq(L_0__R3,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                            dir,
                                            I_0,
                                            L_2__R2,
@@ -1258,14 +1258,14 @@ clObject clDirectory clVdecl(_ap)
                             clBlockEnd(NIL); } }
                         else
                         { clObject L_3;
-                          clSetq(L_3, clSymbolFunctionValue(clEQL));
+                          clSetq(L_3, clSymbolFunctionChecked(clEQL));
                           clSetq(pathnames,
                                  clDelete(version,
                                           paths,
                                           keyTEST_NOT,
                                           L_3,
                                           keyKEY,
-                                          clSymbolFunctionValue(clPATHNAME_VERSION),
+                                          clSymbolFunctionChecked(clPATHNAME_VERSION),
                                           clEOA)); }
                         { clObject sub;
                           clSetq(sub, pathnames);
@@ -1316,7 +1316,7 @@ clObject clDirectory clVdecl(_ap)
                                             dirpath,
                                             keyUNSPECIFIC,
                                             clEOA)); }
-                  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clPATHNAME_MATCH),
+                  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clPATHNAME_MATCH),
                                                p,
                                                path,
                                                clNIL,
@@ -1403,6 +1403,8 @@ clObject clFileStreamClass_clPATHNAME_clPATHNAME_clT_clT_clT clVdecl(_ap)
         clSetq(element_type, CONS_61);
       else if (_clEq(L_key439, clUNSIGNED_BYTE))
         clSetq(element_type, CONS_42); }
+    if (_clEq(element_type, clCHARACTER) && _clEq(external_format, keyASCII))
+      clSetq(element_type, clBASE_CHAR);
     { clObject format, set, L_g1;
       clSetq(format, clNIL);
       clSetq(set, clNIL);
@@ -1457,7 +1459,7 @@ clObject clFileStreamClass_clPATHNAME_clPATHNAME_clT_clT_clT clVdecl(_ap)
                   clSetq(L_0, safe_type);
                   clSetq(L_1, type);
                   clSetq(L_test__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBTYPEP),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBTYPEP),
                                            L_0,
                                            L_1,
                                            clEOA)); }
@@ -1500,7 +1502,7 @@ clObject clFileStreamClass_clPATHNAME_clPATHNAME_clT_clT_clT clVdecl(_ap)
               { clObject L_3, L_2, L_1;
                 clSetq(L_1, element_type);
                 { clObject L_1__R1, L_0__R1;
-                  clSetq(L_0__R1, clSymbolFunctionValue(clFIRST));
+                  clSetq(L_0__R1, clSymbolFunctionChecked(clFIRST));
                   clSetq(L_1__R1, set);
                   clSetq(L_2, clMapcar(L_0__R1, L_1__R1, clEOA)); }
                 clSetq(L_3, external_format);
@@ -1737,7 +1739,7 @@ clObject clOpen clVdecl(_ap)
       clSetq(L_3, external_format);
       clSetq(L_4, element_type);
       clSetq(CL_class,
-             clFuncallFunction(clSymbolFunctionValue(clFILE_STREAM_CLASS),
+             clFuncallFunction(clSymbolFunctionChecked(clFILE_STREAM_CLASS),
                                path,
                                L_1,
                                L_2,
@@ -1745,7 +1747,7 @@ clObject clOpen clVdecl(_ap)
                                L_4,
                                clEOA)); }
     { clObject L_8, L_7, L_5, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clMAKE_INSTANCE));
+      clSetq(L_0, clSymbolFunctionChecked(clMAKE_INSTANCE));
       clSetq(L_5, translated);
       clSetq(L_7, *truename);
       clSetq(L_8, *args);
@@ -1759,7 +1761,7 @@ clObject clOpen clVdecl(_ap)
         clSetq(L_test, clEq(L_0, keyAPPEND, clEOA)); }
       if (clTrue(L_test))
         clFilePosition(stream,
-                       clFuncallFunction(clSymbolFunctionValue(clFILE_LENGTH),
+                       clFuncallFunction(clSymbolFunctionChecked(clFILE_LENGTH),
                                          stream,
                                          clEOA),
                        clEOA); }
@@ -1768,7 +1770,7 @@ clObject clOpen clVdecl(_ap)
         clSetq(L_0, direction);
         clSetq(L_test, clEql(L_0, keyPROBE, clEOA)); }
       if (clTrue(L_test))
-        clFuncallFunction(clSymbolFunctionValue(clCLOSE),
+        clFuncallFunction(clSymbolFunctionChecked(clCLOSE),
                           stream,
                           clEOA); }
     return(clValues1(stream)); } }
@@ -2134,7 +2136,7 @@ clObject clStreamElementSize_clBUFFERED_FILE_STREAM clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, stream);
         clSetq(element_type,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_ELEMENT_TYPE),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ELEMENT_TYPE),
                                  L_0,
                                  clEOA)); }
       if (_clEq(element_type, clBASE_CHAR))
@@ -2162,7 +2164,7 @@ clObject clStreamElementSize_clBUFFERED_FILE_STREAM clVdecl(_ap)
           if (clTrue(L_test__R3))
             { clObject L_0;
               clSetq(L_0, clSecond(element_type, clEOA));
-              return(clFuncallFunction(clSymbolFunctionValue(clDIV),
+              return(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                        L_0,
                                        I_8,
                                        clEOA)); }
@@ -2198,7 +2200,7 @@ clObject clFileLength_clFILE_STREAM clVdecl(_ap)
           { clObject L_0__R2;
             clSetq(L_0__R2, stream);
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clFILE_STREAM_DESCRIPTOR),
+                   clFuncallFunction(clSymbolFunctionChecked(clFILE_STREAM_DESCRIPTOR),
                                      L_0__R2,
                                      clEOA)); }
           L_0 = clFileDescriptorLength(L_0__R1); }
@@ -2206,11 +2208,11 @@ clObject clFileLength_clFILE_STREAM clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, stream);
         clSetq(factor,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_ELEMENT_SIZE),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ELEMENT_SIZE),
                                  L_0,
                                  clEOA)); }
       if (clTrue((clTrue(factor) ? length : clNIL)))
-        return(clFuncallFunction(clSymbolFunctionValue(clDIV),
+        return(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                  length,
                                  factor,
                                  clEOA));
@@ -2262,7 +2264,7 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
             if (clTrue(end)) clSetq(L_1, end);
             else clSetq(L_1, clLength(object, clEOA));
             clSetq(L_test__R2,
-                   clFuncallFunction(clSymbolFunctionValue(clGE),
+                   clFuncallFunction(clSymbolFunctionChecked(clGE),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -2277,14 +2279,14 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, stream);
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clOUTPUT_STREAM_P),
+                   clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_STREAM_P),
                                      L_0,
                                      clEOA)); }
           if (clTrue(L_test__R1))
             { clObject L_0;
               clSetq(L_0, stream);
               clSetq(pos,
-                     clFuncallFunction(clSymbolFunctionValue(clGET_FILE_POSITION),
+                     clFuncallFunction(clSymbolFunctionChecked(clGET_FILE_POSITION),
                                        L_0,
                                        clEOA)); }
           else clSetq(pos, clNIL); }
@@ -2295,7 +2297,7 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
                 clSetq(L_0, stream);
                 clSetq(L_1, pos);
                 clSetq(L_test__R3,
-                       clFuncallFunction(clSymbolFunctionValue(clSET_FILE_POSITION),
+                       clFuncallFunction(clSymbolFunctionChecked(clSET_FILE_POSITION),
                                          L_0,
                                          L_1,
                                          clEOA)); }
@@ -2334,7 +2336,7 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
                       clSetq(L_3, start);
                       clSetq(L_5, end);
                       clSetq(L_test__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_SEQUENCE),
+                             clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_SEQUENCE),
                                                L_0,
                                                L_1,
                                                keySTART,
@@ -2347,7 +2349,7 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
                       clSetq(L_0, stream);
                       clSetq(L_1, object);
                       clSetq(L_test__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_CHAR),
+                             clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_CHAR),
                                                L_0,
                                                L_1,
                                                clEOA)); }
@@ -2356,7 +2358,7 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
                       clSetq(L_0, stream);
                       clSetq(L_1, object);
                       clSetq(L_test__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_BYTE),
+                             clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_BYTE),
                                                L_0,
                                                L_1,
                                                clEOA)); }
@@ -2369,19 +2371,19 @@ clObject clComputedFileSequenceLength clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, stream);
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clGET_FILE_POSITION),
+                         clFuncallFunction(clSymbolFunctionChecked(clGET_FILE_POSITION),
                                            L_0__R1,
                                            clEOA)); }
                 clSetq(L_1, pos);
                 clSetq(L_first_val552,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0,
                                          L_1,
                                          clEOA)); }
               { clObject L_1, L_0;
                 clSetq(L_0, stream);
                 clSetq(L_1, pos);
-                clFuncallFunction(clSymbolFunctionValue(clSET_FILE_POSITION),
+                clFuncallFunction(clSymbolFunctionChecked(clSET_FILE_POSITION),
                                   L_0,
                                   L_1,
                                   clEOA); }
@@ -2468,7 +2470,7 @@ clObject clFileSequenceLength_clFILE_STREAM_clT clVdecl(_ap)
                 clSetq(L_0__R1, object);
                 clSetq(L_0, clLength(L_0__R1, clEOA)); } }
           clSetq(L_1, start);
-          return(clFuncallFunction(clSymbolFunctionValue(clSUBT),
+          return(clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -2498,7 +2500,7 @@ clObject clFileStringLength clVdecl(_ap)
   { clObject L_1, L_0;
     clSetq(L_0, stream);
     clSetq(L_1, object);
-    return(clFuncallFunction(clSymbolFunctionValue(clFILE_SEQUENCE_LENGTH),
+    return(clFuncallFunction(clSymbolFunctionChecked(clFILE_SEQUENCE_LENGTH),
                              L_0,
                              L_1,
                              clEOA)); } }
@@ -2531,7 +2533,7 @@ clObject clGetFilePosition_clFILE_STREAM clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, stream);
         clSetq(size,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_ELEMENT_SIZE),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ELEMENT_SIZE),
                                  L_0,
                                  clEOA)); }
       if (clTrue(size))
@@ -2541,12 +2543,12 @@ clObject clGetFilePosition_clFILE_STREAM clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, stream);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clFILE_STREAM_DESCRIPTOR),
+                       clFuncallFunction(clSymbolFunctionChecked(clFILE_STREAM_DESCRIPTOR),
                                          L_0__R3,
                                          clEOA)); }
               L_0__R1 = clFileDescriptorPosition(L_0__R2); }
             clSetq(L_0, clIntInteger(L_0__R1)); }
-          return(clFuncallFunction(clSymbolFunctionValue(clDIV),
+          return(clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                    L_0,
                                    size,
                                    clEOA)); }
@@ -2566,7 +2568,7 @@ static clObject clGetFilePosition_clBUFFERED_FILE_INPUT_STREAM_CallNextMethod cl
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2577,10 +2579,10 @@ static clObject clGetFilePosition_clBUFFERED_FILE_INPUT_STREAM_CallNextMethod cl
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clGET_FILE_POSITION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -2626,23 +2628,23 @@ clObject clGetFilePosition_clBUFFERED_FILE_INPUT_STREAM clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, stream);
                 clSetq(L_1,
-                       clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER),
+                       clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER),
                                          L_0__R1,
                                          clEOA)); }
               { clObject L_0__R1;
                 clSetq(L_0__R1, stream);
                 clSetq(L_3,
-                       clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                       clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                          L_0__R1,
                                          clEOA)); }
               { clObject L_0__R1;
                 clSetq(L_0__R1, stream);
                 clSetq(L_5,
-                       clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_END),
+                       clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_END),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(buffer_pos,
-                     clFuncallFunction(clSymbolFunctionValue(clFILE_SEQUENCE_LENGTH),
+                     clFuncallFunction(clSymbolFunctionChecked(clFILE_SEQUENCE_LENGTH),
                                        L_0,
                                        L_1,
                                        keySTART,
@@ -2653,17 +2655,17 @@ clObject clGetFilePosition_clBUFFERED_FILE_INPUT_STREAM clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, stream);
               clSetq(size,
-                     clFuncallFunction(clSymbolFunctionValue(clSTREAM_ELEMENT_SIZE),
+                     clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ELEMENT_SIZE),
                                        L_0,
                                        clEOA)); }
             if (clTrue((clTrue(buffer_pos) ? size : clNIL)))
               { clObject L_0;
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clDIV),
+                       clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                          os_pos,
                                          size,
                                          clEOA));
-                return(clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                return(clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0,
                                          buffer_pos,
                                          clEOA)); }
@@ -2684,7 +2686,7 @@ static clObject clGetFilePosition_clBUFFERED_FILE_OUTPUT_STREAM_CallNextMethod c
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2695,10 +2697,10 @@ static clObject clGetFilePosition_clBUFFERED_FILE_OUTPUT_STREAM_CallNextMethod c
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clGET_FILE_POSITION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -2744,28 +2746,28 @@ clObject clGetFilePosition_clBUFFERED_FILE_OUTPUT_STREAM clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, stream);
                 clSetq(L_1,
-                       clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                       clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(buffer_pos,
-                     clFuncallFunction(clSymbolFunctionValue(clFILE_SEQUENCE_LENGTH),
+                     clFuncallFunction(clSymbolFunctionChecked(clFILE_SEQUENCE_LENGTH),
                                        L_0,
                                        L_1,
                                        clEOA)); }
             { clObject L_0;
               clSetq(L_0, stream);
               clSetq(size,
-                     clFuncallFunction(clSymbolFunctionValue(clSTREAM_ELEMENT_SIZE),
+                     clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ELEMENT_SIZE),
                                        L_0,
                                        clEOA)); }
             if (clTrue((clTrue(buffer_pos) ? size : clNIL)))
               { clObject L_0;
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clDIV),
+                       clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                          os_pos,
                                          size,
                                          clEOA));
-                return(clFuncallFunction(clSymbolFunctionValue(clADD),
+                return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          L_0,
                                          buffer_pos,
                                          clEOA)); }
@@ -2840,7 +2842,7 @@ static clObject clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod clVdecl(
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2851,10 +2853,10 @@ static clObject clGetFilePosition_clMB_FILE_INPUT_STREAM_CallNextMethod clVdecl(
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clGET_FILE_POSITION, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -2896,17 +2898,17 @@ clObject clGetFilePosition_clMB_FILE_INPUT_STREAM clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, stream);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_POSITION),
+                   clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_POSITION),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
             clSetq(L_0__R1, stream);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clINPUT_BUFFER_END),
+                   clFuncallFunction(clSymbolFunctionChecked(clINPUT_BUFFER_END),
                                      L_0__R1,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGE),
+                 clFuncallFunction(clSymbolFunctionChecked(clGE),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -3058,7 +3060,7 @@ clObject clSetFilePosition_clFILE_STREAM_clT clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, stream);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clFILE_STREAM_DESCRIPTOR),
+                 clFuncallFunction(clSymbolFunctionChecked(clFILE_STREAM_DESCRIPTOR),
                                    L_0__R2,
                                    clEOA)); }
         { clObject L_0__R2;
@@ -3075,12 +3077,12 @@ clObject clSetFilePosition_clFILE_STREAM_clT clVdecl(_ap)
                   { clObject L_0__R4;
                     clSetq(L_0__R4, stream);
                     clSetq(L_g615,
-                           clFuncallFunction(clSymbolFunctionValue(clSTREAM_ELEMENT_SIZE),
+                           clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ELEMENT_SIZE),
                                              L_0__R4,
                                              clEOA)); }
                   clSetq(L_1__R1, (clTrue(L_g615) ? L_g615 : I_1)); }
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clMULT),
+                       clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                          L_0__R3,
                                          L_1__R1,
                                          clEOA)); } }
@@ -3102,14 +3104,14 @@ clObject clFilePosition clVdecl(_ap)
     { clObject L_1, L_0;
       clSetq(L_0, stream);
       clSetq(L_1, position);
-      return(clFuncallFunction(clSymbolFunctionValue(clSET_FILE_POSITION),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSET_FILE_POSITION),
                                L_0,
                                L_1,
                                clEOA)); }
   else
     { clObject L_0;
       clSetq(L_0, stream);
-      return(clFuncallFunction(clSymbolFunctionValue(clGET_FILE_POSITION),
+      return(clFuncallFunction(clSymbolFunctionChecked(clGET_FILE_POSITION),
                                L_0,
                                clEOA)); } }
 
@@ -3195,7 +3197,7 @@ clObject clUserHomedirPathname clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, host);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clEQUALP),
+                 clFuncallFunction(clSymbolFunctionChecked(clEQUALP),
                                    L_0,
                                    clMachineInstance(clEOA),
                                    clEOA)); } }

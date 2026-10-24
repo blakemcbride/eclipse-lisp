@@ -79,7 +79,7 @@ clObject clQualifierMatch clVdecl(_ap)
           { clObject L_1, L_0;
             clSetq(L_0, pattern);
             clSetq(L_1, qualifiers);
-            return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+            return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                                      L_0,
                                      L_1,
                                      clEOA)); } } } }
@@ -140,7 +140,7 @@ static clObject clLambda_Lambda clVdecl(_ap)
         if (clTrue(clEndp(L_sublist396, clEOA))) clLocalReturn(NIL);
         { clObject CL_qualifiers;
           clSetq(CL_qualifiers,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                    CL_method,
                                    clEOA));
           if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -168,7 +168,7 @@ static clObject clLambda_Lambda clVdecl(_ap)
           else
             { clObject L_2;
               clSetq(L_2,
-                     clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                     clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                        CL_method,
                                        clEOA));
               clInvalidMethodError(CL_method,
@@ -346,7 +346,7 @@ static clObject clLambda_r1_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist407, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -362,7 +362,7 @@ static clObject clLambda_r1_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -519,7 +519,7 @@ static clObject clLambda_r2_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist414, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -535,7 +535,7 @@ static clObject clLambda_r2_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -691,7 +691,7 @@ static clObject clLambda_r3_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist421, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -707,7 +707,7 @@ static clObject clLambda_r3_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -864,7 +864,7 @@ static clObject clLambda_r4_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist428, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -880,7 +880,7 @@ static clObject clLambda_r4_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -1037,7 +1037,7 @@ static clObject clLambda_r5_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist435, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -1053,7 +1053,7 @@ static clObject clLambda_r5_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -1210,7 +1210,7 @@ static clObject clLambda_r6_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist442, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -1226,7 +1226,7 @@ static clObject clLambda_r6_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -1383,7 +1383,7 @@ static clObject clLambda_r7_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist449, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -1399,7 +1399,7 @@ static clObject clLambda_r7_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -1556,7 +1556,7 @@ static clObject clLambda_r8_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist456, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -1572,7 +1572,7 @@ static clObject clLambda_r8_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -1729,7 +1729,7 @@ static clObject clLambda_r9_Lambda clVdecl(_ap)
           if (clTrue(clEndp(L_sublist463, clEOA))) clLocalReturn(NIL);
           { clObject CL_qualifiers;
             clSetq(CL_qualifiers,
-                   clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                   clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                      CL_method,
                                      clEOA));
             if (clTrue(clQualifierMatch(CONS_0, CL_qualifiers, clEOA)))
@@ -1745,7 +1745,7 @@ static clObject clLambda_r9_Lambda clVdecl(_ap)
             else
               { clObject L_2;
                 clSetq(L_2,
-                       clFuncallFunction(clSymbolFunctionValue(clMETHOD_QUALIFIERS),
+                       clFuncallFunction(clSymbolFunctionChecked(clMETHOD_QUALIFIERS),
                                          CL_method,
                                          clEOA));
                 clInvalidMethodError(CL_method,
@@ -2044,11 +2044,11 @@ void clInitMethodComb __P((void))
                                   clEOA); }
   { clObject standard, instance;
     clSetq(standard, clFindMethodCombinationType(clSTANDARD, clEOA));
-    clFuncallFunction(clSymbolFunctionValue(clFINALIZE_INHERITANCE),
+    clFuncallFunction(clSymbolFunctionChecked(clFINALIZE_INHERITANCE),
                       standard,
                       clEOA);
     clSetq(instance,
-           clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+           clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                              standard,
                              clEOA));
     { clObject L_0;
@@ -2070,7 +2070,7 @@ void clInitMethodComb __P((void))
                                  clStandardInstanceSlots(instance)); }
     { clObject L_arg471, L_value469;
       clSetq(L_arg471,
-             clFuncallFunction(clSymbolFunctionValue(clCLASS_INSTANCES),
+             clFuncallFunction(clSymbolFunctionChecked(clCLASS_INSTANCES),
                                standard,
                                clEOA));
       clSetq(L_value469,

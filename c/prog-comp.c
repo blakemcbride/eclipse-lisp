@@ -339,7 +339,7 @@ static clObject clParseLambda_Parse clVdecl(_ap)
               clSetq(optionalQUESTION, clT); }
           else
             { clSetq(clEnv(7, *counter),
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        clEnv(7, *counter),
                                        I_1,
                                        clEOA));
@@ -589,7 +589,7 @@ clObject clParseLambda clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, *bindings);
       clSetq(*bindings,
-             clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+             clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                L_0,
                                clEOA)); }
     { clObject full_bindings;
@@ -606,7 +606,7 @@ clObject clParseLambda clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, *checks);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clNREVERSE),
+                 clFuncallFunction(clSymbolFunctionChecked(clNREVERSE),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_2, *decls);

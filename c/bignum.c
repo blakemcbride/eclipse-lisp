@@ -51,7 +51,7 @@ clObject clComputeXintSize clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_0;
     clSetq(L_0,
-           clFuncallFunction(clSymbolFunctionValue(clADD),
+           clFuncallFunction(clSymbolFunctionChecked(clADD),
                              I_1,
                              bits,
                              clEOA));
@@ -79,7 +79,7 @@ clObject clDigitrefExtend clVdecl(_ap)
     clEndParse(_ap); }
   if (clTrue(clZerop(l, clEOA)))
     return(clValues1(I_0));
-  else if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+  else if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                     i,
                                     l,
                                     clEOA)))
@@ -109,11 +109,11 @@ clObject clLengthXint clVdecl(_ap)
     clSetq(digit, clDigitref(xint, last));
     { clObject L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clMULT),
+             clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                last,
                                I_16,
                                clEOA));
-      if (clTrue((clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+      if (clTrue((clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                            digit,
                                            I_65535,
                                            clEOA)) ?
@@ -128,7 +128,7 @@ clObject clLengthXint clVdecl(_ap)
                  (clTrue(clSignpDigit(digit)) ?
                   clComplementDigit(digit, clEOA) : digit));
           clSetq(L_1, clLengthFixnum(L_0__R1)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clADD),
+      return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -148,7 +148,7 @@ static clObject clXintDoubleFloat_Digit clVdecl(_ap)
     if (clTrue(minusp))
       { clObject L_0;
         clSetq(L_0, (clTrue(clZerop(i, clEOA)) ? I_minus1 : I_0));
-        return(clFuncallFunction(clSymbolFunctionValue(clSUBT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  L_0,
                                  clComplementDigit(digit, clEOA),
                                  clEOA)); }
@@ -183,7 +183,7 @@ clObject clXintDoubleFloat clVdecl(_ap)
             clSetq(i, cl1MINUS_FUNC(L_0, clEOA)); }
           { clObject L_1, L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      I_65536,
                                      sum,
                                      clEOA));
@@ -196,7 +196,7 @@ clObject clXintDoubleFloat clVdecl(_ap)
                                        minusp,
                                        clEOA)); }
             clSetq(sum,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -213,7 +213,7 @@ clObject clDoubleFloatXint clVdecl(_ap)
     clSetq(minusp, clMinusp(CL_double, clEOA));
     clSetq(n,
            (clTrue(minusp) ?
-            clFuncallFunction(clSymbolFunctionValue(clSUBT),
+            clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                               I_minus1,
                               CL_double,
                               clEOA) :
@@ -230,7 +230,7 @@ clObject clDoubleFloatXint clVdecl(_ap)
       if (clTrue(clGeInteger(i, size, clEOA))) return(clValues1(p));
       { clObject L_values580, next, digit;
         { clMultipleValueCall(MVC);
-          clSetq(MVC, clSymbolFunctionValue(clLIST));
+          clSetq(MVC, clSymbolFunctionChecked(clLIST));
           { clObject L_0;
             clSetq(L_0, n);
             clFfloor(L_0, I_65536, clEOA); }
@@ -302,7 +302,7 @@ clObject clXintInteger2 clVdecl(_ap)
                         I_1 :
                         I_0));
                 clSetq(last,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          n,
                                          L_1,
                                          clEOA)); }
@@ -322,7 +322,7 @@ clObject clXintInteger2 clVdecl(_ap)
             clSetq(L_1, last);
             clSetq(digit, clDigitref(xint, L_1)); }
           if (clTrue(clSignpDigit(digit)))
-            return(clFuncallFunction(clSymbolFunctionValue(clSUBT),
+            return(clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      I_minus1,
                                      clComplementDigit(digit, clEOA),
                                      clEOA));
@@ -332,7 +332,7 @@ clObject clXintInteger2 clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, clLengthXint(xint, clEOA));
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clLE),
+                   clFuncallFunction(clSymbolFunctionChecked(clLE),
                                      L_0,
                                      I_29,
                                      clEOA)); }
@@ -407,13 +407,13 @@ clObject clCmpUxint clVdecl(_ap)
     if (clTrue(clMinusp(i, clEOA))) return(clValues1(I_0));
     { clObject a__R1, b__R1;
       clSetq(a__R1,
-             (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+             (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        i,
                                        na,
                                        clEOA)) ?
               I_0 : clDigitref(a, i)));
       clSetq(b__R1,
-             (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+             (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                        i,
                                        nb,
                                        clEOA)) ?
@@ -423,7 +423,7 @@ clObject clCmpUxint clVdecl(_ap)
           clSetq(L_0, a__R1);
           clSetq(L_1, b__R1);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clLT),
+                 clFuncallFunction(clSymbolFunctionChecked(clLT),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -435,7 +435,7 @@ clObject clCmpUxint clVdecl(_ap)
               clSetq(L_0, a__R1);
               clSetq(L_1, b__R1);
               clSetq(L_test__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clGT),
+                     clFuncallFunction(clSymbolFunctionChecked(clGT),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -457,7 +457,7 @@ clObject clNloadUxint clVdecl(_ap)
     clSetq(size, clXintSize(uxint));
     clSetq(i, I_1);
     clLabel(l_ITERATE587);
-    if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+    if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                  i,
                                  size,
                                  clEOA)))
@@ -484,7 +484,7 @@ clObject clNcomplementXint clVdecl(_ap)
         return(clValues1(v));
       { clObject digit;
         clSetq(digit,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  carry,
                                  clLogand(I_65535,
                                           clLognot(clDigitref(v, i),
@@ -558,7 +558,7 @@ clObject clMultUxint clVdecl(_ap)
     clSetq(len_a, clXintSize(a));
     clSetq(len_b, clXintSize(b));
     clSetq(len_res,
-           clFuncallFunction(clSymbolFunctionValue(clADD),
+           clFuncallFunction(clSymbolFunctionChecked(clADD),
                              len_a,
                              len_b,
                              clEOA));
@@ -578,7 +578,7 @@ clObject clMultUxint clVdecl(_ap)
           if (clTrue(clGeInteger(j, len_b, clEOA))) clLocalReturn(NIL);
           { clObject low, high;
             clSetq(low,
-                   clFuncallFunction(clSymbolFunctionValue(clMULT),
+                   clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                      x,
                                      clDigitref(b, j),
                                      clEOA));
@@ -589,7 +589,7 @@ clObject clMultUxint clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, low);
               clSetq(low,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        carry_digit,
                                        clEOA)); }
@@ -599,7 +599,7 @@ clObject clMultUxint clVdecl(_ap)
                 clSetq(L_0__R1, low);
                 clSetq(L_1, clDigitHigh(L_0__R1)); }
               clSetq(high,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -609,7 +609,7 @@ clObject clMultUxint clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, low);
               clSetq(low,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        clDigitref(res, k),
                                        clEOA)); }
@@ -619,7 +619,7 @@ clObject clMultUxint clVdecl(_ap)
                 clSetq(L_0__R1, low);
                 clSetq(L_1, clDigitHigh(L_0__R1)); }
               clSetq(high,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -633,7 +633,7 @@ clObject clMultUxint clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, k);
             clSetq(k,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      I_1,
                                      clEOA)); }
@@ -667,14 +667,14 @@ clObject clCmpXint clVdecl(_ap)
       return(clValues1(I_minus1));
     else if (clTrue((clTrue(sign_b) ? clNot(sign_a, clEOA) : clNIL)))
       return(clValues1(I_1));
-    else if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLT),
+    else if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                       na,
                                       nb,
                                       clEOA)))
       if (clTrue(sign_a))
         return(clValues1(I_1));
       else return(clValues1(I_minus1));
-    else if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+    else if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                       na,
                                       nb,
                                       clEOA)))
@@ -689,12 +689,12 @@ clObject clCmpXint clVdecl(_ap)
         { clObject a__R1, b__R1;
           clSetq(a__R1, clDigitref(a, i));
           clSetq(b__R1, clDigitref(b, i));
-          if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLT),
+          if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                        a__R1,
                                        b__R1,
                                        clEOA)))
             return(clValues1(I_minus1));
-          else if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+          else if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                             a__R1,
                                             b__R1,
                                             clEOA)))
@@ -788,7 +788,7 @@ clObject clXintBuf clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clXintSize(buf));
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clGE),
+               clFuncallFunction(clSymbolFunctionChecked(clGE),
                                  L_0,
                                  size,
                                  clEOA)); }
@@ -816,14 +816,14 @@ static clObject clLongDivision_LengthUxint clVdecl(_ap)
       if (clTrue(L_test))
         { clObject L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMULT),
+                 clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                    last,
                                    I_16,
                                    clEOA));
           { clObject L_0__R1;
             clSetq(L_0__R1, digit);
             clSetq(L_1, clLengthFixnum(L_0__R1)); }
-          return(clFuncallFunction(clSymbolFunctionValue(clADD),
+          return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0,
                                    L_1,
                                    clEOA)); } }
@@ -863,7 +863,7 @@ clObject clLongDivision clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clFuncallFunction(_LengthUxint_, num, clEOA));
         clSetq(shift,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  L_0,
                                  clFuncallFunction(_LengthUxint_,
                                                    denom,
@@ -874,7 +874,7 @@ clObject clLongDivision clVdecl(_ap)
         clSetq(subtrahend__R1,
                clAshXint(L_0, shift, subtrahend, size, clEOA)); }
       clLabel(l_ITERATE616);
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLT),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                    shift,
                                    I_0,
                                    clEOA)))
@@ -887,7 +887,7 @@ clObject clLongDivision clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, clCmpUxint(rem, subtrahend__R1, size, clEOA));
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGE),
+                 clFuncallFunction(clSymbolFunctionChecked(clGE),
                                    L_0,
                                    I_0,
                                    clEOA)); }
@@ -901,7 +901,7 @@ clObject clLongDivision clVdecl(_ap)
               clNsubtXint(rem, L_1, rem, size, clEOA); }
             { clObject L_values617, digits, bits;
               { clMultipleValueCall(MVC);
-                clSetq(MVC, clSymbolFunctionValue(clLIST));
+                clSetq(MVC, clSymbolFunctionChecked(clLIST));
                 clTruncate(shift, I_16, clEOA);
                 clAccumulateValues(MVC);
                 clSetq(L_values617, clMultipleValueFuncall(MVC)); }
@@ -961,7 +961,7 @@ clObject clTruncXint clVdecl(_ap)
     if (clTrue(sign_b)) clNcomplementXint(b, clEOA);
     { clObject L_values622, q__R1, r__R1;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_0;
           clSetq(L_0, a);
           clLongDivision(L_0, b, q, r, clEOA); }
@@ -1000,7 +1000,7 @@ clObject clGcdUxint clVdecl(_ap)
           clSetq(L_1__R1, clSymbolValue(clXINT_ZERO, clEOA));
           clSetq(L_0, clCmpUxint(u, L_1__R1, size, clEOA)); }
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clLE),
+               clFuncallFunction(clSymbolFunctionChecked(clLE),
                                  L_0,
                                  I_0,
                                  clEOA)); }
@@ -1009,7 +1009,7 @@ clObject clGcdUxint clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clCmpUxint(u, v, size, clEOA));
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clLT),
+               clFuncallFunction(clSymbolFunctionChecked(clLT),
                                  L_0,
                                  I_0,
                                  clEOA)); }
@@ -1028,7 +1028,7 @@ clObject clGcdUxint clVdecl(_ap)
       clSetq(v, clNcopyXint(v_buf, L_1, size, clEOA)); }
     { clObject L_values644, L_ignore_643, L_keeper642;
       { clMultipleValueCall(MVC);
-        clSetq(MVC, clSymbolFunctionValue(clLIST));
+        clSetq(MVC, clSymbolFunctionChecked(clLIST));
         { clObject L_1, L_0;
           clSetq(L_0, u);
           clSetq(L_1, v);
@@ -1122,7 +1122,7 @@ clObject clDivXint clVdecl(_ap)
               clSetq(L_1__R1, *d);
               clSetq(L_0, clCmpUxint(gcd, L_1__R1, l, clEOA)); }
             clSetq(L_test,
-                   clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                   clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                      L_0,
                                      I_0,
                                      clEOA)); }
@@ -1138,7 +1138,7 @@ clObject clDivXint clVdecl(_ap)
                         clSetq(L_0__R1,
                                clCmpUxint(gcd, L_1__R2, l, clEOA)); }
                       clSetq(L_test__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                             clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                                L_0__R1,
                                                I_0,
                                                clEOA)); }
@@ -1169,7 +1169,7 @@ clObject clDivXint clVdecl(_ap)
                   clSetq(L_1__R1, clSymbolValue(clXINT_ONE, clEOA));
                   clSetq(L_0, clCmpUxint(gcd, L_1__R1, l, clEOA)); }
                 clSetq(L_test__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                       clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                          L_0,
                                          I_0,
                                          clEOA)); }

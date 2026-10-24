@@ -267,7 +267,7 @@ clObject clValuesList clVdecl(_ap)
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
   { clObject L_0;
-    clSetq(L_0, clSymbolFunctionValue(clVALUES));
+    clSetq(L_0, clSymbolFunctionChecked(clVALUES));
     return(clApply(L_0, list, clEOA)); } }
 
 static clObject clProclaim_DefDecs clVdecl(_ap)
@@ -358,7 +358,7 @@ clObject clProclaim clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values501, vars, funcs, decs;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_0;
         clSetq(L_0, clList(decl_spec, clEOA));
         clCanonicalizeDeclarations(L_0, clNIL, clEOA); }

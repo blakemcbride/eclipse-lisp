@@ -136,12 +136,12 @@ clObject clMakeRandomState clVdecl(_ap)
               { clObject L_0;
                 { clObject L_0__R1;
                   clSetq(L_0__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clMULT),
+                         clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                            rand_seed,
                                            const_a,
                                            clEOA));
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0__R1,
                                            const_c,
                                            clEOA)); }
@@ -160,7 +160,7 @@ clObject clMakeRandomState clVdecl(_ap)
             clSetq(L_0__R1, source);
             clSetq(L_0, clRandomStateSeed(L_0__R1, clEOA)); }
           clSetq(seed,
-                 clFuncallFunction(clSymbolFunctionValue(clCOPY_SEQ),
+                 clFuncallFunction(clSymbolFunctionChecked(clCOPY_SEQ),
                                    L_0,
                                    clEOA)); } }
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
@@ -245,7 +245,7 @@ clObject clRandomChunk clVdecl(_ap)
     { clObject L_1;
       { clObject L_value1199;
         clSetq(L_value1199,
-               (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+               (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                          j,
                                          I_0,
                                          clEOA)) ?
@@ -257,7 +257,7 @@ clObject clRandomChunk clVdecl(_ap)
     { clObject L_1;
       { clObject L_value1201;
         clSetq(L_value1201,
-               (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+               (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                          k,
                                          I_0,
                                          clEOA)) ?
@@ -270,11 +270,11 @@ clObject clRandomChunk clVdecl(_ap)
     { clObject L_value1203;
       clSetq(L_value1203,
              (clTrue(clMinusp(a, clEOA)) ?
-              clFuncallFunction(clSymbolFunctionValue(clSUBT),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                 I_0,
                                 a,
                                 clEOA) :
-              clFuncallFunction(clSymbolFunctionValue(clSUBT),
+              clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                 I_536870908,
                                 a,
                                 clEOA)));
@@ -292,11 +292,11 @@ clObject clRandom clVdecl(_ap)
             clSymbolValue(clstarRANDOM_STATEstar, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                arg,
                                SYM_0_LTV,
                                clEOA)))
-    if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLE),
+    if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLE),
                                  arg,
                                  I_524287,
                                  clEOA)))
@@ -304,14 +304,14 @@ clObject clRandom clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, state);
           clSetq(L_0, clRandomChunk(L_0__R1, clEOA)); }
-        return(clFuncallFunction(clSymbolFunctionValue(clREM),
+        return(clFuncallFunction(clSymbolFunctionChecked(clREM),
                                  L_0,
                                  arg,
                                  clEOA)); }
     else
       { clObject shift;
         clSetq(shift,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  I_29,
                                  I_3,
                                  clEOA));
@@ -322,16 +322,16 @@ clObject clRandom clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, clIntegerLength(arg, clEOA));
             clSetq(count,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                        I_10,
                                                        shift,
                                                        clEOA),
                                      clEOA)); }
           clLabel(l_ITERATE1210);
           if (clTrue(clMinusp(count, clEOA)))
-            return(clFuncallFunction(clSymbolFunctionValue(clREM),
+            return(clFuncallFunction(clSymbolFunctionChecked(clREM),
                                      bits,
                                      arg,
                                      clEOA));
@@ -343,14 +343,14 @@ clObject clRandom clVdecl(_ap)
                 clSetq(L_1, clRandomChunk(L_0__R1, clEOA)); }
               clSetq(L_value1211, clLogxor(L_0, L_1, clEOA)); }
             clSetq(L_value1212,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      count,
                                      shift,
                                      clEOA));
             clSetq(bits, L_value1211);
             clSetq(count, L_value1212); }
           goto l_ITERATE1210; } }
-  else if (clTrue(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+  else if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
                                     arg,
                                     SYM_1_LTV,
                                     clEOA)))
@@ -360,11 +360,11 @@ clObject clRandom clVdecl(_ap)
           clSetq(L_0__R2, state);
           clSetq(L_0__R1, clRandomChunk(L_0__R2, clEOA)); }
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clDIV),
+               clFuncallFunction(clSymbolFunctionChecked(clDIV),
                                  L_0__R1,
                                  clFloat(I_536870908, arg, clEOA),
                                  clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clMULT),
+      return(clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                arg,
                                L_1,
                                clEOA)); }
@@ -643,14 +643,14 @@ void clInitRandom __P((void))
   if (clTrue(clBoundp(clRANDOM_UPPER_BOUND, clEOA)))
     { if (clTrue(clSymbolValue(clstarCONSTANT_CHECK_HOOKstar, clEOA)))
         clRedefineConstant(clRANDOM_UPPER_BOUND,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                              I_536870911,
                                              I_3,
                                              clEOA),
                            clEOA); }
   else
     clSetSymbolValueValue(clRANDOM_UPPER_BOUND,
-                          clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                          clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                             I_536870911,
                                             I_3,
                                             clEOA));
@@ -733,7 +733,7 @@ void clInitRandom __P((void))
     { if (clTrue(clSymbolValue(clstarCONSTANT_CHECK_HOOKstar, clEOA)))
         clRedefineConstant(clRANDOM_FIXNUM_MAX,
                            cl1MINUS_FUNC(clAsh(I_1,
-                                               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                                  I_29,
                                                                  I_10,
                                                                  clEOA),
@@ -743,7 +743,7 @@ void clInitRandom __P((void))
   else
     clSetSymbolValueValue(clRANDOM_FIXNUM_MAX,
                           cl1MINUS_FUNC(clAsh(I_1,
-                                              clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                              clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                                 I_29,
                                                                 I_10,
                                                                 clEOA),
@@ -763,7 +763,7 @@ void clInitRandom __P((void))
   (void) clstarRANDOM_STATEstar;
   { clObject *L_g62 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g62, clApply(L_0, clRANDOM_STATE, CONS_0, clEOA)); }
     { clObject L_1;
       clSetq(L_1,

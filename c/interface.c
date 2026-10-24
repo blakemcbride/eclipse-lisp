@@ -187,6 +187,7 @@ char *clFileOwner __P((clObject)), *clFollowLink __P((clObject)),
 clIndex clIntegerIndex __P((clObject)); 
 
 clObject _clTypeError __P((clObject, const char *)),
+  clSymbolFunction(clProto),
   _clSystemError __P((const char *));
 
 clObject clGcData __P((void)), clUnixTime __P((void)),
@@ -727,6 +728,14 @@ void clUnwindExit(exitp) clExitCell *exitp; {
  *********************************************************************/
 #define clBaseStringCharp(obj)	clBaseStringCharp1(obj, 0)
 
+/* Signals UNDEFINED-FUNCTION (via SYMBOL-FUNCTION) until symbol has a
+   function definition, then returns it. */
+clObject clUndefinedFunctionValue(symbol) clObject symbol; {
+  clObject f;
+  while (_clNull(f = clSymbolFunction(symbol, clEOA)));
+  return(f);
+}
+
 clObject _clTypeError(datum, name) clObject datum; const char *name; {
   return(clError(clTYPE_ERROR, keyDATUM, datum,
 		 keyEXPECTED_TYPE,
@@ -873,32 +882,32 @@ clObject clEq(clVaAlist) clVaDcl {
     automatically generate machine functions. */
 clObject clEqual(clVaAlist) clVaDcl {
   clObject x, y; TwoArgs(x, y);
-  return(clCallClosure(clSymbolFunctionValue(clEQUAL))(x, y, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clEQUAL))(x, y, clEOA));
 }
 clObject clEqualp(clVaAlist) clVaDcl {
   clObject x, y; TwoArgs(x, y);
-  return(clCallClosure(clSymbolFunctionValue(clEQUALP))(x, y, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clEQUALP))(x, y, clEOA));
 }
 clObject clEqualHash(clVaAlist) clVaDcl {
   clObject x; OneArg(x);
-  return(clCallClosure(clSymbolFunctionValue(clEQUAL_HASH))(x, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clEQUAL_HASH))(x, clEOA));
 }
 
 clObject clAdd(clVaAlist) clVaDcl {
   clObject x, y; TwoArgs(x, y);
-  return(clCallClosure(clSymbolFunctionValue(clADD))(x, y, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clADD))(x, y, clEOA));
 }
 clObject clSubt(clVaAlist) clVaDcl {
   clObject x, y; TwoArgs(x, y);
-  return(clCallClosure(clSymbolFunctionValue(clSUBT))(x, y, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clSUBT))(x, y, clEOA));
 }
 clObject clMult(clVaAlist) clVaDcl {
   clObject x, y; TwoArgs(x, y);
-  return(clCallClosure(clSymbolFunctionValue(clMULT))(x, y, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clMULT))(x, y, clEOA));
 }
 clObject clDiv(clVaAlist) clVaDcl {
   clObject x, y; TwoArgs(x, y);
-  return(clCallClosure(clSymbolFunctionValue(clDIV))(x, y, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clDIV))(x, y, clEOA));
 }
 
 clObject clTypep(clVaAlist) clVaDcl {
@@ -907,19 +916,19 @@ clObject clTypep(clVaAlist) clVaDcl {
     RequiredArg(x); RequiredArg(type); OptionalArg(env, clNIL);
     NoMoreArgs();
     clEndParse(_ap); }
-  return(clFuncallFunction(clSymbolFunctionValue(clTYPEP),
+  return(clFuncallFunction(clSymbolFunctionChecked(clTYPEP),
 			   x, type, env, clEOA));
 }
 
 clObject clNreverse(clVaAlist) clVaDcl {
   clObject x; OneArg(x);
-  return(clCallClosure(clSymbolFunctionValue(clNREVERSE))(x, clEOA));
+  return(clCallClosure(clSymbolFunctionChecked(clNREVERSE))(x, clEOA));
 }
 
 clObject clFormat(clVaAlist) clVaDcl {
   clObject args;
   { clBeginParse(_ap); clSetq(args, clVargs(_ap)); clEndParse(_ap); }
-  return(clApplyFunction(clSymbolFunctionValue(clFORMAT), args, clEOA));
+  return(clApplyFunction(clSymbolFunctionChecked(clFORMAT), args, clEOA));
 }
 
 
@@ -4026,40 +4035,40 @@ int describe(name, obj, ind) const char *name; clObject obj; int ind;
     describe("metaclass:", class, ind);
     if (clTrue(clTypep(obj, clSIMPLE_CONDITION, clEOA))) {
       describe("control:", 
-	       clFuncallFunction(clSymbolFunctionValue(clSIMPLE_CONDITION_FORMAT_CONTROL),
+	       clFuncallFunction(clSymbolFunctionChecked(clSIMPLE_CONDITION_FORMAT_CONTROL),
 				 obj, clEOA),
 	       ind);
       describe("arguments:", 
-	       clFuncallFunction(clSymbolFunctionValue(clSIMPLE_CONDITION_FORMAT_ARGUMENTS),
+	       clFuncallFunction(clSymbolFunctionChecked(clSIMPLE_CONDITION_FORMAT_ARGUMENTS),
 				 obj, clEOA),
 	       ind);
     }
     if (clTrue(clTypep(obj, clCELL_ERROR, clEOA)))
       describe("name:",
-	       clFuncallFunction(clSymbolFunctionValue(clCELL_ERROR_NAME),
+	       clFuncallFunction(clSymbolFunctionChecked(clCELL_ERROR_NAME),
 				 obj, clEOA),
 	       ind);
     
   } else if (_clEq(class, clFindType(clLIMITED_NUMERIC_TYPE, clNIL, clEOA))) {
     (void) puts("Limited-numeric-type");
     describe("name:",
-	     clFuncallFunction(clSymbolFunctionValue(clTYPE_NAME), obj, clEOA),
+	     clFuncallFunction(clSymbolFunctionChecked(clTYPE_NAME), obj, clEOA),
 	     ind);
     describe("base-type:",
-	     clFuncallFunction(clSymbolFunctionValue(clBASE_TYPE), obj, clEOA),
+	     clFuncallFunction(clSymbolFunctionChecked(clBASE_TYPE), obj, clEOA),
 	     ind);
     
     describe("min:",
-	     clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MIN), obj, clEOA),
+	     clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MIN), obj, clEOA),
 	     ind);
     describe("max:",
-	     clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_MAX), obj, clEOA),
+	     clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_MAX), obj, clEOA),
 	     ind);
     describe("inclusive min:",
-	     clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MIN), obj, clEOA),
+	     clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MIN), obj, clEOA),
 	     ind);
     describe("inclusive max:",
-	     clFuncallFunction(clSymbolFunctionValue(clLIMITED_TYPE_INCLUSIVE_MAX), obj, clEOA),
+	     clFuncallFunction(clSymbolFunctionChecked(clLIMITED_TYPE_INCLUSIVE_MAX), obj, clEOA),
 	     ind);
   } else {
     clSetq(wrapper, clObjectWrapper(obj));

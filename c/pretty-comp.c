@@ -102,7 +102,7 @@ clObject clPprintLogicalBlock clVdecl(_ap)
       clSetq(stream_symbol, clstarTERMINAL_IOstar); }
   { clObject L_values410, decls, body__R1;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       clFindDeclarations(body, clT, clEOA);
       clAccumulateValues(MVC);
       clSetq(L_values410, clMultipleValueFuncall(MVC)); }

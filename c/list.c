@@ -314,12 +314,12 @@ clObject clListLength clVdecl(_ap)
     if (clTrue(clNIL)) return(clValues1(clNIL));
     if (clTrue(clEndp(fast, clEOA))) return(clValues1(n));
     if (clTrue(clEndp(clCdr(fast, clEOA), clEOA)))
-      return(clFuncallFunction(clSymbolFunctionValue(clADD),
+      return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                n,
                                I_1,
                                clEOA));
     if (clTrue((_clEq(fast, slow) ?
-                clFuncallFunction(clSymbolFunctionValue(clGT),
+                clFuncallFunction(clSymbolFunctionChecked(clGT),
                                   n,
                                   I_0,
                                   clEOA) :
@@ -327,7 +327,7 @@ clObject clListLength clVdecl(_ap)
       return(clValues1(clNIL));
     { clObject L_value581, L_value582, L_value583;
       clSetq(L_value581,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                n,
                                I_2,
                                clEOA));
@@ -533,7 +533,7 @@ clObject clLast clVdecl(_ap)
         { clObject L_1;
           clSetq(L_1, n);
           clSetq(L_test__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clGE),
+                 clFuncallFunction(clSymbolFunctionChecked(clGE),
                                    i,
                                    L_1,
                                    clEOA)); }
@@ -704,8 +704,8 @@ clObject clAppend clVdecl(_ap)
   clBlockEnd(NIL);
   { clObject L_1, L_0;
     clSetq(L_0, lists);
-    clSetq(L_1, clSymbolFunctionValue(clCOPY_LIST));
-    return(clConc(L_0, L_1, clSymbolFunctionValue(clIDENTITY),
+    clSetq(L_1, clSymbolFunctionChecked(clCOPY_LIST));
+    return(clConc(L_0, L_1, clSymbolFunctionChecked(clIDENTITY),
                   clEOA)); } }
 
 clObject clNconc clVdecl(_ap)
@@ -725,7 +725,7 @@ clObject clNconc clVdecl(_ap)
   clBlockEnd(NIL);
   { clObject L_0;
     clSetq(L_0, lists);
-    return(clConc(L_0, clSymbolFunctionValue(clIDENTITY), clEOA)); } }
+    return(clConc(L_0, clSymbolFunctionChecked(clIDENTITY), clEOA)); } }
 
 clObject clCopyList clVdecl(_ap)
 { clObject list;
@@ -734,7 +734,7 @@ clObject clCopyList clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_1, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  return(clConc(list, clSymbolFunctionValue(clLIST), clEOA)); }
+  return(clConc(list, clSymbolFunctionChecked(clLIST), clEOA)); }
 
 clObject clRevappend clVdecl(_ap)
 { clObject x, y;
@@ -793,12 +793,12 @@ clObject clButlast clVdecl(_ap)
         clSetq(L_0__R2, clLength(list, clEOA));
         clSetq(L_1__R2, n);
         clSetq(L_1__R1,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  L_0__R2,
                                  L_1__R2,
                                  clEOA)); }
       clSetq(L_2, clMax(I_0, L_1__R1, clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+    return(clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                              list,
                              I_0,
                              L_2,
@@ -817,7 +817,7 @@ clObject clNbutlast clVdecl(_ap)
       clSetq(L_0, clLength(list, clEOA));
       clSetq(L_1, n);
       clSetq(size,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -950,7 +950,7 @@ clObject clAdjoin clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, L_ap);
         clSetq(key, clCar(L_0, clEOA)); }
-    else clSetq(key, clSymbolFunctionValue(clIDENTITY));
+    else clSetq(key, clSymbolFunctionChecked(clIDENTITY));
     clCheckKeys(L_keys, CONS_1, clEOA);
     clEndParse(_ap); }
   { clObject L_test;

@@ -157,7 +157,7 @@ clObject clPrintObjectAbortedP clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, clSymbolValue(clstarCURRENT_LEVELstar, clEOA));
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clGE),
+               clFuncallFunction(clSymbolFunctionChecked(clGE),
                                  L_0,
                                  clSymbolValue(clstarPRINT_LEVELstar,
                                                clEOA),
@@ -193,7 +193,7 @@ clObject clPrintElementAbortedP clVdecl(_ap)
   { clObject L_0;
     clSetq(L_0, clSymbolValue(clstarCURRENT_LENGTHstar, clEOA));
     clSetSymbolValueValue(clstarCURRENT_LENGTHstar,
-                          clFuncallFunction(clSymbolFunctionValue(clADD),
+                          clFuncallFunction(clSymbolFunctionChecked(clADD),
                                             L_0,
                                             I_1,
                                             clEOA)); }
@@ -220,7 +220,7 @@ clObject clPrintElementAbortedP clVdecl(_ap)
             clSetq(L_0,
                    clSymbolValue(clstarCURRENT_LENGTHstar, clEOA));
             clSetq(L_test__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0,
                                      clSymbolValue(clstarPRINT_LENGTHstar,
                                                    clEOA),
@@ -281,13 +281,13 @@ clObject clStreamNewline_clSTREAM_clT clVdecl(_ap)
       if (_clEq(L_key423, keyUNCONDITIONAL))
         { clObject L_0;
           clSetq(L_0, stream);
-          return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_TERPRI),
+          return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_TERPRI),
                                    L_0,
                                    clEOA)); }
       else if (_clEq(L_key423, keyFRESH))
         { clObject L_0;
           clSetq(L_0, stream);
-          return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_FRESH_LINE),
+          return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_FRESH_LINE),
                                    L_0,
                                    clEOA)); }
       else return(clValues1(clNIL)); } } }
@@ -360,7 +360,7 @@ clObject clTabPosition clVdecl(_ap)
         { clObject L_1, L_0;
           clSetq(L_0, current);
           clSetq(L_1, colnum);
-          return(clFuncallFunction(clSymbolFunctionValue(clADD),
+          return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -385,7 +385,7 @@ clObject clTabPosition clVdecl(_ap)
                                clEOA)); }
           clSetq(L_1__R1, colinc);
           clSetq(L_1, clFloor(L_0__R1, L_1__R1, clEOA)); }
-        return(clFuncallFunction(clSymbolFunctionValue(clMULT),
+        return(clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -395,7 +395,7 @@ clObject clTabPosition clVdecl(_ap)
           clSetq(L_0, colnum);
           clSetq(L_1, current);
           clSetq(L_test__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -412,7 +412,7 @@ clObject clTabPosition clVdecl(_ap)
                   { clObject L_1__R4;
                     clSetq(L_1__R4, colnum);
                     clSetq(L_1__R3,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                              I_0,
                                              L_1__R4,
                                              clEOA)); }
@@ -422,11 +422,11 @@ clObject clTabPosition clVdecl(_ap)
                 clSetq(L_1__R2, colinc);
                 clSetq(L_1__R1, clFloor(L_0__R2, L_1__R2, clEOA)); }
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clMULT),
+                     clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                        L_0__R1,
                                        L_1__R1,
                                        clEOA)); }
-            return(clFuncallFunction(clSymbolFunctionValue(clADD),
+            return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      L_1,
                                      clEOA)); } } } }
@@ -492,7 +492,7 @@ clObject clStreamTab_clSTREAM_clT_clT_clT clVdecl(_ap)
           { clObject L_0__R2;
             clSetq(L_0__R2, stream);
             clSetq(L_g439,
-                   clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_COLUMN),
+                   clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_COLUMN),
                                      L_0__R2,
                                      clEOA)); }
           clSetq(L_0__R1, (clTrue(L_g439) ? L_g439 : I_0)); }
@@ -507,7 +507,7 @@ clObject clStreamTab_clSTREAM_clT_clT_clT clVdecl(_ap)
         clSetq(L_3, colinc);
         clSetq(L_1,
                clTabPosition(L_0__R1, L_1__R1, L_2, L_3, clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_ADVANCE_TO_COLUMN),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_ADVANCE_TO_COLUMN),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -525,7 +525,7 @@ static clObject clLambda_r1 clVdecl(_ap)
     { clObject L_2;
       clSetq(L_2, stream);
       clSetq(L_object1,
-             clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+             clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                                clPRETTY_PRINTING_STREAM,
                                keySTREAM,
                                L_2,
@@ -581,7 +581,7 @@ static clObject clStreamPprint_clSTREAM_clT_clT_Lambda clVdecl(_ap)
       if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
       clEndParse(_ap); }
     { clObject L_3, L_2, L_1, L_0;
-      clSetq(L_0, clSymbolFunctionValue(clSTREAM_PPRINT));
+      clSetq(L_0, clSymbolFunctionChecked(clSTREAM_PPRINT));
       clSetq(L_1, str);
       clSetq(L_2, clEnv(1, *object));
       clSetq(L_3, clEnv(2, *printer));
@@ -650,13 +650,13 @@ clObject clStreamPprint_clSTREAM_clT_clT clVdecl(_ap)
               clSetSymbolValueValue(clstarCURRENT_CIRCLEstar,
                                     STARcurrent_circleSTAR);
               { clObject L_3, L_2, L_0;
-                clSetq(L_0, clSymbolFunctionValue(clSTREAM_PPRINT));
+                clSetq(L_0, clSymbolFunctionChecked(clSTREAM_PPRINT));
                 clSetq(L_2, *object);
                 clSetq(L_3, *printer);
                 clApply(L_0, stream__R1, L_2, L_3, *args, clEOA); }
               clUnwind(1); }
             { clObject L_3, L_2, L_1, L_0;
-              clSetq(L_0, clSymbolFunctionValue(clSTREAM_PPRINT));
+              clSetq(L_0, clSymbolFunctionChecked(clSTREAM_PPRINT));
               clSetq(L_1, *stream);
               clSetq(L_2, *object);
               clSetq(L_3, *printer);
@@ -688,7 +688,7 @@ clObject clStreamPprint_clSTREAM_clT_clT clVdecl(_ap)
               else
                 { { clObject L_3, L_2, L_0;
                     clSetq(L_0,
-                           clSymbolFunctionValue(clSTREAM_PPRINT));
+                           clSymbolFunctionChecked(clSTREAM_PPRINT));
                     clSetq(L_2, *object);
                     clSetq(L_3, *printer);
                     clApply(L_0, xp, L_2, L_3, *args, clEOA); }
@@ -751,7 +751,7 @@ clObject clPprintToplevel clVdecl(_ap)
         clSetq(L_4, prefix);
         clSetq(L_6, suffix);
         clSetq(L_8, per_line_p);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_PPRINT),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_PPRINT),
                           L_0,
                           L_1,
                           L_2,
@@ -800,7 +800,7 @@ clObject clPprintNewline clVdecl(_ap)
                       keyEXPECTED_TYPE,
                       CONS_27,
                       clEOA))); }
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_NEWLINE),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_NEWLINE),
                       L_0,
                       L_1,
                       clEOA); }
@@ -833,7 +833,7 @@ clObject clPprintIndent clVdecl(_ap)
                       CONS_30,
                       clEOA))); }
     clSetq(L_2, n);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_INDENT),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_INDENT),
                       L_0,
                       L_1,
                       L_2,
@@ -877,7 +877,7 @@ clObject clPprintTab clVdecl(_ap)
                       clEOA))); }
     clSetq(L_2, colnum);
     clSetq(L_3, colinc);
-    clFuncallFunction(clSymbolFunctionValue(clSTREAM_TAB),
+    clFuncallFunction(clSymbolFunctionChecked(clSTREAM_TAB),
                       L_0,
                       L_1,
                       L_2,
@@ -934,7 +934,7 @@ static clObject clPprintStyle_l_LogicalBlock clVdecl(_ap)
       { clObject L_3, L_0;
         clSetq(L_0, stream);
         clSetq(L_3, clEnv(0, *tabsize));
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_TAB),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_TAB),
                           L_0,
                           keySECTION_RELATIVE,
                           I_0,
@@ -943,7 +943,7 @@ static clObject clPprintStyle_l_LogicalBlock clVdecl(_ap)
     { clObject L_1, L_0;
       clSetq(L_0, stream);
       clSetq(L_1, clEnv(1, *style));
-      clFuncallFunction(clSymbolFunctionValue(clSTREAM_NEWLINE),
+      clFuncallFunction(clSymbolFunctionChecked(clSTREAM_NEWLINE),
                         L_0,
                         L_1,
                         clEOA); }
@@ -1085,14 +1085,14 @@ clObject clStreamWriteChar_clCASE_MODE_STREAM_clCHARACTER clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clENCAPSULATING_STREAM_STREAM),
+               clFuncallFunction(clSymbolFunctionChecked(clENCAPSULATING_STREAM_STREAM),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_1__R1, L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1__R1, CL_char);
         clSetq(L_1, clHandleCharMode(L_0__R1, L_1__R1, clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_CHAR),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_CHAR),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -1109,7 +1109,7 @@ clObject clHandleCharMode clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_key479,
-             clFuncallFunction(clSymbolFunctionValue(clCHAR_MODE),
+             clFuncallFunction(clSymbolFunctionChecked(clCHAR_MODE),
                                L_0,
                                clEOA)); }
     if (_clEq(L_key479, keyCAP0))
@@ -1190,7 +1190,7 @@ static clObject clLambda_r5 clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_object4;
     clSetq(L_object4,
-           clFuncallFunction(clSymbolFunctionValue(clMAKE_INSTANCE),
+           clFuncallFunction(clSymbolFunctionChecked(clMAKE_INSTANCE),
                              clCASE_MODE_STREAM,
                              clEOA));
     { clObject L_arg487, L_value486;
@@ -1356,7 +1356,7 @@ clObject clStreamCasePrint_clSTREAM_clT_clT clVdecl(_ap)
         { clObject L_2, L_1;
           clSetq(L_1, mode);
           clSetq(L_2, printer);
-          clFuncallFunction(clSymbolFunctionValue(clSTREAM_CASE_PRINT),
+          clFuncallFunction(clSymbolFunctionChecked(clSTREAM_CASE_PRINT),
                             CL_new,
                             L_1,
                             L_2,
@@ -1533,16 +1533,16 @@ clObject clStreamLineColumn_clPRETTY_PRINTING_STREAM clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, stream);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, stream);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                  L_0__R1,
                                  clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clADD),
+      return(clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); } } }
@@ -1588,7 +1588,7 @@ clObject clStreamWriteChar_clPRETTY_PRINTING_STREAM_clCHARACTER clVdecl(_ap)
       if (clTrue(L_test))
         { clObject L_0;
           clSetq(L_0, xp);
-          clFuncallFunction(clSymbolFunctionValue(clSTREAM_TERPRI),
+          clFuncallFunction(clSymbolFunctionChecked(clSTREAM_TERPRI),
                             L_0,
                             clEOA); }
       else
@@ -1624,7 +1624,7 @@ clObject clStreamTerpri_clPRETTY_PRINTING_STREAM clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0, xp);
-      clFuncallFunction(clSymbolFunctionValue(clSTREAM_NEWLINE),
+      clFuncallFunction(clSymbolFunctionChecked(clSTREAM_NEWLINE),
                         L_0,
                         keyUNCONDITIONAL,
                         clEOA); }
@@ -1744,7 +1744,7 @@ clObject clStreamFinishOutput_keyBEFORE_clPRETTY_PRINTING_STREAM clVdecl(_ap)
         clExtraArgs(L_0, clEOA); }
     { clObject L_0;
       clSetq(L_0, stream);
-      return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_FORCE_OUTPUT),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_FORCE_OUTPUT),
                                L_0,
                                clEOA)); } } }
 
@@ -1782,17 +1782,17 @@ clObject clStreamFreshLine_clPRETTY_PRINTING_STREAM clVdecl(_ap)
             { clObject L_0__R3;
               clSetq(L_0__R3, stream);
               clSetq(L_0__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                        L_0__R3,
                                        clEOA)); }
             { clObject L_0__R3;
               clSetq(L_0__R3, stream);
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                     clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                        L_0__R3,
                                        clEOA)); }
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0__R2,
                                      L_1,
                                      clEOA)); }
@@ -1801,7 +1801,7 @@ clObject clStreamFreshLine_clPRETTY_PRINTING_STREAM clVdecl(_ap)
       if (clTrue(L_test))
         { { clObject L_0;
             clSetq(L_0, stream);
-            clFuncallFunction(clSymbolFunctionValue(clSTREAM_NEWLINE),
+            clFuncallFunction(clSymbolFunctionChecked(clSTREAM_NEWLINE),
                               L_0,
                               keyFRESH,
                               clEOA); }
@@ -1856,7 +1856,7 @@ clObject clStreamWriteSequence_clPRETTY_PRINTING_STREAM_clSTRING clVdecl(_ap)
       clSetq(L_1, sequence);
       clSetq(L_2, start);
       clSetq(L_3, end);
-      return(clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+      return(clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                                L_0,
                                L_1,
                                L_2,
@@ -1931,7 +1931,7 @@ clObject clStreamWriteString_clPRETTY_PRINTING_STREAM_clSTRING clVdecl(_ap)
       clLabel(l_LOOP5);
       { clObject L_7, L_5, L_3, L_1;
         clSetq(L_1, string);
-        clSetq(L_3, clSymbolFunctionValue(clCHARequal));
+        clSetq(L_3, clSymbolFunctionChecked(clCHARequal));
         clSetq(L_5, start);
         clSetq(L_7, end__R1);
         clSetq(next_newline,
@@ -1958,7 +1958,7 @@ clObject clStreamWriteString_clPRETTY_PRINTING_STREAM_clSTRING clVdecl(_ap)
         if (clTrue(L_test)) return(clValues1(clNIL)); }
       { clObject L_0;
         clSetq(L_0, xp);
-        clFuncallFunction(clSymbolFunctionValue(clSTREAM_NEWLINE),
+        clFuncallFunction(clSymbolFunctionChecked(clSTREAM_NEWLINE),
                           L_0,
                           keyUNCONDITIONAL,
                           clEOA); }
@@ -1977,11 +1977,11 @@ clObject clPushBlockStack clVdecl(_ap)
     clSetq(L_arg576, xp);
     { clObject L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+             clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                L_arg576,
                                clEOA));
       clSetq(L_value575,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_1,
                                clEOA)); }
@@ -1995,11 +1995,11 @@ clObject clPushBlockStack clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+                 clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_test__R1,
-               clFuncallFunction(clSymbolFunctionValue(clGT),
+               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                  L_0,
                                  I_34,
                                  clEOA)); }
@@ -2008,7 +2008,7 @@ clObject clPushBlockStack clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
@@ -2016,17 +2016,17 @@ clObject clPushBlockStack clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK),
+                       clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_1,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -2036,7 +2036,7 @@ clObject clPushBlockStack clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, xp);
           clSetq(old,
-                 clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK),
+                 clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK),
                                    L_0,
                                    clEOA)); }
         { clObject L_0;
@@ -2044,22 +2044,22 @@ clObject clPushBlockStack clVdecl(_ap)
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                        L_0__R2,
                                        clEOA)); }
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0__R1,
                                      I_50,
                                      clEOA)); }
           clSetq(CL_new,
                  clMakeArray(L_0,
                              keyELEMENT_TYPE,
-                             clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                             clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                old,
                                                clEOA),
                              clEOA)); }
-        clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+        clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                           CL_new,
                           old,
                           clEOA);
@@ -2081,11 +2081,11 @@ clObject clPopBlockStack clVdecl(_ap)
     clSetq(L_arg580, xp);
     { clObject L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+             clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                L_arg580,
                                clEOA));
       clSetq(L_value579,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                I_1,
                                clEOA)); }
@@ -2110,7 +2110,7 @@ clObject clPushPrefixStack clVdecl(_ap)
           { clObject L_0__R2;
             clSetq(L_0__R2, xp);
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R2,
                                      clEOA)); }
           clSetq(L_0, clMinusp(L_0__R1, clEOA)); }
@@ -2120,13 +2120,13 @@ clObject clPushPrefixStack clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                        L_0__R1,
                                        clEOA)); }
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(old_prefix, clAref(L_0, L_1, clEOA)); }
@@ -2134,18 +2134,18 @@ clObject clPushPrefixStack clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                        L_0__R1,
                                        clEOA)); }
             { clObject L_0__R1;
               { clObject L_0__R2;
                 clSetq(L_0__R2, xp);
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                       clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                          L_0__R2,
                                          clEOA)); }
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R1,
                                        I_1,
                                        clEOA)); }
@@ -2154,18 +2154,18 @@ clObject clPushPrefixStack clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                        L_0__R1,
                                        clEOA)); }
             { clObject L_0__R1;
               { clObject L_0__R2;
                 clSetq(L_0__R2, xp);
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                       clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                          L_0__R2,
                                          clEOA)); }
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R1,
                                        I_2,
                                        clEOA)); }
@@ -2174,11 +2174,11 @@ clObject clPushPrefixStack clVdecl(_ap)
       clSetq(L_arg582, xp);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                  L_arg582,
                                  clEOA));
         clSetq(L_value581,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_5,
                                  clEOA)); }
@@ -2192,11 +2192,11 @@ clObject clPushPrefixStack clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R1,
                                      clEOA)); }
           clSetq(L_test__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    L_0,
                                    I_145,
                                    clEOA)); }
@@ -2205,7 +2205,7 @@ clObject clPushPrefixStack clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                        L_0__R1,
                                        clEOA)); }
             { clObject L_0__R1;
@@ -2213,17 +2213,17 @@ clObject clPushPrefixStack clVdecl(_ap)
                 { clObject L_0__R3;
                   clSetq(L_0__R3, xp);
                   clSetq(L_0__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                         clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                            L_0__R3,
                                            clEOA)); }
                 clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                     clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                        L_0__R1,
                                        I_5,
                                        clEOA)); }
             clSetq(L_test,
-                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -2233,7 +2233,7 @@ clObject clPushPrefixStack clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(old,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
@@ -2241,22 +2241,22 @@ clObject clPushPrefixStack clVdecl(_ap)
               { clObject L_0__R2;
                 clSetq(L_0__R2, xp);
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                       clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                          L_0__R2,
                                          clEOA)); }
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R1,
                                        I_50,
                                        clEOA)); }
             clSetq(CL_new,
                    clMakeArray(L_0,
                                keyELEMENT_TYPE,
-                               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                  old,
                                                  clEOA),
                                clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+          clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                             CL_new,
                             old,
                             clEOA);
@@ -2270,13 +2270,13 @@ clObject clPushPrefixStack clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg586,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg587,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                  L_0,
                                  clEOA)); }
       clSetq(L_value585, old_prefix);
@@ -2285,18 +2285,18 @@ clObject clPushPrefixStack clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg589,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_arg590,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_1,
                                  clEOA)); }
@@ -2306,18 +2306,18 @@ clObject clPushPrefixStack clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg592,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_arg593,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_2,
                                  clEOA)); }
@@ -2334,11 +2334,11 @@ clObject clPopPrefixStack clVdecl(_ap)
     clSetq(L_arg595, xp);
     { clObject L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                L_arg595,
                                clEOA));
       clSetq(L_value594,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                I_5,
                                clEOA)); }
@@ -2362,11 +2362,11 @@ clObject clEnqueue clVdecl(_ap)
     clSetq(L_arg597, xp);
     { clObject L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+             clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                L_arg597,
                                clEOA));
       clSetq(L_value596,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_7,
                                clEOA)); }
@@ -2379,11 +2379,11 @@ clObject clEnqueue clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clGT),
+             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                L_0,
                                I_518,
                                clEOA)); }
@@ -2392,28 +2392,28 @@ clObject clEnqueue clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                   clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                   clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_3,
-                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_5,
-                   clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                   clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                      L_0__R1,
                                      clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+          clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                             L_0,
                             L_1,
                             keySTART2,
@@ -2427,17 +2427,17 @@ clObject clEnqueue clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                     clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                        L_0__R1,
                                        clEOA)); }
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                     clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_value598,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -2457,11 +2457,11 @@ clObject clEnqueue clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                 clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_test__R1,
-               clFuncallFunction(clSymbolFunctionValue(clGT),
+               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                  L_0,
                                  I_518,
                                  clEOA)); }
@@ -2470,7 +2470,7 @@ clObject clEnqueue clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                   clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
@@ -2478,17 +2478,17 @@ clObject clEnqueue clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                       clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_7,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    L_0,
                                    L_1,
                                    clEOA)); }
@@ -2498,7 +2498,7 @@ clObject clEnqueue clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, xp);
           clSetq(old,
-                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                    L_0,
                                    clEOA)); }
         { clObject L_0;
@@ -2506,22 +2506,22 @@ clObject clEnqueue clVdecl(_ap)
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                     clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                        L_0__R2,
                                        clEOA)); }
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0__R1,
                                      I_70,
                                      clEOA)); }
           clSetq(CL_new,
                  clMakeArray(L_0,
                              keyELEMENT_TYPE,
-                             clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                             clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                old,
                                                clEOA),
                              clEOA)); }
-        clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+        clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                           CL_new,
                           old,
                           clEOA);
@@ -2535,13 +2535,13 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg605,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg606,
-             clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+             clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                L_0,
                                clEOA)); }
     clSetq(L_value604, type);
@@ -2550,14 +2550,14 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg608,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg609, cl1PLUS_FUNC(L_0, clEOA)); }
@@ -2567,18 +2567,18 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg611,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg612,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_2,
                                clEOA)); }
@@ -2586,17 +2586,17 @@ clObject clEnqueue clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_value610,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -2605,25 +2605,25 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg614,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg615,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_3,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_value613,
-             clFuncallFunction(clSymbolFunctionValue(clDEPTH_IN_BLOCKS),
+             clFuncallFunction(clSymbolFunctionChecked(clDEPTH_IN_BLOCKS),
                                L_0,
                                clEOA)); }
     cl_SETF_Aref(L_value613, L_arg614, L_arg615, clEOA); }
@@ -2631,18 +2631,18 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg617,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg618,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_4,
                                clEOA)); }
@@ -2651,18 +2651,18 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg620,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg621,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_5,
                                clEOA)); }
@@ -2671,18 +2671,18 @@ clObject clEnqueue clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg623,
-             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+               clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg624,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_6,
                                clEOA)); }
@@ -2710,7 +2710,7 @@ clObject clInitializePp clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, stream);
               clSetq(L_g629,
-                     clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+                     clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_1,
@@ -2754,7 +2754,7 @@ clObject clInitializePp clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, stream);
         clSetq(L_g643,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_COLUMN),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_COLUMN),
                                  L_0,
                                  clEOA)); }
       clSetq(L_value641, (clTrue(L_g643) ? L_g643 : I_0)); }
@@ -2768,13 +2768,13 @@ clObject clInitializePp clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg645,
-             clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK),
+             clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg646,
-             clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+             clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                L_0,
                                clEOA)); }
     cl_SETF_Aref(I_0, L_arg645, L_arg646, clEOA); }
@@ -2789,7 +2789,7 @@ clObject clInitializePp clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_value649,
-             clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+             clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                L_0,
                                clEOA)); }
     clFuncallFunction(clFdefinition(CONS_137, clEOA),
@@ -2830,7 +2830,7 @@ static clObject clStreamCasePrint_clPRETTY_PRINTING_STREAM_clT_clT_CallNextMetho
       if (clTrue(next_method))
         { clObject L_2, L_1, L_0;
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clMETHOD_FUNCTION),
+                 clFuncallFunction(clSymbolFunctionChecked(clMETHOD_FUNCTION),
                                    next_method,
                                    clEOA));
           clSetq(L_1,
@@ -2841,10 +2841,10 @@ static clObject clStreamCasePrint_clPRETTY_PRINTING_STREAM_clT_clT_CallNextMetho
           return(clFuncallFunction(L_0, L_1, L_2, clEOA)); }
       else
         { clObject L_2, L_1, L_0;
-          clSetq(L_0, clSymbolFunctionValue(clNO_NEXT_METHOD));
+          clSetq(L_0, clSymbolFunctionChecked(clNO_NEXT_METHOD));
           clSetq(L_1, clFdefinition(clSTREAM_CASE_PRINT, clEOA));
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clCLASS_PROTOTYPE),
+                 clFuncallFunction(clSymbolFunctionChecked(clCLASS_PROTOTYPE),
                                    clFindClass(clSTANDARD_METHOD,
                                                clEOA),
                                    clEOA));
@@ -2906,7 +2906,7 @@ clObject clStreamCasePrint_clPRETTY_PRINTING_STREAM_clT_clT clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, stream);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clCHAR_MODE),
+                   clFuncallFunction(clSymbolFunctionChecked(clCHAR_MODE),
                                      L_0__R1,
                                      clEOA)); }
           clSetq(new_mode_p, clNot(L_0, clEOA)); }
@@ -2944,17 +2944,17 @@ clObject clWriteCharPLUSPLUS clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clGT),
+             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -2967,12 +2967,12 @@ clObject clWriteCharPLUSPLUS clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(new_buffer_end, cl1PLUS_FUNC(L_0, clEOA)); }
     { clObject L_test;
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_buffer_end,
                                    I_255,
                                    clEOA)))
@@ -2982,17 +2982,17 @@ clObject clWriteCharPLUSPLUS clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                       clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_1,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_buffer_end,
                                    L_1,
                                    clEOA)); }
@@ -3002,23 +3002,23 @@ clObject clWriteCharPLUSPLUS clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(old,
-                   clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                   clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      new_buffer_end,
                                      I_50,
                                      clEOA));
             clSetq(CL_new,
                    clMakeArray(L_0,
                                keyELEMENT_TYPE,
-                               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                  old,
                                                  clEOA),
                                clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+          clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                             CL_new,
                             old,
                             clEOA);
@@ -3032,13 +3032,13 @@ clObject clWriteCharPLUSPLUS clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg671,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg672,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0,
                                  clEOA)); }
       { clObject L_1, L_0;
@@ -3071,17 +3071,17 @@ clObject clForceSomeOutput clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clGT),
+             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -3108,17 +3108,17 @@ clObject clWriteStringPLUSPLUS clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_test,
-             clFuncallFunction(clSymbolFunctionValue(clGT),
+             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -3150,24 +3150,24 @@ clObject clWriteStringPLUSPLUSPLUS clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_1__R1, L_0__R1;
         clSetq(L_0__R1, end);
         clSetq(L_1__R1, start);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  L_0__R1,
                                  L_1__R1,
                                  clEOA)); }
       clSetq(new_buffer_end,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); }
     { clObject L_test;
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_buffer_end,
                                    I_255,
                                    clEOA)))
@@ -3177,17 +3177,17 @@ clObject clWriteStringPLUSPLUSPLUS clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                       clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_1,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_buffer_end,
                                    L_1,
                                    clEOA)); }
@@ -3197,23 +3197,23 @@ clObject clWriteStringPLUSPLUSPLUS clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(old,
-                   clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                   clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      new_buffer_end,
                                      I_50,
                                      clEOA));
             clSetq(CL_new,
                    clMakeArray(L_0,
                                keyELEMENT_TYPE,
-                               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                  old,
                                                  clEOA),
                                clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+          clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                             CL_new,
                             old,
                             clEOA);
@@ -3227,13 +3227,13 @@ clObject clWriteStringPLUSPLUSPLUS clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(buffer,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(i,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0,
                                  clEOA)); }
       clSetq(j, start);
@@ -3242,7 +3242,7 @@ clObject clWriteStringPLUSPLUSPLUS clVdecl(_ap)
         { clObject L_1;
           clSetq(L_1, end);
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                 clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                    j,
                                    L_1,
                                    clEOA)); }
@@ -3253,7 +3253,7 @@ clObject clWriteStringPLUSPLUSPLUS clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, string);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clCHAR),
+                   clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                      L_0__R1,
                                      j,
                                      clEOA)); }
@@ -3354,17 +3354,17 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, xp);
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                         clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                            L_0__R1,
                                            clEOA)); }
                 { clObject L_0__R1;
                   clSetq(L_0__R1, xp);
                   clSetq(L_1,
-                         clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                         clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                            L_0__R1,
                                            clEOA)); }
                 clSetq(current,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          L_0,
                                          L_1,
                                          clEOA)); }
@@ -3374,17 +3374,17 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                           clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                              L_0__R2,
                                              clEOA)); }
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_1__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+                           clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                              L_0__R2,
                                              clEOA)); }
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0__R1,
                                            L_1__R1,
                                            clEOA)); }
@@ -3392,18 +3392,18 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK),
+                           clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK),
                                              L_0__R2,
                                              clEOA)); }
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_1__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+                           clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                              L_0__R2,
                                              clEOA)); }
                   clSetq(L_1, clAref(L_0__R1, L_1__R1, clEOA)); }
                 clSetq(current,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0,
                                          L_1,
                                          clEOA)); } }
@@ -3416,7 +3416,7 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
           { clObject L_1;
             clSetq(L_1, current);
             clSetq(length,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      CL_new,
                                      L_1,
                                      clEOA)); }
@@ -3425,7 +3425,7 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, xp);
                   clSetq(L_test__R2,
-                         clFuncallFunction(clSymbolFunctionValue(clCHAR_MODE),
+                         clFuncallFunction(clSymbolFunctionChecked(clCHAR_MODE),
                                            L_0,
                                            clEOA)); }
                 if (clTrue(L_test__R2))
@@ -3437,16 +3437,16 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                           clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                              L_0__R1,
                                              clEOA)); }
                   clSetq(end,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0,
                                            length,
                                            clEOA)); }
                 { clObject L_test__R2;
-                  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+                  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                end,
                                                I_255,
                                                clEOA)))
@@ -3456,17 +3456,17 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                           { clObject L_0__R3;
                             clSetq(L_0__R3, xp);
                             clSetq(L_0__R2,
-                                   clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                                   clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                                      L_0__R3,
                                                      clEOA)); }
                           clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
                         clSetq(L_1,
-                               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                  L_0__R1,
                                                  I_1,
                                                  clEOA)); }
                       clSetq(L_test__R2,
-                             clFuncallFunction(clSymbolFunctionValue(clGT),
+                             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                end,
                                                L_1,
                                                clEOA)); }
@@ -3476,23 +3476,23 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                       { clObject L_0;
                         clSetq(L_0, xp);
                         clSetq(old,
-                               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                                  L_0,
                                                  clEOA)); }
                       { clObject L_0;
                         clSetq(L_0,
-                               clFuncallFunction(clSymbolFunctionValue(clADD),
+                               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                  end,
                                                  I_50,
                                                  clEOA));
                         clSetq(CL_new__R1,
                                clMakeArray(L_0,
                                            keyELEMENT_TYPE,
-                                           clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                                           clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                              old,
                                                              clEOA),
                                            clEOA)); }
-                      clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+                      clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                                         CL_new__R1,
                                         old,
                                         clEOA);
@@ -3507,16 +3507,16 @@ clObject clStreamTab_clPRETTY_PRINTING_STREAM_clT_clT_clT clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                           clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                              L_0__R1,
                                              clEOA)); }
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_3,
-                           clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                           clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                              L_0__R1,
                                              clEOA)); }
-                  clFuncallFunction(clSymbolFunctionValue(clFILL),
+                  clFuncallFunction(clSymbolFunctionChecked(clFILL),
                                     L_0,
                                     C_Space,
                                     keySTART,
@@ -3577,7 +3577,7 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(ptr,
-                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                      L_0,
                                      clEOA)); }
           clLabel(l_ITERATE704);
@@ -3587,11 +3587,11 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, xp);
                   clSetq(L_1,
-                         clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                         clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                            L_0__R2,
                                            clEOA)); }
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clLT),
+                       clFuncallFunction(clSymbolFunctionChecked(clLT),
                                          ptr,
                                          L_1,
                                          clEOA)); }
@@ -3604,12 +3604,12 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                           clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                              L_0__R2,
                                              clEOA)); }
                   clSetq(L_0,
                          clAref(L_0__R1,
-                                clFuncallFunction(clSymbolFunctionValue(clADD),
+                                clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                   ptr,
                                                   I_4,
                                                   clEOA),
@@ -3622,25 +3622,25 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                       { clObject L_0__R2;
                         clSetq(L_0__R2, xp);
                         clSetq(L_0__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clDEPTH_IN_BLOCKS),
+                               clFuncallFunction(clSymbolFunctionChecked(clDEPTH_IN_BLOCKS),
                                                  L_0__R2,
                                                  clEOA)); }
                       { clObject L_0__R2;
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_0__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                    L_0__R3,
                                                    clEOA)); }
                         clSetq(L_1,
                                clAref(L_0__R2,
-                                      clFuncallFunction(clSymbolFunctionValue(clADD),
+                                      clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                         ptr,
                                                         I_3,
                                                         clEOA),
                                       clEOA)); }
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clGT),
+                             clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                L_0__R1,
                                                L_1,
                                                clEOA)); }
@@ -3651,7 +3651,7 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                         { clObject L_0__R1;
                           clSetq(L_0__R1, xp);
                           clSetq(L_0,
-                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                    L_0__R1,
                                                    clEOA)); }
                         clSetq(L_item705, clAref(L_0, ptr, clEOA)); }
@@ -3668,11 +3668,11 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                 { clObject L_0;
                   clSetq(L_0, xp);
                   clSetq(L_arg707,
-                         clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                         clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                            L_0,
                                            clEOA)); }
                 clSetq(L_arg708,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          ptr,
                                          I_4,
                                          clEOA));
@@ -3680,11 +3680,11 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                           clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                              L_0__R1,
                                              clEOA)); }
                   clSetq(L_value706,
-                         clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                         clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                            L_0,
                                            ptr,
                                            clEOA)); }
@@ -3694,7 +3694,7 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
                              clEOA); } }
           { clObject L_value709;
             clSetq(L_value709,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      ptr,
                                      I_7,
                                      clEOA));
@@ -3705,30 +3705,30 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(L_arg711,
-                   clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK),
+                   clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(L_arg712,
-                   clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                      L_0,
                                      clEOA)); }
           { clObject L_1, L_0;
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                        L_0__R1,
                                        clEOA)); }
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+                     clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_value710,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      L_1,
                                      clEOA)); }
@@ -3747,7 +3747,7 @@ clObject clStreamNewline_clPRETTY_PRINTING_STREAM_clT clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, xp);
                 clSetq(L_test__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clCHAR_MODE),
+                       clFuncallFunction(clSymbolFunctionChecked(clCHAR_MODE),
                                          L_0,
                                          clEOA)); }
             else clSetq(L_test__R1, clNIL); }
@@ -3796,7 +3796,7 @@ clObject clStartBlock clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_test__R1,
-               clFuncallFunction(clSymbolFunctionValue(clCHAR_MODE),
+               clFuncallFunction(clSymbolFunctionChecked(clCHAR_MODE),
                                  L_0,
                                  clEOA)); }
       clSetq(L_test,
@@ -3806,32 +3806,32 @@ clObject clStartBlock clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                 clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                    L_0__R1,
                                    clEOA)); }
         { clObject L_1__R1, L_0__R1;
           { clObject L_0__R2;
             clSetq(L_0__R2, xp);
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                      L_0__R2,
                                      clEOA)); }
           { clObject L_0__R2;
             clSetq(L_0__R2, prefix_string);
             clSetq(L_1__R1, clLength(L_0__R2, clEOA)); }
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                    L_0__R1,
                                    L_1__R1,
                                    clEOA)); }
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_2,
-                 clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                 clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(prefix_string,
-               clFuncallFunction(clSymbolFunctionValue(clSUBSEQ),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBSEQ),
                                  L_0,
                                  L_1,
                                  L_2,
@@ -3850,11 +3850,11 @@ clObject clStartBlock clVdecl(_ap)
     clSetq(L_arg716, xp);
     { clObject L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clDEPTH_IN_BLOCKS),
+             clFuncallFunction(clSymbolFunctionChecked(clDEPTH_IN_BLOCKS),
                                L_arg716,
                                clEOA));
       clSetq(L_value715,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_1,
                                clEOA)); }
@@ -3866,30 +3866,30 @@ clObject clStartBlock clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg718,
-             clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK),
+             clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg719,
-             clFuncallFunction(clSymbolFunctionValue(clBLOCK_STACK_PTR),
+             clFuncallFunction(clSymbolFunctionChecked(clBLOCK_STACK_PTR),
                                L_0,
                                clEOA)); }
     { clObject L_1, L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_value717,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -3918,7 +3918,7 @@ clObject clEndBlock clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, suffix);
               clSetq(L_3, clLength(L_0__R1, clEOA)); }
-            clFuncallFunction(clSymbolFunctionValue(clSTREAM_WRITE_STRING),
+            clFuncallFunction(clSymbolFunctionChecked(clSTREAM_WRITE_STRING),
                               L_0,
                               L_1,
                               I_0,
@@ -3928,11 +3928,11 @@ clObject clEndBlock clVdecl(_ap)
           clSetq(L_arg721, xp);
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clDEPTH_IN_BLOCKS),
+                   clFuncallFunction(clSymbolFunctionChecked(clDEPTH_IN_BLOCKS),
                                      L_arg721,
                                      clEOA));
             clSetq(L_value720,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0,
                                      I_1,
                                      clEOA)); }
@@ -3948,7 +3948,7 @@ clObject clEndBlock clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(ptr,
-                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                      L_0,
                                      clEOA)); }
           clLabel(l_ITERATE722);
@@ -3958,11 +3958,11 @@ clObject clEndBlock clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, xp);
                   clSetq(L_1,
-                         clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                         clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                            L_0__R2,
                                            clEOA)); }
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clLT),
+                       clFuncallFunction(clSymbolFunctionChecked(clLT),
                                          ptr,
                                          L_1,
                                          clEOA)); }
@@ -3974,25 +3974,25 @@ clObject clEndBlock clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, xp);
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clDEPTH_IN_BLOCKS),
+                         clFuncallFunction(clSymbolFunctionChecked(clDEPTH_IN_BLOCKS),
                                            L_0__R1,
                                            clEOA)); }
                 { clObject L_0__R1;
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                           clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                              L_0__R2,
                                              clEOA)); }
                   clSetq(L_1,
                          clAref(L_0__R1,
-                                clFuncallFunction(clSymbolFunctionValue(clADD),
+                                clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                   ptr,
                                                   I_3,
                                                   clEOA),
                                 clEOA)); }
                 clSetq(L_test__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+                       clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                          L_0,
                                          L_1,
                                          clEOA)); }
@@ -4003,7 +4003,7 @@ clObject clEndBlock clVdecl(_ap)
                       { clObject L_0__R2;
                         clSetq(L_0__R2, xp);
                         clSetq(L_0__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                               clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                  L_0__R2,
                                                  clEOA)); }
                       clSetq(L_0, clAref(L_0__R1, ptr, clEOA)); }
@@ -4015,12 +4015,12 @@ clObject clEndBlock clVdecl(_ap)
                         { clObject L_0__R2;
                           clSetq(L_0__R2, xp);
                           clSetq(L_0__R1,
-                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                    L_0__R2,
                                                    clEOA)); }
                         clSetq(L_0,
                                clAref(L_0__R1,
-                                      clFuncallFunction(clSymbolFunctionValue(clADD),
+                                      clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                         ptr,
                                                         I_5,
                                                         clEOA),
@@ -4033,11 +4033,11 @@ clObject clEndBlock clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, xp);
                     clSetq(L_arg724,
-                           clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                           clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                              L_0,
                                              clEOA)); }
                   clSetq(L_arg725,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            ptr,
                                            I_5,
                                            clEOA));
@@ -4045,11 +4045,11 @@ clObject clEndBlock clVdecl(_ap)
                     { clObject L_0__R1;
                       clSetq(L_0__R1, xp);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                             clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                                L_0__R1,
                                                clEOA)); }
                     clSetq(L_value723,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                              L_0,
                                              ptr,
                                              clEOA)); }
@@ -4060,7 +4060,7 @@ clObject clEndBlock clVdecl(_ap)
                 clLocalReturn(NIL); } }
           { clObject L_value726;
             clSetq(L_value726,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      ptr,
                                      I_7,
                                      clEOA));
@@ -4140,17 +4140,17 @@ clObject clAttemptToOutput clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                 clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                    L_0__R1,
                                    clEOA)); }
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                 clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clGT),
+               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                  L_0,
                                  L_1,
                                  clEOA)); }
@@ -4173,13 +4173,13 @@ clObject clAttemptToOutput clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                    L_0__R1,
                                    clEOA)); }
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                 clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_key739, clAref(L_0, L_1, clEOA)); }
@@ -4193,37 +4193,37 @@ clObject clAttemptToOutput clVdecl(_ap)
                     { clObject L_0__R3;
                       clSetq(L_0__R3, xp);
                       clSetq(L_0__R2,
-                             clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+                             clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                                L_0__R3,
                                                clEOA)); }
                     { clObject L_1__R2, L_0__R3;
                       { clObject L_0__R4;
                         clSetq(L_0__R4, xp);
                         clSetq(L_0__R3,
-                               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                  L_0__R4,
                                                  clEOA)); }
                       { clObject L_0__R4;
                         { clObject L_0__R5;
                           clSetq(L_0__R5, xp);
                           clSetq(L_0__R4,
-                                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                    L_0__R5,
                                                    clEOA)); }
                         clSetq(L_1__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clADD),
+                               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                  L_0__R4,
                                                  I_3,
                                                  clEOA)); }
                       clSetq(L_1__R1,
                              clAref(L_0__R3, L_1__R2, clEOA)); }
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                           clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                              L_0__R2,
                                              L_1__R1,
                                              clEOA)); }
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clLE),
+                         clFuncallFunction(clSymbolFunctionChecked(clLE),
                                            L_0__R1,
                                            clSymbolValue(clstarPRINT_MISER_WIDTHstar,
                                                          clEOA),
@@ -4238,14 +4238,14 @@ clObject clAttemptToOutput clVdecl(_ap)
                     { clObject L_0__R2;
                       clSetq(L_0__R2, xp);
                       clSetq(L_0__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                L_0__R2,
                                                clEOA)); }
                     { clObject L_0__R2;
                       { clObject L_0__R3;
                         clSetq(L_0__R3, xp);
                         clSetq(L_0__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                               clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                  L_0__R3,
                                                  clEOA)); }
                       clSetq(L_1__R1, cl1PLUS_FUNC(L_0__R2, clEOA)); }
@@ -4257,18 +4257,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_0__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                    L_0__R3,
                                                    clEOA)); }
                         { clObject L_0__R3;
                           { clObject L_0__R4;
                             clSetq(L_0__R4, xp);
                             clSetq(L_0__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                      L_0__R4,
                                                      clEOA)); }
                           clSetq(L_1__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0__R3,
                                                    I_3,
                                                    clEOA)); }
@@ -4278,25 +4278,25 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_0__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                    L_0__R3,
                                                    clEOA)); }
                         { clObject L_0__R3;
                           { clObject L_0__R4;
                             clSetq(L_0__R4, xp);
                             clSetq(L_0__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                      L_0__R4,
                                                      clEOA)); }
                           clSetq(L_1__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0__R3,
                                                    I_6,
                                                    clEOA)); }
                         clSetq(L_1__R1,
                                clAref(L_0__R2, L_1__R2, clEOA)); }
                       clSetq(L_1,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0__R1,
                                                L_1__R1,
                                                clEOA)); }
@@ -4308,18 +4308,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                             { clObject L_0__R5;
                               clSetq(L_0__R5, xp);
                               clSetq(L_0__R4,
-                                     clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                     clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                        L_0__R5,
                                                        clEOA)); }
                             { clObject L_0__R5;
                               { clObject L_0__R6;
                                 clSetq(L_0__R6, xp);
                                 clSetq(L_0__R5,
-                                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                          L_0__R6,
                                                          clEOA)); }
                               clSetq(L_1__R4,
-                                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                        L_0__R5,
                                                        I_2,
                                                        clEOA)); }
@@ -4328,22 +4328,22 @@ clObject clAttemptToOutput clVdecl(_ap)
                           { clObject L_0__R4;
                             clSetq(L_0__R4, xp);
                             clSetq(L_1__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+                                   clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                                      L_0__R4,
                                                      clEOA)); }
                           clSetq(L_0__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                 clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                    L_0__R3,
                                                    L_1__R3,
                                                    clEOA)); }
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_1__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                                 clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                    L_0__R3,
                                                    clEOA)); }
                         clSetq(L_0__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clADD),
+                               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                  L_0__R2,
                                                  L_1__R2,
                                                  clEOA)); }
@@ -4351,25 +4351,25 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_0__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                    L_0__R3,
                                                    clEOA)); }
                         { clObject L_0__R3;
                           { clObject L_0__R4;
                             clSetq(L_0__R4, xp);
                             clSetq(L_0__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                      L_0__R4,
                                                      clEOA)); }
                           clSetq(L_1__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0__R3,
                                                    I_6,
                                                    clEOA)); }
                         clSetq(L_1__R1,
                                clAref(L_0__R2, L_1__R2, clEOA)); }
                       clSetq(L_1,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0__R1,
                                                L_1__R1,
                                                clEOA)); } }
@@ -4380,11 +4380,11 @@ clObject clAttemptToOutput clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, xp);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(L_value741,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        I_7,
                                        clEOA)); }
@@ -4398,7 +4398,7 @@ clObject clAttemptToOutput clVdecl(_ap)
               { clObject L_0;
                 clSetq(L_0, xp);
                 clSetq(limit,
-                       clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+                       clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                          L_0,
                                          clEOA)); }
               { clObject L_test__R3;
@@ -4406,13 +4406,13 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clLINE_LIMIT),
+                           clFuncallFunction(clSymbolFunctionChecked(clLINE_LIMIT),
                                              L_0__R1,
                                              clEOA)); }
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_1,
-                           clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+                           clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                              L_0__R1,
                                              clEOA)); }
                   clSetq(L_test__R3, clEql(L_0, L_1, clEOA)); }
@@ -4420,7 +4420,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { { clObject L_0;
                       clSetq(L_0, limit);
                       clSetq(limit,
-                             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                L_0,
                                                I_2,
                                                clEOA)); }
@@ -4430,7 +4430,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                           { clObject L_0__R2;
                             clSetq(L_0__R2, xp);
                             clSetq(L_0__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                      L_0__R2,
                                                      clEOA)); }
                           clSetq(L_0, clMinusp(L_0__R1, clEOA)); }
@@ -4442,25 +4442,25 @@ clObject clAttemptToOutput clVdecl(_ap)
                           { clObject L_0__R2;
                             clSetq(L_0__R2, xp);
                             clSetq(L_0__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                      L_0__R2,
                                                      clEOA)); }
                           { clObject L_0__R2;
                             { clObject L_0__R3;
                               clSetq(L_0__R3, xp);
                               clSetq(L_0__R2,
-                                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                        L_0__R3,
                                                        clEOA)); }
                             clSetq(L_1__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                      L_0__R2,
                                                      I_1,
                                                      clEOA)); }
                           clSetq(L_1,
                                  clAref(L_0__R1, L_1__R1, clEOA)); }
                         clSetq(limit,
-                               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                  L_0,
                                                  L_1,
                                                  clEOA)); } } } }
@@ -4469,18 +4469,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_0,
-                           clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                           clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                              L_0__R1,
                                              clEOA)); }
                   { clObject L_0__R1;
                     { clObject L_0__R2;
                       clSetq(L_0__R2, xp);
                       clSetq(L_0__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                             clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                L_0__R2,
                                                clEOA)); }
                     clSetq(L_1,
-                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                              L_0__R1,
                                              I_4,
                                              clEOA)); }
@@ -4493,7 +4493,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                           { clObject L_0__R4;
                             clSetq(L_0__R4, xp);
                             clSetq(L_0__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                   clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                      L_0__R4,
                                                      clEOA)); }
                           { clObject L_0__R4;
@@ -4501,25 +4501,25 @@ clObject clAttemptToOutput clVdecl(_ap)
                               { clObject L_0__R6;
                                 clSetq(L_0__R6, xp);
                                 clSetq(L_0__R5,
-                                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                          L_0__R6,
                                                          clEOA)); }
                               { clObject L_1__R6, L_0__R6;
                                 { clObject L_0__R7;
                                   clSetq(L_0__R7, xp);
                                   clSetq(L_0__R6,
-                                         clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                         clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                            L_0__R7,
                                                            clEOA)); }
                                 { clObject L_0__R7;
                                   { clObject L_0__R8;
                                     clSetq(L_0__R8, xp);
                                     clSetq(L_0__R7,
-                                           clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                           clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                              L_0__R8,
                                                              clEOA)); }
                                   clSetq(L_1__R6,
-                                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                            L_0__R7,
                                                            I_4,
                                                            clEOA)); }
@@ -4528,12 +4528,12 @@ clObject clAttemptToOutput clVdecl(_ap)
                                               L_1__R6,
                                               clEOA)); }
                               clSetq(L_0__R4,
-                                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                        L_0__R5,
                                                        L_1__R5,
                                                        clEOA)); }
                             clSetq(L_1__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                      L_0__R4,
                                                      I_2,
                                                      clEOA)); }
@@ -4542,28 +4542,28 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_1__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+                                 clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                                    L_0__R3,
                                                    clEOA)); }
                         clSetq(L_0__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                  L_0__R2,
                                                  L_1__R2,
                                                  clEOA)); }
                       { clObject L_0__R2;
                         clSetq(L_0__R2, xp);
                         clSetq(L_1__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                               clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                  L_0__R2,
                                                  clEOA)); }
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0__R1,
                                                L_1__R1,
                                                clEOA)); }
                     clSetq(L_1, limit);
                     clSetq(L_test__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clGT),
+                           clFuncallFunction(clSymbolFunctionChecked(clGT),
                                              L_0,
                                              L_1,
                                              clEOA)); }
@@ -4579,23 +4579,23 @@ clObject clAttemptToOutput clVdecl(_ap)
                           { clObject L_0__R2;
                             clSetq(L_0__R2, xp);
                             clSetq(L_0__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                                   clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                                      L_0__R2,
                                                      clEOA)); }
                           { clObject L_0__R2;
                             clSetq(L_0__R2, xp);
                             clSetq(L_1__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                                   clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                      L_0__R2,
                                                      clEOA)); }
                           clSetq(L_0,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0__R1,
                                                    L_1__R1,
                                                    clEOA)); }
                         clSetq(L_1, limit);
                         clSetq(L_test__R4,
-                               clFuncallFunction(clSymbolFunctionValue(clGT),
+                               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                  L_0,
                                                  L_1,
                                                  clEOA)); } }
@@ -4610,18 +4610,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, xp);
                     clSetq(L_arg745,
-                           clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                           clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                              L_0,
                                              clEOA)); }
                   { clObject L_0;
                     { clObject L_0__R1;
                       clSetq(L_0__R1, xp);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                L_0__R1,
                                                clEOA)); }
                     clSetq(L_arg746,
-                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                              L_0,
                                              I_3,
                                              clEOA)); }
@@ -4629,13 +4629,13 @@ clObject clAttemptToOutput clVdecl(_ap)
                     { clObject L_0__R1;
                       clSetq(L_0__R1, xp);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                L_0__R1,
                                                clEOA)); }
                     { clObject L_0__R1;
                       clSetq(L_0__R1, xp);
                       clSetq(L_1,
-                             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                L_0__R1,
                                                clEOA)); }
                     clSetq(L_value744, clAref(L_0, L_1, clEOA)); }
@@ -4651,18 +4651,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R4;
                           clSetq(L_0__R4, xp);
                           clSetq(L_0__R3,
-                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                    L_0__R4,
                                                    clEOA)); }
                         { clObject L_0__R4;
                           { clObject L_0__R5;
                             clSetq(L_0__R5, xp);
                             clSetq(L_0__R4,
-                                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                      L_0__R5,
                                                      clEOA)); }
                           clSetq(L_1__R3,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0__R4,
                                                    I_2,
                                                    clEOA)); }
@@ -4671,22 +4671,22 @@ clObject clAttemptToOutput clVdecl(_ap)
                       { clObject L_0__R3;
                         clSetq(L_0__R3, xp);
                         clSetq(L_1__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+                               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                                  L_0__R3,
                                                  clEOA)); }
                       clSetq(L_0__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                L_0__R2,
                                                L_1__R2,
                                                clEOA)); }
                     { clObject L_0__R2;
                       clSetq(L_0__R2, xp);
                       clSetq(L_1__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                             clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                L_0__R2,
                                                clEOA)); }
                     clSetq(L_1,
-                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                              L_0__R1,
                                              L_1__R1,
                                              clEOA)); }
@@ -4696,18 +4696,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                     { clObject L_0__R1;
                       clSetq(L_0__R1, xp);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                L_0__R1,
                                                clEOA)); }
                     { clObject L_0__R1;
                       { clObject L_0__R2;
                         clSetq(L_0__R2, xp);
                         clSetq(L_0__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                               clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                  L_0__R2,
                                                  clEOA)); }
                       clSetq(L_1,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0__R1,
                                                I_6,
                                                clEOA)); }
@@ -4720,18 +4720,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                     { clObject L_0;
                       clSetq(L_0, xp);
                       clSetq(L_arg748,
-                             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                L_0,
                                                clEOA)); }
                     { clObject L_0;
                       { clObject L_0__R1;
                         clSetq(L_0__R1, xp);
                         clSetq(L_0,
-                               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                  L_0__R1,
                                                  clEOA)); }
                       clSetq(L_arg749,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0,
                                                I_3,
                                                clEOA)); }
@@ -4739,13 +4739,13 @@ clObject clAttemptToOutput clVdecl(_ap)
                       { clObject L_0__R1;
                         clSetq(L_0__R1, xp);
                         clSetq(L_0,
-                               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                  L_0__R1,
                                                  clEOA)); }
                       { clObject L_0__R1;
                         clSetq(L_0__R1, xp);
                         clSetq(L_1,
-                               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                  L_0__R1,
                                                  clEOA)); }
                       clSetq(L_value747, clAref(L_0, L_1, clEOA)); }
@@ -4765,25 +4765,25 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { clObject L_0;
                     clSetq(L_0, xp);
                     clSetq(L_arg751,
-                           clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                           clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                              L_0,
                                              clEOA)); }
                   { clObject L_0;
                     { clObject L_0__R1;
                       clSetq(L_0__R1, xp);
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                L_0__R1,
                                                clEOA)); }
                     clSetq(L_arg752,
-                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                              L_0,
                                              I_4,
                                              clEOA)); }
                   { clObject L_0;
                     clSetq(L_0, xp);
                     clSetq(L_value750,
-                           clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+                           clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                              L_0,
                                              clEOA)); }
                   cl_SETF_Aref(L_value750,
@@ -4795,31 +4795,31 @@ clObject clAttemptToOutput clVdecl(_ap)
                 clSetq(L_arg754, xp);
                 { clObject L_1, L_0;
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                         clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                            L_arg754,
                                            clEOA));
                   { clObject L_1__R1, L_0__R1;
                     { clObject L_0__R2;
                       clSetq(L_0__R2, xp);
                       clSetq(L_0__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                             clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                L_0__R2,
                                                clEOA)); }
                     { clObject L_0__R2;
                       { clObject L_0__R3;
                         clSetq(L_0__R3, xp);
                         clSetq(L_0__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                               clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                  L_0__R3,
                                                  clEOA)); }
                       clSetq(L_1__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0__R2,
                                                I_5,
                                                clEOA)); }
                     clSetq(L_1, clAref(L_0__R1, L_1__R1, clEOA)); }
                   clSetq(L_value753,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0,
                                            L_1,
                                            clEOA)); }
@@ -4833,11 +4833,11 @@ clObject clAttemptToOutput clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, xp);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(L_value755,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        I_7,
                                        clEOA)); }
@@ -4855,11 +4855,11 @@ clObject clAttemptToOutput clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, xp);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(L_value757,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        I_7,
                                        clEOA)); }
@@ -4874,14 +4874,14 @@ clObject clAttemptToOutput clVdecl(_ap)
                 { clObject L_0__R1;
                   clSetq(L_0__R1, xp);
                   clSetq(L_0,
-                         clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                         clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                            L_0__R1,
                                            clEOA)); }
                 { clObject L_0__R1;
                   { clObject L_0__R2;
                     clSetq(L_0__R2, xp);
                     clSetq(L_0__R1,
-                           clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                           clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                              L_0__R2,
                                              clEOA)); }
                   clSetq(L_1, cl1PLUS_FUNC(L_0__R1, clEOA)); }
@@ -4893,17 +4893,17 @@ clObject clAttemptToOutput clVdecl(_ap)
                       { clObject L_0__R3;
                         clSetq(L_0__R3, xp);
                         clSetq(L_0__R2,
-                               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                                  L_0__R3,
                                                  clEOA)); }
                       { clObject L_0__R3;
                         clSetq(L_0__R3, xp);
                         clSetq(L_1,
-                               clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                               clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                  L_0__R3,
                                                  clEOA)); }
                       clSetq(L_0__R1,
-                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                L_0__R2,
                                                L_1,
                                                clEOA)); }
@@ -4917,37 +4917,37 @@ clObject clAttemptToOutput clVdecl(_ap)
                       { clObject L_0__R2;
                         clSetq(L_0__R2, xp);
                         clSetq(L_0__R1,
-                               clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+                               clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                                  L_0__R2,
                                                  clEOA)); }
                       { clObject L_1__R2, L_0__R2;
                         { clObject L_0__R3;
                           clSetq(L_0__R3, xp);
                           clSetq(L_0__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                    L_0__R3,
                                                    clEOA)); }
                         { clObject L_0__R3;
                           { clObject L_0__R4;
                             clSetq(L_0__R4, xp);
                             clSetq(L_0__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                      L_0__R4,
                                                      clEOA)); }
                           clSetq(L_1__R2,
-                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                    L_0__R3,
                                                    I_3,
                                                    clEOA)); }
                         clSetq(L_1__R1,
                                clAref(L_0__R2, L_1__R2, clEOA)); }
                       clSetq(L_0,
-                             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                L_0__R1,
                                                L_1__R1,
                                                clEOA)); }
                     clSetq(L_test__R3,
-                           clFuncallFunction(clSymbolFunctionValue(clLE),
+                           clFuncallFunction(clSymbolFunctionChecked(clLE),
                                              L_0,
                                              clSymbolValue(clstarPRINT_MISER_WIDTHstar,
                                                            clEOA),
@@ -4962,37 +4962,37 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R2;
                           clSetq(L_0__R2, xp);
                           clSetq(L_0__R1,
-                                 clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+                                 clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                                    L_0__R2,
                                                    clEOA)); }
                         { clObject L_1__R2, L_0__R2;
                           { clObject L_0__R3;
                             clSetq(L_0__R3, xp);
                             clSetq(L_0__R2,
-                                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                      L_0__R3,
                                                      clEOA)); }
                           { clObject L_0__R3;
                             { clObject L_0__R4;
                               clSetq(L_0__R4, xp);
                               clSetq(L_0__R3,
-                                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                        L_0__R4,
                                                        clEOA)); }
                             clSetq(L_1__R2,
-                                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                      L_0__R3,
                                                      I_3,
                                                      clEOA)); }
                           clSetq(L_1__R1,
                                  clAref(L_0__R2, L_1__R2, clEOA)); }
                         clSetq(L_0,
-                               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                  L_0__R1,
                                                  L_1__R1,
                                                  clEOA)); }
                       clSetq(L_g760,
-                             clFuncallFunction(clSymbolFunctionValue(clLE),
+                             clFuncallFunction(clSymbolFunctionChecked(clLE),
                                                L_0,
                                                clSymbolValue(clstarPRINT_MISER_WIDTHstar,
                                                              clEOA),
@@ -5006,32 +5006,32 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0__R1;
                           clSetq(L_0__R1, xp);
                           clSetq(L_0,
-                                 clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+                                 clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                                    L_0__R1,
                                                    clEOA)); }
                         { clObject L_1__R1, L_0__R1;
                           { clObject L_0__R2;
                             clSetq(L_0__R2, xp);
                             clSetq(L_0__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                      L_0__R2,
                                                      clEOA)); }
                           { clObject L_0__R2;
                             { clObject L_0__R3;
                               clSetq(L_0__R3, xp);
                               clSetq(L_0__R2,
-                                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                        L_0__R3,
                                                        clEOA)); }
                             clSetq(L_1__R1,
-                                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                      L_0__R2,
                                                      I_4,
                                                      clEOA)); }
                           clSetq(L_1,
                                  clAref(L_0__R1, L_1__R1, clEOA)); }
                         clSetq(L_g761,
-                               clFuncallFunction(clSymbolFunctionValue(clGT),
+                               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                  L_0,
                                                  L_1,
                                                  clEOA)); }
@@ -5042,7 +5042,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                         { clObject L_0;
                           clSetq(L_0, xp);
                           clSetq(limit,
-                                 clFuncallFunction(clSymbolFunctionValue(clSTREAM_LINE_LENGTH),
+                                 clFuncallFunction(clSymbolFunctionChecked(clSTREAM_LINE_LENGTH),
                                                    L_0,
                                                    clEOA)); }
                         { clObject L_test__R9;
@@ -5050,13 +5050,13 @@ clObject clAttemptToOutput clVdecl(_ap)
                             { clObject L_0__R1;
                               clSetq(L_0__R1, xp);
                               clSetq(L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clLINE_LIMIT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clLINE_LIMIT),
                                                        L_0__R1,
                                                        clEOA)); }
                             { clObject L_0__R1;
                               clSetq(L_0__R1, xp);
                               clSetq(L_1,
-                                     clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+                                     clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                                        L_0__R1,
                                                        clEOA)); }
                             clSetq(L_test__R9,
@@ -5065,7 +5065,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                           { { clObject L_0;
                               clSetq(L_0, limit);
                               clSetq(limit,
-                                     clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                     clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                        L_0,
                                                        I_2,
                                                        clEOA)); }
@@ -5075,7 +5075,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                                   { clObject L_0__R2;
                                     clSetq(L_0__R2, xp);
                                     clSetq(L_0__R1,
-                                           clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                           clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                              L_0__R2,
                                                              clEOA)); }
                                   clSetq(L_0,
@@ -5089,18 +5089,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                                   { clObject L_0__R2;
                                     clSetq(L_0__R2, xp);
                                     clSetq(L_0__R1,
-                                           clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                                           clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                                              L_0__R2,
                                                              clEOA)); }
                                   { clObject L_0__R2;
                                     { clObject L_0__R3;
                                       clSetq(L_0__R3, xp);
                                       clSetq(L_0__R2,
-                                             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                                             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                                                L_0__R3,
                                                                clEOA)); }
                                     clSetq(L_1__R1,
-                                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                              L_0__R2,
                                                              I_1,
                                                              clEOA)); }
@@ -5109,7 +5109,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                                                 L_1__R1,
                                                 clEOA)); }
                                 clSetq(limit,
-                                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                          L_0,
                                                          L_1,
                                                          clEOA)); } } } }
@@ -5118,18 +5118,18 @@ clObject clAttemptToOutput clVdecl(_ap)
                             { clObject L_0__R1;
                               clSetq(L_0__R1, xp);
                               clSetq(L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                     clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                        L_0__R1,
                                                        clEOA)); }
                             { clObject L_0__R1;
                               { clObject L_0__R2;
                                 clSetq(L_0__R2, xp);
                                 clSetq(L_0__R1,
-                                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                          L_0__R2,
                                                          clEOA)); }
                               clSetq(L_1,
-                                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                        L_0__R1,
                                                        I_4,
                                                        clEOA)); }
@@ -5143,7 +5143,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                                   { clObject L_0__R4;
                                     clSetq(L_0__R4, xp);
                                     clSetq(L_0__R3,
-                                           clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                           clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                              L_0__R4,
                                                              clEOA)); }
                                   { clObject L_0__R4;
@@ -5151,25 +5151,25 @@ clObject clAttemptToOutput clVdecl(_ap)
                                       { clObject L_0__R6;
                                         clSetq(L_0__R6, xp);
                                         clSetq(L_0__R5,
-                                               clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                               clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                                  L_0__R6,
                                                                  clEOA)); }
                                       { clObject L_1__R6, L_0__R6;
                                         { clObject L_0__R7;
                                           clSetq(L_0__R7, xp);
                                           clSetq(L_0__R6,
-                                                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                                                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                                                    L_0__R7,
                                                                    clEOA)); }
                                         { clObject L_0__R7;
                                           { clObject L_0__R8;
                                             clSetq(L_0__R8, xp);
                                             clSetq(L_0__R7,
-                                                   clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                                                   clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                                                      L_0__R8,
                                                                      clEOA)); }
                                           clSetq(L_1__R6,
-                                                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                                                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                                    L_0__R7,
                                                                    I_4,
                                                                    clEOA)); }
@@ -5178,12 +5178,12 @@ clObject clAttemptToOutput clVdecl(_ap)
                                                       L_1__R6,
                                                       clEOA)); }
                                       clSetq(L_0__R4,
-                                             clFuncallFunction(clSymbolFunctionValue(clADD),
+                                             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                                L_0__R5,
                                                                L_1__R5,
                                                                clEOA)); }
                                     clSetq(L_1__R3,
-                                           clFuncallFunction(clSymbolFunctionValue(clADD),
+                                           clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                              L_0__R4,
                                                              I_2,
                                                              clEOA)); }
@@ -5194,28 +5194,28 @@ clObject clAttemptToOutput clVdecl(_ap)
                                 { clObject L_0__R3;
                                   clSetq(L_0__R3, xp);
                                   clSetq(L_1__R2,
-                                         clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+                                         clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                                            L_0__R3,
                                                            clEOA)); }
                                 clSetq(L_0__R1,
-                                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                                          L_0__R2,
                                                          L_1__R2,
                                                          clEOA)); }
                               { clObject L_0__R2;
                                 clSetq(L_0__R2, xp);
                                 clSetq(L_1__R1,
-                                       clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                                       clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                          L_0__R2,
                                                          clEOA)); }
                               clSetq(L_0,
-                                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                        L_0__R1,
                                                        L_1__R1,
                                                        clEOA)); }
                             clSetq(L_1, limit);
                             clSetq(L_test__R3,
-                                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                      L_0,
                                                      L_1,
                                                      clEOA)); }
@@ -5231,23 +5231,23 @@ clObject clAttemptToOutput clVdecl(_ap)
                                   { clObject L_0__R2;
                                     clSetq(L_0__R2, xp);
                                     clSetq(L_0__R1,
-                                           clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                                           clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                                              L_0__R2,
                                                              clEOA)); }
                                   { clObject L_0__R2;
                                     clSetq(L_0__R2, xp);
                                     clSetq(L_1__R1,
-                                           clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+                                           clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                                              L_0__R2,
                                                              clEOA)); }
                                   clSetq(L_0,
-                                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                                            L_0__R1,
                                                            L_1__R1,
                                                            clEOA)); }
                                 clSetq(L_1, limit);
                                 clSetq(L_test__R10,
-                                       clFuncallFunction(clSymbolFunctionValue(clGT),
+                                       clFuncallFunction(clSymbolFunctionChecked(clGT),
                                                          L_0,
                                                          L_1,
                                                          clEOA)); } }
@@ -5262,7 +5262,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_1,
-                           clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                           clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                              L_0__R1,
                                              clEOA)); }
                   clOutputLine(L_0, L_1, clEOA); }
@@ -5271,7 +5271,7 @@ clObject clAttemptToOutput clVdecl(_ap)
                   { clObject L_0__R1;
                     clSetq(L_0__R1, xp);
                     clSetq(L_1,
-                           clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                           clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                              L_0__R1,
                                              clEOA)); }
                   clSetupForNextLine(L_0, L_1, clEOA); } } }
@@ -5281,11 +5281,11 @@ clObject clAttemptToOutput clVdecl(_ap)
               { clObject L_0__R1;
                 clSetq(L_0__R1, xp);
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clQLEFT),
+                       clFuncallFunction(clSymbolFunctionChecked(clQLEFT),
                                          L_0__R1,
                                          clEOA)); }
               clSetq(L_value763,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0,
                                        I_7,
                                        clEOA)); }
@@ -5311,19 +5311,19 @@ clObject clFlush clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clENCAPSULATING_STREAM_STREAM),
+               clFuncallFunction(clSymbolFunctionChecked(clENCAPSULATING_STREAM_STREAM),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_3,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       clWriteString(L_0, L_1, keyEND, L_3, clEOA); }
@@ -5331,17 +5331,17 @@ clObject clFlush clVdecl(_ap)
     clSetq(L_arg766, xp);
     { clObject L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+             clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                L_arg766,
                                clEOA));
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_value765,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -5353,17 +5353,17 @@ clObject clFlush clVdecl(_ap)
     clSetq(L_arg768, xp);
     { clObject L_1, L_0;
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clCHARPOS),
+             clFuncallFunction(clSymbolFunctionChecked(clCHARPOS),
                                L_arg768,
                                clEOA));
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_value767,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -5392,13 +5392,13 @@ clObject clOutputLine clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, xp);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                    L_0__R2,
                                    clEOA)); }
         { clObject L_0__R2;
           clSetq(L_0__R2, qentry);
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R2,
                                    I_2,
                                    clEOA)); }
@@ -5406,11 +5406,11 @@ clObject clOutputLine clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(out_point,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -5418,10 +5418,10 @@ clObject clOutputLine clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0__R1,
                                  clEOA)); }
-      clSetq(L_3, clSymbolFunctionValue(clCHARequal));
+      clSetq(L_3, clSymbolFunctionChecked(clCHARequal));
       clSetq(last_non_blank,
              clPosition(C_Space,
                         L_1,
@@ -5438,7 +5438,7 @@ clObject clOutputLine clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                   clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
@@ -5457,7 +5457,7 @@ clObject clOutputLine clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clLINE_LIMIT),
+               clFuncallFunction(clSymbolFunctionChecked(clLINE_LIMIT),
                                  L_0,
                                  clEOA)); }
       if (clTrue(L_test))
@@ -5466,17 +5466,17 @@ clObject clOutputLine clVdecl(_ap)
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clLINE_LIMIT),
+                     clFuncallFunction(clSymbolFunctionChecked(clLINE_LIMIT),
                                        L_0__R2,
                                        clEOA)); }
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_1,
-                     clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+                     clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                        L_0__R2,
                                        clEOA)); }
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0__R1,
                                      L_1,
                                      clEOA)); }
@@ -5501,25 +5501,25 @@ clObject clOutputLine clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSUFFIX),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUFFIX),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_1__R1, L_0__R1;
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                        L_0__R2,
                                        clEOA)); }
             { clObject L_0__R2;
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                       clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_1__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R2,
                                        I_1,
                                        clEOA)); }
@@ -5529,7 +5529,7 @@ clObject clOutputLine clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clSUFFIX),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUFFIX),
                                      L_0__R1,
                                      clEOA)); }
           clSetq(L_1, xp);
@@ -5537,18 +5537,18 @@ clObject clOutputLine clVdecl(_ap)
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                        L_0__R2,
                                        clEOA)); }
             { clObject L_0__R2;
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                       clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_1__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R2,
                                        I_1,
                                        clEOA)); }
@@ -5560,11 +5560,11 @@ clObject clOutputLine clVdecl(_ap)
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clQRIGHT),
+                     clFuncallFunction(clSymbolFunctionChecked(clQRIGHT),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_value774,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      I_7,
                                      clEOA)); }
@@ -5582,11 +5582,11 @@ clObject clOutputLine clVdecl(_ap)
       clSetq(L_arg777, xp);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+               clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                  L_arg777,
                                  clEOA));
         clSetq(L_value776,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_1,
                                  clEOA)); }
@@ -5600,13 +5600,13 @@ clObject clOutputLine clVdecl(_ap)
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                 clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                    L_0__R1,
                                    clEOA)); }
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clENCAPSULATING_STREAM_STREAM),
+                 clFuncallFunction(clSymbolFunctionChecked(clENCAPSULATING_STREAM_STREAM),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_3, end);
@@ -5627,13 +5627,13 @@ clObject clSetupForNextLine clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, xp);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                 clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                    L_0__R2,
                                    clEOA)); }
         { clObject L_0__R2;
           clSetq(L_0__R2, qentry);
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R2,
                                    I_2,
                                    clEOA)); }
@@ -5641,11 +5641,11 @@ clObject clSetupForNextLine clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(out_point,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                L_1,
                                clEOA)); }
@@ -5655,7 +5655,7 @@ clObject clSetupForNextLine clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                   clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
@@ -5670,18 +5670,18 @@ clObject clSetupForNextLine clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                        L_0__R2,
                                        clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0__R1,
                                      I_2,
                                      clEOA)); }
@@ -5691,20 +5691,20 @@ clObject clSetupForNextLine clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R1,
                                      clEOA)); }
           clSetq(prefix_end, clAref(L_0, L_1, clEOA)); } }
     { clObject L_0;
       clSetq(L_0, prefix_end);
       clSetq(change,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0,
                                out_point,
                                clEOA)); }
@@ -5722,16 +5722,16 @@ clObject clSetupForNextLine clVdecl(_ap)
               { clObject L_0__R2;
                 clSetq(L_0__R2, xp);
                 clSetq(L_0__R1,
-                       clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                       clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                          L_0__R2,
                                          clEOA)); }
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R1,
                                        change,
                                        clEOA)); }
             clSetq(L_test__R2,
-                   clFuncallFunction(clSymbolFunctionValue(clGT),
+                   clFuncallFunction(clSymbolFunctionChecked(clGT),
                                      L_0,
                                      I_255,
                                      clEOA)); }
@@ -5741,11 +5741,11 @@ clObject clSetupForNextLine clVdecl(_ap)
                 { clObject L_0__R2;
                   clSetq(L_0__R2, xp);
                   clSetq(L_0__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                         clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                            L_0__R2,
                                            clEOA)); }
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          L_0__R1,
                                          change,
                                          clEOA)); }
@@ -5754,17 +5754,17 @@ clObject clSetupForNextLine clVdecl(_ap)
                   { clObject L_0__R3;
                     clSetq(L_0__R3, xp);
                     clSetq(L_0__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                           clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                              L_0__R3,
                                              clEOA)); }
                   clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
                 clSetq(L_1,
-                       clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                          L_0__R1,
                                          I_1,
                                          clEOA)); }
               clSetq(L_test__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clGT),
+                     clFuncallFunction(clSymbolFunctionChecked(clGT),
                                        L_0,
                                        L_1,
                                        clEOA)); }
@@ -5774,7 +5774,7 @@ clObject clSetupForNextLine clVdecl(_ap)
             { clObject L_0;
               clSetq(L_0, xp);
               clSetq(old,
-                     clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+                     clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                        L_0,
                                        clEOA)); }
             { clObject L_0;
@@ -5783,27 +5783,27 @@ clObject clSetupForNextLine clVdecl(_ap)
                   { clObject L_0__R3;
                     clSetq(L_0__R3, xp);
                     clSetq(L_0__R2,
-                           clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+                           clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                              L_0__R3,
                                              clEOA)); }
                   clSetq(L_0__R1,
-                         clFuncallFunction(clSymbolFunctionValue(clADD),
+                         clFuncallFunction(clSymbolFunctionChecked(clADD),
                                            L_0__R2,
                                            change,
                                            clEOA)); }
                 clSetq(L_0,
-                       clFuncallFunction(clSymbolFunctionValue(clADD),
+                       clFuncallFunction(clSymbolFunctionChecked(clADD),
                                          L_0__R1,
                                          I_50,
                                          clEOA)); }
               clSetq(CL_new,
                      clMakeArray(L_0,
                                  keyELEMENT_TYPE,
-                                 clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                                 clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                    old,
                                                    clEOA),
                                  clEOA)); }
-            clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+            clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                               CL_new,
                               old,
                               clEOA);
@@ -5817,23 +5817,23 @@ clObject clSetupForNextLine clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_3, prefix_end);
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_7,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_0__R1,
                                  clEOA)); }
-      clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+      clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                         L_0,
                         L_1,
                         keySTART1,
@@ -5847,17 +5847,17 @@ clObject clSetupForNextLine clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clOUTPUT_BUFFER),
+               clFuncallFunction(clSymbolFunctionChecked(clOUTPUT_BUFFER),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_3, prefix_end);
-      clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+      clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                         L_0,
                         L_1,
                         keyEND2,
@@ -5867,11 +5867,11 @@ clObject clSetupForNextLine clVdecl(_ap)
       clSetq(L_arg784, xp);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_PTR),
                                  L_arg784,
                                  clEOA));
         clSetq(L_value783,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  change,
                                  clEOA)); }
@@ -5883,11 +5883,11 @@ clObject clSetupForNextLine clVdecl(_ap)
       clSetq(L_arg786, xp);
       { clObject L_0;
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clBUFFER_OFFSET),
+               clFuncallFunction(clSymbolFunctionChecked(clBUFFER_OFFSET),
                                  L_arg786,
                                  clEOA));
         clSetq(L_value785,
-               clFuncallFunction(clSymbolFunctionValue(clSUBT),
+               clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                  L_0,
                                  change,
                                  clEOA)); }
@@ -5902,7 +5902,7 @@ clObject clSetupForNextLine clVdecl(_ap)
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clQUEUE),
+                     clFuncallFunction(clSymbolFunctionChecked(clQUEUE),
                                        L_0__R2,
                                        clEOA)); }
             { clObject L_0__R2;
@@ -5918,25 +5918,25 @@ clObject clSetupForNextLine clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(L_arg789,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
             { clObject L_0__R1;
               clSetq(L_0__R1, xp);
               clSetq(L_0,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                        L_0__R1,
                                        clEOA)); }
             clSetq(L_arg790,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      L_0,
                                      I_4,
                                      clEOA)); }
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(L_value788,
-                   clFuncallFunction(clSymbolFunctionValue(clLINE_NO),
+                   clFuncallFunction(clSymbolFunctionChecked(clLINE_NO),
                                      L_0,
                                      clEOA)); }
           return(cl_SETF_Aref(L_value788,
@@ -5959,18 +5959,18 @@ clObject clSetIndentationPrefix clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, xp);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                    L_0__R2,
                                    clEOA)); }
         { clObject L_0__R2;
           { clObject L_0__R3;
             clSetq(L_0__R3, xp);
             clSetq(L_0__R2,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R3,
                                      clEOA)); }
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R2,
                                    I_2,
                                    clEOA)); }
@@ -5981,38 +5981,38 @@ clObject clSetIndentationPrefix clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg792,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg793,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                  L_0,
                                  clEOA)); }
       { clObject L_1, L_0;
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                    L_0__R1,
                                    clEOA)); }
         { clObject L_0__R1;
           { clObject L_0__R2;
             clSetq(L_0__R2, xp);
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R2,
                                      clEOA)); }
           clSetq(L_1,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R1,
                                    I_3,
                                    clEOA)); }
         clSetq(L_value791, clAref(L_0, L_1, clEOA)); }
       cl_SETF_Aref(L_value791, L_arg792, L_arg793, clEOA); }
     { clObject L_test;
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_ind,
                                    I_255,
                                    clEOA)))
@@ -6022,17 +6022,17 @@ clObject clSetIndentationPrefix clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clPREFIX),
+                       clFuncallFunction(clSymbolFunctionChecked(clPREFIX),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_1,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_ind,
                                    L_1,
                                    clEOA)); }
@@ -6042,23 +6042,23 @@ clObject clSetIndentationPrefix clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(old,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      new_ind,
                                      I_50,
                                      clEOA));
             clSetq(CL_new,
                    clMakeArray(L_0,
                                keyELEMENT_TYPE,
-                               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                  old,
                                                  clEOA),
                                clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+          clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                             CL_new,
                             old,
                             clEOA);
@@ -6074,18 +6074,18 @@ clObject clSetIndentationPrefix clVdecl(_ap)
           { clObject L_0__R2;
             clSetq(L_0__R2, xp);
             clSetq(L_0__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                      L_0__R2,
                                      clEOA)); }
           { clObject L_0__R2;
             clSetq(L_0__R2, xp);
             clSetq(L_1__R1,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R2,
                                      clEOA)); }
           clSetq(L_1, clAref(L_0__R1, L_1__R1, clEOA)); }
         clSetq(L_test,
-               clFuncallFunction(clSymbolFunctionValue(clGT),
+               clFuncallFunction(clSymbolFunctionChecked(clGT),
                                  new_ind,
                                  L_1,
                                  clEOA)); }
@@ -6094,24 +6094,24 @@ clObject clSetIndentationPrefix clVdecl(_ap)
           { clObject L_0__R1;
             clSetq(L_0__R1, xp);
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX),
                                      L_0__R1,
                                      clEOA)); }
           { clObject L_1__R1, L_0__R1;
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_0__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                        L_0__R2,
                                        clEOA)); }
             { clObject L_0__R2;
               clSetq(L_0__R2, xp);
               clSetq(L_1__R1,
-                     clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                     clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                        L_0__R2,
                                        clEOA)); }
             clSetq(L_3, clAref(L_0__R1, L_1__R1, clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clFILL),
+          clFuncallFunction(clSymbolFunctionChecked(clFILL),
                             L_0,
                             C_Space,
                             keySTART,
@@ -6123,13 +6123,13 @@ clObject clSetIndentationPrefix clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg797,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg798,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                  L_0,
                                  clEOA)); }
       return(cl_SETF_Aref(new_ind, L_arg797, L_arg798, clEOA)); } } }
@@ -6146,7 +6146,7 @@ clObject clSetPrefix clVdecl(_ap)
     { clObject L_0__R1;
       clSetq(L_0__R1, xp);
       clSetq(L_0,
-             clFuncallFunction(clSymbolFunctionValue(clPREFIX),
+             clFuncallFunction(clSymbolFunctionChecked(clPREFIX),
                                L_0__R1,
                                clEOA)); }
     clSetq(L_1, prefix_string);
@@ -6155,13 +6155,13 @@ clObject clSetPrefix clVdecl(_ap)
         { clObject L_0__R3;
           clSetq(L_0__R3, xp);
           clSetq(L_0__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                    L_0__R3,
                                    clEOA)); }
         { clObject L_0__R3;
           clSetq(L_0__R3, xp);
           clSetq(L_1__R2,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                    L_0__R3,
                                    clEOA)); }
         clSetq(L_0__R1, clAref(L_0__R2, L_1__R2, clEOA)); }
@@ -6169,11 +6169,11 @@ clObject clSetPrefix clVdecl(_ap)
         clSetq(L_0__R2, prefix_string);
         clSetq(L_1__R1, clLength(L_0__R2, clEOA)); }
       clSetq(L_3,
-             clFuncallFunction(clSymbolFunctionValue(clSUBT),
+             clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                L_0__R1,
                                L_1__R1,
                                clEOA)); }
-    clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+    clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                       L_0,
                       L_1,
                       keySTART1,
@@ -6183,18 +6183,18 @@ clObject clSetPrefix clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, xp);
       clSetq(L_arg800,
-             clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+             clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                L_0,
                                clEOA)); }
     { clObject L_0;
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_arg801,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                I_2,
                                clEOA)); }
@@ -6202,13 +6202,13 @@ clObject clSetPrefix clVdecl(_ap)
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_0,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0__R1,
                                  clEOA)); }
       { clObject L_0__R1;
         clSetq(L_0__R1, xp);
         clSetq(L_1,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                  L_0__R1,
                                  clEOA)); }
       clSetq(L_value799, clAref(L_0, L_1, clEOA)); }
@@ -6231,29 +6231,29 @@ clObject clSetSuffix clVdecl(_ap)
         { clObject L_0__R2;
           clSetq(L_0__R2, xp);
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                    L_0__R2,
                                    clEOA)); }
         { clObject L_0__R2;
           { clObject L_0__R3;
             clSetq(L_0__R3, xp);
             clSetq(L_0__R2,
-                   clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                   clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                      L_0__R3,
                                      clEOA)); }
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clADD),
+                 clFuncallFunction(clSymbolFunctionChecked(clADD),
                                    L_0__R2,
                                    I_1,
                                    clEOA)); }
         clSetq(L_0, clAref(L_0__R1, L_1__R1, clEOA)); }
       clSetq(new_end,
-             clFuncallFunction(clSymbolFunctionValue(clADD),
+             clFuncallFunction(clSymbolFunctionChecked(clADD),
                                L_0,
                                end,
                                clEOA)); }
     { clObject L_test;
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGT),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_end,
                                    I_255,
                                    clEOA)))
@@ -6263,17 +6263,17 @@ clObject clSetSuffix clVdecl(_ap)
               { clObject L_0__R3;
                 clSetq(L_0__R3, xp);
                 clSetq(L_0__R2,
-                       clFuncallFunction(clSymbolFunctionValue(clSUFFIX),
+                       clFuncallFunction(clSymbolFunctionChecked(clSUFFIX),
                                          L_0__R3,
                                          clEOA)); }
               clSetq(L_0__R1, clLength(L_0__R2, clEOA)); }
             clSetq(L_1,
-                   clFuncallFunction(clSymbolFunctionValue(clSUBT),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUBT),
                                      L_0__R1,
                                      I_1,
                                      clEOA)); }
           clSetq(L_test,
-                 clFuncallFunction(clSymbolFunctionValue(clGT),
+                 clFuncallFunction(clSymbolFunctionChecked(clGT),
                                    new_end,
                                    L_1,
                                    clEOA)); }
@@ -6283,23 +6283,23 @@ clObject clSetSuffix clVdecl(_ap)
           { clObject L_0;
             clSetq(L_0, xp);
             clSetq(old,
-                   clFuncallFunction(clSymbolFunctionValue(clSUFFIX),
+                   clFuncallFunction(clSymbolFunctionChecked(clSUFFIX),
                                      L_0,
                                      clEOA)); }
           { clObject L_0;
             clSetq(L_0,
-                   clFuncallFunction(clSymbolFunctionValue(clADD),
+                   clFuncallFunction(clSymbolFunctionChecked(clADD),
                                      new_end,
                                      I_50,
                                      clEOA));
             clSetq(CL_new,
                    clMakeArray(L_0,
                                keyELEMENT_TYPE,
-                               clFuncallFunction(clSymbolFunctionValue(clARRAY_ELEMENT_TYPE),
+                               clFuncallFunction(clSymbolFunctionChecked(clARRAY_ELEMENT_TYPE),
                                                  old,
                                                  clEOA),
                                clEOA)); }
-          clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+          clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                             CL_new,
                             old,
                             clEOA);
@@ -6313,7 +6313,7 @@ clObject clSetSuffix clVdecl(_ap)
       clSetq(i, cl1MINUS_FUNC(new_end, clEOA));
       clSetq(j, I_0);
       clLabel(l_ITERATE804);
-      if (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+      if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                    j,
                                    end,
                                    clEOA)))
@@ -6322,13 +6322,13 @@ clObject clSetSuffix clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, xp);
           clSetq(L_arg806,
-                 clFuncallFunction(clSymbolFunctionValue(clSUFFIX),
+                 clFuncallFunction(clSymbolFunctionChecked(clSUFFIX),
                                    L_0,
                                    clEOA)); }
         { clObject L_0;
           clSetq(L_0, suffix_string);
           clSetq(L_value805,
-                 clFuncallFunction(clSymbolFunctionValue(clCHAR),
+                 clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                    L_0,
                                    j,
                                    clEOA)); }
@@ -6348,18 +6348,18 @@ clObject clSetSuffix clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, xp);
         clSetq(L_arg811,
-               clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK),
+               clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK),
                                  L_0,
                                  clEOA)); }
       { clObject L_0;
         { clObject L_0__R1;
           clSetq(L_0__R1, xp);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clPREFIX_STACK_PTR),
+                 clFuncallFunction(clSymbolFunctionChecked(clPREFIX_STACK_PTR),
                                    L_0__R1,
                                    clEOA)); }
         clSetq(L_arg812,
-               clFuncallFunction(clSymbolFunctionValue(clADD),
+               clFuncallFunction(clSymbolFunctionChecked(clADD),
                                  L_0,
                                  I_1,
                                  clEOA)); }
@@ -6382,7 +6382,7 @@ clObject clReverseStringInPlace clVdecl(_ap)
       clSetq(L_0, end);
       clSetq(j, cl1MINUS_FUNC(L_0, clEOA)); }
     clLabel(l_ITERATE813);
-    if (clTrue(clNot(clFuncallFunction(clSymbolFunctionValue(clLT),
+    if (clTrue(clNot(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                        i,
                                        j,
                                        clEOA),
@@ -6392,7 +6392,7 @@ clObject clReverseStringInPlace clVdecl(_ap)
       { clObject L_0;
         clSetq(L_0, string);
         clSetq(c,
-               clFuncallFunction(clSymbolFunctionValue(clCHAR),
+               clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                  L_0,
                                  i,
                                  clEOA)); }
@@ -6401,7 +6401,7 @@ clObject clReverseStringInPlace clVdecl(_ap)
         { clObject L_0;
           clSetq(L_0, string);
           clSetq(L_value814,
-                 clFuncallFunction(clSymbolFunctionValue(clCHAR),
+                 clFuncallFunction(clSymbolFunctionChecked(clCHAR),
                                    L_0,
                                    j,
                                    clEOA)); }
@@ -6856,7 +6856,7 @@ void clInitPretty __P((void))
     { clObject L_7, L_5, L_3;
       clSetq(L_3, clMakeClosure(0, clLambda_r1, clNULL_HOOK));
       clSetq(L_5, clMakeClosure(0, clLambda_r2, clNULL_HOOK));
-      clSetq(L_7, clSymbolFunctionValue(clIDENTITY_REST));
+      clSetq(L_7, clSymbolFunctionChecked(clIDENTITY_REST));
       clSetq(L_resource0,
              clMakeResource(keyNAME,
                             clPRETTY_PRINTING_STREAM,
@@ -6991,7 +6991,7 @@ void clInitPretty __P((void))
     { clObject L_7, L_5, L_3;
       clSetq(L_3, clMakeClosure(0, clLambda_r5, clNULL_HOOK));
       clSetq(L_5, clMakeClosure(0, clLambda_r6, clNULL_HOOK));
-      clSetq(L_7, clSymbolFunctionValue(clIDENTITY_REST));
+      clSetq(L_7, clSymbolFunctionChecked(clIDENTITY_REST));
       clSetq(L_resource3,
              clMakeResource(keyNAME,
                             clCASE_MODE_STREAM,

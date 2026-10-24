@@ -466,6 +466,10 @@
   (case element-type
     (signed-byte (setq element-type '(signed-byte 32)))
     (unsigned-byte (setq element-type '(unsigned-byte 32))))
+  ;; OPEN defaults :element-type to CHARACTER, which :ASCII can only
+  ;; supply as BASE-CHAR.
+  (when (and (eq element-type 'character) (eq external-format :ascii))
+    (setq element-type 'base-char))
   (loop for (format . set) in *supported-file-classes*
 	when (eql external-format format)
 	return (loop for (type . classes) in set

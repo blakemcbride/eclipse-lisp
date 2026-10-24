@@ -113,7 +113,7 @@ clObject clMacroFunction clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values395, function_type, local_def;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         { clObject L_0__R1;
           clSetq(L_0__R1, symbol);
@@ -184,7 +184,7 @@ clObject clFormInformation clVdecl(_ap)
       if (clTrue(L_test))
         { clObject L_values398, type, binding;
           { clMultipleValueCall(MVC);
-            clSetq(MVC, clSymbolFunctionValue(clLIST));
+            clSetq(MVC, clSymbolFunctionChecked(clLIST));
             if (clTrue(consp))
               { clObject L_1, L_0;
                 clSetq(L_0, key);
@@ -222,11 +222,11 @@ clObject clMacroexpand1 clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values400, function_type, binding, key;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, form);
         clSetq(L_1, env);
-        clFuncallFunction(clSymbolFunctionValue(clFORM_INFORMATION),
+        clFuncallFunction(clSymbolFunctionChecked(clFORM_INFORMATION),
                           L_0,
                           L_1,
                           clEOA); }
@@ -275,7 +275,7 @@ clObject clMacroexpand clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values402, form__R1, expanded_p;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, form);
         clSetq(L_1, env);
@@ -306,11 +306,11 @@ clObject clGetSetfExpansion clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values403, type, binding, key;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, place);
         clSetq(L_1, environment);
-        clFuncallFunction(clSymbolFunctionValue(clFORM_INFORMATION),
+        clFuncallFunction(clSymbolFunctionChecked(clFORM_INFORMATION),
                           L_0,
                           L_1,
                           clEOA); }
@@ -385,7 +385,7 @@ clObject clGetSetfExpansion clVdecl(_ap)
                                clList(clSETF, key, clEOA),
                                clEOA),
                         clEOA));
-          return(clFuncallFunction(clSymbolFunctionValue(clGENERATE_SETF_METHOD),
+          return(clFuncallFunction(clSymbolFunctionChecked(clGENERATE_SETF_METHOD),
                                    L_0,
                                    L_1,
                                    clT,
@@ -408,7 +408,7 @@ clObject clCompilerMacroFunction clVdecl(_ap)
     clEndParse(_ap); }
   { clObject L_values408, function_type, local_def, declarations;
     { clMultipleValueCall(MVC);
-      clSetq(MVC, clSymbolFunctionValue(clLIST));
+      clSetq(MVC, clSymbolFunctionChecked(clLIST));
       { clObject L_1, L_0;
         clSetq(L_0, name);
         clSetq(L_1, env);
@@ -438,7 +438,7 @@ clObject clCompilerMacroFunction clVdecl(_ap)
       if (clTrue(L_test))
         { clObject L_0;
           clSetq(L_0, name);
-          return(clFuncallFunction(clSymbolFunctionValue(clGLOBAL_COMPILER_MACRO_FUNCTION),
+          return(clFuncallFunction(clSymbolFunctionChecked(clGLOBAL_COMPILER_MACRO_FUNCTION),
                                    L_0,
                                    clEOA)); }
       else return(clValues1(clNIL)); } } }

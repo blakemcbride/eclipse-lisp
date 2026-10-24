@@ -47,13 +47,13 @@ clObject clTreeEqual clVdecl(_ap)
       if (clTrue(clConsp(y, clEOA)))
         { clObject L_test__R2;
           { clObject L_2, L_1, L_0;
-            clSetq(L_0, clSymbolFunctionValue(clTREE_EQUAL));
+            clSetq(L_0, clSymbolFunctionChecked(clTREE_EQUAL));
             clSetq(L_1, clCar(x, clEOA));
             clSetq(L_2, clCar(y, clEOA));
             clSetq(L_test__R2, clApply(L_0, L_1, L_2, keys, clEOA)); }
           if (clTrue(L_test__R2))
             { clObject L_2, L_1, L_0;
-              clSetq(L_0, clSymbolFunctionValue(clTREE_EQUAL));
+              clSetq(L_0, clSymbolFunctionChecked(clTREE_EQUAL));
               clSetq(L_1, clCdr(x, clEOA));
               clSetq(L_2, clCdr(y, clEOA));
               clSetq(L_g395, clApply(L_0, L_1, L_2, keys, clEOA)); }

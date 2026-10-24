@@ -467,7 +467,10 @@
 							eclipse::macro-function-function)
 	 
  ;; (OR FUNCTION NULL)
- (ftype (ec:macro (symbol) (or eclipse:function null))	eclipse::symbol-function-value
+ ;; symbol-function-checked signals UNDEFINED-FUNCTION rather than
+ ;; returning NIL.
+ (ftype (ec:macro (symbol) (or eclipse:function null))	eclipse::symbol-function-checked
+							eclipse::symbol-function-value
 							eclipse::symbol-setf-function-value
 							eclipse::setf-expander)
  (ftype (ec:macro (symbol (or eclipse:function null)) (or eclipse:function null))

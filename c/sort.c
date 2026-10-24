@@ -118,7 +118,7 @@ clObject clVectorMerge_clT_clT_clT_clT_clT clVdecl(_ap)
               clSetq(index, I_0);
               clSetq(L_g0, clLength(result_vector, clEOA));
               clLabel(NEXT_LOOP);
-              if (clTrue(clFuncallFunction(clSymbolFunctionValue(clGE),
+              if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clGE),
                                            index,
                                            L_g0,
                                            clEOA)))
@@ -152,7 +152,7 @@ clObject clVectorMerge_clT_clT_clT_clT_clT clVdecl(_ap)
                           clSetq(L_1__R1, state2);
                           clSetq(L_0,
                                  clSetq(elt2,
-                                        clFuncallFunction(clSymbolFunctionValue(clELT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clELT),
                                                           sequence2,
                                                           L_1__R1,
                                                           clEOA))); }
@@ -167,7 +167,7 @@ clObject clVectorMerge_clT_clT_clT_clT_clT clVdecl(_ap)
                           clSetq(L_1__R1, state1);
                           clSetq(L_1,
                                  clSetq(elt1,
-                                        clFuncallFunction(clSymbolFunctionValue(clELT),
+                                        clFuncallFunction(clSymbolFunctionChecked(clELT),
                                                           sequence1,
                                                           L_1__R1,
                                                           clEOA))); }
@@ -311,14 +311,14 @@ clObject clMerge clVdecl(_ap)
             { clObject L_0__R3;
               clSetq(L_0__R3, clLength(sequence1, clEOA));
               clSetq(L_1__R2,
-                     clFuncallFunction(clSymbolFunctionValue(clADD),
+                     clFuncallFunction(clSymbolFunctionChecked(clADD),
                                        L_0__R3,
                                        clLength(sequence2, clEOA),
                                        clEOA)); }
             clSetq(L_0__R1, clMakeVector(L_0__R2, L_1__R2, clEOA)); }
           clSetq(L_4, key);
           clSetq(L_0,
-                 clFuncallFunction(clSymbolFunctionValue(clVECTOR_MERGE),
+                 clFuncallFunction(clSymbolFunctionChecked(clVECTOR_MERGE),
                                    L_0__R1,
                                    sequence1,
                                    sequence2,
@@ -328,11 +328,11 @@ clObject clMerge clVdecl(_ap)
       else
         { clObject L_3, L_1__R1, L_0__R1;
           clSetq(L_0__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clCOERCE_TO_LIST),
+                 clFuncallFunction(clSymbolFunctionChecked(clCOERCE_TO_LIST),
                                    sequence1,
                                    clEOA));
           clSetq(L_1__R1,
-                 clFuncallFunction(clSymbolFunctionValue(clCOERCE_TO_LIST),
+                 clFuncallFunction(clSymbolFunctionChecked(clCOERCE_TO_LIST),
                                    sequence2,
                                    clEOA));
           clSetq(L_3, key);
@@ -396,7 +396,7 @@ clObject clListMergesort clVdecl(_ap)
           else clSetq(unsorted, clNIL);
           { clObject L_values436, merged_head, merged_last;
             { clMultipleValueCall(MVC);
-              clSetq(MVC, clSymbolFunctionValue(clLIST));
+              clSetq(MVC, clSymbolFunctionChecked(clLIST));
               { clObject L_1, L_0;
                 clSetq(L_0, list1);
                 clSetq(L_1, list2);
@@ -431,7 +431,7 @@ clObject clListMergesort clVdecl(_ap)
     clBlockEnd(NIL);
     { clObject L_value442;
       clSetq(L_value442,
-             clFuncallFunction(clSymbolFunctionValue(clMULT),
+             clFuncallFunction(clSymbolFunctionChecked(clMULT),
                                I_2,
                                n,
                                clEOA));
@@ -461,12 +461,12 @@ clObject clStableSort clVdecl(_ap)
     { clObject L_1;
       { clObject L_2, L_0__R1;
         clSetq(L_0__R1,
-               clFuncallFunction(clSymbolFunctionValue(clCOERCE_TO_LIST),
+               clFuncallFunction(clSymbolFunctionChecked(clCOERCE_TO_LIST),
                                  sequence,
                                  clEOA));
         clSetq(L_2, key);
         clSetq(L_1, clListMergesort(L_0__R1, predicate, L_2, clEOA)); }
-      return(clFuncallFunction(clSymbolFunctionValue(clREPLACE),
+      return(clFuncallFunction(clSymbolFunctionChecked(clREPLACE),
                                sequence,
                                L_1,
                                clEOA)); } }
@@ -484,7 +484,7 @@ clObject clSplit1 clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_6, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                i,
                                j,
                                clEOA)))
@@ -515,7 +515,7 @@ clObject clSplit2 clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_6, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clEQ_NUMBER),
+  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clEQ_NUMBER),
                                i,
                                j,
                                clEOA)))
@@ -547,7 +547,7 @@ clObject clQuicksortVector clVdecl(_ap)
            (_clVp(_ap) ? clVpop(_ap) : clMissingArgs(I_5, clEOA)));
     if (_clVp(_ap)) clExtraArgs(clVargs(_ap), clEOA);
     clEndParse(_ap); }
-  if (clTrue(clFuncallFunction(clSymbolFunctionValue(clLT),
+  if (clTrue(clFuncallFunction(clSymbolFunctionChecked(clLT),
                                left,
                                right,
                                clEOA)))

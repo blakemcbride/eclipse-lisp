@@ -449,7 +449,7 @@ clObject clDefaultResourceMatcher clVdecl(_ap)
       clSetq(L_0__R1, object);
       clSetq(L_1__R1, resource);
       clSetq(L_0, clGetResourceParameters(L_0__R1, L_1__R1, clEOA)); }
-    return(clFuncallFunction(clSymbolFunctionValue(clEQUAL),
+    return(clFuncallFunction(clSymbolFunctionChecked(clEQUAL),
                              L_0,
                              parameters,
                              clEOA)); } }
@@ -716,7 +716,7 @@ void clInitResource __P((void))
   (void) clFIND_RESOURCE;
   { clObject L_g3;
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(L_g3, clApply(L_0, clRESOURCE, CONS_0, clEOA)); }
     clSetSymbolFunctionValue(clMAKE_RESOURCE,
                              clMakeClosure(0,

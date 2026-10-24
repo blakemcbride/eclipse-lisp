@@ -114,7 +114,7 @@ clObject clMakeFileCompilerEnv clVdecl(_ap)
              clMakeHashTable(keySIZE,
                              I_27,
                              keyTEST,
-                             clSymbolFunctionValue(clEQUAL),
+                             clSymbolFunctionChecked(clEQUAL),
                              clEOA));
     if (clTrue(clSetq(L_ap, clKeyArg(keyCONSTANTS, L_keys, clEOA))))
       { clObject L_0;
@@ -123,7 +123,7 @@ clObject clMakeFileCompilerEnv clVdecl(_ap)
     else
       clSetq(L_constants,
              clMakeHashTable(keyTEST,
-                             clSymbolFunctionValue(clEQUAL),
+                             clSymbolFunctionChecked(clEQUAL),
                              clEOA));
     if (clTrue(clSetq(L_ap,
                       clKeyArg(keyBASIC_CONSTANTS, L_keys, clEOA))))
@@ -142,7 +142,7 @@ clObject clMakeFileCompilerEnv clVdecl(_ap)
     else
       clSetq(L_external_constants,
              clMakeHashTable(keyTEST,
-                             clSymbolFunctionValue(clEQ),
+                             clSymbolFunctionChecked(clEQ),
                              clEOA));
     clCheckKeys(L_keys, CONS_40, clEOA);
     clEndParse(_ap); }
@@ -327,7 +327,7 @@ clObject clMakeByteFileCompilerEnv clVdecl(_ap)
              clMakeHashTable(keySIZE,
                              I_27,
                              keyTEST,
-                             clSymbolFunctionValue(clEQUAL),
+                             clSymbolFunctionChecked(clEQUAL),
                              clEOA));
     if (clTrue(clSetq(L_ap, clKeyArg(keyCONSTANTS, L_keys, clEOA))))
       { clObject L_0;
@@ -336,7 +336,7 @@ clObject clMakeByteFileCompilerEnv clVdecl(_ap)
     else
       clSetq(L_constants,
              clMakeHashTable(keyTEST,
-                             clSymbolFunctionValue(clEQUAL),
+                             clSymbolFunctionChecked(clEQUAL),
                              clEOA));
     if (clTrue(clSetq(L_ap,
                       clKeyArg(keyBASIC_CONSTANTS, L_keys, clEOA))))
@@ -355,7 +355,7 @@ clObject clMakeByteFileCompilerEnv clVdecl(_ap)
     else
       clSetq(L_external_constants,
              clMakeHashTable(keyTEST,
-                             clSymbolFunctionValue(clEQ),
+                             clSymbolFunctionChecked(clEQ),
                              clEOA));
     clCheckKeys(L_keys, CONS_40, clEOA);
     clEndParse(_ap); }
@@ -679,7 +679,7 @@ clObject clWalkInstructions_clFILE_COMPILER_ENV_clT_clT_clT clVdecl(_ap)
                              clWalkInstructions_clFILE_COMPILER_ENV_clT_clT_clT_Lambda,
                              &clEnvHook(clWalkInstructions_clFILE_COMPILER_ENV_clT_clT_clT_Lambda),
                              &*items));
-        clFuncallFunction(clSymbolFunctionValue(clMAPHASH),
+        clFuncallFunction(clSymbolFunctionChecked(clMAPHASH),
                           L_0,
                           clFileCompilerEnvConstants(dynamic_env,
                                                      clEOA),
@@ -902,7 +902,7 @@ void clInitFileWalk __P((void))
   (void) clstarFILE_COMPILER_ENV_INTERNED_OBJECTSstar;
   { clObject *L_g17 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g17,
              clApply(L_0, clFILE_COMPILER_ENV, CONS_0, clEOA)); }
     { clObject L_1;
@@ -989,7 +989,7 @@ void clInitFileWalk __P((void))
                                                           clEOA));
   { clObject *L_g18 = clMakeBinding();
     { clObject L_0;
-      clSetq(L_0, clSymbolFunctionValue(clENSURE_STRUCTURE));
+      clSetq(L_0, clSymbolFunctionChecked(clENSURE_STRUCTURE));
       clSetq(*L_g18,
              clApply(L_0, clBYTE_FILE_COMPILER_ENV, CONS_58, clEOA)); }
     { clObject L_1;
