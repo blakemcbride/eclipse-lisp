@@ -227,7 +227,7 @@ TAGS: $(sources) $(dsources) $(static-sources) eclipse.c eclipse.h statics.h cha
 # HOUSE CLEANING
 #########################################################################
 clean-objects: 
-	$(RM) $(objects) $(static-objects) eclipse.o 
+	$(RM) $(objects) $(dobjects) $(static-objects) eclipse.o initd.o
 	$(RM) eclipse
 	$(RM) $(l).a $(l)d.a 
 
