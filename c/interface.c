@@ -2017,6 +2017,7 @@ static int xwrite(fd, buf, nbyte) int fd; char *buf; size_t nbyte; {
   int n, total = nbyte;
   while (nbyte)
     { n = write(fd, buf, nbyte);
+      if (n <= 0) return(total - (int) nbyte);	/* error: don't spin */
       nbyte -= n;
       buf += n;
     }
@@ -2140,36 +2141,98 @@ clObject clWriteMb(fd, buffer, offset, size)
   (void) xwrite(clFixnumInt(fd), buf, (size_t) bi);
   return(clIntFixnum(wp - ws)); }
 
-#define DummyWriter(name) \
-clObject name __P((clObject, clObject, clObject, clObject)); \
+/* Binary file streams.  Lisp buffers for (UNSIGNED-BYTE n) and
+   (SIGNED-BYTE n) are general vectors of integers.  Each reader reads
+   at most size elements into buffer starting at offset and returns the
+   number read (0 at end of file, negative on error).  Each writer
+   writes at most size elements and returns the number written. */
+clObject clAddIntegerInteger __P((clObject, clObject));
+
+static clObject ByteInteger(v, nbytes, signedp)
+     unsigned long v; int nbytes, signedp;
+{ if (signedp) {
+    unsigned long sign = 1UL << (nbytes * 8 - 1);
+    return(clIntInteger((int) ((long) (v ^ sign) - (long) sign)));
+  }
+  if (v <= 0x7fffffffUL) return(clIntInteger((int) v));
+  /* (UNSIGNED-BYTE 32) values that don't fit in an int */
+  return(clAddIntegerInteger(clIntInteger((int) (v - 0x80000000UL)),
+			     clAddIntegerInteger(clIntInteger(0x40000000),
+						 clIntInteger(0x40000000))));
+}
+
+static clObject ReadBinary(fd, buffer, offset, size, nbytes, bigp, signedp)
+     clObject fd, buffer, offset, size; int nbytes, bigp, signedp;
+{ unsigned char buf[BUFSIZE];
+  clObject *data = clSimpleVectorSlots(buffer) + clFixnumInt(offset);
+  int max = clFixnumInt(size), got = 0, n, i, j;
+  if (max * nbytes > BUFSIZE) max = BUFSIZE / nbytes;
+  /* Keep reading until we have whole elements (or end of file). */
+  do { n = read(clFixnumInt(fd), buf + got, (size_t) (max * nbytes - got));
+       if (n < 0) { if (!got) return(clIntFixnum(n)); break; }
+       got += n; }
+  while (n > 0 && got % nbytes);
+  n = got / nbytes;
+  for (i = 0; i < n; i++) {
+    unsigned char *b = buf + i * nbytes;
+    unsigned long v = 0;
+    for (j = 0; j < nbytes; j++)
+      v = (v << 8) | b[bigp ? j : nbytes - 1 - j];
+    clSetq(data[i], ByteInteger(v, nbytes, signedp));
+  }
+  return(clIntFixnum(n));
+}
+
+static clObject WriteBinary(fd, buffer, offset, size, nbytes, bigp)
+     clObject fd, buffer, offset, size; int nbytes, bigp;
+{ unsigned char buf[BUFSIZE];
+  clObject *data = clSimpleVectorSlots(buffer) + clFixnumInt(offset);
+  int n = clFixnumInt(size), i, j;
+  if (n * nbytes > BUFSIZE) n = BUFSIZE / nbytes;
+  for (i = 0; i < n; i++) {
+    unsigned char *b = buf + i * nbytes;
+    unsigned long v = (unsigned long) (unsigned int) clIntegerInt(data[i]);
+    for (j = 0; j < nbytes; j++, v >>= 8)
+      b[bigp ? nbytes - 1 - j : j] = (unsigned char) (v & 0xff);
+  }
+  (void) xwrite(clFixnumInt(fd), (char *) buf, (size_t) (n * nbytes));
+  return(clIntFixnum(n));
+}
+
+#define BinaryReader(name, nbytes, bigp, signedp)			\
+clObject name __P((clObject, clObject, clObject, clObject));		\
 clObject name(fd, buffer, offset, size) clObject fd, buffer, offset, size; { \
-  return(_clControlError("Binary stream I/O is not defined yet.")); }
+  return(ReadBinary(fd, buffer, offset, size, nbytes, bigp, signedp)); }
+#define BinaryWriter(name, nbytes, bigp)				\
+clObject name __P((clObject, clObject, clObject, clObject));		\
+clObject name(fd, buffer, offset, size) clObject fd, buffer, offset, size; { \
+  return(WriteBinary(fd, buffer, offset, size, nbytes, bigp)); }
 
-DummyWriter(clWriteLeu32)
-DummyWriter(clWriteLeu16) 
-DummyWriter(clWriteLeu8)
-DummyWriter(clWriteLes32) 
-DummyWriter(clWriteLes16) 
-DummyWriter(clWriteLes8) 
-DummyWriter(clWriteBeu32) 
-DummyWriter(clWriteBeu16) 
-DummyWriter(clWriteBeu8)
-DummyWriter(clWriteBes32) 
-DummyWriter(clWriteBes16) 
-DummyWriter(clWriteBes8) 
+BinaryWriter(clWriteLeu32, 4, 0)
+BinaryWriter(clWriteLeu16, 2, 0)
+BinaryWriter(clWriteLeu8, 1, 0)
+BinaryWriter(clWriteLes32, 4, 0)
+BinaryWriter(clWriteLes16, 2, 0)
+BinaryWriter(clWriteLes8, 1, 0)
+BinaryWriter(clWriteBeu32, 4, 1)
+BinaryWriter(clWriteBeu16, 2, 1)
+BinaryWriter(clWriteBeu8, 1, 1)
+BinaryWriter(clWriteBes32, 4, 1)
+BinaryWriter(clWriteBes16, 2, 1)
+BinaryWriter(clWriteBes8, 1, 1)
 
-DummyWriter(clReadLeu32)  
-DummyWriter(clReadLeu16)  
-DummyWriter(clReadLeu8)  
-DummyWriter(clReadLes32)  
-DummyWriter(clReadLes16)  
-DummyWriter(clReadLes8) 
-DummyWriter(clReadBeu32)  
-DummyWriter(clReadBeu16)  
-DummyWriter(clReadBeu8)  
-DummyWriter(clReadBes32)  
-DummyWriter(clReadBes16)  
-DummyWriter(clReadBes8)  
+BinaryReader(clReadLeu32, 4, 0, 0)
+BinaryReader(clReadLeu16, 2, 0, 0)
+BinaryReader(clReadLeu8, 1, 0, 0)
+BinaryReader(clReadLes32, 4, 0, 1)
+BinaryReader(clReadLes16, 2, 0, 1)
+BinaryReader(clReadLes8, 1, 0, 1)
+BinaryReader(clReadBeu32, 4, 1, 0)
+BinaryReader(clReadBeu16, 2, 1, 0)
+BinaryReader(clReadBeu8, 1, 1, 0)
+BinaryReader(clReadBes32, 4, 1, 1)
+BinaryReader(clReadBes16, 2, 1, 1)
+BinaryReader(clReadBes8, 1, 1, 1)  
 
 
 

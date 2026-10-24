@@ -29,20 +29,16 @@
 	  (make-buffer (stream-element-type stream)))))
 
 
+;;; Make room by writing out what is buffered.  If there is still not
+;;; enough room (more items than the buffer holds), the next method
+;;; grows the buffer.
 (defmethod check-buffer-size ((stream BUFFERED-EXTERNAL-OUTPUT-STREAM)
 			      n-additional-items)
-  (with-slots (output-buffer) stream
-    (let* ((buf output-buffer)
-	   (current (array-dimension buf 0))
-	   (pos (fill-pointer buf))
-	   (needed (loop for needed = (+ pos n-additional-items)
-			 until (>= current needed)
-			 do (stream-force-output stream)
-			 do (setf pos (fill-pointer buf))
-			 finally (return needed))))
-      ;; Replace won't go beyond fill-pointer
-      (setf (fill-pointer buf) needed)
-      pos)))
+  (let ((buf (output-buffer stream)))
+    (when (> (+ (fill-pointer buf) n-additional-items)
+	     (array-dimension buf 0))
+      (stream-force-output stream)))
+  (call-next-method))
 
 (defmethod stream-FINISH-OUTPUT :BEFORE ((stream buffered-external-output-stream))
   (stream-force-output stream))
@@ -162,12 +158,16 @@
 
   
 
+;;; STREAM-WRITE may write only part of the buffer, so loop until it is
+;;; empty (or no progress is made).
 (defmethod stream-FORCE-OUTPUT ((stream BUFFERED-FILE-OUTPUT-STREAM))
   (with-slots (output-buffer) stream
-    (let* ((buffer output-buffer)
-	   (n (stream-write stream (length buffer))))
-      (replace buffer buffer :start2 n)
-      (decf (fill-pointer buffer) n)
+    (let ((buffer output-buffer))
+      (loop while (plusp (fill-pointer buffer))
+	    do (let ((n (stream-write stream (length buffer))))
+		 (unless (and n (plusp n)) (return))
+		 (replace buffer buffer :start2 n)
+		 (decf (fill-pointer buffer) n)))
       nil)))
 
 ;;; Returns the number of characters read, or nil if at end of file.
@@ -225,6 +225,10 @@
   (with-slots (position end) stream
     (when (>= position end) (stream-fill-input stream))))
 
+(defmethod stream-READ-BYTE :BEFORE ((stream BUFFERED-BINARY-FILE-INPUT-STREAM))
+  (with-slots (position end) stream
+    (when (>= position end) (stream-fill-input stream))))
+
 (defmethod stream-READ-CHAR-NO-HANG ((stream BUFFERED-CHARACTER-FILE-INPUT-STREAM))
   (with-slots (input-buffer position end) stream
     (let ((pos position))
@@ -239,15 +243,17 @@
 
 (defmethod stream-FORCE-OUTPUT ((stream BUFFERED-CHARACTER-FILE-OUTPUT-STREAM))
   (with-slots (output-buffer buffer-line-column) stream
-    (let* ((buffer output-buffer)
-	   (n (stream-write stream (length buffer)))
-	   (pos (position #\newline buffer :end n :from-end t)))
-      (setf buffer-line-column
-	    (if pos
-		(- n pos 1)
-		(+ buffer-line-column n)))
-      (replace buffer buffer :start2 n)
-      (decf (fill-pointer buffer) n)
+    (let ((buffer output-buffer))
+      (loop while (plusp (fill-pointer buffer))
+	    do (let ((n (stream-write stream (length buffer))))
+		 (unless (and n (plusp n)) (return))
+		 (let ((pos (position #\newline buffer :end n :from-end t)))
+		   (setf buffer-line-column
+			 (if pos
+			     (- n pos 1)
+			     (+ buffer-line-column n))))
+		 (replace buffer buffer :start2 n)
+		 (decf (fill-pointer buffer) n)))
       nil)))
 
 
@@ -267,6 +273,21 @@
 	      ())
 	    (defclass ,(make-name "~a-FILE-BIDIRECTIONAL-STREAM" root)
 	      (,input ,output buffered-character-file-bidirectional-stream)
+	      ()))))
+     (def-binary-file-stream (root external-format element-type)
+       (let ((base (make-name "~a-FILE-STREAM" root))
+	     (input (make-name "~a-FILE-INPUT-STREAM" root))
+	     (output (make-name "~a-FILE-OUTPUT-STREAM" root)))
+	 `(progn
+	    (defclass ,base (fundamental-binary-stream)
+	      ((external-format :initform ,external-format)
+	       (element-type :initform ,element-type)))
+	    (defclass ,input (,base buffered-binary-file-input-stream)
+	      ())
+	    (defclass ,output (,base buffered-binary-file-output-stream)
+	      ())
+	    (defclass ,(make-name "~a-FILE-BIDIRECTIONAL-STREAM" root)
+	      (,input ,output buffered-file-bidirectional-stream)
 	      ())))))
   ;; CHARACTER STREAMS
   (def-file-stream ASCII :ascii 'base-char)
@@ -279,18 +300,18 @@
 			       :element-type 'base-char
 			       :fill-pointer 0)))
   ;; BINARY STREAMS 
-  (def-file-stream beu8 :big-endian '(unsigned-byte 8))
-  (def-file-stream beu16 :big-endian '(unsigned-byte 16))
-  (def-file-stream beu32 :big-endian '(unsigned-byte 32))
-  (def-file-stream bes8 :big-endian '(signed-byte 8))
-  (def-file-stream bes16 :big-endian '(signed-byte 16))
-  (def-file-stream bes32 :big-endian '(signed-byte 32))
-  (def-file-stream leu8 :little-endian '(unsigned-byte 8))
-  (def-file-stream leu16 :little-endian '(unsigned-byte 16))
-  (def-file-stream leu32 :little-endian '(unsigned-byte 32))
-  (def-file-stream les8 :little-endian '(signed-byte 8))
-  (def-file-stream les16 :little-endian '(signed-byte 16))
-  (def-file-stream les32 :little-endian '(signed-byte 32)))
+  (def-binary-file-stream beu8 :big-endian '(unsigned-byte 8))
+  (def-binary-file-stream beu16 :big-endian '(unsigned-byte 16))
+  (def-binary-file-stream beu32 :big-endian '(unsigned-byte 32))
+  (def-binary-file-stream bes8 :big-endian '(signed-byte 8))
+  (def-binary-file-stream bes16 :big-endian '(signed-byte 16))
+  (def-binary-file-stream bes32 :big-endian '(signed-byte 32))
+  (def-binary-file-stream leu8 :little-endian '(unsigned-byte 8))
+  (def-binary-file-stream leu16 :little-endian '(unsigned-byte 16))
+  (def-binary-file-stream leu32 :little-endian '(unsigned-byte 32))
+  (def-binary-file-stream les8 :little-endian '(signed-byte 8))
+  (def-binary-file-stream les16 :little-endian '(signed-byte 16))
+  (def-binary-file-stream les32 :little-endian '(signed-byte 32)))
 
 (macrolet ((def-stream-read (class function &rest aux)
 	     `(defmethod stream-read ((stream ,class) n)

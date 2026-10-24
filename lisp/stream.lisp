@@ -29,7 +29,7 @@
 ;;; Make things more consistent and allows stream specializer to take
 ;;; precedence. 
 (defun READ-SEQUENCE (sequence stream &key (start 0) end)
-  (stream-read-sequence stream sequence start :start start :end end))
+  (stream-read-sequence stream sequence :start start :end end))
 
 (defun input-stream (designator)
   (case designator
@@ -543,6 +543,19 @@
 (defclass buffered-binary-output-stream (buffered-output-stream
 					 fundamental-binary-output-stream)
   ())
+
+(defmethod stream-READ-BYTE ((stream BUFFERED-BINARY-INPUT-STREAM))
+  (with-slots (input-buffer position end) stream
+    (let ((pos position))
+      (cond ((>= pos end) :eof)
+	    (t (setf position (1+ pos))
+	       (svref input-buffer pos))))))
+
+(defmethod stream-WRITE-BYTE ((stream BUFFERED-BINARY-OUTPUT-STREAM)
+			      (integer INTEGER))
+  (let ((pos (check-buffer-size stream 1)))
+    (setf (aref (output-buffer stream) pos) integer))
+  integer)
 
 (defmethod stream-UNREAD-CHAR ((stream BUFFERED-CHARACTER-INPUT-STREAM)
 			       (character character))
