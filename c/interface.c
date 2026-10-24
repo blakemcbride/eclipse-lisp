@@ -492,7 +492,7 @@ clBinding clMakeBinding() {
 
 #define GetEm(args, ii)					\
   clObject args[cl_CALL_ARGUMENTS_LIMIT+1]; unsigned short ii = 0;	\
-  va_list _ap; clVaStart(_ap);				\
+  va_list _ap; clCheckCStack(args); clVaStart(_ap);	\
   if (InitFillEm(_ap, args, ii))			\
     while (FillEm(_ap, args, ii))			\
       clCheckCount(ii, cl_CALL_ARGUMENTS_LIMIT, "CALL-ARGUMENTS-LIMIT exceeded."); \
@@ -578,6 +578,74 @@ void clExtendControls(n) unsigned n;
 { if ((CL_dynamic_environment+=n) == CL_dynamic_environment_limit) clGrowControlStack(); }
 
 #endif
+
+/******************************************************************
+  STACK LIMITS
+  Both the control stack and the C stack have fixed sizes.  Passing a
+  stack's soft limit signals STORAGE-CONDITION and moves the limit to
+  the hard limit, leaving a reserve in which the handler or debugger
+  can run.  Passing the hard limit (overflowing again before the soft
+  limit is re-armed) is fatal.  Every non-local exit (including the
+  debugger's ABORT) re-arms the soft limits once the stacks have
+  unwound past the reserve; see clUnwindExit().
+ ******************************************************************/
+static clControlOpCell *control_soft_limit, *control_hard_limit;
+static unsigned control_reserve;
+static char *c_stack_soft_limit, *c_stack_hard_limit;
+static size_t c_stack_reserve;
+
+static void InitStackLimits(control_size, stack_base)
+     unsigned control_size; char *stack_base;
+{ size_t size = 8*1024*1024;		/* C stack size if unknown */
+#ifdef unix
+  struct rlimit rl;
+  if (!getrlimit(RLIMIT_STACK, &rl) && rl.rlim_cur != RLIM_INFINITY)
+    size = (size_t) rl.rlim_cur;
+  else size = 256*1024*1024;
+  if (size > 1024*1024*1024) size = 1024*1024*1024;
+#elif (defined _WIN32)
+  size = 1024*1024;
+#endif
+  control_reserve = control_size / 16;
+  control_hard_limit = CL_dynamic_environment_base + control_size;
+  control_soft_limit = control_hard_limit - control_reserve;
+  CL_dynamic_environment_limit = control_soft_limit;
+  /* The stack grows down.  Keep size/16 (at least 256K) beyond the hard
+     limit for whatever is above stack_base and for the fatal exit, and a
+     reserve of size/4 between the soft and hard limits. */
+  c_stack_reserve = size / 4;
+  c_stack_hard_limit = stack_base - size +
+    (size/16 > 256*1024 ? size/16 : 256*1024);
+  c_stack_soft_limit = c_stack_hard_limit + c_stack_reserve;
+  cl_C_stack_limit = c_stack_soft_limit;
+}
+
+static void StackExhausted(which) const char *which; {
+  (void) fprintf(stderr, "\nFatal: %s stack exhausted.\n", which);
+  exit(1);
+}
+
+void clControlStackOverflow() {
+  if (CL_dynamic_environment_limit == control_hard_limit)
+    StackExhausted("control");
+  CL_dynamic_environment_limit = control_hard_limit;
+  (void) _clStorageCondition();
+}
+
+void clCStackOverflow() {
+  if (cl_C_stack_limit == c_stack_hard_limit)
+    StackExhausted("C");
+  cl_C_stack_limit = c_stack_hard_limit;
+  (void) _clStorageCondition();
+}
+
+/* sp is (approximately) where the C stack pointer is about to be. */
+static void RearmStackLimits(sp) char *sp; {
+  if (CL_dynamic_environment < control_soft_limit - control_reserve)
+    CL_dynamic_environment_limit = control_soft_limit;
+  if (sp > c_stack_soft_limit + c_stack_reserve)
+    cl_C_stack_limit = c_stack_soft_limit;
+}
 
 
 void clDbind(symbol) clObject symbol; {
@@ -718,6 +786,8 @@ void clUnwindExit(exitp) clExitCell *exitp; {
       break;
     }
   }
+  /* The exit cell lives in the frame we are about to return to. */
+  RearmStackLimits((char *) exitp);
   _longjmp(exitp->machine_state, (int) exitp->exit_flag);
 }
 
@@ -3618,7 +3688,7 @@ void clProgress(msg) const char *msg; {
 
 
 void clInit(control_stack_size) unsigned int control_stack_size; {
-  clObject PKG_USR;
+  clObject PKG_USR; char stack_base;
   clProgress("Initializing:");
 #ifndef clNOGC
 #  ifdef INCREMENTAL_GC
@@ -3629,11 +3699,11 @@ void clInit(control_stack_size) unsigned int control_stack_size; {
     exit(1);
   }
 #endif
-  if (!control_stack_size) control_stack_size = 1024;
+  if (!control_stack_size) control_stack_size = 65536;
   CL_dynamic_environment = CL_dynamic_environment_base =
     (clControlOpCell *)
     clMallocControlStack(control_stack_size * sizeof(clControlOpCell));
-  CL_dynamic_environment_limit = CL_dynamic_environment_base + control_stack_size;
+  InitStackLimits(control_stack_size, &stack_base);
 
   setlocale(LC_CTYPE, "");
   clInitStaticClass();

@@ -2738,12 +2738,28 @@ clControlOpCell
  	(CL_dynamic_environment - CL_dynamic_environment_base)
 #  define clDEnvPointer(index) (index + CL_dynamic_environment_base)
 #else
-#  define clExtendControls(n) 	(CL_dynamic_environment += (n))
+   void		clControlStackOverflow __P((void));
+   /* Check before extending, so that the stack is consistent (all
+      cells initialized) if STORAGE-CONDITION is signalled. */
+#  define clExtendControls(n) 					\
+   ((void) (CL_dynamic_environment + (n) >=			\
+	    CL_dynamic_environment_limit ?			\
+	    (clControlStackOverflow(), 0) : 0),			\
+    (void) (CL_dynamic_environment += (n)))
 #  define clCurrentDEnv() 	CL_dynamic_environment
 #  define clDEnvPointer(index) 	index
 #endif
 
 void clUnwind __P((unsigned)), clUnwindExit __P((clExitCell *));
+
+/* C stack limit, checked on function calls.  See clCStackOverflow(). */
+#ifndef cl_ECLIPSE_DEFINITIONS
+   extern
+#endif
+char *cl_C_stack_limit;
+void clCStackOverflow __P((void));
+#define clCheckCStack(local_address)			\
+  if ((char *) (local_address) < cl_C_stack_limit) clCStackOverflow()
 
 /*********************************************************************
  * DBIND
