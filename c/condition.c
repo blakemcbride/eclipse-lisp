@@ -2681,22 +2681,19 @@ clObject clInvokeApplicableRestart clVdecl(_ap)
           clSetq(restart,
                  clApplicableRestart(L_restart43, L_1, L_2, clEOA)); }
         if (clTrue(restart))
-          { clObject STARrestartsSTAR;
-            clSetq(STARrestartsSTAR, clCdr(frames, clEOA));
-            clDbind(clstarRESTARTSstar);
-            clSetSymbolValueValue(clstarRESTARTSstar,
-                                  STARrestartsSTAR);
-            { clObject L_1, L_0;
+          { clObject L_1, L_0;
+            if (clTrue(interactivep))
+              { clObject fn;
+                clSetq(fn, clRestartInteractiveFunction(restart, clEOA));
+                clSetq(L_1,
+                       (clTrue(fn) ? clFuncall(fn, clEOA) : clNIL)); }
+            else clSetq(L_1, arguments);
+            { clObject STARrestartsSTAR;
+              clSetq(STARrestartsSTAR, clCdr(frames, clEOA));
+              clDbind(clstarRESTARTSstar);
+              clSetSymbolValueValue(clstarRESTARTSstar,
+                                    STARrestartsSTAR);
               clSetq(L_0, clRestartFunction(restart, clEOA));
-              if (clTrue(interactivep))
-                { clObject fn;
-                  clSetq(fn,
-                         clRestartInteractiveFunction(restart, clEOA));
-                  clSetq(L_1,
-                         (clTrue(fn) ?
-                          clFuncall(fn, clEOA) :
-                          clNIL)); }
-              else clSetq(L_1, arguments);
               clUnwindReturn(clApply(L_0, L_1, clEOA), 1); } } }
       { clObject L_0;
         clSetq(L_0, L_sublist536);

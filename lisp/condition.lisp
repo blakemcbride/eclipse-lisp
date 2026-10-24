@@ -329,12 +329,15 @@
 			frames)
      (when restart
        (return-from invoke-applicable-restart
-	 (let ((*restarts* (cdr frames)))
-	   (apply (restart-function restart)
-		  (if interactivep
-		      (let ((fn (restart-interactive-function restart)))
-			(when fn (funcall fn)))
-		    arguments)))))))
+	 ;; The interactive function runs while the restart is still
+	 ;; active (e.g. it may prompt, hit end of file, and exit).
+	 (let ((arguments
+		(if interactivep
+		    (let ((fn (restart-interactive-function restart)))
+		      (when fn (funcall fn)))
+		  arguments)))
+	   (let ((*restarts* (cdr frames)))
+	     (apply (restart-function restart) arguments)))))))
 
 (defun INVOKE-RESTART (restart-identifier &rest arguments)
   (invoke-applicable-restart nil restart-identifier arguments nil t))

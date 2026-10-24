@@ -123,7 +123,10 @@ Type a keyword (eg. :exit) corresponding to the bracketed name
   (let ((*debug-level* (1+ *debug-level*)))
     (clear-input *debug-io*)
     (read-eval-print-loop *debug-level* condition
-			  *debug-io* *debug-io*)))
+			  *debug-io* *debug-io*)
+    ;; READ-EVAL-PRINT-LOOP returns only at end of input.  The debugger
+    ;; must not return, so leave Lisp (or at least this computation).
+    (invoke-restart (or (find-restart 'exit) (find-restart 'abort)))))
 
 (defparameter *debug-level* 0)
 (defun DRIBBLE (&optional (pathname nil pathnamep))

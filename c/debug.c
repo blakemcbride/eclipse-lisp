@@ -655,13 +655,15 @@ clObject clInvokeDebugger_clCONDITION clVdecl(_ap)
         clSetq(L_0, clSymbolValue(clstarDEBUG_LEVELstar, clEOA));
         clSetq(L_1, condition);
         clSetq(L_2, clSymbolValue(clstarDEBUG_IOstar, clEOA));
-        clUnwindReturn(clReadEvalPrintLoop(L_0,
-                                           L_1,
-                                           L_2,
-                                           clSymbolValue(clstarDEBUG_IOstar,
-                                                         clEOA),
-                                           clEOA),
-                       1); } } } }
+        (void) clReadEvalPrintLoop(L_0,
+                                   L_1,
+                                   L_2,
+                                   clSymbolValue(clstarDEBUG_IOstar, clEOA),
+                                   clEOA); }
+      { clObject L_0;
+        clSetq(L_0, clFindRestart(clEXIT, clEOA));
+        if (!clTrue(L_0)) clSetq(L_0, clFindRestart(clABORT, clEOA));
+        clUnwindReturn(clInvokeRestart(L_0, clEOA), 1); } } } }
 
 clDeclareEnv(clDribble_Lambda);
 static clObject clDribble_Lambda clVdecl(_ap)
