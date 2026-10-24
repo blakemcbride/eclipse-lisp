@@ -570,8 +570,22 @@
 ;;; accuracy as non-exponential notation, using the method described in the
 ;;; Steele and White paper.
 
+;;; Infinities and NaNs (from IEEE arithmetic that doesn't trap) have no
+;;; readable syntax, and the digit generation below would never finish
+;;; for them.
+(defun float-infinity-or-nan-p (x)
+  (and (floatp x)
+       (or (/= x x)
+	   (> (abs x) most-positive-double-float))))
+
 (defun PRINT-FLOAT (x stream)
-  (cond ((zerop x)
+  (cond ((float-infinity-or-nan-p x)
+	 (print-unreadable-object (x stream :type t)
+	   (write-string (cond ((/= x x) "NaN")
+			       ((plusp x) "+Infinity")
+			       (t "-Infinity"))
+			 stream)))
+	((zerop x)
 	 (write-string "0.0" stream)
 	 (print-float-exponent x 0 stream))
 	(t

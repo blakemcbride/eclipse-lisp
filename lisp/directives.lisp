@@ -536,7 +536,7 @@
 
 (defun format-dollars (stream number d n w pad colon atsign)
   (if (rationalp number) (setq number (coerce number 'single-float)))
-  (if (floatp number)
+  (if (and (floatp number) (not (float-infinity-or-nan-p number)))
       (let* ((signstr (if (minusp number) "-" (if atsign "+" "")))
 	     (signlen (length signstr)))
 	(multiple-value-bind (str strlength ig2 ig3 pointplace)

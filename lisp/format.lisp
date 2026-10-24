@@ -206,10 +206,10 @@
 
 
 (defun format-fixed (stream number w d k ovf pad atsign)
-  (if (realp number)
+  (if (and (realp number) (not (float-infinity-or-nan-p number)))
       (format-fixed-aux stream (float number) w d k ovf pad atsign)
     (format-write-field stream (decimal-string number)
-			w 1 0 #\space t)))
+			(or w 0) 1 0 #\space t)))
 
 (defun decimal-string (n)
   (write-to-string n :base 10 :radix nil :escape nil))
@@ -268,10 +268,10 @@
   
 
 (defun format-exponential (stream number w d e k ovf pad marker atsign)
-  (if (realp number)
+  (if (and (realp number) (not (float-infinity-or-nan-p number)))
       (format-exp-aux stream (float number) w d e k ovf pad marker atsign)
-    (format-write-field stream (decimal-string number) w 1 0 #\space
-			t)))
+    (format-write-field stream (decimal-string number) (or w 0) 1 0
+			#\space t)))
 
 (defun format-exponent-marker (number)
   (if (typep number *read-default-float-format*)
@@ -337,9 +337,10 @@
 			 (write-string estr stream)))))))))
 
 (defun format-general (stream number w d e k ovf pad marker atsign)
-  (if (realp number)
+  (if (and (realp number) (not (float-infinity-or-nan-p number)))
       (format-general-aux stream (float number) w d e k ovf pad marker atsign)
-    (format-write-field stream (decimal-string number) w 1 0 #\space t)))
+    (format-write-field stream (decimal-string number) (or w 0) 1 0 #\space
+			t)))
 
 (defun format-general-aux (stream number w d e k ovf pad marker atsign)
   (multiple-value-bind (ignore n) 

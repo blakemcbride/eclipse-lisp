@@ -109,7 +109,7 @@ extern clObject clampersandREST, clBLOCK, clCONS, clDECLARE, clEQ,
   clSUBT, clSYMBOL_FUNCTION, clTOP, clUNLESS, clVAL, clW,
   clWITH_OUTPUT_TO_STRING, clWRITE_CHAR, clWRITE_CHARplusplus,
   clWRITE_STRING, clWRITE_STRINGplusplus, clWRITE_TO_STRING,
-  clWRITE_TOPLEVEL, clXP;
+  clWRITE_TOPLEVEL, clXP, clFLOAT_INFINITY_OR_NAN_P;
 
 static clObject C_hash, C_dollar, C_percent, C_ampersand, C_quote,
   C_lparen, C_rparen, C_star, C_comma, C_slash, C_0, C_colon,
@@ -3282,6 +3282,14 @@ clObject clFormatDollars clVdecl(_ap)
     { clObject L_0;
       clSetq(L_0, number);
       clSetq(L_test, clFloatp(L_0, clEOA)); }
+    if (clTrue(L_test))
+      { clObject L_0;
+        clSetq(L_0, number);
+        clSetq(L_test,
+               clNot(clFuncallFunction(clSymbolFunctionChecked(clFLOAT_INFINITY_OR_NAN_P),
+                                       L_0,
+                                       clEOA),
+                     clEOA)); }
     if (clTrue(L_test))
       { clObject signstr, signlen;
         { clObject L_test__R1;
