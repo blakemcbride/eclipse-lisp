@@ -3771,7 +3771,7 @@ void clInit(control_stack_size) unsigned int control_stack_size; {
   setlocale(LC_CTYPE, "");
   clInitStaticClass();
   { int i;
-    for (i=0; i<(int)cl_MAX_TAG; TagInit(i,clUNKNOWN_OBJECT)) i++; }
+    for (i=0; i<(int)cl_MAX_TAG; i++) TagInit(i,clUNKNOWN_OBJECT); }
   TagInit(cl_SIMPLE_CHARACTER_TAG,clCHARACTER);
   TagInit(cl_RESERVED2_TAG,clCHARACTER);
   TagInit(cl_EVEN_FIXNUM_TAG,clINTEGER);
